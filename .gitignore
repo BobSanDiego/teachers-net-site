@@ -1,0 +1,16 @@
+# WordPress runtime
+wordpress/
+
+# DDEV runtime
+.ddev/.webimageBuild/
+
+# mac/windows noise
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+
+# logs
+*.log
