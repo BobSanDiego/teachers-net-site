@@ -1,0 +1,19 @@
+TNET JOBS ROADMAP — DISCOVERY → DATA ENGINEERING → MVP
+
+STATUS: Core Terms stabilized. Jobs discovery complete. Next phase is entity modeling. No Jobs code yet.
+
+PHASE J1 — ENTITY MODEL: Define Job, Employer, Employer Membership, Job Term Assignment, Job Event, Job Visibility, Apply Method, and reserved future objects. For each entity define purpose, owner, lifecycle, identity, archive/delete rules, mutability, and future extension risk.
+
+PHASE J2 — RELATIONSHIPS: Define Employer→Jobs, Jobs→Core Terms, Jobs→Events, Jobs→Visibility, Jobs→Applications reserved, User→Employer Memberships, Candidate→Applications reserved. Decide cardinality and ownership.
+
+PHASE J3 — TABLE DESIGN: Propose first-pass custom tables: jobs, employers, employer_users, job_term_assignments, job_events, job_visibility, job_views. Reserve applications, application_events, candidate_profiles, candidate_documents, interviews, offers, hires, job_alerts, job_promotions, billing.
+
+PHASE J4 — API CONTRACT: Define Jobs APIs and Core Terms consumption points. No direct cross-plugin table writes. Jobs uses Core Terms public APIs/hooks.
+
+PHASE J5 — MVP: Candidate browse/search/filter/detail/external apply. Recruiter create/edit/submit/close. Admin approve/reject/expire/feature. Required fields: title, employer, description, region/terms, employment type, apply URL, expiration.
+
+PHASE J6 — SIGNALS: Save job, mark applied, apply click tracking, alerts, basic analytics, recruiter dashboard.
+
+PHASE J7 — INVENTORY: Resume upload, candidate visibility, candidate discovery, profile enrichment, matching.
+
+PHASE J8 — ATS-LITE: Internal apply, application states, recruiter workflow, interview tracking, notes, offers, hire events.
