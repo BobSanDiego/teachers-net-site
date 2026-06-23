@@ -1,19 +1,33 @@
 TNET JOBS ROADMAP — DISCOVERY → DATA ENGINEERING → MVP
 
-STATUS: Core Terms stabilized. Jobs discovery complete. Next phase is entity modeling. No Jobs code yet.
+STATUS: Core Terms stabilized. Jobs discovery and early foundation implementation are complete through the employer membership foundation milestone.
 
-PHASE J1 — ENTITY MODEL: Define Job, Employer, Employer Membership, Job Term Assignment, Job Event, Job Visibility, Apply Method, and reserved future objects. For each entity define purpose, owner, lifecycle, identity, archive/delete rules, mutability, and future extension risk.
+COMPLETED J1 — ENTITY MODEL: Defined Job, Employer, Employer Membership, Job Term Assignment, Job Event, Job Visibility, Apply Method, and reserved future objects.
 
-PHASE J2 — RELATIONSHIPS: Define Employer→Jobs, Jobs→Core Terms, Jobs→Events, Jobs→Visibility, Jobs→Applications reserved, User→Employer Memberships, Candidate→Applications reserved. Decide cardinality and ownership.
+COMPLETED J2 — RELATIONSHIPS: Defined Employer to Jobs, Jobs to Core Terms, Jobs to Events, Jobs to Visibility, reserved Jobs to Applications, User to Employer Memberships, and reserved Candidate to Applications relationships.
 
-PHASE J3 — TABLE DESIGN: Propose first-pass custom tables: jobs, employers, employer_users, job_term_assignments, job_events, job_visibility, job_views. Reserve applications, application_events, candidate_profiles, candidate_documents, interviews, offers, hires, job_alerts, job_promotions, billing.
+COMPLETED J3 — TABLE DESIGN: Accepted custom-table direction for six MVP tables: jobs, employers, employer_users, terms, events, and signals. Reserved applications, application_events, candidate_profiles, candidate_documents, interviews, offers, hires, job_promotions, and billing/entitlements for later.
 
-PHASE J4 — API CONTRACT: Define Jobs APIs and Core Terms consumption points. No direct cross-plugin table writes. Jobs uses Core Terms public APIs/hooks.
+COMPLETED J4 — API CONTRACT: Defined Jobs APIs and Core Terms consumption points. No direct cross-plugin table writes. Jobs uses Core Terms public APIs/hooks.
 
-PHASE J5 — MVP: Candidate browse/search/filter/detail/external apply. Recruiter create/edit/submit/close. Admin approve/reject/expire/feature. Required fields: title, employer, description, region/terms, employment type, apply URL, expiration.
+COMPLETED J5 — PLUGIN SKELETON: Created minimal `tnet-jobs` plugin skeleton with dependency and health shell.
 
-PHASE J6 — SIGNALS: Save job, mark applied, apply click tracking, alerts, basic analytics, recruiter dashboard.
+COMPLETED J6 — DEPENDENCY AND HEALTH LAYER: Added structured Core Terms dependency and Jobs health reporting.
 
-PHASE J7 — INVENTORY: Resume upload, candidate visibility, candidate discovery, profile enrichment, matching.
+COMPLETED J7 — SCHEMA HEALTH SHELL: Added table-name mapping and installed/missing/partial schema state checks without creating tables.
 
-PHASE J8 — ATS-LITE: Internal apply, application states, recruiter workflow, interview tracking, notes, offers, hire events.
+COMPLETED J8 — SCHEMA INSTALLER: Created exactly six MVP custom tables and recorded schema version after verification.
+
+COMPLETED J9 — REPOSITORY AND EMPLOYER MEMBERSHIP FOUNDATION: Added table lookup helper, event repository, employer repository, employer-user membership repository, employer-user membership service, and admin UI to view/create/deactivate employer memberships. Published as `c9cb881` and tagged `v0.9.0-employer-membership-foundation`.
+
+CURRENT J10 — PROJECT CURSOR / ROADMAP RECONCILIATION: Update docs to match the published implementation state.
+
+NEXT J11 — JOB REPOSITORY: Implement low-level persistence for the `tnet_jobs` table only. No services, public frontend, REST endpoints, schema changes, sample data, or Core Terms writes unless explicitly approved.
+
+DEFERRED — PUBLIC MVP: Candidate browse/search/filter/detail/external apply. Recruiter create/edit/submit/close. Admin approve/reject/expire/feature. Required fields remain title, employer, description, region/terms, employment type, apply URL, and expiration.
+
+DEFERRED — SIGNALS PRODUCT FEATURES: Save job, mark applied, apply click tracking, alerts, basic analytics, and recruiter dashboard.
+
+DEFERRED — INVENTORY / CANDIDATE FEATURES: Resume upload, candidate visibility, candidate discovery, profile enrichment, and matching.
+
+DEFERRED — ATS-LITE: Internal apply, application states, recruiter workflow, interview tracking, notes, offers, and hire events.
