@@ -1,19 +1,26 @@
 # Decision Log
 
-- Core Terms stabilized before Jobs begins.
-- Jobs is the first consumer plugin after Core Terms.
-- Jobs must be separate from Core Terms.
+- Core Terms stabilized before Jobs began.
+- Jobs is a separate plugin from Core Terms.
 - Core Terms remains folder/repo `profilaxes` for now.
-- Do not rename CFM namespaces, DB tables, slugs, or file paths yet.
-- Jobs should use custom tables, not CPT as primary storage.
+- Do not rename CFM namespaces, DB tables, slugs, URLs, prefixes, or file paths yet.
+- Jobs uses custom tables, not WordPress posts, as primary storage.
 - Employer is first-class.
 - Employer is not a Core Term.
 - Classification belongs in Core Terms.
 - Job-specific lifecycle belongs in Jobs.
+- Jobs may store selected Core Terms IDs in Jobs-owned bridge/configuration tables.
+- Jobs must not write to Core Terms.
+- Core Terms taxonomy counts may change through legitimate Core Terms maintenance; Jobs must synchronize by stable identifiers/hierarchy rather than assuming a fixed count.
 - Promotion and billing must not contaminate the jobs table.
-- External apply is acceptable for launch, but apply tracking must be future-compatible.
-- ATS, resumes, candidate search, interviews, offers, and hires are reserved future objects.
-- Candidate search should not launch before marketplace liquidity exists.
-- Resume search should eventually be gated by verification, entitlement/paywall, and candidate consent.
+- External apply is acceptable for launch.
+- Application Instructions reveal behavior is a Jobs-owned engagement signal, not an internal application workflow.
+- Saved Jobs use the Jobs engagement system.
+- Job Alerts are required for V1 and should be implemented as a small user-owned alert system, not as a general notification center.
+- Communications must use the Jobs communication service.
+- The public Jobs browse/search/detail experience is Jobs-owned and follows Design System v1.
+- The canonical runtime hero asset is `hero-chalkboard-1200x450.webp`.
+- CSV import is admin-controlled and must not auto-publish by default.
+- ATS, resumes, candidate search, interviews, offers, hires, notification center, geocoding/radius search, maps, reviews, and commerce are reserved future objects unless explicitly reopened.
 - Users may hold multiple Jobs identities; avoid ranked single-role ladders.
 - Permissions should be capability-based and employer-scoped.

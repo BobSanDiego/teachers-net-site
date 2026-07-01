@@ -32,6 +32,14 @@ Treat approved mockups as implementation specifications.
 
 Optimize for minimal compute, minimal churn, and deterministic progress.
 
+When project documents conflict, use this precedence:
+
+1. the current user ticket
+2. `docs/current-cursor.md`
+3. `docs/CODEX_HANDOFF.md`
+4. active product/design docs
+5. historical planning docs
+
 Every ticket should improve one screen, one workflow, or one defect—not all three.
 
 ## Visual Verification Policy
