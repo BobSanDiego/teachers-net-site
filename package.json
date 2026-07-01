@@ -1,0 +1,11 @@
+{
+  "name": "teachers-net-site",
+  "private": true,
+  "scripts": {
+    "browser:verify": "playwright test --config=playwright.config.cjs",
+    "browser:smoke": "playwright test --config=playwright.config.cjs tests/browser/jobs-shell.spec.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}

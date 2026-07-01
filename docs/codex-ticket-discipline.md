@@ -69,3 +69,23 @@ Generate screenshots only when:
 Human visual QA is performed by the Engineering Director after implementation.
 
 Codex should optimize for minimum compute while maintaining engineering confidence.
+
+## Browser Verification Environment
+
+Teachers.Net browser verification is project-owned and runs from the root repo
+through DDEV.
+
+Use:
+
+```bash
+ddev exec npm run browser:verify
+```
+
+Do not run browser checks through Windows `npx` from WSL. Do not add Node
+dependencies to `wordpress/wp-content/plugins/tnet-jobs`; the root repo owns the
+minimal Playwright setup.
+
+The default browser verification is non-screenshot smoke coverage. It should
+confirm route health, console/page errors, horizontal overflow, and canonical
+container measurements where relevant. Screenshots remain opt-in under the
+Visual Verification Policy.
