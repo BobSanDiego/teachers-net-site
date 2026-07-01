@@ -48,6 +48,21 @@ We optimize for information density without visual clutter.
 
 All primary content aligns to the same shell.
 
+Implementation rule:
+
+```css
+--tnet-jobs-shell-width: min(100% - 64px, 1200px);
+```
+
+All Jobs public page-level containers must use this shell for header, hero,
+search, browse/search results, detail, saved jobs, alerts, employer-facing
+public pages, and footer content. Below tablet widths, reduce the horizontal
+gutter to the equivalent of `min(100% - 32px, 1200px)`.
+
+Internal components may be narrower inside the shell, such as a search card or
+form panel, but page-level wrappers should not introduce competing 1040px,
+1180px, or 1220px max-widths unless a specific exception is documented.
+
 ---
 
 ## Content Width
