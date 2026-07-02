@@ -515,6 +515,26 @@ Used across entire site.
 
 # Color System
 
+Primary Link
+
+`#0017DD`
+
+Use for interactive text links, including job titles, inline links, navigation
+links, resource links, Advanced Search, Manage Job Alerts, pagination links,
+and table links.
+
+---
+
+Primary Button
+
+`#0033C7`
+
+Use for primary action button backgrounds, including Find Jobs, Create Job
+Alert, Login, primary form submits, primary recruiter actions, and wizard
+primary buttons.
+
+---
+
 Primary Blue
 
 Teachers.Net brand blue.
