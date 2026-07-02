@@ -24,16 +24,16 @@ Before coding:
 4. Read `docs/decision-log.md`.
 5. For Jobs tickets, also read the ticket-requested Jobs docs such as:
    - `wordpress/wp-content/plugins/tnet-jobs/docs/development-constitution.md`
-   - `wordpress/wp-content/plugins/tnet-jobs/docs/jobs-roadmap.md`
+   - `docs/jobs-roadmap.md`
    - `docs/v1-product-definition.md`
    - `docs/design-system-v1.md`
    - `docs/codex-ticket-discipline.md`
 
 Current next task:
-Job Alerts MVP implementation sequence.
+V1 release-candidate readiness.
 
 Start with:
-J117 - Job Alerts Schema + Service Foundation.
+Human visual QA, release-candidate declaration, and launch operations planning unless the Engineering Director opens a focused defect ticket.
 
 Current launch blocker:
-Job Alerts are not implemented yet. Do not begin V2 features until the V1 alert path is complete or explicitly deferred by the Engineering Director.
+No P0 runtime blocker is currently known after the J127 readiness re-audit. Do not begin V2 features until V1 release-candidate status is explicitly declared or the Engineering Director redirects.

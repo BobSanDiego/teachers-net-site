@@ -211,7 +211,9 @@ Public display should normally use:
 
 City, State
 
-Address exists primarily to support proximity search and geocoding.
+Address exists primarily to prepare for future proximity search and geocoding.
+
+Radius/proximity search and geocoding are deferred to Version 2.
 
 ---
 
@@ -231,7 +233,9 @@ Contract
 
 Negotiable
 
-Salary becomes a searchable field.
+Salary is stored and displayed in Version 1.
+
+Salary matching and salary filtering are deferred to Version 2.
 
 ---
 
@@ -249,9 +253,9 @@ Subject
 
 Employment Type
 
-Salary
-
 Remote
+
+Version 1 search does not include radius/proximity, geocoding, or salary matching/filtering.
 
 ---
 
@@ -259,23 +263,41 @@ Remote
 
 Job Alerts are considered a core feature.
 
-Alerts should support:
+Version 1 Job Alerts include:
 
 Keyword
 
-Location
-
-Radius
+Location text storage, where available from the search context
 
 Grade Level
 
 Subject
 
-Salary
-
 Employment Type
 
-Remote
+Create from current search context
+
+Manage alerts
+
+Active/inactive status
+
+Scheduled daily email delivery
+
+Email manage/pause path
+
+Version 1 Job Alerts do not include:
+
+Radius/proximity matching
+
+Geocoding
+
+Salary matching
+
+Notification center
+
+Advanced frequency preferences
+
+Per-job match history or dedupe tracking
 
 ---
 
@@ -333,6 +355,12 @@ District profiles
 
 Maps
 
+Radius/proximity search
+
+Geocoding automation
+
+Salary matching and salary filtering
+
 Benefits filtering
 
 Credential filtering
@@ -352,6 +380,10 @@ Recruiter CRM
 Interview scheduling
 
 Analytics dashboards beyond basic reporting
+
+Notification center and bell alerts
+
+Advanced Job Alert preferences
 
 Anything requiring substantial additional workflow.
 
