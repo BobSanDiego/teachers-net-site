@@ -72,14 +72,41 @@ Codex should optimize for minimum compute while maintaining engineering confiden
 
 ## VISUAL TUNE MODE
 
-VISUAL TUNE MODE is a temporary fast-polish mode for human-guided UI tuning.
-It may be entered only when the Engineering Director or site owner explicitly
-requests it.
+VISUAL TUNE MODE is a temporary fast-polish mode for human-guided visual
+refinement. It may be entered only when the Engineering Director or site owner
+explicitly requests it.
 
-Entry command:
+VISUAL TUNE MODE is intended for:
+
+- spacing
+- typography
+- colors
+- radii
+- icon sizing
+- layout tokens
+- CSS variables
+- positioning
+- component polish
+
+VISUAL TUNE MODE must not be used for:
+
+- PHP
+- schema
+- routing
+- authentication or authorization
+- services
+- cron
+- email
+- business logic
+- architecture
+- feature work
+
+Supported lifecycle commands:
 
 ```text
 Enter VISUAL TUNE MODE
+FINALIZE VISUAL TUNE MODE
+ABORT VISUAL TUNE MODE
 ```
 
 While VISUAL TUNE MODE is active:
@@ -97,36 +124,47 @@ While VISUAL TUNE MODE is active:
 - report changed tokens/rules and final computed values when quick to measure
 - stop and wait for the next instruction
 
-VISUAL TUNE MODE applies only to visual token/CSS tuning.
+Maintain a concise running ledger while VISUAL TUNE MODE is active.
 
-It must not be used for:
+Example:
 
-- architecture
-- PHP logic
-- schema
-- routing
-- authentication or authorization
-- email
-- cron
-- admin workflows
-- data behavior
+```text
+VISUAL TUNE SESSION
 
-If a requested change requires PHP or template changes, stop and ask whether to
-exit VISUAL TUNE MODE. If a requested change affects functionality, stop and ask
-whether to exit VISUAL TUNE MODE. If a visual tweak causes overflow or a broken
-layout, report it and stop.
+✓ Header height
+96 → 105
+
+✓ Logo size
+43 → 36
+
+✓ Nav font
+14.08 → 17.6
+```
+
+Ledger rules:
+
+- only record values actually changed
+- record before → after
+- keep newest changes at the bottom
+- do not repeat unchanged items
+- do not include implementation commentary
 
 Do not generate screenshots by default in VISUAL TUNE MODE unless explicitly
 requested.
 
-Exit command:
+Stop immediately and request exit from VISUAL TUNE MODE if:
 
-```text
-FINALIZE VISUAL TUNE MODE
-```
+- PHP changes become necessary
+- template changes require structure beyond minimal presentation
+- a request affects functionality
+- architecture would change
+- database/schema changes would be required
+- a visual tweak causes overflow or a broken layout
 
 When finalizing VISUAL TUNE MODE:
 
+- include the completed session ledger in the final report before verification,
+  documentation updates, commit, and push
 - run normal verification
 - update design-system docs if final token values changed
 - run browser verification where relevant
@@ -136,6 +174,16 @@ When finalizing VISUAL TUNE MODE:
 - commit and push the appropriate repo or repos
 - do not tag unless explicitly instructed
 - report final measurements and commit hashes
+
+When aborting VISUAL TUNE MODE:
+
+- discard all uncommitted visual tuning changes made during the current Visual
+  Tune session
+- restore the project to the last committed state
+- do not update docs
+- do not commit
+- do not push
+- report that VISUAL TUNE MODE was aborted successfully
 
 ## Browser Verification Environment
 

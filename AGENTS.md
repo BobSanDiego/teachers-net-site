@@ -31,7 +31,8 @@ Before coding:
 
 `docs/codex-ticket-discipline.md` defines temporary VISUAL TUNE MODE for
 Engineering Director/site-owner guided CSS/token tuning. Use it only when
-explicitly entered with `Enter VISUAL TUNE MODE`.
+explicitly entered with `Enter VISUAL TUNE MODE`, and follow its finalize or
+abort lifecycle commands exactly.
 
 Current next task:
 V1 release-candidate readiness.
