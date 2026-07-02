@@ -42,30 +42,39 @@ We optimize for information density without visual clutter.
 
 # Layout
 
-## Maximum page width
+## Jobs app canvas
 
 1200px
 
-All primary content aligns to the same shell.
+All visible Jobs application UI lives inside one centered 1200px app canvas.
+Outside that canvas, only the browser/page background should be visible. Do not
+run Jobs-owned header, hero, footer, card, rail, sponsor, or section background
+bands full-width beyond the app canvas.
 
 Implementation rule:
 
 ```css
---tnet-jobs-shell-width: min(100% - 64px, 1200px);
+.tnet-jobs-app-canvas {
+  max-width: 1200px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+--tnet-jobs-shell-width: 100%;
 --tnet-jobs-shell-inset: 32px;
 ```
 
-All Jobs public page-level containers must use this shell for header, hero,
-search, browse/search results, detail, saved jobs, alerts, employer-facing
-public pages, and footer content. Below tablet widths, reduce the horizontal
-gutter to the equivalent of `min(100% - 32px, 1200px)` and reduce the shell
-inset to `16px`.
+All Jobs public page-level containers must live inside `.tnet-jobs-app-canvas`.
+Header/nav background, hero background, search, browse/search results, detail,
+saved jobs, alerts, employer-facing public pages, and footer background/content
+must be contained by that canvas. Below tablet widths, the canvas may fill the
+viewport and the shell inset reduces to `16px`.
 
 ## Shell edge and intentional inset
 
 The layout has two alignment tiers:
 
-1. Shell edge: the canonical 1200px page boundary.
+1. Canvas/shell edge: the canonical 1200px app boundary.
 2. Intentional inset: a documented inner content line inside that shell.
 
 The following must align to the shell edge:
@@ -91,8 +100,10 @@ containers.
 
 Verification must measure visible content edges, not only wrapper width. For
 shell-edge components, compare the actual content container left/right to the
-canonical shell. For inset components, compare the visible component left/right
-to the documented inset line.
+canonical canvas. For inset components, compare the visible component left/right
+to the documented inset line. At desktop widths wider than 1200px, no
+Jobs-owned visible pixels or background bands should appear outside the app
+canvas.
 
 ---
 
