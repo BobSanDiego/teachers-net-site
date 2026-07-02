@@ -52,16 +52,47 @@ Implementation rule:
 
 ```css
 --tnet-jobs-shell-width: min(100% - 64px, 1200px);
+--tnet-jobs-shell-inset: 32px;
 ```
 
 All Jobs public page-level containers must use this shell for header, hero,
 search, browse/search results, detail, saved jobs, alerts, employer-facing
 public pages, and footer content. Below tablet widths, reduce the horizontal
-gutter to the equivalent of `min(100% - 32px, 1200px)`.
+gutter to the equivalent of `min(100% - 32px, 1200px)` and reduce the shell
+inset to `16px`.
 
-Internal components may be narrower inside the shell, such as a search card or
-form panel, but page-level wrappers should not introduce competing 1040px,
-1180px, or 1220px max-widths unless a specific exception is documented.
+## Shell edge and intentional inset
+
+The layout has two alignment tiers:
+
+1. Shell edge: the canonical 1200px page boundary.
+2. Intentional inset: a documented inner content line inside that shell.
+
+The following must align to the shell edge:
+
+- header/nav content
+- browse grid
+- search results wrappers
+- detail wrappers
+- saved jobs wrappers
+- alerts wrappers
+- employer-facing public wrappers
+- footer outer content
+
+The following may align to the intentional inset:
+
+- browse hero visible text/content
+- browse search panel/card
+
+Internal components may be narrower inside the shell only when they use a
+documented inset variable or a documented component-specific exception. Do not
+introduce competing 1040px, 1120px, 1180px, or 1220px max-widths as page-level
+containers.
+
+Verification must measure visible content edges, not only wrapper width. For
+shell-edge components, compare the actual content container left/right to the
+canonical shell. For inset components, compare the visible component left/right
+to the documented inset line.
 
 ---
 
