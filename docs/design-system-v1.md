@@ -141,6 +141,7 @@ Canonical color tokens:
 ```css
 --tnet-jobs-color-link: #0017DD;
 --tnet-jobs-color-button-primary: #0033C7;
+--tnet-jobs-color-nav-text: #0A144D;
 --tnet-jobs-color-text: #142235;
 --tnet-jobs-color-muted: #526273;
 --tnet-jobs-color-border: #d8e0e8;
@@ -158,6 +159,23 @@ Canonical shape/control tokens:
 --tnet-jobs-control-height: 36px;
 --tnet-jobs-button-height: 40px;
 ```
+
+Canonical header/hero typography tokens:
+
+```css
+--tnet-jobs-header-height: 96px;
+--tnet-jobs-header-action-width: 74px;
+--tnet-jobs-header-action-height: 44px;
+--tnet-jobs-logo-font-size: 43px;
+--tnet-jobs-logo-subtitle-font-size: 21px;
+--tnet-jobs-hero-title-font-size: 53px;
+--tnet-jobs-hero-subtitle-font-size: 24px;
+```
+
+The Jobs landing header and hero use `Arial, Helvetica, sans-serif` for the
+Teachers.Net wordmark, Job Center subtitle, hero headline, and hero supporting
+copy. Responsive breakpoints may reduce spacing and stacking behavior while
+preserving the desktop token targets.
 
 Component-specific illustration colors, gradients, shadows, exact table column
 math, and one-off emphasis treatments may remain local when tokenizing them
