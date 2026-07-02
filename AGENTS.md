@@ -29,6 +29,10 @@ Before coding:
    - `docs/design-system-v1.md`
    - `docs/codex-ticket-discipline.md`
 
+`docs/codex-ticket-discipline.md` defines temporary VISUAL TUNE MODE for
+Engineering Director/site-owner guided CSS/token tuning. Use it only when
+explicitly entered with `Enter VISUAL TUNE MODE`.
+
 Current next task:
 V1 release-candidate readiness.
 
