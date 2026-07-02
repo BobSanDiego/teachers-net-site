@@ -61,14 +61,25 @@ Implementation rule:
 }
 
 --tnet-jobs-shell-width: 100%;
---tnet-jobs-shell-inset: 32px;
+--tnet-jobs-canvas-gutter: 32px;
+--tnet-jobs-shell-inset: var(--tnet-jobs-canvas-gutter);
 ```
 
 All Jobs public page-level containers must live inside `.tnet-jobs-app-canvas`.
 Header/nav background, hero background, search, browse/search results, detail,
 saved jobs, alerts, employer-facing public pages, and footer background/content
 must be contained by that canvas. Below tablet widths, the canvas may fill the
-viewport and the shell inset reduces to `16px`.
+viewport and the canvas gutter reduces to `16px`.
+
+Canvas content uses an internal gutter. The outer app canvas remains 1200px,
+but visible content inside shared page containers should not sit flush against
+the canvas edge.
+
+```css
+--tnet-jobs-canvas-gutter: 32px;
+```
+
+At tablet/mobile widths, reduce the gutter to `16px` so controls remain usable.
 
 ## Canvas edge and intentional inset
 
@@ -77,7 +88,7 @@ The layout has two alignment tiers:
 1. Canvas edge: the canonical 1200px app boundary.
 2. Intentional inset: a documented inner content line inside that shell.
 
-The following must align to the canvas edge:
+The following outer containers must align to the canvas edge:
 
 - header/nav content
 - browse grid
@@ -87,6 +98,9 @@ The following must align to the canvas edge:
 - alerts wrappers
 - employer-facing public wrappers
 - footer outer content
+
+These canvas-edge containers apply the shared internal canvas gutter so visible
+content does not sit flush against the canvas edge.
 
 The following may align to the intentional inset:
 
@@ -98,12 +112,12 @@ documented inset variable or a documented component-specific exception. Do not
 introduce competing 1040px, 1120px, 1180px, or 1220px max-widths as page-level
 containers.
 
-Verification must measure visible content edges, not only wrapper width. For
-canvas-edge components, compare the actual content container left/right to the
-canonical canvas. For inset components, compare the visible component left/right
-to the documented inset line. At desktop widths wider than 1200px, no
-Jobs-owned visible pixels or background bands should appear outside the app
-canvas.
+Verification must measure both the outer canvas and visible content edges. For
+canvas-edge containers, compare the wrapper left/right to the canonical canvas,
+then confirm visible content honors the internal gutter. For inset components,
+compare the visible component left/right to the documented inset line. At
+desktop widths wider than 1200px, no Jobs-owned visible pixels or background
+bands should appear outside the app canvas.
 
 ---
 
