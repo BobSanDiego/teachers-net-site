@@ -121,6 +121,50 @@ bands should appear outside the app canvas.
 
 ---
 
+## Design Tokens
+
+Jobs public CSS should use a compact shared token layer for values that are
+expected to recur across pages and components.
+
+Canonical layout tokens:
+
+```css
+--tnet-jobs-canvas-width: 1200px;
+--tnet-jobs-canvas-gutter: 32px;
+--tnet-jobs-shell-width: 100%;
+```
+
+At tablet/mobile widths, the canvas gutter reduces to `16px`.
+
+Canonical color tokens:
+
+```css
+--tnet-jobs-color-link: #0017DD;
+--tnet-jobs-color-button-primary: #0033C7;
+--tnet-jobs-color-text: #142235;
+--tnet-jobs-color-muted: #526273;
+--tnet-jobs-color-border: #d8e0e8;
+--tnet-jobs-color-surface: #ffffff;
+--tnet-jobs-color-hero: #073a63;
+--tnet-jobs-color-footer: #001f49;
+```
+
+Canonical shape/control tokens:
+
+```css
+--tnet-jobs-radius-button: 6px;
+--tnet-jobs-radius-card: 14px;
+--tnet-jobs-radius-input: 6px;
+--tnet-jobs-control-height: 36px;
+--tnet-jobs-button-height: 40px;
+```
+
+Component-specific illustration colors, gradients, shadows, exact table column
+math, and one-off emphasis treatments may remain local when tokenizing them
+would make the system harder to read or accidentally redesign a component.
+
+---
+
 ## Content Width
 
 Desktop:
