@@ -163,13 +163,13 @@ Canonical shape/control tokens:
 Canonical header/hero typography tokens:
 
 ```css
---tnet-jobs-header-height: 105px;
+--tnet-jobs-header-height: 93px;
 --tnet-jobs-header-action-width: 74px;
 --tnet-jobs-header-action-height: 44px;
 --tnet-jobs-logo-font-size: 36px;
 --tnet-jobs-logo-subtitle-font-size: 16px;
---tnet-jobs-hero-title-font-size: 38px;
---tnet-jobs-hero-subtitle-font-size: 38px;
+--tnet-jobs-hero-title-font-size: 36px;
+--tnet-jobs-hero-subtitle-font-size: 18px;
 ```
 
 The Jobs landing header and hero use `Arial, Helvetica, sans-serif` for the
