@@ -70,14 +70,14 @@ saved jobs, alerts, employer-facing public pages, and footer background/content
 must be contained by that canvas. Below tablet widths, the canvas may fill the
 viewport and the shell inset reduces to `16px`.
 
-## Shell edge and intentional inset
+## Canvas edge and intentional inset
 
 The layout has two alignment tiers:
 
-1. Canvas/shell edge: the canonical 1200px app boundary.
+1. Canvas edge: the canonical 1200px app boundary.
 2. Intentional inset: a documented inner content line inside that shell.
 
-The following must align to the shell edge:
+The following must align to the canvas edge:
 
 - header/nav content
 - browse grid
@@ -99,7 +99,7 @@ introduce competing 1040px, 1120px, 1180px, or 1220px max-widths as page-level
 containers.
 
 Verification must measure visible content edges, not only wrapper width. For
-shell-edge components, compare the actual content container left/right to the
+canvas-edge components, compare the actual content container left/right to the
 canonical canvas. For inset components, compare the visible component left/right
 to the documented inset line. At desktop widths wider than 1200px, no
 Jobs-owned visible pixels or background bands should appear outside the app
