@@ -34,6 +34,12 @@ Engineering Director/site-owner guided CSS/token tuning. Use it only when
 explicitly entered with `Enter VISUAL TUNE MODE`, and follow its finalize or
 abort lifecycle commands exactly.
 
+`docs/codex-ticket-discipline.md` also defines COMPONENT MATCH MODE for
+high-fidelity matching of one existing UI component to an approved reference.
+Use it only when explicitly entered with `Enter COMPONENT MATCH MODE: [component
+name]`, and follow its `FINALIZE COMPONENT MATCH MODE` or `ABORT COMPONENT
+MATCH MODE` lifecycle commands exactly.
+
 Current next task:
 V1 release-candidate readiness.
 

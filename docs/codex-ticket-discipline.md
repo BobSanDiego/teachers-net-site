@@ -185,6 +185,129 @@ When aborting VISUAL TUNE MODE:
 - do not push
 - report that VISUAL TUNE MODE was aborted successfully
 
+## COMPONENT MATCH MODE
+
+COMPONENT MATCH MODE is a temporary high-fidelity convergence workflow for one
+existing UI component against an approved visual reference. Use it when the
+component already exists and needs to be matched closely without broad redesign
+or feature work.
+
+Enter COMPONENT MATCH MODE only when the Engineering Director or site owner
+explicitly requests it.
+
+Supported lifecycle commands:
+
+```text
+Enter COMPONENT MATCH MODE: [component name]
+FINALIZE COMPONENT MATCH MODE
+ABORT COMPONENT MATCH MODE
+```
+
+Example:
+
+```text
+Enter COMPONENT MATCH MODE: Results Toolbar
+```
+
+COMPONENT MATCH MODE is intended for one component only. Adjacent components may
+be touched only when required to preserve alignment with the target component.
+
+COMPONENT MATCH MODE must not be used for:
+
+- business logic changes
+- new features
+- data behavior changes
+- schema changes
+- routing
+- authentication or authorization
+- email
+- cron
+- admin workflows
+- broad architecture changes
+
+While COMPONENT MATCH MODE is active:
+
+- identify the approved reference and component boundary
+- measure the current component
+- measure the target component where practical
+- prefer CSS, token, and layout refinements
+- preserve existing functionality and accessibility
+- use existing design tokens where possible
+- introduce new tokens only when the value is reusable and clearly belongs in
+  the design system
+- apply the smallest visual/layout change
+- do not commit
+- do not tag
+- do not push
+- do not update docs
+- run fast validation only
+- report the changed-values ledger, current measured values, and remaining
+  visible differences
+- wait for human visual review before continuing
+
+Stop immediately and report if:
+
+- architecture changes are required to match the component safely
+- PHP/template changes become structural rather than presentation-only
+- a request would change functionality
+- a request would change data behavior
+- a request would touch schema, routing, auth, email, cron, admin workflows, or
+  business logic
+- a visual tweak causes overflow or a broken layout
+
+Fast validation during COMPONENT MATCH MODE:
+
+- CSS brace validation if CSS changed
+- PHP lint if PHP/template files changed
+- quick no-overflow check if layout changed
+- no full browser suite unless specifically requested during the active tuning
+  loop
+
+Maintain a concise running ledger while COMPONENT MATCH MODE is active.
+
+Ledger rules:
+
+- only record values actually changed
+- record before → after
+- keep newest changes at the bottom
+- do not repeat unchanged items
+- do not include implementation commentary
+
+Example:
+
+```text
+COMPONENT MATCH SESSION: Results Toolbar
+
+✓ Control height
+44 → 46
+
+✓ Icon size
+18 → 16
+```
+
+When finalizing COMPONENT MATCH MODE:
+
+- include the completed session ledger in the final report before verification,
+  documentation updates, commit, and push
+- run full required verification for affected routes
+- run `ddev exec npm run browser:verify`
+- run `ddev exec npm run browser:smoke`
+- run PHP lint if PHP changed
+- run CSS validation if CSS changed
+- run `git diff --check`
+- update docs only if tokens or component rules changed
+- commit and push the appropriate repo or repos
+- do not tag unless explicitly instructed
+
+When aborting COMPONENT MATCH MODE:
+
+- revert only uncommitted changes from the active Component Match session
+- do not touch unrelated work
+- do not update docs
+- do not commit
+- do not push
+- report reverted files and repo cleanliness
+
 ## Browser Verification Environment
 
 Teachers.Net browser verification is project-owned and runs from the root repo
