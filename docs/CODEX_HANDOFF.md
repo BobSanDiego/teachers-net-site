@@ -9,6 +9,46 @@ Teachers.Net Jobs is the active job board plugin at `wordpress/wp-content/plugin
 Primary rule:
 Terms classify. Jobs authorizes. WordPress authenticates.
 
+## Persistence Model
+
+The global Engineering Director Playbook lives outside this repository and
+should contain reusable methodology only. Teachers.Net-specific context belongs
+in local Teachers.Net docs.
+
+Use `docs/google-drive/teachers-net-job-center-engineering-handoff.md` as the
+local startup handoff for a new ChatGPT/Codex session after reading the global
+playbook.
+
+Do not depend on workflow state, product decisions, routes, branding, or plugin
+facts from other projects. Use other projects only as examples of method when
+explicitly helpful.
+
+## ChatGPT And Codex Roles
+
+ChatGPT role:
+
+- product direction
+- UX guidance
+- architecture review
+- prioritization
+- planning
+
+Codex role:
+
+- inspection
+- implementation
+- verification
+- Git operations
+- documentation updates
+
+Default workflow:
+
+Inspect → plan → approve → implement → verify → commit → push.
+
+Default behavior:
+
+Do not create new process unless it reduces effort, risk, or maintenance.
+
 ## Environment
 
 - Project root: `/home/bobreap/projects/teachers-net-site`
@@ -72,9 +112,11 @@ Terms classify. Jobs authorizes. WordPress authenticates.
 
 ## Current Engineering Cursor
 
-J127 V1 Launch Readiness Re-Audit is complete.
+Teachers.Net Jobs is in V1 release-candidate readiness.
 
-No P0 runtime launch blocker was identified. The current milestone is documentation synchronization, human visual QA, release-candidate declaration, and launch operations planning.
+Current focus is human visual QA and focused public Jobs landing-page polish
+against the approved North Star reference. See `docs/current-cursor.md` for the
+short current cursor.
 
 ## Browser Verification
 

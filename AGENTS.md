@@ -11,6 +11,12 @@ Terms classify.
 Jobs authorizes.
 WordPress authenticates.
 
+Project context rule:
+Teachers.Net-specific facts, decisions, and current cursor belong in this repo's
+local docs. The global Engineering Director Playbook contains reusable
+methodology only. Do not import workflow state, routes, branding, plugin
+decisions, or product assumptions from other projects.
+
 Do not add Jobs code to Core Terms.
 Do not rename the `profilaxes` folder, CFM classes, `cfm` prefixes, DB tables, URLs, slugs, or namespaces unless explicitly instructed.
 Do not edit third-party/vendor plugins.
@@ -18,16 +24,24 @@ Do not reset, prune, delete, rebuild, or uninstall Docker/DDEV/WordPress/plugin 
 
 Before coding:
 
-1. Read `docs/CODEX_HANDOFF.md`.
-2. Read `docs/current-cursor.md`.
-3. Read `docs/plugin-architecture.md`.
-4. Read `docs/decision-log.md`.
-5. For Jobs tickets, also read the ticket-requested Jobs docs such as:
+1. Read `docs/google-drive/teachers-net-job-center-engineering-handoff.md`.
+2. Read `docs/CODEX_HANDOFF.md`.
+3. Read `docs/current-cursor.md`.
+4. Read `docs/plugin-architecture.md`.
+5. Read `docs/decision-log.md`.
+6. For Jobs tickets, also read the ticket-requested Jobs docs such as:
    - `wordpress/wp-content/plugins/tnet-jobs/docs/development-constitution.md`
    - `docs/jobs-roadmap.md`
    - `docs/v1-product-definition.md`
    - `docs/design-system-v1.md`
    - `docs/codex-ticket-discipline.md`
+
+ChatGPT is responsible for product direction, UX guidance, architecture review,
+prioritization, and planning. Codex is responsible for inspection,
+implementation, verification, Git operations, and documentation updates.
+
+Default workflow:
+Inspect → plan → approve → implement → verify → commit → push.
 
 `docs/codex-ticket-discipline.md` defines temporary VISUAL TUNE MODE for
 Engineering Director/site-owner guided CSS/token tuning. Use it only when

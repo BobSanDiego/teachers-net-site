@@ -42,6 +42,66 @@ When project documents conflict, use this precedence:
 
 Every ticket should improve one screen, one workflow, or one defect—not all three.
 
+## Local Persistence Model
+
+Teachers.Net-specific facts, decisions, implementation state, and current cursor
+belong in this repository's local docs.
+
+The global Engineering Director Playbook lives outside this repo and should
+contain reusable methodology only. Do not move Teachers.Net-specific state into
+the global playbook, and do not depend on another project's workflow state when
+working here.
+
+ChatGPT role:
+
+- product direction
+- UX guidance
+- architecture review
+- prioritization
+- planning
+
+Codex role:
+
+- inspection
+- implementation
+- verification
+- Git operations
+- documentation updates
+
+Default workflow:
+
+Inspect → plan → approve → implement → verify → commit → push.
+
+Working style:
+
+1. Choose one reference page or flow.
+2. Refine it until approved.
+3. Extract reusable components or tokens only when they reduce future effort,
+   risk, or maintenance.
+4. Propagate carefully after the reference is approved.
+
+Default behavior:
+
+Do not create new process unless it reduces effort, risk, or maintenance.
+
+## PREPARE HANDOFF
+
+When the user says `prepare handoff` or asks for session handoff preparation,
+Codex should update the project Engineering Handoff.
+
+Handoff updates should:
+
+- summarize recent completed tickets or meaningful passes
+- identify the next 1-3 likely tasks
+- capture the current active decision or discussion
+- update open risks and blockers
+- update the stop-after boundary
+- stay concise
+- point to deeper local docs instead of replacing them
+
+PREPARE HANDOFF is documentation-only. Do not modify application code. Commit
+documentation only if explicitly approved.
+
 ## Visual Verification Policy
 
 Default implementation tickets should use engineering verification, not routine screenshot generation.
