@@ -14,11 +14,22 @@ or full project history.
   results toolbar, label row, listing rhythm, promo/leaderboard spacing,
   pagination, right rail relationship, and footer transition.
 - Current ticket/workstream: human-guided visual polish after J144 Results
-  Toolbar Replication and follow-up Component Match/Tweak passes.
+  Toolbar Replication and follow-up Component Match/Tweak passes. Engineering
+  methodology docs are stable after the Engineering Handoff protocol approval.
 
 ## 2. Recently Completed
 
 Newest first:
+
+- `40693ca` Docs: finalize Engineering Handoff protocol
+  - What changed: finalized the local Engineering Handoff model, updated startup
+    references, and stabilized the global Engineering Director Playbook's
+    `PREPARE HANDOFF` methodology.
+  - Verification status: committed and pushed in the root repo.
+  - Commit/tag: `40693ca`; no tag.
+  - Why it mattered: future ChatGPT/Codex sessions should use the global
+    playbook plus this project handoff instead of chat history or stale project
+    briefs.
 
 - Active uncommitted browse-list spacing/color tune
   - What changed: label row color moved to the nav-text token; list-to-promo,
@@ -101,6 +112,9 @@ Newest first:
   established.
 - The immediate tradeoff is whether the active fine-tuning has reached the
   approved rhythm or needs one more narrow Component Match/Tweak pass.
+- The Engineering Director Playbook is now stable. Future global methodology
+  changes should happen only when the methodology itself evolves, not during
+  ordinary project work.
 - Salary matching, radius/geocoding, notification center behavior, advanced
   alert preferences, ATS/internal applications, and commerce remain V2/deferred.
 - Human visual QA decides acceptance. Codex should verify engineering health but
@@ -110,6 +124,8 @@ Newest first:
 
 - The Jobs plugin currently has uncommitted visual CSS changes in
   `public/css/tnet-jobs-public.css`.
+- The root documentation repo is clean after `40693ca` unless new handoff edits
+  are pending review.
 - V1 release-candidate declaration is pending Engineering Director approval.
 - Production deployment, monitoring, rollback, and launch operations are not yet
   finalized.
@@ -133,6 +149,8 @@ workflow changes, or unrelated page redesigns unless explicitly directed.
   workflow state into Teachers.Net.
 - Do not begin V2 features before V1 release-candidate status is declared or the
   Engineering Director redirects.
+- Do not refactor or reopen the stable global Engineering Director Playbook
+  during ordinary project work.
 - Do not add radius/geocoding, salary matching/filtering, notification center,
   ATS/resumes/internal applications, commerce, or advanced alert behavior unless
   explicitly requested.
