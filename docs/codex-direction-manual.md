@@ -28,15 +28,40 @@ Then read that project's Project Cursor and Engineering Handoff after reading
 the shared governance docs. Do not assume Job Center is active when the ticket
 is about Core Terms, Membership Taxonomy, or a future Teachers.Net workstream.
 
+Google Drive is for ChatGPT operational recovery only. It should contain shared
+operating docs plus compact Project Cursor / Engineering Handoff docs, not a
+mirror of repository documentation.
+
+Local repository docs remain the durable engineering source for architecture,
+roadmaps, specifications, implementation details, and verification instructions.
+
 Current project directories:
 
 - Job Center: `docs/job-center/`
 - Core Terms: `docs/core-terms/`
 - Membership Taxonomy: `docs/membership-taxonomy/`
 
+Project-state lifecycle values:
+
+- Planning
+- Active Development
+- Stabilization
+- Maintenance
+- Archived
+
+Each Project Cursor should declare one state.
+
 Do not depend on workflow state, product decisions, routes, branding, or plugin
 facts from other projects. Use other projects only as examples of method when
 explicitly helpful.
+
+Core Terms and Membership Taxonomy are related but distinct:
+
+- Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+- Membership Taxonomy is the curation/classification/human-review workstream for
+  historic Teachers.Net chatboard taxonomy.
+- Membership Taxonomy is not a Core Terms rename or implementation ticket
+  stream.
 
 ## ChatGPT And Codex Roles
 
@@ -86,44 +111,8 @@ Do not create new process unless it reduces effort, risk, or maintenance.
 
 - Plugin path: `wordpress/wp-content/plugins/tnet-jobs`
 - Remote: `git@github.com:BobSanDiego/tnet-jobs.git`
-- Code version constant: `0.1.0`
-- DB schema target: `0.8.0`
-- Latest implementation tag: `v0.9.164-job-alert-browser-a11y`
-- Latest Jobs repo commit at handoff refresh: `75dadf5 J126 fix alerts header tablet overflow`
-
-## Current Jobs Capabilities
-
-- Jobs-owned frontend application shell.
-- Public browse landing, search results, and job detail pages.
-- Design System v1 header, hero, results shell, and footer direction.
-- Saved Jobs behavior on browse/search/detail and `/jobs/saved/`.
-- Job Alerts create/manage/matching/scheduled delivery/email pause flow.
-- Employer request-access workflow.
-- Employer dashboard, My Jobs, create wizard, and single-screen edit form.
-- Core Terms-backed grade, subject, and location classification.
-- Salary and V1 location/requirements fields.
-- Admin jobs, employers, memberships, moderation, bulk moderation, activity log, dashboard metrics, and CSV import foundation/create flow.
-- Communications foundation, admin queue emails, recruiter lifecycle emails, expiration/renewal emails, and teacher Job Alert emails.
-- Runtime hero asset: `public/assets/images/hero-chalkboard-1200x450.webp`.
-
-## Completed Milestones
-
-- Recruiter posting wizard, edit flow, My Jobs management, and dashboard.
-- Public browse/search/detail experience aligned to Design System v1.
-- Saved Jobs engagement.
-- V1 salary, location, address, and requirements data foundation.
-- Employer request-access and admin approval workflow.
-- Admin moderation, metrics, activity log, and CSV import create flow.
-- Communications foundation and lifecycle emails.
-- Job Alerts MVP:
-  - schema and services
-  - `/jobs/alerts/` management
-  - create from search context
-  - matching
-  - scheduled daily email delivery
-  - tokenized pause path
-  - right rail CTA wiring
-  - browser regression/accessibility pass
+- Current Job Center status belongs in `docs/job-center/project-cursor.md` and
+  `docs/job-center/engineering-handoff.md`.
 
 ## Project Cursor
 
@@ -131,6 +120,12 @@ Each active workstream owns its Project Cursor in its project directory.
 
 For Job Center, see `docs/job-center/project-cursor.md` and
 `docs/job-center/engineering-handoff.md`.
+
+For Core Terms, see `docs/core-terms/project-cursor.md` and
+`docs/core-terms/engineering-handoff.md`.
+
+For Membership Taxonomy, see `docs/membership-taxonomy/project-cursor.md` and
+`docs/membership-taxonomy/engineering-handoff.md`.
 
 ## Browser Verification
 

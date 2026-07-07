@@ -1,16 +1,21 @@
 # Membership Taxonomy Project Cursor
 
+## Project State
+
+Planning
+
 ## Purpose
 
 Curate historic Teachers.Net chatboard taxonomy into future Core Terms
 candidates.
 
 Membership Taxonomy is a curation, classification, and human-review workstream.
-It is not the Core Terms implementation platform.
+It is not the Core Terms implementation platform, a Core Terms rename, or a Core
+Terms implementation ticket stream.
 
-Core Terms is the plugin/platform/runtime. Membership Taxonomy is the human
-review layer that decides which legacy taxonomy ideas are meaningful candidates
-for future Core Terms.
+Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+Membership Taxonomy is the human review layer that decides which legacy taxonomy
+ideas are meaningful candidates for future Core Terms.
 
 ## Current Phase
 

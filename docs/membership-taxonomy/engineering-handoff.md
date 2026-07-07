@@ -7,8 +7,12 @@ Core Terms is the plugin/platform/runtime. Membership Taxonomy is the
 curation/classification/human-review layer. It does not mutate Core Terms by
 itself.
 
+Membership Taxonomy is not a Core Terms rename or implementation ticket stream.
+Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+
 ## Current Working State
 
+- Project state: Planning.
 - Current phase: legacy taxonomy discovery and classification.
 - Current milestone: CT068 Legacy Chatboard Taxonomy Classification Audit.
 - Current focus: classify historic Teachers.Net chatboard taxonomy candidates

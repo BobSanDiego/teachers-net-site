@@ -1,24 +1,20 @@
 # Teachers.Net Jobs Roadmap
 
-## Project Cursor
+## Roadmap Context
 
-Teachers.Net Jobs is in V1 release-candidate readiness.
+This roadmap is a durable planning reference, not the live project cursor.
 
-The V1 feature implementation path is complete through Job Alerts MVP and browser/accessibility regression.
+For current Job Center state, read:
 
-Current focus:
-
-1. Keep documentation synchronized with implementation.
-2. Complete human visual QA.
-3. Declare a release candidate if approved by the Engineering Director.
-4. Prepare launch operations and production deployment.
+1. `docs/job-center/project-cursor.md`
+2. `docs/job-center/engineering-handoff.md`
 
 ## Current Version State
 
 - Jobs code version: `0.1.0`
 - Jobs DB schema target: `0.8.0`
-- Latest implementation tag: `v0.9.164-job-alert-browser-a11y`
-- Latest Jobs repo commit at roadmap refresh: `75dadf5 J126 fix alerts header tablet overflow`
+- Current implementation state is tracked in the Job Center Engineering
+  Handoff and the Jobs plugin Git history.
 
 ## Completed V1 Areas
 

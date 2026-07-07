@@ -5,7 +5,10 @@ workstream.
 
 Membership Taxonomy curates historic Teachers.Net chatboard taxonomy into future
 Core Terms candidates. It is a curation/classification/human-review workstream,
-not the Core Terms plugin/platform/runtime itself.
+not the Core Terms plugin/platform/runtime/API/editor/compiler/archive system
+itself.
+
+Membership Taxonomy is not a Core Terms rename or implementation ticket stream.
 
 Startup docs:
 

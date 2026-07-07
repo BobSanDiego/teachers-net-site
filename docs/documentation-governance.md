@@ -56,6 +56,17 @@ The Project Cursor is short and immediate. The Engineering Handoff preserves
 session continuity. Roadmaps, architecture docs, and specifications remain
 deeper references.
 
+Every Project Cursor must declare one project state:
+
+- Planning
+- Active Development
+- Stabilization
+- Maintenance
+- Archived
+
+Use the state to orient a cold-start session quickly. Do not use it as a
+substitute for the current ticket or handoff.
+
 ## Google Drive Operational Docs
 
 Google Drive is the operational recovery layer for ChatGPT Engineering Director
@@ -73,6 +84,9 @@ Google Drive Project Cursor and Engineering Handoff documents are concise
 continuity documents. Local repository docs remain the durable source for
 implementation details, architecture, roadmap, design system, decision log, and
 plugin-specific specifications.
+
+Codex should read local repository docs directly. ChatGPT should use Google
+Drive only to recover operational context at the start of a new session.
 
 ## Startup Rule
 
@@ -120,5 +134,12 @@ Primary startup docs:
 - `docs/membership-taxonomy/project-cursor.md`
 - `docs/membership-taxonomy/engineering-handoff.md`
 
-This directory is reserved for the future membership taxonomy workstream. Do not
-seed it with Job Center state.
+Membership Taxonomy is the curation, classification, and human-review workstream
+for historic Teachers.Net chatboard taxonomy. It is separate from Core Terms:
+
+- Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+- Membership Taxonomy is not a Core Terms rename or implementation ticket
+  stream.
+
+Do not seed Membership Taxonomy with Job Center state, Core Terms implementation
+state, imports, schema changes, or plugin rename assumptions.

@@ -1,5 +1,9 @@
 # Core Terms Project Cursor
 
+## Project State
+
+Maintenance
+
 ## Current Phase
 
 Core Terms platform foundation complete.

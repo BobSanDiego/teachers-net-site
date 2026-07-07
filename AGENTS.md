@@ -29,10 +29,32 @@ Documentation governance:
 - Google Drive operational docs live under
   `Teachers.Net Engineering/Shared/` and
   `Teachers.Net Engineering/Projects/<Project Name>/`.
-- Google Drive is for ChatGPT continuity only; local repo docs remain the
-  durable source for implementation detail.
+- Google Drive is for ChatGPT operational recovery only. It should contain the
+  shared operating docs plus compact Project Cursor / Engineering Handoff docs;
+  it should not mirror this repository.
+- Local repository docs remain the durable engineering source for architecture,
+  roadmaps, specifications, implementation details, and verification
+  instructions.
 - If the active project is unclear, ask which workstream is active before using
   Job Center, Core Terms, or Membership Taxonomy state.
+
+Project-state lifecycle:
+
+- Planning
+- Active Development
+- Stabilization
+- Maintenance
+- Archived
+
+Each Project Cursor must declare one project state.
+
+Core Terms vs Membership Taxonomy:
+
+- Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+- Membership Taxonomy is a curation, classification, and human-review
+  workstream for legacy taxonomy.
+- Membership Taxonomy is not a Core Terms rename or implementation ticket
+  stream.
 
 Do not add Jobs code to Core Terms.
 Do not rename the `profilaxes` folder, CFM classes, `cfm` prefixes, DB tables, URLs, slugs, or namespaces unless explicitly instructed.
@@ -76,9 +98,10 @@ name]`, and follow its `FINALIZE COMPONENT MATCH MODE` or `ABORT COMPONENT
 MATCH MODE` lifecycle commands exactly.
 
 When the user issues `PREPARE HANDOFF`, follow
-`docs/codex-ticket-discipline.md`, update the active project's Engineering
-Handoff, and end by outputting the project-aware ChatGPT startup prompt for
-Google Drive retrieval. The prompt must reference:
+`docs/codex-ticket-discipline.md`. Confirm the active project first, update
+only that project's Engineering Handoff, update its Project Cursor only for
+durable state changes, and end by outputting the project-aware ChatGPT startup
+prompt for Google Drive retrieval. The prompt must reference:
 
 - `Engineering Director Playbook`
 - `<Project Name> Project Cursor`

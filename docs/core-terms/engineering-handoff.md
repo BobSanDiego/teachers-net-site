@@ -6,6 +6,7 @@ Terms.
 
 ## Current Working State
 
+- Project state: Maintenance.
 - Core Terms platform foundation is complete.
 - Milestone tag: `v0.6.2-core-terms-foundation`.
 - Plugin-owned docs live in `wordpress/wp-content/plugins/profilaxes/docs/`.

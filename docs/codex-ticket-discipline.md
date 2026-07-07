@@ -95,6 +95,22 @@ Every new project session should read shared governance docs plus the active
 project's Project Cursor and Engineering Handoff. If the active workstream is
 unclear, stop and ask before assuming Job Center context.
 
+Every Project Cursor should declare one project state:
+
+- Planning
+- Active Development
+- Stabilization
+- Maintenance
+- Archived
+
+Core Terms and Membership Taxonomy are related but distinct:
+
+- Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+- Membership Taxonomy is the curation/classification/human-review workstream for
+  legacy taxonomy.
+- Membership Taxonomy must not be treated as a Core Terms rename or
+  implementation ticket stream.
+
 ChatGPT role:
 
 - product direction
@@ -130,10 +146,15 @@ Do not create new process unless it reduces effort, risk, or maintenance.
 ## PREPARE HANDOFF
 
 When the user says `prepare handoff` or asks for session handoff preparation,
-Codex should update the active project's Engineering Handoff.
+Codex should first confirm the active project. If the active project is unclear,
+ask before editing any handoff.
 
 Handoff updates should:
 
+- update only the active project's Engineering Handoff
+- update the active project's Project Cursor only when durable state changes
+  occurred, such as project state, milestone, permanent decisions, or stop
+  boundaries
 - summarize recent completed tickets or meaningful passes
 - identify the next 1-3 likely tasks
 - capture the current active decision or discussion
@@ -141,6 +162,8 @@ Handoff updates should:
 - update the stop-after boundary
 - stay concise
 - point to deeper local docs instead of replacing them
+- avoid reproducing the full roadmap, long ticket history, architecture, or
+  implementation notes
 - confirm the active project directory
 - end by outputting a project-aware ChatGPT startup prompt so the Engineering
   Director can copy it into a fresh ChatGPT session

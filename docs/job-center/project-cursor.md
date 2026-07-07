@@ -1,5 +1,9 @@
 # Job Center Project Cursor
 
+## Project State
+
+Active Development
+
 ## Current Phase
 
 Teachers.Net Jobs V1 release-candidate readiness.

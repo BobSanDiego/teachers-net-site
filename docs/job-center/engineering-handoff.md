@@ -6,6 +6,7 @@ or full project history.
 
 ## 1. Current Working State
 
+- Project state: Active Development.
 - Current phase: Teachers.Net Jobs V1 release-candidate readiness, with the
   supporting Core Terms platform now stabilized as shared classification
   infrastructure.
@@ -41,90 +42,23 @@ Newest first:
   - Why it mattered: produced the first complete structured dataset for future
     importer, QA, demo, and regression work.
 
-- `57f1e03` J155 document seed job generation specification
-  - What changed: added
-    `wordpress/wp-content/plugins/tnet-jobs/docs/jobs-seed-job-generation-specification.md`,
-    defining generation rules for titles, summaries, descriptions,
-    requirements, salary, application instructions, employer assignment, Core
-    Terms assignment, location, probabilities, duplicate avoidance, and edge
-    cases.
-  - Verification status: reviewed for scope; no generated jobs, no importer, no
-    scraping, no schema changes; `git diff --check` passed.
-  - Commit/tag: `57f1e03`; no tag.
-  - Why it mattered: gave the seed dataset generation a repeatable rulebook
-    instead of relying on ad hoc content creation.
+- J150-J155 Jobs seed dataset planning/specification sequence
+  - What changed: field inventory, reusable-classification planning, location
+    readiness, employer matrix, and generation rules were established.
+  - Verification status: inspection/docs only; no importer, schema change, or
+    scraping.
+  - Commit/tag: see plugin history for individual docs commits; no release tag.
+  - Why it mattered: gave the generated seed dataset clear scope and safety
+    rules.
 
-- `796637a` J154A refine Jobs seed employer matrix
-  - What changed: updated the seed dataset employer matrix to use recognizable
-    Southern California education institutions where appropriate, while keeping
-    generated job content synthetic and safe.
-  - Verification status: 50 employers and 250 representative jobs verified;
-    factual identifiers only; `git diff --check` passed.
-  - Commit/tag: `796637a`; no tag.
-  - Why it mattered: grounded the dataset in realistic employer context without
-    copying descriptions, logos, marketing copy, or postings.
-
-- J154 Seed Dataset Employer Matrix
-  - What changed: inspection/design only; proposed the canonical 50-employer,
-    250-job distribution across public districts, charter schools, private and
-    Catholic schools, preschools, higher education, county offices, nonprofits,
-    and tutoring.
-  - Verification status: no files changed.
-  - Commit/tag: none.
-  - Why it mattered: became the basis for J154A's authentic employer matrix.
-
-- J153 Jobs Location and Proximity Search Readiness Audit
-  - What changed: inspection only; audited existing Jobs-owned location fields,
-    Core Terms location assignment, alert location behavior, CSV import, and
-    proximity-search gaps.
-  - Verification status: no files changed.
-  - Commit/tag: none.
-  - Why it mattered: clarified the V1 location model: display location,
-    classification location, physical/geocoded location, and work arrangement.
-
-- `8820b5d` J152 document Jobs seed dataset specification
-  - What changed: added
-    `wordpress/wp-content/plugins/tnet-jobs/docs/jobs-seed-dataset-specification.md`, defining
-    seed vocabulary, employer matrix targets, job matrix targets, edge-case
-    coverage, Jobs-owned fields, and open questions.
-  - Verification status: reviewed for naming consistency; `git diff --check`
-    passed.
-  - Commit/tag: `8820b5d`; no tag.
-  - Why it mattered: established the first canonical Jobs Seed Dataset spec.
-
-- J151 Jobs Reference World Matrix Design
-  - What changed: planning only; mapped likely reusable classifications versus
-    Jobs-owned posting fields.
-  - Verification status: no files changed.
-  - Commit/tag: none.
-  - Why it mattered: identified which values belonged in Core Terms/reference
-    vocabulary and which should remain mutable Jobs posting facts.
-
-- J150 Jobs Field Inventory and Reference World Requirements
-  - What changed: inspection only; inventoried current Jobs fields, usage
-    surfaces, Core Terms attachments, missing future fields, placeholders,
-    search/filter candidates, and Reference World implications.
-  - Verification status: no files changed.
-  - Commit/tag: none.
-  - Why it mattered: gave the seed dataset and future importer work a field
-    coverage baseline.
-
-- `ceee4d7` plus tag `v0.6.2-core-terms-foundation`
-  - What changed: completed Core Terms documentation baseline through
-    Capability Snapshot, Admin IA, and Integration Contract, then created the
-    Core Terms foundation milestone tag.
-  - Verification status: Core Terms plugin clean; tag pushed.
-  - Commit/tag: `ceee4d7`; `v0.6.2-core-terms-foundation`.
-  - Why it mattered: marked Core Terms as stable shared classification
-    infrastructure for Jobs, Chatboards, Lesson Bank, and future modules.
-
-- `8dcff9f` CT052 add Jobs active connections provider
-  - What changed: Jobs registered an Active Connections provider for Core Terms
-    archive usage reporting.
-  - Verification status: committed and pushed in the Jobs plugin.
-  - Commit/tag: `8dcff9f`; no tag.
-  - Why it mattered: lets Core Terms report active Jobs listings connected to a
-    term branch without hard-coding Jobs logic into Core Terms.
+- Core Terms foundation milestone
+  - What changed: Core Terms reached a documented shared-infrastructure
+    baseline, including editor, admin IA, archive lifecycle, Active Connections,
+    and integration contract.
+  - Verification status: milestone tag pushed in the Core Terms plugin.
+  - Commit/tag: `v0.6.2-core-terms-foundation`.
+  - Why it mattered: Jobs can rely on Core Terms as stable classification
+    infrastructure while seed/importer work continues.
 
 ## 3. Immediately On Tap
 
@@ -191,9 +125,6 @@ Newest first:
   salary mismatches.
 - No importer exists yet. `data/jobs-seed.json` is data only and has not been
   loaded into WordPress.
-- Root repo has uncommitted documentation changes related to the handoff
-  workflow plus an untracked `favicon.ico`. These were not part of the seed
-  dataset tickets.
 - Some older historical planning docs still point to public `/jobs/` visual QA,
   while the active discussion has moved to seed dataset readiness.
 - V1 release-candidate declaration remains pending Engineering Director
