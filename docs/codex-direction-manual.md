@@ -15,6 +15,14 @@ The global Engineering Director Playbook lives outside this repository and
 should contain reusable methodology only. Teachers.Net-specific context belongs
 in local Teachers.Net docs.
 
+Google Drive contains the operational ChatGPT recovery layer:
+
+- `Teachers.Net Engineering/Shared/Engineering Director Playbook`
+- `Teachers.Net Engineering/Shared/Codex Direction Manual`
+- `Teachers.Net Engineering/Shared/Engineering Workflow`
+- `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Project Cursor`
+- `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
+
 Use `docs/documentation-governance.md` to choose the active project directory.
 Then read that project's Project Cursor and Engineering Handoff after reading
 the shared governance docs. Do not assume Job Center is active when the ticket

@@ -60,6 +60,7 @@ Shared documents:
 
 - Engineering Director Playbook
 - Codex Direction Manual
+- Engineering Workflow
 - Ticket Discipline
 - Design System
 - Product Definition when it applies across workstreams
@@ -80,6 +81,15 @@ Current project directories:
 - `docs/job-center/`
 - `docs/core-terms/`
 - `docs/membership-taxonomy/`
+
+Google Drive operational documents live under:
+
+- `Teachers.Net Engineering/Shared/`
+- `Teachers.Net Engineering/Projects/<Project Name>/`
+
+Google Drive should contain only the shared operating docs and compact
+project-specific Project Cursor / Engineering Handoff documents needed for
+ChatGPT continuity. It should not mirror local repository documentation.
 
 Every new project session should read shared governance docs plus the active
 project's Project Cursor and Engineering Handoff. If the active workstream is
@@ -132,39 +142,39 @@ Handoff updates should:
 - stay concise
 - point to deeper local docs instead of replacing them
 - confirm the active project directory
-- end by outputting the ChatGPT startup prompt below so the Engineering
+- end by outputting a project-aware ChatGPT startup prompt so the Engineering
   Director can copy it into a fresh ChatGPT session
 
 PREPARE HANDOFF is documentation-only. Do not modify application code. Commit
 documentation only if explicitly approved.
 
-Teachers.Net Job Center ChatGPT startup prompt:
+Project-aware ChatGPT startup prompt template:
 
 ```text
-Project: Teachers.Net Job Center
+Project: <Project Name>
 
 First, attempt to retrieve these exact documents from my connected Google Drive:
 
 1. Engineering Director Playbook
-2. Teachers.Net Job Center Engineering Handoff
-3. Teachers.Net Job Center Project Cursor
+2. <Project Name> Project Cursor
+3. <Project Name> Engineering Handoff
 
 If Google Drive access is available in this session:
 - Search Google Drive by the exact titles above.
 - If title search fails, ask me for the Google Docs link rather than reconstructing state.
-- Retrieve and read the documents before continuing.
+- Retrieve and read all three documents before continuing.
 
 If Google Drive access is NOT available:
 - Tell me immediately.
-- Do not reconstruct Teachers.Net Job Center project state from memory.
+- Do not reconstruct <Project Name> project state from memory.
 - Ask me to either:
   - enable the Google Drive connector for this chat, or
-  - upload/provide the Teachers.Net Job Center Engineering Handoff and Project Cursor documents.
+  - upload/provide the <Project Name> Project Cursor and <Project Name> Engineering Handoff documents.
 
-After reading the global playbook, use the Job Center Project Cursor and
-Engineering Handoff as the project-specific source of truth. Do not use
-Birdmart, Lesson Bank, Core Terms, or Membership Taxonomy state unless I
-explicitly ask for comparison.
+After reading the global playbook, use the <Project Name> Project Cursor and
+<Project Name> Engineering Handoff as the project-specific source of truth. Do
+not use Birdmart, Lesson Bank, Job Center, Core Terms, Membership Taxonomy,
+Chatboards, or any other project state unless I explicitly ask for comparison.
 
 After successfully reading the documents, briefly summarize:
 - where we are

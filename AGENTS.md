@@ -26,6 +26,11 @@ Documentation governance:
   - `docs/membership-taxonomy/`
 - Every active workstream should have its own Project Cursor and Engineering
   Handoff.
+- Google Drive operational docs live under
+  `Teachers.Net Engineering/Shared/` and
+  `Teachers.Net Engineering/Projects/<Project Name>/`.
+- Google Drive is for ChatGPT continuity only; local repo docs remain the
+  durable source for implementation detail.
 - If the active project is unclear, ask which workstream is active before using
   Job Center, Core Terms, or Membership Taxonomy state.
 
@@ -72,8 +77,12 @@ MATCH MODE` lifecycle commands exactly.
 
 When the user issues `PREPARE HANDOFF`, follow
 `docs/codex-ticket-discipline.md`, update the active project's Engineering
-Handoff, and end by outputting the appropriate ChatGPT startup prompt for
-Google Drive retrieval.
+Handoff, and end by outputting the project-aware ChatGPT startup prompt for
+Google Drive retrieval. The prompt must reference:
+
+- `Engineering Director Playbook`
+- `<Project Name> Project Cursor`
+- `<Project Name> Engineering Handoff`
 
 Current next task:
 Use the active project's Project Cursor and Engineering Handoff. Do not treat

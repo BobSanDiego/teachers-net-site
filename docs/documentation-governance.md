@@ -12,9 +12,10 @@ project directory.
 Do not use Job Center state as the default for Core Terms, Membership Taxonomy,
 or future Teachers.Net modules.
 
-## Shared Documents
+## Local Shared Governance Docs
 
-Shared documents apply across Teachers.Net workstreams:
+Local shared governance documents apply across Teachers.Net workstreams and
+live in this repository:
 
 - `docs/codex-direction-manual.md`
 - `docs/codex-ticket-discipline.md`
@@ -24,15 +25,17 @@ Shared documents apply across Teachers.Net workstreams:
 - `docs/local-dev.md`
 - `docs/stack.md`
 
-External shared document:
+External shared Google Drive documents:
 
 - Engineering Director Playbook
+- Codex Direction Manual
+- Engineering Workflow
 
 Shared documents should contain reusable methodology, environment rules,
 cross-plugin boundaries, global design direction, and global decisions. They
-should not hold one workstream's live ticket cursor.
+should not hold one workstream's live ticket cursor or short-term handoff state.
 
-## Project Documents
+## Local Project-Specific Docs
 
 Project documents belong under their project directory:
 
@@ -53,14 +56,32 @@ The Project Cursor is short and immediate. The Engineering Handoff preserves
 session continuity. Roadmaps, architecture docs, and specifications remain
 deeper references.
 
+## Google Drive Operational Docs
+
+Google Drive is the operational recovery layer for ChatGPT Engineering Director
+sessions. It is not a mirror of this repository.
+
+Canonical Google Drive structure:
+
+- `Teachers.Net Engineering/Shared/Engineering Director Playbook`
+- `Teachers.Net Engineering/Shared/Codex Direction Manual`
+- `Teachers.Net Engineering/Shared/Engineering Workflow`
+- `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Project Cursor`
+- `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
+
+Google Drive Project Cursor and Engineering Handoff documents are concise
+continuity documents. Local repository docs remain the durable source for
+implementation details, architecture, roadmap, design system, decision log, and
+plugin-specific specifications.
+
 ## Startup Rule
 
 Every new project session should read:
 
 1. Shared governance docs.
-2. The target project's Project Cursor.
-3. The target project's Engineering Handoff.
-4. Deeper project docs only as needed for the ticket.
+2. The target project's project-specific Project Cursor.
+3. The target project's project-specific Engineering Handoff.
+4. Deeper local project docs only as needed for the ticket.
 
 If the project is unclear, stop and ask which workstream is active before using
 Job Center, Core Terms, or Membership Taxonomy state.

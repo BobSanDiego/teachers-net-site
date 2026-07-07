@@ -1,4 +1,4 @@
-# Teachers.Net Job Center Engineering Handoff
+# Job Center Engineering Handoff
 
 This is the compact session-continuity handoff for ChatGPT/Codex. Read it after
 the global Engineering Director Playbook. It is not a roadmap, architecture doc,
