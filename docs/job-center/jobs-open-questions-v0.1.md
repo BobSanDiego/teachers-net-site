@@ -1,5 +1,3 @@
-# docs/jobs-open-questions-v0.1.md
-
 # Teachers.Net Jobs — Open Questions v0.1
 
 Status: Deliberately Unresolved Decisions

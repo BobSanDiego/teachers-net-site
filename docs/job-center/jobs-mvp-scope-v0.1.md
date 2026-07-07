@@ -1,5 +1,3 @@
-# docs/jobs-mvp-scope-v0.1.md
-
 # Teachers.Net Jobs — MVP Scope v0.1
 
 Status: Accepted Launch Scope

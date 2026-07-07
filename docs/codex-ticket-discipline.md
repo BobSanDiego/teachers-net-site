@@ -35,22 +35,55 @@ Optimize for minimal compute, minimal churn, and deterministic progress.
 When project documents conflict, use this precedence:
 
 1. the current user ticket
-2. `docs/current-cursor.md`
-3. `docs/CODEX_HANDOFF.md`
-4. active product/design docs
-5. historical planning docs
+2. the active project's Project Cursor
+3. the active project's Engineering Handoff
+4. `docs/codex-direction-manual.md`
+5. active product/design docs
+6. historical planning docs
 
 Every ticket should improve one screen, one workflow, or one defect—not all three.
 
 ## Local Persistence Model
 
-Teachers.Net-specific facts, decisions, implementation state, and current cursor
-belong in this repository's local docs.
+Teachers.Net-specific facts, decisions, implementation state, and Project
+Cursor state belong in this repository's local docs.
 
 The global Engineering Director Playbook lives outside this repo and should
 contain reusable methodology only. Do not move Teachers.Net-specific state into
 the global playbook, and do not depend on another project's workflow state when
 working here.
+
+Shared governance docs live at the root of `docs/`. Project-specific docs live
+inside the relevant project directory.
+
+Shared documents:
+
+- Engineering Director Playbook
+- Codex Direction Manual
+- Ticket Discipline
+- Design System
+- Product Definition when it applies across workstreams
+- Plugin Architecture
+- Global Decision Log
+
+Project documents:
+
+- Project Cursor
+- Engineering Handoff
+- Capability Snapshot
+- Architecture
+- Roadmap
+- Project-specific specifications
+
+Current project directories:
+
+- `docs/job-center/`
+- `docs/core-terms/`
+- `docs/membership-taxonomy/`
+
+Every new project session should read shared governance docs plus the active
+project's Project Cursor and Engineering Handoff. If the active workstream is
+unclear, stop and ask before assuming Job Center context.
 
 ChatGPT role:
 
@@ -87,7 +120,7 @@ Do not create new process unless it reduces effort, risk, or maintenance.
 ## PREPARE HANDOFF
 
 When the user says `prepare handoff` or asks for session handoff preparation,
-Codex should update the project Engineering Handoff.
+Codex should update the active project's Engineering Handoff.
 
 Handoff updates should:
 
@@ -98,9 +131,51 @@ Handoff updates should:
 - update the stop-after boundary
 - stay concise
 - point to deeper local docs instead of replacing them
+- confirm the active project directory
+- end by outputting the ChatGPT startup prompt below so the Engineering
+  Director can copy it into a fresh ChatGPT session
 
 PREPARE HANDOFF is documentation-only. Do not modify application code. Commit
 documentation only if explicitly approved.
+
+Teachers.Net Job Center ChatGPT startup prompt:
+
+```text
+Project: Teachers.Net Job Center
+
+First, attempt to retrieve these exact documents from my connected Google Drive:
+
+1. Engineering Director Playbook
+2. Teachers.Net Job Center Engineering Handoff
+3. Teachers.Net Job Center Project Cursor
+
+If Google Drive access is available in this session:
+- Search Google Drive by the exact titles above.
+- If title search fails, ask me for the Google Docs link rather than reconstructing state.
+- Retrieve and read the documents before continuing.
+
+If Google Drive access is NOT available:
+- Tell me immediately.
+- Do not reconstruct Teachers.Net Job Center project state from memory.
+- Ask me to either:
+  - enable the Google Drive connector for this chat, or
+  - upload/provide the Teachers.Net Job Center Engineering Handoff and Project Cursor documents.
+
+After reading the global playbook, use the Job Center Project Cursor and
+Engineering Handoff as the project-specific source of truth. Do not use
+Birdmart, Lesson Bank, Core Terms, or Membership Taxonomy state unless I
+explicitly ask for comparison.
+
+After successfully reading the documents, briefly summarize:
+- where we are
+- what we recently completed
+- what is immediately next
+- current discussion
+- open risks
+- stop-after boundary
+
+Then stop and wait for my instruction.
+```
 
 ## Visual Verification Policy
 

@@ -1,5 +1,3 @@
-# docs/jobs-schema-guardrails-v0.1.md
-
 # Teachers.Net Jobs — Schema Guardrails v0.1
 
 Status: Accepted Constraints Before Database Design

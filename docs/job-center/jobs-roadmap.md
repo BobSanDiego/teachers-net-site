@@ -1,6 +1,6 @@
 # Teachers.Net Jobs Roadmap
 
-## Current Cursor
+## Project Cursor
 
 Teachers.Net Jobs is in V1 release-candidate readiness.
 

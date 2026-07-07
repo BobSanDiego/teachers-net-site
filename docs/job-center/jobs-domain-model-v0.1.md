@@ -1,5 +1,3 @@
-# docs/jobs-domain-model-v0.1.md
-
 # Teachers.Net Jobs — Domain Model v0.1
 
 Status: Working Baseline

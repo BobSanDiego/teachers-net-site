@@ -12,10 +12,22 @@ Jobs authorizes.
 WordPress authenticates.
 
 Project context rule:
-Teachers.Net-specific facts, decisions, and current cursor belong in this repo's
-local docs. The global Engineering Director Playbook contains reusable
+Teachers.Net-specific facts, decisions, and Project Cursor state belong in this
+repo's local docs. The global Engineering Director Playbook contains reusable
 methodology only. Do not import workflow state, routes, branding, plugin
 decisions, or product assumptions from other projects.
+
+Documentation governance:
+
+- Shared governance docs live in `docs/`.
+- Project-specific docs live in project directories such as:
+  - `docs/job-center/`
+  - `docs/core-terms/`
+  - `docs/membership-taxonomy/`
+- Every active workstream should have its own Project Cursor and Engineering
+  Handoff.
+- If the active project is unclear, ask which workstream is active before using
+  Job Center, Core Terms, or Membership Taxonomy state.
 
 Do not add Jobs code to Core Terms.
 Do not rename the `profilaxes` folder, CFM classes, `cfm` prefixes, DB tables, URLs, slugs, or namespaces unless explicitly instructed.
@@ -24,15 +36,19 @@ Do not reset, prune, delete, rebuild, or uninstall Docker/DDEV/WordPress/plugin 
 
 Before coding:
 
-1. Read `docs/google-drive/teachers-net-job-center-engineering-handoff.md`.
-2. Read `docs/CODEX_HANDOFF.md`.
-3. Read `docs/current-cursor.md`.
+1. Read `docs/documentation-governance.md`.
+2. Read `docs/codex-direction-manual.md`.
+3. Read `docs/codex-ticket-discipline.md`.
 4. Read `docs/plugin-architecture.md`.
 5. Read `docs/decision-log.md`.
-6. For Jobs tickets, also read the ticket-requested Jobs docs such as:
+6. Read the active project's Project Cursor.
+7. Read the active project's Engineering Handoff.
+8. For Jobs tickets, also read the ticket-requested Jobs docs such as:
    - `wordpress/wp-content/plugins/tnet-jobs/docs/development-constitution.md`
-   - `docs/jobs-roadmap.md`
-   - `docs/v1-product-definition.md`
+   - `docs/job-center/project-cursor.md`
+   - `docs/job-center/engineering-handoff.md`
+   - `docs/job-center/jobs-roadmap.md`
+   - `docs/job-center/product-definition-v1.md`
    - `docs/design-system-v1.md`
    - `docs/codex-ticket-discipline.md`
 
@@ -54,11 +70,17 @@ Use it only when explicitly entered with `Enter COMPONENT MATCH MODE: [component
 name]`, and follow its `FINALIZE COMPONENT MATCH MODE` or `ABORT COMPONENT
 MATCH MODE` lifecycle commands exactly.
 
-Current next task:
-V1 release-candidate readiness.
+When the user issues `PREPARE HANDOFF`, follow
+`docs/codex-ticket-discipline.md`, update the active project's Engineering
+Handoff, and end by outputting the appropriate ChatGPT startup prompt for
+Google Drive retrieval.
 
-Start with:
-Human visual QA, release-candidate declaration, and launch operations planning unless the Engineering Director opens a focused defect ticket.
+Current next task:
+Use the active project's Project Cursor and Engineering Handoff. Do not treat
+Job Center V1 visual QA as the default task for Core Terms, Membership
+Taxonomy, or future workstreams.
 
 Current launch blocker:
-No P0 runtime blocker is currently known after the J127 readiness re-audit. Do not begin V2 features until V1 release-candidate status is explicitly declared or the Engineering Director redirects.
+No global P0 runtime blocker is currently known. Do not begin V2 features until
+V1 release-candidate status is explicitly declared or the Engineering Director
+redirects.

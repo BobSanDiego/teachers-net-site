@@ -1,4 +1,4 @@
-# Teachers.Net Codex Handoff
+# Teachers.Net Codex Direction Manual
 
 Teachers.Net is a WordPress/DDEV project in WSL with custom product plugins.
 
@@ -15,9 +15,16 @@ The global Engineering Director Playbook lives outside this repository and
 should contain reusable methodology only. Teachers.Net-specific context belongs
 in local Teachers.Net docs.
 
-Use `docs/google-drive/teachers-net-job-center-engineering-handoff.md` as the
-local startup handoff for a new ChatGPT/Codex session after reading the global
-playbook.
+Use `docs/documentation-governance.md` to choose the active project directory.
+Then read that project's Project Cursor and Engineering Handoff after reading
+the shared governance docs. Do not assume Job Center is active when the ticket
+is about Core Terms, Membership Taxonomy, or a future Teachers.Net workstream.
+
+Current project directories:
+
+- Job Center: `docs/job-center/`
+- Core Terms: `docs/core-terms/`
+- Membership Taxonomy: `docs/membership-taxonomy/`
 
 Do not depend on workflow state, product decisions, routes, branding, or plugin
 facts from other projects. Use other projects only as examples of method when
@@ -110,13 +117,12 @@ Do not create new process unless it reduces effort, risk, or maintenance.
   - right rail CTA wiring
   - browser regression/accessibility pass
 
-## Current Engineering Cursor
+## Project Cursor
 
-Teachers.Net Jobs is in V1 release-candidate readiness.
+Each active workstream owns its Project Cursor in its project directory.
 
-Current focus is human visual QA and focused public Jobs landing-page polish
-against the approved North Star reference. See `docs/current-cursor.md` for the
-short current cursor.
+For Job Center, see `docs/job-center/project-cursor.md` and
+`docs/job-center/engineering-handoff.md`.
 
 ## Browser Verification
 
