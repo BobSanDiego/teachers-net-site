@@ -23,6 +23,16 @@ or full project history.
 
 Newest first:
 
+- ED004 multi-project governance tightening
+  - What changed: local and Google Drive operational docs were tightened so
+    Job Center, Core Terms, Membership Taxonomy, BirdMart, and other workstreams
+    use separate Project Cursor / Engineering Handoff state.
+  - Verification status: documentation-only; no Jobs plugin or application code
+    changed.
+  - Commit/tag: root repo commit `1cb1990`; no tag.
+  - Why it mattered: prevents new ChatGPT/Codex sessions from importing another
+    workstream's state into Job Center seed/importer work.
+
 - J157 Jobs Seed Dataset Content Review
   - What changed: inspection only; reviewed a deterministic sample of roughly
     25 employers and 50 jobs from `data/jobs-seed.json`.
@@ -134,12 +144,12 @@ Newest first:
 
 ## 6. Stop-After Boundary
 
-Stop after updating this handoff and reporting current state. Do not commit root
-documentation unless explicitly approved. For seed dataset work, stop after each
-inspection/refinement pass and wait for human review before building the
-importer. Do not broaden into schema changes, live imports, Core Terms edits,
-public Jobs UI changes, search behavior, Job Alerts behavior, recruiter/admin
-workflow changes, or V2 features unless explicitly directed.
+For seed dataset work, stop after each inspection/refinement pass and wait for
+human review before building the importer. Do not broaden into schema changes,
+live imports, Core Terms edits, public Jobs UI changes, search behavior, Job
+Alerts behavior, recruiter/admin workflow changes, or V2 features unless
+explicitly directed. Handoff updates are documentation-only and should not be
+committed unless explicitly approved.
 
 ## 7. What Not To Do
 
