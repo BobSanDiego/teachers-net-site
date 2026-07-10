@@ -30,8 +30,10 @@ Documentation governance:
   `Teachers.Net Engineering/Shared/` and
   `Teachers.Net Engineering/Projects/<Project Name>/`.
 - Google Drive is for ChatGPT operational recovery only. It should contain the
-  shared operating docs plus compact Project Cursor / Engineering Handoff docs;
-  it should not mirror this repository.
+  shared operating docs, the active Project Cursor and Engineering Handoff, and
+  every additional operational continuity document explicitly declared under
+  `Required Google Drive Context` in the Project Cursor. It should not mirror
+  this repository.
 - Local repository docs remain the durable engineering source for architecture,
   roadmaps, specifications, implementation details, and verification
   instructions.

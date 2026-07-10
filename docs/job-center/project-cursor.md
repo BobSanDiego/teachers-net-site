@@ -20,21 +20,29 @@ complete enough to inform the next phase. The priority is now trustworthy
 real-job ingestion, employer ownership, application integrity, freshness, and
 pilot readiness.
 
+Distance controls currently exist in Advanced Search and Advanced Browse. A
+compact Location + Distance editor from the integrated Basic Search experience
+is launch-polish work subject to final design approval; it is not implemented.
+
 ## Current Reference Page/Flow
 
 One public `/jobs/` Job Finder for employer-posted and Teachers.Net-curated
 jobs. Search and Browse share the same results, lifecycle, presentation, and
 application behavior.
 
-## Current Primitive/Task
+## Current Primitive/Workstream
 
 Real Job Ingestion and V1 Lifecycle Readiness Audit.
 
+## Next Executable Ticket
+
+JREAL001 - Real Job Current-State Inventory.
+
 ## Next Decision
 
-Approve the audit's canonical real-job contract and dependency map before
-opening any ingestion, lifecycle, employer-claim, origin-resolution, or pilot
-implementation ticket.
+Review JREAL001 findings, then approve the audit's canonical real-job contract
+and dependency map before opening any ingestion, lifecycle, employer-claim,
+origin-resolution, or pilot implementation ticket.
 
 ## Required Google Drive Context
 

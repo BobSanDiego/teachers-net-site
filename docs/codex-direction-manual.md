@@ -29,9 +29,11 @@ additional continuity document listed in the Cursor's `Required Google Drive
 Context` section. Do not assume Job Center is active when the ticket is about
 Core Terms, Membership Taxonomy, or a future Teachers.Net workstream.
 
-Google Drive is for ChatGPT operational recovery only. It should contain shared
-operating docs plus compact Project Cursor / Engineering Handoff docs, not a
-mirror of repository documentation.
+Google Drive is for ChatGPT operational recovery only. It contains shared
+operating docs, the active Project Cursor and Engineering Handoff, and every
+additional operational continuity document declared by that Cursor. It is not a
+mirror of repository architecture, implementation detail, full roadmaps, or
+ticket history.
 
 Local repository docs remain the durable engineering source for architecture,
 roadmaps, specifications, implementation details, and verification instructions.

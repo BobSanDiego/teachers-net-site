@@ -15,7 +15,8 @@ location, application, and ingestion requirements that affect public trust.
 
 ## Critical Path
 
-1. Real Job Ingestion and V1 Lifecycle Readiness Audit.
+1. Real Job Ingestion and V1 Lifecycle Readiness Audit, beginning with
+   **JREAL001 - Real Job Current-State Inventory**.
 2. Approve the canonical real-job contract and dependency map.
 3. Implement small, separately approved gaps for provenance, source identity,
    validation, deduplication, reconciliation, application integrity, expiration,
@@ -41,7 +42,8 @@ location, application, and ingestion requirements that affect public trust.
 ## V1 Launch Polish
 
 - final Basic Search presentation
-- compact Location + Distance interaction consistent with supported origin behavior
+- compact Location + Distance editor from the integrated Basic Search experience,
+  subject to final design approval; it is not currently implemented
 - adaptive right rail and responsive QA
 - truthful imported-job source, correction, removal, and employer-claim treatment
 
@@ -76,6 +78,9 @@ location, application, and ingestion requirements that affect public trust.
 - Preserve JDIST002-JDIST006: local database radius queries, coordinate index,
   Advanced Search/Browse controls, cross-state option, and request-scoped browser
   location with no persisted teacher coordinates.
+- The currently implemented distance UI is Advanced-only. Any compact Basic
+  editor is presentation work and must preserve the shared Search/Browse and
+  Distance Search architecture.
 - Non-remote imported and employer-created jobs need stored coordinates.
   Geocoding runs after a job location changes, never during public search.
   Missing coordinates need retry, repair, exception reporting, and manual
@@ -123,8 +128,9 @@ reported, and verified employers can manage eligible jobs.
 
 ## Immediate Next Audit
 
-**Real Job Ingestion and V1 Lifecycle Readiness Audit** must inspect the current
-Jobs model, schema, repositories/services, seed-importer reuse, source identity,
+**JREAL001 - Real Job Current-State Inventory** is the first focused inspection
+within the broader **Real Job Ingestion and V1 Lifecycle Readiness Audit**. It
+must inspect the current Jobs model, schema, repositories/services, seed-importer reuse, source identity,
 deduplication, provenance, ownership, applications, expiration/reconciliation,
 coordinates, typed-origin resolution, employer flows, claim capability, and
 pilot requirements. It stops at findings, contract recommendation, dependency

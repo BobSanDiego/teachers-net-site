@@ -87,13 +87,16 @@ Google Drive operational documents live under:
 - `Teachers.Net Engineering/Shared/`
 - `Teachers.Net Engineering/Projects/<Project Name>/`
 
-Google Drive should contain only the shared operating docs and compact
-project-specific Project Cursor / Engineering Handoff documents needed for
-ChatGPT continuity. It should not mirror local repository documentation.
+Google Drive should contain shared operating docs, the active project-specific
+Project Cursor and Engineering Handoff, and every additional operational
+continuity document declared under `Required Google Drive Context` in that
+Cursor. It should not mirror local repository architecture, implementation
+detail, full roadmaps, or ticket history.
 
-Every new project session should read shared governance docs plus the active
-project's Project Cursor and Engineering Handoff. If the active workstream is
-unclear, stop and ask before assuming Job Center context.
+Every new project session should read shared governance docs, the active
+project's Project Cursor and Engineering Handoff, and every additional
+continuity document declared by the Cursor. If the active workstream is unclear,
+stop and ask before assuming Job Center context.
 
 Every Project Cursor should declare one project state:
 

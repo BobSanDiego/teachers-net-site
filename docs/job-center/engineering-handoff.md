@@ -13,10 +13,19 @@ roadmap or implementation manual.
 - Current focus: plan and audit the complete real-job lifecycle before more
   presentation polish or any bulk import.
 - Immediate task: **Real Job Ingestion and V1 Lifecycle Readiness Audit**.
-- Jobs plugin remote state: `main` is clean and synchronized with `origin/main`
-  at `9e9f0bf` (`JDIST006 add browser current location distance search`).
+- Next executable ticket: **JREAL001 - Real Job Current-State Inventory**.
+- Root documentation remote state: `a228186` (`ROADMAP002 establish Job Center
+  V1 execution continuity`).
+- Jobs plugin remote state: `9321508` (`ROADMAP002 align Jobs V1 execution
+  roadmap`). `9e9f0bf` (JDIST006) remains the latest completed application-code
+  ticket.
 
 ## Recently Completed
+
+- `a228186` / `9321508` ROADMAP002 execution continuity
+  - Created the V1 Execution Plan, made pilot-before-bulk-load sequencing
+    explicit, expanded the continuity protocol, and synchronized the Job Center
+    Cursor, Handoff, and Execution Plan to Google Drive.
 
 - JDIST002-JDIST006 established the Distance Search architecture and local
   foundation: coordinate metadata/indexing, radius query, typed ZIP/city-state
@@ -44,7 +53,8 @@ roadmap or implementation manual.
 
 ## Immediately On Tap
 
-1. Real Job Ingestion and V1 Lifecycle Readiness Audit.
+1. **JREAL001 - Real Job Current-State Inventory** within the Real Job
+   Ingestion and V1 Lifecycle Readiness Audit.
    - Inspect current fields/schema, services/repositories, seed-importer reuse,
      provenance/source identity, deduplication, ownership, application methods,
      expiration/reconciliation, coordinates, typed-origin resolution, employer
@@ -64,6 +74,10 @@ roadmap or implementation manual.
 - Distance controls stay in Advanced Search/Browse. Provider calls never run
   during public search. Google Places Autocomplete is useful but is not a V1
   release blocker.
+- V1 launch polish may expose a compact Location + Distance editor from the
+  integrated Basic Search experience. Its exact interaction awaits final design
+  approval; the existing Advanced Search/Browse distance architecture remains
+  the current implementation.
 - Preferred Search Location is an explicit saved preference. Current Search
   Origin is temporary and must not overwrite it automatically.
 - Employer claims require authority verification. Recruiter identities are never

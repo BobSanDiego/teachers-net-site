@@ -81,10 +81,12 @@ Canonical Google Drive structure:
 - `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Project Cursor`
 - `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
 
-Google Drive Project Cursor and Engineering Handoff documents are concise
-continuity documents. Local repository docs remain the durable source for
-implementation details, architecture, roadmap, design system, decision log, and
-plugin-specific specifications.
+Google Drive contains shared operating documents, the active Project Cursor and
+Engineering Handoff, and every additional operational continuity document the
+Project Cursor explicitly declares under `Required Google Drive Context`. These
+documents are concise continuity aids, not mirrors of repository architecture,
+implementation detail, full roadmaps, or ticket history. Local repository docs
+remain the durable source for those deeper materials.
 
 Codex should read local repository docs directly. ChatGPT should use Google
 Drive only to recover operational context at the start of a new session.
