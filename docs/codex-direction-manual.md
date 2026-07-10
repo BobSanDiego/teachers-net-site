@@ -24,9 +24,10 @@ Google Drive contains the operational ChatGPT recovery layer:
 - `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
 
 Use `docs/documentation-governance.md` to choose the active project directory.
-Then read that project's Project Cursor and Engineering Handoff after reading
-the shared governance docs. Do not assume Job Center is active when the ticket
-is about Core Terms, Membership Taxonomy, or a future Teachers.Net workstream.
+Then read that project's Project Cursor, Engineering Handoff, and every
+additional continuity document listed in the Cursor's `Required Google Drive
+Context` section. Do not assume Job Center is active when the ticket is about
+Core Terms, Membership Taxonomy, or a future Teachers.Net workstream.
 
 Google Drive is for ChatGPT operational recovery only. It should contain shared
 operating docs plus compact Project Cursor / Engineering Handoff docs, not a

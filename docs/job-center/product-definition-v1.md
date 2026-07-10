@@ -62,6 +62,12 @@ Teachers can:
 - Apply externally
 - Save interesting jobs
 
+Teachers.Net may present curated/imported jobs alongside employer-posted jobs,
+but all public listings use the same Job Center entity and lifecycle. Source and
+application behavior must remain truthful; a listing must not imply the employer
+posted it, endorsed Teachers.Net, or receives an internal application unless
+that is true.
+
 Version 1 does not manage applications internally.
 
 ---
@@ -213,7 +219,9 @@ City, State
 
 Address exists primarily to prepare for future proximity search and geocoding.
 
-Radius/proximity search and geocoding are deferred to Version 2.
+Distance Search is available in Advanced Search and Advanced Browse using local
+stored coordinates. Automatic job geocoding and operational repair remain V1
+readiness work; maps, commute-time routing, and travel-time search are deferred.
 
 ---
 
@@ -255,7 +263,11 @@ Employment Type
 
 Remote
 
-Version 1 search does not include radius/proximity, geocoding, or salary matching/filtering.
+Version 1 supports Distance Search in Advanced Search and Advanced Browse when
+the origin and job coordinates are available. Public radius queries use local
+stored coordinates only. Automatic employer-job geocoding, independent typed
+origin resolution, and operational coordinate repair remain V1 readiness work;
+salary matching/filtering remains deferred.
 
 ---
 
@@ -287,9 +299,7 @@ Email manage/pause path
 
 Version 1 Job Alerts do not include:
 
-Radius/proximity matching
-
-Geocoding
+Automatic geocoding and geocoding repair
 
 Salary matching
 
@@ -353,11 +363,7 @@ School reviews
 
 District profiles
 
-Maps
-
-Radius/proximity search
-
-Geocoding automation
+Maps, commute-time routing, and travel-time search
 
 Salary matching and salary filtering
 
@@ -430,6 +436,10 @@ Version 1 is considered launch ready when:
 ✓ Performance acceptable.
 
 ✓ Basic accessibility verified.
+
+✓ A controlled real-job pilot has verified truthful provenance, external
+application routing, source reconciliation/expiration behavior, validated
+employer association, and a verified employer-claim path before bulk loading.
 
 Everything beyond this becomes Version 2.
 

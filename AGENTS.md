@@ -99,13 +99,17 @@ MATCH MODE` lifecycle commands exactly.
 
 When the user issues `PREPARE HANDOFF`, follow
 `docs/codex-ticket-discipline.md`. Confirm the active project first, update
-only that project's Engineering Handoff, update its Project Cursor only for
-durable state changes, and end by outputting the project-aware ChatGPT startup
-prompt for Google Drive retrieval. The prompt must reference:
+only that project's continuity set, update its Project Cursor only for durable
+state changes, and end by outputting the project-aware ChatGPT startup prompt
+for Google Drive retrieval. Read every additional project continuity document
+listed by the Project Cursor, update the Engineering Handoff for every explicit
+handoff, and update an execution plan or roadmap only when its durable purpose
+requires it. The prompt must reference:
 
 - `Engineering Director Playbook`
 - `<Project Name> Project Cursor`
 - `<Project Name> Engineering Handoff`
+- every additional document listed under `Required Google Drive Context`
 
 Current next task:
 Use the active project's Project Cursor and Engineering Handoff. Do not treat

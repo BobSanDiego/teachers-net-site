@@ -47,6 +47,7 @@ Each active project should maintain:
 
 - Project Cursor
 - Engineering Handoff
+- any additional continuity document declared by its Project Cursor
 - capability snapshot, if applicable
 - architecture notes, if applicable
 - roadmap, if applicable
@@ -95,7 +96,8 @@ Every new project session should read:
 1. Shared governance docs.
 2. The target project's project-specific Project Cursor.
 3. The target project's project-specific Engineering Handoff.
-4. Deeper local project docs only as needed for the ticket.
+4. Every additional continuity document listed in that Project Cursor.
+5. Deeper local project docs only as needed for the ticket.
 
 If the project is unclear, stop and ask which workstream is active before using
 Job Center, Core Terms, or Membership Taxonomy state.
@@ -110,6 +112,7 @@ Primary startup docs:
 
 - `docs/job-center/project-cursor.md`
 - `docs/job-center/engineering-handoff.md`
+- `docs/job-center/v1-execution-plan.md`
 
 ### Core Terms
 

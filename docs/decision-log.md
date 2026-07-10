@@ -21,6 +21,22 @@
 - The public Jobs browse/search/detail experience is Jobs-owned and follows Design System v1.
 - The canonical runtime hero asset is `hero-chalkboard-1200x450.webp`.
 - CSV import is admin-controlled and must not auto-publish by default.
-- ATS, resumes, candidate search, interviews, offers, hires, notification center, geocoding/radius search, maps, reviews, and commerce are reserved future objects unless explicitly reopened.
+- ATS, resumes, candidate search, interviews, offers, hires, notification center,
+  maps, commute-time routing, reviews, and commerce are reserved future objects
+  unless explicitly reopened. Distance Search has been explicitly reopened for
+  V1; automatic geocoding remains controlled readiness work.
 - Users may hold multiple Jobs identities; avoid ranked single-role ladders.
 - Permissions should be capability-based and employer-scoped.
+- Employer-posted and Teachers.Net-curated/imported jobs share one public job
+  entity, lifecycle, search engine, presentation, application behavior, and
+  expiration behavior.
+- Provenance is required internal metadata and does not create a separate public
+  scraped-job class.
+- Public source and application behavior must be truthful; external applications
+  must route to the stored destination without implying Teachers.Net receives
+  them.
+- Supported typed origins must resolve independently of current job inventory.
+- Google Places Autocomplete is not a V1 release blocker.
+- A controlled real-job pilot precedes bulk loading.
+- Employer claims require authority verification; recruiter identities are not
+  auto-created from imported records.

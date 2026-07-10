@@ -165,11 +165,25 @@ Handoff updates should:
 - avoid reproducing the full roadmap, long ticket history, architecture, or
   implementation notes
 - confirm the active project directory
+- read every additional project continuity document listed in the active Project
+  Cursor under `Required Google Drive Context`
 - end by outputting a project-aware ChatGPT startup prompt so the Engineering
   Director can copy it into a fresh ChatGPT session
 
 PREPARE HANDOFF is documentation-only. Do not modify application code. Commit
 documentation only if explicitly approved.
+
+Before updating Drive, establish current repository facts, update local
+continuity documents first, verify roadmap/execution-plan/Cursor/Handoff
+consistency, compare their exact Drive counterparts, and reconcile legitimate
+newer Drive facts before writing. Report every required Drive document as
+updated, unchanged, unavailable, or conflicted. Do not claim synchronization
+without connector confirmation.
+
+Update the execution plan only when the critical path, priority order, phase
+boundary, V1/V1.1/V2 classification, settled decision, major dependency, or
+pilot/release acceptance changes. Update the roadmap only when durable sequence
+or scope changes.
 
 Project-aware ChatGPT startup prompt template:
 
@@ -181,23 +195,26 @@ First, attempt to retrieve these exact documents from my connected Google Drive:
 1. Engineering Director Playbook
 2. <Project Name> Project Cursor
 3. <Project Name> Engineering Handoff
+4. Every additional document listed under `Required Google Drive Context` in
+   the <Project Name> Project Cursor
 
 If Google Drive access is available in this session:
 - Search Google Drive by the exact titles above.
 - If title search fails, ask me for the Google Docs link rather than reconstructing state.
-- Retrieve and read all three documents before continuing.
+- Retrieve and read the full required context set before continuing.
 
 If Google Drive access is NOT available:
 - Tell me immediately.
 - Do not reconstruct <Project Name> project state from memory.
 - Ask me to either:
   - enable the Google Drive connector for this chat, or
-  - upload/provide the <Project Name> Project Cursor and <Project Name> Engineering Handoff documents.
+  - upload/provide the <Project Name> Project Cursor, Engineering Handoff, and
+    every additional required context document.
 
-After reading the global playbook, use the <Project Name> Project Cursor and
-<Project Name> Engineering Handoff as the project-specific source of truth. Do
-not use Birdmart, Lesson Bank, Job Center, Core Terms, Membership Taxonomy,
-Chatboards, or any other project state unless I explicitly ask for comparison.
+After reading the global playbook, use the full project-specific context set as
+the operational source of truth. Prefer newer attached local project copies
+when I explicitly supply them. Do not reconstruct missing project state from
+memory or use another project's state unless I explicitly ask for comparison.
 
 After successfully reading the documents, briefly summarize:
 - where we are
