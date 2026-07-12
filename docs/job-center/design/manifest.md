@@ -6,7 +6,7 @@ This manifest implements the reference-control rules in Job Center Design System
 
 JC-011 is the first Approved filename-specific reference. Engineering Director approval in VA001-FINAL names the exact 01k raster and its bounded desktop Job Finder State 2 scope. No other manifest entry inherits that approval; landing images and all other uncertain artifacts retain their existing status until separately approved.
 
-Status totals for manifest entries: **Approved 1; Draft 8; Placeholder 16; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 1; Draft 9; Placeholder 15; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -44,15 +44,16 @@ Status totals for manifest entries: **Approved 1; Draft 8; Placeholder 16; Super
 
 ### JC-010 — Job Finder State 1
 
-- **Screen / Component:** Initial/default Job Finder state
-- **Status:** Placeholder
-- **Version:** 0.1
-- **Authority:** No exact artifact is durably identified as State 1.
+- **Screen / Component:** Logged-out first-touch `/jobs/` state with full inventory sorted by Most Recent
+- **Status:** Draft
+- **Version:** 0.2
+- **Active Draft Artifact:** `art/mockups/job-center/generated/job-finder-state-1-01a-design-target.png`
+- **Authority:** DESIGN008 creates 01a as the canonical Draft candidate for review. It has no approval authority.
 - **Related Design System section:** 9
 - **Related Product Specification:** Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-003
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Progressive disclosure is specified in writing; the visual state remains unresolved.
+- **Notes:** Represents logged-out first-touch `/jobs/` before keyword, location, browse, or refinement input: full 205-job inventory, first ten jobs, and default Most Recent sort. The prior 0.1 Placeholder is preserved as manifest history and is superseded only as a gap classification, not as a visual artifact. Browse reveal and the location modal remain separate future artifacts. The visible `25 miles` control is illustrative; implementation must hide or disable distance until a valid location or origin exists. No State 1 artifact is Approved.
 
 ### JC-011 — Job Finder State 2
 
@@ -384,6 +385,7 @@ The status below is the artifact's governed classification. A path may relate to
 
 | Artifact | Represents | Status | Manifest entry | Authority note |
 |---|---|---:|---|---|
+| `art/mockups/job-center/generated/job-finder-state-1-01a-design-target.png` | Logged-out first-touch Job Finder, full inventory, Most Recent | Draft | JC-010 | Active DESIGN008 candidate; Browse reveal and location modal remain separate |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v4.png` | Finder State 2 | Superseded | JC-090 | Replaced by v5 candidate |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v5.png` | Finder State 2 | Superseded | JC-091 | Replaced by 01g candidate |
 | `art/mockups/job-center/generated/refined-search-model-01g-polished.png` | Results/listing | Superseded | JC-092 | Replaced by 01h candidate |
