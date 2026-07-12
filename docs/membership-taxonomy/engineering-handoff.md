@@ -1,71 +1,52 @@
 # Membership Taxonomy Engineering Handoff
 
-Membership Taxonomy is the Teachers.Net workstream for curating historic
-chatboard taxonomy into future Core Terms candidates.
+## 1. Current Phase
 
-Core Terms is the plugin/platform/runtime. Membership Taxonomy is the
-curation/classification/human-review layer. It does not mutate Core Terms by
-itself.
+Planning — legacy taxonomy discovery and classification.
 
-Membership Taxonomy is not a Core Terms rename or implementation ticket stream.
-Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+## 2. Current Ticket
 
-## Current Working State
+CT068 — Legacy Chatboard Taxonomy Classification Audit. Audit and classification
+only; stop before code, import, or Core Terms mutation.
 
-- Project state: Planning.
-- Current phase: legacy taxonomy discovery and classification.
-- Current milestone: CT068 Legacy Chatboard Taxonomy Classification Audit.
-- Current focus: classify historic Teachers.Net chatboard taxonomy candidates
-  into review categories.
-- Current ticket convention: use CT### unless explicitly changed.
-- Guiding test: does this represent something teachers meaningfully belong to?
+## 3. Last Completed Milestone
 
-## Recently Completed
+ED004 established independent local and Drive continuity for the Membership
+Taxonomy workstream.
 
-- ED001 created the project documentation directory and initial continuity
-  docs so future sessions do not accidentally reuse Job Center state.
-- ED004 completed the Membership Taxonomy context so the workstream can
-  cold-start independently from Google Drive and local docs.
+## 4. Next Five Planned Tickets
 
-## Immediately On Tap
+1. CT068 — Classify the legacy chatboard taxonomy using the approved categories.
+2. Unassigned — Conduct human review of `Needs Human Review` items.
+3. Unassigned — Approve or reject candidate Core Membership Terms.
+4. Unassigned — Document the approved candidate set without importing it.
+5. Unassigned — Open a separate Core Terms intake ticket only if explicitly
+   approved.
 
-Run CT068 as an audit/classification pass.
+## 5. Current Blockers
 
-Expected classification categories:
+- Required historic taxonomy source material must be available for CT068.
+- Human review is required before any taxonomy becomes a Core Terms candidate.
 
-- Core Membership Term
-- Chatboard-only topic
-- Activity/Event
-- Interest/Hobby
-- Legacy-only
-- Needs Human Review
+## 6. Recently Adopted Governance Documents
 
-Human review is required before any taxonomy enters Core Terms.
+- Engineering Handoff v2 procedure and template (DOC001).
 
-## Relationship To Jobs
+## 7. Recently Approved Product Decisions
 
-Membership Taxonomy is parallel to Jobs. It does not block Jobs. It may improve
-future seed dataset generation by clarifying audience/classification vocabulary.
+- Membership Taxonomy remains a curation and human-review workstream, not a Core
+  Terms rename or implementation stream.
 
-## Guardrails
+## 8. Recently Approved Visual References
 
-- Do not infer Membership Taxonomy behavior from Job Center.
-- Do not treat Core Terms implementation as Membership Taxonomy requirements.
-- Do not write code.
-- Do not import data.
-- Do not mutate Core Terms.
-- Do not change Jobs.
-- Do not rename plugins or Core Terms internals.
+- None; this workstream is not visual-design work.
 
-## Stop-After Boundary
+## 9. Active Design Authority
 
-Stop after classification and audit reporting. Do not proceed to imports,
-implementation, Core Terms mutation, Jobs changes, or plugin renaming without an
-explicit follow-up ticket.
+Not applicable to the current classification audit.
 
-## Source Documents
+## 10. Immediate Engineering Priorities
 
-- `docs/documentation-governance.md`
-- `docs/membership-taxonomy/project-cursor.md`
-- `docs/plugin-architecture.md`
-- `docs/decision-log.md`
+1. Obtain and inspect the CT068 source material.
+2. Classify without importing or mutating platform data.
+3. Preserve the human-review boundary.

@@ -1,39 +1,51 @@
 # Core Terms Engineering Handoff
 
-Core Terms is the Teachers.Net classification platform. The plugin repo remains
-`wordpress/wp-content/plugins/profilaxes`; the visible product name is Core
-Terms.
+## 1. Current Phase
 
-## Current Working State
+Maintenance — Core Terms platform foundation complete.
 
-- Project state: Maintenance.
-- Core Terms platform foundation is complete.
-- Milestone tag: `v0.6.2-core-terms-foundation`.
-- Plugin-owned docs live in `wordpress/wp-content/plugins/profilaxes/docs/`.
+## 2. Current Ticket
 
-## Recently Completed
+None. Reopen only through a focused Core Terms ticket.
 
-- Capability Snapshot.
-- Admin Information Architecture.
-- Integration Contract.
-- Archive lifecycle and Active Connections framework.
-- Jobs Active Connections provider in the Jobs plugin.
+## 3. Last Completed Milestone
 
-## Immediately On Tap
+Core Terms foundation tagged `v0.6.2-core-terms-foundation` with capability,
+admin IA, integration-contract, archive-lifecycle, and Active Connections work.
 
-No Core Terms implementation ticket is active from this handoff.
+## 4. Next Five Planned Tickets
 
-## Guardrails
+1. Unassigned — Confirm whether resumed work belongs in root documentation or
+   the Core Terms plugin repository.
+2. Unassigned — Verify remote parity before any new Core Terms release work.
+3. Unassigned — Scope any API or integration change as a separately versioned
+   compatibility ticket.
+4. Unassigned — Verify affected consumers for any approved contract change.
+5. Unassigned — Update the Core Terms handoff after the next completed milestone.
 
-- Do not rename `profilaxes`, CFM classes, `cfm` prefixes, DB tables, routes, or
-  namespaces unless explicitly instructed.
-- Do not add Jobs code to Core Terms.
-- Treat public APIs and integration contracts as stable unless intentionally
-  versioned.
+## 5. Current Blockers
 
-## Source Documents
+- No active ticket or approved scope.
 
-- `wordpress/wp-content/plugins/profilaxes/docs/core-terms-capability-snapshot.md`
-- `wordpress/wp-content/plugins/profilaxes/docs/core-terms-admin-ia.md`
-- `wordpress/wp-content/plugins/profilaxes/docs/core-terms-integration-contract.md`
-- `docs/core-terms/teachers-net-seed.md`
+## 6. Recently Adopted Governance Documents
+
+- Engineering Handoff v2 procedure and template (DOC001).
+
+## 7. Recently Approved Product Decisions
+
+- None since the prior handoff.
+
+## 8. Recently Approved Visual References
+
+- None.
+
+## 9. Active Design Authority
+
+Shared Teachers.Net design governance applies where relevant; no Core Terms
+visual reference is active in this handoff.
+
+## 10. Immediate Engineering Priorities
+
+1. Preserve the stable public API and integration contracts.
+2. Keep Jobs behavior out of Core Terms.
+3. Avoid internal renames unless explicitly authorized.

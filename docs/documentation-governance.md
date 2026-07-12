@@ -25,13 +25,13 @@ live in this repository:
 - `docs/local-dev.md`
 - `docs/stack.md`
 
-External shared Google Drive documents:
+External Google Drive operating documents:
 
 - Engineering Director Playbook
-- Codex Direction Manual
-- Engineering Workflow
+- the active project's Engineering Handoff
 
-Shared documents should contain reusable methodology, environment rules,
+The Playbook contains reusable methodology. The Handoff contains only current
+operational state. Shared local documents should contain environment rules,
 cross-plugin boundaries, global design direction, and global decisions. They
 should not hold one workstream's live ticket cursor or short-term handoff state.
 
@@ -53,9 +53,10 @@ Each active project should maintain:
 - roadmap, if applicable
 - project-specific specifications
 
-The Project Cursor is short and immediate. The Engineering Handoff preserves
-session continuity. Roadmaps, architecture docs, and specifications remain
-deeper references.
+The Project Cursor preserves durable project state. Engineering Handoff v2 is
+the delta-oriented session continuity document and follows
+`docs/engineering-handoff-template.md`. Roadmaps, architecture docs, contracts,
+design systems, manifests, and specifications remain deeper references.
 
 Every Project Cursor must declare one project state:
 
@@ -73,33 +74,33 @@ substitute for the current ticket or handoff.
 Google Drive is the operational recovery layer for ChatGPT Engineering Director
 sessions. It is not a mirror of this repository.
 
-Canonical Google Drive structure:
+Canonical Google Drive startup structure:
 
 - `Teachers.Net Engineering/Shared/Engineering Director Playbook`
-- `Teachers.Net Engineering/Shared/Codex Direction Manual`
-- `Teachers.Net Engineering/Shared/Engineering Workflow`
-- `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Project Cursor`
 - `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
 
-Google Drive contains shared operating documents, the active Project Cursor and
-Engineering Handoff, and every additional operational continuity document the
-Project Cursor explicitly declares under `Required Google Drive Context`. These
-documents are concise continuity aids, not mirrors of repository architecture,
-implementation detail, full roadmaps, or ticket history. Local repository docs
-remain the durable source for those deeper materials.
+Google Drive may retain supporting governance documents, but a fresh ChatGPT
+session reads only the Playbook and current Engineering Handoff by default. The
+Project Cursor, product contract, UX specification, design system, visual
+manifest, roadmap, and implementation documents are consulted only when the
+ticket requires them. Drive does not mirror repository architecture,
+implementation detail, full roadmaps, or ticket history.
 
 Codex should read local repository docs directly. ChatGPT should use Google
 Drive only to recover operational context at the start of a new session.
 
 ## Startup Rule
 
-Every new project session should read:
+Every new ChatGPT project session should read:
 
-1. Shared governance docs.
-2. The target project's project-specific Project Cursor.
-3. The target project's project-specific Engineering Handoff.
-4. Every additional continuity document listed in that Project Cursor.
-5. Deeper local project docs only as needed for the ticket.
+1. Engineering Director Playbook.
+2. The target project's Engineering Handoff.
+
+It should adopt that state without summarizing either document and report only
+current phase, current ticket, last completed milestone, next five planned
+tickets, and current blockers. Deeper governance and repository docs are read
+only as needed for the ticket. Codex still follows repository `AGENTS.md` and
+ticket-specific local read requirements before changing files.
 
 If the project is unclear, stop and ask which workstream is active before using
 Job Center, Core Terms, or Membership Taxonomy state.
@@ -110,7 +111,7 @@ Job Center, Core Terms, or Membership Taxonomy state.
 
 Path: `docs/job-center/`
 
-Primary startup docs:
+Primary local operational docs:
 
 - `docs/job-center/project-cursor.md`
 - `docs/job-center/engineering-handoff.md`
@@ -120,7 +121,7 @@ Primary startup docs:
 
 Path: `docs/core-terms/`
 
-Primary startup docs:
+Primary local operational docs:
 
 - `docs/core-terms/project-cursor.md`
 - `docs/core-terms/engineering-handoff.md`
@@ -134,7 +135,7 @@ there rather than duplicating plugin-owned detail.
 
 Path: `docs/membership-taxonomy/`
 
-Primary startup docs:
+Primary local operational docs:
 
 - `docs/membership-taxonomy/project-cursor.md`
 - `docs/membership-taxonomy/engineering-handoff.md`

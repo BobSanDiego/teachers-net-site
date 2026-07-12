@@ -6,23 +6,19 @@ Active Development
 
 ## Current Phase
 
-Teachers.Net Jobs V1 release-candidate execution sprint.
+V1 governance and approved-reference stabilization before implementation
+convergence and release-candidate acceptance.
 
 ## Current Milestone
 
-Establish a production-capable real-job ingestion and lifecycle path before a
-controlled pilot and bulk loading.
+Establish governed product and visual authority, then converge implementation
+through bounded tickets before controlled pilot and release-candidate review.
 
 ## Current Focus
 
-The public Job Finder, seed marketplace, and Distance Search foundation are
-complete enough to inform the next phase. The priority is now trustworthy
-real-job ingestion, employer ownership, application integrity, freshness, and
-pilot readiness.
-
-Distance controls currently exist in Advanced Search and Advanced Browse. A
-compact Location + Distance editor from the integrated Basic Search experience
-is launch-polish work subject to final design approval; it is not implemented.
+The Canonical V1 Contract, Employer UX V1, Job Center Design System v1, journey
+audits, and visual manifest now govern the product. The immediate priority is
+the first Approved visual reference. JC-011 01k is Draft pending VA002.
 
 ## Current Reference Page/Flow
 
@@ -32,36 +28,31 @@ application behavior.
 
 ## Current Primitive/Workstream
 
-Real Job Ingestion and V1 Lifecycle Readiness Audit.
+Visual authority approval and continuity-governance stabilization.
 
 ## Next Executable Ticket
 
-JREAL001 - Real Job Current-State Inventory.
+VA002 - Re-review JC-011 using only the active 01k Draft candidate.
 
 ## Next Decision
 
-Review JREAL001 findings, then approve the audit's canonical real-job contract
-and dependency map before opening any ingestion, lifecycle, employer-claim,
-origin-resolution, or pilot implementation ticket.
+Decide whether JC-011 01k qualifies as the first Approved visual reference.
 
 ## Required Google Drive Context
 
-A new ChatGPT session must read all of these, in order, before directing Job
-Center work:
+A new ChatGPT session reads only these by default:
 
 1. Engineering Director Playbook
-2. Job Center Project Cursor
-3. Job Center Engineering Handoff
-4. Job Center V1 Execution Plan
+2. Job Center Engineering Handoff
+
+The Project Cursor, Canonical V1 Contract, Employer UX V1, Job Center Design
+System v1, Visual Manifest, roadmap, and implementation docs are consulted only
+when the ticket requires them.
 
 ## Open Risks
 
-- Real-job provenance, source identity, reconciliation, expiration, and employer
-  claim capability have not yet been audited as one end-to-end V1 contract.
-- Current typed ZIP/city-state origin resolution relies on local job data;
-  supported origins must ultimately resolve independently of current inventory.
-- Seeded jobs are coordinate-ready, but employer-created non-remote jobs do not
-  yet have automated geocoding, retry, repair, or exception workflows.
+- No Job Center artifact is currently Approved in the visual manifest.
+- Implementation has not yet converged to the written product/design authority.
 - A real-job pilot is required before any bulk loading.
 - Core Terms CTJ004-CTJ006 commits remain ahead of `origin/main` in the local
   Profilaxes repository and require separate remote-parity verification.
@@ -70,8 +61,7 @@ Center work:
 
 ## Stop Boundary
 
-Stop after the readiness audit produces findings, a canonical job-contract
-recommendation, dependency map, risk assessment, and smallest implementation
-sequence. Do not import real jobs, mutate schema, add provider integrations,
-change public UI, or begin pilot/bulk loading without a separately approved
-ticket.
+Stop each approval or implementation ticket at its named boundary. Do not infer
+visual approval, begin implementation convergence, import real jobs, mutate
+schema, add provider integrations, or begin pilot/bulk loading without a
+separately approved ticket.

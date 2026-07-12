@@ -29,11 +29,10 @@ Documentation governance:
 - Google Drive operational docs live under
   `Teachers.Net Engineering/Shared/` and
   `Teachers.Net Engineering/Projects/<Project Name>/`.
-- Google Drive is for ChatGPT operational recovery only. It should contain the
-  shared operating docs, the active Project Cursor and Engineering Handoff, and
-  every additional operational continuity document explicitly declared under
-  `Required Google Drive Context` in the Project Cursor. It should not mirror
-  this repository.
+- Google Drive is for ChatGPT operational recovery only. Default startup reads
+  the Engineering Director Playbook and active Engineering Handoff. Supporting
+  governance may remain in Drive but is consulted only when needed. Drive
+  should not mirror this repository.
 - Local repository docs remain the durable engineering source for architecture,
   roadmaps, specifications, implementation details, and verification
   instructions.
@@ -102,16 +101,11 @@ MATCH MODE` lifecycle commands exactly.
 When the user issues `PREPARE HANDOFF`, follow
 `docs/codex-ticket-discipline.md`. Confirm the active project first, update
 only that project's continuity set, update its Project Cursor only for durable
-state changes, and end by outputting the project-aware ChatGPT startup prompt
-for Google Drive retrieval. Read every additional project continuity document
-listed by the Project Cursor, update the Engineering Handoff for every explicit
-handoff, and update an execution plan or roadmap only when its durable purpose
-requires it. The prompt must reference:
+state changes, and end by outputting the concise project-aware ChatGPT startup
+prompt. The prompt must reference:
 
 - `Engineering Director Playbook`
-- `<Project Name> Project Cursor`
 - `<Project Name> Engineering Handoff`
-- every additional document listed under `Required Google Drive Context`
 
 Current next task:
 Use the active project's Project Cursor and Engineering Handoff. Do not treat

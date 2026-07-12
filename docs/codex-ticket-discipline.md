@@ -35,8 +35,8 @@ Optimize for minimal compute, minimal churn, and deterministic progress.
 When project documents conflict, use this precedence:
 
 1. the current user ticket
-2. the active project's Project Cursor
-3. the active project's Engineering Handoff
+2. the active project's Engineering Handoff
+3. the active project's Project Cursor
 4. `docs/codex-direction-manual.md`
 5. active product/design docs
 6. historical planning docs
@@ -87,16 +87,17 @@ Google Drive operational documents live under:
 - `Teachers.Net Engineering/Shared/`
 - `Teachers.Net Engineering/Projects/<Project Name>/`
 
-Google Drive should contain shared operating docs, the active project-specific
-Project Cursor and Engineering Handoff, and every additional operational
-continuity document declared under `Required Google Drive Context` in that
-Cursor. It should not mirror local repository architecture, implementation
-detail, full roadmaps, or ticket history.
+Default ChatGPT startup reads only the Engineering Director Playbook and the
+active project-specific Engineering Handoff. Supporting governance documents
+may remain in Drive and are consulted only when the ticket requires them. Drive
+must not mirror local repository architecture, implementation detail, full
+roadmaps, contracts, design systems, manifests, or ticket history.
 
-Every new project session should read shared governance docs, the active
-project's Project Cursor and Engineering Handoff, and every additional
-continuity document declared by the Cursor. If the active workstream is unclear,
-stop and ask before assuming Job Center context.
+Every new ChatGPT project session should read the Playbook and active Handoff,
+adopt their state without summarizing them, report the five required state
+fields, and stop. Codex continues to read local governance and ticket-specific
+documents before changing files. If the active workstream is unclear, stop and
+ask before assuming Job Center context.
 
 Every Project Cursor should declare one project state:
 
@@ -152,80 +153,63 @@ When the user says `prepare handoff` or asks for session handoff preparation,
 Codex should first confirm the active project. If the active project is unclear,
 ask before editing any handoff.
 
-Handoff updates should:
+Handoff updates must follow `docs/engineering-handoff-template.md` and answer
+only:
 
-- update only the active project's Engineering Handoff
-- update the active project's Project Cursor only when durable state changes
-  occurred, such as project state, milestone, permanent decisions, or stop
-  boundaries
-- summarize recent completed tickets or meaningful passes
-- identify the next 1-3 likely tasks
-- capture the current active decision or discussion
-- update open risks and blockers
-- update the stop-after boundary
-- stay concise
-- point to deeper local docs instead of replacing them
-- avoid reproducing the full roadmap, long ticket history, architecture, or
-  implementation notes
-- confirm the active project directory
-- read every additional project continuity document listed in the active Project
-  Cursor under `Required Google Drive Context`
-- end by outputting a project-aware ChatGPT startup prompt so the Engineering
-  Director can copy it into a fresh ChatGPT session
+1. Current Phase
+2. Current Ticket
+3. Last Completed Milestone
+4. Next Five Planned Tickets
+5. Current Blockers
+6. Recently Adopted Governance Documents
+7. Recently Approved Product Decisions
+8. Recently Approved Visual References
+9. Active Design Authority
+10. Immediate Engineering Priorities
+
+Do not add project history, settled architecture, duplicated governance,
+contract/design-system content, or implementation details preserved elsewhere.
+Update the Project Cursor only for durable project-state, phase, milestone,
+decision, risk, or stop-boundary changes. End with the v2 startup prompt.
 
 PREPARE HANDOFF is documentation-only. Do not modify application code. Commit
 documentation only if explicitly approved.
 
 Before updating Drive, establish current repository facts, update local
-continuity documents first, verify roadmap/execution-plan/Cursor/Handoff
-consistency, compare their exact Drive counterparts, and reconcile legitimate
-newer Drive facts before writing. Report every required Drive document as
-updated, unchanged, unavailable, or conflicted. Do not claim synchronization
-without connector confirmation.
+continuity documents first, compare the exact Drive Handoff, and reconcile
+legitimate newer Drive facts before writing. Verify the Drive write by connector
+readback. Do not claim synchronization without confirmation.
 
 Update the execution plan only when the critical path, priority order, phase
 boundary, V1/V1.1/V2 classification, settled decision, major dependency, or
 pilot/release acceptance changes. Update the roadmap only when durable sequence
 or scope changes.
 
-Project-aware ChatGPT startup prompt template:
+Project-aware ChatGPT startup prompt template (also maintained at
+`docs/chatgpt-startup-prompt.md`):
 
 ```text
 Project: <Project Name>
 
-First, attempt to retrieve these exact documents from my connected Google Drive:
+Retrieve and read these exact Google Drive documents in order:
 
 1. Engineering Director Playbook
-2. <Project Name> Project Cursor
-3. <Project Name> Engineering Handoff
-4. Every additional document listed under `Required Google Drive Context` in
-   the <Project Name> Project Cursor
+2. <Project Name> Engineering Handoff
 
-If Google Drive access is available in this session:
-- Search Google Drive by the exact titles above.
-- If title search fails, ask me for the Google Docs link rather than reconstructing state.
-- Retrieve and read the full required context set before continuing.
+Adopt their workflow and current engineering state. Do not reconstruct missing
+state from conversational memory and do not summarize the documents. If either
+document is unavailable, ask for its link or content.
 
-If Google Drive access is NOT available:
-- Tell me immediately.
-- Do not reconstruct <Project Name> project state from memory.
-- Ask me to either:
-  - enable the Google Drive connector for this chat, or
-  - upload/provide the <Project Name> Project Cursor, Engineering Handoff, and
-    every additional required context document.
+Consult the Project Cursor, product contract, UX specification, design system,
+visual manifest, roadmap, or implementation docs only when the current ticket
+requires them.
 
-After reading the global playbook, use the full project-specific context set as
-the operational source of truth. Prefer newer attached local project copies
-when I explicitly supply them. Do not reconstruct missing project state from
-memory or use another project's state unless I explicitly ask for comparison.
-
-After successfully reading the documents, briefly summarize:
-- where we are
-- what we recently completed
-- what is immediately next
-- current discussion
-- open risks
-- stop-after boundary
+Reply with only:
+- current phase
+- current ticket
+- last completed milestone
+- next five planned tickets
+- current blockers
 
 Then stop and wait for my instruction.
 ```

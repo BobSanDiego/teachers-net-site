@@ -1,119 +1,74 @@
 # Job Center Engineering Handoff
 
-Read this after the Engineering Director Playbook, Job Center Project Cursor,
-and Job Center V1 Execution Plan. It is compact operational continuity, not a
-roadmap or implementation manual.
+Operational state only. Permanent product, design, architecture, and
+implementation detail remain in the referenced repository documents.
 
-## Current Working State
+## 1. Current Phase
 
-- Project state: Active Development.
-- Current phase: Teachers.Net Jobs V1 release-candidate execution sprint.
-- Current milestone: move from the synthetic seed marketplace to a controlled,
-  truthful, production-capable real-job pilot path.
-- Current focus: plan and audit the complete real-job lifecycle before more
-  presentation polish or any bulk import.
-- Immediate task: **Real Job Ingestion and V1 Lifecycle Readiness Audit**.
-- Next executable ticket: **JREAL001 - Real Job Current-State Inventory**.
-- Root documentation remote state: `a228186` (`ROADMAP002 establish Job Center
-  V1 execution continuity`).
-- Jobs plugin remote state: `9321508` (`ROADMAP002 align Jobs V1 execution
-  roadmap`). `9e9f0bf` (JDIST006) remains the latest completed application-code
-  ticket.
+Active Development — V1 governance and approved-reference stabilization before
+implementation convergence and release-candidate acceptance.
 
-## Recently Completed
+## 2. Current Ticket
 
-- `a228186` / `9321508` ROADMAP002 execution continuity
-  - Created the V1 Execution Plan, made pilot-before-bulk-load sequencing
-    explicit, expanded the continuity protocol, and synchronized the Job Center
-    Cursor, Handoff, and Execution Plan to Google Drive.
+VA002 — Re-review JC-011 using only the active 01k Draft candidate. Approval
+review only; do not redesign, implement, or expand artifact scope.
 
-- JDIST002-JDIST006 established the Distance Search architecture and local
-  foundation: coordinate metadata/indexing, radius query, typed ZIP/city-state
-  origin controls, cross-state option, and opt-in browser current location.
-  Coordinates are request-scoped for browser origin searches and are not stored
-  in profiles, analytics, or URLs.
-- Job Finder work established one `/jobs/` route with Search/Browse interface
-  states, shared results/pagination/chips, public shell, detail layout, and
-  responsive implementation passes.
-- The seed importer is idempotent. Local fixture data contains 250 seed jobs,
-  with 205 active published jobs; Grade and Subject mapping remains 250/250.
+## 3. Last Completed Milestone
 
-## Newly Approved Execution Direction
+DOC001 established Engineering Handoff v2 locally and in Google Drive: two-doc
+startup, ten-field delta-oriented state, governance-on-demand, and concise
+five-field startup reporting. DESIGN007 remains the last visual milestone;
+JC-011 01k is Draft pending VA002.
 
-- Employer-posted and Teachers.Net-imported jobs remain one public job entity:
-  same lifecycle, search, result/detail presentation, application behavior, and
-  expiration behavior. Provenance is internal metadata, not a second-class
-  public result type.
-- Imported jobs must present truthfully: application actions route to the actual
-  destination; source/correction/removal/claim paths may be discreet but must
-  not imply employer endorsement or internal application receipt.
-- A controlled real-job pilot must precede bulk loading. The audit defines the
-  contract and dependency order; it does not implement them.
-- The full V1 critical path lives in `docs/job-center/v1-execution-plan.md`.
+## 4. Next Five Planned Tickets
 
-## Immediately On Tap
+1. Unassigned — Evaluate JC-020 Canonical Listing as a bounded approval entry.
+2. Unassigned — Evaluate JC-001 Approved Page Shell as a bounded approval entry.
+3. Unassigned — Evaluate JC-021 Progressive Search and Sort Panels as a bounded
+   approval entry.
+4. Unassigned — Evaluate JC-024 Advertising Placements as a bounded approval
+   entry.
+5. Unassigned — Reconcile the approved visual set into narrowly scoped
+   implementation tickets; no implementation begins without Approved artifact
+   IDs and explicit tickets.
 
-1. **JREAL001 - Real Job Current-State Inventory** within the Real Job
-   Ingestion and V1 Lifecycle Readiness Audit.
-   - Inspect current fields/schema, services/repositories, seed-importer reuse,
-     provenance/source identity, deduplication, ownership, application methods,
-     expiration/reconciliation, coordinates, typed-origin resolution, employer
-     flows, claim capability, and pilot requirements.
-   - Stop at findings, canonical contract recommendation, dependency map, risks,
-     and smallest implementation sequence.
+## 5. Current Blockers
 
-2. Approve the canonical real-job contract and dependency map.
+- No Job Center visual artifact is Approved in the manifest.
+- JC-011 01k requires a fresh approval decision; DESIGN007 did not confer
+  approval.
+- Release-candidate status still requires implementation convergence, real-job
+  pilot evidence, operational launch planning, and explicit acceptance.
 
-3. Open small, separate implementation tickets in the approved sequence, then
-   conduct a limited real-job pilot before bulk import.
+## 6. Recently Adopted Governance Documents
 
-## Active Decisions
+- Canonical V1 Contract.
+- Employer UX V1.
+- Job Center Design System v1.
+- Approved Mockup Library and Manifest (D003).
+- Engineering Handoff v2 procedure and template (DOC001).
 
-- `/jobs/` is the shared public Job Finder. Search and Browse are interface
-  states, not separate products or routes.
-- Distance controls stay in Advanced Search/Browse. Provider calls never run
-  during public search. Google Places Autocomplete is useful but is not a V1
-  release blocker.
-- V1 launch polish may expose a compact Location + Distance editor from the
-  integrated Basic Search experience. Its exact interaction awaits final design
-  approval; the existing Advanced Search/Browse distance architecture remains
-  the current implementation.
-- Preferred Search Location is an explicit saved preference. Current Search
-  Origin is temporary and must not overwrite it automatically.
-- Employer claims require authority verification. Recruiter identities are never
-  auto-created from imported data.
+## 7. Recently Approved Product Decisions
 
-## Open Risks
+- Employer-posted and imported jobs use one canonical public job model.
+- Public search is local-database-only; browser location remains request-scoped
+  and private.
+- Review and Preview, Renew and Duplicate, and Close and Archive remain distinct.
+- Dashboard summarizes; My Jobs manages.
 
-- No audited, production-capable real-job contract yet exists for provenance,
-  validation, source reconciliation, expiration, exception reporting, and repair.
-- Current origin resolution must become independent of the live job inventory.
-- Employer-coordinate automation and operational repair paths are absent.
-- Core Terms remote parity is pending in its separate repository.
-- V1 release-candidate, deployment, monitoring, rollback, and launch operations
-  remain pending.
+## 8. Recently Approved Visual References
 
-## Required Google Drive Context
+None. JC-011 01k is the active Draft candidate, not an Approved reference.
 
-1. Engineering Director Playbook
-2. Job Center Project Cursor
-3. Job Center Engineering Handoff
-4. Job Center V1 Execution Plan
+## 9. Active Design Authority
 
-## Stop-After Boundary
+Job Center Design System v1 controls written visual/interaction rules. The
+visual manifest controls artifact status. Only manifest entries marked Approved
+may serve as visual implementation authority; there are currently none.
 
-Stop after the readiness audit and wait for approval. Do not implement ingestion,
-provider integration, schema changes, claim automation, UI changes, pilot import,
-or bulk loading in the audit ticket.
+## 10. Immediate Engineering Priorities
 
-## Source Documents
-
-- `docs/job-center/v1-execution-plan.md`
-- `docs/job-center/jobs-roadmap.md`
-- `docs/job-center/product-definition-v1.md`
-- `docs/decision-log.md`
-- `wordpress/wp-content/plugins/tnet-jobs/docs/development-constitution.md`
-- `wordpress/wp-content/plugins/tnet-jobs/docs/bulk-import-spec.md`
-- `wordpress/wp-content/plugins/tnet-jobs/docs/employer-portal-architecture-v0.1.md`
-- `wordpress/wp-content/plugins/tnet-jobs/docs/job-location-strategy.md`
-- `wordpress/wp-content/plugins/tnet-jobs/docs/distance-search-architecture.md`
+1. Run VA002 against JC-011 01k without expanding artifact scope.
+2. Continue bounded visual approvals before opening implementation convergence
+   tickets.
+3. Keep implementation, pilot, and launch acceptance behind explicit tickets.

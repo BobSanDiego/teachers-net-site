@@ -15,25 +15,22 @@ The global Engineering Director Playbook lives outside this repository and
 should contain reusable methodology only. Teachers.Net-specific context belongs
 in local Teachers.Net docs.
 
-Google Drive contains the operational ChatGPT recovery layer:
+Google Drive contains the operational ChatGPT recovery layer. Default startup
+uses only:
 
 - `Teachers.Net Engineering/Shared/Engineering Director Playbook`
-- `Teachers.Net Engineering/Shared/Codex Direction Manual`
-- `Teachers.Net Engineering/Shared/Engineering Workflow`
-- `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Project Cursor`
 - `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
 
-Use `docs/documentation-governance.md` to choose the active project directory.
-Then read that project's Project Cursor, Engineering Handoff, and every
-additional continuity document listed in the Cursor's `Required Google Drive
-Context` section. Do not assume Job Center is active when the ticket is about
-Core Terms, Membership Taxonomy, or a future Teachers.Net workstream.
+The Handoff is delta-oriented and follows
+`docs/engineering-handoff-template.md`. ChatGPT reads the Project Cursor,
+product contract, UX specification, design system, visual manifest, roadmap,
+or implementation docs only when needed. Codex uses
+`docs/documentation-governance.md` to choose the active local project directory
+and follows the repository read order before work.
 
-Google Drive is for ChatGPT operational recovery only. It contains shared
-operating docs, the active Project Cursor and Engineering Handoff, and every
-additional operational continuity document declared by that Cursor. It is not a
-mirror of repository architecture, implementation detail, full roadmaps, or
-ticket history.
+Google Drive is for ChatGPT operational recovery only. It is not a mirror of
+repository architecture, implementation detail, full roadmaps, contracts,
+design systems, visual manifests, or ticket history.
 
 Local repository docs remain the durable engineering source for architecture,
 roadmaps, specifications, implementation details, and verification instructions.
