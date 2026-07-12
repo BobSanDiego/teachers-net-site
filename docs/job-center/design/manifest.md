@@ -58,13 +58,13 @@ Status totals for manifest entries: **Approved 0; Draft 9; Placeholder 16; Super
 
 - **Screen / Component:** Refined search/results state and locked page shell
 - **Status:** Draft
-- **Version:** 0.6
-- **Authority:** DESIGN006 and refined-search artifacts document iterative candidates; no exact artifact has durable approval evidence.
+- **Version:** 0.7
+- **Authority:** DESIGN006 and refined-search artifacts document iterative candidates; `refined-search-model-01k-design-target.png` is the active Draft candidate and has no approval authority.
 - **Related Design System section:** 4, 7, 9, 10, 13–16
 - **Related Product Specification:** Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-005
 - **Related implementation ticket(s):** None assigned
-- **Notes:** `refined-search-model-01j-design-target.png` is the latest known candidate, not Approved. Four earlier iterations are registered as Superseded in JC-090–JC-093.
+- **Notes:** `refined-search-model-01k-design-target.png` is the active candidate. DESIGN007 derived it from 01j solely to change `Clear` to `Clear filters` and correct the bottom leaderboard reservation identified by VA001. The 01j artifact remains in Draft lineage and is not an active approval candidate. Four earlier iterations are registered as Superseded in JC-090–JC-093. Neither 01j nor 01k is Approved.
 
 ### JC-012 — Job Finder State 3
 
@@ -384,7 +384,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v5.png` | Finder State 2 | Superseded | JC-091 | Replaced by 01g candidate |
 | `art/mockups/job-center/generated/refined-search-model-01g-polished.png` | Results/listing | Superseded | JC-092 | Replaced by 01h candidate |
 | `art/mockups/job-center/generated/refined-search-model-01h-panel-polish.png` | Search panel/results | Superseded | JC-093 | Replaced by 01j candidate |
-| `art/mockups/job-center/generated/refined-search-model-01j-design-target.png` | Finder State 2/canonical listing | Draft | JC-011, JC-020 | Strong current candidate; no durable exact-artifact approval |
+| `art/mockups/job-center/generated/refined-search-model-01j-design-target.png` | Finder State 2/canonical listing | Draft | JC-011, JC-020 | Prior active Draft candidate; retained in lineage after DESIGN007 |
+| `art/mockups/job-center/generated/refined-search-model-01k-design-target.png` | Finder State 2/canonical listing | Draft | JC-011, JC-020 | Active JC-011 Draft candidate; resolves the two VA001 blockers but has not received an approval review |
 | `tmp/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Candidate component sheet |
 | `tmp/design-refs/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Byte-identical duplicate path |
 | `tmp/search-panels-basic-and-advanced.png` | Search panels | Draft | JC-021 | Candidate component sheet |
