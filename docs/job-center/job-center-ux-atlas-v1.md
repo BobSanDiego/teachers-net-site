@@ -423,13 +423,13 @@ JC-011, JC-020, or JC-040
 ### Leads To
 External Apply or JC-040
 ### Dependencies
-Canonical job contract and application destination integrity
+Canonical job contract, JC-030 product definition, and application destination integrity
 ### Current State
 Placeholder
 ### Next Expected Work
-Govern product definition.
+Govern UX specification and visual authority from the approved product definition.
 ### Notes
-Layout, hierarchy, and implementation remain unresolved.
+Product truth is defined in `jc-030-job-detail-product-definition.md`; layout, hierarchy, and implementation remain unresolved.
 
 ---
 
