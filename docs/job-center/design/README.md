@@ -28,12 +28,12 @@ A filename, sequence number, `final` label, recency, implementation use, or dire
 
 ## Directory roles
 
-- `approved/` — controlled copies of exact Approved artifacts. Intentionally empty at D003 because no filename-specific artifact has durable approval evidence.
+- `approved/` — controlled copies of exact Approved artifacts. JC-011 v1.0 is the first governed entry.
 - `draft/` — optional controlled copies of active design candidates.
 - `superseded/` — optional controlled copies retained for lineage.
 - `source/` — optional editable source files and provenance records.
 
-D003 does not copy, rename, move, or delete existing artifacts. Existing files remain at their current paths and are registered in the manifest.
+Historical files remain at their registered paths. Approval work copies the exact approved artifact into `approved/` without overwriting its source or lineage.
 
 ## Approval and supersession workflow
 

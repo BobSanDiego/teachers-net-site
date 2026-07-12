@@ -4,9 +4,9 @@
 
 This manifest implements the reference-control rules in Job Center Design System v1. It inventories known visual artifacts and governed visual gaps as of D003. It does not approve a design by implication.
 
-At this version there are **no Approved filename-specific artifacts**. The written design system contains approved rules, but its statement that it builds on an approved landing-page direction does not identify a durable exact raster artifact. Therefore landing images remain Draft until a named governance decision identifies the artifact and approval boundary.
+JC-011 is the first Approved filename-specific reference. Engineering Director approval in VA001-FINAL names the exact 01k raster and its bounded desktop Job Finder State 2 scope. No other manifest entry inherits that approval; landing images and all other uncertain artifacts retain their existing status until separately approved.
 
-Status totals for manifest entries: **Approved 0; Draft 9; Placeholder 16; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 1; Draft 8; Placeholder 16; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -57,14 +57,18 @@ Status totals for manifest entries: **Approved 0; Draft 9; Placeholder 16; Super
 ### JC-011 — Job Finder State 2
 
 - **Screen / Component:** Refined search/results state and locked page shell
-- **Status:** Draft
-- **Version:** 0.7
-- **Authority:** DESIGN006 and refined-search artifacts document iterative candidates; `refined-search-model-01k-design-target.png` is the active Draft candidate and has no approval authority.
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/refined-search-model-01k-design-target.png`
+- **Approval date:** 2026-07-12
+- **Approval authority:** Engineering Director, VA001-FINAL
+- **Approval scope:** Desktop Job Finder State 2 exactly as shown: constrained page shell, compact refined-search/results state, applied chips, results header and sort, ten-listing composition within this screen, right rail, desktop advertising placements, pagination/result range, leaderboard, and footer.
+- **Authority:** VA001-FINAL explicitly approves the exact 01k raster as the canonical JC-011 implementation and QA reference within the stated boundary.
 - **Related Design System section:** 4, 7, 9, 10, 13–16
 - **Related Product Specification:** Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-005
 - **Related implementation ticket(s):** None assigned
-- **Notes:** `refined-search-model-01k-design-target.png` is the active candidate. DESIGN007 derived it from 01j solely to change `Clear` to `Clear filters` and correct the bottom leaderboard reservation identified by VA001. The 01j artifact remains in Draft lineage and is not an active approval candidate. Four earlier iterations are registered as Superseded in JC-090–JC-093. Neither 01j nor 01k is Approved.
+- **Notes:** DESIGN007 derived 01k from 01j solely to change `Clear` to `Clear filters` and correct the bottom leaderboard reservation identified by VA001. Lineage is DESIGN006 v4 → v5 → refined-search 01g → 01h → 01j → approved 01k. JC-090–JC-093 preserve the explicitly Superseded iterations; 01j remains a historical Draft. Approval is bounded to JC-011 and does not independently approve JC-001, JC-020, JC-021, JC-024, responsive states, interaction behavior not visible in the raster, or implementation.
 
 ### JC-012 — Job Finder State 3
 
@@ -385,7 +389,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `art/mockups/job-center/generated/refined-search-model-01g-polished.png` | Results/listing | Superseded | JC-092 | Replaced by 01h candidate |
 | `art/mockups/job-center/generated/refined-search-model-01h-panel-polish.png` | Search panel/results | Superseded | JC-093 | Replaced by 01j candidate |
 | `art/mockups/job-center/generated/refined-search-model-01j-design-target.png` | Finder State 2/canonical listing | Draft | JC-011, JC-020 | Prior active Draft candidate; retained in lineage after DESIGN007 |
-| `art/mockups/job-center/generated/refined-search-model-01k-design-target.png` | Finder State 2/canonical listing | Draft | JC-011, JC-020 | Active JC-011 Draft candidate; resolves the two VA001 blockers but has not received an approval review |
+| `art/mockups/job-center/generated/refined-search-model-01k-design-target.png` | Finder State 2/canonical listing | Approved | JC-011, JC-020 | Exact source approved by VA001-FINAL for JC-011 only; JC-020 remains Draft |
+| `docs/job-center/design/approved/refined-search-model-01k-design-target.png` | Controlled JC-011 reference copy | Approved | JC-011 | Canonical library copy; byte-identical to the approved source artifact |
 | `tmp/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Candidate component sheet |
 | `tmp/design-refs/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Byte-identical duplicate path |
 | `tmp/search-panels-basic-and-advanced.png` | Search panels | Draft | JC-021 | Candidate component sheet |
@@ -435,4 +440,4 @@ The status below is the artifact's governed classification. A path may relate to
 
 ## Approval gaps
 
-The `approved/` directory remains intentionally empty. The first approval pass should identify exact artifacts and bounded states for the shell, landing, the three Finder states, progressive Search, canonical listing, and responsive variants. Employer, Job Detail, Saved Jobs, Alerts, Moderator, and Administration references remain governed placeholders and must not be inferred from current implementation.
+The `approved/` directory contains the JC-011 v1.0 controlled reference. Separate approval decisions are still required for the shell as JC-001, landing, other Finder states, progressive Search, canonical listing as JC-020, advertising as JC-024, and responsive variants. Employer, Job Detail, Saved Jobs, Alerts, Moderator, and Administration references remain governed placeholders and must not be inferred from current implementation or from JC-011 approval.

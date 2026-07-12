@@ -6,6 +6,10 @@
 
 **Manifest entry:** JC-011 — Job Finder State 2
 
+**Historical disposition:** This 2026-07-11 review remains the blocker record for
+01j. DESIGN007 produced 01k, and VA001-FINAL subsequently approved 01k as JC-011
+v1.0 on 2026-07-12. See `va001-final-jc011-approval.md`.
+
 ## 1. Candidate reviewed
 
 The manifest registers one active Draft artifact for JC-011:
