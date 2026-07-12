@@ -6,7 +6,7 @@ This manifest implements the reference-control rules in Job Center Design System
 
 JC-011 is the first Approved filename-specific reference. JC-010 is now also Approved through VA002-FINAL. Each Engineering Director decision names an exact raster and bounded desktop Job Finder state. No other manifest entry inherits either approval; landing images and all other uncertain artifacts retain their existing status until separately approved.
 
-Status totals for manifest entries: **Approved 2; Draft 8; Placeholder 15; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 2; Draft 9; Placeholder 15; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -97,6 +97,19 @@ Status totals for manifest entries: **Approved 2; Draft 8; Placeholder 15; Super
 - **Related future UX Atlas entry:** JC-ATLAS-003
 - **Related implementation ticket(s):** None assigned
 - **Notes:** The advanced panel images are Draft evidence under JC-021.
+
+### JC-014 — Job Finder Location Selection Modal
+
+- **Screen / Component:** Logged-out first-touch `/jobs/`, Location segment activated, modal open
+- **Status:** Draft
+- **Version:** 0.1
+- **Active Draft Artifact:** `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png`
+- **Authority:** DESIGN010 creates the logged-out 01a modal as the canonical Draft candidate for review. It has no approval authority.
+- **Related Design System section:** 8, 9, 12, 17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-003
+- **Related implementation ticket(s):** None assigned
+- **Notes:** JC-010 v1.0 is the locked background authority; this artifact does not revise or supersede it. The logged-out artifact governs the shared modal structure. Logged-in implementation uses the same modal but omits the `Sign in to access advanced location features.` teaser; do not create a separate logged-in raster unless later review identifies a meaningful visual difference. Distance remains dependent on a valid location or origin, and Apply remains inactive until one is established. Browse Reveal remains a separate future artifact. This Draft incorporates the deferred smaller, lighter listing Save-heart treatment without changing the Approved JC-010 raster.
 
 ### JC-020 — Canonical listing
 
@@ -388,6 +401,7 @@ The status below is the artifact's governed classification. A path may relate to
 
 | Artifact | Represents | Status | Manifest entry | Authority note |
 |---|---|---:|---|---|
+| `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Active DESIGN010 candidate; shared modal structure with logged-out teaser |
 | `art/mockups/job-center/generated/job-finder-state-1-01a-design-target.png` | Logged-out first-touch Job Finder, full inventory, Most Recent | Draft | JC-010 | Historical DESIGN008 Draft retained after 01b approval |
 | `art/mockups/job-center/generated/job-finder-state-1-01b-design-target.png` | Polished logged-out first-touch Job Finder | Approved | JC-010 | Exact source approved by VA002-FINAL for JC-010 only |
 | `docs/job-center/design/approved/job-finder-state-1-01b-design-target.png` | Controlled JC-010 reference copy | Approved | JC-010 | Canonical library copy; byte-identical to the approved source artifact |
@@ -447,4 +461,4 @@ The status below is the artifact's governed classification. A path may relate to
 
 ## Approval gaps
 
-The `approved/` directory contains the JC-011 v1.0 controlled reference. Separate approval decisions are still required for the shell as JC-001, landing, other Finder states, progressive Search, canonical listing as JC-020, advertising as JC-024, and responsive variants. Employer, Job Detail, Saved Jobs, Alerts, Moderator, and Administration references remain governed placeholders and must not be inferred from current implementation or from JC-011 approval.
+The `approved/` directory contains the JC-010 v1.0 and JC-011 v1.0 controlled references. Separate approval decisions are still required for the shell as JC-001, landing, other Finder states, the JC-014 Location modal, progressive Search, canonical listing as JC-020, advertising as JC-024, and responsive variants. Employer, Job Detail, Saved Jobs, Alerts, Moderator, and Administration references remain governed placeholders and must not be inferred from current implementation or from JC-010/JC-011 approval.
