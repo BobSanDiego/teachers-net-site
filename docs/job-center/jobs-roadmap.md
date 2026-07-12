@@ -16,6 +16,20 @@ Project Cursor, Engineering Handoff, and V1 Execution Plan.
 - JDIST002-JDIST006 Distance Search foundation: geocode metadata/indexing,
   local radius query, Advanced typed-origin controls, cross-state option, and
   request-scoped browser current location.
+- **Search & Discovery Interaction Suite v1 — Complete:** Approved desktop
+  references JC-010, JC-014, JC-015, and JC-011 define first-touch discovery,
+  location selection, browse exploration, and search results as one governed
+  interaction sequence.
+
+## Next Primary UX Workstream
+
+1. **JC-030 — Job Detail**
+2. Employer UX
+3. Saved Jobs / Alerts
+4. Responsive adaptations
+
+Each future interaction-state artifact inherits an approved page state and
+changes only the minimum interface needed to document one interaction.
 
 ## V1 Critical Path
 

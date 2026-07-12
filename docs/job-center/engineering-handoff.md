@@ -5,38 +5,34 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — V1 governance and approved-reference stabilization before
-implementation convergence and release-candidate acceptance.
+Active Development — Search & Discovery Interaction Suite v1 is complete;
+governed UX definition now advances to Job Detail before later implementation
+convergence and release-candidate acceptance.
 
 ## 2. Current Ticket
 
-VA002 — Re-review JC-011 using only the active 01k Draft candidate. Approval
-review only; do not redesign, implement, or expand artifact scope.
+DOC002 — Formalize the completed Search & Discovery Interaction Suite v1 across
+the durable Job Center documentation. Documentation only.
 
 ## 3. Last Completed Milestone
 
-DOC001 established Engineering Handoff v2 locally and in Google Drive: two-doc
-startup, ten-field delta-oriented state, governance-on-demand, and concise
-five-field startup reporting. DESIGN007 remains the last visual milestone;
-JC-011 01k is Draft pending VA002.
+Search & Discovery Interaction Suite v1 is complete. Approved JC-010, JC-014,
+JC-015, and JC-011 now define the canonical desktop journey from first touch
+through location or browse interaction to search results.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Evaluate JC-020 Canonical Listing as a bounded approval entry.
-2. Unassigned — Evaluate JC-001 Approved Page Shell as a bounded approval entry.
-3. Unassigned — Evaluate JC-021 Progressive Search and Sort Panels as a bounded
-   approval entry.
-4. Unassigned — Evaluate JC-024 Advertising Placements as a bounded approval
-   entry.
-5. Unassigned — Reconcile the approved visual set into narrowly scoped
-   implementation tickets; no implementation begins without Approved artifact
-   IDs and explicit tickets.
+1. Unassigned — Define and govern JC-030 Job Detail.
+2. Unassigned — Advance Employer UX visual authority.
+3. Unassigned — Advance Saved Jobs / Alerts visual authority.
+4. Unassigned — Define responsive adaptations of approved desktop states.
+5. Unassigned — Translate approved references into narrowly scoped
+   implementation tickets; no implementation begins without explicit tickets.
 
 ## 5. Current Blockers
 
-- No Job Center visual artifact is Approved in the manifest.
-- JC-011 01k requires a fresh approval decision; DESIGN007 did not confer
-  approval.
+- JC-030 remains a Placeholder and has no Approved visual reference.
+- Responsive adaptations remain unresolved and do not inherit desktop approval.
 - Release-candidate status still requires implementation convergence, real-job
   pilot evidence, operational launch planning, and explicit acceptance.
 
@@ -47,6 +43,7 @@ JC-011 01k is Draft pending VA002.
 - Job Center Design System v1.
 - Approved Mockup Library and Manifest (D003).
 - Engineering Handoff v2 procedure and template (DOC001).
+- Search & Discovery Interaction Suite v1 milestone (DOC002).
 
 ## 7. Recently Approved Product Decisions
 
@@ -55,20 +52,28 @@ JC-011 01k is Draft pending VA002.
   and private.
 - Review and Preview, Renew and Duplicate, and Close and Archive remain distinct.
 - Dashboard summarizes; My Jobs manages.
+- Interaction-state artifacts inherit an approved page state and modify only
+  the minimum interface necessary to document a single user interaction.
+- The Job Center progressively reveals capability as the user demonstrates
+  intent.
 
 ## 8. Recently Approved Visual References
 
-None. JC-011 01k is the active Draft candidate, not an Approved reference.
+- JC-010 v1.0 — Job Finder State 1 (First Touch).
+- JC-014 v1.0 — Location Selection Modal.
+- JC-015 v1.0 — Browse Reveal.
+- JC-011 v1.0 — Job Finder State 2 (Search Results).
 
 ## 9. Active Design Authority
 
 Job Center Design System v1 controls written visual/interaction rules. The
 visual manifest controls artifact status. Only manifest entries marked Approved
-may serve as visual implementation authority; there are currently none.
+may serve as visual implementation authority. The four Approved references in
+Search & Discovery Interaction Suite v1 jointly govern the canonical desktop
+search/discovery journey within their individual approval scopes.
 
 ## 10. Immediate Engineering Priorities
 
-1. Run VA002 against JC-011 01k without expanding artifact scope.
-2. Continue bounded visual approvals before opening implementation convergence
-   tickets.
+1. Define and govern JC-030 Job Detail as the next primary UX workstream.
+2. Follow with Employer UX, Saved Jobs / Alerts, and responsive adaptations.
 3. Keep implementation, pilot, and launch acceptance behind explicit tickets.

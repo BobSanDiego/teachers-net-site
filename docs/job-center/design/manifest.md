@@ -6,6 +6,12 @@ This manifest implements the reference-control rules in Job Center Design System
 
 JC-011 is the first Approved filename-specific reference. JC-010, JC-014, and JC-015 are also Approved through explicit Engineering Director decisions. Each decision names an exact raster and bounded desktop Job Finder state or component. No other manifest entry inherits those approvals; landing images and all other uncertain artifacts retain their existing status until separately approved.
 
+**Search & Discovery Interaction Suite v1 — Complete.** Approved JC-010,
+JC-014, JC-015, and JC-011 together define the canonical desktop v1 journey
+from first-touch discovery through location selection or browse exploration to
+search results. Suite membership does not broaden any artifact's individual
+approval scope.
+
 Status totals for manifest entries: **Approved 4; Draft 8; Placeholder 15; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules

@@ -6,37 +6,39 @@ Active Development
 
 ## Current Phase
 
-V1 governance and approved-reference stabilization before implementation
-convergence and release-candidate acceptance.
+Search & Discovery Interaction Suite v1 complete; Job Detail is the next
+primary governed UX workstream.
 
 ## Current Milestone
 
-Establish governed product and visual authority, then converge implementation
-through bounded tickets before controlled pilot and release-candidate review.
+Define the remaining canonical UX surfaces, beginning with JC-030 Job Detail,
+then converge implementation through bounded tickets before controlled pilot
+and release-candidate review.
 
 ## Current Focus
 
-The Canonical V1 Contract, Employer UX V1, Job Center Design System v1, journey
-audits, and visual manifest now govern the product. The immediate priority is
-the first Approved visual reference. JC-011 01k is Draft pending VA002.
+Search & Discovery Interaction Suite v1 is Complete. Approved JC-010, JC-014,
+JC-015, and JC-011 define the canonical desktop first-touch, location, browse,
+and results sequence. The immediate UX priority is JC-030 Job Detail.
 
 ## Current Reference Page/Flow
 
-One public `/jobs/` Job Finder for employer-posted and Teachers.Net-curated
-jobs. Search and Browse share the same results, lifecycle, presentation, and
-application behavior.
+JC-010 first-touch discovery → JC-014 location selection or JC-015 browse
+exploration → JC-011 search results. Search and Browse share the same results,
+lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-Visual authority approval and continuity-governance stabilization.
+JC-030 Job Detail definition and visual authority.
 
 ## Next Executable Ticket
 
-VA002 - Re-review JC-011 using only the active 01k Draft candidate.
+Unassigned — define and govern JC-030 Job Detail through a bounded ticket.
 
 ## Next Decision
 
-Decide whether JC-011 01k qualifies as the first Approved visual reference.
+Approve the product and visual scope required to make JC-030 an implementation
+authority.
 
 ## Required Google Drive Context
 
@@ -51,7 +53,8 @@ when the ticket requires them.
 
 ## Open Risks
 
-- No Job Center artifact is currently Approved in the visual manifest.
+- JC-030 remains a Placeholder with no Approved visual reference.
+- Responsive adaptations remain unresolved and do not inherit desktop approval.
 - Implementation has not yet converged to the written product/design authority.
 - A real-job pilot is required before any bulk loading.
 - Core Terms CTJ004-CTJ006 commits remain ahead of `origin/main` in the local

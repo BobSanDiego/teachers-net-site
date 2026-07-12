@@ -491,6 +491,32 @@ and mobile expansion pattern require an approved Search Panel reference. The
 available panel comparison artifacts are Unclassified and cannot freeze these
 details.
 
+### 9.6 Search & Discovery Interaction Suite v1
+
+**Status: Complete.** The canonical desktop v1 search/discovery journey is
+defined by these Approved references, used together in interaction order:
+
+1. **JC-010 — Job Finder State 1:** first-touch discovery.
+2. **JC-014 — Location Selection Modal:** location selection.
+3. **JC-015 — Browse Reveal:** browse exploration.
+4. **JC-011 — Job Finder State 2:** search results.
+
+The governing interaction-state rule is:
+
+> Interaction-state artifacts inherit an approved page state and modify only
+> the minimum interface necessary to document a single user interaction.
+
+The governing progressive-disclosure rule is:
+
+> The Job Center progressively reveals capability as the user demonstrates
+> intent.
+
+Future interaction states follow the same philosophy. This suite freezes the
+approved desktop journey only; it does not confer approval on responsive
+adaptations, Job Detail, employer, Saved Jobs, Alerts, or other placeholder
+references. Exact artifact filenames, versions, scopes, and lineage remain
+controlled by the visual manifest.
+
 ## 10. Canonical job-listing composition
 
 ### 10.1 Directory-entry rule
