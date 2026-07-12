@@ -28,7 +28,7 @@ A filename, sequence number, `final` label, recency, implementation use, or dire
 
 ## Directory roles
 
-- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.0 and JC-011 v1.0; JC-011 was the first governed entry.
+- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.0, JC-011 v1.0, and JC-014 v1.0; JC-011 was the first governed entry.
 - `draft/` — optional controlled copies of active design candidates.
 - `superseded/` — optional controlled copies retained for lineage.
 - `source/` — optional editable source files and provenance records.
