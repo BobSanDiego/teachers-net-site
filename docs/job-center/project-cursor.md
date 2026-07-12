@@ -19,7 +19,9 @@ and release-candidate review.
 
 Search & Discovery Interaction Suite v1 is Complete. Approved JC-010, JC-014,
 JC-015, and JC-011 define the canonical desktop first-touch, location, browse,
-and results sequence. The immediate UX priority is JC-030 Job Detail.
+and results sequence. Job Center UX Atlas v1 provides the concise product map
+for all current governed surfaces. The immediate UX priority is JC-030 Job
+Detail.
 
 ## Current Reference Page/Flow
 
@@ -51,7 +53,8 @@ A new ChatGPT session reads only these by default:
 
 The Project Cursor, Canonical V1 Contract, Employer UX V1, Job Center Design
 System v1, Visual Manifest, roadmap, and implementation docs are consulted only
-when the ticket requires them.
+when the ticket requires them. Job Center UX Atlas v1 is the concise product map
+for screen purpose, relationships, and governance status.
 
 ## Open Risks
 

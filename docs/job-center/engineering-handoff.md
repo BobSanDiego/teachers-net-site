@@ -17,9 +17,9 @@ issued.
 
 ## 3. Last Completed Milestone
 
-DOC002 formalized Search & Discovery Interaction Suite v1 as Complete. Approved
-JC-010, JC-014, JC-015, and JC-011 define the canonical desktop journey from
-first touch through location or browse interaction to search results.
+D004 established Job Center UX Atlas v1 as the concise product map for current
+governed screens, their relationships, and governance status. JC-030 Job Detail
+remains the next primary UX workstream.
 
 ## 4. Next Five Planned Tickets
 
@@ -45,6 +45,7 @@ first touch through location or browse interaction to search results.
 - Approved Mockup Library and Manifest (D003).
 - Engineering Handoff v2 procedure and template (DOC001).
 - Search & Discovery Interaction Suite v1 milestone (DOC002).
+- Job Center UX Atlas v1 (D004).
 
 ## 7. Recently Approved Product Decisions
 

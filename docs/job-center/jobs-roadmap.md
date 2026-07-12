@@ -3,7 +3,8 @@
 ## Roadmap Context
 
 This is the durable engineering sequence. For current state, read the Job Center
-Project Cursor, Engineering Handoff, and V1 Execution Plan.
+Project Cursor, Engineering Handoff, and V1 Execution Plan. Use Job Center UX
+Atlas v1 for the concise map of governed screens and their relationships.
 
 ## Completed Foundation
 
