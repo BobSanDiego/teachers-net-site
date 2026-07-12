@@ -118,14 +118,14 @@ Status totals for manifest entries: **Approved 3; Draft 9; Placeholder 15; Super
 
 - **Screen / Component:** Logged-out first-touch `/jobs/`, Browse by Grade or Subject expanded inline
 - **Status:** Draft
-- **Version:** 0.1
-- **Active Draft Artifact:** `art/mockups/job-center/generated/job-finder-browse-reveal-01a-design-target.png`
-- **Authority:** DESIGN012 creates 01a as the canonical Draft candidate for the expanded Browse interaction. It has no approval authority.
+- **Version:** 0.2
+- **Active Draft Artifact:** `art/mockups/job-center/generated/job-finder-browse-reveal-01b-design-target.png`
+- **Authority:** DESIGN013 creates 01b as the polished canonical Draft candidate for the expanded Browse interaction. It has no approval authority.
 - **Related Design System section:** 8, 9, 12, 17
 - **Related Product Specification:** Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-003
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Derived from JC-010 v1.0 and documents only the expanded inline Browse interaction. No search has been submitted; there is no keyword, selected location, filter, or applied chip state. The reveal presents Preschool, Elementary, Middle School, High School, and Browse All Subjects as restrained exploratory cards while Search Jobs remains primary and Refine Search remains unchanged. The artifact uses the refined smaller/lighter Save-heart treatment established in JC-014 without modifying the Approved JC-010 raster. JC-015 does not revise or supersede JC-010.
+- **Notes:** Derived from JC-010 v1.0 and documents only the expanded inline Browse interaction. Lineage is DESIGN012 01a Draft 0.1 → DESIGN013 01b Draft 0.2; 01a remains preserved as Draft history. No search has been submitted; there is no keyword, selected location, filter, or applied chip state. The caret and dark heading form one disclosure control, opposite the unchanged Refine Search action beneath the integrated search control. The reveal presents Preschool, Elementary, Middle School, High School, and Browse All Subjects as restrained exploratory cards while Search Jobs remains primary. The artifact uses the refined smaller/lighter Save-heart treatment established in JC-014 without modifying the Approved JC-010 raster. JC-015 does not revise or supersede JC-010.
 
 ### JC-020 — Canonical listing
 
@@ -417,7 +417,8 @@ The status below is the artifact's governed classification. A path may relate to
 
 | Artifact | Represents | Status | Manifest entry | Authority note |
 |---|---|---:|---|---|
-| `art/mockups/job-center/generated/job-finder-browse-reveal-01a-design-target.png` | Logged-out first-touch Browse reveal expanded inline | Draft | JC-015 | Active DESIGN012 candidate; no search/filter/location state |
+| `art/mockups/job-center/generated/job-finder-browse-reveal-01a-design-target.png` | Logged-out first-touch Browse reveal expanded inline | Draft | JC-015 | Historical DESIGN012 Draft retained after DESIGN013 polish |
+| `art/mockups/job-center/generated/job-finder-browse-reveal-01b-design-target.png` | Polished logged-out first-touch Browse reveal expanded inline | Draft | JC-015 | Active DESIGN013 candidate; disclosure caret and secondary-action alignment refined |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
 | `docs/job-center/design/approved/job-finder-location-modal-lo-01b-design-target.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
