@@ -76,8 +76,13 @@ sessions. It is not a mirror of this repository.
 
 Canonical Google Drive startup structure:
 
-- `Teachers.Net Engineering/Shared/Engineering Director Playbook`
+- `Teachers.Net Engineering/Shared/Engineering Director Playbook` —
+  <https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ>
 - `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
+
+The active Project Cursor must record the Handoff's full Google Docs URL.
+Startup prompts must reproduce both full URLs beneath their exact document
+titles; a title alone is not sufficient recovery information.
 
 Google Drive may retain supporting governance documents, but a fresh ChatGPT
 session reads only the Playbook and current Engineering Handoff by default. The
@@ -93,8 +98,9 @@ Drive only to recover operational context at the start of a new session.
 
 Every new ChatGPT project session should read:
 
-1. Engineering Director Playbook.
-2. The target project's Engineering Handoff.
+1. Engineering Director Playbook, using its canonical full Google Docs URL.
+2. The target project's Engineering Handoff, using the full URL recorded in
+   that project's Project Cursor.
 
 It should adopt that state without summarizing either document and report only
 current phase, current ticket, last completed milestone, next five planned

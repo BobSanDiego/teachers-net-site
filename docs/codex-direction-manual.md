@@ -18,8 +18,13 @@ in local Teachers.Net docs.
 Google Drive contains the operational ChatGPT recovery layer. Default startup
 uses only:
 
-- `Teachers.Net Engineering/Shared/Engineering Director Playbook`
+- `Teachers.Net Engineering/Shared/Engineering Director Playbook` —
+  <https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ>
 - `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
+
+Every active Project Cursor must record the full Google Docs URL for its
+Engineering Handoff. PREPARE HANDOFF output must include both full URLs, not
+title-only Drive search instructions.
 
 The Handoff is delta-oriented and follows
 `docs/engineering-handoff-template.md`. ChatGPT reads the Project Cursor,

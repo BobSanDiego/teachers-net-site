@@ -11,14 +11,15 @@ convergence and release-candidate acceptance.
 
 ## 2. Current Ticket
 
-DOC002 — Formalize the completed Search & Discovery Interaction Suite v1 across
-the durable Job Center documentation. Documentation only.
+None. The next approved objective is a bounded definition/governance ticket for
+JC-030 Job Detail. Do not begin design or implementation before that ticket is
+issued.
 
 ## 3. Last Completed Milestone
 
-Search & Discovery Interaction Suite v1 is complete. Approved JC-010, JC-014,
-JC-015, and JC-011 now define the canonical desktop journey from first touch
-through location or browse interaction to search results.
+DOC002 formalized Search & Discovery Interaction Suite v1 as Complete. Approved
+JC-010, JC-014, JC-015, and JC-011 define the canonical desktop journey from
+first touch through location or browse interaction to search results.
 
 ## 4. Next Five Planned Tickets
 

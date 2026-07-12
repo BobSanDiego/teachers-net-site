@@ -104,8 +104,11 @@ only that project's continuity set, update its Project Cursor only for durable
 state changes, and end by outputting the concise project-aware ChatGPT startup
 prompt. The prompt must reference:
 
-- `Engineering Director Playbook`
-- `<Project Name> Engineering Handoff`
+- `Engineering Director Playbook v2` and its full canonical Google Docs URL
+- `<Project Name> Engineering Handoff` and the full Google Docs URL recorded in
+  that project's Project Cursor
+
+Do not emit title-only Drive retrieval instructions in a handoff prompt.
 
 Current next task:
 Use the active project's Project Cursor and Engineering Handoff. Do not treat

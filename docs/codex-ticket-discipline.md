@@ -194,7 +194,9 @@ Project: <Project Name>
 Retrieve and read these exact Google Drive documents in order:
 
 1. Engineering Director Playbook
+   https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ
 2. <Project Name> Engineering Handoff
+   <FULL GOOGLE DOC URL FROM THE ACTIVE PROJECT CURSOR>
 
 Adopt their workflow and current engineering state. Do not reconstruct missing
 state from conversational memory and do not summarize the documents. If either
@@ -213,6 +215,11 @@ Reply with only:
 
 Then stop and wait for my instruction.
 ```
+
+Every generated handoff prompt must include the full Google Docs URL beneath
+each document title. Do not emit title-only retrieval instructions. The active
+Project Cursor owns the project-specific Handoff URL; if it is absent or cannot
+be verified, report that deficiency instead of guessing a link.
 
 ## Visual Verification Policy
 

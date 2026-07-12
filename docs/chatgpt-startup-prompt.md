@@ -4,8 +4,10 @@
 Project: <Project Name>
 
 Retrieve and read these exact Google Drive documents in order:
-1. Engineering Director Playbook
+1. Engineering Director Playbook v2
+   https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ
 2. <Project Name> Engineering Handoff
+   <FULL GOOGLE DOC URL FROM THE ACTIVE PROJECT CURSOR>
 
 Adopt their workflow and current engineering state. Do not reconstruct missing
 state from conversational memory and do not summarize the documents.

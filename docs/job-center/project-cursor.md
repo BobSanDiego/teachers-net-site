@@ -44,8 +44,10 @@ authority.
 
 A new ChatGPT session reads only these by default:
 
-1. Engineering Director Playbook
+1. Engineering Director Playbook v2
+   - https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ
 2. Job Center Engineering Handoff
+   - https://docs.google.com/document/d/1foiIgRjBcQcKUbGRsHRuCaPDk0R7o2BCwuFmx96Z3AE
 
 The Project Cursor, Canonical V1 Contract, Employer UX V1, Job Center Design
 System v1, Visual Manifest, roadmap, and implementation docs are consulted only
