@@ -6,7 +6,7 @@ This manifest implements the reference-control rules in Job Center Design System
 
 JC-011 is the first Approved filename-specific reference. JC-010 and JC-014 are also Approved through explicit Engineering Director decisions. Each decision names an exact raster and bounded desktop Job Finder state or component. No other manifest entry inherits those approvals; landing images and all other uncertain artifacts retain their existing status until separately approved.
 
-Status totals for manifest entries: **Approved 3; Draft 8; Placeholder 15; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 3; Draft 9; Placeholder 15; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -113,6 +113,19 @@ Status totals for manifest entries: **Approved 3; Draft 8; Placeholder 15; Super
 - **Related future UX Atlas entry:** JC-ATLAS-003
 - **Related implementation ticket(s):** None assigned
 - **Notes:** JC-010 v1.0 is the locked background authority; JC-014 does not revise or supersede it. Lineage is DESIGN010 01a Draft 0.1 → DESIGN011 01b Draft 0.2 → explicit Engineering Director approval 01b v1.0; 01a remains preserved as Draft history. The logged-out artifact governs the shared modal structure. Logged-in implementation uses the same modal but omits the `Sign in to access advanced location features.` teaser; do not create a separate logged-in raster unless later review identifies a meaningful visual difference. Distance remains dependent on a valid location or origin, uses the practical 5–100 radius scale, and Apply remains inactive until an origin is established. Browse Reveal remains a separate future artifact. Approval does not independently approve JC-001, JC-020, JC-021, JC-024, JC-070, Browse Reveal, or implementation.
+
+### JC-015 — Browse Reveal
+
+- **Screen / Component:** Logged-out first-touch `/jobs/`, Browse by Grade or Subject expanded inline
+- **Status:** Draft
+- **Version:** 0.1
+- **Active Draft Artifact:** `art/mockups/job-center/generated/job-finder-browse-reveal-01a-design-target.png`
+- **Authority:** DESIGN012 creates 01a as the canonical Draft candidate for the expanded Browse interaction. It has no approval authority.
+- **Related Design System section:** 8, 9, 12, 17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-003
+- **Related implementation ticket(s):** None assigned
+- **Notes:** Derived from JC-010 v1.0 and documents only the expanded inline Browse interaction. No search has been submitted; there is no keyword, selected location, filter, or applied chip state. The reveal presents Preschool, Elementary, Middle School, High School, and Browse All Subjects as restrained exploratory cards while Search Jobs remains primary and Refine Search remains unchanged. The artifact uses the refined smaller/lighter Save-heart treatment established in JC-014 without modifying the Approved JC-010 raster. JC-015 does not revise or supersede JC-010.
 
 ### JC-020 — Canonical listing
 
@@ -404,6 +417,7 @@ The status below is the artifact's governed classification. A path may relate to
 
 | Artifact | Represents | Status | Manifest entry | Authority note |
 |---|---|---:|---|---|
+| `art/mockups/job-center/generated/job-finder-browse-reveal-01a-design-target.png` | Logged-out first-touch Browse reveal expanded inline | Draft | JC-015 | Active DESIGN012 candidate; no search/filter/location state |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
 | `docs/job-center/design/approved/job-finder-location-modal-lo-01b-design-target.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
@@ -466,4 +480,4 @@ The status below is the artifact's governed classification. A path may relate to
 
 ## Approval gaps
 
-The `approved/` directory contains the JC-010 v1.0, JC-011 v1.0, and JC-014 v1.0 controlled references. Separate approval decisions are still required for the shell as JC-001, landing, other Finder states, progressive Search, canonical listing as JC-020, advertising as JC-024, and responsive variants. Employer, Job Detail, Saved Jobs, Alerts, Moderator, and Administration references remain governed placeholders and must not be inferred from current implementation or from existing approvals.
+The `approved/` directory contains the JC-010 v1.0, JC-011 v1.0, and JC-014 v1.0 controlled references. Separate approval decisions are still required for the shell as JC-001, landing, other Finder states, JC-015 Browse Reveal, progressive Search, canonical listing as JC-020, advertising as JC-024, and responsive variants. Employer, Job Detail, Saved Jobs, Alerts, Moderator, and Administration references remain governed placeholders and must not be inferred from current implementation or from existing approvals.
