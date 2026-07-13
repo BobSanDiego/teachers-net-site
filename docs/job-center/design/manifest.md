@@ -4,7 +4,12 @@
 
 This manifest implements the reference-control rules in Job Center Design System v1. It inventories known visual artifacts and governed visual gaps as of D003. It does not approve a design by implication.
 
-JC-011 is the first Approved filename-specific reference. JC-010, JC-014, and JC-015 are also Approved through explicit Engineering Director decisions. Each decision names an exact raster and bounded desktop Job Finder state or component. No other manifest entry inherits those approvals; landing images and all other uncertain artifacts retain their existing status until separately approved.
+JC-011 is the first Approved filename-specific reference. JC-010, JC-014,
+JC-015, and JC-030 are also Approved through explicit Engineering Director
+decisions. Each decision names an exact raster and bounded desktop screen,
+state, or component. No other manifest entry inherits those approvals; landing
+images and all other uncertain artifacts retain their existing status until
+separately approved.
 
 **Search & Discovery Interaction Suite v1 — Complete.** Approved JC-010,
 JC-014, JC-015, and JC-011 together define the canonical desktop v1 journey
@@ -12,7 +17,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 4; Draft 8; Placeholder 15; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 5; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -201,14 +206,19 @@ Status totals for manifest entries: **Approved 4; Draft 8; Placeholder 15; Super
 ### JC-030 — Job Detail
 
 - **Screen / Component:** Public canonical job-detail view
-- **Status:** Placeholder
-- **Version:** 0.1
-- **Authority:** No governed artifact identified.
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/job-detail-01c-approved.png`
+- **Editable source:** Unavailable
+- **Approval date:** 2026-07-13
+- **Approval authority:** Engineering Director, DESIGN006
+- **Approval scope:** Canonical desktop public Job Detail exactly as shown in the approved raster, including the constrained Job Center shell, job identity and structured facts, supplied narrative and qualifications, application/save presentation, right rail, employer identity, related-job discovery, advertising reservations, employer-claim context, and footer.
+- **Authority:** DESIGN006 explicitly approves the exact supplied raster as the canonical JC-030 desktop implementation and visual-QA reference within the stated boundary.
 - **Related Design System section:** 11, 17
-- **Related Product Specification:** Canonical V1 Contract
+- **Related Product Specification:** JC-030 Job Detail Product Definition; JC-030 Job Detail UX Specification; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-006
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Presentation remains explicitly unresolved beyond written principles.
+- **Notes:** Lineage is JC-030 Placeholder 0.1 → unapproved implementation evidence and Job Detail concepts → AUDIT007 reconciliation → Engineering Director-supplied approved raster `ChatGPT Image Jul 13, 2026, 12_05_45 AM.png` → controlled library copy `job-detail-01c-approved.png` v1.0. The artifact is a raster visual authority. No matching editable source was produced or retained; `job-detail-01b-canonical-candidate.html` is not its source and is not associated with this approval. Implementation must rely on the approved PNG together with the JC-030 Product Definition, UX Specification, AUDIT007 reconciliation, and Job Center Design System. The missing editable source does not authorize visual reinterpretation. Any future reconstructed source is derivative and must not replace the approved PNG without a separate approval decision. Approval is desktop-only and does not approve responsive authority or implementation.
 
 ### JC-040 — Saved Jobs
 
@@ -429,6 +439,7 @@ The status below is the artifact's governed classification. A path may relate to
 | `art/mockups/job-center/generated/job-finder-browse-reveal-01a-design-target.png` | Logged-out first-touch Browse reveal expanded inline | Draft | JC-015 | Historical DESIGN012 Draft retained after DESIGN013 polish |
 | `art/mockups/job-center/generated/job-finder-browse-reveal-01b-design-target.png` | Polished logged-out first-touch Browse reveal expanded inline | Approved | JC-015 | Exact source approved by the Engineering Director for JC-015 only |
 | `docs/job-center/design/approved/job-finder-browse-reveal-01b-design-target.png` | Controlled JC-015 reference copy | Approved | JC-015 | Canonical library copy; byte-identical to the approved source artifact |
+| `docs/job-center/design/approved/job-detail-01c-approved.png` | Controlled JC-030 desktop reference copy | Approved | JC-030 | Canonical raster authority; byte-identical to the Engineering Director-supplied PNG; editable source unavailable |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
 | `docs/job-center/design/approved/job-finder-location-modal-lo-01b-design-target.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
@@ -491,4 +502,10 @@ The status below is the artifact's governed classification. A path may relate to
 
 ## Approval gaps
 
-The `approved/` directory contains the JC-010 v1.0, JC-011 v1.0, JC-014 v1.0, and JC-015 v1.0 controlled references. Separate approval decisions are still required for the shell as JC-001, landing, other Finder states, progressive Search, canonical listing as JC-020, advertising as JC-024, and responsive variants. Employer, Job Detail, Saved Jobs, Alerts, Moderator, and Administration references remain governed placeholders and must not be inferred from current implementation or from existing approvals.
+The `approved/` directory contains the JC-010 v1.0, JC-011 v1.0, JC-014
+v1.0, JC-015 v1.0, and JC-030 v1.0 controlled references. Separate approval
+decisions are still required for the shell as JC-001, landing, other Finder
+states, progressive Search, canonical listing as JC-020, advertising as
+JC-024, and responsive variants. Employer, Saved Jobs, Alerts, Moderator, and
+Administration references remain governed placeholders and must not be
+inferred from current implementation or from existing approvals.

@@ -154,9 +154,11 @@ Continue a governed search interaction.
 ### Primary User
 Job seeker
 ### Status
-Placeholder
+Approved
 ### Authority
-No approved implementation authority yet exists.
+JC-030 v1.0 approved desktop raster, together with the JC-030 Product
+Definition, UX Specification, AUDIT007 reconciliation, and Job Center Design
+System.
 ### Preceded By
 JC-011
 ### Leads To
@@ -425,11 +427,13 @@ External Apply or JC-040
 ### Dependencies
 Canonical job contract, JC-030 product definition and UX specification, and application destination integrity
 ### Current State
-Placeholder
+Approved desktop visual authority; responsive and implementation authority
+remain unresolved.
 ### Next Expected Work
-Govern visual authority from the approved product definition and UX specification.
+Audit the current implementation against the complete approved authority set.
 ### Notes
-Product truth and UX are defined in `jc-030-job-detail-product-definition.md` and `jc-030-job-detail-ux-specification.md`; visual design, responsive adaptation, and implementation remain unresolved.
+The canonical raster is `design/approved/job-detail-01c-approved.png`. Editable
+source is unavailable; this does not authorize visual reinterpretation.
 
 ---
 

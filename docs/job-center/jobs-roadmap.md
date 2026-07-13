@@ -25,8 +25,8 @@ Atlas v1 for the concise map of governed screens and their relationships.
 ## Next Primary UX Workstream
 
 1. **JC-030 — Job Detail:** product truth and UX specification defined;
-   AUDIT007 content/pipeline reconciliation complete; visual
-   authority next.
+   AUDIT007 content/pipeline reconciliation complete; DESIGN006 desktop visual
+   authority v1.0 approved; implementation audit next.
 2. Employer UX
 3. Saved Jobs / Alerts
 4. Responsive adaptations

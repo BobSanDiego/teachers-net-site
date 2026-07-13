@@ -5,35 +5,37 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — Search & Discovery Interaction Suite v1 is complete;
-governed UX definition now advances to Job Detail before later implementation
-convergence and release-candidate acceptance.
+Active Development — Search & Discovery Interaction Suite v1 and JC-030 desktop
+visual governance are complete; work now advances to bounded Job Detail
+implementation audit before convergence and release-candidate acceptance.
 
 ## 2. Current Ticket
 
-None. AUDIT007 is complete. The next objective is a bounded JC-030 visual
-refinement using the reconciliation findings. Do not begin design or
-implementation before that ticket is issued.
+None. DESIGN006 is complete. The next objective is a bounded audit of the
+current JC-030 implementation against approved product, UX, reconciliation,
+design-system, and raster authority. Do not begin implementation before that
+ticket is issued.
 
 ## 3. Last Completed Milestone
 
-AUDIT007 reconciled JC-030 product/UX requirements, the current content
-pipeline, and staged visual evidence. JC-030 remains a Placeholder pending
-separate visual, responsive, and implementation authority.
+DESIGN006 approved the exact supplied JC-030 desktop raster as v1.0 visual
+authority. Its editable source is unavailable and no candidate HTML is
+associated with the approval. Responsive and implementation authority remain
+separate.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Refine and govern a JC-030 Job Detail visual reference from the
-   AUDIT007 safe-input findings.
-2. Unassigned — Advance Employer UX visual authority.
-3. Unassigned — Advance Saved Jobs / Alerts visual authority.
-4. Unassigned — Define responsive adaptations of approved desktop states.
-5. Unassigned — Translate approved references into narrowly scoped
-   implementation tickets; no implementation begins without explicit tickets.
+1. Unassigned — Audit current JC-030 implementation against approved authority.
+2. Unassigned — Translate the audit into narrowly scoped JC-030 implementation
+   tickets.
+3. Unassigned — Advance Employer UX visual authority.
+4. Unassigned — Advance Saved Jobs / Alerts visual authority.
+5. Unassigned — Define responsive adaptations of approved desktop states.
 
 ## 5. Current Blockers
 
-- JC-030 remains a Placeholder and has no Approved visual reference.
+- JC-030 implementation has not yet been audited or converged to its Approved
+  v1.0 desktop visual authority.
 - Responsive adaptations remain unresolved and do not inherit desktop approval.
 - Release-candidate status still requires implementation convergence, real-job
   pilot evidence, operational launch planning, and explicit acceptance.
@@ -68,6 +70,7 @@ separate visual, responsive, and implementation authority.
 - JC-014 v1.0 — Location Selection Modal.
 - JC-015 v1.0 — Browse Reveal.
 - JC-011 v1.0 — Job Finder State 2 (Search Results).
+- JC-030 v1.0 — Job Detail (Desktop).
 
 ## 9. Active Design Authority
 
@@ -75,11 +78,14 @@ Job Center Design System v1 controls written visual/interaction rules. The
 visual manifest controls artifact status. Only manifest entries marked Approved
 may serve as visual implementation authority. The four Approved references in
 Search & Discovery Interaction Suite v1 jointly govern the canonical desktop
-search/discovery journey within their individual approval scopes.
+search/discovery journey within their individual approval scopes. JC-030 v1.0
+governs desktop Job Detail together with its Product Definition, UX
+Specification, AUDIT007 reconciliation, and Design System; its unavailable
+editable source does not authorize reinterpretation.
 
 ## 10. Immediate Engineering Priorities
 
-1. Create and govern JC-030 Job Detail visual authority without reopening
-   product truth or UX.
+1. Audit current JC-030 implementation against approved authority without
+   reopening product truth, UX, or visual governance.
 2. Follow with Employer UX, Saved Jobs / Alerts, and responsive adaptations.
 3. Keep implementation, pilot, and launch acceptance behind explicit tickets.

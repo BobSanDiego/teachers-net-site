@@ -6,14 +6,16 @@ Active Development
 
 ## Current Phase
 
-Search & Discovery Interaction Suite v1 complete; Job Detail is the next
-primary governed UX workstream.
+Search & Discovery Interaction Suite v1 and JC-030 desktop visual governance
+complete; Job Detail implementation reconciliation is the next primary
+workstream.
 
 ## Current Milestone
 
 Define the remaining canonical UX surfaces. JC-030 Job Detail product truth and
-UX are complete, and AUDIT007 reconciles them with the current content pipeline.
-Visual authority is next, followed by bounded implementation convergence,
+UX are complete, AUDIT007 reconciles them with the current content pipeline,
+and DESIGN006 approves JC-030 desktop visual authority v1.0. A bounded
+implementation audit is next, followed by implementation convergence,
 controlled pilot, and release-candidate review.
 
 ## Current Focus
@@ -22,8 +24,9 @@ Search & Discovery Interaction Suite v1 is Complete. Approved JC-010, JC-014,
 JC-015, and JC-011 define the canonical desktop first-touch, location, browse,
 and results sequence. Job Center UX Atlas v1 provides the concise product map
 for all current governed surfaces. JC-030 product truth and UX are defined;
-AUDIT007 establishes safe content inputs and current pipeline gaps, and visual
-authority remains the immediate priority.
+AUDIT007 establishes safe content inputs and current pipeline gaps. DESIGN006
+approves the exact JC-030 v1.0 raster as desktop visual authority; implementation
+audit is now the immediate priority.
 
 ## Current Reference Page/Flow
 
@@ -33,17 +36,18 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-JC-030 Job Detail visual authority.
+JC-030 Job Detail implementation audit against approved authority.
 
 ## Next Executable Ticket
 
-Unassigned — create and govern a JC-030 Job Detail visual reference from the
-approved product definition and UX specification through a bounded ticket.
+Unassigned — audit the current JC-030 implementation against its Product
+Definition, UX Specification, AUDIT007 reconciliation, Design System, and
+approved v1.0 raster through a bounded ticket.
 
 ## Next Decision
 
-Approve the visual scope required to make JC-030 an implementation authority
-without reopening its product truth or UX.
+Define the smallest implementation-convergence sequence required by a bounded
+JC-030 implementation audit without reopening product, UX, or visual authority.
 
 ## Required Google Drive Context
 
@@ -61,7 +65,8 @@ for screen purpose, relationships, and governance status.
 
 ## Open Risks
 
-- JC-030 remains a Placeholder with no Approved visual reference.
+- JC-030 implementation has not yet been audited or converged to its Approved
+  v1.0 desktop visual authority.
 - Responsive adaptations remain unresolved and do not inherit desktop approval.
 - Implementation has not yet converged to the written product/design authority.
 - A real-job pilot is required before any bulk loading.
