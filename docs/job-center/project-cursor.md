@@ -6,30 +6,23 @@ Active Development
 
 ## Current Phase
 
-Search & Discovery Interaction Suite v1 and JC-030 desktop visual governance
-complete; Job Detail implementation reconciliation is the next primary
-workstream.
+Shared responsive decisions are complete; JC-010 responsive visual authority
+is the next governed workstream.
 
 ## Current Milestone
 
-Define the remaining canonical UX surfaces. JC-030 Job Detail product truth and
-UX are complete, AUDIT007 reconciles them with the current content pipeline,
-and DESIGN006 approves JC-030 desktop visual authority v1.0. A bounded
-implementation audit is next, followed by implementation convergence,
-controlled pilot, and release-candidate review.
+RESP-DEC001 resolves the shared responsive decisions required to interpret the
+approved desktop suite without defining breakpoints or implementation. JC-010
+tablet and mobile visual authority is next; screen-specific responsive deltas
+remain separate until that shared baseline is governed.
 
 ## Current Focus
 
-Search & Discovery Interaction Suite v1 is Complete. Approved JC-010, JC-014,
-JC-015, and JC-011 define the canonical desktop first-touch, location, browse,
-and results sequence. DESIGN009 supersedes the prior JC-010 desktop raster with
-the approved logged-out first-touch v1.1 authority and its reconciled right
-rail; responsive authority remains separate. Job Center UX Atlas v1 provides
-the concise product map for all current governed surfaces. JC-030 product truth
-and UX are defined;
-AUDIT007 establishes safe content inputs and current pipeline gaps. DESIGN006
-approves the exact JC-030 v1.0 raster as desktop visual authority; implementation
-audit is now the immediate priority.
+RESP-DEC001 governs shared responsive navigation, search, listing, support-flow,
+advertising, Job Detail conversion-order, and modal behavior. Desktop authority
+for JC-010 v1.1, JC-011, JC-014, JC-015, and JC-030 remains unchanged. The next
+step is JC-010 tablet and mobile visual authority; no responsive implementation
+is authorized.
 
 ## Current Reference Page/Flow
 
@@ -39,18 +32,17 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-JC-030 Job Detail implementation audit against approved authority.
+JC-010 shared responsive visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — audit the current JC-030 implementation against its Product
-Definition, UX Specification, AUDIT007 reconciliation, Design System, and
-approved v1.0 raster through a bounded ticket.
+Unassigned — create and govern the JC-010 tablet and mobile responsive visual
+authority from the approved v1.1 desktop state and RESP-DEC001.
 
 ## Next Decision
 
-Define the smallest implementation-convergence sequence required by a bounded
-JC-030 implementation audit without reopening product, UX, or visual authority.
+Approve the minimum JC-010 tablet/mobile baseline without reopening desktop
+authority or beginning implementation.
 
 ## Required Google Drive Context
 
@@ -70,7 +62,8 @@ for screen purpose, relationships, and governance status.
 
 - JC-030 implementation has not yet been audited or converged to its Approved
   v1.0 desktop visual authority.
-- Responsive adaptations remain unresolved and do not inherit desktop approval.
+- Responsive decisions are complete, but responsive visual authority remains
+  pending and does not inherit desktop approval.
 - Implementation has not yet converged to the written product/design authority.
 - A real-job pilot is required before any bulk loading.
 - Core Terms CTJ004-CTJ006 commits remain ahead of `origin/main` in the local
