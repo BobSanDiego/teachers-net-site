@@ -11,19 +11,20 @@ convergence and release-candidate acceptance.
 
 ## 2. Current Ticket
 
-None. The next approved objective is a bounded definition/governance ticket for
-JC-030 Job Detail. Do not begin design or implementation before that ticket is
-issued.
+None. AUDIT007 is complete. The next objective is a bounded JC-030 visual
+refinement using the reconciliation findings. Do not begin design or
+implementation before that ticket is issued.
 
 ## 3. Last Completed Milestone
 
-DOC006 defined canonical JC-030 Job Detail UX from approved product truth.
-JC-030 remains a Placeholder pending separate visual, responsive, and
-implementation authority.
+AUDIT007 reconciled JC-030 product/UX requirements, the current content
+pipeline, and staged visual evidence. JC-030 remains a Placeholder pending
+separate visual, responsive, and implementation authority.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Create and govern a JC-030 Job Detail visual reference.
+1. Unassigned — Refine and govern a JC-030 Job Detail visual reference from the
+   AUDIT007 safe-input findings.
 2. Unassigned — Advance Employer UX visual authority.
 3. Unassigned — Advance Saved Jobs / Alerts visual authority.
 4. Unassigned — Define responsive adaptations of approved desktop states.

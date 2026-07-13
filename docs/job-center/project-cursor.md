@@ -12,16 +12,18 @@ primary governed UX workstream.
 ## Current Milestone
 
 Define the remaining canonical UX surfaces. JC-030 Job Detail product truth and
-UX are complete; visual authority is next, followed by bounded implementation
-convergence, controlled pilot, and release-candidate review.
+UX are complete, and AUDIT007 reconciles them with the current content pipeline.
+Visual authority is next, followed by bounded implementation convergence,
+controlled pilot, and release-candidate review.
 
 ## Current Focus
 
 Search & Discovery Interaction Suite v1 is Complete. Approved JC-010, JC-014,
 JC-015, and JC-011 define the canonical desktop first-touch, location, browse,
 and results sequence. Job Center UX Atlas v1 provides the concise product map
-for all current governed surfaces. JC-030 product truth and UX are defined; its
-visual authority remains the immediate priority.
+for all current governed surfaces. JC-030 product truth and UX are defined;
+AUDIT007 establishes safe content inputs and current pipeline gaps, and visual
+authority remains the immediate priority.
 
 ## Current Reference Page/Flow
 
