@@ -11,17 +11,17 @@ primary governed UX workstream.
 
 ## Current Milestone
 
-Define the remaining canonical UX surfaces. JC-030 Job Detail product truth is
-complete; UX specification and visual authority are next, followed by bounded
-implementation convergence, controlled pilot, and release-candidate review.
+Define the remaining canonical UX surfaces. JC-030 Job Detail product truth and
+UX are complete; visual authority is next, followed by bounded implementation
+convergence, controlled pilot, and release-candidate review.
 
 ## Current Focus
 
 Search & Discovery Interaction Suite v1 is Complete. Approved JC-010, JC-014,
 JC-015, and JC-011 define the canonical desktop first-touch, location, browse,
 and results sequence. Job Center UX Atlas v1 provides the concise product map
-for all current governed surfaces. JC-030 product truth is defined; its UX and
-visual authority remain the immediate priority.
+for all current governed surfaces. JC-030 product truth and UX are defined; its
+visual authority remains the immediate priority.
 
 ## Current Reference Page/Flow
 
@@ -31,17 +31,17 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-JC-030 Job Detail UX specification and visual authority.
+JC-030 Job Detail visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — define JC-030 Job Detail UX from the approved product definition
-through a bounded ticket.
+Unassigned — create and govern a JC-030 Job Detail visual reference from the
+approved product definition and UX specification through a bounded ticket.
 
 ## Next Decision
 
-Approve the UX and visual scope required to make JC-030 an implementation
-authority without reopening its product truth.
+Approve the visual scope required to make JC-030 an implementation authority
+without reopening its product truth or UX.
 
 ## Required Google Drive Context
 

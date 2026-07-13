@@ -24,7 +24,7 @@ Atlas v1 for the concise map of governed screens and their relationships.
 
 ## Next Primary UX Workstream
 
-1. **JC-030 — Job Detail:** product truth defined; UX specification and visual
+1. **JC-030 — Job Detail:** product truth and UX specification defined; visual
    authority next.
 2. Employer UX
 3. Saved Jobs / Alerts

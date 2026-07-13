@@ -17,13 +17,13 @@ issued.
 
 ## 3. Last Completed Milestone
 
-DOC005 defined canonical JC-030 Job Detail product truth. JC-030 remains a
-Placeholder pending separate UX, visual, responsive, and implementation
-authority.
+DOC006 defined canonical JC-030 Job Detail UX from approved product truth.
+JC-030 remains a Placeholder pending separate visual, responsive, and
+implementation authority.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Define JC-030 Job Detail UX from the approved product definition.
+1. Unassigned — Create and govern a JC-030 Job Detail visual reference.
 2. Unassigned — Advance Employer UX visual authority.
 3. Unassigned — Advance Saved Jobs / Alerts visual authority.
 4. Unassigned — Define responsive adaptations of approved desktop states.
@@ -47,6 +47,7 @@ authority.
 - Search & Discovery Interaction Suite v1 milestone (DOC002).
 - Job Center UX Atlas v1 (D004).
 - JC-030 Job Detail Product Definition (DOC005).
+- JC-030 Job Detail UX Specification (DOC006).
 
 ## 7. Recently Approved Product Decisions
 
@@ -77,6 +78,7 @@ search/discovery journey within their individual approval scopes.
 
 ## 10. Immediate Engineering Priorities
 
-1. Define and govern JC-030 Job Detail UX without reopening product truth.
+1. Create and govern JC-030 Job Detail visual authority without reopening
+   product truth or UX.
 2. Follow with Employer UX, Saved Jobs / Alerts, and responsive adaptations.
 3. Keep implementation, pilot, and launch acceptance behind explicit tickets.
