@@ -98,7 +98,7 @@ Logged-out job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/job-finder-state-1-01b-design-target.png`
+`docs/job-center/design/approved/job-finder-state-1-01f-design-target.png`
 ### Preceded By
 JC-002 or direct `/jobs/` entry
 ### Leads To
@@ -106,7 +106,7 @@ JC-014, JC-015, or JC-011
 ### Dependencies
 JC-020–JC-024 within the approved screen scope
 ### Current State
-Approved desktop first-touch reference.
+Approved desktop logged-out first-touch reference, v1.1.
 ### Next Expected Work
 Use as authority for bounded implementation or interaction-state work.
 ### Notes

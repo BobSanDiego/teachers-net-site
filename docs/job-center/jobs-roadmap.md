@@ -20,7 +20,8 @@ Atlas v1 for the concise map of governed screens and their relationships.
 - **Search & Discovery Interaction Suite v1 — Complete:** Approved desktop
   references JC-010, JC-014, JC-015, and JC-011 define first-touch discovery,
   location selection, browse exploration, and search results as one governed
-  interaction sequence.
+  interaction sequence. JC-010 logged-out desktop authority is v1.1 following
+  DESIGN009 right-rail reconciliation; responsive authority remains separate.
 
 ## Next Primary UX Workstream
 

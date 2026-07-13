@@ -22,8 +22,11 @@ controlled pilot, and release-candidate review.
 
 Search & Discovery Interaction Suite v1 is Complete. Approved JC-010, JC-014,
 JC-015, and JC-011 define the canonical desktop first-touch, location, browse,
-and results sequence. Job Center UX Atlas v1 provides the concise product map
-for all current governed surfaces. JC-030 product truth and UX are defined;
+and results sequence. DESIGN009 supersedes the prior JC-010 desktop raster with
+the approved logged-out first-touch v1.1 authority and its reconciled right
+rail; responsive authority remains separate. Job Center UX Atlas v1 provides
+the concise product map for all current governed surfaces. JC-030 product truth
+and UX are defined;
 AUDIT007 establishes safe content inputs and current pipeline gaps. DESIGN006
 approves the exact JC-030 v1.0 raster as desktop visual authority; implementation
 audit is now the immediate priority.

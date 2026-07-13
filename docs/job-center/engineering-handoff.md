@@ -11,17 +11,16 @@ implementation audit before convergence and release-candidate acceptance.
 
 ## 2. Current Ticket
 
-None. DESIGN006 is complete. The next objective is a bounded audit of the
+None. DESIGN009 is complete. The next objective is a bounded audit of the
 current JC-030 implementation against approved product, UX, reconciliation,
 design-system, and raster authority. Do not begin implementation before that
 ticket is issued.
 
 ## 3. Last Completed Milestone
 
-DESIGN006 approved the exact supplied JC-030 desktop raster as v1.0 visual
-authority. Its editable source is unavailable and no candidate HTML is
-associated with the approval. Responsive and implementation authority remain
-separate.
+DESIGN009 approved JC-010 logged-out desktop authority v1.1, superseding the
+previous v1.0 raster with the reconciled right-rail reference. Responsive and
+implementation authority remain separate.
 
 ## 4. Next Five Planned Tickets
 
@@ -66,7 +65,8 @@ separate.
 
 ## 8. Recently Approved Visual References
 
-- JC-010 v1.0 — Job Finder State 1 (First Touch).
+- JC-010 v1.1 — Job Finder State 1 (Logged-Out First Touch), with the
+  reconciled logged-out right rail approved by DESIGN009.
 - JC-014 v1.0 — Location Selection Modal.
 - JC-015 v1.0 — Browse Reveal.
 - JC-011 v1.0 — Job Finder State 2 (Search Results).
@@ -78,7 +78,8 @@ Job Center Design System v1 controls written visual/interaction rules. The
 visual manifest controls artifact status. Only manifest entries marked Approved
 may serve as visual implementation authority. The four Approved references in
 Search & Discovery Interaction Suite v1 jointly govern the canonical desktop
-search/discovery journey within their individual approval scopes. JC-030 v1.0
+search/discovery journey within their individual approval scopes; JC-010 is
+currently v1.1. JC-030 v1.0
 governs desktop Job Detail together with its Product Definition, UX
 Specification, AUDIT007 reconciliation, and Design System; its unavailable
 editable source does not authorize reinterpretation.
