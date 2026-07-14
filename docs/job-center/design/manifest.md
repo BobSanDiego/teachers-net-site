@@ -19,7 +19,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 10; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -159,6 +159,24 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-005
 - **Related implementation ticket(s):** None assigned
 - **Notes:** DESIGN007 derived 01k from 01j solely to change `Clear` to `Clear filters` and correct the bottom leaderboard reservation identified by VA001. Lineage is DESIGN006 v4 → v5 → refined-search 01g → 01h → 01j → approved 01k. JC-090–JC-093 preserve the explicitly Superseded iterations; 01j remains a historical Draft. Approval is bounded to JC-011 and does not independently approve JC-001, JC-020, JC-021, JC-024, responsive states, interaction behavior not visible in the raster, or implementation.
+
+### JC-011 Tablet — Job Finder State 2 Tablet Responsive Authority
+
+- **Screen / Component:** Refined search/results state at the approved portrait-tablet presentation
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/jc-011-job-finder-state-2-tablet-v1.0.png`
+- **Verified Source Raster:** `art/mockups/job-center/generated/jc011-tablet-responsive-v1.0-r003-candidate.png`
+- **SHA-256:** `885d3ddb18642560aa6cd3df4e345ff2b66545a49a3c3585d52baefeff117ec8`
+- **Approval date:** 2026-07-14
+- **Approval authority:** Engineering Director, DOC011
+- **Approval scope:** Portrait-tablet presentation of JC-011 Job Finder State 2, including populated search state, expanded Refine Search treatment, applied-filter chips, `42 jobs found` results context, ten governed listings, salary and distance treatment, pagination and result range, JC-011-specific right rail including Your Current Search, advertising reservations, footer, responsive hierarchy, and reading rhythm within the visible boundary.
+- **Authority:** DOC011 explicitly approves the exact R003 raster as the canonical JC-011 Tablet Responsive Authority.
+- **Related Design System section:** 4, 5, 9, 10, 13–17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-005, JC-ATLAS-012
+- **Related implementation ticket(s):** None assigned
+- **Notes:** The controlled-library copy is byte-identical to the verified repository candidate. JC-011 desktop v1.0 remains the product/content authority and JC-010 Tablet v1.0 remains the shared tablet presentation language. This approval is limited to JC-011 portrait-tablet presentation and does not approve JC-011 mobile, implementation, or other screens. Known implementation and accessibility guidance only: ensure compact controls, pagination, chip-remove actions, and Save-heart targets meet the preferred approximately 44px target without enlarging visible glyphs; verify footer and dense right-rail text contrast and focus indicators in browser rendering; and verify 728 × 90 and 300 × 250 reservations retain governed proportions without overflow at actual tablet breakpoints. Future JC-011 Tablet work is Patch Mode and requires a separately approved, explicitly named defect or delta.
 
 ### JC-012 — Job Finder State 3
 
@@ -537,6 +555,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `art/mockups/job-center/generated/refined-search-model-01j-design-target.png` | Finder State 2/canonical listing | Draft | JC-011, JC-020 | Prior active Draft candidate; retained in lineage after DESIGN007 |
 | `art/mockups/job-center/generated/refined-search-model-01k-design-target.png` | Finder State 2/canonical listing | Approved | JC-011, JC-020 | Exact source approved by VA001-FINAL for JC-011 only; JC-020 remains Draft |
 | `docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png` | Controlled JC-011 reference copy | Approved | JC-011 | Canonical library copy; byte-identical to the approved source artifact |
+| `art/mockups/job-center/generated/jc011-tablet-responsive-v1.0-r003-candidate.png` | Engineering Director-approved JC-011 Tablet source raster | Approved | JC-011 Tablet | DOC011 verified the exact repository candidate and SHA-256 |
+| `docs/job-center/design/approved/jc-011-job-finder-state-2-tablet-v1.0.png` | Controlled JC-011 Tablet v1.0 reference copy | Approved | JC-011 Tablet | Byte-identical to the DOC011-verified source raster; future work is Patch Mode |
 | `tmp/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Candidate component sheet |
 | `tmp/design-refs/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Byte-identical duplicate path |
 | `tmp/search-panels-basic-and-advanced.png` | Search panels | Draft | JC-021 | Candidate component sheet |
@@ -586,17 +606,20 @@ The status below is the artifact's governed classification. A path may relate to
 
 ## Approval gaps
 
-The `approved/` directory contains the JC-010 v1.1, JC-011 v1.0, JC-014
-v1.0, JC-015 v1.0, JC-030 v1.0, JC-010 Mobile v1.0, JC-010 Tablet v1.0, and
-the JC-003/JC-004 mobile navigation drawer component references. DOC005
+The `approved/` directory contains the JC-010 v1.1, JC-011 desktop v1.0,
+JC-011 Tablet v1.0, JC-014 v1.0, JC-015 v1.0, JC-030 v1.0, JC-010 Mobile
+v1.0, JC-010 Tablet v1.0, and the JC-003/JC-004 mobile navigation drawer
+component references. DOC005
 corrects JC-010 Mobile's raster identity to the verified external 02c source
 and its byte-identical controlled-library copy. DOC006 adds only the shared
 mobile drawer component. DOC008 adds only the bounded JC-010 portrait-tablet
 presentation; it does not approve another page, responsive variant, or
-implementation. Separate approval decisions are still required for the shell as
-JC-001, landing, other Finder states, progressive Search, canonical listing as
-JC-020, advertising as JC-024, and responsive variants beyond the bounded
-JC-010 Mobile, JC-010 Tablet, and drawer component approvals. Employer, Saved
-Jobs, Alerts, Moderator, and Administration references remain governed
-placeholders and must not be inferred from current implementation or from
-existing approvals.
+implementation. DOC011 adds only the bounded JC-011 portrait-tablet
+presentation; it does not approve JC-011 mobile or implementation. Separate
+approval decisions are still required for the shell as JC-001, landing, other
+Finder states, progressive Search, canonical listing as JC-020, advertising as
+JC-024, and responsive variants beyond the bounded JC-010 Mobile, JC-010
+Tablet, JC-011 Tablet, and drawer component approvals. Employer, Saved Jobs,
+Alerts, Moderator, and Administration references remain governed placeholders
+and must not be inferred from current implementation or from existing
+approvals.

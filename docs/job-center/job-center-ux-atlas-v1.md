@@ -27,7 +27,7 @@ JC-010 → JC-015 → JC-011
 | ID | Screen / Component | Desktop | Tablet | Mobile |
 |---|---|---|---|---|
 | JC-010 | Job Finder State 1 | `jc-010-job-finder-state-1-desktop-v1.1.png` | `jc-010-job-finder-state-1-tablet-v1.0.png` | `jc-010-job-finder-state-1-mobile-v1.0.png` |
-| JC-011 | Job Finder State 2 | `jc-011-job-finder-state-2-desktop-v1.0.png` | — | — |
+| JC-011 | Job Finder State 2 | `jc-011-job-finder-state-2-desktop-v1.0.png` | `jc-011-job-finder-state-2-tablet-v1.0.png` | — |
 | JC-014 | Location Selection Modal | `jc-014-location-selection-modal-desktop-v1.0.png` | — | — |
 | JC-015 | Browse Reveal | `jc-015-browse-reveal-desktop-v1.0.png` | — | — |
 | JC-030 | Job Detail | `jc-030-job-detail-desktop-v1.0.png` | — | — |
@@ -192,7 +192,8 @@ Job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png`
+Desktop: `docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png`.
+Tablet: `docs/job-center/design/approved/jc-011-job-finder-state-2-tablet-v1.0.png`.
 ### Preceded By
 JC-010, JC-014, JC-015, or JC-013
 ### Leads To
@@ -200,11 +201,15 @@ JC-030, JC-040, or another results page
 ### Dependencies
 JC-020–JC-024
 ### Current State
-Approved desktop search-results reference.
+Approved desktop v1.0 search-results reference and portrait-tablet v1.0
+responsive authority. Tablet is Patch Mode presentation authority.
 ### Next Expected Work
-Use as authority for bounded implementation and QA.
+Use the exact authority for its approved viewport and state; implementation
+requires a separate bounded ticket.
 ### Notes
-Approval is limited to the visible state and individual scope.
+Desktop remains product/content authority. DOC011 approves only the bounded
+portrait-tablet presentation and does not approve mobile, implementation, or
+other screens.
 
 ---
 
