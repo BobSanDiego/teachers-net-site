@@ -75,7 +75,11 @@ explicitly named mobile defect or delta against the exact Approved raster.
 RESP-DEC002 governs its JC-011 Mobile-only support-content exception. It does
 not reopen JC-011 desktop v1.0, alter JC-011 Tablet v1.0, alter JC-010
 authorities, establish another responsive variant, or authorize implementation.
-Any broader redesign or implementation requires a separate approved ticket.
+The Approved raster is the original 360 × 975 Engineering Director-edited
+source; its native resolution is an accepted provenance limitation and does not
+authorize replacement by an upscale, AI reconstruction, or other derivative.
+Any broader redesign, derivative replacement, or implementation requires a
+separate approved ticket.
 
 JC-003 and JC-004 mobile navigation drawers are also in **Patch Mode**. They
 govern only their respective drawer components across JC-010, JC-011, JC-014,

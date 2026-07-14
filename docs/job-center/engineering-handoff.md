@@ -17,7 +17,9 @@ remains unauthorized.
 None. DOC012 approved the exact mobile raster
 `docs/job-center/design/approved/jc-011-job-finder-state-2-mobile-v1.0.png`
 as JC-011 Mobile v1.0, with RESP-DEC002 governing its support-content
-exception. DOC011 approved the exact portrait-tablet raster
+exception. Its 360 × 975 native resolution is an accepted provenance limitation
+and does not authorize derivative replacement. DOC011 approved the exact
+portrait-tablet raster
 `docs/job-center/design/approved/jc-011-job-finder-state-2-tablet-v1.0.png`
 as JC-011 Tablet v1.0. DOC008 approved the exact portrait-tablet raster
 `docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png`
@@ -100,7 +102,7 @@ copy.
 - JC-011 Tablet v1.0 — Job Finder State 2 portrait-tablet responsive authority,
   approved by DOC011 to exact controlled raster `R003`.
 - JC-011 Mobile v1.0 — Job Finder State 2 mobile responsive authority, approved
-  by DOC012 to exact controlled raster `mobile-expanded-mobileads-01a`.
+  by DOC012 to exact controlled 360 × 975 raster `mobile-expanded-mobileads-01a`.
 - JC-003 v1.0 — Logged Out mobile navigation drawer component, approved by DOC006.
 - JC-004 v1.0 — Logged In mobile navigation drawer component, approved by DOC006.
 
@@ -115,9 +117,11 @@ is currently v1.1, JC-010 Tablet v1.0 and JC-011 Tablet v1.0 govern only their
 exact approved portrait-tablet presentations in Patch Mode, and JC-010 Mobile
 v1.0 and JC-011 Mobile v1.0 govern only their exact approved mobile
 presentations in Patch Mode. RESP-DEC002 governs the JC-011 Mobile
-support-content exception. JC-003 and JC-004 govern only their shared mobile
-navigation drawer components in Patch Mode across JC-010, JC-011, JC-014,
-JC-015, and JC-030 unless a screen has an Approved exception. JC-030 v1.0
+support-content exception. JC-011 Mobile's native-resolution limitation does
+not authorize reconstruction, upscaling, or other derivative replacement as
+authority. JC-003 and JC-004 govern only their shared mobile navigation drawer
+components in Patch Mode across JC-010, JC-011, JC-014, JC-015, and JC-030
+unless a screen has an Approved exception. JC-030 v1.0
 governs desktop Job Detail together with its Product Definition, UX
 Specification, AUDIT007 reconciliation, and Design System; its unavailable
 editable source does not authorize reinterpretation.

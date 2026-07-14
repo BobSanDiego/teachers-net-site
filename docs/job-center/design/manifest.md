@@ -185,6 +185,7 @@ Status totals for manifest entries: **Approved 11; Draft 8; Placeholder 14; Supe
 - **Version:** 1.0
 - **Approved Artifact:** `docs/job-center/design/approved/jc-011-job-finder-state-2-mobile-v1.0.png`
 - **Verified Source Raster:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/mobile-expanded-mobileads-01a.png`
+- **Source dimensions:** `360 × 975`
 - **SHA-256:** `5e4504e7f6d8f36eb77fca511444ca332f16a48e0842c1e48d87b310b79b96c8`
 - **Approval date:** 2026-07-14
 - **Approval authority:** Engineering Director, DOC012
@@ -194,7 +195,7 @@ Status totals for manifest entries: **Approved 11; Draft 8; Placeholder 14; Supe
 - **Related Product Specification:** Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-005, JC-ATLAS-012
 - **Related implementation ticket(s):** None assigned
-- **Notes:** The controlled-library copy is byte-identical to the verified external source raster. JC-011 Desktop v1.0 remains the product/content authority and JC-010 Mobile v1.0 remains the shared mobile presentation language. This approval is bounded to JC-011 Mobile only and does not alter JC-010, JC-014, JC-015, JC-030, tablet authorities, desktop behavior, or implementation. Known implementation guidance only: preserve approximately 44px interactive targets for controls, pagination, chip removal, and Save-heart actions without enlarging visible glyphs; verify WCAG AA contrast, focus indicators, and accessible names; verify `320 × 50` and `320 × 100` advertisement reservations render correctly at governed mobile breakpoints; and verify browser rendering preserves approved spacing and typography. Future JC-011 Mobile work is Patch Mode and requires a separately approved, explicitly named defect or delta.
+- **Notes:** The controlled-library copy is byte-identical to the verified external source raster. The 360 × 975 native raster has limited zoom fidelity; this is an accepted provenance limitation only and does not authorize reconstruction, upscaling, AI regeneration, visual reinterpretation, or replacement by a derivative without a separate approval decision. JC-011 Desktop v1.0 remains the product/content authority and JC-010 Mobile v1.0 remains the shared mobile presentation language. This approval is bounded to JC-011 Mobile only and does not alter JC-010, JC-014, JC-015, JC-030, tablet authorities, desktop behavior, or implementation. Known implementation guidance only: preserve approximately 44px interactive targets for controls, pagination, chip removal, and Save-heart actions without enlarging visible glyphs; verify WCAG AA contrast, focus indicators, and accessible names; verify `320 × 50` and `320 × 100` advertisement reservations render correctly at governed mobile breakpoints; and verify browser rendering preserves approved spacing, typography, and order. Future JC-011 Mobile work is Patch Mode and requires a separately approved, explicitly named defect or delta.
 
 ### JC-012 — Job Finder State 3
 
@@ -575,8 +576,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png` | Controlled JC-011 reference copy | Approved | JC-011 | Canonical library copy; byte-identical to the approved source artifact |
 | `art/mockups/job-center/generated/jc011-tablet-responsive-v1.0-r003-candidate.png` | Engineering Director-approved JC-011 Tablet source raster | Approved | JC-011 Tablet | DOC011 verified the exact repository candidate and SHA-256 |
 | `docs/job-center/design/approved/jc-011-job-finder-state-2-tablet-v1.0.png` | Controlled JC-011 Tablet v1.0 reference copy | Approved | JC-011 Tablet | Byte-identical to the DOC011-verified source raster; future work is Patch Mode |
-| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/mobile-expanded-mobileads-01a.png` | Engineering Director-approved JC-011 Mobile source raster with mobile ad reservations | Approved | JC-011 Mobile | DOC012 verified exact external source and SHA-256; RESP-DEC002 governs the support-content exception |
-| `docs/job-center/design/approved/jc-011-job-finder-state-2-mobile-v1.0.png` | Controlled JC-011 Mobile v1.0 reference copy | Approved | JC-011 Mobile | Byte-identical to the DOC012-verified source raster; future work is Patch Mode |
+| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/mobile-expanded-mobileads-01a.png` | Engineering Director-approved JC-011 Mobile 360 × 975 source raster with mobile ad reservations | Approved | JC-011 Mobile | DOC012 verified exact external source dimensions and SHA-256; RESP-DEC002 governs the support-content exception |
+| `docs/job-center/design/approved/jc-011-job-finder-state-2-mobile-v1.0.png` | Controlled JC-011 Mobile v1.0 reference copy | Approved | JC-011 Mobile | Byte-identical to the DOC012-verified 360 × 975 source raster; future work is Patch Mode |
 | `tmp/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Candidate component sheet |
 | `tmp/design-refs/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Byte-identical duplicate path |
 | `tmp/search-panels-basic-and-advanced.png` | Search panels | Draft | JC-021 | Candidate component sheet |

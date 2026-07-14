@@ -31,7 +31,9 @@ the byte-identical controlled copy of the verified R003 repository candidate.
 RESP-DEC002 resolves the JC-011 Mobile support-content exception. DOC012
 approves JC-011 Mobile v1.0 through
 `docs/job-center/design/approved/jc-011-job-finder-state-2-mobile-v1.0.png`,
-the byte-identical controlled copy of the verified external source raster.
+the byte-identical controlled copy of the verified 360 × 975 external source
+raster. The native resolution is an accepted provenance limitation and does not
+authorize derivative replacement.
 
 ## Current Focus
 
@@ -39,8 +41,10 @@ JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010 Mobile
 v1.0 are in Patch Mode. Desktop JC-010 v1.1 and JC-011 v1.0 remain the
 product/content authorities; desktop authority for JC-014, JC-015, and JC-030
 remains unchanged. RESP-DEC002 governs the JC-011 Mobile support-content
-exception. JC-003 and JC-004 drawers are also Patch Mode component authority
-only. No responsive implementation is authorized.
+exception. JC-011 Mobile's native-resolution limitation does not authorize
+reconstruction, upscaling, or other derivative replacement as authority. JC-003
+and JC-004 drawers are also Patch Mode component authority only. No responsive
+implementation is authorized.
 
 ## Current Reference Page/Flow
 
