@@ -5,9 +5,10 @@
 This manifest implements the reference-control rules in Job Center Design System v1. It inventories known visual artifacts and governed visual gaps as of D003. It does not approve a design by implication.
 
 JC-011 is the first Approved filename-specific reference. JC-010, JC-014,
-JC-015, JC-015 Tablet, JC-030, JC-010 Mobile, JC-010 Tablet, JC-011 Tablet,
-JC-011 Mobile, JC-014 Tablet, JC-014 Mobile, and mobile navigation drawer components JC-003
-and JC-004 are also Approved through explicit Engineering Director decisions.
+JC-015, JC-015 Tablet, JC-015 Mobile, JC-030, JC-010 Mobile, JC-010 Tablet,
+JC-011 Tablet, JC-011 Mobile, JC-014 Tablet, JC-014 Mobile, and mobile
+navigation drawer components JC-003 and JC-004 are also Approved through
+explicit Engineering Director decisions.
 Each decision names an exact raster and bounded desktop, mobile, or tablet screen, state,
 or component. No other manifest entry inherits those approvals; landing images
 and all other uncertain artifacts retain their existing status until separately
@@ -19,7 +20,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 14; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 15; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -306,6 +307,24 @@ Status totals for manifest entries: **Approved 14; Draft 8; Placeholder 14; Supe
 - **Related Product Specification:** Canonical V1 Contract
 - **Related implementation ticket(s):** None assigned
 - **Notes:** The controlled-library copy is byte-identical to the verified repository candidate. JC-015 Desktop v1.0 remains the product/content authority and JC-010 Tablet v1.0 remains the shared tablet presentation authority. This approval is limited to JC-015 Tablet and does not approve JC-015 Mobile, implementation, or other screens. Known implementation guidance only: preserve comfortable touch targets for Browse cards; verify keyboard focus order; verify browser typography and spacing; and verify responsive behavior at governed tablet breakpoints. Future JC-015 Tablet work is Patch Mode and requires a separately approved, explicitly named defect or delta.
+
+### JC-015 Mobile — Browse Reveal Mobile Responsive Authority
+
+- **Screen / Component:** Logged-out first-touch `/jobs/`, Browse by Grade or Subject expanded inline at the approved mobile presentation
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/jc-015-browse-reveal-mobile-v1.0.png`
+- **Verified Source Raster:** `art/mockups/job-center/generated/jc015-mobile-responsive-r002-candidate.png`
+- **Source dimensions:** 863 × 4042
+- **Source SHA-256:** `6595ac4ce34a5eeabcbb84233ee01a0290aa1eb1125ebb9c90a410fd29383bf0`
+- **Approval date:** 2026-07-14
+- **Approval authority:** Engineering Director, DOC016
+- **Approval scope:** Mobile presentation of JC-015 Browse Reveal, including the approved JC-010 Mobile page beneath the Browse Reveal, Browse by Grade or Subject in the open state, five Browse cards in approved order, the 2+2+1 mobile card arrangement, Browse Reveal placement directly after Browse/Refine controls, spacing and hierarchy, preserved listings, advertisements, pagination, support content, footer, full mobile page length, and reading rhythm within the visible boundary.
+- **Authority:** DOC016 explicitly approves the exact R002 raster as the canonical JC-015 Mobile Responsive Authority.
+- **Related Design System section:** 4, 8, 9, 12, 17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related implementation ticket(s):** None assigned
+- **Notes:** The controlled-library copy is byte-identical to the verified repository candidate and preserves the 863 × 4042 source dimensions. JC-015 Desktop v1.0 remains the product/content authority and JC-010 Mobile v1.0 remains the shared mobile presentation authority. This approval is limited to JC-015 Mobile and does not alter desktop, tablet, implementation, or other screen authorities. Known implementation and accessibility guidance only: preserve comfortable touch targets for all Browse cards; preserve keyboard focus order through Browse, the five cards, Refine Search, results count, and Sort; verify WCAG AA contrast and visible focus indicators; and verify browser typography, spacing, and card wrapping at governed mobile breakpoints. Future JC-015 Mobile work is Patch Mode and requires a separately approved, explicitly named defect or delta.
 
 ### JC-020 — Canonical listing
 
@@ -607,6 +626,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-015-browse-reveal-desktop-v1.0.png` | Controlled JC-015 reference copy | Approved | JC-015 | Canonical library copy; byte-identical to the approved source artifact |
 | `art/mockups/job-center/generated/jc015-tablet-responsive-r003-clean-candidate.png` | Engineering Director-approved JC-015 Tablet source raster | Approved | JC-015 Tablet | DOC015 verified the exact repository candidate and SHA-256 |
 | `docs/job-center/design/approved/jc-015-browse-reveal-tablet-v1.0.png` | Controlled JC-015 Tablet v1.0 reference copy | Approved | JC-015 Tablet | Byte-identical to the DOC015-verified source raster; future work is Patch Mode |
+| `art/mockups/job-center/generated/jc015-mobile-responsive-r002-candidate.png` | Engineering Director-approved JC-015 Mobile source raster | Approved | JC-015 Mobile | DOC016 verified the exact repository candidate, dimensions, and SHA-256 |
+| `docs/job-center/design/approved/jc-015-browse-reveal-mobile-v1.0.png` | Controlled JC-015 Mobile v1.0 reference copy | Approved | JC-015 Mobile | Byte-identical to the DOC016-verified source raster; future work is Patch Mode |
 | `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png` | Controlled JC-030 desktop reference copy | Approved | JC-030 | Canonical raster authority; byte-identical to the Engineering Director-supplied PNG; editable source unavailable |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
@@ -689,8 +710,8 @@ The status below is the artifact's governed classification. A path may relate to
 
 The `approved/` directory contains the JC-010 v1.1, JC-011 desktop v1.0,
 JC-011 Tablet v1.0, JC-011 Mobile v1.0, JC-014 desktop v1.0, JC-014 Tablet
-v1.0, JC-014 Mobile v1.0, JC-015 v1.0, JC-015 Tablet v1.0, JC-030 v1.0,
-JC-010 Mobile v1.0, JC-010 Tablet v1.0, and the JC-003/JC-004 mobile
+v1.0, JC-014 Mobile v1.0, JC-015 v1.0, JC-015 Tablet v1.0, JC-015 Mobile
+v1.0, JC-030 v1.0, JC-010 Mobile v1.0, JC-010 Tablet v1.0, and the JC-003/JC-004 mobile
 navigation drawer component references. DOC005
 corrects JC-010 Mobile's raster identity to the verified external 02c source
 and its byte-identical controlled-library copy. DOC006 adds only the shared
@@ -703,11 +724,12 @@ does not authorize implementation. DOC013 adds only the bounded JC-014
 portrait-tablet presentation. DOC014 adds only the bounded JC-014 Mobile
 localized overlay presentation and does not authorize implementation. DOC015
 adds only the bounded JC-015 portrait-tablet presentation and does not
-authorize implementation. Separate
+authorize implementation. DOC016 adds only the bounded JC-015 Mobile
+presentation and does not authorize implementation. Separate
 approval decisions are still required for the shell as JC-001, landing, other
 Finder states, progressive Search, canonical listing as JC-020, advertising as
 JC-024, and responsive variants beyond the bounded JC-010 Mobile, JC-010
 Tablet, JC-011 Tablet, JC-011 Mobile, JC-014 Tablet, JC-014 Mobile, JC-015
-Tablet, and drawer component approvals. Employer, Saved Jobs, Alerts, Moderator, and
+Tablet, JC-015 Mobile, and drawer component approvals. Employer, Saved Jobs, Alerts, Moderator, and
 Administration references remain governed placeholders and must not be inferred
 from current implementation or from existing approvals.

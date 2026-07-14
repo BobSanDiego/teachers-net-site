@@ -5,7 +5,8 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — DOC015 approves JC-015 Tablet responsive authority. DOC014
+Active Development — DOC016 approves JC-015 Mobile responsive authority. DOC015
+approves JC-015 Tablet responsive authority. DOC014
 approves JC-014 Mobile responsive authority. DOC013 approves JC-014 Tablet
 responsive authority. DOC012 approves JC-011 Mobile
 responsive authority. DOC011 approves JC-011 Tablet responsive authority. DOC008
@@ -16,7 +17,9 @@ Mode; responsive implementation remains unauthorized.
 
 ## 2. Current Ticket
 
-None. DOC015 approved the exact portrait-tablet raster
+None. DOC016 approved the exact mobile raster
+`docs/job-center/design/approved/jc-015-browse-reveal-mobile-v1.0.png`
+as JC-015 Mobile v1.0. DOC015 approved the exact portrait-tablet raster
 `docs/job-center/design/approved/jc-015-browse-reveal-tablet-v1.0.png`
 as JC-015 Tablet v1.0. DOC014 approved the exact mobile overlay raster
 `docs/job-center/design/approved/jc-014-location-selection-modal-mobile-v1.0.png`
@@ -34,9 +37,9 @@ as JC-011 Tablet v1.0. DOC008 approved the exact portrait-tablet raster
 as JC-010 Tablet v1.0. DOC003 approved the exact mobile raster, with its
 identity corrected by DOC005 to
 `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`.
-They are the canonical JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011
-Mobile, JC-011 Tablet, JC-010 Tablet, and JC-010 Mobile Responsive Authorities
-within their visible boundaries. DOC006 separately approves the canonical
+They are the canonical JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014
+Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, and JC-010 Mobile
+Responsive Authorities within their visible boundaries. DOC006 separately approves the canonical
 Logged Out and Logged In mobile navigation drawer components. Do not begin
 responsive implementation.
 
@@ -56,11 +59,13 @@ copy. DOC013 then approved the bounded JC-014 Tablet v1.0 authority and its
 byte-identical controlled-library copy. DOC014 then approved the bounded JC-014
 Mobile v1.0 localized overlay authority and its byte-identical
 controlled-library copy. DOC015 then approved the bounded JC-015 Tablet v1.0
-authority and its byte-identical controlled-library copy.
+authority and its byte-identical controlled-library copy. DOC016 then approved
+the bounded JC-015 Mobile v1.0 authority and its byte-identical
+controlled-library copy.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Address an Engineering Director-approved JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, or mobile drawer Patch Mode delta only if issued.
+1. Unassigned — Address an Engineering Director-approved JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, or mobile drawer Patch Mode delta only if issued.
 2. Unassigned — Govern the minimum JC-030 mobile deltas.
 3. Unassigned — Authorize responsive implementation and browser-based visual QA against the approved JC-010 authorities.
 4. Unassigned — Audit responsive implementation convergence after all required authority is approved.
@@ -72,7 +77,7 @@ authority and its byte-identical controlled-library copy.
   v1.0 desktop visual authority.
 - Other screen-specific responsive authority remains pending and does not
   inherit desktop, JC-010 Mobile, JC-010 Tablet, JC-011 Tablet, JC-011 Mobile,
-  JC-014 Tablet, JC-014 Mobile, or JC-015 Tablet approval.
+  JC-014 Tablet, JC-014 Mobile, JC-015 Tablet, or JC-015 Mobile approval.
 - Release-candidate status still requires implementation convergence, real-job
   pilot evidence, operational launch planning, and explicit acceptance.
 
@@ -113,6 +118,8 @@ authority and its byte-identical controlled-library copy.
 - JC-015 v1.0 — Browse Reveal.
 - JC-015 Tablet v1.0 — Browse Reveal portrait-tablet responsive authority,
   approved by DOC015 to exact controlled cleaned raster `R003`.
+- JC-015 Mobile v1.0 — Browse Reveal mobile responsive authority, approved by
+  DOC016 to exact controlled raster `R002`.
 - JC-011 v1.0 — Job Finder State 2 (Search Results).
 - JC-030 v1.0 — Job Detail (Desktop).
 - JC-010 Mobile v1.0 — Job Finder State 1 mobile responsive authority, approved
@@ -135,9 +142,9 @@ Search & Discovery Interaction Suite v1 jointly govern the canonical desktop
 search/discovery journey within their individual approval scopes; JC-010 desktop
 is currently v1.1, JC-010 Tablet v1.0, JC-011 Tablet v1.0, JC-014 Tablet
 v1.0, and JC-015 Tablet v1.0 govern only their exact approved portrait-tablet
-presentations in Patch Mode, and JC-010 Mobile v1.0, JC-011 Mobile v1.0, and
-JC-014 Mobile v1.0 govern only their exact approved mobile presentations in
-Patch Mode. JC-014 Mobile changes only the backdrop and modal layer over the
+presentations in Patch Mode, and JC-010 Mobile v1.0, JC-011 Mobile v1.0,
+JC-014 Mobile v1.0, and JC-015 Mobile v1.0 govern only their exact approved
+mobile presentations in Patch Mode. JC-014 Mobile changes only the backdrop and modal layer over the
 JC-010 Mobile page.
 RESP-DEC002 governs the JC-011 Mobile
 support-content exception. JC-011 Mobile's native-resolution limitation does
@@ -151,7 +158,7 @@ editable source does not authorize reinterpretation.
 
 ## 10. Immediate Engineering Priorities
 
-1. Preserve JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, JC-010 Mobile v1.0, and JC-003/JC-004 drawers
+1. Preserve JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, JC-010 Mobile v1.0, and JC-003/JC-004 drawers
    in Patch Mode; do not reopen desktop authority or begin responsive implementation.
 2. Keep responsive implementation behind explicit approval and audit.
 3. Govern remaining screen-specific responsive deltas without inferring their
