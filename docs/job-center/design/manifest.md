@@ -5,11 +5,12 @@
 This manifest implements the reference-control rules in Job Center Design System v1. It inventories known visual artifacts and governed visual gaps as of D003. It does not approve a design by implication.
 
 JC-011 is the first Approved filename-specific reference. JC-010, JC-014,
-JC-015, JC-030, and JC-010 Mobile are also Approved through explicit
-Engineering Director decisions. Each decision names an exact raster and bounded
-desktop or mobile screen, state, or component. No other manifest entry inherits
-those approvals; landing images and all other uncertain artifacts retain their
-existing status until separately approved.
+JC-015, JC-030, JC-010 Mobile, and mobile navigation drawer components JC-003
+and JC-004 are also Approved through explicit Engineering Director decisions.
+Each decision names an exact raster and bounded desktop or mobile screen, state,
+or component. No other manifest entry inherits those approvals; landing images
+and all other uncertain artifacts retain their existing status until separately
+approved.
 
 **Search & Discovery Interaction Suite v1 — Complete.** Approved JC-010,
 JC-014, JC-015, and JC-011 together define the canonical desktop v1 journey
@@ -17,7 +18,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 6; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 8; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -52,6 +53,42 @@ Status totals for manifest entries: **Approved 6; Draft 8; Placeholder 14; Super
 - **Related future UX Atlas entry:** JC-ATLAS-002
 - **Related implementation ticket(s):** JLANDING001–JLANDING007 (artifact labels only)
 - **Notes:** Includes desktop, tablet, and mobile explorations. `final` in a filename is non-authoritative.
+
+### JC-003 — Mobile Navigation Drawer (Logged Out)
+
+- **Screen / Component:** Logged-out mobile navigation drawer and overlay
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/mobile-navigation-drawer-logged-out-approved.png`
+- **Verified Source Raster:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LO-1st-touch-w-hamburger-overlay.png`
+- **SHA-256:** `56f893866d643a23269b37fb32b05b1348d5716c092836dca94f85f9b9627d24`
+- **Approval date:** 2026-07-14
+- **Approval authority:** Engineering Director, DOC006
+- **Approval scope:** Mobile navigation drawer component only, including drawer structure, logo/header, close control, section hierarchy, typography, spacing rhythm, icon treatment, navigation-row composition, footer treatment, social row, logged-out acquisition panel, and overlay behavior and visual treatment.
+- **Authority:** DOC006 explicitly approves the exact Logged Out raster as the canonical shared mobile navigation drawer component.
+- **Related Design System section:** 4, 5, 6, 7, 8, 16, 17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-001, JC-ATLAS-003, JC-ATLAS-006
+- **Related implementation ticket(s):** None assigned
+- **Notes:** This component authority applies to JC-010, JC-011, JC-014, JC-015, and JC-030 unless a future screen documents an Approved exception. It does not independently approve an underlying page, responsive page layout, tablet layout, or implementation. Future Logged Out drawer work is Patch Mode only: an explicitly named component delta requires separate approval.
+
+### JC-004 — Mobile Navigation Drawer (Logged In)
+
+- **Screen / Component:** Logged-in mobile navigation drawer and overlay
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/mobile-navigation-drawer-logged-in-approved.png`
+- **Verified Source Raster:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LI-1st-touch-w-hamburger-overlay.png`
+- **SHA-256:** `9597b80b1a7824a5bf471f59896f5afcb530839f1934608308654ffcdc352e76`
+- **Approval date:** 2026-07-14
+- **Approval authority:** Engineering Director, DOC006
+- **Approval scope:** Mobile navigation drawer component only, including drawer structure, logo/header, close control, section hierarchy, typography, spacing rhythm, icon treatment, navigation-row composition, footer treatment, social row, logged-in profile header, logout presentation, and overlay behavior and visual treatment.
+- **Authority:** DOC006 explicitly approves the exact Logged In raster as the canonical shared mobile navigation drawer component.
+- **Related Design System section:** 4, 5, 6, 7, 8, 16, 17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-001, JC-ATLAS-003, JC-ATLAS-006
+- **Related implementation ticket(s):** None assigned
+- **Notes:** This component authority applies to JC-010, JC-011, JC-014, JC-015, and JC-030 unless a future screen documents an Approved exception. It does not independently approve an underlying page, responsive page layout, tablet layout, or implementation. Future Logged In drawer work is Patch Mode only: an explicitly named component delta requires separate approval.
 
 ### JC-010 — Job Finder State 1
 
@@ -468,6 +505,10 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png` | Controlled JC-010 v1.1 reference copy | Approved | JC-010 | Canonical library copy; byte-identical to the approved 01f source artifact |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/1st-touch-mobile-approved.png` | Engineering Director-approved JC-010 Mobile source raster | Approved | JC-010 Mobile | DOC005 verified exact external source and SHA-256 |
 | `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png` | Controlled JC-010 Mobile v1.0 reference copy | Approved | JC-010 Mobile | Byte-identical to the DOC005-verified external source raster; future work is Patch Mode |
+| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LO-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged Out mobile navigation drawer source raster | Approved | JC-003 | DOC006 verified exact external source and SHA-256 |
+| `docs/job-center/design/approved/mobile-navigation-drawer-logged-out-approved.png` | Controlled Logged Out mobile navigation drawer reference copy | Approved | JC-003 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
+| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LI-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged In mobile navigation drawer source raster | Approved | JC-004 | DOC006 verified exact external source and SHA-256 |
+| `docs/job-center/design/approved/mobile-navigation-drawer-logged-in-approved.png` | Controlled Logged In mobile navigation drawer reference copy | Approved | JC-004 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v4.png` | Finder State 2 | Superseded | JC-090 | Replaced by v5 candidate |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v5.png` | Finder State 2 | Superseded | JC-091 | Replaced by 01g candidate |
 | `art/mockups/job-center/generated/refined-search-model-01g-polished.png` | Results/listing | Superseded | JC-092 | Replaced by 01h candidate |
@@ -525,12 +566,14 @@ The status below is the artifact's governed classification. A path may relate to
 ## Approval gaps
 
 The `approved/` directory contains the JC-010 v1.1, JC-011 v1.0, JC-014
-v1.0, JC-015 v1.0, JC-030 v1.0, and JC-010 Mobile v1.0 controlled references.
-DOC005 corrects JC-010 Mobile's raster identity to the verified external 02c
-source and its byte-identical controlled-library copy. Separate approval
-decisions are still required for the shell as JC-001, landing, other Finder
-states, progressive Search, canonical listing as JC-020, advertising as
-JC-024, tablet authority, and responsive variants beyond JC-010 Mobile.
-Employer, Saved Jobs, Alerts, Moderator, and Administration references remain
-governed placeholders and must not be inferred from current implementation or
-from existing approvals.
+v1.0, JC-015 v1.0, JC-030 v1.0, JC-010 Mobile v1.0, and the JC-003/JC-004
+mobile navigation drawer component references. DOC005 corrects JC-010 Mobile's
+raster identity to the verified external 02c source and its byte-identical
+controlled-library copy. DOC006 adds only the shared mobile drawer component;
+it does not approve a page, tablet layout, responsive page layout, or
+implementation. Separate approval decisions are still required for the shell as
+JC-001, landing, other Finder states, progressive Search, canonical listing as
+JC-020, advertising as JC-024, tablet authority, and responsive variants beyond
+the bounded JC-010 Mobile and drawer component approvals. Employer, Saved Jobs,
+Alerts, Moderator, and Administration references remain governed placeholders
+and must not be inferred from current implementation or from existing approvals.

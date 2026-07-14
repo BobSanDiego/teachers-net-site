@@ -5,26 +5,30 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — DOC003 approves JC-010 Mobile responsive authority. Future
-JC-010 mobile work is Patch Mode; responsive implementation remains unauthorized.
+Active Development — DOC003 approves JC-010 Mobile responsive authority, and
+DOC006 approves Logged Out and Logged In mobile navigation drawer components.
+Future mobile and drawer work is Patch Mode; responsive implementation remains
+unauthorized.
 
 ## 2. Current Ticket
 
 None. DOC003 approved the exact raster, with its identity corrected by DOC005 to
 `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`.
 It is the canonical JC-010 Mobile Responsive Authority within its visible
-boundary. Do not begin responsive implementation.
+boundary. DOC006 separately approves the canonical Logged Out and Logged In
+mobile navigation drawer components. Do not begin responsive implementation.
 
 ## 3. Last Completed Milestone
 
 DOC003 approved JC-010 Mobile v1.0; DOC005 corrects the Approved raster to the
 verified external 02c source and its byte-identical controlled-library copy.
 Desktop JC-010 v1.1 remains the product/content authority; mobile authority and
-responsive implementation remain separate.
+responsive implementation remain separate. DOC006 then approved the bounded
+Logged Out and Logged In mobile navigation drawer components.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Address an Engineering Director-approved JC-010 Mobile Patch Mode delta only if issued.
+1. Unassigned — Address an Engineering Director-approved JC-010 Mobile or mobile drawer Patch Mode delta only if issued.
 2. Unassigned — Establish JC-010 tablet responsive visual authority.
 3. Unassigned — Govern the minimum JC-011, JC-014, and JC-030 mobile deltas.
 4. Unassigned — Audit responsive implementation convergence after all required authority is approved.
@@ -74,6 +78,8 @@ responsive implementation remain separate.
 - JC-030 v1.0 — Job Detail (Desktop).
 - JC-010 Mobile v1.0 — Job Finder State 1 mobile responsive authority, approved
   by DOC003 and corrected by DOC005 to exact controlled raster `02c`.
+- JC-003 v1.0 — Logged Out mobile navigation drawer component, approved by DOC006.
+- JC-004 v1.0 — Logged In mobile navigation drawer component, approved by DOC006.
 
 ## 9. Active Design Authority
 
@@ -83,15 +89,17 @@ may serve as visual implementation authority. The four Approved references in
 Search & Discovery Interaction Suite v1 jointly govern the canonical desktop
 search/discovery journey within their individual approval scopes; JC-010 desktop
 is currently v1.1, and JC-010 Mobile v1.0 governs only the exact approved
-mobile presentation in Patch Mode. JC-030 v1.0
+mobile presentation in Patch Mode. JC-003 and JC-004 govern only their shared
+mobile navigation drawer components in Patch Mode across JC-010, JC-011,
+JC-014, JC-015, and JC-030 unless a screen has an Approved exception. JC-030 v1.0
 governs desktop Job Detail together with its Product Definition, UX
 Specification, AUDIT007 reconciliation, and Design System; its unavailable
 editable source does not authorize reinterpretation.
 
 ## 10. Immediate Engineering Priorities
 
-1. Preserve JC-010 Mobile v1.0 in Patch Mode; do not reopen desktop authority or
-   begin responsive implementation.
+1. Preserve JC-010 Mobile v1.0 and JC-003/JC-004 drawers in Patch Mode; do not
+   reopen desktop authority or begin responsive implementation.
 2. Establish JC-010 tablet responsive visual authority from RESP-DEC001 without
    reopening desktop governance.
 3. Keep responsive implementation behind explicit approval and audit.
