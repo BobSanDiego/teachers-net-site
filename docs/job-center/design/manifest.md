@@ -131,7 +131,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-out first-touch `/jobs/` State 1 at the approved portrait-tablet presentation
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png`
 - **Verified Source Raster:** `art/mockups/job-center/generated/jc010-tablet-01b-legibility-03d-candidate.png`
 - **SHA-256:** `8b2bcffb36b0a8024f5a680686094dd716b87983159796c502ee9e1b96647248`
 - **Approval date:** 2026-07-14
@@ -525,7 +525,7 @@ The status below is the artifact's governed classification. A path may relate to
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/1st-touch-mobile-approved.png` | Engineering Director-approved JC-010 Mobile source raster | Approved | JC-010 Mobile | DOC005 verified exact external source and SHA-256 |
 | `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png` | Controlled JC-010 Mobile v1.0 reference copy | Approved | JC-010 Mobile | Byte-identical to the DOC005-verified external source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/jc010-tablet-01b-legibility-03d-candidate.png` | Engineering Director-approved JC-010 Tablet source raster | Approved | JC-010 Tablet | DOC008 verified the exact repository candidate and SHA-256 |
-| `docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png` | Controlled JC-010 Tablet v1.0 reference copy | Approved | JC-010 Tablet | Byte-identical to the DOC008-verified source raster; future work is Patch Mode |
+| `docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png` | Controlled JC-010 Tablet v1.0 reference copy | Approved | JC-010 Tablet | Byte-identical to the DOC008-verified source raster; future work is Patch Mode |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LO-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged Out mobile navigation drawer source raster | Approved | JC-003 | DOC006 verified exact external source and SHA-256 |
 | `docs/job-center/design/approved/mobile-navigation-drawer-logged-out-approved.png` | Controlled Logged Out mobile navigation drawer reference copy | Approved | JC-003 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LI-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged In mobile navigation drawer source raster | Approved | JC-004 | DOC006 verified exact external source and SHA-256 |

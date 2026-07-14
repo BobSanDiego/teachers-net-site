@@ -13,7 +13,7 @@ work is Patch Mode; responsive implementation remains unauthorized.
 ## 2. Current Ticket
 
 None. DOC008 approved the exact portrait-tablet raster
-`docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png`
+`docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png`
 as JC-010 Tablet v1.0. DOC003 approved the exact mobile raster, with its
 identity corrected by DOC005 to
 `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`.

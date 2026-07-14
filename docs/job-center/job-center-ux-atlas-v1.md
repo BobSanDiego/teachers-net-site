@@ -99,7 +99,7 @@ Logged-out job seeker
 Approved
 ### Authority
 Desktop: `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png`.
-Tablet: `docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png`.
+Tablet: `docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png`.
 Mobile: `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`.
 ### Preceded By
 JC-002 or direct `/jobs/` entry

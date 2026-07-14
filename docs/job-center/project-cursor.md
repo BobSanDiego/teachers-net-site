@@ -22,7 +22,7 @@ the byte-identical controlled copy of the verified external 02c source.
 DOC006 approves JC-003 and JC-004 as the shared mobile navigation drawer
 components for JC-010, JC-011, JC-014, JC-015, and JC-030.
 DOC008 approves JC-010 Tablet v1.0 through
-`docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png`,
+`docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png`,
 the byte-identical controlled copy of the verified 03d repository candidate.
 
 ## Current Focus
