@@ -77,3 +77,39 @@ internally when height is constrained. **Cancel**, the close control, and
 Escape dismiss without applying changes; backdrop interaction does not dismiss
 the dialog. Focus remains contained while open and returns to the Location
 trigger after dismissal.
+
+## 8. Portrait Tablet Principles
+
+- Desktop governs product truth.
+- Mobile governs presentation.
+- Tablet preserves desktop information architecture while adopting mobile
+  reading comfort.
+- Preserve hierarchy before preserving density.
+- Extend vertically before compressing typography.
+- Typography favors comfortable sustained reading over maximum information
+  density.
+- Preserve established page identity across responsive adaptations.
+- Right-rail support content may remain visible on portrait tablet where it
+  improves first-view usability and an Approved tablet authority establishes
+  that presentation.
+- Responsive work adapts Approved authorities rather than redesigning them.
+- Once a responsive authority reaches convergence, future work enters Patch
+  Mode.
+
+## 9. Responsive Workflow
+
+```text
+Desktop Authority
+        ↓
+Tablet Authority
+        ↓
+Mobile Authority
+        ↓
+Patch Mode
+        ↓
+Browser Implementation
+        ↓
+Browser QA
+        ↓
+Production Authority
+```
