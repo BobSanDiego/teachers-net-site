@@ -29,7 +29,7 @@ JC-010 → JC-015 → JC-011
 | JC-010 | Job Finder State 1 | `jc-010-job-finder-state-1-desktop-v1.1.png` | `jc-010-job-finder-state-1-tablet-v1.0.png` | `jc-010-job-finder-state-1-mobile-v1.0.png` |
 | JC-011 | Job Finder State 2 | `jc-011-job-finder-state-2-desktop-v1.0.png` | `jc-011-job-finder-state-2-tablet-v1.0.png` | `jc-011-job-finder-state-2-mobile-v1.0.png` |
 | JC-014 | Location Selection Modal | `jc-014-location-selection-modal-desktop-v1.0.png` | `jc-014-location-selection-modal-tablet-v1.0.png` | `jc-014-location-selection-modal-mobile-v1.0.png` |
-| JC-015 | Browse Reveal | `jc-015-browse-reveal-desktop-v1.0.png` | — | — |
+| JC-015 | Browse Reveal | `jc-015-browse-reveal-desktop-v1.0.png` | `jc-015-browse-reveal-tablet-v1.0.png` | — |
 | JC-030 | Job Detail | `jc-030-job-detail-desktop-v1.0.png` | — | — |
 | JC-003 | Mobile Navigation Drawer (Logged Out) | — | — | `jc-003-mobile-navigation-drawer-logged-out-v1.0.png` |
 | JC-004 | Mobile Navigation Drawer (Logged In) | — | — | `jc-004-mobile-navigation-drawer-logged-in-v1.0.png` |
@@ -325,7 +325,9 @@ Job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/jc-015-browse-reveal-desktop-v1.0.png`
+Desktop: `docs/job-center/design/approved/jc-015-browse-reveal-desktop-v1.0.png`.
+
+Tablet: `docs/job-center/design/approved/jc-015-browse-reveal-tablet-v1.0.png`.
 ### Preceded By
 JC-010
 ### Leads To
@@ -333,11 +335,15 @@ JC-011 or back to JC-010
 ### Dependencies
 JC-010 and governed classification
 ### Current State
-Approved desktop browse interaction state.
+Approved desktop browse interaction state and portrait-tablet responsive
+authority. Tablet is Patch Mode.
 ### Next Expected Work
-Use as authority for bounded implementation or QA.
+Use as authority for bounded implementation or QA. Future JC-015 Tablet visual
+work requires a separately approved Patch Mode delta.
 ### Notes
-Inherits JC-010 and changes only the Browse disclosure.
+Inherits JC-010 and changes only the Browse disclosure. DOC015 approves only the
+bounded portrait-tablet presentation and does not approve JC-015 Mobile or
+implementation.
 
 ---
 
