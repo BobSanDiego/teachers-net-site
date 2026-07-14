@@ -6,12 +6,13 @@ Active Development
 
 ## Current Phase
 
-DOC013 approves JC-014 Tablet responsive authority. DOC012 approves JC-011
-Mobile responsive authority. DOC011 approves JC-011 Tablet responsive authority.
-DOC008 approves JC-010 Tablet responsive authority. DOC003 approves JC-010
-Mobile responsive authority, and DOC006 approves Logged Out and Logged In mobile
-navigation drawer components. Future tablet, mobile, and drawer work is Patch
-Mode; responsive implementation remains unauthorized.
+DOC014 approves JC-014 Mobile responsive authority. DOC013 approves JC-014
+Tablet responsive authority. DOC012 approves JC-011 Mobile responsive
+authority. DOC011 approves JC-011 Tablet responsive authority. DOC008 approves
+JC-010 Tablet responsive authority. DOC003 approves JC-010 Mobile responsive
+authority, and DOC006 approves Logged Out and Logged In mobile navigation drawer
+components. Future tablet, mobile, and drawer work is Patch Mode; responsive
+implementation remains unauthorized.
 
 ## Current Milestone
 
@@ -38,17 +39,22 @@ authorize derivative replacement.
 DOC013 approves JC-014 Tablet v1.0 through
 `docs/job-center/design/approved/jc-014-location-selection-modal-tablet-v1.0.png`,
 the byte-identical controlled copy of the verified R002 repository candidate.
+DOC014 approves JC-014 Mobile v1.0 through
+`docs/job-center/design/approved/jc-014-location-selection-modal-mobile-v1.0.png`,
+the byte-identical controlled copy of the verified R003 localized overlay
+repository candidate.
 
 ## Current Focus
 
-JC-014 Tablet v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0,
-and JC-010 Mobile v1.0 are in Patch Mode. Desktop JC-010 v1.1, JC-011 v1.0, and
-JC-014 v1.0 remain the product/content authorities; desktop authority for
-JC-015 and JC-030 remains unchanged. RESP-DEC002 governs the JC-011 Mobile
-support-content exception. JC-011 Mobile's native-resolution limitation does
-not authorize reconstruction, upscaling, or other derivative replacement as
-authority. JC-003 and JC-004 drawers are also Patch Mode component authority
-only. No responsive implementation is authorized.
+JC-014 Mobile v1.0, JC-014 Tablet v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0,
+JC-010 Tablet v1.0, and JC-010 Mobile v1.0 are in Patch Mode. Desktop JC-010
+v1.1, JC-011 v1.0, and JC-014 v1.0 remain the product/content authorities;
+desktop authority for JC-015 and JC-030 remains unchanged. JC-014 Mobile changes
+only the backdrop and modal layer over the JC-010 Mobile page. RESP-DEC002
+governs the JC-011 Mobile support-content exception. JC-011 Mobile's
+native-resolution limitation does not authorize reconstruction, upscaling, or
+other derivative replacement as authority. JC-003 and JC-004 drawers are also
+Patch Mode component authority only. No responsive implementation is authorized.
 
 ## Current Reference Page/Flow
 
@@ -58,14 +64,14 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, and
-JC-003/JC-004 drawer Patch Mode visual authority.
+JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet,
+JC-010 Mobile, and JC-003/JC-004 drawer Patch Mode visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — address an Engineering Director-approved JC-014 Tablet, JC-011
-Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, or JC-003/JC-004 drawer
-Patch Mode delta only if issued.
+Unassigned — address an Engineering Director-approved JC-014 Mobile, JC-014
+Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, or
+JC-003/JC-004 drawer Patch Mode delta only if issued.
 
 ## Next Decision
 
@@ -92,8 +98,9 @@ for screen purpose, relationships, and governance status.
 - JC-030 implementation has not yet been audited or converged to its Approved
   v1.0 desktop visual authority.
 - JC-010 Mobile v1.0, JC-010 Tablet v1.0, JC-011 Tablet v1.0, JC-011 Mobile
-  v1.0, and JC-014 Tablet v1.0 are approved, but other screen-specific
-  responsive authority remains pending and does not inherit those approvals.
+  v1.0, JC-014 Tablet v1.0, and JC-014 Mobile v1.0 are approved, but other
+  screen-specific responsive authority remains pending and does not inherit
+  those approvals.
 - JC-003 and JC-004 approve only the mobile navigation drawer component; they
   do not establish underlying-page, responsive-layout, tablet, or implementation authority.
 - Implementation has not yet converged to the written product/design authority.
@@ -106,9 +113,9 @@ for screen purpose, relationships, and governance status.
 ## Stop Boundary
 
 Stop each approval or implementation ticket at its named boundary. JC-011
-Mobile, JC-014 Tablet, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, and
-JC-003/JC-004 drawers are Patch Mode and permit only separately approved tablet,
-mobile, or component deltas. Do not infer
+Mobile, JC-014 Mobile, JC-014 Tablet, JC-011 Tablet, JC-010 Tablet, JC-010
+Mobile, and JC-003/JC-004 drawers are Patch Mode and permit only separately
+approved tablet, mobile, or component deltas. Do not infer
 underlying-page or other-screen visual approval, begin implementation
 convergence, import real jobs, mutate schema, add provider integrations, or
 begin pilot/bulk loading without a separately approved ticket.

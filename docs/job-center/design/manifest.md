@@ -6,9 +6,9 @@ This manifest implements the reference-control rules in Job Center Design System
 
 JC-011 is the first Approved filename-specific reference. JC-010, JC-014,
 JC-015, JC-030, JC-010 Mobile, JC-010 Tablet, JC-011 Tablet, JC-011 Mobile,
-JC-014 Tablet, and mobile navigation drawer components JC-003 and JC-004 are
-also Approved through explicit Engineering Director decisions. Each decision
-names an exact raster and bounded desktop, mobile, or tablet screen, state,
+JC-014 Tablet, JC-014 Mobile, and mobile navigation drawer components JC-003
+and JC-004 are also Approved through explicit Engineering Director decisions.
+Each decision names an exact raster and bounded desktop, mobile, or tablet screen, state,
 or component. No other manifest entry inherits those approvals; landing images
 and all other uncertain artifacts retain their existing status until separately
 approved.
@@ -19,7 +19,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 12; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 13; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -254,6 +254,25 @@ Status totals for manifest entries: **Approved 12; Draft 8; Placeholder 14; Supe
 - **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-012
 - **Related implementation ticket(s):** None assigned
 - **Notes:** The controlled-library copy is byte-identical to the verified repository candidate. JC-014 Desktop v1.0 remains the product/content authority and JC-010 Tablet v1.0 remains the shared tablet page-presentation authority. This approval is limited to JC-014 portrait-tablet presentation and does not approve JC-014 Mobile, implementation, or other screens. Known implementation and accessibility guidance only: preserve focus containment while open; preserve Escape and close behavior; return focus to the Location trigger after dismissal; maintain preferred touch targets for close, tabs, checkbox, Cancel, and Apply; and verify final browser contrast and focus indicators. Future JC-014 Tablet work is Patch Mode and requires a separately approved, explicitly named defect or delta.
+
+### JC-014 Mobile — Location Selection Modal Mobile Responsive Authority
+
+- **Screen / Component:** Logged-out first-touch `/jobs/`, Location segment activated, modal open at the approved mobile presentation
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/jc-014-location-selection-modal-mobile-v1.0.png`
+- **Verified Source Raster:** `art/mockups/job-center/generated/jc014-mobile-responsive-r003-overlay-candidate.png`
+- **Source dimensions:** `863 × 3756`
+- **SHA-256:** `1956256109668a4ba36851edee85ba369c2854ed2142ab716d6fc5e1256e7efc`
+- **Approval date:** 2026-07-14
+- **Approval authority:** Engineering Director, DOC014
+- **Approval scope:** Mobile presentation of JC-014 Location Selection Modal, including the full approved JC-010 Mobile page beneath the modal, subdued full-page backdrop, inset viewport-bound Location modal, Search by location heading, close control, Current Location / City, State, or ZIP / Browse by State tabs, current-location panel, distance control, cross-state checkbox, logged-out sign-in note, Cancel, disabled Apply, modal width, viewport position, hierarchy, reading rhythm, and preserved full-page context through the footer within the visible boundary.
+- **Authority:** DOC014 explicitly approves the exact R003 overlay raster as the canonical JC-014 Mobile Responsive Authority.
+- **Related Design System section:** 4, 8, 9, 12, 17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-012
+- **Related implementation ticket(s):** None assigned
+- **Notes:** The controlled-library copy is byte-identical to the verified repository candidate. JC-014 Desktop v1.0 remains the product/content authority and JC-010 Mobile v1.0 remains the shared underlying page-presentation authority. This approval changes only the backdrop and modal layer, is bounded to JC-014 Mobile, and does not alter tablet, desktop, implementation, or other screen authorities. Known implementation and accessibility guidance only: implement the modal as a localized overlay over the existing page, not as a reconstructed page; constrain modal height to the viewport; keep heading, close control, tabs, and action row reachable; allow internal modal-body scrolling where required; preserve focus containment while open; preserve Escape, Cancel, and close behavior without applying changes; ensure backdrop interaction does not dismiss; return focus to the Location trigger after dismissal; maintain compliant touch targets and visible focus indicators; and verify WCAG AA text and control contrast in browser rendering. Future JC-014 Mobile work is Patch Mode and requires a separately approved, explicitly named defect or delta.
 
 ### JC-015 — Browse Reveal
 
@@ -575,6 +594,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
 | `art/mockups/job-center/generated/jc014-tablet-responsive-r002-candidate.png` | Engineering Director-approved JC-014 Tablet source raster | Approved | JC-014 Tablet | DOC013 verified the exact repository candidate and SHA-256 |
 | `docs/job-center/design/approved/jc-014-location-selection-modal-tablet-v1.0.png` | Controlled JC-014 Tablet v1.0 reference copy | Approved | JC-014 Tablet | Byte-identical to the DOC013-verified source raster; future work is Patch Mode |
+| `art/mockups/job-center/generated/jc014-mobile-responsive-r003-overlay-candidate.png` | Engineering Director-approved JC-014 Mobile source raster using localized overlay over full JC-010 Mobile page | Approved | JC-014 Mobile | DOC014 verified the exact repository candidate, dimensions, and SHA-256 |
+| `docs/job-center/design/approved/jc-014-location-selection-modal-mobile-v1.0.png` | Controlled JC-014 Mobile v1.0 reference copy | Approved | JC-014 Mobile | Byte-identical to the DOC014-verified source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/job-finder-state-1-01a-design-target.png` | Logged-out first-touch Job Finder, full inventory, Most Recent | Draft | JC-010 | Historical DESIGN008 Draft retained after 01b approval |
 | `art/mockups/job-center/generated/job-finder-state-1-01b-design-target.png` | Previous polished logged-out first-touch Job Finder | Superseded | JC-010 | Historical v1.0 source retained outside the Approved library after DESIGN009 v1.1 supersession |
 | `art/mockups/job-center/generated/job-finder-state-1-right-rail-01f-candidate.png` | Logged-out first-touch Job Finder with reconciled right rail | Approved | JC-010 | Exact source approved by DESIGN009 as JC-010 v1.1 desktop authority |
@@ -649,8 +670,9 @@ The status below is the artifact's governed classification. A path may relate to
 
 The `approved/` directory contains the JC-010 v1.1, JC-011 desktop v1.0,
 JC-011 Tablet v1.0, JC-011 Mobile v1.0, JC-014 desktop v1.0, JC-014 Tablet
-v1.0, JC-015 v1.0, JC-030 v1.0, JC-010 Mobile v1.0, JC-010 Tablet v1.0, and
-the JC-003/JC-004 mobile navigation drawer component references. DOC005
+v1.0, JC-014 Mobile v1.0, JC-015 v1.0, JC-030 v1.0, JC-010 Mobile v1.0,
+JC-010 Tablet v1.0, and the JC-003/JC-004 mobile navigation drawer component
+references. DOC005
 corrects JC-010 Mobile's raster identity to the verified external 02c source
 and its byte-identical controlled-library copy. DOC006 adds only the shared
 mobile drawer component. DOC008 adds only the bounded JC-010 portrait-tablet
@@ -659,11 +681,12 @@ implementation. DOC011 adds only the bounded JC-011 portrait-tablet
 presentation. RESP-DEC002 governs a JC-011 Mobile-only support-content
 exception; DOC012 adds only the bounded JC-011 Mobile v1.0 presentation and
 does not authorize implementation. DOC013 adds only the bounded JC-014
-portrait-tablet presentation and does not approve JC-014 Mobile or
-implementation. Separate approval decisions are still required for the shell as
-JC-001, landing, other Finder states, progressive Search, canonical listing as
-JC-020, advertising as JC-024, and responsive variants beyond the bounded
-JC-010 Mobile, JC-010 Tablet, JC-011 Tablet, JC-011 Mobile, JC-014 Tablet, and
-drawer component approvals. Employer, Saved Jobs, Alerts, Moderator, and
+portrait-tablet presentation. DOC014 adds only the bounded JC-014 Mobile
+localized overlay presentation and does not authorize implementation. Separate
+approval decisions are still required for the shell as JC-001, landing, other
+Finder states, progressive Search, canonical listing as JC-020, advertising as
+JC-024, and responsive variants beyond the bounded JC-010 Mobile, JC-010
+Tablet, JC-011 Tablet, JC-011 Mobile, JC-014 Tablet, JC-014 Mobile, and drawer
+component approvals. Employer, Saved Jobs, Alerts, Moderator, and
 Administration references remain governed placeholders and must not be inferred
 from current implementation or from existing approvals.
