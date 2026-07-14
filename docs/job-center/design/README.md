@@ -28,7 +28,7 @@ A filename, sequence number, `final` label, recency, implementation use, or dire
 
 ## Directory roles
 
-- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.1 desktop, JC-011 v1.0, JC-014 v1.0, JC-015 v1.0, and JC-030 v1.0 references. JC-010 Mobile v1.0 is governed by the exact DOC003 source raster recorded in the manifest; this documentation-only ticket does not add a controlled-library copy.
+- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.1 desktop, JC-011 v1.0, JC-014 v1.0, JC-015 v1.0, JC-030 v1.0, and the DOC005-verified JC-010 Mobile v1.0 reference `job-center-responsive-jc010-mobile-02c-approved.png`.
 - `draft/` — optional controlled copies of active design candidates.
 - `superseded/` — optional controlled copies retained for lineage.
 - `source/` — optional editable source files and provenance records.

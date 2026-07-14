@@ -75,17 +75,18 @@ Status totals for manifest entries: **Approved 6; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-out first-touch `/jobs/` State 1 at the approved mobile presentation
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png`
-- **SHA-256:** `610587c97634d8bf8f8c627f81b7e6cd017c77af3b53b5fc47f9e88f6eeafeb6`
+- **Approved Artifact:** `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`
+- **Verified Source Raster:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/1st-touch-mobile-approved.png`
+- **SHA-256:** `23d63c4ea62e8bae04f6a70cff8b13414d064d33def0a1b7c682852007478de3`
 - **Approval date:** 2026-07-14
 - **Approval authority:** Engineering Director, DOC003
 - **Approval scope:** Mobile presentation only. Within the visible boundary, the exact raster governs typography, spacing, proportions, hierarchy, reading rhythm, touch targets, drawer presentation, advertisement reservation, pagination, acquisition panel, and footer.
-- **Authority:** DOC003 explicitly approves the exact 02b raster as the canonical JC-010 Mobile Responsive Authority.
+- **Authority:** DOC003 explicitly approves the exact 02c raster as the canonical JC-010 Mobile Responsive Authority; DOC005 corrects the previously recorded raster identity without changing the approval decision.
 - **Related Design System section:** 4, 9, 12, 14, 15, 17
 - **Related Product Specification:** Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-003
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Desktop JC-010 v1.1 remains the product/content authority. This approval is mobile-only and does not reinterpret or supersede desktop JC-010 v1.1, alter JC-011, JC-014, or JC-030, establish tablet authority, or authorize responsive implementation. Future JC-010 mobile work is Patch Mode: it may address only an explicitly named mobile defect or delta against this exact approved raster and requires separate approval before implementation or broader redesign.
+- **Notes:** DOC005 verified the external Engineering Director source raster and copied it byte-identically into the controlled library. Desktop JC-010 v1.1 remains the product/content authority. This approval is mobile-only and does not reinterpret or supersede desktop JC-010 v1.1, alter JC-011, JC-014, or JC-030, establish tablet authority, or authorize responsive implementation. Future JC-010 mobile work is Patch Mode: it may address only an explicitly named mobile defect or delta against this exact approved raster and requires separate approval before implementation or broader redesign.
 
 ### JC-011 — Job Finder State 2
 
@@ -465,7 +466,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `art/mockups/job-center/generated/job-finder-state-1-01b-design-target.png` | Previous polished logged-out first-touch Job Finder | Superseded | JC-010 | Historical v1.0 source retained outside the Approved library after DESIGN009 v1.1 supersession |
 | `art/mockups/job-center/generated/job-finder-state-1-right-rail-01f-candidate.png` | Logged-out first-touch Job Finder with reconciled right rail | Approved | JC-010 | Exact source approved by DESIGN009 as JC-010 v1.1 desktop authority |
 | `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png` | Controlled JC-010 v1.1 reference copy | Approved | JC-010 | Canonical library copy; byte-identical to the approved 01f source artifact |
-| `art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png` | Logged-out first-touch Job Finder mobile responsive presentation | Approved | JC-010 Mobile | Exact source approved by DOC003 as the canonical mobile responsive authority; future work is Patch Mode |
+| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/1st-touch-mobile-approved.png` | Engineering Director-approved JC-010 Mobile source raster | Approved | JC-010 Mobile | DOC005 verified exact external source and SHA-256 |
+| `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png` | Controlled JC-010 Mobile v1.0 reference copy | Approved | JC-010 Mobile | Byte-identical to the DOC005-verified external source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v4.png` | Finder State 2 | Superseded | JC-090 | Replaced by v5 candidate |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v5.png` | Finder State 2 | Superseded | JC-091 | Replaced by 01g candidate |
 | `art/mockups/job-center/generated/refined-search-model-01g-polished.png` | Results/listing | Superseded | JC-092 | Replaced by 01h candidate |
@@ -523,9 +525,9 @@ The status below is the artifact's governed classification. A path may relate to
 ## Approval gaps
 
 The `approved/` directory contains the JC-010 v1.1, JC-011 v1.0, JC-014
-v1.0, JC-015 v1.0, and JC-030 v1.0 controlled references. JC-010 Mobile v1.0
-is governed by the exact DOC003 source raster above; its controlled-library copy
-has not been added by this documentation-only ticket. Separate approval
+v1.0, JC-015 v1.0, JC-030 v1.0, and JC-010 Mobile v1.0 controlled references.
+DOC005 corrects JC-010 Mobile's raster identity to the verified external 02c
+source and its byte-identical controlled-library copy. Separate approval
 decisions are still required for the shell as JC-001, landing, other Finder
 states, progressive Search, canonical listing as JC-020, advertising as
 JC-024, tablet authority, and responsive variants beyond JC-010 Mobile.

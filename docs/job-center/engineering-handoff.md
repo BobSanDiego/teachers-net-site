@@ -10,15 +10,16 @@ JC-010 mobile work is Patch Mode; responsive implementation remains unauthorized
 
 ## 2. Current Ticket
 
-None. DOC003 approved the exact raster
-`art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png`.
+None. DOC003 approved the exact raster, with its identity corrected by DOC005 to
+`docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`.
 It is the canonical JC-010 Mobile Responsive Authority within its visible
 boundary. Do not begin responsive implementation.
 
 ## 3. Last Completed Milestone
 
-DOC003 approved JC-010 Mobile v1.0 from production candidate `02b`. Desktop
-JC-010 v1.1 remains the product/content authority; mobile authority and
+DOC003 approved JC-010 Mobile v1.0; DOC005 corrects the Approved raster to the
+verified external 02c source and its byte-identical controlled-library copy.
+Desktop JC-010 v1.1 remains the product/content authority; mobile authority and
 responsive implementation remain separate.
 
 ## 4. Next Five Planned Tickets
@@ -72,7 +73,7 @@ responsive implementation remain separate.
 - JC-011 v1.0 — Job Finder State 2 (Search Results).
 - JC-030 v1.0 — Job Detail (Desktop).
 - JC-010 Mobile v1.0 — Job Finder State 1 mobile responsive authority, approved
-  by DOC003 from exact raster `02b`.
+  by DOC003 and corrected by DOC005 to exact controlled raster `02c`.
 
 ## 9. Active Design Authority
 

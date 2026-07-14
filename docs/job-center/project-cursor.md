@@ -13,8 +13,10 @@ is Patch Mode; responsive implementation remains unauthorized.
 
 RESP-DEC001 resolved the shared responsive decisions required to interpret the
 approved desktop suite without defining breakpoints or implementation. DOC003
-approves `art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png`
-as JC-010 Mobile v1.0 responsive authority within its visible boundary.
+approves JC-010 Mobile v1.0 responsive authority within its visible boundary.
+DOC005 corrects its Approved raster identity to
+`docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`,
+the byte-identical controlled copy of the verified external 02c source.
 
 ## Current Focus
 
