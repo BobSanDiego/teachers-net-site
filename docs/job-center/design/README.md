@@ -28,7 +28,7 @@ A filename, sequence number, `final` label, recency, implementation use, or dire
 
 ## Directory roles
 
-- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.1 desktop, JC-011 v1.0, JC-014 v1.0, JC-015 v1.0, JC-030 v1.0, the DOC005-verified JC-010 Mobile v1.0 reference `job-center-responsive-jc010-mobile-02c-approved.png`, and the DOC006-verified `mobile-navigation-drawer-logged-out-approved.png` and `mobile-navigation-drawer-logged-in-approved.png` component references.
+- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.1 desktop, JC-011 v1.0, JC-014 v1.0, JC-015 v1.0, JC-030 v1.0, the DOC005-verified JC-010 Mobile v1.0 reference `job-center-responsive-jc010-mobile-02c-approved.png`, the DOC008-verified JC-010 Tablet v1.0 reference `job-center-responsive-jc010-tablet-03d-approved.png`, and the DOC006-verified `mobile-navigation-drawer-logged-out-approved.png` and `mobile-navigation-drawer-logged-in-approved.png` component references.
 - `draft/` — optional controlled copies of active design candidates.
 - `superseded/` — optional controlled copies retained for lineage.
 - `source/` — optional editable source files and provenance records.
@@ -55,6 +55,13 @@ explicitly named mobile defect or delta against its exact Approved raster. It
 does not reopen desktop JC-010 v1.1, alter JC-011, JC-014, or JC-030, establish
 tablet authority, or authorize responsive implementation. Any broader redesign
 or implementation requires a separate approved ticket.
+
+JC-010 Tablet v1.0 is in **Patch Mode**. Future work may address only an
+explicitly named portrait-tablet defect or delta against the exact Approved
+03d raster. It does not reopen desktop JC-010 v1.1, alter JC-010 Mobile v1.0,
+alter JC-011, JC-014, JC-015, or JC-030, establish another responsive variant,
+or authorize implementation. Any broader redesign or implementation requires a
+separate approved ticket.
 
 JC-003 and JC-004 mobile navigation drawers are also in **Patch Mode**. They
 govern only their respective drawer components across JC-010, JC-011, JC-014,

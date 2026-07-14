@@ -5,9 +5,10 @@
 This manifest implements the reference-control rules in Job Center Design System v1. It inventories known visual artifacts and governed visual gaps as of D003. It does not approve a design by implication.
 
 JC-011 is the first Approved filename-specific reference. JC-010, JC-014,
-JC-015, JC-030, JC-010 Mobile, and mobile navigation drawer components JC-003
-and JC-004 are also Approved through explicit Engineering Director decisions.
-Each decision names an exact raster and bounded desktop or mobile screen, state,
+JC-015, JC-030, JC-010 Mobile, JC-010 Tablet, and mobile navigation drawer
+components JC-003 and JC-004 are also Approved through explicit Engineering
+Director decisions. Each decision names an exact raster and bounded desktop,
+mobile, or tablet screen, state,
 or component. No other manifest entry inherits those approvals; landing images
 and all other uncertain artifacts retain their existing status until separately
 approved.
@@ -18,7 +19,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 8; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -124,6 +125,24 @@ Status totals for manifest entries: **Approved 8; Draft 8; Placeholder 14; Super
 - **Related future UX Atlas entry:** JC-ATLAS-003
 - **Related implementation ticket(s):** None assigned
 - **Notes:** DOC005 verified the external Engineering Director source raster and copied it byte-identically into the controlled library. Desktop JC-010 v1.1 remains the product/content authority. This approval is mobile-only and does not reinterpret or supersede desktop JC-010 v1.1, alter JC-011, JC-014, or JC-030, establish tablet authority, or authorize responsive implementation. Future JC-010 mobile work is Patch Mode: it may address only an explicitly named mobile defect or delta against this exact approved raster and requires separate approval before implementation or broader redesign.
+
+### JC-010 Tablet — Job Finder State 1 Tablet Responsive Authority
+
+- **Screen / Component:** Logged-out first-touch `/jobs/` State 1 at the approved portrait-tablet presentation
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png`
+- **Verified Source Raster:** `art/mockups/job-center/generated/jc010-tablet-01b-legibility-03d-candidate.png`
+- **SHA-256:** `8b2bcffb36b0a8024f5a680686094dd716b87983159796c502ee9e1b96647248`
+- **Approval date:** 2026-07-14
+- **Approval authority:** Engineering Director, DOC008
+- **Approval scope:** Portrait-tablet presentation of JC-010 Logged-Out First Touch, including search composition, listing composition, right-rail presentation, pagination, advertising reservations, footer presentation, responsive hierarchy, and tablet reading rhythm within the visible boundary.
+- **Authority:** DOC008 explicitly approves the exact 03d raster as the canonical JC-010 Tablet Responsive Authority.
+- **Related Design System section:** 4, 5, 9, 10, 13–17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-012
+- **Related implementation ticket(s):** None assigned
+- **Notes:** The controlled-library copy is byte-identical to the verified repository candidate. Desktop JC-010 v1.1 remains the product/content authority and JC-010 Mobile v1.0 remains the mobile presentation authority. This approval does not alter JC-011, JC-014, JC-015, or JC-030, establish other responsive variants, or authorize implementation. Known implementation guidance only: confirm comfortable touch targets; preserve the visible Save-heart size while enlarging only its invisible hit area; verify advertisement reservations and true breakpoint behavior during responsive implementation; and make restrained browser-QA typography adjustments only if needed. Future JC-010 Tablet work is Patch Mode and requires a separately approved, explicitly named defect or delta.
 
 ### JC-011 — Job Finder State 2
 
@@ -505,6 +524,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png` | Controlled JC-010 v1.1 reference copy | Approved | JC-010 | Canonical library copy; byte-identical to the approved 01f source artifact |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/1st-touch-mobile-approved.png` | Engineering Director-approved JC-010 Mobile source raster | Approved | JC-010 Mobile | DOC005 verified exact external source and SHA-256 |
 | `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png` | Controlled JC-010 Mobile v1.0 reference copy | Approved | JC-010 Mobile | Byte-identical to the DOC005-verified external source raster; future work is Patch Mode |
+| `art/mockups/job-center/generated/jc010-tablet-01b-legibility-03d-candidate.png` | Engineering Director-approved JC-010 Tablet source raster | Approved | JC-010 Tablet | DOC008 verified the exact repository candidate and SHA-256 |
+| `docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png` | Controlled JC-010 Tablet v1.0 reference copy | Approved | JC-010 Tablet | Byte-identical to the DOC008-verified source raster; future work is Patch Mode |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LO-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged Out mobile navigation drawer source raster | Approved | JC-003 | DOC006 verified exact external source and SHA-256 |
 | `docs/job-center/design/approved/mobile-navigation-drawer-logged-out-approved.png` | Controlled Logged Out mobile navigation drawer reference copy | Approved | JC-003 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LI-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged In mobile navigation drawer source raster | Approved | JC-004 | DOC006 verified exact external source and SHA-256 |
@@ -566,14 +587,16 @@ The status below is the artifact's governed classification. A path may relate to
 ## Approval gaps
 
 The `approved/` directory contains the JC-010 v1.1, JC-011 v1.0, JC-014
-v1.0, JC-015 v1.0, JC-030 v1.0, JC-010 Mobile v1.0, and the JC-003/JC-004
-mobile navigation drawer component references. DOC005 corrects JC-010 Mobile's
-raster identity to the verified external 02c source and its byte-identical
-controlled-library copy. DOC006 adds only the shared mobile drawer component;
-it does not approve a page, tablet layout, responsive page layout, or
+v1.0, JC-015 v1.0, JC-030 v1.0, JC-010 Mobile v1.0, JC-010 Tablet v1.0, and
+the JC-003/JC-004 mobile navigation drawer component references. DOC005
+corrects JC-010 Mobile's raster identity to the verified external 02c source
+and its byte-identical controlled-library copy. DOC006 adds only the shared
+mobile drawer component. DOC008 adds only the bounded JC-010 portrait-tablet
+presentation; it does not approve another page, responsive variant, or
 implementation. Separate approval decisions are still required for the shell as
 JC-001, landing, other Finder states, progressive Search, canonical listing as
-JC-020, advertising as JC-024, tablet authority, and responsive variants beyond
-the bounded JC-010 Mobile and drawer component approvals. Employer, Saved Jobs,
-Alerts, Moderator, and Administration references remain governed placeholders
-and must not be inferred from current implementation or from existing approvals.
+JC-020, advertising as JC-024, and responsive variants beyond the bounded
+JC-010 Mobile, JC-010 Tablet, and drawer component approvals. Employer, Saved
+Jobs, Alerts, Moderator, and Administration references remain governed
+placeholders and must not be inferred from current implementation or from
+existing approvals.

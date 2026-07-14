@@ -98,7 +98,9 @@ Logged-out job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/job-finder-state-1-01f-design-target.png`
+Desktop: `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png`.
+Tablet: `docs/job-center/design/approved/job-center-responsive-jc010-tablet-03d-approved.png`.
+Mobile: `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`.
 ### Preceded By
 JC-002 or direct `/jobs/` entry
 ### Leads To
@@ -106,11 +108,16 @@ JC-014, JC-015, or JC-011
 ### Dependencies
 JC-020–JC-024 within the approved screen scope
 ### Current State
-Approved desktop logged-out first-touch reference, v1.1.
+Approved desktop v1.1, portrait-tablet v1.0, and mobile v1.0 logged-out
+first-touch references. Tablet and mobile are Patch Mode presentation authority.
 ### Next Expected Work
-Use as authority for bounded implementation or interaction-state work.
+Use the exact authority for its approved viewport and state; implementation
+requires a separate bounded ticket.
 ### Notes
 Search Jobs remains primary; Browse and Refine are progressive disclosure.
+Desktop remains product/content authority. DOC008 approves only the bounded
+portrait-tablet presentation and does not extend responsive authority to other
+screens.
 
 ---
 
@@ -769,7 +776,9 @@ All users
 ### Status
 Draft
 ### Authority
-Responsive screenshots are candidates only.
+Job Center Shared Responsive Decisions v1, plus the bounded Approved JC-010
+mobile and portrait-tablet references. Other responsive screenshots are
+candidates only.
 ### Preceded By
 An approved desktop screen or component
 ### Leads To
@@ -777,11 +786,14 @@ The same product destination at another viewport
 ### Dependencies
 Approved source state and responsive design rules
 ### Current State
-Draft
+Draft except for the bounded JC-010 Mobile v1.0 and JC-010 Tablet v1.0
+presentation authorities.
 ### Next Expected Work
-Govern responsive adaptations after primary desktop workstreams.
+Govern remaining responsive adaptations after the bounded JC-010 approvals.
 ### Notes
-Desktop approval does not imply responsive approval.
+Desktop approval does not imply responsive approval. DOC008 approves only
+JC-010 portrait-tablet presentation and does not establish other screens,
+breakpoints, or implementation.
 
 ---
 
