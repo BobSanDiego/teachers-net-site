@@ -28,7 +28,7 @@ A filename, sequence number, `final` label, recency, implementation use, or dire
 
 ## Directory roles
 
-- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.0, JC-011 v1.0, JC-014 v1.0, and JC-015 v1.0; JC-011 was the first governed entry.
+- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.1 desktop, JC-011 v1.0, JC-014 v1.0, JC-015 v1.0, and JC-030 v1.0 references. JC-010 Mobile v1.0 is governed by the exact DOC003 source raster recorded in the manifest; this documentation-only ticket does not add a controlled-library copy.
 - `draft/` — optional controlled copies of active design candidates.
 - `superseded/` — optional controlled copies retained for lineage.
 - `source/` — optional editable source files and provenance records.
@@ -47,6 +47,14 @@ To promote an artifact to Approved, record all of the following in one governanc
 6. Known accessibility, responsive, or product-behavior limitations.
 
 Copying the approved artifact into `approved/` is recommended for durability, but the manifest entry and recorded approval decision confer authority. New mockups must receive new versions and explicitly supersede earlier references; they must not silently overwrite them.
+
+## Patch Mode
+
+JC-010 Mobile v1.0 is in **Patch Mode**. Future work may address only an
+explicitly named mobile defect or delta against its exact Approved raster. It
+does not reopen desktop JC-010 v1.1, alter JC-011, JC-014, or JC-030, establish
+tablet authority, or authorize responsive implementation. Any broader redesign
+or implementation requires a separate approved ticket.
 
 ## Use rules
 

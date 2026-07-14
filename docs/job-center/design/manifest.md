@@ -5,11 +5,11 @@
 This manifest implements the reference-control rules in Job Center Design System v1. It inventories known visual artifacts and governed visual gaps as of D003. It does not approve a design by implication.
 
 JC-011 is the first Approved filename-specific reference. JC-010, JC-014,
-JC-015, and JC-030 are also Approved through explicit Engineering Director
-decisions. Each decision names an exact raster and bounded desktop screen,
-state, or component. No other manifest entry inherits those approvals; landing
-images and all other uncertain artifacts retain their existing status until
-separately approved.
+JC-015, JC-030, and JC-010 Mobile are also Approved through explicit
+Engineering Director decisions. Each decision names an exact raster and bounded
+desktop or mobile screen, state, or component. No other manifest entry inherits
+those approvals; landing images and all other uncertain artifacts retain their
+existing status until separately approved.
 
 **Search & Discovery Interaction Suite v1 — Complete.** Approved JC-010,
 JC-014, JC-015, and JC-011 together define the canonical desktop v1 journey
@@ -17,7 +17,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 5; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 6; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -68,7 +68,24 @@ Status totals for manifest entries: **Approved 5; Draft 8; Placeholder 14; Super
 - **Related Product Specification:** Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-003
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Represents logged-out first-touch `/jobs/` before keyword, location, browse, or refinement input: full 205-job inventory, first ten jobs, and default Most Recent sort. Lineage is 0.1 Placeholder → DESIGN008 01a Draft 0.2 → DESIGN009 01b → VA002-FINAL 01b v1.0 Approved → DESIGN008 reconciliation/polish 01c–01f → DESIGN009 01f v1.1 Approved. The previous 01b raster is superseded as authority but remains preserved as a historical working artifact outside `approved/`; intermediate right-rail candidates remain working history. Browse Reveal and the Location Selection Modal remain separate approved interaction states and are not modified by this supersession. The visible `25 miles` control is illustrative; implementation must hide or disable distance until a valid location or origin exists. Approval is bounded to desktop JC-010 and does not independently approve JC-001, JC-020, JC-021, JC-024, JC-070, responsive states, unseen interaction states, or implementation.
+- **Notes:** Represents logged-out first-touch `/jobs/` before keyword, location, browse, or refinement input: full 205-job inventory, first ten jobs, and default Most Recent sort. Lineage is 0.1 Placeholder → DESIGN008 01a Draft 0.2 → DESIGN009 01b → VA002-FINAL 01b v1.0 Approved → DESIGN008 reconciliation/polish 01c–01f → DESIGN009 01f v1.1 Approved. The previous 01b raster is superseded as authority but remains preserved as a historical working artifact outside `approved/`; intermediate right-rail candidates remain working history. Browse Reveal and the Location Selection Modal remain separate approved interaction states and are not modified by this supersession. The visible `25 miles` control is illustrative; implementation must hide or disable distance until a valid location or origin exists. Approval is bounded to desktop JC-010 and does not independently approve JC-001, JC-020, JC-021, JC-024, JC-070, unseen interaction states, or implementation. JC-010 Mobile is separately governed below.
+
+### JC-010 Mobile — Job Finder State 1 Mobile Responsive Authority
+
+- **Screen / Component:** Logged-out first-touch `/jobs/` State 1 at the approved mobile presentation
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png`
+- **SHA-256:** `610587c97634d8bf8f8c627f81b7e6cd017c77af3b53b5fc47f9e88f6eeafeb6`
+- **Approval date:** 2026-07-14
+- **Approval authority:** Engineering Director, DOC003
+- **Approval scope:** Mobile presentation only. Within the visible boundary, the exact raster governs typography, spacing, proportions, hierarchy, reading rhythm, touch targets, drawer presentation, advertisement reservation, pagination, acquisition panel, and footer.
+- **Authority:** DOC003 explicitly approves the exact 02b raster as the canonical JC-010 Mobile Responsive Authority.
+- **Related Design System section:** 4, 9, 12, 14, 15, 17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-003
+- **Related implementation ticket(s):** None assigned
+- **Notes:** Desktop JC-010 v1.1 remains the product/content authority. This approval is mobile-only and does not reinterpret or supersede desktop JC-010 v1.1, alter JC-011, JC-014, or JC-030, establish tablet authority, or authorize responsive implementation. Future JC-010 mobile work is Patch Mode: it may address only an explicitly named mobile defect or delta against this exact approved raster and requires separate approval before implementation or broader redesign.
 
 ### JC-011 — Job Finder State 2
 
@@ -448,6 +465,7 @@ The status below is the artifact's governed classification. A path may relate to
 | `art/mockups/job-center/generated/job-finder-state-1-01b-design-target.png` | Previous polished logged-out first-touch Job Finder | Superseded | JC-010 | Historical v1.0 source retained outside the Approved library after DESIGN009 v1.1 supersession |
 | `art/mockups/job-center/generated/job-finder-state-1-right-rail-01f-candidate.png` | Logged-out first-touch Job Finder with reconciled right rail | Approved | JC-010 | Exact source approved by DESIGN009 as JC-010 v1.1 desktop authority |
 | `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png` | Controlled JC-010 v1.1 reference copy | Approved | JC-010 | Canonical library copy; byte-identical to the approved 01f source artifact |
+| `art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png` | Logged-out first-touch Job Finder mobile responsive presentation | Approved | JC-010 Mobile | Exact source approved by DOC003 as the canonical mobile responsive authority; future work is Patch Mode |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v4.png` | Finder State 2 | Superseded | JC-090 | Replaced by v5 candidate |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v5.png` | Finder State 2 | Superseded | JC-091 | Replaced by 01g candidate |
 | `art/mockups/job-center/generated/refined-search-model-01g-polished.png` | Results/listing | Superseded | JC-092 | Replaced by 01h candidate |
@@ -505,9 +523,12 @@ The status below is the artifact's governed classification. A path may relate to
 ## Approval gaps
 
 The `approved/` directory contains the JC-010 v1.1, JC-011 v1.0, JC-014
-v1.0, JC-015 v1.0, and JC-030 v1.0 controlled references. Separate approval
+v1.0, JC-015 v1.0, and JC-030 v1.0 controlled references. JC-010 Mobile v1.0
+is governed by the exact DOC003 source raster above; its controlled-library copy
+has not been added by this documentation-only ticket. Separate approval
 decisions are still required for the shell as JC-001, landing, other Finder
 states, progressive Search, canonical listing as JC-020, advertising as
-JC-024, and responsive variants. Employer, Saved Jobs, Alerts, Moderator, and
-Administration references remain governed placeholders and must not be
-inferred from current implementation or from existing approvals.
+JC-024, tablet authority, and responsive variants beyond JC-010 Mobile.
+Employer, Saved Jobs, Alerts, Moderator, and Administration references remain
+governed placeholders and must not be inferred from current implementation or
+from existing approvals.

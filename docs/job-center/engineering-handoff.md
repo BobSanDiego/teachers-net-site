@@ -5,34 +5,36 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — shared responsive decisions are complete; JC-010 tablet
-and mobile visual authority is next.
+Active Development — DOC003 approves JC-010 Mobile responsive authority. Future
+JC-010 mobile work is Patch Mode; responsive implementation remains unauthorized.
 
 ## 2. Current Ticket
 
-None. RESP-DEC001 is complete. The next objective is governed JC-010 tablet and
-mobile responsive visual authority. Do not begin responsive implementation.
+None. DOC003 approved the exact raster
+`art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png`.
+It is the canonical JC-010 Mobile Responsive Authority within its visible
+boundary. Do not begin responsive implementation.
 
 ## 3. Last Completed Milestone
 
-RESP-DEC001 resolved the shared responsive navigation, search, listing,
-right-rail, advertising, Job Detail, and modal decisions. Desktop authority is
-unchanged; responsive visual and implementation authority remain separate.
+DOC003 approved JC-010 Mobile v1.0 from production candidate `02b`. Desktop
+JC-010 v1.1 remains the product/content authority; mobile authority and
+responsive implementation remain separate.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Establish JC-010 tablet responsive visual authority.
-2. Unassigned — Establish JC-010 mobile responsive visual authority.
+1. Unassigned — Address an Engineering Director-approved JC-010 Mobile Patch Mode delta only if issued.
+2. Unassigned — Establish JC-010 tablet responsive visual authority.
 3. Unassigned — Govern the minimum JC-011, JC-014, and JC-030 mobile deltas.
-4. Unassigned — Audit responsive implementation convergence after approval.
+4. Unassigned — Audit responsive implementation convergence after all required authority is approved.
 5. Unassigned — Resume the next approved implementation or UX workstream.
 
 ## 5. Current Blockers
 
 - JC-030 implementation has not yet been audited or converged to its Approved
   v1.0 desktop visual authority.
-- Responsive visual authority remains pending and does not inherit desktop
-  approval.
+- Tablet and other screen-specific responsive authority remain pending and do
+  not inherit desktop or JC-010 Mobile approval.
 - Release-candidate status still requires implementation convergence, real-job
   pilot evidence, operational launch planning, and explicit acceptance.
 
@@ -69,6 +71,8 @@ unchanged; responsive visual and implementation authority remain separate.
 - JC-015 v1.0 — Browse Reveal.
 - JC-011 v1.0 — Job Finder State 2 (Search Results).
 - JC-030 v1.0 — Job Detail (Desktop).
+- JC-010 Mobile v1.0 — Job Finder State 1 mobile responsive authority, approved
+  by DOC003 from exact raster `02b`.
 
 ## 9. Active Design Authority
 
@@ -76,15 +80,17 @@ Job Center Design System v1 controls written visual/interaction rules. The
 visual manifest controls artifact status. Only manifest entries marked Approved
 may serve as visual implementation authority. The four Approved references in
 Search & Discovery Interaction Suite v1 jointly govern the canonical desktop
-search/discovery journey within their individual approval scopes; JC-010 is
-currently v1.1. JC-030 v1.0
+search/discovery journey within their individual approval scopes; JC-010 desktop
+is currently v1.1, and JC-010 Mobile v1.0 governs only the exact approved
+mobile presentation in Patch Mode. JC-030 v1.0
 governs desktop Job Detail together with its Product Definition, UX
 Specification, AUDIT007 reconciliation, and Design System; its unavailable
 editable source does not authorize reinterpretation.
 
 ## 10. Immediate Engineering Priorities
 
-1. Establish JC-010 tablet and mobile responsive visual authority from
-   RESP-DEC001 without reopening desktop governance.
-2. Govern only the minimum screen-specific mobile deltas after the baseline.
+1. Preserve JC-010 Mobile v1.0 in Patch Mode; do not reopen desktop authority or
+   begin responsive implementation.
+2. Establish JC-010 tablet responsive visual authority from RESP-DEC001 without
+   reopening desktop governance.
 3. Keep responsive implementation behind explicit approval and audit.

@@ -6,23 +6,21 @@ Active Development
 
 ## Current Phase
 
-Shared responsive decisions are complete; JC-010 responsive visual authority
-is the next governed workstream.
+DOC003 approves JC-010 Mobile responsive authority. Future JC-010 mobile work
+is Patch Mode; responsive implementation remains unauthorized.
 
 ## Current Milestone
 
-RESP-DEC001 resolves the shared responsive decisions required to interpret the
-approved desktop suite without defining breakpoints or implementation. JC-010
-tablet and mobile visual authority is next; screen-specific responsive deltas
-remain separate until that shared baseline is governed.
+RESP-DEC001 resolved the shared responsive decisions required to interpret the
+approved desktop suite without defining breakpoints or implementation. DOC003
+approves `art/mockups/job-center/generated/job-center-responsive-jc010-mobile-02b-production-candidate.png`
+as JC-010 Mobile v1.0 responsive authority within its visible boundary.
 
 ## Current Focus
 
-RESP-DEC001 governs shared responsive navigation, search, listing, support-flow,
-advertising, Job Detail conversion-order, and modal behavior. Desktop authority
-for JC-010 v1.1, JC-011, JC-014, JC-015, and JC-030 remains unchanged. The next
-step is JC-010 tablet and mobile visual authority; no responsive implementation
-is authorized.
+JC-010 Mobile v1.0 is in Patch Mode. Desktop JC-010 v1.1 remains the
+product/content authority; desktop authority for JC-011, JC-014, JC-015, and
+JC-030 remains unchanged. No responsive implementation is authorized.
 
 ## Current Reference Page/Flow
 
@@ -32,17 +30,17 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-JC-010 shared responsive visual authority.
+JC-010 Mobile Patch Mode visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — create and govern the JC-010 tablet and mobile responsive visual
-authority from the approved v1.1 desktop state and RESP-DEC001.
+Unassigned — address an Engineering Director-approved JC-010 Mobile Patch Mode
+delta only if issued.
 
 ## Next Decision
 
-Approve the minimum JC-010 tablet/mobile baseline without reopening desktop
-authority or beginning implementation.
+Establish JC-010 tablet responsive visual authority without reopening desktop
+or approved JC-010 Mobile authority, or beginning implementation.
 
 ## Required Google Drive Context
 
@@ -62,8 +60,8 @@ for screen purpose, relationships, and governance status.
 
 - JC-030 implementation has not yet been audited or converged to its Approved
   v1.0 desktop visual authority.
-- Responsive decisions are complete, but responsive visual authority remains
-  pending and does not inherit desktop approval.
+- JC-010 Mobile v1.0 is approved, but tablet and other screen-specific
+  responsive authority remain pending and do not inherit that approval.
 - Implementation has not yet converged to the written product/design authority.
 - A real-job pilot is required before any bulk loading.
 - Core Terms CTJ004-CTJ006 commits remain ahead of `origin/main` in the local
@@ -73,7 +71,8 @@ for screen purpose, relationships, and governance status.
 
 ## Stop Boundary
 
-Stop each approval or implementation ticket at its named boundary. Do not infer
-visual approval, begin implementation convergence, import real jobs, mutate
-schema, add provider integrations, or begin pilot/bulk loading without a
-separately approved ticket.
+Stop each approval or implementation ticket at its named boundary. JC-010 Mobile
+is Patch Mode and permits only separately approved mobile deltas. Do not infer
+tablet or other-screen visual approval, begin implementation convergence, import
+real jobs, mutate schema, add provider integrations, or begin pilot/bulk loading
+without a separately approved ticket.
