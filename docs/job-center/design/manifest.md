@@ -60,7 +60,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-out mobile navigation drawer and overlay
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/mobile-navigation-drawer-logged-out-approved.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-003-mobile-navigation-drawer-logged-out-v1.0.png`
 - **Verified Source Raster:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LO-1st-touch-w-hamburger-overlay.png`
 - **SHA-256:** `56f893866d643a23269b37fb32b05b1348d5716c092836dca94f85f9b9627d24`
 - **Approval date:** 2026-07-14
@@ -78,7 +78,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-in mobile navigation drawer and overlay
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/mobile-navigation-drawer-logged-in-approved.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-004-mobile-navigation-drawer-logged-in-v1.0.png`
 - **Verified Source Raster:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LI-1st-touch-w-hamburger-overlay.png`
 - **SHA-256:** `9597b80b1a7824a5bf471f59896f5afcb530839f1934608308654ffcdc352e76`
 - **Approval date:** 2026-07-14
@@ -96,7 +96,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-out first-touch `/jobs/` state with full inventory sorted by Most Recent
 - **Status:** Approved
 - **Version:** 1.1
-- **Approved Artifact:** `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-010-job-finder-state-1-desktop-v1.1.png`
 - **SHA-256:** `3653d2d131281a29db8e4643d856ff52f3916222c0bbde3b3bf09e815257dd20`
 - **Approval date:** 2026-07-13
 - **Approval authority:** Engineering Director, DESIGN009
@@ -113,7 +113,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-out first-touch `/jobs/` State 1 at the approved mobile presentation
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-010-job-finder-state-1-mobile-v1.0.png`
 - **Verified Source Raster:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/1st-touch-mobile-approved.png`
 - **SHA-256:** `23d63c4ea62e8bae04f6a70cff8b13414d064d33def0a1b7c682852007478de3`
 - **Approval date:** 2026-07-14
@@ -149,7 +149,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Refined search/results state and locked page shell
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/refined-search-model-01k-design-target.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png`
 - **Approval date:** 2026-07-12
 - **Approval authority:** Engineering Director, VA001-FINAL
 - **Approval scope:** Desktop Job Finder State 2 exactly as shown: constrained page shell, compact refined-search/results state, applied chips, results header and sort, ten-listing composition within this screen, right rail, desktop advertising placements, pagination/result range, leaderboard, and footer.
@@ -189,7 +189,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-out first-touch `/jobs/`, Location segment activated, modal open
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/job-finder-location-modal-lo-01b-design-target.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png`
 - **Approval date:** 2026-07-12
 - **Approval authority:** Engineering Director explicit approval
 - **Approval scope:** Desktop logged-out first-touch `/jobs/` Location-selection state exactly as shown: focused Location trigger, restrained backdrop, centered shared modal structure, Current Location active tab, current-location panel, 5–100 distance control, cross-state option, logged-out advanced-feature teaser, disabled Apply state, and the smaller/lighter Save-heart treatment visible behind the modal.
@@ -205,7 +205,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Logged-out first-touch `/jobs/`, Browse by Grade or Subject expanded inline
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/job-finder-browse-reveal-01b-design-target.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-015-browse-reveal-desktop-v1.0.png`
 - **Approval date:** 2026-07-12
 - **Approval authority:** Engineering Director explicit approval
 - **Approval scope:** Desktop logged-out first-touch `/jobs/` Browse Reveal exactly as shown: expanded Browse disclosure control, five-card Grade/Subject exploration row, Refine Search retained opposite the disclosure beneath the integrated search control, unchanged full-inventory state, and the smaller/lighter Save-heart treatment.
@@ -283,7 +283,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Screen / Component:** Public canonical job-detail view
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/job-detail-01c-approved.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`
 - **Editable source:** Unavailable
 - **Approval date:** 2026-07-13
 - **Approval authority:** Engineering Director, DESIGN006
@@ -293,7 +293,7 @@ Status totals for manifest entries: **Approved 9; Draft 8; Placeholder 14; Super
 - **Related Product Specification:** JC-030 Job Detail Product Definition; JC-030 Job Detail UX Specification; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-006
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Lineage is JC-030 Placeholder 0.1 → unapproved implementation evidence and Job Detail concepts → AUDIT007 reconciliation → Engineering Director-supplied approved raster `ChatGPT Image Jul 13, 2026, 12_05_45 AM.png` → controlled library copy `job-detail-01c-approved.png` v1.0. The artifact is a raster visual authority. No matching editable source was produced or retained; `job-detail-01b-canonical-candidate.html` is not its source and is not associated with this approval. Implementation must rely on the approved PNG together with the JC-030 Product Definition, UX Specification, AUDIT007 reconciliation, and Job Center Design System. The missing editable source does not authorize visual reinterpretation. Any future reconstructed source is derivative and must not replace the approved PNG without a separate approval decision. Approval is desktop-only and does not approve responsive authority or implementation.
+- **Notes:** Lineage is JC-030 Placeholder 0.1 → unapproved implementation evidence and Job Detail concepts → AUDIT007 reconciliation → Engineering Director-supplied approved raster `ChatGPT Image Jul 13, 2026, 12_05_45 AM.png` → controlled library copy `jc-030-job-detail-desktop-v1.0.png` v1.0. The artifact is a raster visual authority. No matching editable source was produced or retained; `job-detail-01b-canonical-candidate.html` is not its source and is not associated with this approval. Implementation must rely on the approved PNG together with the JC-030 Product Definition, UX Specification, AUDIT007 reconciliation, and Job Center Design System. The missing editable source does not authorize visual reinterpretation. Any future reconstructed source is derivative and must not replace the approved PNG without a separate approval decision. Approval is desktop-only and does not approve responsive authority or implementation.
 
 ### JC-040 — Saved Jobs
 
@@ -513,30 +513,30 @@ The status below is the artifact's governed classification. A path may relate to
 |---|---|---:|---|---|
 | `art/mockups/job-center/generated/job-finder-browse-reveal-01a-design-target.png` | Logged-out first-touch Browse reveal expanded inline | Draft | JC-015 | Historical DESIGN012 Draft retained after DESIGN013 polish |
 | `art/mockups/job-center/generated/job-finder-browse-reveal-01b-design-target.png` | Polished logged-out first-touch Browse reveal expanded inline | Approved | JC-015 | Exact source approved by the Engineering Director for JC-015 only |
-| `docs/job-center/design/approved/job-finder-browse-reveal-01b-design-target.png` | Controlled JC-015 reference copy | Approved | JC-015 | Canonical library copy; byte-identical to the approved source artifact |
-| `docs/job-center/design/approved/job-detail-01c-approved.png` | Controlled JC-030 desktop reference copy | Approved | JC-030 | Canonical raster authority; byte-identical to the Engineering Director-supplied PNG; editable source unavailable |
+| `docs/job-center/design/approved/jc-015-browse-reveal-desktop-v1.0.png` | Controlled JC-015 reference copy | Approved | JC-015 | Canonical library copy; byte-identical to the approved source artifact |
+| `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png` | Controlled JC-030 desktop reference copy | Approved | JC-030 | Canonical raster authority; byte-identical to the Engineering Director-supplied PNG; editable source unavailable |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
-| `docs/job-center/design/approved/job-finder-location-modal-lo-01b-design-target.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
+| `docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
 | `art/mockups/job-center/generated/job-finder-state-1-01a-design-target.png` | Logged-out first-touch Job Finder, full inventory, Most Recent | Draft | JC-010 | Historical DESIGN008 Draft retained after 01b approval |
 | `art/mockups/job-center/generated/job-finder-state-1-01b-design-target.png` | Previous polished logged-out first-touch Job Finder | Superseded | JC-010 | Historical v1.0 source retained outside the Approved library after DESIGN009 v1.1 supersession |
 | `art/mockups/job-center/generated/job-finder-state-1-right-rail-01f-candidate.png` | Logged-out first-touch Job Finder with reconciled right rail | Approved | JC-010 | Exact source approved by DESIGN009 as JC-010 v1.1 desktop authority |
-| `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png` | Controlled JC-010 v1.1 reference copy | Approved | JC-010 | Canonical library copy; byte-identical to the approved 01f source artifact |
+| `docs/job-center/design/approved/jc-010-job-finder-state-1-desktop-v1.1.png` | Controlled JC-010 v1.1 reference copy | Approved | JC-010 | Canonical library copy; byte-identical to the approved 01f source artifact |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/1st-touch-mobile-approved.png` | Engineering Director-approved JC-010 Mobile source raster | Approved | JC-010 Mobile | DOC005 verified exact external source and SHA-256 |
-| `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png` | Controlled JC-010 Mobile v1.0 reference copy | Approved | JC-010 Mobile | Byte-identical to the DOC005-verified external source raster; future work is Patch Mode |
+| `docs/job-center/design/approved/jc-010-job-finder-state-1-mobile-v1.0.png` | Controlled JC-010 Mobile v1.0 reference copy | Approved | JC-010 Mobile | Byte-identical to the DOC005-verified external source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/jc010-tablet-01b-legibility-03d-candidate.png` | Engineering Director-approved JC-010 Tablet source raster | Approved | JC-010 Tablet | DOC008 verified the exact repository candidate and SHA-256 |
 | `docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png` | Controlled JC-010 Tablet v1.0 reference copy | Approved | JC-010 Tablet | Byte-identical to the DOC008-verified source raster; future work is Patch Mode |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LO-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged Out mobile navigation drawer source raster | Approved | JC-003 | DOC006 verified exact external source and SHA-256 |
-| `docs/job-center/design/approved/mobile-navigation-drawer-logged-out-approved.png` | Controlled Logged Out mobile navigation drawer reference copy | Approved | JC-003 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
+| `docs/job-center/design/approved/jc-003-mobile-navigation-drawer-logged-out-v1.0.png` | Controlled Logged Out mobile navigation drawer reference copy | Approved | JC-003 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/LI-1st-touch-w-hamburger-overlay.png` | Engineering Director-approved Logged In mobile navigation drawer source raster | Approved | JC-004 | DOC006 verified exact external source and SHA-256 |
-| `docs/job-center/design/approved/mobile-navigation-drawer-logged-in-approved.png` | Controlled Logged In mobile navigation drawer reference copy | Approved | JC-004 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
+| `docs/job-center/design/approved/jc-004-mobile-navigation-drawer-logged-in-v1.0.png` | Controlled Logged In mobile navigation drawer reference copy | Approved | JC-004 | Byte-identical to the DOC006-verified external source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v4.png` | Finder State 2 | Superseded | JC-090 | Replaced by v5 candidate |
 | `art/mockups/job-center/generated/design006-job-finder-state-2-v5.png` | Finder State 2 | Superseded | JC-091 | Replaced by 01g candidate |
 | `art/mockups/job-center/generated/refined-search-model-01g-polished.png` | Results/listing | Superseded | JC-092 | Replaced by 01h candidate |
 | `art/mockups/job-center/generated/refined-search-model-01h-panel-polish.png` | Search panel/results | Superseded | JC-093 | Replaced by 01j candidate |
 | `art/mockups/job-center/generated/refined-search-model-01j-design-target.png` | Finder State 2/canonical listing | Draft | JC-011, JC-020 | Prior active Draft candidate; retained in lineage after DESIGN007 |
 | `art/mockups/job-center/generated/refined-search-model-01k-design-target.png` | Finder State 2/canonical listing | Approved | JC-011, JC-020 | Exact source approved by VA001-FINAL for JC-011 only; JC-020 remains Draft |
-| `docs/job-center/design/approved/refined-search-model-01k-design-target.png` | Controlled JC-011 reference copy | Approved | JC-011 | Canonical library copy; byte-identical to the approved source artifact |
+| `docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png` | Controlled JC-011 reference copy | Approved | JC-011 | Canonical library copy; byte-identical to the approved source artifact |
 | `tmp/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Candidate component sheet |
 | `tmp/design-refs/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Byte-identical duplicate path |
 | `tmp/search-panels-basic-and-advanced.png` | Search panels | Draft | JC-021 | Candidate component sheet |

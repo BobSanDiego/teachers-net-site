@@ -28,7 +28,7 @@ A filename, sequence number, `final` label, recency, implementation use, or dire
 
 ## Directory roles
 
-- `approved/` — controlled copies of exact Approved artifacts. It currently contains JC-010 v1.1 desktop, JC-011 v1.0, JC-014 v1.0, JC-015 v1.0, JC-030 v1.0, the DOC005-verified JC-010 Mobile v1.0 reference `job-center-responsive-jc010-mobile-02c-approved.png`, the DOC008-verified JC-010 Tablet v1.0 reference `jc-010-job-finder-state-1-tablet-v1.0.png`, and the DOC006-verified `mobile-navigation-drawer-logged-out-approved.png` and `mobile-navigation-drawer-logged-in-approved.png` component references.
+- `approved/` — normalized, controlled copies of exact Approved artifacts. Canonical filenames use the permanent ID, screen/component, viewport where applicable, and approved version. The library contains `jc-010-job-finder-state-1-desktop-v1.1.png`, `jc-010-job-finder-state-1-tablet-v1.0.png`, `jc-010-job-finder-state-1-mobile-v1.0.png`, `jc-011-job-finder-state-2-desktop-v1.0.png`, `jc-014-location-selection-modal-desktop-v1.0.png`, `jc-015-browse-reveal-desktop-v1.0.png`, `jc-030-job-detail-desktop-v1.0.png`, `jc-003-mobile-navigation-drawer-logged-out-v1.0.png`, and `jc-004-mobile-navigation-drawer-logged-in-v1.0.png`.
 - `draft/` — optional controlled copies of active design candidates.
 - `superseded/` — optional controlled copies retained for lineage.
 - `source/` — optional editable source files and provenance records.

@@ -22,6 +22,18 @@ JC-010 → JC-014 → JC-011
 JC-010 → JC-015 → JC-011
 ```
 
+## Approved Authority Index
+
+| ID | Screen / Component | Desktop | Tablet | Mobile |
+|---|---|---|---|---|
+| JC-010 | Job Finder State 1 | `jc-010-job-finder-state-1-desktop-v1.1.png` | `jc-010-job-finder-state-1-tablet-v1.0.png` | `jc-010-job-finder-state-1-mobile-v1.0.png` |
+| JC-011 | Job Finder State 2 | `jc-011-job-finder-state-2-desktop-v1.0.png` | — | — |
+| JC-014 | Location Selection Modal | `jc-014-location-selection-modal-desktop-v1.0.png` | — | — |
+| JC-015 | Browse Reveal | `jc-015-browse-reveal-desktop-v1.0.png` | — | — |
+| JC-030 | Job Detail | `jc-030-job-detail-desktop-v1.0.png` | — | — |
+| JC-003 | Mobile Navigation Drawer (Logged Out) | — | — | `jc-003-mobile-navigation-drawer-logged-out-v1.0.png` |
+| JC-004 | Mobile Navigation Drawer (Logged In) | — | — | `jc-004-mobile-navigation-drawer-logged-in-v1.0.png` |
+
 Superseded artifact-lineage identifiers JC-090–JC-093 are not product surfaces
 and are intentionally excluded. Their history remains in the Visual Manifest.
 
@@ -86,6 +98,52 @@ Filename recency does not establish approval.
 ---
 
 ### Identifier
+JC-003
+### Screen Name
+Mobile Navigation Drawer (Logged Out)
+### Purpose
+Provide the approved logged-out mobile navigation drawer component.
+### Primary User Goal
+Navigate Job Center destinations or begin account acquisition.
+### Primary User
+Logged-out mobile user
+### Status
+Approved
+### Authority
+`docs/job-center/design/approved/jc-003-mobile-navigation-drawer-logged-out-v1.0.png`
+### Current State
+Approved mobile component reference, v1.0.
+### Next Expected Work
+Use only for an explicitly approved Patch Mode delta or bounded implementation.
+### Notes
+Component authority only; it does not independently approve an underlying page.
+
+---
+
+### Identifier
+JC-004
+### Screen Name
+Mobile Navigation Drawer (Logged In)
+### Purpose
+Provide the approved logged-in mobile navigation drawer component.
+### Primary User Goal
+Navigate Job Center destinations and account actions.
+### Primary User
+Logged-in mobile user
+### Status
+Approved
+### Authority
+`docs/job-center/design/approved/jc-004-mobile-navigation-drawer-logged-in-v1.0.png`
+### Current State
+Approved mobile component reference, v1.0.
+### Next Expected Work
+Use only for an explicitly approved Patch Mode delta or bounded implementation.
+### Notes
+Component authority only; it does not independently approve an underlying page.
+
+---
+
+### Identifier
 JC-010
 ### Screen Name
 Job Finder State 1
@@ -98,9 +156,9 @@ Logged-out job seeker
 ### Status
 Approved
 ### Authority
-Desktop: `docs/job-center/design/approved/job-finder-state-1-01f-design-target.png`.
+Desktop: `docs/job-center/design/approved/jc-010-job-finder-state-1-desktop-v1.1.png`.
 Tablet: `docs/job-center/design/approved/jc-010-job-finder-state-1-tablet-v1.0.png`.
-Mobile: `docs/job-center/design/approved/job-center-responsive-jc010-mobile-02c-approved.png`.
+Mobile: `docs/job-center/design/approved/jc-010-job-finder-state-1-mobile-v1.0.png`.
 ### Preceded By
 JC-002 or direct `/jobs/` entry
 ### Leads To
@@ -134,7 +192,7 @@ Job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/refined-search-model-01k-design-target.png`
+`docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png`
 ### Preceded By
 JC-010, JC-014, JC-015, or JC-013
 ### Leads To
@@ -161,11 +219,9 @@ Continue a governed search interaction.
 ### Primary User
 Job seeker
 ### Status
-Approved
+Placeholder
 ### Authority
-JC-030 v1.0 approved desktop raster, together with the JC-030 Product
-Definition, UX Specification, AUDIT007 reconciliation, and Job Center Design
-System.
+No approved visual authority exists for this state.
 ### Preceded By
 JC-011
 ### Leads To
@@ -223,7 +279,7 @@ Job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/job-finder-location-modal-lo-01b-design-target.png`
+`docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png`
 ### Preceded By
 JC-010
 ### Leads To
@@ -252,7 +308,7 @@ Job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/job-finder-browse-reveal-01b-design-target.png`
+`docs/job-center/design/approved/jc-015-browse-reveal-desktop-v1.0.png`
 ### Preceded By
 JC-010
 ### Leads To
@@ -424,9 +480,9 @@ Present complete job information with maximum clarity and trust while maximizing
 ### Primary User
 Job seeker
 ### Status
-Placeholder
+Approved
 ### Authority
-No approved implementation authority yet exists.
+`docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`
 ### Preceded By
 JC-011, JC-020, or JC-040
 ### Leads To
@@ -439,7 +495,8 @@ remain unresolved.
 ### Next Expected Work
 Audit the current implementation against the complete approved authority set.
 ### Notes
-The canonical raster is `design/approved/job-detail-01c-approved.png`. Editable
+The canonical raster is
+`docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`. Editable
 source is unavailable; this does not authorize visual reinterpretation.
 
 ---
