@@ -19,7 +19,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 10; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 10; Draft 9; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 ## Entry rules
 
@@ -177,6 +177,20 @@ Status totals for manifest entries: **Approved 10; Draft 8; Placeholder 14; Supe
 - **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-005, JC-ATLAS-012
 - **Related implementation ticket(s):** None assigned
 - **Notes:** The controlled-library copy is byte-identical to the verified repository candidate. JC-011 desktop v1.0 remains the product/content authority and JC-010 Tablet v1.0 remains the shared tablet presentation language. This approval is limited to JC-011 portrait-tablet presentation and does not approve JC-011 mobile, implementation, or other screens. Known implementation and accessibility guidance only: ensure compact controls, pagination, chip-remove actions, and Save-heart targets meet the preferred approximately 44px target without enlarging visible glyphs; verify footer and dense right-rail text contrast and focus indicators in browser rendering; and verify 728 × 90 and 300 × 250 reservations retain governed proportions without overflow at actual tablet breakpoints. Future JC-011 Tablet work is Patch Mode and requires a separately approved, explicitly named defect or delta.
+
+### JC-011 Mobile — Job Finder State 2 Mobile Responsive Candidate
+
+- **Screen / Component:** Refined search/results state at the candidate mobile presentation
+- **Status:** Draft
+- **Version:** 0.1
+- **Current Candidate:** `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/mobile-expanded-mobileads-01a.png`
+- **Candidate SHA-256:** `5e4504e7f6d8f36eb77fca511444ca332f16a48e0842c1e48d87b310b79b96c8`
+- **Authority:** Not approved. RESP-DEC002 resolves the support-content governance conflict identified by the JC011-MOBILE-AUDIT and makes this candidate eligible for a separate JC-011 Mobile approval decision.
+- **Related Design System section:** 4, 5, 9, 10, 13–17
+- **Related Product Specification:** Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-003, JC-ATLAS-005, JC-ATLAS-012
+- **Related implementation ticket(s):** None assigned
+- **Notes:** Candidate preserves JC-011 State 2 product truth while using the RESP-DEC002 JC-011 Mobile-only support-content exception: no full Account/Browse/Employer/Advertisement/Community stack below each refined-results page, with `320 × 50` mobile advertisement between listings 5 and 6 and `320 × 100` mobile advertisement below pagination. This entry does not approve the raster, alter JC-011 desktop or tablet authority, change JC-010, JC-014, JC-015, JC-030, tablet behavior, desktop behavior, or authorize implementation.
 
 ### JC-012 — Job Finder State 3
 
@@ -557,6 +571,7 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-011-job-finder-state-2-desktop-v1.0.png` | Controlled JC-011 reference copy | Approved | JC-011 | Canonical library copy; byte-identical to the approved source artifact |
 | `art/mockups/job-center/generated/jc011-tablet-responsive-v1.0-r003-candidate.png` | Engineering Director-approved JC-011 Tablet source raster | Approved | JC-011 Tablet | DOC011 verified the exact repository candidate and SHA-256 |
 | `docs/job-center/design/approved/jc-011-job-finder-state-2-tablet-v1.0.png` | Controlled JC-011 Tablet v1.0 reference copy | Approved | JC-011 Tablet | Byte-identical to the DOC011-verified source raster; future work is Patch Mode |
+| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/mobile-expanded-mobileads-01a.png` | JC-011 Mobile refined-results candidate with mobile ad reservations | Draft | JC-011 Mobile | RESP-DEC002 resolves the support-content exception; candidate is eligible for separate approval but is not approved by this decision |
 | `tmp/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Candidate component sheet |
 | `tmp/design-refs/search-and-sort-panels-01d.png` | Search and Sort panels | Draft | JC-021 | Byte-identical duplicate path |
 | `tmp/search-panels-basic-and-advanced.png` | Search panels | Draft | JC-021 | Candidate component sheet |
@@ -615,11 +630,13 @@ and its byte-identical controlled-library copy. DOC006 adds only the shared
 mobile drawer component. DOC008 adds only the bounded JC-010 portrait-tablet
 presentation; it does not approve another page, responsive variant, or
 implementation. DOC011 adds only the bounded JC-011 portrait-tablet
-presentation; it does not approve JC-011 mobile or implementation. Separate
-approval decisions are still required for the shell as JC-001, landing, other
-Finder states, progressive Search, canonical listing as JC-020, advertising as
-JC-024, and responsive variants beyond the bounded JC-010 Mobile, JC-010
-Tablet, JC-011 Tablet, and drawer component approvals. Employer, Saved Jobs,
-Alerts, Moderator, and Administration references remain governed placeholders
-and must not be inferred from current implementation or from existing
-approvals.
+presentation; it does not approve JC-011 mobile or implementation. RESP-DEC002
+governs a JC-011 Mobile-only support-content exception and makes the current
+JC-011 Mobile candidate eligible for a separate approval decision; it does not
+approve the raster. Separate approval decisions are still required for the shell
+as JC-001, landing, other Finder states, progressive Search, canonical listing
+as JC-020, advertising as JC-024, and responsive variants beyond the bounded
+JC-010 Mobile, JC-010 Tablet, JC-011 Tablet, JC-011 Mobile candidate, and drawer
+component approvals. Employer, Saved Jobs, Alerts, Moderator, and
+Administration references remain governed placeholders and must not be inferred
+from current implementation or from existing approvals.

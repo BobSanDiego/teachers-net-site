@@ -209,7 +209,9 @@ requires a separate bounded ticket.
 ### Notes
 Desktop remains product/content authority. DOC011 approves only the bounded
 portrait-tablet presentation and does not approve mobile, implementation, or
-other screens.
+other screens. RESP-DEC002 resolves the JC-011 Mobile-only support-content
+exception and makes the audited mobile candidate eligible for a separate
+approval decision without approving it.
 
 ---
 
