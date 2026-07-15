@@ -48,9 +48,32 @@
 **Status:** Accepted
 **Date:** 2026-07-15
 
-Implement the approved JC-030 authority as a new page composition while
-reusing the existing route, services, repositories, business logic,
-authentication, engagement behavior, formatting helpers, responsive
-primitives, and advertisement primitives. The legacy Job Detail page is not
-the implementation target; implementation replaces page composition, not
-underlying behavior.
+ADR001 codifies the implementation strategy derived from the Responsive
+Authority Program. It was adopted after the responsive-authority work and must
+not be represented as though it governed earlier implementation. It governs
+current and future JC-030 work: implement the approved authority as a new page
+composition while reusing the existing route, services, repositories,
+business logic, authentication, engagement behavior, formatting helpers,
+responsive primitives, and advertisement primitives. The legacy Job Detail
+page is not the implementation target; replace page composition, not
+underlying behavior, and avoid broad architectural replacement when bounded
+composition work is sufficient.
+
+## Repository Ownership
+
+- Root `teachers-net-site` repository: governance, roadmap, architectural
+  decisions, audits, approved visual authorities, and continuity documents.
+- Nested `tnet-jobs` repository: Job Center implementation.
+
+## Source-of-Truth Precedence
+
+1. Current explicit Engineering Director instruction
+2. Verified Git state in the correct repository
+3. Reconciled Project Cursor
+4. Reconciled Engineering Handoff
+5. Approved product, UX, design, and responsive authorities
+6. Visual Manifest and Approved Library
+7. UX Atlas
+8. Historical roadmap and planning documents
+9. Conversation summaries
+10. Model memory

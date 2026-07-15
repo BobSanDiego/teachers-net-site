@@ -5,9 +5,8 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — Responsive Design is complete through RESP-LAYOUT002,
-RESP-ADS002, and DOC017A. Responsive Implementation is active for JC-030
-approved-authority composition implementation under ADR001; approved visual
+Active Development — Current phase is Bounded Implementation Convergence.
+Responsive Design is complete for the approved authority set. Approved visual
 authorities remain Patch Mode references.
 DOC018 approves JC-030 Mobile Reading Experience authority.
 DOC016 approves JC-015 Mobile responsive authority. DOC015
@@ -22,7 +21,9 @@ Mode; active implementation work must preserve those authorities.
 
 ## 2. Current Ticket
 
-JC-030 approved-authority composition implementation under ADR001. The legacy
+JC-030 approved-authority composition implementation under ADR001. ADR001 is
+retrospective codification derived from the Responsive Authority Program; it
+does not claim to have governed earlier work. The legacy
 Job Detail page is not the implementation target; the page composition will be
 replaced while existing route, services, repositories, business logic,
 authentication, engagement, formatting, responsive, and advertisement
@@ -35,7 +36,9 @@ JC030-IMP002 completed the canonical Apply / Save / Share action group in the
 Jobs plugin. ADR001 supersedes the assumption that the legacy page is a
 convergence baseline. Remaining implementation work must be issued as bounded
 approved-composition tickets and verified against current code before each
-ticket. DOC018 approved the exact mobile raster
+ticket. JC030-IMP100 implemented the approved composition using reusable
+existing infrastructure. The current gate is browser, accessibility, and human
+visual verification; JC-030 is not yet converged. DOC018 approved the exact mobile raster
 `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png` as
 JC-030 Mobile v1.0 from the 853 × 1857 source
 `jc030-mobile-reading-experience-m008-candidate.png`; future JC-030 Mobile
@@ -68,6 +71,7 @@ implementation must preserve these authorities.
 
 ## 3. Last Completed Milestone
 
+DOC020R reconciled the forward phase-gate model and continuity governance.
 RESP-LAYOUT002 established Responsive Layout Geometry v1 as the canonical
 responsive layout authority, and RESP-ADS002 established Responsive Advertising
 Strategy v1 as the canonical responsive advertisement authority. DOC017A
@@ -93,21 +97,19 @@ controlled-library copy.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Continue JC-030 implementation convergence from the verified JC030-IMP001 backlog.
-2. Unassigned — Address an Engineering Director-approved JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, JC-030 Mobile, or mobile drawer Patch Mode delta only if issued.
-3. Unassigned — Authorize responsive implementation and browser-based visual QA against the approved JC-010 authorities.
-4. Unassigned — Audit responsive implementation convergence after all required authority is approved.
-5. Unassigned — Resume the next approved implementation or UX workstream.
+1. JC030-IMP100 gate — browser, accessibility, and human visual verification.
+2. Public and Employer V1 Release-Candidate Audits after JC-030 acceptance.
+3. Real-Job Pilot readiness.
+4. Operational Launch Readiness.
+5. Explicit V1 Acceptance.
 
 ## 5. Current Blockers
 
-- JC-030 implementation convergence remains incomplete after the JC030-IMP001
-  audit and JC030-IMP002 action-group implementation.
+- JC-030 browser, accessibility, and human visual acceptance remains incomplete
+  after JC030-IMP100.
 - Responsive implementation is active and must preserve the complete approved
   authority set, including JC-030 Narrow Tablet v1.0.
-- Other screen-specific responsive authority remains pending and does not
-  inherit desktop, JC-010 Mobile, JC-010 Tablet, JC-011 Tablet, JC-011 Mobile,
-  JC-014 Tablet, JC-014 Mobile, JC-015 Tablet, or JC-015 Mobile approval.
+- No production deployment is established by the verified history.
 - Release-candidate status still requires implementation convergence, real-job
   pilot evidence, operational launch planning, and explicit acceptance.
 
@@ -125,6 +127,25 @@ controlled-library copy.
 - Job Center Shared Responsive Decisions v1 (RESP-DEC001).
 - Responsive Advertising Strategy v1 (RESP-ADS002).
 - Responsive Layout Geometry v1 (RESP-LAYOUT002).
+
+## 8. Current Gate and Authorization
+
+Implementation Readiness Decision is a forward gate established by DOC020R; it
+was not inferred for earlier work. For the bounded JC-030 workstream, DOC020R
+prospectively authorizes continued implementation convergence under ADR001,
+subject to browser, accessibility, and human visual verification. Approval does
+not imply implementation, convergence, release-candidate acceptance, or
+production deployment.
+
+## 9. Repository Ownership
+
+- Root `teachers-net-site`: governance, roadmap, audits, architectural
+  decisions, approved authorities, and continuity documents.
+- Nested `tnet-jobs`: Job Center implementation.
+
+After JC-030 acceptance, return to the public and employer V1
+release-candidate roadmap. Do not schedule UX Atlas placeholders automatically
+or let the JC-030 audit backlog replace the broader roadmap.
 
 ## 7. Recently Approved Product Decisions
 

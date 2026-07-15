@@ -530,11 +530,11 @@ authority. Narrow Tablet governs the bounded `768–959px` single-column
 presentation and is Patch Mode. Mobile governs the approved reading
 experience, conversion hierarchy, progressive disclosure, employer and
 related-job presentation, and advertisement location; future mobile work is
-Patch Mode. Implementation convergence is active after JC030-IMP001 and
-JC030-IMP002; remaining work must be taken from the verified JC030-IMP001
-backlog.
+Patch Mode. JC030-IMP100 is verified implementation history; browser,
+accessibility, and human visual acceptance remain the current gate.
 ### Next Expected Work
-Audit the current implementation against the complete approved authority set.
+Complete the browser, accessibility, and human visual verification gate, then
+return to the V1 release-candidate roadmap.
 ### Notes
 Desktop canonical raster: `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`.
 Editable desktop source is unavailable; this does not authorize visual

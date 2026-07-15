@@ -107,6 +107,25 @@ Every Project Cursor should declare one project state:
 - Maintenance
 - Archived
 
+## Phase-Transition Governance
+
+These rules govern phase changes prospectively from DOC020R onward:
+
+- Never infer a phase transition.
+- A transition requires verified Git evidence, reconciled Project Cursor and
+  Engineering Handoff, Google Drive handoff synchronization/readback, and
+  explicit Engineering Director authorization.
+- Verify repository state before phase reconciliation; keep root governance and
+  nested implementation repositories distinct.
+- Approval does not imply implementation. Implementation does not imply browser
+  convergence. Browser convergence does not imply release-candidate acceptance
+  or production deployment.
+- An audit backlog is not the product roadmap, and no ticket creates historical
+  fact merely by asserting it.
+- Keep one objective per ticket, reuse existing infrastructure, avoid broad
+  refactors during convergence, and require human browser review after
+  meaningful UI implementation.
+
 Core Terms and Membership Taxonomy are related but distinct:
 
 - Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.

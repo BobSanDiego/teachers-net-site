@@ -25,7 +25,9 @@ Status totals for manifest entries: **Approved 16; Draft 8; Placeholder 14; Supe
 Responsive Layout Geometry v1 governs physical breakpoint and rail behavior.
 Existing approved wide-tablet authorities remain Approved; narrow-tablet
 behavior is governed separately, and JC-030 Narrow Tablet is Approved by
-DOC017A. Responsive Design is complete; implementation convergence is active.
+DOC017A. Responsive Design is complete; JC-030 is in bounded implementation
+convergence under ADR001. Browser, accessibility, and human visual acceptance
+remain the current gate; the manifest is not an implementation diary.
 
 ## Entry rules
 

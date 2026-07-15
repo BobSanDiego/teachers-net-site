@@ -23,14 +23,27 @@ Atlas v1 for the concise map of governed screens and their relationships.
   interaction sequence. JC-010 logged-out desktop authority is v1.1 following
   DESIGN009 right-rail reconciliation; responsive authority remains separate.
 
-## Next Primary UX Workstream
+## Reconciled Phase-Gate Roadmap
 
-1. **JC-030 — Job Detail:** product truth and UX specification defined;
-   AUDIT007 content/pipeline reconciliation complete; DESIGN006 desktop visual
-   authority v1.0 approved; implementation audit next.
-2. Employer UX
-3. Saved Jobs / Alerts
-4. Responsive adaptations
+The following is the authoritative forward dependency model from DOC020R
+onward. It reconciles completed layers and does not claim that this exact
+sequence formally governed earlier work:
+
+Functional Foundation → Seed Marketplace → Public UI Polish → UX Atlas →
+Visual Authorities → Responsive Authorities → Responsive Layout Geometry →
+Repository State Verification → Phase Reconciliation → Implementation Strategy
+→ Implementation Readiness Decision → Bounded Implementation Convergence →
+Public and Employer Release-Candidate Audits → Real-Job Pilot → Operational
+Launch Readiness → Explicit V1 Acceptance → Production Launch
+
+## Current Authorized Workstream
+
+JC-030 is in **Bounded Implementation Convergence** under ADR001. The approved
+composition is the implementation target; the legacy composition is not.
+Browser, accessibility, and human visual verification remain the current gate.
+After JC-030 acceptance, work returns to the public and employer V1
+release-candidate roadmap. UX Atlas placeholders are not automatically
+scheduled.
 
 Each future interaction-state artifact inherits an approved page state and
 changes only the minimum interface needed to document one interaction.
