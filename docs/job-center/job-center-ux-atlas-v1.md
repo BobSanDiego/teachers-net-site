@@ -30,7 +30,7 @@ JC-010 → JC-015 → JC-011
 | JC-011 | Job Finder State 2 | `jc-011-job-finder-state-2-desktop-v1.0.png` | `jc-011-job-finder-state-2-tablet-v1.0.png` | `jc-011-job-finder-state-2-mobile-v1.0.png` |
 | JC-014 | Location Selection Modal | `jc-014-location-selection-modal-desktop-v1.0.png` | `jc-014-location-selection-modal-tablet-v1.0.png` | `jc-014-location-selection-modal-mobile-v1.0.png` |
 | JC-015 | Browse Reveal | `jc-015-browse-reveal-desktop-v1.0.png` | `jc-015-browse-reveal-tablet-v1.0.png` | `jc-015-browse-reveal-mobile-v1.0.png` |
-| JC-030 | Job Detail | `jc-030-job-detail-desktop-v1.0.png` | — | — |
+| JC-030 | Job Detail | `jc-030-job-detail-desktop-v1.0.png` | — | `jc-030-job-detail-mobile-v1.0.png` |
 | JC-003 | Mobile Navigation Drawer (Logged Out) | — | — | `jc-003-mobile-navigation-drawer-logged-out-v1.0.png` |
 | JC-004 | Mobile Navigation Drawer (Logged In) | — | — | `jc-004-mobile-navigation-drawer-logged-in-v1.0.png` |
 
@@ -507,7 +507,9 @@ Job seeker
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`
+Desktop: `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`.
+
+Mobile: `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png`.
 ### Preceded By
 JC-011, JC-020, or JC-040
 ### Leads To
@@ -515,14 +517,22 @@ External Apply or JC-040
 ### Dependencies
 Canonical job contract, JC-030 product definition and UX specification, and application destination integrity
 ### Current State
-Approved desktop visual authority; responsive and implementation authority
-remain unresolved.
+Approved desktop v1.0 product/content authority and Approved mobile v1.0
+Mobile Reading Experience authority. Mobile governs the approved reading
+experience, conversion hierarchy, progressive disclosure, employer and
+related-job presentation, and advertisement location; future mobile work is
+Patch Mode. Implementation authority remains unresolved.
 ### Next Expected Work
 Audit the current implementation against the complete approved authority set.
 ### Notes
-The canonical raster is
-`docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`. Editable
-source is unavailable; this does not authorize visual reinterpretation.
+Desktop canonical raster: `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`.
+Editable desktop source is unavailable; this does not authorize visual
+reinterpretation. Mobile canonical raster:
+`docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png`, approved
+by DOC018 from source `jc030-mobile-reading-experience-m008-candidate.png`
+(853 × 1857; SHA-256 `3d04b7c419df4612b4926d96c7ed43d51b34581f33bd8f65e7750130d7600ca9`).
+Its recorded typography, chip-row, and advertisement-container refinements are
+implementation guidance only.
 
 ---
 

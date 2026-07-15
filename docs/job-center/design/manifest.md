@@ -405,6 +405,25 @@ Status totals for manifest entries: **Approved 15; Draft 8; Placeholder 14; Supe
 - **Related implementation ticket(s):** None assigned
 - **Notes:** Lineage is JC-030 Placeholder 0.1 → unapproved implementation evidence and Job Detail concepts → AUDIT007 reconciliation → Engineering Director-supplied approved raster `ChatGPT Image Jul 13, 2026, 12_05_45 AM.png` → controlled library copy `jc-030-job-detail-desktop-v1.0.png` v1.0. The artifact is a raster visual authority. No matching editable source was produced or retained; `job-detail-01b-canonical-candidate.html` is not its source and is not associated with this approval. Implementation must rely on the approved PNG together with the JC-030 Product Definition, UX Specification, AUDIT007 reconciliation, and Job Center Design System. The missing editable source does not authorize visual reinterpretation. Any future reconstructed source is derivative and must not replace the approved PNG without a separate approval decision. Approval is desktop-only and does not approve responsive authority or implementation.
 
+### JC-030 Mobile — Job Detail Mobile Reading Experience
+
+- **Screen / Component:** Public canonical Job Detail mobile reading experience
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png`
+- **Source raster:** `art/mockups/job-center/generated/jc030-mobile-reading-experience-m008-candidate.png`
+- **Source dimensions:** 853 × 1857
+- **SHA-256:** `3d04b7c419df4612b4926d96c7ed43d51b34581f33bd8f65e7750130d7600ca9`
+- **Approval date:** 2026-07-15
+- **Approval authority:** Engineering Director, DOC018
+- **Approval scope:** Overall mobile reading experience, information and typography hierarchy, conversion hierarchy and Apply / Save / Share placement, employer presentation, related-job presentation, advertisement location, progressive disclosure, overall composition, and Teachers.Net visual language exactly within the approved raster boundary.
+- **Authority:** DOC018 approves the exact source raster and its byte-identical controlled-library copy as JC-030 Job Detail Mobile v1.0. Desktop JC-030 remains product/content authority.
+- **Related Design System section:** 4, 5, 11, 17
+- **Related Product Specification:** JC-030 Job Detail Product Definition; JC-030 Job Detail UX Specification; Canonical V1 Contract
+- **Related future UX Atlas entry:** JC-ATLAS-006
+- **Related implementation ticket(s):** None assigned
+- **Notes:** Known raster limitation: the final localized edit pass removed the duplicate Save-heart beside the title but did not reliably preserve frozen regions while simultaneously applying remaining localized typography and layout edits. Those refinements are implementation work, not visual-governance defects. Implementation guidance only: display `Show more` only for truncated content; use the approved fade treatment whenever long-form content is abbreviated; slightly increase typography for collapsed Qualifications and How to Apply rows while preserving hierarchy; slightly increase typography inside About the Employer and Explore More Jobs cards; remove the Grade 5, Mathematics, Science, Hybrid, and Part Time taxonomy-chip row and close the resulting space naturally; and adjust the advertisement container to faithfully represent a standard `320 × 50` mobile banner while preserving its approved page location. Future JC-030 Mobile work is Patch Mode only and requires a separately approved, explicitly named defect or delta.
+
 ### JC-040 — Saved Jobs
 
 - **Screen / Component:** Job-seeker saved-jobs destination and states
@@ -629,6 +648,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `art/mockups/job-center/generated/jc015-mobile-responsive-r002-candidate.png` | Engineering Director-approved JC-015 Mobile source raster | Approved | JC-015 Mobile | DOC016 verified the exact repository candidate, dimensions, and SHA-256 |
 | `docs/job-center/design/approved/jc-015-browse-reveal-mobile-v1.0.png` | Controlled JC-015 Mobile v1.0 reference copy | Approved | JC-015 Mobile | Byte-identical to the DOC016-verified source raster; future work is Patch Mode |
 | `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png` | Controlled JC-030 desktop reference copy | Approved | JC-030 | Canonical raster authority; byte-identical to the Engineering Director-supplied PNG; editable source unavailable |
+| `art/mockups/job-center/generated/jc030-mobile-reading-experience-m008-candidate.png` | Engineering Director-approved JC-030 Mobile Reading Experience source raster | Approved | JC-030 Mobile | DOC018 verified the exact repository candidate, dimensions, and SHA-256 |
+| `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png` | Controlled JC-030 Mobile v1.0 reference copy | Approved | JC-030 Mobile | Byte-identical to the DOC018-verified source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
 | `docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |

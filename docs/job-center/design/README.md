@@ -28,7 +28,7 @@ A filename, sequence number, `final` label, recency, implementation use, or dire
 
 ## Directory roles
 
-- `approved/` — normalized, controlled copies of exact Approved artifacts. Canonical filenames use the permanent ID, screen/component, viewport where applicable, and approved version. The library contains `jc-010-job-finder-state-1-desktop-v1.1.png`, `jc-010-job-finder-state-1-tablet-v1.0.png`, `jc-010-job-finder-state-1-mobile-v1.0.png`, `jc-011-job-finder-state-2-desktop-v1.0.png`, `jc-011-job-finder-state-2-tablet-v1.0.png`, `jc-011-job-finder-state-2-mobile-v1.0.png`, `jc-014-location-selection-modal-desktop-v1.0.png`, `jc-014-location-selection-modal-tablet-v1.0.png`, `jc-014-location-selection-modal-mobile-v1.0.png`, `jc-015-browse-reveal-desktop-v1.0.png`, `jc-015-browse-reveal-tablet-v1.0.png`, `jc-015-browse-reveal-mobile-v1.0.png`, `jc-030-job-detail-desktop-v1.0.png`, `jc-003-mobile-navigation-drawer-logged-out-v1.0.png`, and `jc-004-mobile-navigation-drawer-logged-in-v1.0.png`.
+- `approved/` — normalized, controlled copies of exact Approved artifacts. Canonical filenames use the permanent ID, screen/component, viewport where applicable, and approved version. The library contains `jc-010-job-finder-state-1-desktop-v1.1.png`, `jc-010-job-finder-state-1-tablet-v1.0.png`, `jc-010-job-finder-state-1-mobile-v1.0.png`, `jc-011-job-finder-state-2-desktop-v1.0.png`, `jc-011-job-finder-state-2-tablet-v1.0.png`, `jc-011-job-finder-state-2-mobile-v1.0.png`, `jc-014-location-selection-modal-desktop-v1.0.png`, `jc-014-location-selection-modal-tablet-v1.0.png`, `jc-014-location-selection-modal-mobile-v1.0.png`, `jc-015-browse-reveal-desktop-v1.0.png`, `jc-015-browse-reveal-tablet-v1.0.png`, `jc-015-browse-reveal-mobile-v1.0.png`, `jc-030-job-detail-desktop-v1.0.png`, `jc-030-job-detail-mobile-v1.0.png`, `jc-003-mobile-navigation-drawer-logged-out-v1.0.png`, and `jc-004-mobile-navigation-drawer-logged-in-v1.0.png`.
 - `draft/` — optional controlled copies of active design candidates.
 - `superseded/` — optional controlled copies retained for lineage.
 - `source/` — optional editable source files and provenance records.
@@ -108,6 +108,13 @@ explicitly named mobile defect or delta against the exact Approved R002 raster.
 It does not reopen JC-015 desktop v1.0, alter JC-015 Tablet v1.0, alter JC-010
 authorities, establish another responsive variant, or authorize implementation.
 Any broader redesign or implementation requires a separate approved ticket.
+
+JC-030 Mobile v1.0 is in **Patch Mode**. Future work may address only an
+explicitly named mobile defect or delta against its exact Approved raster. It
+does not reopen JC-030 desktop v1.0, alter another authority, or authorize
+implementation. The raster's remaining typography, chip-row, and advertisement
+container refinements are implementation guidance recorded in the manifest, not
+authorization to regenerate or reinterpret the approved raster.
 
 JC-003 and JC-004 mobile navigation drawers are also in **Patch Mode**. They
 govern only their respective drawer components across JC-010, JC-011, JC-014,
