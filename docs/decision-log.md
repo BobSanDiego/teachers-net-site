@@ -40,3 +40,17 @@
 - A controlled real-job pilot precedes bulk loading.
 - Employer claims require authority verification; recruiter identities are not
   auto-created from imported records.
+
+## Architectural Decisions
+
+### ADR001 — JC-030 Implementation Strategy
+
+**Status:** Accepted
+**Date:** 2026-07-15
+
+Implement the approved JC-030 authority as a new page composition while
+reusing the existing route, services, repositories, business logic,
+authentication, engagement behavior, formatting helpers, responsive
+primitives, and advertisement primitives. The legacy Job Detail page is not
+the implementation target; implementation replaces page composition, not
+underlying behavior.

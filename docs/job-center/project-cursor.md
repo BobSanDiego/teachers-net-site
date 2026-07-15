@@ -9,7 +9,9 @@ Active Development
 Responsive Design governance is complete through RESP-LAYOUT002,
 RESP-ADS002, and DOC017A's approval of JC-030 Narrow Tablet v1.0. Responsive
 Implementation is active after JC030-IMP001 and JC030-IMP002; approved visual
-authorities remain immutable Patch Mode references.
+authorities remain immutable Patch Mode references. ADR001 establishes that
+JC-030 implementation replaces the legacy page composition while reusing
+existing services and behavior.
 DOC018 approves JC-030 Mobile Reading Experience authority. DOC016 approves JC-015 Mobile responsive authority. DOC015 approves JC-015
 Tablet responsive authority. DOC014 approves JC-014
 Mobile responsive authority. DOC013 approves JC-014 Tablet responsive
@@ -99,21 +101,23 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-JC-030 implementation convergence against the approved authority set, with
+JC-030 approved-authority composition implementation under ADR001, reusing
+existing services and behavior while replacing the legacy page composition,
+with
 JC-030 Narrow Tablet, JC-030 Mobile, JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile,
 JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, and JC-003/JC-004 drawer Patch
 Mode visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — continue JC-030 implementation convergence from the verified
-JC030-IMP001 backlog, with browser-based visual QA against the approved
-authority set.
+Unassigned — define the first bounded JC-030 approved-composition
+implementation ticket under ADR001, with browser-based visual QA against the
+approved authority set.
 
 ## Next Decision
 
-Select the next bounded JC-030 implementation-convergence item from JC030-IMP001
-after verifying the current code state; do not reopen responsive visual
+Select the first bounded JC-030 approved-composition implementation item under
+ADR001 after verifying the current code state; do not reopen responsive visual
 authority.
 
 ## Required Google Drive Context

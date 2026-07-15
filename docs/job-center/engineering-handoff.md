@@ -7,8 +7,8 @@ implementation detail remain in the referenced repository documents.
 
 Active Development — Responsive Design is complete through RESP-LAYOUT002,
 RESP-ADS002, and DOC017A. Responsive Implementation is active for JC-030
-implementation convergence; approved visual authorities remain Patch Mode
-references.
+approved-authority composition implementation under ADR001; approved visual
+authorities remain Patch Mode references.
 DOC018 approves JC-030 Mobile Reading Experience authority.
 DOC016 approves JC-015 Mobile responsive authority. DOC015
 approves JC-015 Tablet responsive authority. DOC014
@@ -22,14 +22,20 @@ Mode; active implementation work must preserve those authorities.
 
 ## 2. Current Ticket
 
-JC-030 implementation convergence. DOC017A approved the exact narrow-tablet raster
+JC-030 approved-authority composition implementation under ADR001. The legacy
+Job Detail page is not the implementation target; the page composition will be
+replaced while existing route, services, repositories, business logic,
+authentication, engagement, formatting, responsive, and advertisement
+primitives are reused. DOC017A approved the exact narrow-tablet raster
 `docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png`
 as JC-030 Narrow Tablet v1.0 from the `917 × 1716` source
 `jc030-narrow-tablet-nt002-candidate.png`; future JC-030 Narrow Tablet work is
 Patch Mode. JC030-IMP001 completed the browser implementation audit, and
 JC030-IMP002 completed the canonical Apply / Save / Share action group in the
-Jobs plugin. The remaining implementation backlog must be taken only from
-JC030-IMP001 and verified against current code before each ticket. DOC018 approved the exact mobile raster
+Jobs plugin. ADR001 supersedes the assumption that the legacy page is a
+convergence baseline. Remaining implementation work must be issued as bounded
+approved-composition tickets and verified against current code before each
+ticket. DOC018 approved the exact mobile raster
 `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png` as
 JC-030 Mobile v1.0 from the 853 × 1857 source
 `jc030-mobile-reading-experience-m008-candidate.png`; future JC-030 Mobile
