@@ -6,9 +6,10 @@ Active Development
 
 ## Current Phase
 
-Responsive advertising governance is complete through RESP-ADS002. JC-030
-Tablet remains the next unresolved responsive authority and must adapt the
-canonical `468 × 60` main-column plus true `300 × 250` retained-rail strategy.
+Responsive layout geometry governance is complete through RESP-LAYOUT002, and
+responsive advertising governance is complete through RESP-ADS002. JC-030
+Tablet remains the only unresolved primary responsive authority and requires a
+narrow-tablet single-column adaptation.
 DOC018 approves JC-030 Mobile Reading Experience authority. DOC016 approves JC-015 Mobile responsive authority. DOC015 approves JC-015
 Tablet responsive authority. DOC014 approves JC-014
 Mobile responsive authority. DOC013 approves JC-014 Tablet responsive
@@ -64,12 +65,14 @@ refinements are implementation guidance only; future JC-030 Mobile work is
 Patch Mode.
 RESP-ADS002 establishes Responsive Advertising Strategy v1 as the canonical
 authority for responsive advertisement inventory, intrinsic dimensions,
-placement hierarchy, and exceptions. JC-030 Tablet remains awaiting adaptation
-to its `468 × 60` main-column and true `300 × 250` retained-rail strategy.
+placement hierarchy, and exceptions. RESP-LAYOUT002 establishes Responsive
+Layout Geometry v1 as the canonical authority for responsive classes,
+two-column eligibility, rail collapse, reading widths, and physical fit.
+JC-030 Tablet remains awaiting a narrow-tablet single-column adaptation.
 
 ## Current Focus
 
-JC-030 Tablet responsive advertising adaptation is the remaining named
+JC-030 Tablet narrow-tablet single-column adaptation is the remaining named
 authority gap. JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010
 Mobile v1.0 are in Patch Mode. Desktop JC-010 v1.1, JC-011 v1.0, JC-014 v1.0,
@@ -95,9 +98,10 @@ Mode visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — create and audit JC-030 Tablet authority using Responsive
-Advertising Strategy v1; then address an Engineering Director-approved Patch
-Mode delta only if issued.
+Unassigned — create and audit a narrow-tablet single-column JC-030 Tablet
+authority using Responsive Layout Geometry v1 and Responsive Advertising
+Strategy v1; then address an Engineering Director-approved Patch Mode delta
+only if issued.
 
 ## Next Decision
 

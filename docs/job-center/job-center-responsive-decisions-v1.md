@@ -38,8 +38,10 @@ becoming table columns.
 
 ## 4. Right Rail
 
-On logged-out Finder and Search surfaces, the desktop right rail enters the
-main flow after results, pagination, and the leaderboard in this exact order:
+On logged-out Finder and Search surfaces, Responsive Layout Geometry v1 governs
+the breakpoint and physical conditions for rail retention or collapse. When the
+rail enters the main flow after results, pagination, and the main-flow
+advertisement, it uses this exact order:
 **Account → Browse → Employer → Advertisement → Community**. JC-010, JC-011,
 JC-014, and JC-015 inherit this order, with modal or disclosure states changing
 only their named interaction; a missing page-specific card closes its space
@@ -110,9 +112,9 @@ trigger after dismissal.
 - Typography favors comfortable sustained reading over maximum information
   density.
 - Preserve established page identity across responsive adaptations.
-- Right-rail support content may remain visible on portrait tablet where it
-  improves first-view usability and an Approved tablet authority establishes
-  that presentation.
+- Right-rail support content may remain visible only where Responsive Layout
+  Geometry v1 permits retained-rail geometry and an Approved tablet authority
+  establishes that presentation.
 - Responsive work adapts Approved authorities rather than redesigning them.
 - Once a responsive authority reaches convergence, future work enters Patch
   Mode.

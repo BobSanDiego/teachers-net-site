@@ -34,6 +34,10 @@ JC-010 → JC-015 → JC-011
 | JC-003 | Mobile Navigation Drawer (Logged Out) | — | — | `jc-003-mobile-navigation-drawer-logged-out-v1.0.png` |
 | JC-004 | Mobile Navigation Drawer (Logged In) | — | — | `jc-004-mobile-navigation-drawer-logged-in-v1.0.png` |
 
+Responsive Layout Geometry v1 governs physical breakpoint and rail behavior.
+Existing tablet authorities remain Approved as wide-tablet references;
+narrow-tablet behavior is governed separately. JC-030 Tablet remains pending.
+
 Superseded artifact-lineage identifiers JC-090–JC-093 are not product surfaces
 and are intentionally excluded. Their history remains in the Visual Manifest.
 

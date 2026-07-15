@@ -41,6 +41,10 @@ Employer interaction and terminology must conform to
 canonical companion authority for responsive advertisement inventory,
 dimensions, placement hierarchy, and exceptions.
 
+`docs/job-center/job-center-responsive-layout-geometry-v1.md` is the canonical
+companion authority for responsive layout classes, physical column geometry,
+rail eligibility, collapse behavior, and reading-width constraints.
+
 ## 2. Source hierarchy and conflict rules
 
 ### 2.1 Source hierarchy

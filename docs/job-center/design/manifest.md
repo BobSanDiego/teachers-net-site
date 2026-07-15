@@ -22,6 +22,10 @@ approval scope.
 
 Status totals for manifest entries: **Approved 15; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
+Responsive Layout Geometry v1 governs physical breakpoint and rail behavior.
+Existing approved wide-tablet authorities remain Approved; narrow-tablet
+behavior is governed separately, and JC-030 Tablet remains pending.
+
 ## Entry rules
 
 - IDs are permanent.
