@@ -30,7 +30,7 @@ JC-010 → JC-015 → JC-011
 | JC-011 | Job Finder State 2 | `jc-011-job-finder-state-2-desktop-v1.0.png` | `jc-011-job-finder-state-2-tablet-v1.0.png` | `jc-011-job-finder-state-2-mobile-v1.0.png` |
 | JC-014 | Location Selection Modal | `jc-014-location-selection-modal-desktop-v1.0.png` | `jc-014-location-selection-modal-tablet-v1.0.png` | `jc-014-location-selection-modal-mobile-v1.0.png` |
 | JC-015 | Browse Reveal | `jc-015-browse-reveal-desktop-v1.0.png` | `jc-015-browse-reveal-tablet-v1.0.png` | `jc-015-browse-reveal-mobile-v1.0.png` |
-| JC-030 | Job Detail | `jc-030-job-detail-desktop-v1.0.png` | — | `jc-030-job-detail-mobile-v1.0.png` |
+| JC-030 | Job Detail | `jc-030-job-detail-desktop-v1.0.png` | `jc-030-job-detail-narrow-tablet-v1.0.png` (narrow tablet) | `jc-030-job-detail-mobile-v1.0.png` |
 | JC-003 | Mobile Navigation Drawer (Logged Out) | — | — | `jc-003-mobile-navigation-drawer-logged-out-v1.0.png` |
 | JC-004 | Mobile Navigation Drawer (Logged In) | — | — | `jc-004-mobile-navigation-drawer-logged-in-v1.0.png` |
 
@@ -513,6 +513,8 @@ Approved
 ### Authority
 Desktop: `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png`.
 
+Narrow tablet: `docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png`.
+
 Mobile: `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png`.
 ### Preceded By
 JC-011, JC-020, or JC-040
@@ -521,8 +523,10 @@ External Apply or JC-040
 ### Dependencies
 Canonical job contract, JC-030 product definition and UX specification, and application destination integrity
 ### Current State
-Approved desktop v1.0 product/content authority and Approved mobile v1.0
-Mobile Reading Experience authority. Mobile governs the approved reading
+Approved desktop v1.0 product/content authority, narrow-tablet v1.0
+single-column authority, and Approved mobile v1.0 Mobile Reading Experience
+authority. Narrow Tablet governs the bounded `768–959px` single-column
+presentation and is Patch Mode. Mobile governs the approved reading
 experience, conversion hierarchy, progressive disclosure, employer and
 related-job presentation, and advertisement location; future mobile work is
 Patch Mode. Implementation authority remains unresolved.
@@ -536,7 +540,11 @@ reinterpretation. Mobile canonical raster:
 by DOC018 from source `jc030-mobile-reading-experience-m008-candidate.png`
 (853 × 1857; SHA-256 `3d04b7c419df4612b4926d96c7ed43d51b34581f33bd8f65e7750130d7600ca9`).
 Its recorded typography, chip-row, and advertisement-container refinements are
-implementation guidance only.
+implementation guidance only. Narrow Tablet canonical raster:
+`docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png`,
+approved by DOC017A from source `jc030-narrow-tablet-nt002-candidate.png`
+(`917 × 1716`; SHA-256 `1a015c11dc4ec97892e098968c8c6b739057ffd2377f71b86299d4b872f5b765`).
+Future JC-030 Narrow Tablet work is Patch Mode.
 
 ---
 

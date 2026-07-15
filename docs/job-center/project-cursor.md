@@ -7,9 +7,10 @@ Active Development
 ## Current Phase
 
 Responsive layout geometry governance is complete through RESP-LAYOUT002, and
-responsive advertising governance is complete through RESP-ADS002. JC-030
-Tablet remains the only unresolved primary responsive authority and requires a
-narrow-tablet single-column adaptation.
+responsive advertising governance is complete through RESP-ADS002. DOC017A
+approves JC-030 Narrow Tablet v1.0 as the final primary responsive authority;
+all approved responsive visual work is Patch Mode and responsive implementation
+remains unauthorized.
 DOC018 approves JC-030 Mobile Reading Experience authority. DOC016 approves JC-015 Mobile responsive authority. DOC015 approves JC-015
 Tablet responsive authority. DOC014 approves JC-014
 Mobile responsive authority. DOC013 approves JC-014 Tablet responsive
@@ -68,12 +69,15 @@ authority for responsive advertisement inventory, intrinsic dimensions,
 placement hierarchy, and exceptions. RESP-LAYOUT002 establishes Responsive
 Layout Geometry v1 as the canonical authority for responsive classes,
 two-column eligibility, rail collapse, reading widths, and physical fit.
-JC-030 Tablet remains awaiting a narrow-tablet single-column adaptation.
+DOC017A approves JC-030 Narrow Tablet v1.0 through
+`docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png`,
+the byte-identical controlled copy of the verified `917 × 1716` NT002 source
+raster. Future JC-030 Narrow Tablet work is Patch Mode.
 
 ## Current Focus
 
-JC-030 Tablet narrow-tablet single-column adaptation is the remaining named
-authority gap. JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
+The approved responsive visual authority set is complete. JC-030 Narrow Tablet
+v1.0, JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010
 Mobile v1.0 are in Patch Mode. Desktop JC-010 v1.1, JC-011 v1.0, JC-014 v1.0,
 and JC-015 v1.0 remain the product/content authorities; desktop authority for JC-030 remains
@@ -92,16 +96,15 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-JC-030 Mobile, JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile,
+JC-030 Narrow Tablet, JC-030 Mobile, JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile,
 JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, and JC-003/JC-004 drawer Patch
 Mode visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — create and audit a narrow-tablet single-column JC-030 Tablet
-authority using Responsive Layout Geometry v1 and Responsive Advertising
-Strategy v1; then address an Engineering Director-approved Patch Mode delta
-only if issued.
+Unassigned — authorize bounded responsive implementation and browser-based
+visual QA against the complete approved responsive authority set; then address
+an Engineering Director-approved Patch Mode delta only if issued.
 
 ## Next Decision
 

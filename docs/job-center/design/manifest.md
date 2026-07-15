@@ -5,7 +5,7 @@
 This manifest implements the reference-control rules in Job Center Design System v1. It inventories known visual artifacts and governed visual gaps as of D003. It does not approve a design by implication.
 
 JC-011 is the first Approved filename-specific reference. JC-010, JC-014,
-JC-015, JC-015 Tablet, JC-015 Mobile, JC-030, JC-010 Mobile, JC-010 Tablet,
+JC-015, JC-015 Tablet, JC-015 Mobile, JC-030, JC-030 Narrow Tablet, JC-010 Mobile, JC-010 Tablet,
 JC-011 Tablet, JC-011 Mobile, JC-014 Tablet, JC-014 Mobile, and mobile
 navigation drawer components JC-003 and JC-004 are also Approved through
 explicit Engineering Director decisions.
@@ -20,7 +20,7 @@ from first-touch discovery through location selection or browse exploration to
 search results. Suite membership does not broaden any artifact's individual
 approval scope.
 
-Status totals for manifest entries: **Approved 15; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
+Status totals for manifest entries: **Approved 16; Draft 8; Placeholder 14; Superseded 4.** Artifact paths are inventoried separately below; multiple artifacts can support one entry.
 
 Responsive Layout Geometry v1 governs physical breakpoint and rail behavior.
 Existing approved wide-tablet authorities remain Approved; narrow-tablet
@@ -428,6 +428,25 @@ behavior is governed separately, and JC-030 Tablet remains pending.
 - **Related implementation ticket(s):** None assigned
 - **Notes:** Known raster limitation: the final localized edit pass removed the duplicate Save-heart beside the title but did not reliably preserve frozen regions while simultaneously applying remaining localized typography and layout edits. Those refinements are implementation work, not visual-governance defects. Implementation guidance only: display `Show more` only for truncated content; use the approved fade treatment whenever long-form content is abbreviated; slightly increase typography for collapsed Qualifications and How to Apply rows while preserving hierarchy; slightly increase typography inside About the Employer and Explore More Jobs cards; remove the Grade 5, Mathematics, Science, Hybrid, and Part Time taxonomy-chip row and close the resulting space naturally; and adjust the advertisement container to faithfully represent a standard `320 × 50` mobile banner while preserving its approved page location. Future JC-030 Mobile work is Patch Mode only and requires a separately approved, explicitly named defect or delta.
 
+### JC-030 Narrow Tablet — Job Detail Narrow Portrait Tablet
+
+- **Screen / Component:** Public canonical Job Detail at the approved narrow portrait-tablet presentation
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png`
+- **Source raster:** `art/mockups/job-center/generated/jc030-narrow-tablet-nt002-candidate.png`
+- **Source dimensions:** `917 × 1716`
+- **SHA-256:** `1a015c11dc4ec97892e098968c8c6b739057ffd2377f71b86299d4b872f5b765`
+- **Approval date:** 2026-07-15
+- **Approval authority:** Engineering Director, DOC017A
+- **Approval scope:** JC-030 narrow portrait tablet at `768–959px`, including single-column tablet presentation, job identity, Apply / Save / Share hierarchy, narrative sections, employer section, related jobs, `468 × 60` advertisement reservation, and tablet footer within the approved raster boundary.
+- **Authority:** DOC017A approves the exact source raster and its byte-identical controlled-library copy as JC-030 Job Detail Narrow Tablet v1.0. JC-030 desktop remains product/content authority and JC-030 Mobile remains mobile reading-experience authority.
+- **Related Design System section:** 4, 5, 11, 17
+- **Related Product Specification:** JC-030 Job Detail Product Definition; JC-030 Job Detail UX Specification; JC-030 Narrow Portrait Tablet Adaptation Contract v1
+- **Related future UX Atlas entry:** JC-ATLAS-006
+- **Related implementation ticket(s):** None assigned
+- **Notes:** This approval is bounded to narrow portrait-tablet presentation and does not alter JC-030 desktop or mobile authority, authorize implementation, or establish other screen authority. Future JC-030 Narrow Tablet work is Patch Mode only and requires a separately approved, explicitly named defect or delta.
+
 ### JC-040 — Saved Jobs
 
 - **Screen / Component:** Job-seeker saved-jobs destination and states
@@ -654,6 +673,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-030-job-detail-desktop-v1.0.png` | Controlled JC-030 desktop reference copy | Approved | JC-030 | Canonical raster authority; byte-identical to the Engineering Director-supplied PNG; editable source unavailable |
 | `art/mockups/job-center/generated/jc030-mobile-reading-experience-m008-candidate.png` | Engineering Director-approved JC-030 Mobile Reading Experience source raster | Approved | JC-030 Mobile | DOC018 verified the exact repository candidate, dimensions, and SHA-256 |
 | `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png` | Controlled JC-030 Mobile v1.0 reference copy | Approved | JC-030 Mobile | Byte-identical to the DOC018-verified source raster; future work is Patch Mode |
+| `art/mockups/job-center/generated/jc030-narrow-tablet-nt002-candidate.png` | Engineering Director-approved JC-030 Narrow Tablet source raster | Approved | JC-030 Narrow Tablet | DOC017A verified the exact repository candidate, dimensions, and SHA-256 |
+| `docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png` | Controlled JC-030 Narrow Tablet v1.0 reference copy | Approved | JC-030 Narrow Tablet | Byte-identical to the DOC017A-verified source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
 | `docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
