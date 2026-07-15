@@ -48,14 +48,11 @@ Detail order below instead of ordinary support-rail stacking.
 
 ## 5. Advertising
 
-At tablet width, the `728 × 90` leaderboard retains its intrinsic proportion
-when it fits inside the governed content inset; on mobile it is replaced by a
-legible responsive advertisement reservation rather than scaled into
-illegibility. The `300 × 250` placement retains its intrinsic reservation and
-is centered in the stacked support flow at tablet and mobile widths. Reserved
-space remains stable while inventory loads and collapses only when the governed
-serving policy explicitly identifies the placement as empty; every placement
-remains labeled and may not cause horizontal overflow.
+`docs/job-center/job-center-responsive-advertising-strategy-v1.md` governs
+responsive advertisement inventory, intrinsic dimensions, placement hierarchy,
+and exception approval. Its desktop, portrait-tablet, and mobile rules replace
+generic cross-breakpoint scaling assumptions. Screen-specific approved
+exceptions, including the JC-011 Mobile reservations below, remain in force.
 
 ## 6. Job Detail
 

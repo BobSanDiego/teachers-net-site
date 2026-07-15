@@ -37,6 +37,10 @@ shared `docs/design-system-v1.md` remains the Teachers.Net-wide foundation.
 Employer interaction and terminology must conform to
 `docs/job-center/employer-ux-v1.md`.
 
+`docs/job-center/job-center-responsive-advertising-strategy-v1.md` is the
+canonical companion authority for responsive advertisement inventory,
+dimensions, placement hierarchy, and exceptions.
+
 ## 2. Source hierarchy and conflict rules
 
 ### 2.1 Source hierarchy

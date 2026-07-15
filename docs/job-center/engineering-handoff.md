@@ -5,7 +5,10 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — DOC018 approves JC-030 Mobile Reading Experience authority.
+Active Development — RESP-ADS002 completes responsive advertising governance.
+JC-030 Tablet is the next unresolved responsive authority and must use the
+canonical `468 × 60` main-column plus true `300 × 250` retained-rail strategy.
+DOC018 approves JC-030 Mobile Reading Experience authority.
 DOC016 approves JC-015 Mobile responsive authority. DOC015
 approves JC-015 Tablet responsive authority. DOC014
 approves JC-014 Mobile responsive authority. DOC013 approves JC-014 Tablet
@@ -51,7 +54,10 @@ responsive implementation.
 
 ## 3. Last Completed Milestone
 
-DOC018 approved JC-030 Mobile v1.0 and its byte-identical controlled-library
+RESP-ADS002 established Responsive Advertising Strategy v1 as the canonical
+responsive advertisement authority. JC-030 Tablet remains the next unresolved
+authority and must adapt its main column to `468 × 60` plus a true retained-rail
+`300 × 250` reservation. DOC018 approved JC-030 Mobile v1.0 and its byte-identical controlled-library
 copy. DOC003 approved JC-010 Mobile v1.0; DOC005 corrects the Approved raster to the
 verified external 02c source and its byte-identical controlled-library copy.
 Desktop JC-010 v1.1 remains the product/content authority; mobile authority and
@@ -72,8 +78,8 @@ controlled-library copy.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Address an Engineering Director-approved JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, or mobile drawer Patch Mode delta only if issued.
-2. Unassigned — Address an Engineering Director-approved JC-030 Mobile Patch Mode delta only if issued.
+1. Unassigned — Create and audit the missing JC-030 Tablet authority using Responsive Advertising Strategy v1.
+2. Unassigned — Address an Engineering Director-approved JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, JC-030 Mobile, or mobile drawer Patch Mode delta only if issued.
 3. Unassigned — Authorize responsive implementation and browser-based visual QA against the approved JC-010 authorities.
 4. Unassigned — Audit responsive implementation convergence after all required authority is approved.
 5. Unassigned — Resume the next approved implementation or UX workstream.
@@ -82,6 +88,8 @@ controlled-library copy.
 
 - JC-030 implementation has not yet been audited or converged to its Approved
   v1.0 desktop visual authority.
+- JC-030 Tablet remains pending and must not inherit desktop, mobile, or other
+  screen authority; it adapts the `468 × 60` plus true `300 × 250` strategy.
 - Other screen-specific responsive authority remains pending and does not
   inherit desktop, JC-010 Mobile, JC-010 Tablet, JC-011 Tablet, JC-011 Mobile,
   JC-014 Tablet, JC-014 Mobile, JC-015 Tablet, or JC-015 Mobile approval.

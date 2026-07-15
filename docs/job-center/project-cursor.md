@@ -6,6 +6,9 @@ Active Development
 
 ## Current Phase
 
+Responsive advertising governance is complete through RESP-ADS002. JC-030
+Tablet remains the next unresolved responsive authority and must adapt the
+canonical `468 × 60` main-column plus true `300 × 250` retained-rail strategy.
 DOC018 approves JC-030 Mobile Reading Experience authority. DOC016 approves JC-015 Mobile responsive authority. DOC015 approves JC-015
 Tablet responsive authority. DOC014 approves JC-014
 Mobile responsive authority. DOC013 approves JC-014 Tablet responsive
@@ -59,10 +62,15 @@ byte-identical controlled copy of the verified 853 × 1857 M008 repository
 candidate. The remaining typography, chip-row, and advertisement-container
 refinements are implementation guidance only; future JC-030 Mobile work is
 Patch Mode.
+RESP-ADS002 establishes Responsive Advertising Strategy v1 as the canonical
+authority for responsive advertisement inventory, intrinsic dimensions,
+placement hierarchy, and exceptions. JC-030 Tablet remains awaiting adaptation
+to its `468 × 60` main-column and true `300 × 250` retained-rail strategy.
 
 ## Current Focus
 
-JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
+JC-030 Tablet responsive advertising adaptation is the remaining named
+authority gap. JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010
 Mobile v1.0 are in Patch Mode. Desktop JC-010 v1.1, JC-011 v1.0, JC-014 v1.0,
 and JC-015 v1.0 remain the product/content authorities; desktop authority for JC-030 remains
@@ -87,9 +95,9 @@ Mode visual authority.
 
 ## Next Executable Ticket
 
-Unassigned — address an Engineering Director-approved JC-030 Mobile, JC-015 Mobile, JC-015
-Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010
-Tablet, JC-010 Mobile, or JC-003/JC-004 drawer Patch Mode delta only if issued.
+Unassigned — create and audit JC-030 Tablet authority using Responsive
+Advertising Strategy v1; then address an Engineering Director-approved Patch
+Mode delta only if issued.
 
 ## Next Decision
 
