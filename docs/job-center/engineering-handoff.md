@@ -5,11 +5,10 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development — RESP-LAYOUT002 completes responsive layout geometry
-governance, and RESP-ADS002 completes responsive advertising governance.
-DOC017A approves JC-030 Narrow Tablet v1.0 as the final primary responsive
-authority. All approved responsive visual work is Patch Mode; responsive
-implementation remains unauthorized.
+Active Development — Responsive Design is complete through RESP-LAYOUT002,
+RESP-ADS002, and DOC017A. Responsive Implementation is active for JC-030
+implementation convergence; approved visual authorities remain Patch Mode
+references.
 DOC018 approves JC-030 Mobile Reading Experience authority.
 DOC016 approves JC-015 Mobile responsive authority. DOC015
 approves JC-015 Tablet responsive authority. DOC014
@@ -19,16 +18,18 @@ responsive authority. DOC011 approves JC-011 Tablet responsive authority. DOC008
 approves JC-010 Tablet responsive authority. DOC003 approves JC-010 Mobile
 responsive authority, and DOC006 approves Logged Out and Logged In mobile
 navigation drawer components. Future tablet, mobile, and drawer work is Patch
-Mode; responsive implementation remains unauthorized.
+Mode; active implementation work must preserve those authorities.
 
 ## 2. Current Ticket
 
-None. DOC017A approved the exact narrow-tablet raster
+JC-030 implementation convergence. DOC017A approved the exact narrow-tablet raster
 `docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png`
 as JC-030 Narrow Tablet v1.0 from the `917 × 1716` source
 `jc030-narrow-tablet-nt002-candidate.png`; future JC-030 Narrow Tablet work is
-Patch Mode. The workstream is ready for separately authorized responsive
-implementation or browser-based visual QA. DOC018 approved the exact mobile raster
+Patch Mode. JC030-IMP001 completed the browser implementation audit, and
+JC030-IMP002 completed the canonical Apply / Save / Share action group in the
+Jobs plugin. The remaining implementation backlog must be taken only from
+JC030-IMP001 and verified against current code before each ticket. DOC018 approved the exact mobile raster
 `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png` as
 JC-030 Mobile v1.0 from the 853 × 1857 source
 `jc030-mobile-reading-experience-m008-candidate.png`; future JC-030 Mobile
@@ -56,8 +57,8 @@ identity corrected by DOC005 to
 They are the canonical JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014
 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, and JC-010 Mobile
 Responsive Authorities within their visible boundaries. DOC006 separately approves the canonical
-Logged Out and Logged In mobile navigation drawer components. Do not begin
-responsive implementation.
+Logged Out and Logged In mobile navigation drawer components. Active
+implementation must preserve these authorities.
 
 ## 3. Last Completed Milestone
 
@@ -68,8 +69,8 @@ completed the primary responsive authority set by approving JC-030 Narrow
 Tablet v1.0 and its byte-identical controlled-library copy. DOC018 approved JC-030 Mobile v1.0 and its byte-identical controlled-library
 copy. DOC003 approved JC-010 Mobile v1.0; DOC005 corrects the Approved raster to the
 verified external 02c source and its byte-identical controlled-library copy.
-Desktop JC-010 v1.1 remains the product/content authority; mobile authority and
-responsive implementation remain separate. DOC006 then approved the bounded
+Desktop JC-010 v1.1 remains the product/content authority; responsive
+implementation must preserve the separate presentation authorities. DOC006 then approved the bounded
 Logged Out and Logged In mobile navigation drawer components. DOC008 then
 approved the bounded JC-010 Tablet v1.0 authority and its byte-identical
 controlled-library copy. DOC011 then approved the bounded JC-011 Tablet v1.0
@@ -86,7 +87,7 @@ controlled-library copy.
 
 ## 4. Next Five Planned Tickets
 
-1. Unassigned — Authorize bounded responsive implementation and browser-based visual QA against the complete approved responsive authority set.
+1. Unassigned — Continue JC-030 implementation convergence from the verified JC030-IMP001 backlog.
 2. Unassigned — Address an Engineering Director-approved JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile, JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, JC-030 Mobile, or mobile drawer Patch Mode delta only if issued.
 3. Unassigned — Authorize responsive implementation and browser-based visual QA against the approved JC-010 authorities.
 4. Unassigned — Audit responsive implementation convergence after all required authority is approved.
@@ -94,10 +95,10 @@ controlled-library copy.
 
 ## 5. Current Blockers
 
-- JC-030 implementation has not yet been audited or converged to its Approved
-  v1.0 desktop visual authority.
-- Responsive implementation remains pending and must preserve the complete
-  approved authority set, including JC-030 Narrow Tablet v1.0.
+- JC-030 implementation convergence remains incomplete after the JC030-IMP001
+  audit and JC030-IMP002 action-group implementation.
+- Responsive implementation is active and must preserve the complete approved
+  authority set, including JC-030 Narrow Tablet v1.0.
 - Other screen-specific responsive authority remains pending and does not
   inherit desktop, JC-010 Mobile, JC-010 Tablet, JC-011 Tablet, JC-011 Mobile,
   JC-014 Tablet, JC-014 Mobile, JC-015 Tablet, or JC-015 Mobile approval.
@@ -193,8 +194,8 @@ presentation in Patch Mode.
 
 ## 10. Immediate Engineering Priorities
 
-1. Preserve JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, JC-010 Mobile v1.0, and JC-003/JC-004 drawers
-   in Patch Mode; do not reopen desktop authority or begin responsive implementation.
-2. Keep responsive implementation behind explicit approval and audit.
+1. Continue JC-030 implementation convergence from the verified JC030-IMP001
+   backlog; do not reopen desktop or responsive visual authority.
+2. Preserve JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, JC-010 Mobile v1.0, and JC-003/JC-004 drawers in Patch Mode.
 3. Preserve all approved responsive authorities in Patch Mode and do not infer
    unapproved screen or breakpoint behavior.

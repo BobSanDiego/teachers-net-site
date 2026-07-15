@@ -36,7 +36,8 @@ JC-010 → JC-015 → JC-011
 
 Responsive Layout Geometry v1 governs physical breakpoint and rail behavior.
 Existing tablet authorities remain Approved as wide-tablet references;
-narrow-tablet behavior is governed separately. JC-030 Tablet remains pending.
+narrow-tablet behavior is governed separately. JC-030 Narrow Tablet is Approved
+by DOC017A. Responsive Design is complete; implementation convergence is active.
 
 Superseded artifact-lineage identifiers JC-090–JC-093 are not product surfaces
 and are intentionally excluded. Their history remains in the Visual Manifest.
@@ -529,7 +530,9 @@ authority. Narrow Tablet governs the bounded `768–959px` single-column
 presentation and is Patch Mode. Mobile governs the approved reading
 experience, conversion hierarchy, progressive disclosure, employer and
 related-job presentation, and advertisement location; future mobile work is
-Patch Mode. Implementation authority remains unresolved.
+Patch Mode. Implementation convergence is active after JC030-IMP001 and
+JC030-IMP002; remaining work must be taken from the verified JC030-IMP001
+backlog.
 ### Next Expected Work
 Audit the current implementation against the complete approved authority set.
 ### Notes
