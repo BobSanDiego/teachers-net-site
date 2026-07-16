@@ -40,6 +40,15 @@
 - A controlled real-job pilot precedes bulk loading.
 - Employer claims require authority verification; recruiter identities are not
   auto-created from imported records.
+- Employer Operations is a hybrid authenticated workspace inside the standard
+  Teachers.Net shell; personas are descriptive planning models, not permanent
+  account classes.
+- Employer identity, profile, membership, posting account, and
+  source/provenance remain distinct. Claim is contextual acquisition; user-facing
+  new-organization language is Add My School / Add Organization.
+- Employer creation follows Progressive Completion, and location guidance should
+  explain the discovery and Distance Search benefit of City, State, and ZIP
+  without unnecessary abandonment-inducing validation.
 
 ## Architectural Decisions
 

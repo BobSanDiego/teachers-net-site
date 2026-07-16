@@ -14,6 +14,12 @@ Scope: Minimum visual authority required for Job Center V1
 7. Saved Jobs
 8. Job Alerts
 
+Employer Operations is a hybrid authenticated workspace inside the standard
+Teachers.Net shell. Employer personas remain descriptive planning models;
+memberships and granted capabilities determine available operations. The
+authority-family inventory and five-render program below are unchanged by this
+clarification.
+
 Shared shell, shared components, authentication transitions, and responsive
 language remain inherited authorities. Moderator and Administrator are
 conditional operational authorities outside the minimum public V1 visual

@@ -71,6 +71,15 @@ implementation must preserve these authorities.
 
 ## 3. Last Completed Milestone
 
+DOC022 reconciled the Employer product model without changing the authority
+families or render program. Employer Operations is a hybrid authenticated
+workspace inside the standard Teachers.Net shell. Personas are descriptive;
+memberships and granted capabilities determine tools. Claim is contextual
+acquisition, while Add My School / Add Organization is the user-facing
+new-organization path. Employer identity, profile, membership, posting account,
+and source/provenance remain distinct. Progressive Completion governs employer
+creation and location guidance.
+
 DOC020R reconciled the forward phase-gate model and continuity governance.
 RESP-LAYOUT002 established Responsive Layout Geometry v1 as the canonical
 responsive layout authority, and RESP-ADS002 established Responsive Advertising

@@ -76,6 +76,13 @@ Save / Share action-group implementation in the Jobs plugin.
 
 ## Current Focus
 
+DOC022 reconciles the Employer product model: Employer Operations is a hybrid
+authenticated workspace inside the Teachers.Net shell; personas are descriptive
+planning models; memberships and granted capabilities determine operations;
+Claim is contextual acquisition; and Add My School / Add Organization is the
+user-facing new-organization path. The DOC021 authority families and five-render
+program remain unchanged.
+
 The approved responsive visual authority set is complete. JC-030 Narrow Tablet
 v1.0, JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010

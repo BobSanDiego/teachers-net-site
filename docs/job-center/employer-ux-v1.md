@@ -13,10 +13,17 @@ current Teachers.Net Jobs implementation
 
 ## 1. Executive Summary
 
-Employer UX V1 is one connected experience for an authenticated representative
-to establish authority for one employer, publish and manage canonical job
-records, understand each job's lifecycle and public visibility, and review
+Employer UX V1 is one connected experience inside a hybrid authenticated
+Employer Workspace within the standard Teachers.Net shell. It lets an
+authenticated representative establish authority, publish and manage
+canonical job records, understand lifecycle and public visibility, and review
 basic engagement without learning separate systems.
+
+Employer personas are descriptive planning models, not permanent account
+classes. The authenticated account, active employer memberships, employer/job
+scope, lifecycle, and separately granted capabilities determine available
+operations. A user may evolve from one employer to multiple related or
+unrelated employers without account migration.
 
 The experience begins before the Dashboard. A visitor may browse the Job Center
 without employer authority. Employer work requires a WordPress account. After
@@ -24,12 +31,14 @@ login or registration, the user chooses the correct organization path:
 
 - **Claim Existing Employer** when the organization already exists in
   Teachers.Net; or
-- **Request New Employer** when Teachers.Net does not yet have the organization.
+- **Add My School** or **Add Organization** when Teachers.Net does not yet have
+  the organization. The internal canonical creation/request route remains an
+  implementation detail.
 
 These paths gather overlapping identity evidence but do different work. A claim
 requests authority for an existing canonical employer. It never creates a
-replacement employer, job, or recruiter identity. A new-employer request asks
-Teachers.Net to review a new organization. Neither path grants employer access
+replacement employer, job, or recruiter identity. An Add My School / Add
+Organization request asks Teachers.Net to review a new organization. Neither path grants employer access
 before the required review is complete.
 
 Approved authority is represented by an active membership between the
@@ -96,7 +105,7 @@ Login / Registration
   ↓
 Choose organization path
   ├─ Claim Existing Employer
-  └─ Request New Employer
+  └─ Add My School / Add Organization
   ↓
 Authority Review
   ↓
@@ -161,10 +170,11 @@ Use when the employer already exists in Teachers.Net.
   moderation history, lifecycle history, and engagement.
 - Return, rejection, or revocation grants or retains no unauthorized access.
 
-#### Request New Employer
+#### Add My School / Add Organization
 
 Use only when the employer is not already represented by a canonical Teachers.Net
-employer record.
+employer record. The internal canonical employer-creation/request route is not
+user-facing product terminology.
 
 - The request identifies the new organization and its representative.
 - The organization remains pending until reviewed.
@@ -189,6 +199,31 @@ The user-facing state is one of:
 - **Access Revoked** — a prior membership no longer authorizes employer work.
 
 These authority states do not alter public jobs or replace employer identity.
+
+### 2.5A Employer Workspace and Progressive Completion
+
+Employer Operations is a hybrid authenticated workspace inside the standard
+Teachers.Net shell. Dashboard summarizes; My Jobs manages. The same workspace
+serves one employer, multiple related employers, and multiple unrelated
+employers; memberships and granted capabilities determine which operations are
+available.
+
+Employer identity, employer profile, employer membership, posting account, and
+source/provenance are distinct concepts. Claim Employer is a contextual
+acquisition workflow, not a routine Employer Operations action. Add My School /
+Add Organization is the user-centered path for an organization not yet
+represented; internal canonical employer creation remains non-user-facing.
+
+Employer creation follows Progressive Completion:
+
+- require identity fields only when necessary for truthful operation;
+- strongly encourage discovery-improving fields with a clear explanation; and
+- prefer progressive completion over abandonment-inducing validation when
+  missing information reduces quality rather than correctness.
+
+Location guidance should explain that City, State, and ZIP improve teacher
+discovery and Distance Search. It should not impose unnecessary validation that
+causes avoidable abandonment when the record can remain truthful and pending.
 
 ### 2.6 Employer Dashboard
 
@@ -466,8 +501,8 @@ unless the product can establish that fact.
 | Employer Member | An authenticated WordPress user with an employer membership. |
 | Active Employer Membership | The authorization grant that permits the user to access that employer's Dashboard and eligible job actions. |
 | Claim Existing Employer | Request verified authority for an existing canonical employer. |
-| Request New Employer | Request review and creation/activation of an employer not already represented. |
-| Awaiting Authority Review | Claim or new-employer request received; no employer access granted yet. |
+| Add My School / Add Organization | Request review and creation/activation of an employer not already represented. |
+| Awaiting Authority Review | Claim or Add My School/Organization request received; no employer access granted yet. |
 | Publishing Trust | A separate approved fact that may allow direct publication. It is not synonymous with claim approval, membership, verification, or prior job history. |
 
 ### 5.2 Job lifecycle terms
@@ -522,7 +557,7 @@ does not choose an implementation.
 
 1. **Direct-publish trust:** What durable fact grants publishing trust, who may
    grant/revoke it, and how does it differ by employer member or employer?
-2. **New-employer account prerequisite:** Must Request New Employer always begin
+2. **New-organization account prerequisite:** Must Add My School/Organization always begin
    from an authenticated account, consistent with the lifecycle specified here?
 3. **Draft persistence:** Is durable Save Draft / Continue Later mandatory for
    V1 acceptance, and what minimum completeness permits first save?
@@ -567,12 +602,12 @@ state and security checks at each boundary.
 
 ### 7.2 Organization identity and authority
 
-5. The user can distinguish Claim Existing Employer from Request New Employer.
+5. The user can distinguish Claim Existing Employer from Add My School/Organization.
 6. Existing-employer discovery targets one canonical employer without creating
    a duplicate.
 7. Claim submission requires an authenticated existing account and remains
    pending without employer access.
-8. A new-employer request does not duplicate an employer that should be claimed.
+8. An Add My School/Organization request does not duplicate an employer that should be claimed.
 9. Return/rejection grants no access and communicates the next state.
 10. Approval creates or activates the correct membership.
 11. Revocation immediately removes employer authority without changing employer

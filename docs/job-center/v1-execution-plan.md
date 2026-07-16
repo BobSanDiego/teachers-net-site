@@ -44,6 +44,11 @@ The frozen minimum visual-authority inventory is recorded in
 must use that inventory and its five remaining render groups as the visual
 authority gate; it must not expand the UX Atlas placeholder set.
 
+Employer execution uses the reconciled hybrid Employer Workspace model:
+Dashboard summarizes, My Jobs manages, memberships and granted capabilities
+scope operations, and Claim/Add My School or Add Organization remains a
+contextual acquisition path rather than routine Operations navigation.
+
 ## V1 Launch Polish
 
 - final Basic Search presentation
