@@ -39,6 +39,11 @@ location, application, and ingestion requirements that affect public trust.
   acceptance
 - release-candidate review, launch planning, monitoring, and rollback readiness
 
+The frozen minimum visual-authority inventory is recorded in
+`docs/job-center/v1-authority-program.md` (DOC021). Implementation Readiness
+must use that inventory and its five remaining render groups as the visual
+authority gate; it must not expand the UX Atlas placeholder set.
+
 ## V1 Launch Polish
 
 - final Basic Search presentation
