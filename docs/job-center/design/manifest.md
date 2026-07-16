@@ -479,26 +479,28 @@ remain the current gate; the manifest is not an implementation diary.
 ### JC-050 — Employer Dashboard
 
 - **Screen / Component:** Employer summary dashboard
-- **Status:** Placeholder
-- **Version:** 0.1
-- **Authority:** Employer UX V1 defines purpose; no governed visual artifact identified.
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/employer-operations-dashboard-my-jobs-v1.0.png`
+- **Authority:** Engineering Director, EMP-DOC003A; shared Employer Operations authority with JC-051.
 - **Related Design System section:** 12, 17
 - **Related Product Specification:** Employer UX V1; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-009
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Dashboard summarizes; it does not duplicate My Jobs management.
+- **Notes:** Dashboard summarizes; it does not duplicate My Jobs management. One-employer users see static employer context; the selector appears only for multiple active memberships. Dashboard remains scoped to the selected employer. No pooled all-employers inventory. Personas are descriptive; memberships and granted capabilities determine tools. Bulk, feed, agency-console, ATS, messaging, billing, and advanced analytics remain gated or deferred. Future Employer Operations work is Patch Mode.
 
 ### JC-051 — Employer My Jobs
 
 - **Screen / Component:** Employer job-management inventory
-- **Status:** Placeholder
-- **Version:** 0.1
-- **Authority:** Employer UX V1 defines purpose; no governed visual artifact identified.
+- **Status:** Approved
+- **Version:** 1.0
+- **Approved Artifact:** `docs/job-center/design/approved/employer-operations-dashboard-my-jobs-v1.0.png`
+- **Authority:** Engineering Director, EMP-DOC003A; shared Employer Operations authority with JC-050.
 - **Related Design System section:** 8, 12, 17
 - **Related Product Specification:** Employer UX V1; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-010
 - **Related implementation ticket(s):** None assigned
-- **Notes:** Required lifecycle and action states need future approved references.
+- **Notes:** My Jobs manages the selected employer's inventory and does not duplicate Dashboard. One-employer users see static employer context; the selector appears only for multiple active memberships. No pooled all-employers inventory. Lifecycle status/action presentation is governed by the shared authority; composite exceptions remain separately governed. Personas are descriptive; memberships and granted capabilities determine tools. Bulk, feed, agency-console, ATS, messaging, billing, and advanced analytics remain gated or deferred. Future Employer Operations work is Patch Mode.
 
 ### JC-052 — Employer Wizard
 
@@ -678,6 +680,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png` | Controlled JC-030 Mobile v1.0 reference copy | Approved | JC-030 Mobile | Byte-identical to the DOC018-verified source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/jc030-narrow-tablet-nt002-candidate.png` | Engineering Director-approved JC-030 Narrow Tablet source raster | Approved | JC-030 Narrow Tablet | DOC017A verified the exact repository candidate, dimensions, and SHA-256 |
 | `docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png` | Controlled JC-030 Narrow Tablet v1.0 reference copy | Approved | JC-030 Narrow Tablet | Byte-identical to the DOC017A-verified source raster; future work is Patch Mode |
+| `art/mockups/job-center/generated/employer-operations-authority-v1.0-candidate.png` | Engineering Director-approved Employer Operations source raster for Dashboard and My Jobs | Approved | JC-050, JC-051 | EMP-DOC003A verified source path, 1374 × 1145 dimensions, and SHA-256; future work is Patch Mode |
+| `docs/job-center/design/approved/employer-operations-dashboard-my-jobs-v1.0.png` | Controlled Employer Operations v1.0 reference copy | Approved | JC-050, JC-051 | Byte-identical to the EMP-DOC003A-approved source raster; one-employer context is static and selector is conditional for multiple active memberships |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
 | `docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |

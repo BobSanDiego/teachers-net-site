@@ -620,9 +620,9 @@ Understand current employer status and next actions.
 ### Primary User
 Authorized employer user
 ### Status
-Placeholder
+Approved
 ### Authority
-Employer UX V1 governs purpose; no approved implementation authority exists.
+`docs/job-center/design/approved/employer-operations-dashboard-my-jobs-v1.0.png` — shared Employer Operations authority approved by Engineering Director, EMP-DOC003A.
 ### Preceded By
 JC-053 or employer navigation
 ### Leads To
@@ -630,11 +630,11 @@ JC-051, JC-052, or JC-056
 ### Dependencies
 Employer identity, authorization, and lifecycle state
 ### Current State
-Placeholder
+Approved V1 visual authority
 ### Next Expected Work
-Govern the employer visual workstream.
+Patch Mode only for explicitly approved Employer Operations deltas.
 ### Notes
-Dashboard summarizes; My Jobs manages.
+Dashboard summarizes; My Jobs manages. One-employer users see static employer context; the selector appears only for multiple active memberships. Dashboard is scoped to the selected employer; no pooled all-employers inventory. Personas are descriptive, not permanent account classes; memberships and granted capabilities determine tools. Bulk, feed, agency-console, ATS, messaging, billing, and advanced analytics remain gated or deferred.
 
 ---
 
@@ -649,9 +649,9 @@ Find a job and take the correct lifecycle action.
 ### Primary User
 Authorized employer user
 ### Status
-Placeholder
+Approved
 ### Authority
-Employer UX V1 governs purpose; no approved implementation authority exists.
+`docs/job-center/design/approved/employer-operations-dashboard-my-jobs-v1.0.png` — shared Employer Operations authority approved by Engineering Director, EMP-DOC003A.
 ### Preceded By
 JC-050
 ### Leads To
@@ -659,11 +659,11 @@ JC-052, JC-055, or lifecycle actions
 ### Dependencies
 Employer scope and canonical status vocabulary
 ### Current State
-Placeholder
+Approved V1 visual authority
 ### Next Expected Work
-Govern inventory, status, action, and lifecycle visibility.
+Patch Mode only for explicitly approved Employer Operations deltas.
 ### Notes
-My Jobs manages and does not duplicate the Dashboard.
+My Jobs manages and does not duplicate the Dashboard. One-employer users see static employer context; the selector appears only for multiple active memberships. My Jobs is scoped to the selected employer; no pooled all-employers inventory. Lifecycle status/action presentation is governed by the shared authority; composite exceptions remain separately governed. Personas are descriptive, not permanent account classes; memberships and granted capabilities determine tools. Bulk, feed, agency-console, ATS, messaging, billing, and advanced analytics remain gated or deferred.
 
 ---
 
