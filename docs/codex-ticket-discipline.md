@@ -169,7 +169,7 @@ Do not create new process unless it reduces effort, risk, or maintenance.
 For local, reversible, mechanical tasks, use the shared protocol in
 `docs/codex-direction-manual.md` by declaring:
 
-`Execution mode: Fast Operations`
+`Execution mode: Fast Operations. Known-safe target declared. Direct command first. One targeted inspection pass maximum. Use smoke verification. Stop after verified success.`
 
 This mode permits one targeted inspection pass, direct-command-first execution,
 and proportional verification only. It does not apply to production,

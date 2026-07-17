@@ -107,13 +107,23 @@ Choose the lightest mode that matches the requested action:
 
 ### Fast Operations Protocol
 
-Invoke with the compact directive: `Execution mode: Fast Operations`.
+Invoke with:
+
+`Execution mode: Fast Operations. Known-safe target declared. Direct command first. One targeted inspection pass maximum. Use smoke verification. Stop after verified success.`
+
+Read-order gating is strict: read the ticket, explicitly named authority or
+continuity documents, and directly relevant implementation files only. Do not
+read broad history or unrelated architecture unless required by the ticket.
+
+For recurring operations, the default decision budget is at most one targeted
+repository search, one command-help query, and two directly relevant file
+inspections. These are maximums, not required steps.
 
 - Start with the direct command or existing service call.
 - Perform at most one targeted inspection pass before execution.
 - Prefer a reversible local action; do not build speculative infrastructure.
-- Verify proportionally: confirm the requested state and one relevant safety
-  boundary, then stop immediately after success.
+- Verify proportionally using the tiers below, then stop immediately after
+  success.
 - Escalate to Product Engineering or Governance if the direct approach fails
   once, the command is destructive or uncertain, or meaningful project data
   could be damaged.
@@ -122,6 +132,34 @@ Fast Operations is prohibited for production mutations, irreversible data
 changes, schema changes, security-model changes, migrations, application
 behavior changes, or uncertain destructive commands. It never relaxes
 authorization, ownership, or architecture rules.
+
+#### Verification tiers
+
+- **Smoke verification:** trivial, reversible, local operations. Perform the
+  operation, confirm the requested resulting state, and stop.
+- **Targeted verification:** bounded code or documentation changes. Inspect the
+  affected diff, run relevant lint or syntax checks and focused tests, verify
+  directly affected behavior, and run `git diff --check` when files changed.
+- **Full verification:** cross-cutting, security-sensitive, schema, migration,
+  production, release, or broad-regression work. Use broader tests and recovery
+  checks proportional to risk. Meaningful visual changes still require human
+  visual QA.
+
+Declare the known-safe target before execution when applicable:
+
+```text
+Environment: local DDEV
+Repository: <repo or plugin path>
+Route/resource: <route or resource>
+User/data target: <target>
+Intended mutation: <mutation>
+Reversible: yes/no
+Production impact: none/describe
+```
+
+Separate **Must Verify** (evidence required to prove safe success) from **Nice
+to Inspect** (optional context, cleanup, or future improvement). Nice-to-Inspect
+work must not delay completion once Must Verify is satisfied.
 
 Examples:
 
@@ -133,9 +171,22 @@ Examples:
 | Verify a route | Request the known local URL | Confirm status and the expected marker |
 | Attach membership data | Call the existing membership service | Read back active membership and scope |
 
-The one-failure stop rule is mandatory: after one failed direct approach, stop
-and report the exact failure before searching for alternate abstractions or
-changing data. Resume only with explicit direction or a clearly safe correction.
+#### Developer Operations Cookbook
+
+Maintain a small verified cookbook for recurring DDEV startup/execution,
+WP-CLI users and passwords, cache clearing, route smoke checks, Git status/diff
+checks, hashes and image dimensions, and common local fixtures. Keep entries
+concise and avoid duplicating commands governed elsewhere. Its preferred home
+is a shared local developer-operations document under `docs/`; Codex checks it
+before repository discovery for a recurring Fast Operations task. Creating the
+cookbook is separate work and is not part of this amendment.
+
+The one-failure stop rule is mandatory: after one failed direct approach,
+diagnose the exact failure, choose one materially different next approach, or
+stop and report the blocker. Do not enter repeated search/help/retry loops.
+Once the requested result and safety boundary are proven, do not continue with
+additional searches, broad tests, optional cleanup, unsolicited documentation,
+continuity updates, or infrastructure creation.
 
 ## Environment
 
