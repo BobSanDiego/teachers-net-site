@@ -43,15 +43,18 @@ before the required review is complete.
 
 Approved authority is represented by an active membership between the
 authenticated user and the canonical employer. That membership opens the one
-Employer Dashboard and the one My Jobs inventory for that employer. A user with
-more than one active employer membership chooses the employer context once and
-keeps that context while moving through Dashboard, My Jobs, Post Job, Edit,
-Review, and return paths.
+My Jobs operating workspace for that employer. Dashboard concepts are absorbed
+into My Jobs rather than treated as a separate operating destination. A user
+with more than one active employer membership chooses the employer context only
+when needed and keeps that context while moving through My Jobs, a School / Job
+Site view, Post Job, Edit, Review, and return paths.
 
-Dashboard summarizes. It establishes the selected employer, shows what needs
-attention, and routes the employer to the relevant work. It is not a second job
-manager and not an analytics dashboard. My Jobs manages. It is the complete
-employer-facing lifecycle inventory, explains why each job is or is not public,
+The current Employer Operations authority allows exactly one active left-
+navigation selection at a time: All My Jobs, My Schools / Job Sites, Add School
+/ Job Site, or Manage Schools / Job Sites. All My Jobs and an individual School /
+Job Site view are mutually exclusive.
+
+My Jobs manages. It is the complete employer-facing lifecycle inventory, explains why each job is or is not public,
 shows basic engagement, and exposes only the actions valid for the job's state.
 
 Post Job and Edit are two entry points into one job-authoring model. They use the
@@ -225,17 +228,37 @@ Location guidance should explain that City, State, and ZIP improve teacher
 discovery and Distance Search. It should not impose unnecessary validation that
 causes avoidable abandonment when the record can remain truthful and pending.
 
-### 2.6 Employer Dashboard
+### 2.6 Employer Operations / My Jobs
 
-Dashboard is the operational landing page for one selected employer. It:
+My Jobs is the employer operating workspace. Its All My Jobs view:
 
 - confirms the authenticated user and selected employer context;
-- summarizes complete employer-level job counts;
-- identifies current attention items;
-- provides the primary Post Job action;
-- routes each summary or attention item to the corresponding My Jobs context;
-- avoids duplicating the complete job manager; and
-- avoids advanced analytics.
+- shows a title and truthful job count;
+- includes the School / Job Site column;
+- retains pagination and a rows-per-page selector; and
+- keeps one left-navigation selection active at a time.
+
+A selected School / Job Site view highlights the selected school, provides a
+Back to All My Jobs link, shows the school name and job count, retains the
+School / Job Site column, and retains pagination. Dashboard summary concepts are
+represented as workspace context and job-state attention, not as a separate
+operating route.
+
+### 2.6A Job Timeline and lifecycle presentation
+
+The heading remains **Job Timeline**. Timeline rows reserve a uniform height.
+Live listings remain green; Expiring Soon remains green with an exclamation
+icon only; Awaiting Review uses orange text only; Draft shows only Last Updated
+while preserving the full row height. The first timeline line combines
+remaining time (or status) with the expiration date. Pagination examples
+represent multiple pages.
+
+The conceptual lifecycle is Draft → Awaiting Review → Live → Expiring Soon →
+Expired (temporary attention state) → Closed (historical state). Expired is
+temporary, red, and uses Extend as the primary action. Closed is neutral and
+historical, with Duplicate or Repost as the candidate primary action. Grace
+period, archive behavior, Duplicate/Repost terminology, and notification
+workflow remain open decisions.
 
 Attention means a job needs a clear employer next step, including a draft to
 finish, a submission awaiting review, an upcoming expiration, or a published
@@ -454,10 +477,12 @@ unless the product can establish that fact.
 
 ## 4. UX Principles
 
-1. **Dashboard summarizes.** It shows employer context, complete counts,
-   attention items, and routes to work.
-2. **My Jobs manages.** It is the authoritative inventory, status explanation,
-   metrics view, and action surface.
+1. **My Jobs operates.** It is the employer workspace and authoritative
+   inventory; prior Dashboard summary concepts are absorbed into its selected
+   views.
+2. **One navigation selection.** All My Jobs and an individual School / Job
+   Site view are mutually exclusive; the active left navigation selection is
+   always explicit.
 3. **Create and Edit share interaction patterns.** A field or rule behaves the
    same regardless of entry point.
 4. **Employer context persists.** Multi-employer users always know which

@@ -6,7 +6,8 @@ Scope: Employer Dashboard and My Jobs only
 Dependency: [Employer Access and Authority Contract v1](employer-access-authority-contract-v1.md)
 
 This contract defines the minimum V1 visual authority for the authorized
-employer landing page and job inventory. Dashboard summarizes; My Jobs manages.
+employer operating workspace and job inventory. My Jobs is the operating
+workspace; prior Dashboard summary concepts are absorbed into it.
 It does not define authoring, Review, Preview, metrics, moderation, or admin.
 
 ## 1. Shared employer shell and context
@@ -15,38 +16,40 @@ Both surfaces use one reusable employer shell containing:
 
 - approved Job Center shell, typography, spacing, footer, and responsive language;
 - authenticated user and selected canonical employer identity;
-- employer navigation to Dashboard, My Jobs, and Post Job;
+- employer navigation to All My Jobs, My Schools / Job Sites, Add School / Job
+  Site, and Manage Schools / Job Sites;
 - explicit context persistence when moving between those surfaces;
 - shared notices, status pills, action controls, and accessible focus treatment.
 
-Single-employer members enter the Dashboard directly. Multi-employer members
-select only from active authorized memberships. A selected employer remains
-visible and is carried into My Jobs and Post Job. Unauthorized or revoked
+Single-employer members enter the operating workspace with static employer
+context. Multi-employer members select only from active authorized memberships
+when a selector is needed. A selected employer remains visible and is carried
+into My Jobs and Post Job. Unauthorized or revoked
 employers are never presented as selectable active context.
 
-## 2. Dashboard composition
+## 2. Employer Operations composition
 
-The Dashboard is an operational summary, not a second job manager or analytics
-dashboard. Its hierarchy is:
+The workspace is an employer-scoped operating surface, not a separate dashboard
+route or analytics dashboard. Its hierarchy is:
 
-1. Employer shell and selected employer context.
-2. Welcome/identity confirmation.
-3. Primary **Post a New Job** action.
-4. Complete employer-level job counts.
-5. Attention items requiring a clear next step.
-6. Recent jobs summary with status and public-visibility truth.
-7. Notices or recoverable errors.
+1. Standard Teachers.Net shell and employer context.
+2. One active left-navigation selection: All My Jobs, My Schools / Job Sites,
+   Add School / Job Site, or Manage Schools / Job Sites.
+3. Workspace title and truthful job count.
+4. School / Job Site column and bounded inventory.
+5. Job Timeline status, attention, and valid actions.
+6. Pagination and rows-per-page selector.
 
-Dashboard summaries link to the corresponding My Jobs filter/context. It must
-not duplicate the complete inventory, imply unsupported metrics, or hide jobs
-because they are not currently Live.
+All My Jobs and an individual School / Job Site view are mutually exclusive.
+The selected school is highlighted, the single-school view provides Back to All
+My Jobs, and both views retain the School / Job Site column and pagination.
 
 ## 3. My Jobs composition
 
-My Jobs is the authoritative job-level inventory. Its hierarchy is:
+The selected inventory view is authoritative at job level. Its hierarchy is:
 
 1. Employer shell and selected employer context.
-2. **My Jobs** heading and employer identity.
+2. **All My Jobs** or selected School / Job Site heading and employer identity.
 3. Primary **Post a Job** action.
 4. Status filters.
 5. Bounded job inventory with one card/row per canonical job.

@@ -44,10 +44,13 @@ The frozen minimum visual-authority inventory is recorded in
 must use that inventory and its five remaining render groups as the visual
 authority gate; it must not expand the UX Atlas placeholder set.
 
-Employer execution uses the reconciled hybrid Employer Workspace model:
-Dashboard summarizes, My Jobs manages, memberships and granted capabilities
-scope operations, and Claim/Add My School or Add Organization remains a
-contextual acquisition path rather than routine Operations navigation.
+Employer execution uses the refreshed Employer Operations model: My Jobs is the
+hybrid authenticated operating workspace inside the Teachers.Net shell; prior
+Dashboard concepts are absorbed into it. One active left-navigation selection
+is allowed at a time (All My Jobs, My Schools / Job Sites, Add School / Job
+Site, or Manage Schools / Job Sites). Memberships and granted capabilities scope
+operations, while Claim and Add My School / Add Organization remain contextual
+acquisition paths rather than routine Operations navigation.
 
 ## V1 Launch Polish
 

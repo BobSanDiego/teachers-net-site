@@ -83,6 +83,15 @@ Claim is contextual acquisition; and Add My School / Add Organization is the
 user-facing new-organization path. The DOC021 authority families and five-render
 program remain unchanged.
 
+The pre-handoff Employer Operations refresh supersedes the separate Dashboard /
+My Jobs presentation model for the current design authority: My Jobs is the
+operating workspace, with exactly one active left-navigation selection (All My
+Jobs, My Schools / Job Sites, Add School / Job Site, or Manage Schools / Job
+Sites). All My Jobs and an individual School / Job Site view are mutually
+exclusive. EMP-DESIGN003D is the current candidate refinement; it removes the
+duplicate Dashboard CTA but remains pending human acceptance and is not an
+approved Manifest authority.
+
 The approved responsive visual authority set is complete. JC-030 Narrow Tablet
 v1.0, JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010

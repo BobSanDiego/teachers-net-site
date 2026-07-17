@@ -21,6 +21,15 @@ Mode; active implementation work must preserve those authorities.
 
 ## 2. Current Ticket
 
+EMP-DESIGN003D is the current Employer Operations visual-authority refinement
+pending human review. The refreshed authority treats My Jobs as the employer
+operating workspace and absorbs Dashboard concepts into it. Exactly one active
+left-navigation selection is allowed: All My Jobs, My Schools / Job Sites, Add
+School / Job Site, or Manage Schools / Job Sites. All My Jobs and an individual
+School / Job Site view are mutually exclusive; the School / Job Site column,
+pagination, and rows-per-page selector remain required. The candidate is not
+approved and must not update the Visual Manifest until human acceptance.
+
 JC-030 approved-authority composition implementation under ADR001. ADR001 is
 retrospective codification derived from the Responsive Authority Program; it
 does not claim to have governed earlier work. The legacy
@@ -162,7 +171,8 @@ or let the JC-030 audit backlog replace the broader roadmap.
 - Public search is local-database-only; browser location remains request-scoped
   and private.
 - Review and Preview, Renew and Duplicate, and Close and Archive remain distinct.
-- Dashboard summarizes; My Jobs manages.
+- My Jobs is the employer operating workspace; prior Dashboard summary concepts
+  are absorbed into its selected views.
 - Interaction-state artifacts inherit an approved page state and modify only
   the minimum interface necessary to document a single user interaction.
 - The Job Center progressively reveals capability as the user demonstrates
