@@ -80,6 +80,13 @@ implementation must preserve these authorities.
 
 ## 3. Last Completed Milestone
 
+EMP-DESIGN003D produced the final bounded Employer Operations candidate and
+removed the duplicate Dashboard CTA. The candidate is pushed but remains
+pending human visual/product acceptance; it is not an approved authority.
+The refreshed model treats My Jobs as the employer operating workspace, with
+one active left-navigation selection and mutually exclusive All My Jobs and
+School / Job Site views.
+
 DOC022 reconciled the Employer product model without changing the authority
 families or render program. Employer Operations is a hybrid authenticated
 workspace inside the standard Teachers.Net shell. Personas are descriptive;
