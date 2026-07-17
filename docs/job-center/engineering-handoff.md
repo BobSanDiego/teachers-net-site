@@ -25,8 +25,12 @@ EMP-DOC004 approves the exact desktop Employer Operations rasters for JC-050
 All My Jobs and JC-051 Single School / Job Site. Controlled copies are
 `docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png`
 and `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png`.
-Responsive/mobile presentation, Team Members, bottom navigation, list/grid
-switching, and other explicit exclusions remain unapproved.
+Responsive/mobile presentation is recorded as two provisional candidate rasters
+under `docs/job-center/design/draft/`: contracted and expanded selector states.
+They are Responsive Candidate / Implementation Target / Pending Browser
+Verification, not Approved authorities. Team Members, bottom navigation,
+list/grid switching, and other explicit exclusions remain unapproved or
+deferred to V1.1.
 
 EMP-DESIGN003D was the Employer Operations visual-authority refinement. The refreshed authority treats My Jobs as the employer
 operating workspace and absorbs Dashboard concepts into it. Exactly one active

@@ -96,8 +96,12 @@ EMP-DOC004 now approves the exact external desktop rasters for JC-050 All My
 Jobs and JC-051 Single School / Job Site. Their controlled copies are
 `docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png`
 and `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png`.
-Responsive/mobile presentation, Team Members, bottom navigation, list/grid
-switching, and other explicit exclusions remain unapproved.
+Responsive/mobile presentation is now recorded as two provisional candidate
+rasters (contracted and expanded selector) under
+`docs/job-center/design/draft/`. They are Implementation Targets pending
+Browser Verification, not Approved authorities. Team Members, bottom
+navigation, list/grid switching, and other explicit exclusions remain
+unapproved or deferred to V1.1.
 
 The approved responsive visual authority set is complete. JC-030 Narrow Tablet
 v1.0, JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet

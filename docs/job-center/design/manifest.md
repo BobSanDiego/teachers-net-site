@@ -487,7 +487,7 @@ remain the current gate; the manifest is not an implementation diary.
 - **Related Product Specification:** Employer UX V1; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-009
 - **Related implementation ticket(s):** None assigned
-- **Notes:** My Jobs is the employer operating workspace. This authority governs All My Jobs, the cross-school inventory, mutually exclusive workspace selection, School / Job Site column, Job Timeline, filters, sorting, one primary action per row, overflow actions, pagination, and rows-per-page. Responsive/mobile presentation, Team Members functionality, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration are excluded. Future Employer Operations work is Patch Mode.
+- **Notes:** My Jobs is the employer operating workspace. This authority governs All My Jobs, the cross-school inventory, mutually exclusive workspace selection, School / Job Site column, Job Timeline, filters, sorting, one primary action per row, overflow actions, pagination, and rows-per-page. The current mobile adaptation is recorded separately as Responsive Candidate / Implementation Target / Pending Browser Verification; it is not an Approved authority. Team Members functionality, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration remain excluded or deferred. Future Employer Operations work is Patch Mode.
 
 ### JC-051 — Employer Operations — Single School / Job Site
 
@@ -500,7 +500,7 @@ remain the current gate; the manifest is not an implementation diary.
 - **Related Product Specification:** Employer UX V1; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-010
 - **Related implementation ticket(s):** None assigned
-- **Notes:** This authority governs the selected School / Job Site view, selected-state indication, Back to All My Jobs, school/job count, retained School / Job Site column, Job Timeline, filters, sorting, one primary action per row, overflow actions, pagination, and rows-per-page. Responsive/mobile presentation and the explicit exclusions recorded for JC-050 are not approved here. Future Employer Operations work is Patch Mode.
+- **Notes:** This authority governs the selected School / Job Site view, selected-state indication, Back to All My Jobs, school/job count, retained School / Job Site column, Job Timeline, filters, sorting, one primary action per row, overflow actions, pagination, and rows-per-page. The current mobile adaptation is recorded separately as Responsive Candidate / Implementation Target / Pending Browser Verification; it is not an Approved authority. The explicit exclusions recorded for JC-050 remain in force. Future Employer Operations work is Patch Mode.
 
 ### JC-052 — Employer Wizard
 
@@ -684,6 +684,8 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png` | Controlled JC-050 All My Jobs desktop authority copy | Approved | JC-050 | Byte-identical to the EMP-DOC004-verified source raster |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/specific-school-myjobs.png` | Engineering Director-approved Employer Operations Single School / Job Site source raster | Approved | JC-051 | EMP-DOC004 verified exact external source, 1536 × 1024 dimensions, and SHA-256; future work is Patch Mode |
 | `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png` | Controlled JC-051 Single School / Job Site desktop authority copy | Approved | JC-051 | Byte-identical to the EMP-DOC004-verified source raster |
+| `docs/job-center/design/draft/employer-operations-mobile-contracted-selector-candidate.png` | Provisional Employer Operations mobile contracted-selector adaptation | Responsive Candidate / Implementation Target / Pending Browser Verification | JC-050, JC-051 | Exact external source recorded by EMP-DOC004A; not an Approved authority |
+| `docs/job-center/design/draft/employer-operations-mobile-expanded-selector-candidate.png` | Provisional Employer Operations mobile expanded-selector adaptation | Responsive Candidate / Implementation Target / Pending Browser Verification | JC-050, JC-051 | Exact external source recorded by EMP-DOC004A; not an Approved authority |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01b-design-target.png` | Polished logged-out first-touch Location modal open | Approved | JC-014 | Exact source approved by the Engineering Director for JC-014 only |
 | `docs/job-center/design/approved/jc-014-location-selection-modal-desktop-v1.0.png` | Controlled JC-014 reference copy | Approved | JC-014 | Canonical library copy; byte-identical to the approved source artifact |
