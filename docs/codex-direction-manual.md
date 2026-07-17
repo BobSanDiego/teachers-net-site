@@ -94,6 +94,49 @@ Default behavior:
 
 Do not create new process unless it reduces effort, risk, or maintenance.
 
+## Execution Modes
+
+Choose the lightest mode that matches the requested action:
+
+1. **Product Engineering** — inspect, plan, implement, verify, and commit
+   application behavior or infrastructure changes.
+2. **Governance** — inspect the named authorities, update durable process or
+   product records, verify consistency, and commit documentation changes.
+3. **Fast Operations** — for local, reversible, mechanical, or disposable
+   operations with an already-known command or service path.
+
+### Fast Operations Protocol
+
+Invoke with the compact directive: `Execution mode: Fast Operations`.
+
+- Start with the direct command or existing service call.
+- Perform at most one targeted inspection pass before execution.
+- Prefer a reversible local action; do not build speculative infrastructure.
+- Verify proportionally: confirm the requested state and one relevant safety
+  boundary, then stop immediately after success.
+- Escalate to Product Engineering or Governance if the direct approach fails
+  once, the command is destructive or uncertain, or meaningful project data
+  could be damaged.
+
+Fast Operations is prohibited for production mutations, irreversible data
+changes, schema changes, security-model changes, migrations, application
+behavior changes, or uncertain destructive commands. It never relaxes
+authorization, ownership, or architecture rules.
+
+Examples:
+
+| Task | Fast path | Proportional verification |
+|---|---|---|
+| Create a local WordPress user | Run the known `wp user create` command | `wp user get` with login, email, and role |
+| Reset a local password | Run `wp user update --user_pass=...` | Authenticate or verify the user record |
+| Clear local cache | Run the established DDEV/cache command | Recheck the target cache or route |
+| Verify a route | Request the known local URL | Confirm status and the expected marker |
+| Attach membership data | Call the existing membership service | Read back active membership and scope |
+
+The one-failure stop rule is mandatory: after one failed direct approach, stop
+and report the exact failure before searching for alternate abstractions or
+changing data. Resume only with explicit direction or a clearly safe correction.
+
 ## Environment
 
 - Project root: `/home/bobreap/projects/teachers-net-site`
