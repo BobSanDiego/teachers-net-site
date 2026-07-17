@@ -21,8 +21,14 @@ Mode; active implementation work must preserve those authorities.
 
 ## 2. Current Ticket
 
-EMP-DESIGN003D is the current Employer Operations visual-authority refinement
-pending human review. The refreshed authority treats My Jobs as the employer
+EMP-DOC004 approves the exact desktop Employer Operations rasters for JC-050
+All My Jobs and JC-051 Single School / Job Site. Controlled copies are
+`docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png`
+and `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png`.
+Responsive/mobile presentation, Team Members, bottom navigation, list/grid
+switching, and other explicit exclusions remain unapproved.
+
+EMP-DESIGN003D was the Employer Operations visual-authority refinement. The refreshed authority treats My Jobs as the employer
 operating workspace and absorbs Dashboard concepts into it. Exactly one active
 left-navigation selection is allowed: All My Jobs, My Schools / Job Sites, Add
 School / Job Site, or Manage Schools / Job Sites. All My Jobs and an individual

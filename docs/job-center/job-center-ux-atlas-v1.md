@@ -12,7 +12,7 @@ Discovery → Search → Job Detail → Apply
                          │
                          └→ Saved Jobs → Alerts
 
-Employer Identity → Dashboard → My Jobs → Post Job → Review → Preview → Publish
+Employer Identity → My Jobs → School / Job Site → Post Job → Review → Preview → Publish
 ```
 
 Approved search/discovery transitions:
@@ -612,9 +612,9 @@ Alerts are not a general notification center.
 ### Identifier
 JC-050
 ### Screen Name
-Employer Dashboard
+Employer Operations — All My Jobs
 ### Purpose
-Summarize employer activity and priorities.
+Manage the cross-school employer job inventory.
 ### Primary User Goal
 Understand current employer status and next actions.
 ### Primary User
@@ -622,7 +622,7 @@ Authorized employer user
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/employer-operations-dashboard-my-jobs-v1.0.png` — shared Employer Operations authority approved by Engineering Director, EMP-DOC003A.
+`docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png` — canonical All My Jobs desktop authority approved by Engineering Director, EMP-DOC004.
 ### Preceded By
 JC-053 or employer navigation
 ### Leads To
@@ -634,16 +634,16 @@ Approved V1 visual authority
 ### Next Expected Work
 Patch Mode only for explicitly approved Employer Operations deltas.
 ### Notes
-Dashboard summarizes; My Jobs manages. One-employer users see static employer context; the selector appears only for multiple active memberships. Dashboard is scoped to the selected employer; no pooled all-employers inventory. Personas are descriptive, not permanent account classes; memberships and granted capabilities determine tools. Bulk, feed, agency-console, ATS, messaging, billing, and advanced analytics remain gated or deferred.
+My Jobs is the employer operating workspace. All My Jobs is the cross-school inventory with mutually exclusive workspace selection, School / Job Site column, Job Timeline, filters, sorting, primary row actions, overflow actions, pagination, and rows-per-page. Responsive/mobile presentation, Team Members, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration are excluded.
 
 ---
 
 ### Identifier
 JC-051
 ### Screen Name
-Employer My Jobs
+Employer Operations — Single School / Job Site
 ### Purpose
-Manage the employer's canonical job inventory.
+Manage the selected School / Job Site inventory.
 ### Primary User Goal
 Find a job and take the correct lifecycle action.
 ### Primary User
@@ -651,7 +651,7 @@ Authorized employer user
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/employer-operations-dashboard-my-jobs-v1.0.png` — shared Employer Operations authority approved by Engineering Director, EMP-DOC003A.
+`docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png` — canonical Single School / Job Site desktop authority approved by Engineering Director, EMP-DOC004.
 ### Preceded By
 JC-050
 ### Leads To
@@ -663,7 +663,7 @@ Approved V1 visual authority
 ### Next Expected Work
 Patch Mode only for explicitly approved Employer Operations deltas.
 ### Notes
-My Jobs manages and does not duplicate the Dashboard. One-employer users see static employer context; the selector appears only for multiple active memberships. My Jobs is scoped to the selected employer; no pooled all-employers inventory. Lifecycle status/action presentation is governed by the shared authority; composite exceptions remain separately governed. Personas are descriptive, not permanent account classes; memberships and granted capabilities determine tools. Bulk, feed, agency-console, ATS, messaging, billing, and advanced analytics remain gated or deferred.
+The selected School / Job Site view is mutually exclusive with All My Jobs, highlights the selected school, provides Back to All My Jobs, preserves the School / Job Site column, and retains Job Timeline, filters, sorting, primary row actions, overflow actions, pagination, and rows-per-page. Responsive/mobile presentation and JC-050 exclusions are not approved here.
 
 ---
 

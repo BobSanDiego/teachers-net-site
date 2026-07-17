@@ -92,6 +92,13 @@ exclusive. EMP-DESIGN003D is the current candidate refinement; it removes the
 duplicate Dashboard CTA but remains pending human acceptance and is not an
 approved Manifest authority.
 
+EMP-DOC004 now approves the exact external desktop rasters for JC-050 All My
+Jobs and JC-051 Single School / Job Site. Their controlled copies are
+`docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png`
+and `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png`.
+Responsive/mobile presentation, Team Members, bottom navigation, list/grid
+switching, and other explicit exclusions remain unapproved.
+
 The approved responsive visual authority set is complete. JC-030 Narrow Tablet
 v1.0, JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010
