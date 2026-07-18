@@ -139,11 +139,13 @@ reported, and verified employers can manage eligible jobs.
 - advanced personalization and unrelated workflow expansion
 - Google Places Autocomplete as a required V1 dependency
 
-## Immediate Next Audit
+## Next Release-Candidate Audit After Current Convergence Gate
 
-**JREAL001 - Real Job Current-State Inventory** is the first focused inspection
-within the broader **Real Job Ingestion and V1 Lifecycle Readiness Audit**. It
-must inspect the current Jobs model, schema, repositories/services, seed-importer reuse, source identity,
+After Employer Operations desktop convergence is explicitly accepted, and the
+authorized downstream work is complete, **JREAL001 - Real Job Current-State
+Inventory** is the first focused inspection within the broader **Real Job
+Ingestion and V1 Lifecycle Readiness Audit**. It must inspect the current Jobs
+model, schema, repositories/services, seed-importer reuse, source identity,
 deduplication, provenance, ownership, applications, expiration/reconciliation,
 coordinates, typed-origin resolution, employer flows, claim capability, and
 pilot requirements. It stops at findings, contract recommendation, dependency
