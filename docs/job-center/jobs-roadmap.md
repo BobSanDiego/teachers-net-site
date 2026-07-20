@@ -38,29 +38,76 @@ Launch Readiness → Explicit V1 Acceptance → Production Launch
 
 ## Current Authorized Workstream
 
-JC-030 is in **Bounded Implementation Convergence** under ADR001. The approved
-composition is the implementation target; the legacy composition is not.
-Browser, accessibility, and human visual verification remain the current gate.
-After JC-030 acceptance, work returns to the public and employer V1
-release-candidate roadmap. UX Atlas placeholders are not automatically
-scheduled.
+Employer Operations remains in **Bounded Implementation Convergence**. JC-050
+The DESIGN-AUTHORITY007 JC-050 replacement is now approved as the current visual authority, but
+its bounded implementation and explicit browser/human visual acceptance remain
+outstanding. My Jobs is the primary employer workspace; the separate Dashboard
+direction is superseded for V1, with its useful concepts absorbed into My Jobs
+as notifications, attention states, workflow guidance, summary context, and
+School / Job Site scope. JC-050 All My Jobs and JC-051 Single School / Job Site
+remain the approved desktop authorities. Their mobile adaptation is a
+Responsive Candidate / Implementation Target pending Browser Verification, not
+an Approved authority.
+
+The current gate is bounded implementation and then browser/human acceptance of
+the authenticated All My Jobs implementation against JC-050 v1.1. The completed baseline includes the Employer
+Workspace shell, external Chrome DevTools QA workflow, lifecycle fixture
+architecture and invariant enforcement, typography weight convergence, white
+navbar/gray rail shell, workspace selector, outlined Post a Job CTA, and
+approved legacy Teachers.Net logo. After desktop acceptance, the next bounded
+work is Employer Operations mobile implementation. UX Atlas placeholders are
+not automatically scheduled.
+
+## Completed Employer Operations Convergence Milestones
+
+- **Employer Workspace shell convergence — Implemented and browser-verified:**
+  1200px canvas, white navbar, approved Teachers.Net logo, Job Center label,
+  notification/account controls, 250px gray rail, workspace selector, and
+  outlined Post a Job CTA.
+- **External Chrome DevTools browser QA workflow — Established:** dedicated QA
+  Chrome profile, manual authentication, 1440 × 1000 verification, DOM and
+  screenshot capture, console/page-error inspection, overflow checks, and
+  narrower-width collision checks.
+- **Lifecycle fixture architecture — Implemented and verified:** seeded
+  `jobman` matrix, filter totals/pagination checks, state-specific timeline
+  output, actions, and hidden archived/approved-only invariants.
+- **Employer lifecycle invariant enforcement — Implemented and verified:**
+  approved-only jobs are not employer-visible; archived jobs remain hidden.
+- **Typography convergence study — Completed:** system stack rendered as Segoe
+  UI in the Windows QA browser, with regular/bold 400/700 discipline.
+- **Employer Operations shell redesign and legacy branding restoration —
+  Implemented:** shell/navigation direction and supplied approved PNG logo are
+  in the nested Jobs plugin through commit `5a11308`.
+- **Workspace selector architecture — Implemented:** current workspace,
+  authorized School / Job Site links, and manage-workspace destination are
+  exposed from the My Jobs header.
+- **JC-050 replacement authority approval — Completed:** DESIGN-AUTHORITY007
+  promoted `docs/job-center/design/approved/jc-050-approved-candidate-01a.png`
+  as the canonical raster; v1.1 remains historical evidence.
+
+These milestones are implemented and verified at the repository/browser-QA
+level; they do not constitute explicit human visual acceptance of JC-050.
 
 Each future interaction-state artifact inherits an approved page state and
 changes only the minimum interface needed to document one interaction.
 
 ## V1 Critical Path
 
-1. **Real Job Ingestion and V1 Lifecycle Readiness Audit**
-2. Approve the canonical real-job contract and dependency map.
-3. Small implementation tickets for provenance/source identity, validation,
+1. Implement and complete browser/human acceptance of JC-050 v1.1 desktop,
+   then begin bounded mobile implementation only if accepted.
+2. Complete the remaining V1 visual-authority render groups recorded in the V1
+   Authority Program.
+3. **Real Job Ingestion and V1 Lifecycle Readiness Audit**
+4. Approve the canonical real-job contract and dependency map.
+5. Small implementation tickets for provenance/source identity, validation,
    deduplication, reconciliation, application integrity, expiration, coordinate
    coverage, independent origin resolution, and employer-claim gaps.
-4. Employer posting and management acceptance.
-5. Final Job Finder acceptance against actual supported behavior.
-6. Limited real-job pilot.
-7. Pilot corrections.
-8. Controlled bulk import.
-9. V1 release-candidate review, launch checklist, monitoring, and rollback plan.
+6. Employer posting and management acceptance.
+7. Final Job Finder acceptance against actual supported behavior.
+8. Limited real-job pilot.
+9. Pilot corrections.
+10. Controlled bulk import.
+11. V1 release-candidate review, launch checklist, monitoring, and rollback plan.
 
 ## V1 Blockers
 
@@ -72,6 +119,21 @@ changes only the minimum interface needed to document one interaction.
 - employer lifecycle acceptance and verified claim/conversion capability
 - pilot import and corrections before bulk loading
 - Job Finder acceptance and release-candidate review
+
+## Current Visual Convergence Program
+
+The remaining work is design exploration or explicit human acceptance, not an
+implicit implementation queue:
+
+- Employer detail workspace and recruiter campaign-management orientation.
+- Performance dashboard, applicant workflow, and job metrics.
+- Left-rail refinement, promotion placement, and summary strip.
+- Typography fine tuning against approved authorities.
+- JC-050 human visual acceptance and any separately bounded material corrections.
+
+No implementation ticket is declared complete here without repository and
+browser evidence. Deferred architecture remains separate from design
+exploration and implementation.
 
 ## V1 Launch Polish
 

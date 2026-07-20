@@ -40,9 +40,10 @@ location, application, and ingestion requirements that affect public trust.
 - release-candidate review, launch planning, monitoring, and rollback readiness
 
 The frozen minimum visual-authority inventory is recorded in
-`docs/job-center/v1-authority-program.md` (DOC021). Implementation Readiness
-must use that inventory and its five remaining render groups as the visual
-authority gate; it must not expand the UX Atlas placeholder set.
+`docs/job-center/v1-authority-program.md` (DOC021), with later approvals
+recorded there as they complete. Implementation Readiness must use that
+inventory and its remaining render groups as the visual authority gate; it must
+not expand the UX Atlas placeholder set.
 
 Employer execution uses the refreshed Employer Operations model: My Jobs is the
 hybrid authenticated operating workspace inside the Teachers.Net shell; prior
@@ -51,6 +52,17 @@ is allowed at a time (All My Jobs, My Schools / Job Sites, Add School / Job
 Site, or Manage Schools / Job Sites). Memberships and granted capabilities scope
 operations, while Claim and Add My School / Add Organization remain contextual
 acquisition paths rather than routine Operations navigation.
+
+Employer Operations desktop authority is approved through the DESIGN-AUTHORITY007
+JC-050 replacement and JC-051 Single School / Job Site. The replacement is the
+current All My Jobs desktop visual authority; v1.1 and v1.0 remain historical evidence. The authority requires the School / Job
+Site column, Job Timeline terminology, fixed row heights, separate filtering and
+sorting, pagination with rows-per-page, one primary action per row, and the
+Draft -> Awaiting Review -> Live -> Expiring Soon -> Expired -> Closed
+conceptual progression. The exact Expired-to-Closed timing, archive semantics,
+retention policy, Duplicate versus Repost wording, and notification
+implementation remain unresolved and must not be invented during feasibility or
+implementation work.
 
 ## V1 Launch Polish
 

@@ -480,14 +480,14 @@ remain the current gate; the manifest is not an implementation diary.
 
 - **Screen / Component:** Employer Operations cross-school inventory
 - **Status:** Approved
-- **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png`
-- **Authority:** Engineering Director, EMP-DOC004; canonical Employer Operations desktop authority with JC-051.
+- **Version:** 1.2
+- **Approved Artifact:** `docs/job-center/design/approved/jc-050-approved-candidate-01a.png`
+- **Authority:** Engineering Director, DESIGN-AUTHORITY007; current canonical Employer Operations desktop authority with JC-051. JC-050 v1.1 is retained as superseded historical evidence.
 - **Related Design System section:** 12, 17
 - **Related Product Specification:** Employer UX V1; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-009
 - **Related implementation ticket(s):** None assigned
-- **Notes:** My Jobs is the employer operating workspace. This authority governs All My Jobs, the cross-school inventory, mutually exclusive workspace selection, School / Job Site column, Job Timeline, filters, sorting, one primary action per row, overflow actions, pagination, and rows-per-page. The current mobile adaptation is recorded separately as Responsive Candidate / Implementation Target / Pending Browser Verification; it is not an Approved authority. Team Members functionality, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration remain excluded or deferred. Future Employer Operations work is Patch Mode.
+- **Notes:** DESIGN-AUTHORITY007 supersedes JC-050 v1.1 only within the All My Jobs desktop visual boundary. My Jobs is the employer operating workspace; prior Dashboard concepts are absorbed into it and must not be revived as a separate V1 operating destination. This authority includes the official legacy Teachers.Net logo, floating application card, off-white browser/page surround, 250px neutral-gray rail, 950px main workspace, single-line My Jobs selector with dynamic count, current Post a Job button, integrated inventory panel, refined desktop spacing, updated framing, and neutral rail state with no school selected. The current mobile adaptation is recorded separately as Responsive Candidate / Implementation Target / Pending Browser Verification; it is not an Approved authority. JC-051 remains unchanged. Team Members functionality, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration remain excluded or deferred. Future Employer Operations implementation is authorized only through a separate bounded ticket.
 
 ### JC-051 — Employer Operations — Single School / Job Site
 
@@ -500,7 +500,7 @@ remain the current gate; the manifest is not an implementation diary.
 - **Related Product Specification:** Employer UX V1; Canonical V1 Contract
 - **Related future UX Atlas entry:** JC-ATLAS-010
 - **Related implementation ticket(s):** None assigned
-- **Notes:** This authority governs the selected School / Job Site view, selected-state indication, Back to All My Jobs, school/job count, retained School / Job Site column, Job Timeline, filters, sorting, one primary action per row, overflow actions, pagination, and rows-per-page. The current mobile adaptation is recorded separately as Responsive Candidate / Implementation Target / Pending Browser Verification; it is not an Approved authority. The explicit exclusions recorded for JC-050 remain in force. Future Employer Operations work is Patch Mode.
+- **Notes:** This authority governs the selected School / Job Site view, selected-state indication, Back to All My Jobs, school/job count, retained School / Job Site column, Job Timeline terminology, fixed row height, filters, sorting, one primary action per row, overflow actions, pagination, and rows-per-page. All My Jobs is not highlighted in single-school mode. The current mobile adaptation is recorded separately as Responsive Candidate / Implementation Target / Pending Browser Verification; it is not an Approved authority. The explicit exclusions recorded for JC-050 remain in force. Future Employer Operations work is Patch Mode.
 
 ### JC-052 — Employer Wizard
 
@@ -680,8 +680,10 @@ The status below is the artifact's governed classification. A path may relate to
 | `docs/job-center/design/approved/jc-030-job-detail-mobile-v1.0.png` | Controlled JC-030 Mobile v1.0 reference copy | Approved | JC-030 Mobile | Byte-identical to the DOC018-verified source raster; future work is Patch Mode |
 | `art/mockups/job-center/generated/jc030-narrow-tablet-nt002-candidate.png` | Engineering Director-approved JC-030 Narrow Tablet source raster | Approved | JC-030 Narrow Tablet | DOC017A verified the exact repository candidate, dimensions, and SHA-256 |
 | `docs/job-center/design/approved/jc-030-job-detail-narrow-tablet-v1.0.png` | Controlled JC-030 Narrow Tablet v1.0 reference copy | Approved | JC-030 Narrow Tablet | Byte-identical to the DOC017A-verified source raster; future work is Patch Mode |
-| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/all-my-jobs.png` | Engineering Director-approved Employer Operations All My Jobs source raster | Approved | JC-050 | EMP-DOC004 verified exact external source, 1537 × 1023 dimensions, and SHA-256; future work is Patch Mode |
-| `docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png` | Controlled JC-050 All My Jobs desktop authority copy | Approved | JC-050 | Byte-identical to the EMP-DOC004-verified source raster |
+| `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/all-my-jobs.png` | Superseded JC-050 v1.0 source raster | Superseded | JC-050 | EMP-DOC004 historical source retained as evidence; 1537 × 1023 |
+| `docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png` | Superseded controlled JC-050 v1.0 authority copy | Superseded | JC-050 | Retained as historical evidence; v1.1 and the prior v1.0 authority are superseded |
+| `docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.1.png` | Controlled JC-050 All My Jobs desktop v1.1 authority copy | Superseded | JC-050 | Retained as historical evidence after DESIGN-AUTHORITY007; prior canonical authority |
+| `docs/job-center/design/approved/jc-050-approved-candidate-01a.png` | Controlled JC-050 All My Jobs desktop replacement authority | Approved | JC-050 | DESIGN-AUTHORITY007; 1228 × 939; SHA-256 `47bb3555f36f8eef4968cf8b122061ef70a8bb2d7cdbfe9dcc848a0004b00a5f` |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/specific-school-myjobs.png` | Engineering Director-approved Employer Operations Single School / Job Site source raster | Approved | JC-051 | EMP-DOC004 verified exact external source, 1536 × 1024 dimensions, and SHA-256; future work is Patch Mode |
 | `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png` | Controlled JC-051 Single School / Job Site desktop authority copy | Approved | JC-051 | Byte-identical to the EMP-DOC004-verified source raster |
 | `docs/job-center/design/draft/employer-operations-mobile-contracted-selector-candidate.png` | Provisional Employer Operations mobile contracted-selector adaptation | Responsive Candidate / Implementation Target / Pending Browser Verification | JC-050, JC-051 | Exact external source recorded by EMP-DOC004A; not an Approved authority |

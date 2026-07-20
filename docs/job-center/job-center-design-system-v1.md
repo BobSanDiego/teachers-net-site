@@ -612,26 +612,32 @@ Employer interfaces conform to `docs/job-center/employer-ux-v1.md`.
 
 - Uses the same 1200px Job Center canvas, navbar, footer, tokens, and focus rules.
 - Clearly shows authenticated user and selected employer.
-- Preserves validated employer context across Dashboard, My Jobs, Post, Edit,
-  Review, confirmation, and returns.
-- Uses Dashboard, My Jobs, and Post a Job as the core V1 navigation tasks.
+- Preserves validated employer context across My Jobs, School / Job Site, Post,
+  Edit, Review, confirmation, and returns.
+- Uses My Jobs, School / Job Site scope, and Post a Job as the core V1
+  navigation tasks.
 - Does not create a separate claimed-employer visual system.
 
-### 12.2 Dashboard
+### 12.2 Employer Operations / My Jobs
 
-- Dashboard summarizes; it does not reproduce the full job manager.
-- Establishes employer context and one primary next action.
+- My Jobs is the primary employer operating workspace; prior Dashboard concepts
+  are absorbed into it as notifications, attention states, workflow guidance,
+  summary context, and School / Job Site scope.
+- All My Jobs and a selected School / Job Site view are mutually exclusive.
+- Establishes employer context, truthful job count, School / Job Site scope,
+  Job Timeline, and one primary action per row.
 - Uses complete counts, not recent-list approximations.
-- Prioritizes attention: drafts, awaiting review, expiring, or published but not
-  Live.
-- Summary items route to the relevant My Jobs context.
-- Advanced analytics are outside V1.
+- Prioritizes attention: drafts, awaiting review, expiring soon, or expired
+  recoverable records.
+- Advanced analytics and a separate Dashboard operating destination are outside
+  V1.
 
-### 12.3 My Jobs
+### 12.3 Inventory and lifecycle presentation
 
 - My Jobs manages and is the authoritative employer inventory/action surface.
 - Every row/card shows truthful lifecycle and visibility, relevant dates, basic
   metrics, and valid actions.
+- Rows reserve fixed Job Timeline space and retain uniform minimum height.
 - Renew, Duplicate, Close, and Archive remain distinct in label and consequence.
 - Views, Saved, and Interested follow Employer UX V1 definitions.
 - Archived visibility follows the unresolved product decision; no design may
@@ -647,9 +653,13 @@ Employer interfaces conform to `docs/job-center/employer-ux-v1.md`.
   Employer UX V1 decisions remain unresolved here.
 - System-owned fields do not become editable merely to fill a layout.
 
-No Employer Dashboard, My Jobs, Post Job, Edit, claim, or authority-review
-visual artifact is currently Approved. Exact employer screen composition is
-unresolved.
+The DESIGN-AUTHORITY007 JC-050 replacement and JC-051 Single School / Job Site
+are the approved desktop Employer Operations authorities. The canonical JC-050
+raster is `docs/job-center/design/approved/jc-050-approved-candidate-01a.png`;
+v1.1 and v1.0 remain superseded historical evidence. Employer mobile remains a Responsive Candidate
+/ Implementation Target pending Browser Verification, not an Approved
+authority. No Post Job, Edit, claim, or authority-review visual artifact is
+currently Approved.
 
 ## 13. Right-rail structure
 
@@ -849,8 +859,8 @@ These are reference-index destinations, not implementation tickets:
 | JC-ATLAS-006 | Job Detail |
 | JC-ATLAS-007 | Saved Jobs and Job Alerts |
 | JC-ATLAS-008 | Employer authority and employer switching |
-| JC-ATLAS-009 | Employer Dashboard |
-| JC-ATLAS-010 | Employer My Jobs |
+| JC-ATLAS-009 | Employer Operations - All My Jobs |
+| JC-ATLAS-010 | Employer Operations - Single School / Job Site |
 | JC-ATLAS-011 | Post Job, Edit, Review, and Preview |
 | JC-ATLAS-012 | Responsive system and mobile ordering |
 | JC-ATLAS-013 | Advertising placements |
@@ -927,9 +937,10 @@ audits, mockups, or implementation tickets:
 12. Saved Jobs and Job Alerts visual references.
 13. Employer claim, authority-review, and multi-employer-switching visual
     references.
-14. Employer Dashboard visual composition.
-15. Employer My Jobs visual composition, lifecycle grouping, metric labels, and
-    archived-history treatment.
+14. Employer Operations mobile adaptation and browser verification.
+15. Employer Operations unresolved lifecycle details: grace period, archive
+    behavior, Duplicate/Repost wording, notification workflow, and retained
+    history treatment.
 16. Post Job/Edit shared authoring, Review, Preview, validation, draft, and
     moderation visual patterns.
 17. Exact semantic status palette for success, warning, error, Needs Attention,

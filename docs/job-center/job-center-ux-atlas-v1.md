@@ -622,7 +622,7 @@ Authorized employer user
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png` — canonical All My Jobs desktop authority approved by Engineering Director, EMP-DOC004.
+`docs/job-center/design/approved/jc-050-approved-candidate-01a.png` — current canonical All My Jobs desktop authority approved by Engineering Director, DESIGN-AUTHORITY007; v1.1 and v1.0 are retained as superseded historical evidence.
 ### Preceded By
 JC-053 or employer navigation
 ### Leads To
@@ -630,11 +630,11 @@ JC-051, JC-052, or JC-056
 ### Dependencies
 Employer identity, authorization, and lifecycle state
 ### Current State
-Approved V1 visual authority
+Approved desktop v1.1 visual authority
 ### Next Expected Work
-Patch Mode only for explicitly approved Employer Operations deltas.
+Bounded desktop implementation against v1.1, followed by browser and human visual acceptance. Mobile remains a later provisional implementation target.
 ### Notes
-My Jobs is the employer operating workspace. All My Jobs is the cross-school inventory with mutually exclusive workspace selection, School / Job Site column, Job Timeline, filters, sorting, primary row actions, overflow actions, pagination, and rows-per-page. Responsive/mobile presentation, Team Members, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration are excluded.
+JC-050 v1.1 supersedes v1.0 only for All My Jobs desktop. It governs the bounded desktop canvas, shell, rail, workspace selector, inventory, timeline, actions, pagination, privacy footer, hierarchy, spacing, depth, and visual weight shown in the canonical raster. My Jobs remains the employer operating workspace; prior Dashboard concepts are not revived. JC-051 remains unchanged. Responsive/mobile presentation, Team Members, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration are excluded.
 
 ---
 
@@ -663,7 +663,7 @@ Approved V1 visual authority
 ### Next Expected Work
 Patch Mode only for explicitly approved Employer Operations deltas.
 ### Notes
-The selected School / Job Site view is mutually exclusive with All My Jobs, highlights the selected school, provides Back to All My Jobs, preserves the School / Job Site column, and retains Job Timeline, filters, sorting, primary row actions, overflow actions, pagination, and rows-per-page. Responsive/mobile presentation and JC-050 exclusions are not approved here.
+The selected School / Job Site view is mutually exclusive with All My Jobs, highlights the selected school, provides Back to All My Jobs, preserves the School / Job Site column, and retains Job Timeline terminology, fixed row height, filters, sorting, primary row actions, overflow actions, pagination, and rows-per-page. All My Jobs is not highlighted in single-school mode. Responsive/mobile presentation and JC-050 exclusions are not approved here.
 
 ---
 

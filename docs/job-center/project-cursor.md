@@ -21,6 +21,15 @@ convergence is active and must not alter approved visual authorities.
 
 ## Current Milestone
 
+DESIGN-PATCH003 completed the repository/browser-verified Employer Operations
+desktop convergence baseline through nested Jobs plugin commit `5a11308`:
+external Chrome QA, lifecycle/invariant verification, typography discipline,
+white navbar and approved logo, gray rail, workspace selector, and Post a Job
+CTA. DESIGN-AUTHORITY007 now promotes `jc-050-approved-candidate-01a.png` as
+the current JC-050 All My Jobs desktop visual authority, superseding v1.1.
+No implementation is authorized by the governance ticket; browser and human
+visual acceptance remain required against the replacement authority.
+
 RESP-DEC001 resolved the shared responsive decisions required to interpret the
 approved desktop suite without defining breakpoints or implementation. DOC003
 approves JC-010 Mobile v1.0 responsive authority within its visible boundary.
@@ -80,22 +89,39 @@ DOC022 reconciles the Employer product model: Employer Operations is a hybrid
 authenticated workspace inside the Teachers.Net shell; personas are descriptive
 planning models; memberships and granted capabilities determine operations;
 Claim is contextual acquisition; and Add My School / Add Organization is the
-user-facing new-organization path. The DOC021 authority families and five-render
-program remain unchanged.
+user-facing new-organization path. The DOC021 authority families remain
+unchanged; after EMP-DOC004, the remaining render program is four groups:
+Employer Authoring, Employer Composite State Sheet, Saved Jobs, and Job Alerts.
 
-The pre-handoff Employer Operations refresh supersedes the separate Dashboard /
-My Jobs presentation model for the current design authority: My Jobs is the
-operating workspace, with exactly one active left-navigation selection (All My
-Jobs, My Schools / Job Sites, Add School / Job Site, or Manage Schools / Job
-Sites). All My Jobs and an individual School / Job Site view are mutually
-exclusive. EMP-DESIGN003D is the current candidate refinement; it removes the
-duplicate Dashboard CTA but remains pending human acceptance and is not an
-approved Manifest authority.
+The Employer Operations implementation has advanced through bounded desktop
+shell, lifecycle, typography, and branding convergence. My Jobs is the primary
+Employer Workspace; the separate Dashboard direction is superseded for V1,
+with its useful concepts absorbed into My Jobs as notifications, attention
+states, workflow guidance, summary context, and School / Job Site scope.
+EMP-IMP002A through EMP-IMP003D established the operations workspace, rail,
+inventory, and desktop geometry while preserving authorization, school
+selection, services, actions, sorting, and pagination. EMP-PATCH006 through
+EMP-PATCH012, EMP-IMP013, DESIGN-IMP001, DESIGN-IMP002, and DESIGN-PATCH003
+completed the verified lifecycle fixture/filter pass, approved-state invariant,
+typography weight pass, shell/navigation pass, external browser QA workflow,
+and approved Teachers.Net logo replacement. Human visual acceptance against
+JC-050 remains a separate gate; this implementation history is not itself
+product acceptance.
 
-EMP-DOC004 now approves the exact external desktop rasters for JC-050 All My
-Jobs and JC-051 Single School / Job Site. Their controlled copies are
-`docs/job-center/design/approved/jc-050-employer-operations-all-my-jobs-desktop-v1.0.png`
-and `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png`.
+DESIGN-AUTHORITY007 approves the exact replacement raster for JC-050 All My
+Jobs, whose controlled copy is
+`docs/job-center/design/approved/jc-050-approved-candidate-01a.png`.
+JC-050 v1.1 and v1.0 remain superseded historical evidence. EMP-DOC004's JC-051
+approval remains unchanged at
+`docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png`.
+These authorities govern the All My Jobs and selected School / Job Site desktop
+presentations, including mutually exclusive left-navigation selection, School /
+Job Site terminology, School / Job Site column, Job Timeline terminology, fixed
+row height, separate filter and sort controls, pagination, rows-per-page, and
+one primary action per row. Exact Expired-to-Closed timing, archive semantics,
+retention policy, Duplicate versus Repost wording, notification
+implementation, and deeper analytics remain unresolved and must not be inferred
+from the approved mockups.
 Responsive/mobile presentation is now recorded as two provisional candidate
 rasters (contracted and expanded selector) under
 `docs/job-center/design/draft/`. They are Implementation Targets pending
@@ -124,24 +150,59 @@ JC-010 first-touch discovery → JC-014 location selection or JC-015 browse
 exploration → JC-011 search results. Search and Browse share the same results,
 lifecycle, presentation, and application behavior.
 
+## Current Verified State
+
+- Current convergence objective: implement JC-050 v1.1, complete browser and
+  human visual acceptance, then decide whether the provisional mobile target
+  may proceed.
+- Current authenticated browser QA: external `chrome-devtools-mcp` with the
+  dedicated QA Chrome profile; the built-in browser bridge is not used.
+- Current browser workflow: launch the dedicated profile with CDP on
+  `127.0.0.1:9222`, authenticate as `jobman`, use 1440 × 1000, and verify
+  route, screenshot, DOM, console/page errors, overflow, selector state, and
+  the relevant filter/rows-per-page state.
+- Current shell architecture: a 1200px app canvas with a white shared navbar,
+  approved Teachers.Net PNG logo, Job Center label, notification/account
+  controls, a 250px gray Employer Operations rail, and a flexible workspace
+  containing the My Jobs selector, Post a Job CTA, preserved inventory table,
+  filters, sort, pagination, and privacy notice.
+- Current employer workflow: All My Jobs is the default authorized aggregate;
+  School / Job Site scope is mutually exclusive; lifecycle filters, filtered
+  totals, pagination, rows-per-page, actions, and state-specific timelines are
+  fixture-verified. Archived jobs remain hidden and approved-only jobs are not
+  employer-visible.
+- Current implementation status: nested Jobs plugin `main` is clean and
+  pushed through `5a11308` (`DESIGN-PATCH003 use approved Teachers.Net logo`).
+- Known tooling constraints: the external profile requires manual
+  authentication; screenshot files may be unavailable when the MCP path is not
+  inside its configured workspace roots, so inline screenshot capture is the
+  durable fallback.
+
 ## Current Primitive/Workstream
 
-JC-030 approved-authority composition implementation under ADR001, reusing
-existing services and behavior while replacing the legacy page composition,
-with
-JC-030 Narrow Tablet, JC-030 Mobile, JC-015 Mobile, JC-015 Tablet, JC-014 Mobile, JC-014 Tablet, JC-011 Mobile,
-JC-011 Tablet, JC-010 Tablet, JC-010 Mobile, and JC-003/JC-004 drawer Patch
-Mode visual authority.
+Employer Operations approved desktop authority implementation for JC-050 v1.1
+All My Jobs and JC-051 Single School / Job Site, reusing existing Jobs membership,
+authorization, services, actions, sorting, and pagination. The immediate next
+step is bounded implementation against JC-050 v1.1, followed by browser and
+human visual acceptance. Mobile Employer Operations is a
+provisional implementation target and must wait for desktop acceptance.
 
 ## Next Executable Ticket
 
-JC030-IMP100 follow-up: complete browser, accessibility, and human visual
-verification of the implemented approved composition.
+Bounded desktop implementation of the approved DESIGN-AUTHORITY007 JC-050
+replacement authority, followed
+by authenticated browser and human visual acceptance. Preserve the later
+mobile and remaining-authority sequence; do not treat authority approval as
+implementation acceptance.
+Do not reopen Employer Operations product architecture or reintroduce a
+separate Dashboard operating destination during this gate.
 
 ## Next Decision
 
-Do not declare JC-030 converged until the current verification gate passes.
-After acceptance, return to Public and Employer V1 Release-Candidate Audits.
+Do not begin Employer Operations mobile implementation until desktop visual
+acceptance is explicit. Do not declare JC-030 converged until its separate
+verification gate passes. After the relevant acceptance gates, return to Public
+and Employer V1 Release-Candidate Audits.
 
 ## Required Google Drive Context
 
@@ -158,6 +219,14 @@ when the ticket requires them. Job Center UX Atlas v1 is the concise product map
 for screen purpose, relationships, and governance status.
 
 ## Open Risks
+
+- JC-050 replacement desktop implementation has not started; browser and human visual
+  acceptance remain required after the separate bounded implementation ticket.
+- The external Chrome QA workflow depends on the dedicated profile being
+  launched and manually authenticated; the built-in bridge remains unavailable
+  or non-canonical.
+- Employer mobile remains a provisional implementation target and is not an
+  approved responsive authority.
 
 - JC030-IMP100 is retained implementation history; browser/accessibility/human
   visual acceptance remains outstanding.
