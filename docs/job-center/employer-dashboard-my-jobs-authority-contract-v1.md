@@ -5,7 +5,7 @@ Ticket: EMP-AUTH003
 Scope: Employer Operations / My Jobs only
 Dependency: [Employer Access and Authority Contract v1](employer-access-authority-contract-v1.md)
 
-Desktop visual authority: `docs/job-center/design/approved/jc-050-approved-candidate-01a.png` (DESIGN-AUTHORITY007). This supersedes JC-050 v1.1 and v1.0 only for the All My Jobs desktop visual boundary and does not change product rules.
+Desktop visual authority: `docs/job-center/design/approved/jc-050-final-01a.png` (DESIGN-AUTHORITY008; 1228 × 937; SHA-256 `4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`). This supersedes `jc-050-approved-candidate-01a.png`, JC-050 v1.1, and JC-050 v1.0 only for the All My Jobs desktop visual boundary and does not change product rules or imply implementation completion.
 
 This contract defines the minimum V1 visual authority for the authorized
 employer operating workspace and job inventory. My Jobs is the operating

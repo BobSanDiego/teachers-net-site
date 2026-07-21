@@ -653,10 +653,13 @@ Employer interfaces conform to `docs/job-center/employer-ux-v1.md`.
   Employer UX V1 decisions remain unresolved here.
 - System-owned fields do not become editable merely to fill a layout.
 
-The DESIGN-AUTHORITY007 JC-050 replacement and JC-051 Single School / Job Site
-are the approved desktop Employer Operations authorities. The canonical JC-050
-raster is `docs/job-center/design/approved/jc-050-approved-candidate-01a.png`;
-v1.1 and v1.0 remain superseded historical evidence. Employer mobile remains a Responsive Candidate
+The DESIGN-AUTHORITY008 JC-050 final authority and JC-051 Single School / Job
+Site are the approved desktop Employer Operations authorities. The canonical
+JC-050 raster is `docs/job-center/design/approved/jc-050-final-01a.png`
+(1228 × 937; SHA-256
+`4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`);
+the DESIGN-AUTHORITY007 candidate, v1.1, and v1.0 remain superseded historical
+evidence. Employer mobile remains a Responsive Candidate
 / Implementation Target pending Browser Verification, not an Approved
 authority. No Post Job, Edit, claim, or authority-review visual artifact is
 currently Approved.

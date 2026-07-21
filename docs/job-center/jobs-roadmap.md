@@ -38,8 +38,8 @@ Launch Readiness → Explicit V1 Acceptance → Production Launch
 
 ## Current Authorized Workstream
 
-Employer Operations remains in **Bounded Implementation Convergence**. JC-050
-The DESIGN-AUTHORITY007 JC-050 replacement is now approved as the current visual authority, but
+Employer Operations remains in **Bounded Implementation Convergence**. The
+DESIGN-AUTHORITY008 JC-050 final authority is now approved as the current visual authority, but
 its bounded implementation and explicit browser/human visual acceptance remain
 outstanding. My Jobs is the primary employer workspace; the separate Dashboard
 direction is superseded for V1, with its useful concepts absorbed into My Jobs
@@ -50,7 +50,8 @@ Responsive Candidate / Implementation Target pending Browser Verification, not
 an Approved authority.
 
 The current gate is bounded implementation and then browser/human acceptance of
-the authenticated All My Jobs implementation against JC-050 v1.1. The completed baseline includes the Employer
+the authenticated All My Jobs implementation against the JC-050 final authority.
+The completed baseline includes the Employer
 Workspace shell, external Chrome DevTools QA workflow, lifecycle fixture
 architecture and invariant enforcement, typography weight convergence, white
 navbar/gray rail shell, workspace selector, outlined Post a Job CTA, and
@@ -81,9 +82,10 @@ not automatically scheduled.
 - **Workspace selector architecture — Implemented:** current workspace,
   authorized School / Job Site links, and manage-workspace destination are
   exposed from the My Jobs header.
-- **JC-050 replacement authority approval — Completed:** DESIGN-AUTHORITY007
-  promoted `docs/job-center/design/approved/jc-050-approved-candidate-01a.png`
-  as the canonical raster; v1.1 remains historical evidence.
+- **JC-050 final authority approval — Completed:** DESIGN-AUTHORITY008
+  promoted `docs/job-center/design/approved/jc-050-final-01a.png`
+  as the canonical raster; the DESIGN-AUTHORITY007 candidate, v1.1, and v1.0
+  remain historical evidence.
 
 These milestones are implemented and verified at the repository/browser-QA
 level; they do not constitute explicit human visual acceptance of JC-050.
@@ -93,7 +95,7 @@ changes only the minimum interface needed to document one interaction.
 
 ## V1 Critical Path
 
-1. Implement and complete browser/human acceptance of JC-050 v1.1 desktop,
+1. Implement and complete browser/human acceptance of the JC-050 final desktop authority,
    then begin bounded mobile implementation only if accepted.
 2. Complete the remaining V1 visual-authority render groups recorded in the V1
    Authority Program.

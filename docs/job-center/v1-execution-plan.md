@@ -53,13 +53,17 @@ Site, or Manage Schools / Job Sites). Memberships and granted capabilities scope
 operations, while Claim and Add My School / Add Organization remain contextual
 acquisition paths rather than routine Operations navigation.
 
-Employer Operations desktop authority is approved through the DESIGN-AUTHORITY007
-JC-050 replacement and JC-051 Single School / Job Site. The replacement is the
-current All My Jobs desktop visual authority; v1.1 and v1.0 remain historical evidence. The authority requires the School / Job
-Site column, Job Timeline terminology, fixed row heights, separate filtering and
-sorting, pagination with rows-per-page, one primary action per row, and the
-Draft -> Awaiting Review -> Live -> Expiring Soon -> Expired -> Closed
-conceptual progression. The exact Expired-to-Closed timing, archive semantics,
+Employer Operations desktop authority is approved through the DESIGN-AUTHORITY008
+JC-050 final authority and JC-051 Single School / Job Site. The final authority
+is the current All My Jobs desktop visual authority; the DESIGN-AUTHORITY007
+candidate, v1.1, and v1.0 remain historical evidence. The authority requires
+the floating application card, 250px rail, 950px main workspace, official
+legacy Teachers.Net logo, aligned navbar separator, flat navbar divider, School
+/ Job Site column, Job Timeline terminology, separate filtering and sorting,
+pagination with rows-per-page, one primary action per row, alert-badge
+treatment, timeline alert icons, and the Draft -> Awaiting Review -> Live ->
+Expiring Soon -> Expired -> Closed conceptual progression. The exact
+Expired-to-Closed timing, archive semantics,
 retention policy, Duplicate versus Repost wording, and notification
 implementation remain unresolved and must not be invented during feasibility or
 implementation work.

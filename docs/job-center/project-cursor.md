@@ -25,10 +25,14 @@ DESIGN-PATCH003 completed the repository/browser-verified Employer Operations
 desktop convergence baseline through nested Jobs plugin commit `5a11308`:
 external Chrome QA, lifecycle/invariant verification, typography discipline,
 white navbar and approved logo, gray rail, workspace selector, and Post a Job
-CTA. DESIGN-AUTHORITY007 now promotes `jc-050-approved-candidate-01a.png` as
-the current JC-050 All My Jobs desktop visual authority, superseding v1.1.
-No implementation is authorized by the governance ticket; browser and human
-visual acceptance remain required against the replacement authority.
+CTA. EMP-IMP019 advanced the nested implementation baseline through commit
+`51afd38` with bounded brand, controller, rail-icon, and table-control
+convergence; that implementation history is not visual acceptance.
+DESIGN-AUTHORITY008 supersedes the DESIGN-AUTHORITY007 replacement candidate
+with the final approved canonical raster `jc-050-final-01a.png` (1228 × 937;
+SHA-256
+`4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`) for
+future Employer Operations All My Jobs desktop convergence.
 
 RESP-DEC001 resolved the shared responsive decisions required to interpret the
 approved desktop suite without defining breakpoints or implementation. DOC003
@@ -108,17 +112,22 @@ and approved Teachers.Net logo replacement. Human visual acceptance against
 JC-050 remains a separate gate; this implementation history is not itself
 product acceptance.
 
-DESIGN-AUTHORITY007 approves the exact replacement raster for JC-050 All My
-Jobs, whose controlled copy is
-`docs/job-center/design/approved/jc-050-approved-candidate-01a.png`.
-JC-050 v1.1 and v1.0 remain superseded historical evidence. EMP-DOC004's JC-051
+DESIGN-AUTHORITY008 approves the final canonical replacement raster for JC-050
+All My Jobs, whose controlled copy is
+`docs/job-center/design/approved/jc-050-final-01a.png` (1228 × 937; SHA-256
+`4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`).
+DESIGN-AUTHORITY007's replacement candidate, JC-050 v1.1, and JC-050 v1.0
+remain superseded historical evidence. EMP-DOC004's JC-051
 approval remains unchanged at
 `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png`.
 These authorities govern the All My Jobs and selected School / Job Site desktop
-presentations, including mutually exclusive left-navigation selection, School /
-Job Site terminology, School / Job Site column, Job Timeline terminology, fixed
-row height, separate filter and sort controls, pagination, rows-per-page, and
-one primary action per row. Exact Expired-to-Closed timing, archive semantics,
+presentations, including the floating application card, off-white outer canvas,
+250px desktop left rail, 950px main workspace, official legacy Teachers.Net
+logo, separator aligned to the rail boundary, compact 60px navbar plane, flat
+bottom divider, compact My Jobs controller, filled Post a Job control,
+integrated filter/inventory panel, compact Order By control, aligned Action
+heading, widened overflow controls, timeline alert icon treatment, pagination,
+and privacy footer. Exact Expired-to-Closed timing, archive semantics,
 retention policy, Duplicate versus Repost wording, notification
 implementation, and deeper analytics remain unresolved and must not be inferred
 from the approved mockups.
@@ -152,9 +161,9 @@ lifecycle, presentation, and application behavior.
 
 ## Current Verified State
 
-- Current convergence objective: implement JC-050 v1.1, complete browser and
-  human visual acceptance, then decide whether the provisional mobile target
-  may proceed.
+- Current convergence objective: implement the final DESIGN-AUTHORITY008
+  JC-050 desktop authority, complete browser and human visual acceptance, then
+  decide whether the provisional mobile target may proceed.
 - Current authenticated browser QA: external `chrome-devtools-mcp` with the
   dedicated QA Chrome profile; the built-in browser bridge is not used.
 - Current browser workflow: launch the dedicated profile with CDP on
@@ -172,7 +181,7 @@ lifecycle, presentation, and application behavior.
   fixture-verified. Archived jobs remain hidden and approved-only jobs are not
   employer-visible.
 - Current implementation status: nested Jobs plugin `main` is clean and
-  pushed through `5a11308` (`DESIGN-PATCH003 use approved Teachers.Net logo`).
+  pushed through `51afd38` (`EMP-IMP019 converge JC-050 brand and controls`).
 - Known tooling constraints: the external profile requires manual
   authentication; screenshot files may be unavailable when the MCP path is not
   inside its configured workspace roots, so inline screenshot capture is the
@@ -180,20 +189,20 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-Employer Operations approved desktop authority implementation for JC-050 v1.1
-All My Jobs and JC-051 Single School / Job Site, reusing existing Jobs membership,
-authorization, services, actions, sorting, and pagination. The immediate next
-step is bounded implementation against JC-050 v1.1, followed by browser and
-human visual acceptance. Mobile Employer Operations is a
+Employer Operations approved desktop authority implementation for the final
+DESIGN-AUTHORITY008 JC-050 All My Jobs authority and JC-051 Single School / Job
+Site, reusing existing Jobs membership, authorization, services, actions,
+sorting, and pagination. The immediate next step is bounded implementation
+against `docs/job-center/design/approved/jc-050-final-01a.png`, followed by
+browser and human visual acceptance. Mobile Employer Operations is a
 provisional implementation target and must wait for desktop acceptance.
 
 ## Next Executable Ticket
 
-Bounded desktop implementation of the approved DESIGN-AUTHORITY007 JC-050
-replacement authority, followed
-by authenticated browser and human visual acceptance. Preserve the later
-mobile and remaining-authority sequence; do not treat authority approval as
-implementation acceptance.
+Bounded desktop implementation of the approved DESIGN-AUTHORITY008 final JC-050
+authority, followed by authenticated browser and human visual acceptance.
+Preserve the later mobile and remaining-authority sequence; do not treat
+authority approval as implementation acceptance.
 Do not reopen Employer Operations product architecture or reintroduce a
 separate Dashboard operating destination during this gate.
 
@@ -220,7 +229,7 @@ for screen purpose, relationships, and governance status.
 
 ## Open Risks
 
-- JC-050 replacement desktop implementation has not started; browser and human visual
+- JC-050 final authority desktop implementation has not started; browser and human visual
   acceptance remain required after the separate bounded implementation ticket.
 - The external Chrome QA workflow depends on the dedicated profile being
   launched and manually authenticated; the built-in bridge remains unavailable

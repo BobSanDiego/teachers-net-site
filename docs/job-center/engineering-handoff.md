@@ -14,13 +14,14 @@ implementation.
 
 ## 2. Current Ticket
 
-DESIGN-AUTHORITY007 is complete: `jc-050-approved-candidate-01a.png` is the
-approved and processed JC-050 All My Jobs desktop visual authority,
-superseding v1.1. No implementation ticket is active; the approval does not
-constitute implementation or acceptance.
+DESIGN-AUTHORITY008 is complete: `jc-050-final-01a.png` is the approved and
+processed final canonical JC-050 All My Jobs desktop visual authority,
+superseding `jc-050-approved-candidate-01a.png`, v1.1, and v1.0. No
+implementation ticket is active; the approval does not constitute
+implementation or acceptance.
 
-Stop boundary: bounded desktop implementation against the DESIGN-AUTHORITY007
-JC-050 replacement followed by
+Stop boundary: bounded desktop implementation against the DESIGN-AUTHORITY008
+JC-050 final authority followed by
 authenticated browser and human visual acceptance. Do not begin Employer
 Operations mobile implementation until desktop acceptance is explicit.
 
@@ -34,14 +35,16 @@ hierarchy, lifecycle filter/count, fixture, and approved-state invariant work.
 DESIGN-IMP001 established the system-font/Segoe UI baseline and 400/700 weight
 discipline. DESIGN-IMP002 and DESIGN-PATCH003 established the white navbar,
 gray 250px rail, workspace selector, Post a Job CTA, external browser workflow,
-and approved Teachers.Net PNG logo. Nested Jobs plugin `main` is clean and
-pushed at `5a11308`.
+and approved Teachers.Net PNG logo. EMP-IMP019 completed bounded brand,
+controller, rail-icon, and table-control convergence. Nested Jobs plugin `main`
+is clean and pushed at `51afd38`.
 
-DESIGN-AUTHORITY007 superseded the JC-050 All My Jobs desktop raster with the
-approved replacement while leaving JC-051 unchanged. The current approved
+DESIGN-AUTHORITY008 superseded the JC-050 All My Jobs desktop raster with the
+final approved replacement while leaving JC-051 unchanged. The current approved
 desktop pair is:
 
-- JC-050 approved replacement All My Jobs (`jc-050-approved-candidate-01a.png`)
+- JC-050 final All My Jobs (`jc-050-final-01a.png`, 1228 × 937, SHA-256
+  `4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`)
 - JC-051 Single School / Job Site
 
 The approved direction treats My Jobs as the employer operating workspace.
@@ -51,15 +54,15 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 ## 4. Next Five Planned Tickets
 
-1. Bounded desktop implementation against JC-050 v1.1.
-2. Human visual acceptance - authenticated All My Jobs against JC-050 v1.1.
+1. Bounded desktop implementation against the DESIGN-AUTHORITY008 JC-050 final authority.
+2. Human visual acceptance - authenticated All My Jobs against the JC-050 final authority.
 3. Bounded Employer Operations mobile implementation, only after desktop acceptance.
 4. Employer Authoring visual authority.
 5. Employer Composite State Sheet.
 
 ## 5. Current Blockers
 
-- JC-050 replacement desktop implementation has not started; browser and human visual
+- JC-050 final-authority desktop implementation has not started; browser and human visual
   acceptance remain required after implementation.
 - Employer mobile implementation is intentionally held until desktop acceptance.
 - Exact Expired-to-Closed timing, archive semantics, retention policy,
@@ -99,9 +102,9 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 ## 8. Recently Approved Visual References
 
-- JC-050 approved replacement - Employer Operations All My Jobs desktop
-  authority, approved by DESIGN-AUTHORITY007; v1.1 and v1.0 are superseded
-  historical evidence.
+- JC-050 final - Employer Operations All My Jobs desktop authority, approved
+  by DESIGN-AUTHORITY008; the DESIGN-AUTHORITY007 replacement candidate, v1.1,
+  and v1.0 are superseded historical evidence.
 - JC-051 v1.0 - Employer Operations Single School / Job Site desktop authority,
   approved by EMP-DOC004.
 - JC-030 Mobile v1.0 - Job Detail Mobile Reading Experience authority, approved
@@ -120,7 +123,7 @@ may serve as visual implementation authority.
 
 For the active Employer Operations workstream:
 
-- DESIGN-AUTHORITY007's approved replacement governs All My Jobs desktop.
+- DESIGN-AUTHORITY008's final approved authority governs All My Jobs desktop.
 - JC-051 governs Single School / Job Site desktop.
 - Employer Operations mobile contracted/expanded selector rasters are
   Responsive Candidate / Implementation Target / Pending Browser Verification.
@@ -131,9 +134,9 @@ concepts without a separate Engineering Director decision.
 
 ## 10. Immediate Engineering Priorities
 
-1. Implement the approved DESIGN-AUTHORITY007 JC-050 replacement desktop authority through a separate
+1. Implement the approved DESIGN-AUTHORITY008 JC-050 final desktop authority through a separate
    bounded ticket.
-2. Complete browser and human visual acceptance against JC-050 v1.1.
+2. Complete browser and human visual acceptance against the JC-050 final authority.
 3. Only after acceptance, decide whether to begin the provisional mobile work.
 
 ## 11. Verified Workflow and Authority Notes
