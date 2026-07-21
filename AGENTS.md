@@ -98,6 +98,12 @@ Use it only when explicitly entered with `Enter COMPONENT MATCH MODE: [component
 name]`, and follow its `FINALIZE COMPONENT MATCH MODE` or `ABORT COMPONENT
 MATCH MODE` lifecycle commands exactly.
 
+`docs/codex-ticket-discipline.md` also defines TWEAK MODE for explicitly
+prefaced, small bounded changes. TWEAK changes remain uncommitted and
+unpushed until `Finalize` or `Roll back`; normal later instructions continue
+under the standard workflow and must not be refused merely because pending
+TWEAK changes exist.
+
 When the user issues `PREPARE HANDOFF`, follow
 `docs/codex-ticket-discipline.md`. Confirm the active project first, update
 only that project's continuity set, update its Project Cursor only for durable

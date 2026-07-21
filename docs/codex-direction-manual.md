@@ -90,6 +90,27 @@ Default workflow:
 
 Inspect → plan → approve → implement → verify → commit → push.
 
+## TWEAK MODE
+
+TWEAK MODE is a deferred-commit workflow for a small bounded change. It is
+activated only when the instruction is explicitly prefaced with `tweak` or
+`tweak mode`; it is not persistent and must not be inferred from context.
+
+During an explicitly prefaced tweak, make only the requested change and perform
+the minimum relevant inspection and verification. Do not commit or push. Track
+the files and hunks created by the tweak so they can be finalized or rolled
+back selectively.
+
+Normal work continues after a tweak. Documentation, governance, diagnostics,
+browser work, and unrelated implementation instructions are handled normally
+and must not be refused because pending tweak changes exist. If unrelated work
+must be committed first, selectively stage it and leave pending tweak changes
+unstaged.
+
+`Finalize` verifies and commits/pushes only pending tweak changes. `Roll back`
+discards only pending tweak changes, preserving pre-existing and unrelated
+work. Neither operation may use a broad destructive reset.
+
 Default behavior:
 
 Do not create new process unless it reduces effort, risk, or maintenance.

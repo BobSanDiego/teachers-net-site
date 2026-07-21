@@ -30,6 +30,13 @@ Do not expand scope unless explicitly instructed.
 
 Treat approved mockups as implementation specifications.
 
+After an authority mockup is approved, feasibility analysis and implementation
+convergence must treat the approved mockup as a fixed requirement. Do not
+introduce UX changes, rename governed labels, or revive rejected concepts
+without a separate Engineering Director decision. If two bounded convergence
+passes fail to align an implementation with the approved authority, stop and
+issue a diagnostic ticket instead of continuing speculative tuning.
+
 Optimize for minimal compute, minimal churn, and deterministic progress.
 
 When project documents conflict, use this precedence:
@@ -277,6 +284,40 @@ Generate screenshots only when:
 Human visual QA is performed by the Engineering Director after implementation.
 
 Codex should optimize for minimum compute while maintaining engineering confidence.
+
+## TWEAK MODE
+
+TWEAK MODE is a deferred-commit workflow for small, tightly bounded changes.
+Enter it only when the instruction is explicitly prefaced with `tweak` or
+`tweak mode`. Do not infer it from context, and do not treat it as a persistent
+session restriction.
+
+For an explicitly prefaced tweak:
+
+- inspect only the directly relevant implementation;
+- apply only the requested change;
+- run the minimum relevant mechanical or focused verification;
+- do not commit, tag, or push;
+- record the session-owned files and hunks as pending tweak changes.
+
+Normal project work continues after a tweak. Later documentation, governance,
+browser, diagnostic, or unrelated implementation instructions are handled
+under the normal workflow. Pending tweak changes must not be mixed into an
+unrelated commit; selectively stage unrelated work when separation is safe.
+
+Supported commands:
+
+```text
+tweak: <instruction>
+tweak mode: <instruction>
+Finalize
+Roll back
+```
+
+`Finalize` verifies, commits, and pushes only the pending tweak changes, then
+clears the pending tweak state. `Roll back` discards only uncommitted
+session-owned tweak changes, preserves pre-existing and unrelated work, and
+clears the pending state. Never use a broad destructive reset for rollback.
 
 ## VISUAL TUNE MODE
 
