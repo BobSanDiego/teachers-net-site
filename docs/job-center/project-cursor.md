@@ -29,7 +29,7 @@ CTA. EMP-IMP019 advanced the nested implementation baseline through commit
 `51afd38` with bounded brand, controller, rail-icon, and table-control
 convergence; that implementation history is not visual acceptance.
 JC-051A registered the approved Employer My Jobs Desktop Authority v1.0
-with controlled raster `docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png` (1536 × 1024;
+with controlled raster `docs/job-center/design/approved/jc-051a-employer-my-jobs-desktop-v1.0.png` (1536 × 1024;
 SHA-256 `23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0`) for
 future Employer Operations All My Jobs desktop convergence.
 
@@ -112,7 +112,7 @@ JC-050 remains a separate gate; this implementation history is not itself
 product acceptance.
 
 JC-051A approves Employer My Jobs Desktop Authority v1.0, whose controlled copy is
-`docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png`
+`docs/job-center/design/approved/jc-051a-employer-my-jobs-desktop-v1.0.png`
 (source `jc-050-unicard-001.png`; 1536 × 1024; SHA-256
 `23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0`).
 DESIGN-AUTHORITY007's replacement candidate, JC-050 v1.1, and JC-050 v1.0

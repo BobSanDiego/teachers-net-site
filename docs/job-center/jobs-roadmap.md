@@ -97,7 +97,7 @@ broad redesign or responsive implementation before desktop acceptance.
   authorized School / Job Site links, and manage-workspace destination are
   exposed from the My Jobs header.
 - **Employer My Jobs Desktop Authority v1.0 approval — Completed:** JC-051A
-  registered `docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png`
+  registered `docs/job-center/design/approved/jc-051a-employer-my-jobs-desktop-v1.0.png`
   as the current canonical raster; the DESIGN-AUTHORITY007 candidate, v1.1, and v1.0
   remain historical evidence.
 

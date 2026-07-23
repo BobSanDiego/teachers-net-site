@@ -9,7 +9,7 @@ Scope: Authenticated Employer My Jobs desktop visual authority
 
 - Authority name: Employer My Jobs Desktop Authority v1.0
 - Source artifact: jc-050-unicard-001.png
-- Controlled artifact: docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png
+- Controlled artifact: docs/job-center/design/approved/jc-051a-employer-my-jobs-desktop-v1.0.png
 - Dimensions: 1536 x 1024 source raster
 - SHA-256: 23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0
 

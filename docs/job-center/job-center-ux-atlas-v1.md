@@ -622,7 +622,7 @@ Authorized employer user
 ### Status
 Approved
 ### Authority
-docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png - current canonical Employer My Jobs Desktop Authority v1.0 approved by Engineering Director, JC-051A; prior JC-050 authorities and candidates remain superseded historical evidence.
+docs/job-center/design/approved/jc-051a-employer-my-jobs-desktop-v1.0.png - current canonical Employer My Jobs Desktop Authority v1.0 approved by Engineering Director, JC-051A; prior JC-050 authorities and candidates remain superseded historical evidence.
 ### Preceded By
 JC-053 or employer navigation
 ### Leads To

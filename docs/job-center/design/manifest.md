@@ -481,7 +481,7 @@ remain the current gate; the manifest is not an implementation diary.
 - **Screen / Component:** Employer Operations cross-school inventory
 - **Status:** Approved
 - **Version:** 1.0
-- **Approved Artifact:** `docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png`
+- **Approved Artifact:** `docs/job-center/design/approved/jc-051a-employer-my-jobs-desktop-v1.0.png`
 - **Authority:** Engineering Director, JC-051A; current canonical Employer My Jobs desktop authority. `jc-050-final-01a.png`, `jc-050-approved-candidate-01a.png`, JC-050 v1.1, and JC-050 v1.0 are retained as superseded historical evidence.
 - **Related Design System section:** 12, 17
 - **Related Product Specification:** Employer UX V1; Canonical V1 Contract
@@ -689,7 +689,7 @@ The status below is the artifact's governed classification. A path may relate to
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/specific-school-myjobs.png` | Engineering Director-approved Employer Operations Single School / Job Site source raster | Approved | JC-051 | EMP-DOC004 verified exact external source, 1536 × 1024 dimensions, and SHA-256; future work is Patch Mode |
 | `docs/job-center/design/approved/jc-051-employer-operations-school-job-site-desktop-v1.0.png` | Controlled JC-051 Single School / Job Site desktop authority copy | Approved | JC-051 | Byte-identical to the EMP-DOC004-verified source raster |
 | `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/jc-050-unicard-001.png` | Engineering Director-approved Employer My Jobs Desktop Authority v1.0 source raster | Approved | JC-050 | JC-051A verified exact external source, 1536 x 1024 dimensions, and SHA-256 `23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0` |
-| `docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png` | Controlled Employer My Jobs Desktop Authority v1.0 | Approved | JC-050 | Byte-identical to the JC-051A source raster; current canonical desktop authority |
+| `docs/job-center/design/approved/jc-051a-employer-my-jobs-desktop-v1.0.png` | Controlled Employer My Jobs Desktop Authority v1.0 | Approved | JC-050 | Byte-identical to the JC-051A source raster; current canonical desktop authority |
 | `docs/job-center/design/draft/employer-operations-mobile-contracted-selector-candidate.png` | Provisional Employer Operations mobile contracted-selector adaptation | Responsive Candidate / Implementation Target / Pending Browser Verification | JC-050, JC-051 | Exact external source recorded by EMP-DOC004A; not an Approved authority |
 | `docs/job-center/design/draft/employer-operations-mobile-expanded-selector-candidate.png` | Provisional Employer Operations mobile expanded-selector adaptation | Responsive Candidate / Implementation Target / Pending Browser Verification | JC-050, JC-051 | Exact external source recorded by EMP-DOC004A; not an Approved authority |
 | `art/mockups/job-center/generated/job-finder-location-modal-lo-01a-design-target.png` | Logged-out first-touch Location modal open | Draft | JC-014 | Historical DESIGN010 Draft retained after DESIGN011 polish |
