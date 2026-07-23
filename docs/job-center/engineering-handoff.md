@@ -16,7 +16,7 @@ implementation.
 
 JC-051A is complete: `jc-051a-employer-my-jobs-desktop-v1.0.png` is the approved
 canonical Employer My Jobs Desktop Authority v1.0, sourced from
-`jc-050-unicard-001.png` and superseding the prior JC-050 visual authorities. No
+`jc-050-unicard-002.png` and superseding the prior JC-050 visual authorities. No
 implementation ticket is active; the approval does not constitute
 implementation or acceptance.
 
@@ -43,8 +43,8 @@ JC-051A superseded the prior JC-050 All My Jobs desktop raster with the
 final approved Employer My Jobs Desktop Authority v1.0 while leaving JC-051 unchanged. The current approved
 desktop pair is:
 
-- Employer My Jobs Desktop Authority v1.0 (jc-051a-employer-my-jobs-desktop-v1.0.png, 1536 × 1024,
-  SHA-256 23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0)
+- Employer My Jobs Desktop Authority v1.0 (jc-051a-employer-my-jobs-desktop-v1.0.png, 1240 × 827,
+  SHA-256 e142787148a881502f2e44e643ef34b375daf8d4e3208e2b43dbcbb602249702)
 - JC-051 Single School / Job Site
 
 The approved direction treats My Jobs as the employer operating workspace.
