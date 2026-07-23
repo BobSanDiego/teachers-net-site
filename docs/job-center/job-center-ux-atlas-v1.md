@@ -622,7 +622,7 @@ Authorized employer user
 ### Status
 Approved
 ### Authority
-`docs/job-center/design/approved/jc-050-final-01a.png` — final canonical All My Jobs desktop authority approved by Engineering Director, DESIGN-AUTHORITY008; `jc-050-approved-candidate-01a.png`, v1.1, and v1.0 are retained as superseded historical evidence.
+docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png - current canonical Employer My Jobs Desktop Authority v1.0 approved by Engineering Director, JC-051A; prior JC-050 authorities and candidates remain superseded historical evidence.
 ### Preceded By
 JC-053 or employer navigation
 ### Leads To
@@ -630,11 +630,11 @@ JC-051, JC-052, or JC-056
 ### Dependencies
 Employer identity, authorization, and lifecycle state
 ### Current State
-Approved final desktop visual authority
+Approved Employer My Jobs Desktop Authority v1.0
 ### Next Expected Work
-Bounded desktop implementation against the final authority, followed by browser and human visual acceptance. Mobile remains a later provisional implementation target.
+Bounded desktop implementation against the JC-051A authority, followed by browser and human visual acceptance. Mobile remains a later provisional implementation target.
 ### Notes
-DESIGN-AUTHORITY008 supersedes the DESIGN-AUTHORITY007 candidate, JC-050 v1.1, and v1.0 for All My Jobs desktop. It governs the bounded desktop canvas, floating application card, off-white surround, 250px rail, 950px main workspace, official logo, flat navbar divider, My Jobs selector, Post a Job control, integrated inventory, alert-badge treatment, timeline alert icons, actions, pagination, privacy footer, hierarchy, spacing, depth, and visual weight shown in the canonical raster. My Jobs remains the employer operating workspace; prior Dashboard concepts are not revived. JC-051 remains unchanged. Responsive/mobile presentation, Team Members, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration are excluded.
+JC-051A supersedes the prior JC-050 authorities and candidates for All My Jobs desktop. It governs the bounded desktop canvas, floating application card, off-white surround, 250px rail, 950px main workspace, official logo, flat navbar divider, My Jobs selector, Post a Job control, integrated inventory, alert-badge treatment, timeline alert icons, actions, pagination, privacy footer, hierarchy, spacing, depth, and visual weight shown in the canonical raster. My Jobs remains the employer operating workspace; prior Dashboard concepts are not revived. JC-051 remains unchanged. Responsive/mobile presentation, Team Members, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration are excluded.
 
 ---
 

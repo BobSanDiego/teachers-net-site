@@ -39,7 +39,7 @@ Launch Readiness → Explicit V1 Acceptance → Production Launch
 ## Current Authorized Workstream
 
 Employer Operations remains in **Bounded Implementation Convergence**. The
-DESIGN-AUTHORITY008 JC-050 final authority is now approved as the current visual authority, but
+JC-051A Employer My Jobs Desktop Authority v1.0 is now approved as the current visual authority, but
 its bounded implementation and explicit browser/human visual acceptance remain
 outstanding. My Jobs is the primary employer workspace; the separate Dashboard
 direction is superseded for V1, with its useful concepts absorbed into My Jobs
@@ -50,7 +50,7 @@ Responsive Candidate / Implementation Target pending Browser Verification, not
 an Approved authority.
 
 The current gate is bounded implementation and then browser/human acceptance of
-the authenticated All My Jobs implementation against the JC-050 final authority.
+the authenticated All My Jobs implementation against the JC-051A authority image.
 The completed baseline includes the Employer
 Workspace shell, external Chrome DevTools QA workflow, lifecycle fixture
 architecture and invariant enforcement, typography weight convergence, white
@@ -58,6 +58,20 @@ navbar/gray rail shell, workspace selector, outlined Post a Job CTA, and
 approved legacy Teachers.Net logo. After desktop acceptance, the next bounded
 work is Employer Operations mobile implementation. UX Atlas placeholders are
 not automatically scheduled.
+
+## Forward Employer Implementation Sequence
+
+1. Desktop implementation plan and diff mapping against Employer My Jobs Desktop Authority v1.0.
+2. Desktop shell and navigation convergence.
+3. Desktop table, status, and action convergence.
+4. Compact footer convergence.
+5. Desktop accessibility and visual acceptance, including contrast, semantics,
+   keyboard, zoom, long-content, and measured visual comparison.
+6. Responsive derivation only after stable desktop implementation and explicit
+   acceptance.
+
+This sequence preserves existing employer workflows and does not authorize a
+broad redesign or responsive implementation before desktop acceptance.
 
 ## Completed Employer Operations Convergence Milestones
 
@@ -82,9 +96,9 @@ not automatically scheduled.
 - **Workspace selector architecture — Implemented:** current workspace,
   authorized School / Job Site links, and manage-workspace destination are
   exposed from the My Jobs header.
-- **JC-050 final authority approval — Completed:** DESIGN-AUTHORITY008
-  promoted `docs/job-center/design/approved/jc-050-final-01a.png`
-  as the canonical raster; the DESIGN-AUTHORITY007 candidate, v1.1, and v1.0
+- **Employer My Jobs Desktop Authority v1.0 approval — Completed:** JC-051A
+  registered `docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png`
+  as the current canonical raster; the DESIGN-AUTHORITY007 candidate, v1.1, and v1.0
   remain historical evidence.
 
 These milestones are implemented and verified at the repository/browser-QA

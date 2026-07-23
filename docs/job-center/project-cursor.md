@@ -28,10 +28,9 @@ white navbar and approved logo, gray rail, workspace selector, and Post a Job
 CTA. EMP-IMP019 advanced the nested implementation baseline through commit
 `51afd38` with bounded brand, controller, rail-icon, and table-control
 convergence; that implementation history is not visual acceptance.
-DESIGN-AUTHORITY008 supersedes the DESIGN-AUTHORITY007 replacement candidate
-with the final approved canonical raster `jc-050-final-01a.png` (1228 × 937;
-SHA-256
-`4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`) for
+JC-051A registered the approved Employer My Jobs Desktop Authority v1.0
+with controlled raster `docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png` (1536 × 1024;
+SHA-256 `23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0`) for
 future Employer Operations All My Jobs desktop convergence.
 
 RESP-DEC001 resolved the shared responsive decisions required to interpret the

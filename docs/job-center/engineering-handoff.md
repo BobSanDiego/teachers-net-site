@@ -43,8 +43,8 @@ JC-051A superseded the prior JC-050 All My Jobs desktop raster with the
 final approved Employer My Jobs Desktop Authority v1.0 while leaving JC-051 unchanged. The current approved
 desktop pair is:
 
-- JC-050 final All My Jobs (`jc-050-final-01a.png`, 1228 × 937, SHA-256
-  `4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`)
+- Employer My Jobs Desktop Authority v1.0 (employer-my-jobs-desktop-authority-v1.0.png, 1536 × 1024,
+  SHA-256 23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0)
 - JC-051 Single School / Job Site
 
 The approved direction treats My Jobs as the employer operating workspace.
@@ -54,7 +54,7 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 ## 4. Next Five Planned Tickets
 
-1. Bounded desktop implementation against the DESIGN-AUTHORITY008 JC-050 final authority.
+1. Bounded desktop implementation against the JC-051A Employer My Jobs Desktop Authority v1.0.
 2. Human visual acceptance - authenticated All My Jobs against the JC-050 final authority.
 3. Bounded Employer Operations mobile implementation, only after desktop acceptance.
 4. Employer Authoring visual authority.
@@ -161,3 +161,37 @@ concepts without a separate Engineering Director decision.
   campaign orientation, performance dashboard, applicant workflow, rail
   refinement, promotion placement, summary strip, metrics, and typography
   fine-tuning.
+
+
+## Do Not Reopen Without New Evidence
+
+Do not reopen the approved 1200/250/950 desktop geometry, JC-051A authority
+registration, Live/In Review terminology, Archived Jobs as separate navigation,
+Post a Job wording, approved top-navigation sequence, removal of unsupported
+school identity from the header, Manrope/12px metadata baseline, or the
+authority-image versus deterministic-workbench relationship. Revisit only with
+new implementation, browser, accessibility, responsive, or workflow evidence.
+
+## Known Production Deltas
+
+Production remains the behavioral baseline and has not been converted to this
+authority. Known deltas include shell/card composition, rail width, navigation,
+heading caret, CTA wording, organization identity removal, Archived Jobs,
+terminology, expiration presentation, row actions, action alignment, table
+rhythm, typography, metadata, compact footer, contrast, semantics, keyboard
+behavior, and zoom acceptance. These are a bounded backlog, not one ticket.
+
+## Deterministic Workbench Role
+
+The retained deterministic My Jobs workbench under tmp/jc050-deterministic-mockup/
+supports geometry, typography, long-content stress, lifecycle fixtures,
+accessibility proofing, and component mapping. It is supporting evidence, not
+the visual authority, and must not be deleted or promoted over JC-051A.
+
+## Immediate Implementation Strategy
+
+Next work is a desktop implementation plan and diff map, followed by separate
+shell/navigation, table/status/action, compact-footer, and accessibility/visual
+acceptance tickets. Responsive derivation begins only after stable desktop
+implementation and explicit acceptance. Existing employer workflows, services,
+authorization, lifecycle semantics, and data behavior remain protected.

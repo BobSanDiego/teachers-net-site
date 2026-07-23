@@ -1007,3 +1007,20 @@ Until then, current implementation remains evidence rather than visual authority
 D001 creates documentation only. It does not approve any currently Unclassified
 artifact, generate a mockup, create an implementation ticket, or modify Job
 Center code, routes, templates, schema, styles, or behavior.
+
+
+## Employer My Jobs desktop authority overlay
+
+For authenticated Employer My Jobs desktop, JC-051A governs the approved visual
+composition: 1200px shell, 250px rail measured to the actual rail/workspace
+divider, and 950px workspace with padding after the divider. Approved navigation
+is Job Center, My Jobs, Career Resources, Community, Teacher Resources. The
+heading uses a My Jobs context caret and the CTA is Post a Job. Archived Jobs
+remains separate from lifecycle filters.
+
+Live receives restrained positive treatment; In Review is restrained amber;
+Draft and Closed are plain neutral; Expired is plain red. Expiration shows
+valid absolute dates or an em dash. One visible row action plus aligned overflow
+control is the action relationship; Continue receives light-blue attention
+treatment. Manrope 400/500/600/700 with 12px job metadata is the employer
+baseline. Small table-header and rail-heading text must meet 4.5:1 contrast.

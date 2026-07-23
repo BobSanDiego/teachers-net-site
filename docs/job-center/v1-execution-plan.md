@@ -53,8 +53,8 @@ Site, or Manage Schools / Job Sites). Memberships and granted capabilities scope
 operations, while Claim and Add My School / Add Organization remain contextual
 acquisition paths rather than routine Operations navigation.
 
-Employer Operations desktop authority is approved through the DESIGN-AUTHORITY008
-JC-050 final authority and JC-051 Single School / Job Site. The final authority
+Employer Operations desktop authority is approved through JC-051A Employer My Jobs
+Desktop Authority v1.0 and JC-051 Single School / Job Site. The final authority
 is the current All My Jobs desktop visual authority; the DESIGN-AUTHORITY007
 candidate, v1.1, and v1.0 remain historical evidence. The authority requires
 the floating application card, 250px rail, 950px main workspace, official

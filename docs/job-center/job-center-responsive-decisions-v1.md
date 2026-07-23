@@ -119,7 +119,10 @@ trigger after dismissal.
 - Once a responsive authority reaches convergence, future work enters Patch
   Mode.
 
-## 10. Responsive Workflow
+## 10. Desktop Authority Inheritance
+The JC-051A Employer My Jobs Desktop Authority v1.0 is the current desktop visual authority. Responsive derivation must follow stable desktop implementation and acceptance; this desktop authority is not itself a mobile behavior rule. No responsive decisions are superseded by JC-051A.
+
+## 11. Responsive Workflow
 
 ```text
 Desktop Authority

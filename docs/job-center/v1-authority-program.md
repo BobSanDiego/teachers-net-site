@@ -28,8 +28,8 @@ program unless separately authorized.
 
 ## Remaining render program
 
-Employer Operations desktop authority is approved through the DESIGN-AUTHORITY008
-JC-050 final authority and JC-051 Single School / Job Site. The final authority
+Employer Operations desktop authority is approved through JC-051A Employer My Jobs
+Desktop Authority v1.0 and JC-051 Single School / Job Site. The final authority
 is the current All My Jobs desktop authority; the DESIGN-AUTHORITY007
 candidate, v1.1, and v1.0 remain historical evidence. Its mobile adaptation is a Responsive
 Candidate / Implementation Target pending Browser Verification, not an Approved
@@ -49,7 +49,7 @@ No separate render is required for shared shell, individual lifecycle actions,
 every filter or pagination state, ordinary authentication screens, or the
 conditional Moderator/Administrator surfaces.
 
-The DESIGN-AUTHORITY008 JC-050 final approval does not alter the remaining
+The JC-051A approval does not alter the remaining
 render-program count or authorize implementation by itself. Implementation
 requires a separate bounded ticket followed by browser and human visual
 acceptance.
