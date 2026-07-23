@@ -112,10 +112,10 @@ and approved Teachers.Net logo replacement. Human visual acceptance against
 JC-050 remains a separate gate; this implementation history is not itself
 product acceptance.
 
-DESIGN-AUTHORITY008 approves the final canonical replacement raster for JC-050
-All My Jobs, whose controlled copy is
-`docs/job-center/design/approved/jc-050-final-01a.png` (1228 × 937; SHA-256
-`4404525b15f5b3640b000f9f6c936c73cba51f1626ff6905e55a9155dc3cb033`).
+JC-051A approves Employer My Jobs Desktop Authority v1.0, whose controlled copy is
+`docs/job-center/design/approved/employer-my-jobs-desktop-authority-v1.0.png`
+(source `jc-050-unicard-001.png`; 1536 × 1024; SHA-256
+`23b9e7168b4d0f9cde639436b5341a3ddbb4eee4da3168f310ff1e65167ae9f0`).
 DESIGN-AUTHORITY007's replacement candidate, JC-050 v1.1, and JC-050 v1.0
 remain superseded historical evidence. EMP-DOC004's JC-051
 approval remains unchanged at
@@ -199,7 +199,7 @@ provisional implementation target and must wait for desktop acceptance.
 
 ## Next Executable Ticket
 
-Bounded desktop implementation of the approved DESIGN-AUTHORITY008 final JC-050
+Bounded desktop implementation of the approved JC-051A Employer My Jobs
 authority, followed by authenticated browser and human visual acceptance.
 Preserve the later mobile and remaining-authority sequence; do not treat
 authority approval as implementation acceptance.

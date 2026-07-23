@@ -14,14 +14,14 @@ implementation.
 
 ## 2. Current Ticket
 
-DESIGN-AUTHORITY008 is complete: `jc-050-final-01a.png` is the approved and
-processed final canonical JC-050 All My Jobs desktop visual authority,
-superseding `jc-050-approved-candidate-01a.png`, v1.1, and v1.0. No
+JC-051A is complete: `employer-my-jobs-desktop-authority-v1.0.png` is the approved
+canonical Employer My Jobs Desktop Authority v1.0, sourced from
+`jc-050-unicard-001.png` and superseding the prior JC-050 visual authorities. No
 implementation ticket is active; the approval does not constitute
 implementation or acceptance.
 
-Stop boundary: bounded desktop implementation against the DESIGN-AUTHORITY008
-JC-050 final authority followed by
+Stop boundary: bounded desktop implementation against the JC-051A
+Employer My Jobs Desktop Authority v1.0 followed by
 authenticated browser and human visual acceptance. Do not begin Employer
 Operations mobile implementation until desktop acceptance is explicit.
 
@@ -39,8 +39,8 @@ and approved Teachers.Net PNG logo. EMP-IMP019 completed bounded brand,
 controller, rail-icon, and table-control convergence. Nested Jobs plugin `main`
 is clean and pushed at `51afd38`.
 
-DESIGN-AUTHORITY008 superseded the JC-050 All My Jobs desktop raster with the
-final approved replacement while leaving JC-051 unchanged. The current approved
+JC-051A superseded the prior JC-050 All My Jobs desktop raster with the
+final approved Employer My Jobs Desktop Authority v1.0 while leaving JC-051 unchanged. The current approved
 desktop pair is:
 
 - JC-050 final All My Jobs (`jc-050-final-01a.png`, 1228 × 937, SHA-256
@@ -123,7 +123,7 @@ may serve as visual implementation authority.
 
 For the active Employer Operations workstream:
 
-- DESIGN-AUTHORITY008's final approved authority governs All My Jobs desktop.
+- JC-051A's approved Employer My Jobs Desktop Authority v1.0 governs All My Jobs desktop.
 - JC-051 governs Single School / Job Site desktop.
 - Employer Operations mobile contracted/expanded selector rasters are
   Responsive Candidate / Implementation Target / Pending Browser Verification.
@@ -134,7 +134,7 @@ concepts without a separate Engineering Director decision.
 
 ## 10. Immediate Engineering Priorities
 
-1. Implement the approved DESIGN-AUTHORITY008 JC-050 final desktop authority through a separate
+1. Implement the approved JC-051A Employer My Jobs Desktop Authority v1.0 through a separate
    bounded ticket.
 2. Complete browser and human visual acceptance against the JC-050 final authority.
 3. Only after acceptance, decide whether to begin the provisional mobile work.
