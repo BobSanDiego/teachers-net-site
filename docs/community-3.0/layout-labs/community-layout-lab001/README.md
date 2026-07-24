@@ -20,6 +20,8 @@ Then visit `http://127.0.0.1:8765/`.
 - 1680px global shell
 - No global max-width
 
+Navbar alignment can also be switched between constrained contents and Facebook-style pinned rails. The navbar background remains full viewport width in both cases.
+
 The header and footer remain viewport-wide in all modes. The center post column remains capped at 800px and the right advertising rail is exactly 300px while it fits.
 
 ## Responsive breakpoints

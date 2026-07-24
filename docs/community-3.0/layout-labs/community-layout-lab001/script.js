@@ -12,10 +12,16 @@
     readout('shell').textContent = `${Math.round(shellRect.width)}px`;
     readout('center').textContent = `${Math.round(center.width)}px`;
     readout('rail').textContent = rail ? 'yes (300px)' : 'no';
+    readout('nav').textContent = body.dataset.navMode === 'pinned' ? 'pinned rails' : 'constrained';
   }
   document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => {
     body.dataset.shellMode = button.dataset.mode;
     document.querySelectorAll('[data-mode]').forEach(item => item.classList.toggle('selected', item === button));
+    update();
+  }));
+  document.querySelectorAll('[data-nav-mode]').forEach(button => button.addEventListener('click', () => {
+    body.dataset.navMode = button.dataset.navMode;
+    document.querySelectorAll('[data-nav-mode]').forEach(item => item.classList.toggle('selected', item === button));
     update();
   }));
   window.addEventListener('resize', update);

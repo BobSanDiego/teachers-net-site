@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Community 3.0 — Desktop Shell Width Lab</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-shell-mode="1440">
@@ -29,6 +30,9 @@
     <button data-mode="1440" class="selected" type="button">1440px</button>
     <button data-mode="1680" type="button">1680px</button>
     <button data-mode="none" type="button">No max-width</button>
+    <span class="control-label nav-mode-label">Navbar</span>
+    <button data-nav-mode="constrained" class="selected" type="button">Constrained contents</button>
+    <button data-nav-mode="pinned" type="button">Pinned rails</button>
   </div>
 
   <div class="shell-region">
@@ -97,6 +101,7 @@
     <span>Shell: <b data-readout="shell">—</b></span>
     <span>Center: <b data-readout="center">—</b></span>
     <span>300px rail: <b data-readout="rail">—</b></span>
+    <span>Navbar: <b data-readout="nav">—</b></span>
   </aside>
   <script src="script.js"></script>
 </body>
