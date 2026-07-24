@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community 3.0 — Desktop Shell Width Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-shell-mode="1440">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#">Teachers<span>.Net</span></a>
+      <nav class="global-nav" aria-label="Primary">
+        <a class="active" href="#">Community</a>
+        <a href="#">Lesson Bank</a>
+        <a href="#">Job Center</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="Search">⌕</button>
+        <button class="icon-button" type="button" aria-label="Messages">✉</button>
+        <button class="avatar" type="button" aria-label="User account">JM</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="lab-controls" aria-label="Layout comparison modes">
+    <span class="control-label">Shell mode</span>
+    <button data-mode="1280" type="button">1280px</button>
+    <button data-mode="1440" class="selected" type="button">1440px</button>
+    <button data-mode="1680" type="button">1680px</button>
+    <button data-mode="none" type="button">No max-width</button>
+  </div>
+
+  <div class="shell-region">
+    <aside class="left-nav" aria-label="Community navigation">
+      <p class="nav-kicker">Community</p>
+      <nav>
+        <a class="selected" href="#">Home</a>
+        <a href="#">My Currents</a>
+        <a href="#">Following</a>
+        <a href="#">Saved</a>
+      </nav>
+      <p class="nav-kicker">My spaces</p>
+      <nav>
+        <a href="#">Second Grade</a>
+        <a href="#">Elementary Teachers</a>
+        <a href="#">New Jersey Teachers</a>
+      </nav>
+      <button class="create-post" type="button">+ <span>Create a post</span></button>
+    </aside>
+
+    <main class="content-column">
+      <article class="post-card">
+        <header class="post-header">
+          <div class="author-avatar">JM</div>
+          <div>
+            <strong>Jamie Miller</strong>
+            <p>2nd Grade Teacher · New Jersey</p>
+          </div>
+          <span class="conversation-type">Idea</span>
+        </header>
+        <div class="post-copy">
+          <h1>Making Homer’s rhythm something students can hear</h1>
+          <p>“I came across this performance from <em>The Odyssey</em> and realized the cast is rapping in dactylic hexameter—the same meter used in Homer’s original poem.</p>
+          <p>It could be a memorable way to let students hear the structure before asking them to examine it on the page.”</p>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb"><span class="play">▶</span><span class="duration">04:28</span></div>
+          <div class="media-copy"><span class="eyebrow">CLASSROOM VIDEO · THE ODYSSEY</span><strong>Homeric rhythm in performance</strong><span>Teachers Theater · 4 minutes</span></div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">R</div>
+          <div><span class="eyebrow">RELATED RESOURCE</span><strong>Hear the Meter: A Classroom Reading Guide</strong><p>A short activity for helping students listen for rhythm before close reading.</p><small>Grades 6–8 · English Language Arts</small></div>
+          <div class="resource-actions"><button type="button">Save</button><button type="button">Open</button></div>
+        </div>
+        <div class="post-footer"><span>♡ 18 teachers found this useful</span><span>Share · Save</span></div>
+        <section class="replies" aria-label="Replies">
+          <div><span class="reply-avatar">AR</span><p><strong>Alex Rivera</strong><br>I love the idea of making the meter audible first. This would be a great bridge into scansion.</p></div>
+          <div><span class="reply-avatar">SP</span><p><strong>Sam Patel</strong><br>We tried a similar performance with our eighth graders and they immediately noticed the repeated beat.</p></div>
+        </section>
+      </article>
+    </main>
+
+    <aside class="right-rail" aria-label="Community discovery">
+      <div class="ad-placeholder"><span>ADVERTISEMENT</span><strong>300 × 250</strong></div>
+      <section class="rail-card"><h2>Related Currents</h2><a href="#">Teaching classic texts</a><a href="#">Ideas for close reading</a><a href="#">Middle school ELA</a></section>
+      <section class="rail-card"><h2>Teachers discussing this</h2><p><strong>Priya S.</strong> shared a resource in English Language Arts.</p><p><strong>Marcus T.</strong> is following Homer and mythology.</p></section>
+    </aside>
+  </div>
+
+  <footer class="site-footer"><div class="footer-inner"><strong class="footer-wordmark">Teachers<span>.Net</span></strong><nav><a href="#">About</a><a href="#">Help</a><a href="#">Privacy</a><a href="#">Terms</a></nav><span>© 2026 Teachers.Net</span></div></footer>
+
+  <aside class="diagnostic" aria-live="polite">
+    <strong>Layout lab</strong>
+    <span>Viewport: <b data-readout="viewport">—</b></span>
+    <span>Mode: <b data-readout="mode">—</b></span>
+    <span>Shell: <b data-readout="shell">—</b></span>
+    <span>Center: <b data-readout="center">—</b></span>
+    <span>300px rail: <b data-readout="rail">—</b></span>
+  </aside>
+  <script src="script.js"></script>
+</body>
+</html>
