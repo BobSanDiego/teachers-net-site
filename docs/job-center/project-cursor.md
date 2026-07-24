@@ -6,7 +6,7 @@ Active Development
 
 ## Current Phase
 
-Bounded Implementation Convergence. Responsive Design governance is complete
+Visual Convergence Sprint. Responsive Design governance is complete
 for the approved authority set. Approved visual authorities remain immutable
 Patch Mode references. ADR001 governs current and future JC-030 work.
 DOC018 approves JC-030 Mobile Reading Experience authority. DOC016 approves JC-015 Mobile responsive authority. DOC015 approves JC-015
@@ -88,6 +88,34 @@ Save / Share action-group implementation in the Jobs plugin.
 
 ## Current Focus
 
+The active objective is to complete the remaining UX authority work before the
+implementation capability audit. The governing sequence is design first, audit
+second, implement third. Visual convergence has materially clarified the
+architecture, so the architecture audit remains deferred until the remaining
+UX convergence work is complete.
+
+The bounded convergence workstreams are:
+
+- JC052 Employer Workspace Completion: Schools / Jobsites management, Add/Edit
+  School / Jobsite, organization and Jobsite modeling, employer relationships,
+  reusable management shell, imagery, progressive disclosure, default contact
+  behavior, location model, and image defaults.
+- JC053 Job Posting Wizard Re-Convergence: finalized shell and controls,
+  spacing, progressive disclosure, School / Jobsite selection, organization
+  defaults, listing overrides, image behavior, and validation.
+- JC054 Teacher Discovery Final Pass: search, filters, sort, browse, listing
+  cards, detail, employer/location presentation, imagery, and promoted listings.
+- JC055 Teacher Account Modules: Saved Jobs, Job Alerts, alert management,
+  sharing, printing, and PDF evaluation where justified.
+- JC056 Identity & Onboarding: separation of Teachers.Net User, Job Center
+  role, employer organization, School / Jobsite, and job listing, including
+  job-seeker, recruiter, dual-role, and legacy-user onboarding.
+
+JC057 is the later Implementation Capability Audit. JC058 and later tickets
+are generated from that audit; they are not current implementation work.
+
+## Current Authority Context
+
 DOC022 reconciles the Employer product model: Employer Operations is a hybrid
 authenticated workspace inside the Teachers.Net shell; personas are descriptive
 planning models; memberships and granted capabilities determine operations;
@@ -160,9 +188,9 @@ lifecycle, presentation, and application behavior.
 
 ## Current Verified State
 
-- Current convergence objective: implement the final DESIGN-AUTHORITY008
-  JC-050 desktop authority, complete browser and human visual acceptance, then
-  decide whether the provisional mobile target may proceed.
+- Current convergence objective: complete the remaining UX authority work under
+  JC052–JC056 before the JC057 implementation capability audit. Design first,
+  audit second, implement third.
 - Current authenticated browser QA: external `chrome-devtools-mcp` with the
   dedicated QA Chrome profile; the built-in browser bridge is not used.
 - Current browser workflow: launch the dedicated profile with CDP on
@@ -179,8 +207,8 @@ lifecycle, presentation, and application behavior.
   totals, pagination, rows-per-page, actions, and state-specific timelines are
   fixture-verified. Archived jobs remain hidden and approved-only jobs are not
   employer-visible.
-- Current implementation status: nested Jobs plugin `main` is clean and
-  pushed through `51afd38` (`EMP-IMP019 converge JC-050 brand and controls`).
+- Current implementation status: nested Jobs plugin `main` is clean and pushed
+  through `b580638` (`JC051A-FIX004 promote draft actions`).
 - Known tooling constraints: the external profile requires manual
   authentication; screenshot files may be unavailable when the MCP path is not
   inside its configured workspace roots, so inline screenshot capture is the
@@ -188,29 +216,29 @@ lifecycle, presentation, and application behavior.
 
 ## Current Primitive/Workstream
 
-Employer Operations approved desktop authority implementation for the final
-DESIGN-AUTHORITY008 JC-050 All My Jobs authority and JC-051 Single School / Job
-Site, reusing existing Jobs membership, authorization, services, actions,
-sorting, and pagination. The immediate next step is bounded implementation
-against `docs/job-center/design/approved/jc-050-final-01a.png`, followed by
-browser and human visual acceptance. Mobile Employer Operations is a
-provisional implementation target and must wait for desktop acceptance.
+Employer and public UX authority convergence across JC052–JC056 is the active
+workstream. It reuses existing Jobs membership, authorization, services,
+actions, sorting, and pagination without authorizing implementation. The
+implementation capability audit is deferred to JC057; mobile Employer
+Operations remains a provisional implementation target pending desktop
+acceptance.
 
 ## Next Executable Ticket
 
-Bounded desktop implementation of the approved JC-051A Employer My Jobs
-authority, followed by authenticated browser and human visual acceptance.
-Preserve the later mobile and remaining-authority sequence; do not treat
-authority approval as implementation acceptance.
+Bounded UX-authority work under JC052–JC056, beginning with Employer Workspace
+Completion, followed by the remaining wizard, discovery, account, and identity
+convergence workstreams as explicitly scoped. Do not begin the implementation
+capability audit until the remaining UX authority is complete.
 Do not reopen Employer Operations product architecture or reintroduce a
 separate Dashboard operating destination during this gate.
 
 ## Next Decision
 
-Do not begin Employer Operations mobile implementation until desktop visual
-acceptance is explicit. Do not declare JC-030 converged until its separate
-verification gate passes. After the relevant acceptance gates, return to Public
-and Employer V1 Release-Candidate Audits.
+Complete the remaining UX convergence work, then run JC057 as the implementation
+capability audit. Only after that audit should JC058+ implementation sequencing
+be generated. Do not begin Employer Operations mobile implementation until its
+desktop visual acceptance is explicit, and do not declare JC-030 converged until
+its separate verification gate passes.
 
 ## Required Google Drive Context
 
@@ -228,8 +256,9 @@ for screen purpose, relationships, and governance status.
 
 ## Open Risks
 
-- JC-050 final authority desktop implementation has not started; browser and human visual
-  acceptance remain required after the separate bounded implementation ticket.
+- Employer UX authority convergence remains incomplete across JC052–JC056;
+  the implementation capability audit and later implementation remain deferred
+  until those authorities are complete.
 - The external Chrome QA workflow depends on the dedicated profile being
   launched and manually authenticated; the built-in bridge remains unavailable
   or non-canonical.

@@ -5,10 +5,10 @@ implementation detail remain in the referenced repository documents.
 
 ## 1. Current Phase
 
-Active Development - Bounded Implementation Convergence.
+Active Development - Visual Convergence Sprint.
 
 Responsive Design is complete for the approved authority set. Employer
-Operations desktop implementation is the active convergence workstream. Approved
+Remaining UX authority convergence is the active workstream. Approved
 visual authorities remain Patch Mode references and must not be altered during
 implementation.
 
@@ -20,10 +20,15 @@ canonical Employer My Jobs Desktop Authority v1.0, sourced from
 implementation ticket is active; the approval does not constitute
 implementation or acceptance.
 
-Stop boundary: bounded desktop implementation against the JC-051A
-Employer My Jobs Desktop Authority v1.0 followed by
-authenticated browser and human visual acceptance. Do not begin Employer
-Operations mobile implementation until desktop acceptance is explicit.
+Current stop boundary: complete the remaining UX authority work before the
+JC057 implementation capability audit. Do not begin implementation sequencing
+from the audit until the design-first convergence gate is complete. Do not begin
+Employer Operations mobile implementation until desktop acceptance is explicit.
+
+Active bounded workstreams are JC052 Employer Workspace Completion, JC053 Job
+Posting Wizard Re-Convergence, JC054 Teacher Discovery Final Pass, JC055
+Teacher Account Modules, and JC056 Identity & Onboarding. JC057 is the later
+implementation capability audit; JC058+ is generated from its findings.
 
 ## 3. Last Completed Milestone
 
@@ -36,8 +41,9 @@ DESIGN-IMP001 established the system-font/Segoe UI baseline and 400/700 weight
 discipline. DESIGN-IMP002 and DESIGN-PATCH003 established the white navbar,
 gray 250px rail, workspace selector, Post a Job CTA, external browser workflow,
 and approved Teachers.Net PNG logo. EMP-IMP019 completed bounded brand,
-controller, rail-icon, and table-control convergence. Nested Jobs plugin `main`
-is clean and pushed at `51afd38`.
+controller, rail-icon, and table-control convergence. The current nested Jobs
+plugin `main` is clean and pushed through `ba2be81` (`JC051A-PATCH023 remove
+fixed page height`).
 
 JC-051A superseded the prior JC-050 All My Jobs desktop raster with the
 final approved Employer My Jobs Desktop Authority v1.0 while leaving JC-051 unchanged. The current approved
@@ -54,16 +60,16 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 ## 4. Next Five Planned Tickets
 
-1. Bounded desktop implementation against the JC-051A Employer My Jobs Desktop Authority v1.0.
-2. Human visual acceptance - authenticated All My Jobs against the JC-050 final authority.
-3. Bounded Employer Operations mobile implementation, only after desktop acceptance.
-4. Employer Authoring visual authority.
-5. Employer Composite State Sheet.
+1. JC052 Employer Workspace Completion authority convergence.
+2. JC053 Job Posting Wizard Re-Convergence.
+3. JC054 Teacher Discovery Final Pass.
+4. JC055 Teacher Account Modules.
+5. JC056 Identity & Onboarding, followed by the JC057 implementation capability audit.
 
 ## 5. Current Blockers
 
-- JC-050 final-authority desktop implementation has not started; browser and human visual
-  acceptance remain required after implementation.
+- UX authority convergence remains incomplete across JC052–JC056; implementation
+  audit and later implementation sequencing remain deferred.
 - Employer mobile implementation is intentionally held until desktop acceptance.
 - Exact Expired-to-Closed timing, archive semantics, retention policy,
   Duplicate versus Repost wording, notification behavior, and deeper analytics
@@ -132,12 +138,12 @@ Implementation must preserve the approved My Jobs workspace direction and must
 not introduce UX changes, rename governed labels, or revive rejected Dashboard
 concepts without a separate Engineering Director decision.
 
-## 10. Immediate Engineering Priorities
+## 10. Immediate Convergence Priorities
 
-1. Implement the approved JC-051A Employer My Jobs Desktop Authority v1.0 through a separate
-   bounded ticket.
-2. Complete browser and human visual acceptance against the JC-050 final authority.
-3. Only after acceptance, decide whether to begin the provisional mobile work.
+1. Complete the JC052–JC056 UX authority convergence work.
+2. Run the JC057 implementation capability audit after that design-first gate.
+3. Generate JC058+ implementation sequencing from the audit; only then resume
+   bounded implementation and acceptance work.
 
 ## 11. Verified Workflow and Authority Notes
 
@@ -188,10 +194,10 @@ supports geometry, typography, long-content stress, lifecycle fixtures,
 accessibility proofing, and component mapping. It is supporting evidence, not
 the visual authority, and must not be deleted or promoted over JC-051A.
 
-## Immediate Implementation Strategy
+## Immediate Convergence Strategy
 
-Next work is a desktop implementation plan and diff map, followed by separate
-shell/navigation, table/status/action, compact-footer, and accessibility/visual
-acceptance tickets. Responsive derivation begins only after stable desktop
-implementation and explicit acceptance. Existing employer workflows, services,
-authorization, lifecycle semantics, and data behavior remain protected.
+Next work is the JC052–JC056 design-first authority sequence, followed by the
+JC057 capability audit and a generated JC058+ implementation plan. Responsive
+derivation remains downstream of explicit desktop acceptance. Existing employer
+workflows, services, authorization, lifecycle semantics, and data behavior
+remain protected.

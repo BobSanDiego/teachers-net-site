@@ -5,6 +5,17 @@ components. It explains purpose, connection, and governance status without
 specifying design or implementation. The Visual Manifest remains authoritative
 for artifact status and filenames.
 
+## Current Convergence Sequencing
+
+The project is in a Visual Convergence Sprint. The active bounded authority
+workstreams are JC052 Employer Workspace Completion, JC053 Job Posting Wizard
+Re-Convergence, JC054 Teacher Discovery Final Pass, JC055 Teacher Account
+Modules, and JC056 Identity & Onboarding. JC057 is the subsequent
+Implementation Capability Audit; JC058+ implementation work is generated only
+from that audit. This preserves the governing sequence: design first, audit
+second, implement third. This atlas remains a product map and does not replace
+the Project Cursor, Engineering Handoff, or roadmap for operational state.
+
 ## Product Journey
 
 ```text
@@ -632,7 +643,9 @@ Employer identity, authorization, and lifecycle state
 ### Current State
 Approved Employer My Jobs Desktop Authority v1.0
 ### Next Expected Work
-Bounded desktop implementation against the JC-051A authority, followed by browser and human visual acceptance. Mobile remains a later provisional implementation target.
+Complete the remaining JC052–JC056 authority convergence, then run JC057 before
+generating implementation work. Mobile remains a later provisional
+implementation target.
 ### Notes
 JC-051A supersedes the prior JC-050 authorities and candidates for All My Jobs desktop. It governs the bounded desktop canvas, floating application card, off-white surround, 250px rail, 950px main workspace, official logo, flat navbar divider, My Jobs selector, Post a Job control, integrated inventory, alert-badge treatment, timeline alert icons, actions, pagination, privacy footer, hierarchy, spacing, depth, and visual weight shown in the canonical raster. My Jobs remains the employer operating workspace; prior Dashboard concepts are not revived. JC-051 remains unchanged. Responsive/mobile presentation, Team Members, bottom navigation, list/grid switching, archive behavior, notification workflow, Duplicate versus Repost terminology, and grace-period duration are excluded.
 
