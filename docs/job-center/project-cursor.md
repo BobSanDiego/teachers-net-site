@@ -208,7 +208,7 @@ lifecycle, presentation, and application behavior.
   fixture-verified. Archived jobs remain hidden and approved-only jobs are not
   employer-visible.
 - Current implementation status: nested Jobs plugin `main` is clean and pushed
-  through `b580638` (`JC051A-FIX004 promote draft actions`).
+  through `ba2be81` (`JC051A-PATCH023 remove fixed page height`).
 - Known tooling constraints: the external profile requires manual
   authentication; screenshot files may be unavailable when the MCP path is not
   inside its configured workspace roots, so inline screenshot capture is the
