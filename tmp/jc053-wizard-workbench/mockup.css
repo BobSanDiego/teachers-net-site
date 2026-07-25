@@ -37,6 +37,9 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card .tnet-jobs-employer-app-account-link{align-items:center;color:#001735;display:inline-flex;font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:.84rem;font-weight:600;gap:10px;white-space:nowrap}
 .application-card .tnet-jobs-employer-app-account-link .tnet-jobs-employer-app-avatar-chevron{border-color:#001735;display:inline-block;flex:0 0 6px;height:6px;width:6px}
 @media(max-width:900px){.application-card .tnet-jobs-employer-app-account{display:flex;position:absolute;right:12px;top:15px}.application-card .tnet-jobs-app-topbar .tnet-jobs-app-brand-label{left:calc(50% + 90px)}}
+.application-card .tnet-jobs-employer-app-account-link{margin-left:20px;margin-right:40px}
+.application-card .tnet-jobs-employer-app-separator{height:60px}
+.application-card .tnet-jobs-employer-app-notification{margin-left:3px;margin-right:3px}
 .application-card .tnet-jobs-employer-operations-nav-link,.application-card .tnet-jobs-employer-operations-nav-action{background:transparent;border-color:transparent;box-shadow:none}
 .application-card .tnet-jobs-employer-operations-nav-link.is-current{background:#e7edff;border-color:transparent;box-shadow:none}
 .application-card .tnet-jobs-employer-operations-nav-link.is-disabled{border-top:0}
