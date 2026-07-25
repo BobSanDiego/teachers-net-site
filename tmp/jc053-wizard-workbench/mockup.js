@@ -1,0 +1,12 @@
+(() => {
+  const views = [
+    ['step-01-first-touch','Step 1 — First touch'],['step-01-school-selected','Step 1 — School selected'],['step-01-nav-back','Step 1 — Nav-back selected'],['step-01-add-physical-us','Step 1 — Add Physical U.S.'],['step-01-add-international','Step 1 — Add International'],['step-01-add-multiple-locations','Step 1 — Add Multiple Locations'],['step-01-add-additional-info','Step 1 — Additional Information'],['step-02-job-basics','Step 2 — Job Basics'],['step-03-job-description','Step 3 — Job Description'],['step-04-application-process','Step 4 — Application Process'],['step-05-review-publish','Step 5 — Review & Publish']
+  ];
+  const select=document.querySelector('#view-select'), status=document.querySelector('#view-status'), panel=document.querySelector('#step-01-nav-back'), placeholder=document.querySelector('#placeholder');
+  views.forEach(([id,label])=>{const o=document.createElement('option');o.value=id;o.textContent=label;o.disabled=id!=='step-01-nav-back';select.append(o)});
+  function render(){const id=location.hash.slice(1)||'step-01-nav-back';const implemented=id==='step-01-nav-back';select.value=implemented?id:'step-01-nav-back';status.textContent=id;panel.hidden=!implemented;placeholder.hidden=implemented;placeholder.querySelector('p').textContent=implemented?'':'This view is registered for later authority work and is intentionally not implemented.';document.querySelector('#previous-view').href='#step-01-nav-back';document.querySelector('#next-view').href='#step-01-school-selected';}
+  select.addEventListener('change',()=>{location.hash=select.value});window.addEventListener('hashchange',render);render();
+  const diagnostics=document.querySelector('#diagnostics'), toggle=document.querySelector('#diagnostics-toggle');
+  function measure(){const card=document.querySelector('.application-card').getBoundingClientRect(),rail=document.querySelector('.left-rail').getBoundingClientRect(),workspace=document.querySelector('.main-workspace').getBoundingClientRect();diagnostics.textContent=[`view: ${location.hash.slice(1)||'step-01-nav-back'}`,`card: ${card.width}px`, `rail: ${rail.width}px`, `workspace: ${workspace.width}px`,`viewport: ${innerWidth}×${innerHeight}`,`overflow: ${document.documentElement.scrollWidth>innerWidth?'yes':'no'}`].join('\n')}
+  toggle.addEventListener('click',()=>{diagnostics.hidden=!diagnostics.hidden;toggle.textContent=diagnostics.hidden?'Show diagnostics':'Hide diagnostics';measure()});window.addEventListener('resize',measure);
+})();

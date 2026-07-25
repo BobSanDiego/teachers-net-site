@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JC053 Wizard Workbench</title>
+  <link rel="stylesheet" href="mockup.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="workbench-bar">
+    <strong>JC053 Workbench</strong>
+    <span>Static design artifact · no production behavior</span>
+    <label for="view-select">Workbench Views</label><select id="view-select"></select><span id="view-status">step-01-nav-back</span>
+    <button id="diagnostics-toggle" type="button">Show diagnostics</button>
+  </div>
+
+  <main class="application-card" data-shell="1200px">
+    <header class="tnet-jobs-app-topbar tnet-jobs-employer-app-topbar">
+      <div class="tnet-jobs-app-topbar-inner">
+      <a class="tnet-jobs-app-brand" href="#step-01-nav-back" aria-label="Teachers.Net">
+        <img class="tnet-jobs-employer-logo" src="assets/teachers-net-logo.png" alt="Teachers.Net">
+        <em>Job Center</em>
+      </a>
+      <nav class="tnet-jobs-app-nav" aria-label="Employer navigation">
+        <a href="#step-01-nav-back">Job Center</a><a href="#step-01-nav-back">My Jobs <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+        <a href="#step-01-nav-back">Career Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a><a href="#step-01-nav-back">Teacher Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+      </nav>
+      <div class="tnet-jobs-app-account tnet-jobs-employer-app-account"><button class="tnet-jobs-employer-app-notification" type="button" aria-label="3 notifications"><span aria-hidden="true">♧</span><b aria-hidden="true">3</b></button><a class="tnet-jobs-employer-app-avatar" href="#step-01-nav-back" aria-label="My Account"><span>JJ</span><span aria-hidden="true" class="tnet-jobs-employer-app-avatar-chevron"></span></a></div>
+      </div>
+    </header>
+
+    <div class="application-body">
+      <aside class="tnet-jobs-employer-operations-nav left-rail" aria-label="Employer workspace navigation">
+        <h2 class="tnet-jobs-employer-operations-nav-heading">EMPLOYER</h2>
+        <a class="tnet-jobs-employer-operations-nav-link" href="#step-01-nav-back"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 12h16M10 12v1h4v-1"/></svg></span><strong>My Jobs</strong><span class="tnet-jobs-employer-operations-nav-count">3</span></span></a>
+        <a class="tnet-jobs-employer-operations-nav-link is-current" href="#step-01-nav-back" aria-current="page"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg></span><strong>Post a Job</strong></span></a>
+        <a class="tnet-jobs-employer-operations-nav-link" href="#step-01-school-selected"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-4 8 4v11M7 20v-8h10v8M10 20v-4h4v4M9 12h.01M12 12h.01M15 12h.01"/></svg></span><strong>Schools / Jobsites</strong><span class="tnet-jobs-employer-operations-nav-count">5</span></span></a>
+        <a class="tnet-jobs-employer-operations-nav-link" href="#step-01-nav-back"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="m19 13 2-1-2-1-.4-1.5 1-1.8-1.4-1.4-1.8 1L15 8l-1-2-1-2-1 2-1 2-1.4.3-1.8-1-1.4 1.4 1 1.8L8 11l-2 1-2 1 2 1 1.4 1.5-1 1.8 1.4 1.4 1.8-1L11 16l1 2 1 2 1-2 1-2 1.4-.3 1.8 1 1.4-1.4-1-1.8Z"/></svg></span><strong>Account Settings</strong></span></a>
+        <span class="tnet-jobs-employer-operations-nav-link is-disabled" aria-disabled="true"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4zM3 4h18v3H3zM9 11h6"/></svg></span><strong>Archived Jobs</strong></span></span>
+        <div class="tnet-jobs-employer-operations-promotion"><h3>Need to hire faster?</h3><p>Promote your job to reach more qualified teachers.</p><button type="button" disabled>Promote a Job</button></div>
+      </aside>
+
+      <section class="main-workspace" aria-labelledby="page-title">
+        <div class="workspace-head">
+        <div><p class="eyebrow">POST A JOB</p><h1 id="page-title">Post a Job</h1><p class="subtitle">Create a new job listing in just a few simple steps.</p></div>
+          <div class="head-actions"><a class="button secondary" href="#step-01-nav-back">Cancel</a><a class="button secondary" href="#step-01-nav-back">Save Draft</a><a class="button primary" href="#step-01-nav-back">Next</a></div>
+        </div>
+        <ol class="stepper" aria-label="Job posting steps">
+          <li class="is-active"><span>1</span><strong>School / Jobsite</strong></li>
+          <li><span>2</span><strong>Job Basics</strong></li><li><span>3</span><strong>Description</strong></li>
+          <li><span>4</span><strong>Application</strong></li><li><span>5</span><strong>Review &amp; Publish</strong></li>
+        </ol>
+
+        <article class="panel" id="step-01-nav-back" data-view="step-01-nav-back">
+          <div class="panel-heading"><div><p class="eyebrow">STEP 1 OF 5</p><h2>School / Jobsite</h2><p>This job will be posted on behalf of the selected school or jobsite.<br>You can change your selection any time.</p></div></div>
+          <div class="choice-grid"><div class="selected-card"><div class="selected-icon">⌂✓</div><div><strong>Selected School / Jobsite</strong><select id="selected-school" name="selected-school" aria-label="Selected School / Jobsite"><option>Los Angeles Unified School District (LAUSD)</option></select><div class="school-detail"><strong>Los Angeles Unified School District (LAUSD)</strong><span>⌖ Los Angeles, CA</span><span>✉ jobs@lausd.net　·　(213) 241-1000</span><span class="checks">● Website　● Logo　● Contact Info　● Defaults</span><button class="change-button" type="button">Change School / Jobsite</button></div></div></div>
+          <div class="or-divider"><span>OR</span></div>
+          <div class="add-card"><span class="add-icon">⌂＋</span><span><strong>Add New School / Jobsite</strong><small>Add a school or jobsite that you don't<br>see in your list.</small><button class="add-button" type="button">Add New School / Jobsite</button></span></div></div>
+          <aside class="info-callout"><strong>ⓘ　Every job belongs to a School or Jobsite.</strong><p>　　　 Once created, you'll be able to reuse it for future listings.</p></aside>
+        </article>
+        <div class="placeholder" id="placeholder" hidden><h2>Planned workbench view</h2><p>This view is registered for later authority work and is intentionally not implemented.</p></div>
+        <div class="view-nav"><a id="previous-view" href="#step-01-nav-back">← Previous View</a><a id="next-view" href="#step-01-school-selected">Next View →</a></div>
+      </section>
+    </div>
+
+    <footer class="tnet-jobs-app-footer footer"><div class="tnet-jobs-app-footer-inner"><div class="tnet-jobs-app-footer-columns"><div class="tnet-jobs-app-footer-brand"><img class="tnet-jobs-app-footer-logo" src="assets/teachers-net-logo.png" alt="Teachers.Net"><p>Serving Teachers. Supporting Education.</p></div><div class="tnet-jobs-app-footer-links"><strong>Job Center</strong><span>Browse Jobs</span><span>Post a Job</span></div><div class="tnet-jobs-app-footer-links"><strong>Teacher Resources</strong><span>Lesson Plans</span><span>Professional Development</span></div><div class="tnet-jobs-app-footer-links"><strong>About</strong><span>About Teachers.Net</span><span>Privacy Policy</span></div><div class="tnet-jobs-app-footer-connect"><strong>Connect With Us</strong><span>© 2025 Teachers.Net</span></div></div></div></footer>
+  </main>
+  <pre id="diagnostics" hidden></pre>
+  <script src="mockup.js"></script>
+</body>
+</html>
