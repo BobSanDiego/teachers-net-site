@@ -31,6 +31,12 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card .tnet-jobs-app-topbar .tnet-jobs-app-nav a{color:#001735;font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:.84rem;font-weight:600}
 .application-card .tnet-jobs-app-topbar{--navbar-border-color:#dbe4f0}
 @media(max-width:900px){.application-card .tnet-jobs-app-topbar .tnet-jobs-app-topbar-inner{grid-template-columns:100%;position:relative}.application-card .tnet-jobs-app-topbar .tnet-jobs-app-brand-divider{position:absolute;right:0;top:15px;margin:0}.application-card .tnet-jobs-app-topbar .tnet-jobs-app-brand-label{position:absolute;left:calc(50% + 90px);margin:0;top:19px}}
+.application-card .tnet-jobs-app-topbar .tnet-jobs-app-brand-label{margin-left:0}
+.application-card .tnet-jobs-employer-app-account{align-items:center;display:flex;gap:16px}
+.application-card .tnet-jobs-employer-app-separator{background:var(--navbar-border-color);display:block;height:30px;width:1px}
+.application-card .tnet-jobs-employer-app-account-link{align-items:center;color:#001735;display:inline-flex;font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:.84rem;font-weight:600;gap:10px;white-space:nowrap}
+.application-card .tnet-jobs-employer-app-account-link .tnet-jobs-employer-app-avatar-chevron{border-color:#001735;display:inline-block;flex:0 0 6px;height:6px;width:6px}
+@media(max-width:900px){.application-card .tnet-jobs-employer-app-account{display:flex;position:absolute;right:12px;top:15px}.application-card .tnet-jobs-app-topbar .tnet-jobs-app-brand-label{left:calc(50% + 90px)}}
 .application-card .tnet-jobs-employer-operations-nav-link,.application-card .tnet-jobs-employer-operations-nav-action{background:transparent;border-color:transparent;box-shadow:none}
 .application-card .tnet-jobs-employer-operations-nav-link.is-current{background:#e7edff;border-color:transparent;box-shadow:none}
 .application-card .tnet-jobs-employer-operations-nav-link.is-disabled{border-top:0}
