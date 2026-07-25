@@ -100,6 +100,7 @@ The bounded convergence workstreams are:
   School / Jobsite, organization and Jobsite modeling, employer relationships,
   reusable management shell, imagery, progressive disclosure, default contact
   behavior, location model, and image defaults.
+  Flow authority: `docs/job-center/employer-workspace-flow-authority-v1.md`.
 - JC053 Job Posting Wizard Re-Convergence: finalized shell and controls,
   spacing, progressive disclosure, School / Jobsite selection, organization
   defaults, listing overrides, image behavior, and validation.

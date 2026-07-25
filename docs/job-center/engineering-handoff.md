@@ -89,6 +89,7 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 - V1 Authority Program.
 - V1 Execution Plan.
 - Job Finder Search Contract v1.
+- Employer Workspace Flow Authority v1.
 - Codex Fast Operations and verification-proportionality protocol.
 
 ## 7. Recently Approved Product Decisions

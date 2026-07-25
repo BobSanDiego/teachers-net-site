@@ -16,6 +16,11 @@ from that audit. This preserves the governing sequence: design first, audit
 second, implement third. This atlas remains a product map and does not replace
 the Project Cursor, Engineering Handoff, or roadmap for operational state.
 
+JC052 Employer Workspace flow authority is canonical in
+`docs/job-center/employer-workspace-flow-authority-v1.md`. It defines the
+navigation and context boundaries for My Jobs, School / Job Site management,
+Add, Edit, and Manage without authorizing implementation.
+
 ## Product Journey
 
 ```text

@@ -55,6 +55,14 @@
   the exclusion, and offers a one-click remote-only alternative. Basic Search
   remains low-friction; expanded search exposes Work Location. The full
   contract is canonical in `docs/job-center/job-finder-search-contract-v1.md`.
+- **JC052-DESIGN001 — Employer Workspace flow authority:** My Jobs, School /
+  Job Site management, Add, Edit, and Manage share one employer-authorized
+  shell; Organization Location, Job Work Location, and public Search behavior
+  remain separate concepts; Physical U.S. ZIP entry auto-fills City/State;
+  imagery is optional with a Teachers.Net default; and progressive disclosure
+  governs lower-frequency fields. The full flow and unresolved approval
+  questions are canonical in
+  `docs/job-center/employer-workspace-flow-authority-v1.md`.
 
 ## Architectural Decisions
 
