@@ -44,6 +44,15 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card .tnet-jobs-employer-app-account-link{font-size:.8rem;margin-left:10px;margin-right:50px}
 .application-card .tnet-jobs-employer-nav-final-link{margin-right:20px}
 @media(max-width:900px){.application-card .tnet-jobs-app-topbar .tnet-jobs-app-nav{display:none}}
+.application-card .tnet-jobs-app-topbar .tnet-jobs-app-nav a,
+.application-card .tnet-jobs-employer-app-account-link{
+  font-family:"Nunito","Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;
+  font-weight:700;
+}
+.application-card .tnet-jobs-employer-app-notification{
+  margin-left:0;
+  margin-right:0;
+}
 .application-card .tnet-jobs-employer-operations-nav-link,.application-card .tnet-jobs-employer-operations-nav-action{background:transparent;border-color:transparent;box-shadow:none}
 .application-card .tnet-jobs-employer-operations-nav-link.is-current{background:#e7edff;border-color:transparent;box-shadow:none}
 .application-card .tnet-jobs-employer-operations-nav-link.is-disabled{border-top:0}
