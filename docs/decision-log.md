@@ -49,6 +49,12 @@
 - Employer creation follows Progressive Completion, and location guidance should
   explain the discovery and Distance Search benefit of City, State, and ZIP
   without unnecessary abandonment-inducing validation.
+- **SEARCH-CONTRACT001 — Remote and distance-sort search contract:** Relevance
+  and Date may include eligible remote jobs in the normal paginator; Distance
+  excludes remote jobs without assigning synthetic distance, visibly discloses
+  the exclusion, and offers a one-click remote-only alternative. Basic Search
+  remains low-friction; expanded search exposes Work Location. The full
+  contract is canonical in `docs/job-center/job-finder-search-contract-v1.md`.
 
 ## Architectural Decisions
 

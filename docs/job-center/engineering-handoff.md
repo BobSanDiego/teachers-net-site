@@ -88,6 +88,7 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 - Responsive Layout Geometry v1.
 - V1 Authority Program.
 - V1 Execution Plan.
+- Job Finder Search Contract v1.
 - Codex Fast Operations and verification-proportionality protocol.
 
 ## 7. Recently Approved Product Decisions
@@ -156,6 +157,9 @@ concepts without a separate Engineering Director decision.
 - The lifecycle fixture matrix is the canonical QA matrix. It covers filters,
   filtered totals, pagination, state timelines, primary/overflow actions, and
   the hidden archived/approved-only invariants.
+- Public Job Finder remote inclusion, Work Location terminology, and distance-sort
+  exclusion are governed by `docs/job-center/job-finder-search-contract-v1.md`;
+  this is a documentation contract and does not imply implementation completion.
 - The current visual baseline uses the system stack rendered as Segoe UI in
   Windows Chrome, with regular and bold weight discipline (400/700).
 - The current shell is a 1200px canvas: white navbar with approved legacy

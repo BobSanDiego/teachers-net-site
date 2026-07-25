@@ -252,7 +252,9 @@ A new ChatGPT session reads only these by default:
 The Project Cursor, Canonical V1 Contract, Employer UX V1, Job Center Design
 System v1, Visual Manifest, roadmap, and implementation docs are consulted only
 when the ticket requires them. Job Center UX Atlas v1 is the concise product map
-for screen purpose, relationships, and governance status.
+for screen purpose, relationships, and governance status. Public Job Finder
+remote inclusion and distance-sort behavior is governed by
+`docs/job-center/job-finder-search-contract-v1.md`.
 
 ## Open Risks
 
