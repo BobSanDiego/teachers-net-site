@@ -149,6 +149,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .tnet-navbar-dropdown-item:hover{background:#f5f8ff;outline:0}
 .tnet-navbar-dropdown-item:focus{background:transparent;outline:0}
 .tnet-navbar-dropdown-item:focus-visible{background:transparent;outline:1px solid #9eb2ed;outline-offset:-1px}
+.tnet-navbar-dropdown-item:focus:hover{background:#f5f8ff}
 .tnet-navbar-dropdown-item.is-current{color:var(--primary);font-weight:700}
 .tnet-navbar-dropdown-item.is-unavailable{color:#8a95aa;cursor:default}
 .tnet-navbar-dropdown-item-icon{color:currentColor;display:inline-flex;flex:0 0 16px;height:16px;width:16px}
