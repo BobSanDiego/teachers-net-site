@@ -27,7 +27,8 @@
       this.button.setAttribute('aria-haspopup','menu'); this.button.setAttribute('aria-expanded','false');
       trigger.replaceWith(this.wrapper); this.wrapper.append(this.button);
       this.menu=document.createElement('div'); this.menu.className='tnet-navbar-dropdown-menu'; this.menu.setAttribute('role','menu'); this.menu.hidden=true;
-      config.items.forEach(item=>{const el=document.createElement(item.available?'a':'span'); el.className='tnet-navbar-dropdown-item'+(item.current?' is-current':'')+(item.available?'':' is-unavailable'); el.textContent=item.label; el.setAttribute('role','menuitem'); if(item.available){el.href=item.href}else{el.setAttribute('aria-disabled','true')} this.menu.append(el)});
+      const header=document.createElement('div'); header.className='tnet-navbar-dropdown-header'; header.textContent=config.title; this.menu.append(header);
+      config.items.forEach(item=>{const el=document.createElement(item.available?'a':'span'); el.className='tnet-navbar-dropdown-item'+(item.current?' is-current':'')+(item.available?'':' is-unavailable'); el.setAttribute('role','menuitem'); if(item.available){el.href=item.href}else{el.setAttribute('aria-disabled','true')} const icon=document.createElement('span');icon.className='tnet-navbar-dropdown-item-icon';icon.setAttribute('aria-hidden','true');icon.innerHTML='<svg viewBox="0 0 16 16" focusable="false"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><path d="M5 8h6M8 5v6"/></svg>'; const label=document.createElement('span');label.textContent=item.label;el.append(icon,label);if(item.current){const badge=document.createElement('span');badge.className='tnet-navbar-dropdown-item-status';badge.textContent='Current';el.append(badge)}this.menu.append(el)});
       if(config.items.some(item=>!item.available)){const legend=document.createElement('div');legend.className='tnet-navbar-dropdown-legend';legend.innerHTML='<span>* Planned for V1</span><span>** Planned after V1</span>';this.menu.append(legend)}
       this.wrapper.append(this.menu); this.button.addEventListener('click',()=>this.toggle()); this.button.addEventListener('keydown',event=>this.onTriggerKey(event)); this.menu.addEventListener('keydown',event=>this.onMenuKey(event));
     }
@@ -39,10 +40,10 @@
   }
   const hrefs={workspace:'#step-01-nav-back',school:'#step-01-school-selected'};
   const menuSets={
-    'my-jobs':{items:[['My Jobs',true,true],['Post a Job',true],['Schools / Jobsites',true],['Candidates **',false],['Saved Searches **',false],['Billing **',false],['Employer Dashboard **',false]]},
-    'career-resources':{items:[['Browse Jobs',true],['Salary Explorer **',false],['Resume Advice *',false],['Interview Resources *',false],['Career Articles *',false],['Job Alerts **',false]]},
-    'teacher-resources':{items:[['Lesson Plans',true],['Chatboards',true],['Teaching Jobs',true],['Classroom Management',true],['Printables',true],['Professional Development',true],['Teacher Humor',true]]},
-    'my-account':{items:[['Profile *',false],['Organization *',false],['Billing **',false],['Notifications *',false],['Preferences *',false],['Help *',false],['Sign Out',true]]}
+    'my-jobs':{title:'My Jobs',items:[['My Jobs',true,true],['Post a Job',true],['Schools / Jobsites',true],['Candidates **',false],['Saved Searches **',false],['Billing **',false],['Employer Dashboard **',false]]},
+    'career-resources':{title:'Career Resources',items:[['Browse Jobs',true],['Salary Explorer **',false],['Resume Advice *',false],['Interview Resources *',false],['Career Articles *',false],['Job Alerts **',false]]},
+    'teacher-resources':{title:'Teacher Resources',items:[['Lesson Plans',true],['Chatboards',true],['Teaching Jobs',true],['Classroom Management',true],['Printables',true],['Professional Development',true],['Teacher Humor',true]]},
+    'my-account':{title:'My Account',items:[['Profile *',false],['Organization *',false],['Billing **',false],['Notifications *',false],['Preferences *',false],['Help *',false],['Sign Out',true]]}
   };
   const dropdowns=[...document.querySelectorAll('[data-dropdown]')].map(trigger=>{const key=trigger.dataset.dropdown,config=menuSets[key];config.items=config.items.map(([label,available,current])=>({label,available,current,href:label==='Schools / Jobsites'?hrefs.school:hrefs.workspace}));return new NavbarDropdown(trigger,config)});
   document.addEventListener('click',event=>{if(!(event.target instanceof Element)||!event.target.closest('.tnet-navbar-dropdown'))dropdowns.forEach(dropdown=>dropdown.close())});
