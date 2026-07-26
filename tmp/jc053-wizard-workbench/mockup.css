@@ -140,9 +140,9 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card .stepper{margin-top:44px}
 .tnet-navbar-dropdown{display:inline-block;position:relative}
 .tnet-navbar-dropdown>button{background:transparent;border:0;border-radius:0;color:inherit;cursor:pointer;font:inherit;padding:8px 0}
-.tnet-navbar-dropdown-menu{background:#fff;border:0;border-radius:11px;box-shadow:0 12px 28px rgba(27,42,76,.16);box-sizing:border-box;min-width:250px;padding:8px;position:absolute;left:-20px;right:auto;top:calc(100% + 20px);z-index:5}
+.tnet-navbar-dropdown-menu{background:#fff;border:0;border-radius:11px;box-shadow:0 12px 28px rgba(27,42,76,.16);box-sizing:border-box;min-width:250px;overflow:hidden;padding:8px;position:absolute;left:-20px;right:auto;top:calc(100% + 20px);z-index:5}
 .tnet-navbar-dropdown-menu::before{background:var(--primary);border-radius:11px 11px 0 0;content:"";height:2px;left:0;position:absolute;right:0;top:0}
-.tnet-navbar-dropdown-header{border-bottom:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:800;line-height:1.25;padding:8px 17px 10px}
+.tnet-navbar-dropdown-header{border-bottom:0;color:var(--ink);font-size:13px;font-weight:800;line-height:1.25;padding:8px 17px 10px}
 .tnet-navbar-dropdown-item{align-items:center;border-radius:5px;color:var(--ink);display:flex;font-size:12px;font-weight:700;gap:10px;line-height:1.25;min-height:36px;padding:6px 10px 6px 17px;white-space:nowrap}
 .tnet-jobs-app-nav .tnet-navbar-dropdown-item{font-size:12px;font-weight:700;padding:6px 10px 6px 17px}
 .application-card .tnet-jobs-app-topbar .tnet-jobs-app-nav .tnet-navbar-dropdown-item{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:12px;font-weight:700}
