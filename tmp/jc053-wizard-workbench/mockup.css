@@ -147,6 +147,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .tnet-navbar-dropdown-item.is-unavailable{color:#8a95aa;cursor:default}
 .tnet-navbar-dropdown-legend{border-top:1px solid var(--line);color:#8a95aa;display:flex;flex-direction:column;font-size:10px;gap:2px;margin-top:4px;padding:6px 10px 2px}
 .tnet-jobs-employer-app-account .tnet-navbar-dropdown-menu{right:0}
+.application-card .tnet-jobs-app-topbar{overflow:visible;position:relative;z-index:10}
 .tnet-choice-separator{align-items:center;display:flex;flex-direction:column;gap:0;margin:14px 0}
 .tnet-choice-separator::before,.tnet-choice-separator::after{background:var(--line);content:"";flex:1;width:1px}
 .tnet-choice-separator__label{align-items:center;background:#fff;border:1px solid var(--line);border-radius:50%;color:var(--muted);display:flex;flex:0 0 34px;font-size:11px;justify-content:center;width:34px}
