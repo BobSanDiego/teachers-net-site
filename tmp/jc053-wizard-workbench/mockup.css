@@ -94,6 +94,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   z-index:0;
 }
 .application-card .stepper li.is-active::after{background:var(--primary)}
+.application-card .stepper li:last-child::after{display:none}
 .application-card .stepper li span{
   align-items:center;
   background:#fff;
