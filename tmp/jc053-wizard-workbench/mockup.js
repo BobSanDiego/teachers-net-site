@@ -3,6 +3,23 @@
     ['step-01-first-touch','Step 1 — First touch'],['step-01-school-selected','Step 1 — School selected'],['step-01-nav-back','Step 1 — Nav-back selected'],['step-01-add-physical-us','Step 1 — Add Physical U.S.'],['step-01-add-international','Step 1 — Add International'],['step-01-add-multiple-locations','Step 1 — Add Multiple Locations'],['step-01-add-additional-info','Step 1 — Additional Information'],['step-02-job-basics','Step 2 — Job Basics'],['step-03-job-description','Step 3 — Job Description'],['step-04-application-process','Step 4 — Application Process'],['step-05-review-publish','Step 5 — Review & Publish']
   ];
   const select=document.querySelector('#view-select'), status=document.querySelector('#view-status'), panel=document.querySelector('#step-01-nav-back'), placeholder=document.querySelector('#placeholder');
+  class WizardStepper {
+    constructor(root,{steps,activeStep,states}){this.root=root;this.steps=steps;this.activeStep=activeStep;this.states=states}
+    render(){
+      this.root.replaceChildren(...this.steps.map((step,index)=>{
+        const state=this.states[index]||'is-upcoming';
+        const item=document.createElement('li'); item.className=state; item.dataset.state=state;
+        const marker=document.createElement('span'); marker.textContent=String(index+1); marker.setAttribute('aria-hidden','true');
+        const label=document.createElement('strong'); label.textContent=step.label;
+        item.append(marker,label); return item;
+      }));
+    }
+  }
+  new WizardStepper(document.querySelector('[data-wizard-stepper]'),{
+    steps:[{label:'School / Jobsite'},{label:'Job Basics'},{label:'Job Description'},{label:'Application Process'},{label:'Review & Publish'}],
+    activeStep:1,
+    states:['is-current','is-upcoming','is-upcoming','is-upcoming','is-upcoming']
+  }).render();
   views.forEach(([id,label])=>{const o=document.createElement('option');o.value=id;o.textContent=label;o.disabled=id!=='step-01-nav-back';select.append(o)});
   function render(){const id=location.hash.slice(1)||'step-01-nav-back';const implemented=id==='step-01-nav-back';select.value=implemented?id:'step-01-nav-back';status.textContent=id;panel.hidden=!implemented;placeholder.hidden=implemented;placeholder.querySelector('p').textContent=implemented?'':'This view is registered for later authority work and is intentionally not implemented.';document.querySelector('#previous-view').href='#step-01-nav-back';document.querySelector('#next-view').href='#step-01-school-selected';}
   select.addEventListener('change',()=>{location.hash=select.value});window.addEventListener('hashchange',render);render();

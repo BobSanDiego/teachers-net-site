@@ -93,7 +93,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   width:calc(100% - 54px);
   z-index:0;
 }
-.application-card .stepper li.is-active::after{background:var(--primary)}
+.application-card .stepper li.is-current::after{background:var(--primary)}
 .application-card .stepper li:last-child::after{display:none}
 .application-card .stepper li span{
   align-items:center;
@@ -110,10 +110,11 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   width:34px;
   z-index:1;
 }
-.application-card .stepper li.is-active span{
+.application-card .stepper li.is-current span{
   background:var(--primary);
   border-color:var(--primary);
   color:#fff;
+  font-weight:700;
 }
 .application-card .stepper li strong{
   color:var(--ink);
@@ -125,7 +126,16 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   position:relative;
   z-index:1;
 }
-.application-card .stepper li.is-active strong{color:var(--primary)}
+.application-card .stepper li.is-current strong{color:var(--primary)}
+.application-card .stepper li.is-complete span{
+  background:#e7edff;
+  border-color:var(--primary);
+  color:var(--primary);
+  font-weight:700;
+}
+.application-card .stepper li.is-complete strong{color:var(--primary)}
+.application-card .stepper li.is-upcoming span{background:#eef0f3;border-color:#d9e0eb;color:var(--ink);font-weight:400}
+.application-card .stepper li.is-upcoming strong{color:var(--muted)}
 .application-card .panel .eyebrow{letter-spacing:.02em}
 .application-card .tnet-jobs-employer-operations-nav-count{min-width:20px;padding-top:1px;padding-bottom:1px;font-size:11px;line-height:1.4}
 .application-card .tnet-jobs-employer-operations-promotion button{display:block;margin-left:auto;margin-right:auto}
