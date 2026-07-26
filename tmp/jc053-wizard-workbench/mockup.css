@@ -147,7 +147,8 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .tnet-jobs-app-nav .tnet-navbar-dropdown-item{font-size:12px;font-weight:700;padding:6px 10px 6px 17px}
 .application-card .tnet-jobs-app-topbar .tnet-jobs-app-nav .tnet-navbar-dropdown-item{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:12px;font-weight:700}
 .application-card .tnet-jobs-app-topbar .tnet-jobs-app-nav .tnet-navbar-dropdown>button{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;font-weight:700;padding-bottom:4px}
-.tnet-navbar-dropdown-item:hover,.tnet-navbar-dropdown-item:focus{background:#f5f8ff;outline:0}
+.tnet-navbar-dropdown-item:hover{background:#f5f8ff;outline:0}
+.tnet-navbar-dropdown-item:focus{background:transparent;outline:2px solid #9eb2ed;outline-offset:-2px}
 .tnet-navbar-dropdown-item.is-current{color:var(--primary);font-weight:700}
 .tnet-navbar-dropdown-item.is-unavailable{color:#8a95aa;cursor:default}
 .tnet-navbar-dropdown-item-icon{color:currentColor;display:inline-flex;flex:0 0 16px;height:16px;width:16px}
