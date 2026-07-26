@@ -20,6 +20,32 @@
     activeStep:1,
     states:['is-current','is-upcoming','is-upcoming','is-upcoming','is-upcoming']
   }).render();
+  class NavbarDropdown {
+    constructor(trigger,config){
+      this.config=config; this.wrapper=document.createElement('span'); this.wrapper.className='tnet-navbar-dropdown';
+      this.button=document.createElement('button'); this.button.type='button'; this.button.className=trigger.className; this.button.innerHTML=trigger.innerHTML;
+      this.button.setAttribute('aria-haspopup','menu'); this.button.setAttribute('aria-expanded','false');
+      trigger.replaceWith(this.wrapper); this.wrapper.append(this.button);
+      this.menu=document.createElement('div'); this.menu.className='tnet-navbar-dropdown-menu'; this.menu.setAttribute('role','menu'); this.menu.hidden=true;
+      config.items.forEach(item=>{const el=document.createElement(item.available?'a':'span'); el.className='tnet-navbar-dropdown-item'+(item.current?' is-current':'')+(item.available?'':' is-unavailable'); el.textContent=item.label; el.setAttribute('role','menuitem'); if(item.available){el.href=item.href}else{el.setAttribute('aria-disabled','true')} this.menu.append(el)});
+      if(config.items.some(item=>!item.available)){const legend=document.createElement('div');legend.className='tnet-navbar-dropdown-legend';legend.innerHTML='<span>* Planned for V1</span><span>** Planned after V1</span>';this.menu.append(legend)}
+      this.wrapper.append(this.menu); this.button.addEventListener('click',()=>this.toggle()); this.button.addEventListener('keydown',event=>this.onTriggerKey(event)); this.menu.addEventListener('keydown',event=>this.onMenuKey(event));
+    }
+    toggle(){this.menu.hidden?this.open():this.close()}
+    open(){dropdowns.forEach(dropdown=>{if(dropdown!==this)dropdown.close()});this.menu.hidden=false;this.button.setAttribute('aria-expanded','true');const first=this.menu.querySelector('[role="menuitem"]');first?.focus()}
+    close(returnFocus=false){this.menu.hidden=true;this.button.setAttribute('aria-expanded','false');if(returnFocus)this.button.focus()}
+    onTriggerKey(event){if(event.key==='Enter'||event.key===' '||event.key==='ArrowDown'){event.preventDefault();this.open()}else if(event.key==='Escape'){this.close(true)}}
+    onMenuKey(event){const items=[...this.menu.querySelectorAll('[role="menuitem"]')],index=items.indexOf(document.activeElement);if(event.key==='ArrowDown'){event.preventDefault();items[(index+1)%items.length].focus()}else if(event.key==='ArrowUp'){event.preventDefault();items[(index-1+items.length)%items.length].focus()}else if(event.key==='Escape'){event.preventDefault();this.close(true)}else if(event.key==='Tab'){this.close()}}
+  }
+  const hrefs={workspace:'#step-01-nav-back',school:'#step-01-school-selected'};
+  const menuSets={
+    'my-jobs':{items:[['My Jobs',true,true],['Post a Job',true],['Schools / Jobsites',true],['Candidates **',false],['Saved Searches **',false],['Billing **',false],['Employer Dashboard **',false]]},
+    'career-resources':{items:[['Browse Jobs',true],['Salary Explorer **',false],['Resume Advice *',false],['Interview Resources *',false],['Career Articles *',false],['Job Alerts **',false]]},
+    'teacher-resources':{items:[['Lesson Plans',true],['Chatboards',true],['Teaching Jobs',true],['Classroom Management',true],['Printables',true],['Professional Development',true],['Teacher Humor',true]]},
+    'my-account':{items:[['Profile *',false],['Organization *',false],['Billing **',false],['Notifications *',false],['Preferences *',false],['Help *',false],['Sign Out',true]]}
+  };
+  const dropdowns=[...document.querySelectorAll('[data-dropdown]')].map(trigger=>{const key=trigger.dataset.dropdown,config=menuSets[key];config.items=config.items.map(([label,available,current])=>({label,available,current,href:label==='Schools / Jobsites'?hrefs.school:hrefs.workspace}));return new NavbarDropdown(trigger,config)});
+  document.addEventListener('click',event=>{if(!(event.target instanceof Element)||!event.target.closest('.tnet-navbar-dropdown'))dropdowns.forEach(dropdown=>dropdown.close())});
   views.forEach(([id,label])=>{const o=document.createElement('option');o.value=id;o.textContent=label;o.disabled=id!=='step-01-nav-back';select.append(o)});
   function render(){const id=location.hash.slice(1)||'step-01-nav-back';const implemented=id==='step-01-nav-back';select.value=implemented?id:'step-01-nav-back';status.textContent=id;panel.hidden=!implemented;placeholder.hidden=implemented;placeholder.querySelector('p').textContent=implemented?'':'This view is registered for later authority work and is intentionally not implemented.';document.querySelector('#previous-view').href='#step-01-nav-back';document.querySelector('#next-view').href='#step-01-school-selected';}
   select.addEventListener('change',()=>{location.hash=select.value});window.addEventListener('hashchange',render);render();

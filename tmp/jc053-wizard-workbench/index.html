@@ -24,10 +24,10 @@
       <span class="tnet-jobs-app-brand-divider" aria-hidden="true"></span>
       <span class="tnet-jobs-app-brand-label">Job Center</span>
       <nav class="tnet-jobs-app-nav" aria-label="Employer navigation">
-        <a href="#step-01-nav-back">My Jobs <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
-        <a href="#step-01-nav-back">Career Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a><a class="tnet-jobs-employer-nav-final-link" href="#step-01-nav-back">Teacher Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+        <a data-dropdown="my-jobs" href="#step-01-nav-back">My Jobs <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+        <a data-dropdown="career-resources" href="#step-01-nav-back">Career Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a><a class="tnet-jobs-employer-nav-final-link" data-dropdown="teacher-resources" href="#step-01-nav-back">Teacher Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
       </nav>
-      <div class="tnet-jobs-app-account tnet-jobs-employer-app-account"><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><button class="tnet-jobs-employer-app-notification" type="button" aria-label="3 notifications"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><b aria-hidden="true">3</b></button><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><a class="tnet-jobs-employer-app-account-link" href="#step-01-nav-back" aria-label="My Account">My Account <span aria-hidden="true" class="tnet-jobs-employer-app-avatar-chevron"></span></a></div>
+      <div class="tnet-jobs-app-account tnet-jobs-employer-app-account"><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><button class="tnet-jobs-employer-app-notification" type="button" aria-label="3 notifications"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><b aria-hidden="true">3</b></button><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><a data-dropdown="my-account" class="tnet-jobs-employer-app-account-link" href="#step-01-nav-back" aria-label="My Account">My Account <span aria-hidden="true" class="tnet-jobs-employer-app-avatar-chevron"></span></a></div>
       </div>
     </header>
 
@@ -51,7 +51,7 @@
         <article class="panel" id="step-01-nav-back" data-view="step-01-nav-back">
           <div class="panel-heading"><div><p class="eyebrow">Step 1 of 5</p><h2>Choose a School / Jobsite</h2><p>Select and existing school or jobsite, or add a new one.<br>You can always manage your schools or jobsites from your workspace.</p></div></div>
           <div class="choice-grid"><div class="selected-card"><div class="selected-icon">⌂✓</div><div><strong>Selected School / Jobsite</strong><select id="selected-school" name="selected-school" aria-label="Selected School / Jobsite"><option>Los Angeles Unified School District (LAUSD)</option></select><div class="school-detail"><strong>Los Angeles Unified School District (LAUSD)</strong><span>⌖ Los Angeles, CA</span><span>✉ jobs@lausd.net　·　(213) 241-1000</span><span class="checks">● Website　● Logo　● Contact Info　● Defaults</span><button class="change-button" type="button">Change School / Jobsite</button></div></div></div>
-          <div class="or-divider"><span>OR</span></div>
+          <div class="tnet-choice-separator" aria-hidden="true"><span class="tnet-choice-separator__label">OR</span></div>
           <div class="add-card"><span class="add-icon">⌂＋</span><span><strong>Add New School / Jobsite</strong><small>Add a school or jobsite that you don't<br>see in your list.</small><button class="add-button" type="button">Add New School / Jobsite</button></span></div></div>
           <aside class="info-callout"><strong>ⓘ　Every job belongs to a School or Jobsite.</strong><p>　　　 Once created, you'll be able to reuse it for future listings.</p></aside>
         </article>

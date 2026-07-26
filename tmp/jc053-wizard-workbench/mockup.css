@@ -137,5 +137,19 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card .stepper li.is-upcoming span{background:#eef0f3;border-color:#d9e0eb;color:var(--ink);font-weight:400}
 .application-card .stepper li.is-upcoming strong{color:var(--muted)}
 .application-card .panel .eyebrow{letter-spacing:.02em}
+.application-card .stepper{margin-top:44px}
+.tnet-navbar-dropdown{display:inline-block;position:relative}
+.tnet-navbar-dropdown>button{background:transparent;border:0;border-radius:0;color:inherit;cursor:pointer;font:inherit;padding:8px 0}
+.tnet-navbar-dropdown-menu{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 24px rgba(27,42,76,.14);min-width:190px;padding:6px;position:absolute;right:0;top:calc(100% + 4px);z-index:5}
+.tnet-navbar-dropdown-item{border-radius:5px;color:var(--ink);display:block;font-size:12px;line-height:1.25;padding:8px 10px;white-space:nowrap}
+.tnet-navbar-dropdown-item:hover,.tnet-navbar-dropdown-item:focus{background:#f5f8ff;outline:0}
+.tnet-navbar-dropdown-item.is-current{color:var(--primary);font-weight:700}
+.tnet-navbar-dropdown-item.is-unavailable{color:#8a95aa;cursor:default}
+.tnet-navbar-dropdown-legend{border-top:1px solid var(--line);color:#8a95aa;display:flex;flex-direction:column;font-size:10px;gap:2px;margin-top:4px;padding:6px 10px 2px}
+.tnet-jobs-employer-app-account .tnet-navbar-dropdown-menu{right:0}
+.tnet-choice-separator{align-items:center;display:flex;flex-direction:column;gap:0;margin:14px 0}
+.tnet-choice-separator::before,.tnet-choice-separator::after{background:var(--line);content:"";flex:1;width:1px}
+.tnet-choice-separator__label{align-items:center;background:#fff;border:1px solid var(--line);border-radius:50%;color:var(--muted);display:flex;flex:0 0 34px;font-size:11px;justify-content:center;width:34px}
+.tnet-choice-card-title,.choice-grid .selected-card>div:nth-child(2)>strong:first-child,.choice-grid .add-card>span:nth-child(2)>strong{font-size:14px;font-weight:600;line-height:1.3}
 .application-card .tnet-jobs-employer-operations-nav-count{min-width:20px;padding-top:1px;padding-bottom:1px;font-size:11px;line-height:1.4}
 .application-card .tnet-jobs-employer-operations-promotion button{display:block;margin-left:auto;margin-right:auto}
