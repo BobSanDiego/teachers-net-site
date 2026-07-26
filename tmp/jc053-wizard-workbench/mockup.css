@@ -87,27 +87,27 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   background:var(--line);
   content:"";
   height:1px;
-  left:calc(50% + 22px);
+  left:calc(50% + 27px);
   position:absolute;
-  top:12px;
-  width:calc(100% - 44px);
+  top:17px;
+  width:calc(100% - 54px);
   z-index:0;
 }
 .application-card .stepper li.is-active::after{background:var(--primary)}
 .application-card .stepper li:last-child::after{display:none}
 .application-card .stepper li span{
   align-items:center;
-  background:#fff;
+  background:#eef0f3;
   border:1px solid #c6cfdd;
   border-radius:50%;
   color:var(--ink);
   display:grid;
-  flex:0 0 24px;
+  flex:0 0 34px;
   font-size:12px;
-  height:24px;
+  height:34px;
   justify-content:center;
   position:relative;
-  width:24px;
+  width:34px;
   z-index:1;
 }
 .application-card .stepper li.is-active span{
