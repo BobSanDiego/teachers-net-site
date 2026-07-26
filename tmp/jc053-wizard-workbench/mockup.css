@@ -87,10 +87,10 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   background:var(--line);
   content:"";
   height:1px;
-  left:50%;
+  left:calc(50% + 22px);
   position:absolute;
   top:12px;
-  width:100%;
+  width:calc(100% - 44px);
   z-index:0;
 }
 .application-card .stepper li.is-active::after{background:var(--primary)}
