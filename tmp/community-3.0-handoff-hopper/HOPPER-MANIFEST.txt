@@ -1,0 +1,38 @@
+COMMUNITY 3.0 HANDOFF HOPPER
+
+Purpose: bounded local context bundle for the next ChatGPT/Codex session.
+Source project: /home/bobreap/projects/teachers-net-site
+Prepared for: Community 3.0
+
+15 local guidance documents copied from current authority sources:
+1. AGENTS.md
+2. documentation-governance.md
+3. codex-direction-manual.md
+4. codex-ticket-discipline.md
+5. plugin-architecture.md
+6. decision-log.md
+7. engineering-handoff-template.md
+8. chatgpt-startup-prompt.md
+9. project-cursor.md
+10. engineering-handoff.md
+11. roadmap.md
+12. teacher-group-id-resolution.md
+13. semantic-community-communications-platform-working-draft.md
+14. semantic-platform-project-approach-execution-plan.docx
+15. community-layout-lab001-README.md
+
+Additional handoff materials:
+- COMMUNITY-3.0-SHUTDOWN-HANDOFF.txt
+- STARTUP-PROMPT.txt
+
+Google Drive operational context:
+- Engineering Director Playbook:
+  https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ
+- Community 3.0 Engineering Handoff:
+  https://docs.google.com/document/d/1oxqqgFHkPwrJQpQ563-hho0jPf_MWrTEPE_qCJa-BeY
+- Supporting current architecture overview:
+  https://docs.google.com/document/d/1-6alUzfP9b5xpEmfORWa_or0B2kPW6oUqZfX0Gqoe6A
+
+Use the local bundle for repository facts and durable architecture. Use the
+Playbook and Community 3.0 Engineering Handoff for operational startup state.
+Do not treat proposals as implemented.

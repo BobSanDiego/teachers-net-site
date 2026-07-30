@@ -1,0 +1,27 @@
+Project: Teachers.Net — Community 3.0
+
+Retrieve and read these exact Google Drive documents in order:
+
+1. Engineering Director Playbook
+   https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ
+2. Community 3.0 Engineering Handoff
+   https://docs.google.com/document/d/1oxqqgFHkPwrJQpQ563-hho0jPf_MWrTEPE_qCJa-BeY
+
+Use the local handoff hopper at:
+/home/bobreap/projects/teachers-net-site/tmp/community-3.0-handoff-hopper
+
+Read the local Project Cursor, Engineering Handoff, roadmap, canonical
+Semantic/Community/Communications working draft, and Project Approach and
+Execution Plan from that bundle when the ticket requires deeper context.
+Adopt the Google Drive Handoff as current operational state and the local
+repository documents as durable architecture and roadmap authority. Do not
+reconstruct missing state from conversational memory.
+
+Reply with only:
+- current phase
+- current ticket
+- last completed milestone
+- next five planned tickets
+- current blockers
+
+Then stop and wait for my instruction.

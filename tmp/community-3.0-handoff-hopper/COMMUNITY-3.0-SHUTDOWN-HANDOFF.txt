@@ -1,0 +1,59 @@
+DOCUMENTATION-ALIGNMENT — Community 3.0 Session Shutdown Handoff
+
+Project: Teachers.Net — Community 3.0
+
+Objective
+
+Prepare the repository for the next ChatGPT/Codex session by preserving durable
+knowledge discovered and approved during the current session.
+
+Required work
+
+1. Identify NEW knowledge from the current ChatGPT session, not merely facts
+   already present in the repository. Look specifically for newly approved:
+   - engineering, product, UX, and terminology decisions;
+   - workflow, verification, and methodology decisions;
+   - documentation and handoff-process decisions;
+   - architecture, identity, and implementation invariants;
+   - Community 3.0 or teacher-group decisions.
+
+2. Compare each candidate decision against the authoritative repository set:
+   - Community 3.0 Project Cursor;
+   - Community 3.0 Engineering Handoff;
+   - teacher-group identity record;
+   - relevant roadmap or milestone history;
+   - architecture and product authorities;
+   - UX and design authorities;
+   - search contracts, ADRs, and decision logs;
+   - applicable Google Drive authorities.
+
+3. Promote only durable, approved decisions into the most appropriate existing
+   canonical document. Evolve existing authorities before creating new ones.
+   Create a new authority only when inspection proves no canonical location is
+   appropriate.
+
+4. Synchronize corresponding Google Drive documents only after repository
+   authorities are updated and current facts are verified. Preserve semantic
+   alignment; do not claim synchronization without connector readback.
+
+5. Verify that repository and Drive authorities are consistent and that no
+   duplicate, stale, or contradictory authority has been introduced.
+
+6. Preserve unrelated working-tree changes. Do not modify implementation,
+   product behavior, fixtures, or design assets.
+
+7. Commit and push documentation-only changes with a focused message. If no
+   durable new knowledge is found, make no commit and report that result.
+
+Verification and report
+
+- list the new session knowledge considered;
+- distinguish already documented knowledge from genuinely new decisions;
+- list each canonical document updated and why;
+- report any unresolved contradiction or missing Google Drive URL;
+- run git diff --check;
+- confirm no implementation files changed;
+- report commit hash and push status, if applicable.
+
+Stop after documentation alignment, verification, and handoff reporting. Do not
+begin the next implementation task.
