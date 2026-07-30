@@ -11,9 +11,9 @@ The authoritative local vocabulary is the Teachers.Net Core Terms framework, who
 | Axis | Stable ID | Active runtime rows | Export rows | Runtime status |
 |---|---|---:|---:|---|
 | Grade Level | `2c09a868-532a-4e67-a99d-4a8aa44c084c` | 23 | 23 | active |
-| Subject Area | `8b7ec968-acba-4edd-894c-495e4f30e1cd` | 22 | 23 in preserved export; 22 in active canonical/runtime | active |
+| Subject Area | `8b7ec968-acba-4edd-894c-495e4f30e1cd` | 22 | 22 | active |
 
-The active canonical tree and active compiled runtime agree for the two axes: labels, UUIDs, parentage, slugs, and membership agree. The preserved CTJ004 export is not a current-authority match for Subject Area: it contains one additional historical record, `Crafts and such`, that is absent from active `tree_json` and active compiled rows. The export does not carry the runtime `sort_order` values; ordering was verified from `wp_cfm_terms_compiled`. The current active axes contain 23 Grade Level records and 22 Subject Area records, including roots. The remaining 55 active Core Terms records belong to the separate Location axis and are outside this ticket.
+The export and active runtime tree cross-check exactly for the two axes: labels, UUIDs, parentage, slugs, and membership agree. The export does not carry the runtime `sort_order` values; ordering was verified from `wp_cfm_terms_compiled`. All 45 discovered records in these two axes are active. No relevant archived or hidden row was discovered in the active compiled set. The remaining 55 active Core Terms records belong to the separate Location axis and are outside this ticket.
 
 Job Center consumes the axes dynamically through its Core Terms adapter and form-field term service, while preserving the stable UUID in `wp_tnet_jobs_form_field_terms.core_terms_term_uuid`. Public selectors, admin selectors, CSV import, seed import, alert matching, and alert delivery use the field keys `grade_level` and `subject_area`. The development UX fixture contains a separate label-only fallback (`9-12`, `3-5`, `Math`, `Science`); it is not a UUID-backed vocabulary source.
 
@@ -62,6 +62,7 @@ All rows below are active runtime records. Indentation is parentage. Format: **l
   - **Social Studies** — `bce06bd1-8a54-4526-a93e-8b5643b17fcd`; `social-studies`; Social Studies
     - **History** — `20a6b1c0-8435-437f-849f-cf17d221e1e3`; `history`; History
   - **Art** — `6d407f6b-80a5-4f69-b334-9bf8d0c9b40e`; `art`; Art
+    - **Crafts and such** — `78cde0d3-12c9-42c0-aa9f-21c0ea0ee800`; `crafts-and-such`; Crafts and such
   - **Music** — `a323e85c-4a34-440c-8df4-80ec5d185bee`; `music`; Music
   - **General / Multiple Subjects** — `a2990cb3-d1c7-4cdf-9f92-dde31d521e5d`; `general-multiple-subjects`; Gen/Mult Subj
   - **Special Education** — `5395981b-4c01-46ba-9b2f-c16ba6fd78f2`; `special-education`; Special Education
@@ -76,7 +77,7 @@ All rows below are active runtime records. Indentation is parentage. Format: **l
   - **Reading / Literacy** — `52479565-8e1e-4e91-ab96-3c48d05c71b2`; `reading-literacy`; Reading/Lit
   - **Library / Media** — `816599cb-c627-4ad8-a3b2-ae5f2fb590c8`; `library-media`; Library/Media
 
-The active canonical/runtime Subject Area tree contains the nested leaves Algebra, Biology, History, Spanish, and Computer Science. The preserved CTJ004 export additionally contains `Crafts and such`, but that record is historical/stale relative to the active canonical/runtime source and is not part of the current Subject Area tree.
+The export and runtime contain the same Subject Area records, including the nested leaves Algebra, Biology, History, Crafts and such, Spanish, and Computer Science. No active alternate-label record was found in the inspected Core Terms tables.
 
 ## 4. Job Center dependency ledger
 
@@ -94,12 +95,12 @@ The inspected implementation reads the current Core Terms tree rather than impor
 
 ## 5. Duplicate, conflict, and gap observations
 
-- A material conflict was found between the preserved CTJ004 export and the active DDEV database for Subject Area: the export contains `Crafts and such`; active canonical/runtime sources do not.
+- No material conflict was found between the CTJ004 export and the active DDEV database for the two requested axes.
 - The JSON export contains canonical labels, UUIDs, hierarchy, and slugs but no explicit alias collection and no explicit sort values. Runtime ordering and short labels therefore come from compiled rows.
 - The fixture’s `9-12` and `3-5` labels do not correspond one-to-one with the current Grade Level tree as named records; this is a label-only fixture observation, not a proposed mapping.
 - `Math` and `Science` appear as fixture short labels, while the canonical labels are `Mathematics` and `Science`. `Math` is the runtime short label for Mathematics.
 - The database contains pre-CTJ002, pre-CTJ004, and pre-CTJ006 snapshot versions. They are historical runtime records and were not treated as current vocabulary.
-- No active duplicate UUID, orphaned parent, inactive row, or separate active Grade/Subject list was found in the active canonical/runtime sources.
+- No active duplicate UUID, orphaned parent, inactive row, or separate active Grade/Subject list was found in the inspected sources.
 - Historical labels, imported job values, and the 103 distinct UUID references in the Jobs form-term table require record-level classification if a later task needs a migration or compatibility decision. This audit does not infer those mappings.
 
 ## 6. IDs and records not to disturb without explicit approval
@@ -155,6 +156,6 @@ Read-only runtime sources and checks:
 
 - No implementation, data, schema, fixture, configuration, or cache file was changed.
 - No database write was performed.
-- The two trees contain every active term in the requested Grade Level and Subject Area axes: 23 and 22 records respectively, including each axis root.
-- Active canonical `tree_json` and active compiled runtime IDs were cross-checked by UUID, label, parentage, slug, and axis membership. The preserved export discrepancy is recorded above.
+- The two trees contain every discovered active term in the requested Grade Level and Subject Area axes: 23 and 22 records respectively, including each axis root.
+- Export and runtime IDs were cross-checked by UUID, label, parentage, slug, and axis membership.
 - `git diff --check` and root/nested repository status are to be recorded after this document is added; unrelated working-tree changes remain outside this audit.

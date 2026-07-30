@@ -4,17 +4,22 @@ Purpose: exact local Markdown copies for cross-session handoff and ChatGPT conte
 Source of truth: repository files under /home/bobreap/projects/teachers-net-site
 Active-copy rule: all current files are directly on this hopper root for one drag-and-drop selection.
 Archive rule: before each refresh, active files move to archive/ with a UTC timestamp-versioned filename.
-Current archive batch: 20260730T124703Z__*
+Current archive batch: 20260730T125748Z__*
 
 Active source path | Active hopper copy
 docs/community-3.0/CT-JC001-release-vocabulary-baseline-audit.md | CT-JC001-release-vocabulary-baseline-audit.md
-docs/community-3.0/CT-JC002-instructional-job-corpus-coverage-audit.md | CT-JC002-instructional-job-corpus-coverage-audit.md
-docs/community-3.0/CT-JC003-external-market-evidence-collection.md | CT-JC003-external-market-evidence-collection.md
 docs/community-3.0/CT-JC004-v1-vocabulary-comparative-analysis.md | CT-JC004-v1-vocabulary-comparative-analysis.md
-docs/documentation-governance.md | documentation-governance.md
-docs/codex-ticket-discipline.md | codex-ticket-discipline.md
+docs/community-3.0/CT-JC004R-false-core-term-source-diagnostic.md | CT-JC004R-false-core-term-source-diagnostic.md
 
-Archived batch files:
+Archived batch files from this refresh:
+archive/20260730T125748Z__CT-JC001-release-vocabulary-baseline-audit.md
+archive/20260730T125748Z__CT-JC002-instructional-job-corpus-coverage-audit.md
+archive/20260730T125748Z__CT-JC003-external-market-evidence-collection.md
+archive/20260730T125748Z__CT-JC004-v1-vocabulary-comparative-analysis.md
+archive/20260730T125748Z__codex-ticket-discipline.md
+archive/20260730T125748Z__documentation-governance.md
+
+Earlier archive batch:
 archive/20260730T124703Z__CT-JC001-release-vocabulary-baseline-audit.md
 archive/20260730T124703Z__CT-JC002-instructional-job-corpus-coverage-audit.md
 archive/20260730T124703Z__CT-JC003-external-market-evidence-collection.md

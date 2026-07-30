@@ -37,6 +37,7 @@ These grouped rows represent all current Grade Level records and their stable ch
 | Science | Science; General Science; STEM | Direct repeated match | Keep unchanged | Broad category recurs across state and market evidence. |
 | Social Studies | Social Studies; Social Science; Humanities | Broad overlapping category | Keep unchanged | Covers recurring broad family. |
 | Art | Art; Visual Arts; Fine Arts; Arts | Direct broad match | Keep unchanged | Repeated external category. |
+| Crafts and such | arts/crafts examples | Weak/narrow local label | Keep for compatibility only | No evidence requires exposing or expanding it. |
 | Music | Music; chorus; instrumental | Direct broad match | Keep unchanged | Subtypes remain future children. |
 | General / Multiple Subjects | General; Multiple Subjects; Core Subjects; General Studies | Direct broad match | Keep unchanged | Repeated cross-source category. |
 | Special Education | Special Education; Students with Disabilities; Learning Support | Direct broad match | Keep unchanged | Repeated instructional/support-content boundary. |
@@ -100,6 +101,7 @@ Existing narrow children are not repeated in this shallow presentation tree. The
 | All current Grade Level records | Keep unchanged |
 | Subject Area; English Language Arts; Mathematics; Science; Social Studies; Art; Music; General / Multiple Subjects; Special Education; English Learners / ESL; World Languages; Technology; Career Technical Education; Physical Education / Health; Reading / Literacy | Keep unchanged |
 | Algebra; Biology; History; Spanish; Computer Science | Future child term only |
+| Crafts and such | Keep for compatibility only |
 | Counseling; Library / Media | Future separate axis |
 
 No current term is classified as Candidate retirement after V1, Keep/add alias, Keep/rename display label, or Engineering Director decision required based solely on CT-JC001/003 evidence. Candidate additions apply only to absent broad categories and do not authorize population.
@@ -142,6 +144,7 @@ The following one-row-per-record inventory makes the decision classification exp
 | Social Studies | Keep unchanged |
 | History | Future child term only |
 | Art | Keep unchanged |
+| Crafts and such | Keep for compatibility only |
 | Music | Keep unchanged |
 | General / Multiple Subjects | Keep unchanged |
 | Special Education | Keep unchanged |
