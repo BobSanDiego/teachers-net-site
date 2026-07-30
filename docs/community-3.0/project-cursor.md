@@ -6,11 +6,11 @@ Maintenance
 
 ## Current Phase
 
-Post-launch corrective stabilization of the legacy teacher-group subsystem.
+Post-reconciliation planning package complete; implementation remains unauthorized.
 
 ## Current Milestone
 
-Completed correction of the fossilized `path_id == group_id` assumption. The
+Completed C3-RR001 reconciliation package and prior correction of the fossilized `path_id == group_id` assumption. The
 AI in Education board demonstrated that a chatboard `path_id` can differ from
 its teacher `group_id` (`241` versus `227`). The correction resolves teacher
 groups through `local_path -> group_id` and preserves `path_id` for chatboard,
@@ -30,10 +30,19 @@ header star, sidebar membership/count/avatars, group settings, email-frequency
 reads and persistence, Chat Center counts, the divergent AI in Education board,
 and a legacy control board. Temporary diagnostics were removed before closure.
 
+## Reconciliation Status
+
+C3-RR001 is complete as a documentation-only package. It contains the
+capability catalog, current-state census, roadmap crosswalk, external research
+register, integrated M0-M9 roadmap, go-point readiness, and next-ticket queue.
+The package concludes NO-GO until the Engineering Director reviews it and
+explicitly authorizes a bounded M1 contract ticket.
+
 ## Next Decision
 
-No new group architecture or redesign is authorized by this correction. Reopen
-only through a focused Community 3.0 ticket.
+No new group architecture or redesign is authorized by this correction or by
+C3-RR001. The exact next decision is whether to approve or revise the
+reconciliation package and authorize bounded M1 work.
 
 ## Strategic Roadmap Alignment
 

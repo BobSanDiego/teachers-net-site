@@ -2,12 +2,13 @@
 
 ## 1. Current Phase
 
-Maintenance — completed teacher-group identity correction.
+Maintenance — C3-RR001 reconciliation package complete; implementation not authorized.
 
 ## 2. Current Ticket
 
-None. The corrective milestone is closed; do not begin a new feature from this
-handoff.
+C3-RR001 is complete as documentation-only work. The package is ready for
+Engineering Director review and concludes NO-GO pending an explicit bounded M1
+decision; do not begin implementation from this handoff.
 
 ## 3. Last Completed Milestone
 
@@ -80,9 +81,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Continue documentation-first convergence. Prepare the first planning package:
-authority matrix, glossary, meta-term audit plan, subscriber contract template,
-Portable View contract, selection-policy contract, bounded Job Center pilot,
-chatboard mapping cohort, open-decision register, ADR recommendations, and
-validation/stop conditions. Stop before code, schema, migration, production UI,
-taxonomy import, or communications delivery.
+Engineering Director review of the C3-RR001 package is the immediate priority.
+Resolve or explicitly accept the production mail/membership evidence gaps,
+external research questions, and M1 scope. Stop before code, schema, migration,
+production UI, taxonomy import, or communications delivery.
