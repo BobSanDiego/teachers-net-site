@@ -2,11 +2,12 @@
 
 ## 1. Current Phase
 
-Maintenance — C3-RR001 reconciliation package complete; implementation not authorized.
+Maintenance — C3-PLAN003 master plan and C3-RR001 reconciliation package complete; implementation not authorized.
 
 ## 2. Current Ticket
 
-C3-RR001 is complete as documentation-only work. The package is ready for
+C3-RR001 and C3-PLAN003 are complete as documentation-only work. The master
+plan is now the product authority above engineering roadmaps and tickets. The package is ready for
 Engineering Director review and concludes NO-GO pending an explicit bounded M1
 decision; do not begin implementation from this handoff.
 
@@ -82,6 +83,8 @@ design, exploratory concept, and deferred work.
 ## 10. Immediate Engineering Priorities
 
 Engineering Director review of the C3-RR001 package is the immediate priority.
-Resolve or explicitly accept the production mail/membership evidence gaps,
-external research questions, and M1 scope. Stop before code, schema, migration,
-production UI, taxonomy import, or communications delivery.
+Review and approve, revise, or reject the C3-PLAN003 master plan; resolve or
+explicitly accept the production mail/membership evidence gaps, external
+research questions, and M1 scope. Stop before code, schema, migration,
+production UI, taxonomy import, relationship activation, or communications
+delivery.

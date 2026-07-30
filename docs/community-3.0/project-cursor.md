@@ -10,7 +10,7 @@ Post-reconciliation planning package complete; implementation remains unauthoriz
 
 ## Current Milestone
 
-Completed C3-RR001 reconciliation package and prior correction of the fossilized `path_id == group_id` assumption. The
+Completed C3-RR001 reconciliation package, C3-PLAN003 master plan, and prior correction of the fossilized `path_id == group_id` assumption. The
 AI in Education board demonstrated that a chatboard `path_id` can differ from
 its teacher `group_id` (`241` versus `227`). The correction resolves teacher
 groups through `local_path -> group_id` and preserves `path_id` for chatboard,
@@ -38,11 +38,15 @@ register, integrated M0-M9 roadmap, go-point readiness, and next-ticket queue.
 The package concludes NO-GO until the Engineering Director reviews it and
 explicitly authorizes a bounded M1 contract ticket.
 
+C3-PLAN003 establishes `community-3.0-master-plan-v1.md` as the product
+authority above engineering roadmaps and tickets. It preserves all catalogued
+capabilities and keeps the current NO-GO implementation boundary.
+
 ## Next Decision
 
-No new group architecture or redesign is authorized by this correction or by
-C3-RR001. The exact next decision is whether to approve or revise the
-reconciliation package and authorize bounded M1 work.
+No new group architecture or redesign is authorized by this correction,
+C3-RR001, or C3-PLAN003. The exact next decision is whether to approve or
+revise the master plan and authorize bounded M1 work.
 
 ## Strategic Roadmap Alignment
 
