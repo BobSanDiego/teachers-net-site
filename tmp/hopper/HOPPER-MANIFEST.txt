@@ -1,24 +1,15 @@
-Current ticket: C3-RR001 Community 3.0 reconciliation and go-point package
+Current ticket: C3-PLAN003 Community 3.0 master plan and product authority
 
 Active project: tnet-3.0
 Active files are flat in this directory. Timestamped duplicate archives for
 this cycle are in archive/tnet-3.0/. The protected engineer-owned output.txt
-is excluded from all hopper operations. The generated output-*.txt report is
-separate and is included for handoff.
+is excluded from all hopper operations.
 
-Current cycle archive suffix: 260730212140
+Current-cycle archive suffix: 260730213232
 
 Active files:
-- HOPPER-INSTRUCTIONS.txt
 - HOPPER-MANIFEST.txt
-- community-3.0-capability-catalog-v1.md
-- community-3.0-current-state-census-v1.md
-- community-3.0-roadmap-crosswalk-v1.md
-- community-3.0-external-research-questions-v1.md
-- community-3.0-integrated-roadmap-v1.md
-- community-3.0-go-point-readiness-v1.md
-- community-3.0-next-ticket-queue-v1.md
-- community-3.0-reconciliation-package-index.md
+- community-3.0-master-plan-v1.md
 - project-cursor.md
 - engineering-handoff.md
-- output-260730212300.txt
+- output-260730213300.txt
