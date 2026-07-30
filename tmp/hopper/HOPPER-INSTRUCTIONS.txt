@@ -1,0 +1,36 @@
+STANDARD CODEX HOPPER PROCEDURE
+
+Standard directory:
+  \\teachers-net-site\\tmp\\hopper
+
+Use one shared hopper for every project. Keep active handoff files directly in
+the hopper root for one drag-and-drop selection.
+
+Project archives:
+  \\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\
+
+Before each refresh:
+1. Identify the active project.
+2. Move only that project's current active hopper files into its project
+   archive directory.
+3. Append a UTC timestamp to each archived filename using YYMMDDHHMMSS:
+   filename-YYMMDDHHMMSS.md
+4. Copy new or updated handoff files directly into the hopper root.
+5. Update HOPPER-MANIFEST.txt with source paths, active files, archive batch,
+   and protected-file exclusions.
+
+Protected file:
+  output.txt is engineer-owned. Never archive, edit, overwrite, rename, copy,
+  manifest, or report it. Leave it at its exact existing path.
+
+Verify that active files are flat, only the current project's files moved, the
+copies match their sources, protected files are untouched, and unrelated
+project files remain untouched.
+
+Every hopper-related post-ticket report must include:
+- a link to the standard hopper directory;
+- a separate bullet list of every modified file copied into the current hopper;
+- the project-specific archive directory used;
+- confirmation that output.txt was excluded and preserved.
+
+The repository remains the source of truth. Hopper files are handoff copies.

@@ -26,10 +26,13 @@ directory using a UTC timestamp-versioned filename. Then copy the new final
 files directly into the hopper root so all active files share one level for
 drag-and-drop. Update `HOPPER-MANIFEST.txt` with active paths and the archive
 batch, and link the hopper directory and copied files in the report. Do not
-copy non-Markdown website files under this default rule. Always exclude the
-engineer-owned `tmp/chatgpt-local-file-hopper/output.txt`: never archive,
-overwrite, rename, edit, copy, manifest, or report it as a generated hopper
-file; leave it at that exact path if present.
+copy non-Markdown website files under this default rule. Use the shared hopper
+`\\teachers-net-site\\tmp\\hopper\\` and archive only the active project's
+prior files under `\\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\`,
+with a trailing UTC `YYMMDDHHMMSS` timestamp before each extension. Always
+exclude the engineer-owned `output.txt`: never archive, overwrite, rename,
+edit, copy, manifest, or report it as a generated hopper file; leave it at its
+exact path if present.
 
 Every post-ticket report involving hopper file creation or refresh must link to
 the hopper directory and include a separate bullet list of every modified file

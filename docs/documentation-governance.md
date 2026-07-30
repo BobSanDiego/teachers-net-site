@@ -42,7 +42,7 @@ post-ticket report, first move every currently active hopper file into the
 hopper's `archive/` directory with a UTC timestamp-versioned filename. Then
 copy the new final files directly into the hopper root:
 
-`/home/bobreap/projects/teachers-net-site/tmp/chatgpt-local-file-hopper/`
+`\\teachers-net-site\\tmp\\hopper\\`
 
 All active files must be on the same root level for one drag-and-drop selection;
 do not nest active files under source-path directories. Use timestamp-versioned
@@ -57,9 +57,16 @@ Every post-ticket report that involves hopper file creation or refresh must
 include a link to the hopper directory and, separately, a bullet list naming
 every modified file that is included in the current hopper set.
 
+Use project-specific archives under
+`\\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\`. Archive only
+the current project's prior active files, appending a UTC `YYMMDDHHMMSS`
+timestamp to each archived filename before its extension. Active files remain
+directly in the shared hopper root.
+
 ### Engineer-owned hopper exception
 
-`tmp/chatgpt-local-file-hopper/output.txt` is engineer-owned working material.
+`output.txt` is engineer-owned working material and is excluded from all
+projects' hopper operations.
 Hopper refreshes must ignore it completely: never archive it, overwrite it,
 rename it, edit it, copy it, include it in the manifest, or link it as a
 generated handoff artifact. If present, it must remain at that exact path.
