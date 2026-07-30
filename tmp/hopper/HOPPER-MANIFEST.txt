@@ -1,28 +1,24 @@
-Shared Codex hopper manifest
+Current ticket: C3-RR001 Community 3.0 reconciliation and go-point package
 
-Standard hopper: \\teachers-net-site\\tmp\\hopper\\
 Active project: tnet-3.0
-Protected file: output.txt is engineer-owned and excluded from all operations.
+Active files are flat in this directory. Timestamped duplicate archives for
+this cycle are in archive/tnet-3.0/. The protected engineer-owned output.txt
+is excluded from all hopper operations. The generated output-*.txt report is
+separate and is included for handoff.
 
-Active files
-Source path | Hopper root copy
-tmp/hopper/HOPPER-INSTRUCTIONS.txt | HOPPER-INSTRUCTIONS.txt
-docs/documentation-governance.md | documentation-governance.md
-docs/codex-ticket-discipline.md | codex-ticket-discipline.md
-docs/community-3.0/CT-JC006-job-center-v1-vocabulary-baseline.md | CT-JC006-job-center-v1-vocabulary-baseline.md
-docs/core-terms/project-cursor.md | core-terms-project-cursor.md
-docs/core-terms/engineering-handoff.md | core-terms-engineering-handoff.md
+Current cycle archive suffix: 260730212140
 
-Same-cycle archive copies
-Project archive | Archive copy
-archive/tnet-3.0/ | HOPPER-INSTRUCTIONS-260730133848.txt
-archive/tnet-3.0/ | HOPPER-INSTRUCTIONS-260730150923.txt
-archive/tnet-3.0/ | documentation-governance-260730150923.md
-archive/tnet-3.0/ | codex-ticket-discipline-260730150923.md
-archive/tnet-3.0/ | CT-JC006-job-center-v1-vocabulary-baseline-260730150538.md
-archive/tnet-3.0/ | core-terms-project-cursor-260730150538.md
-archive/tnet-3.0/ | core-terms-engineering-handoff-260730150538.md
-
-Lifecycle rule: create the active root copy and timestamped archive duplicate
-in the same step. Later refreshes delete only obsolete active document files;
-they do not move or rename files, and never delete directories or output.txt.
+Active files:
+- HOPPER-INSTRUCTIONS.txt
+- HOPPER-MANIFEST.txt
+- community-3.0-capability-catalog-v1.md
+- community-3.0-current-state-census-v1.md
+- community-3.0-roadmap-crosswalk-v1.md
+- community-3.0-external-research-questions-v1.md
+- community-3.0-integrated-roadmap-v1.md
+- community-3.0-go-point-readiness-v1.md
+- community-3.0-next-ticket-queue-v1.md
+- community-3.0-reconciliation-package-index.md
+- project-cursor.md
+- engineering-handoff.md
+- output-260730212300.txt
