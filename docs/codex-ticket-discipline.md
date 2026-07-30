@@ -27,12 +27,13 @@ files directly into the hopper root so all active files share one level for
 drag-and-drop. Update `HOPPER-MANIFEST.txt` with active paths and the archive
 batch, and link the hopper directory and copied files in the report. Do not
 copy non-Markdown website files under this default rule. Use the shared hopper
-`\\teachers-net-site\\tmp\\hopper\\` and archive only the active project's
-prior files under `\\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\`,
-with a trailing UTC `YYMMDDHHMMSS` timestamp before each extension. Always
-exclude the engineer-owned `output.txt`: never archive, overwrite, rename,
-edit, copy, manifest, or report it as a generated hopper file; leave it at its
-exact path if present.
+`\\teachers-net-site\\tmp\\hopper\\`. When creating each handoff file, write
+the active root copy and a duplicate archive copy under
+`\\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\`, with a
+trailing UTC `YYMMDDHHMMSS` timestamp before the archive extension. Do not move
+or rename active files later. Delete only obsolete active document files;
+never delete directories or the engineer-owned `output.txt`, which must never
+be edited, copied, archived, manifested, or reported.
 
 Every post-ticket report involving hopper file creation or refresh must link to
 the hopper directory and include a separate bullet list of every modified file

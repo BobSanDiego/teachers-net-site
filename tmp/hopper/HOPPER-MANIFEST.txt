@@ -1,0 +1,17 @@
+Shared Codex hopper manifest
+
+Standard hopper: \\teachers-net-site\\tmp\\hopper\\
+Active project: tnet-3.0
+Protected file: output.txt is engineer-owned and excluded from all operations.
+
+Active files
+Source path | Hopper root copy
+tmp/hopper/HOPPER-INSTRUCTIONS.txt | HOPPER-INSTRUCTIONS.txt
+
+Same-cycle archive copies
+Project archive | Archive copy
+archive/tnet-3.0/ | HOPPER-INSTRUCTIONS-260730133848.txt
+
+Lifecycle rule: create the active root copy and timestamped archive duplicate
+in the same step. Later refreshes delete only obsolete active document files;
+they do not move or rename files, and never delete directories or output.txt.

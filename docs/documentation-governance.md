@@ -58,10 +58,13 @@ include a link to the hopper directory and, separately, a bullet list naming
 every modified file that is included in the current hopper set.
 
 Use project-specific archives under
-`\\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\`. Archive only
-the current project's prior active files, appending a UTC `YYMMDDHHMMSS`
-timestamp to each archived filename before its extension. Active files remain
-directly in the shared hopper root.
+`\\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\`. When each
+handoff file is first created or refreshed, create both its active root copy
+and a duplicate archive copy in the current project's archive, appending a UTC
+`YYMMDDHHMMSS` timestamp before the archive extension. Do not later move or
+rename active files into archives. Before a later refresh, delete only obsolete
+active document files; never delete directories or `output.txt`. Active files
+remain directly in the shared hopper root.
 
 ### Engineer-owned hopper exception
 
