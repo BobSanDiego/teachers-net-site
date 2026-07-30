@@ -1,0 +1,12 @@
+Teachers.Net local ChatGPT file hopper
+Created: 2026-07-30
+Purpose: exact local Markdown copies for cross-session handoff and ChatGPT context recovery.
+Source of truth: repository files under /home/bobreap/projects/teachers-net-site
+
+Source path | Hopper copy
+docs/community-3.0/CT-JC001-release-vocabulary-baseline-audit.md | docs/community-3.0/CT-JC001-release-vocabulary-baseline-audit.md
+docs/community-3.0/CT-JC002-instructional-job-corpus-coverage-audit.md | docs/community-3.0/CT-JC002-instructional-job-corpus-coverage-audit.md
+docs/community-3.0/CT-JC003-external-market-evidence-collection.md | docs/community-3.0/CT-JC003-external-market-evidence-collection.md
+docs/community-3.0/CT-JC004-v1-vocabulary-comparative-analysis.md | docs/community-3.0/CT-JC004-v1-vocabulary-comparative-analysis.md
+docs/documentation-governance.md | docs/documentation-governance.md
+docs/codex-ticket-discipline.md | docs/codex-ticket-discipline.md
