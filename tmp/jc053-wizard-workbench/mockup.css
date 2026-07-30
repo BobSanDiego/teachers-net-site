@@ -384,3 +384,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 @media (min-width:1025px){
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region .tnet-navbar-dropdown:nth-child(3)>button.tnet-jobs-employer-nav-final-link{display:block}
 }
+
+@media (min-width:768px) and (max-width:1024px){
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-primary-overflow{display:block}
+}
