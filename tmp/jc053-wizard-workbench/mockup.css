@@ -247,7 +247,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 
 /* Authority-only responsive refinement: compact desktop, task-first mobile. */
 .application-card[data-authority="true"] .authority-mobile-nav-toggle{display:none}
-@media (min-width:768px) and (max-width:1199px){
+@media (min-width:768px) and (max-width:1024px){
   .application-card[data-authority="true"]{width:calc(100% - 24px)}
   .application-card[data-authority="true"] .application-body{display:grid;grid-template-columns:210px minmax(0,1fr)}
   .application-card[data-authority="true"] .left-rail{width:210px;padding:22px 14px}
