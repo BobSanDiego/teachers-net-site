@@ -375,5 +375,12 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
    the 1025px desktop range; the unified Resources control begins at 1024px. */
 @media (min-width:1025px){
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region .tnet-navbar-dropdown:nth-child(3),
-  .application-card[data-authority="true"] .tnet-jobs-app-primary-region .tnet-navbar-dropdown:nth-child(3)>button{display:inline-flex}
+.application-card[data-authority="true"] .tnet-jobs-app-primary-region .tnet-navbar-dropdown:nth-child(3)>button{display:inline-flex}
+}
+
+/* Keep the Teacher Resources control on the same inline baseline as the
+   other desktop dropdown buttons; its legacy class otherwise applies flex
+   alignment to the button and lifts its caret. */
+@media (min-width:1025px){
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-region .tnet-navbar-dropdown:nth-child(3)>button.tnet-jobs-employer-nav-final-link{display:block}
 }
