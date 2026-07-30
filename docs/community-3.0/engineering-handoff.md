@@ -43,3 +43,21 @@ legacy execution paths.
 - Compare a divergent record with a legacy control record.
 - Remove temporary HTML, logging, comments, and dump/exit diagnostics before
   milestone closure.
+
+## 7. Strategic Documentation Alignment
+
+The current Community 3.0 roadmap is
+`docs/community-3.0/roadmap.md`. It captures the shift from application-centric
+planning toward a semantic platform whose subscribers consume Core Terms,
+Portable Views, Subscriber Policies, Relationship Graphs, and the
+Communications Platform without surrendering product authority.
+
+The next planning sequence is authority alignment, Core Terms/meta-term audit,
+subscriber contracts, Portable View governance, a bounded Job Center View
+pilot, chatboard/group mapping, interest and onboarding evidence, communications
+consent and event architecture, relationship approval, explainable
+recommendation proof, and only then product-by-product subscriber expansion.
+
+Semantic Studio remains a planning concept for a future governance surface; it
+is not an approved implementation. Open decisions and stop conditions remain
+in the roadmap and the execution-plan companion.

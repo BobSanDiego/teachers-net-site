@@ -1,5 +1,6 @@
 # Community 3.0 Documents
 
+- [Community 3.0 Roadmap and Semantic Platform Alignment](roadmap.md)
 - [Semantic Community and Communications Platform Working Draft](teachers-net-semantic-community-communications-platform-working-draft.md)
 - [Semantic Platform — Project Approach and Execution Plan](teachers-net-semantic-platform-project-approach-execution-plan.docx)
 

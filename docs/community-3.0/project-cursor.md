@@ -34,3 +34,16 @@ and a legacy control board. Temporary diagnostics were removed before closure.
 
 No new group architecture or redesign is authorized by this correction. Reopen
 only through a focused Community 3.0 ticket.
+
+## Strategic Roadmap Alignment
+
+The current planning direction is documented in
+`docs/community-3.0/roadmap.md` and the Semantic Platform execution companion.
+It records the converged platform model of Core Terms, Portable Views,
+Subscriber Policies, Relationship Graphs, Communications Platform, and the
+planning-only Semantic Studio concept. Job Center is the first bounded semantic
+subscriber proof; Chatboards and Groups are the second major subscriber.
+
+This roadmap is planning guidance only. It does not reopen the completed group
+identity correction or authorize implementation, schema changes, migration,
+production UI work, or communication delivery.
