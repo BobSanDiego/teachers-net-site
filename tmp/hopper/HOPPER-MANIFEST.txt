@@ -7,10 +7,16 @@ Protected file: output.txt is engineer-owned and excluded from all operations.
 Active files
 Source path | Hopper root copy
 tmp/hopper/HOPPER-INSTRUCTIONS.txt | HOPPER-INSTRUCTIONS.txt
+docs/community-3.0/CT-JC006-job-center-v1-vocabulary-baseline.md | CT-JC006-job-center-v1-vocabulary-baseline.md
+docs/core-terms/project-cursor.md | core-terms-project-cursor.md
+docs/core-terms/engineering-handoff.md | core-terms-engineering-handoff.md
 
 Same-cycle archive copies
 Project archive | Archive copy
 archive/tnet-3.0/ | HOPPER-INSTRUCTIONS-260730133848.txt
+archive/tnet-3.0/ | CT-JC006-job-center-v1-vocabulary-baseline-260730150538.md
+archive/tnet-3.0/ | core-terms-project-cursor-260730150538.md
+archive/tnet-3.0/ | core-terms-engineering-handoff-260730150538.md
 
 Lifecycle rule: create the active root copy and timestamped archive duplicate
 in the same step. Later refreshes delete only obsolete active document files;
