@@ -341,7 +341,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{display:none}
 .application-card[data-authority="true"] .tnet-jobs-app-utility-region{box-sizing:border-box;grid-column:4;grid-row:1;justify-content:flex-end;margin:0;padding-right:16px;position:static;width:max-content}
 @media (min-width:1025px){
-  .application-card[data-authority="true"]{--jc053-shell-column:250px;max-width:1200px;width:min(1200px,calc(100% - 24px))}
+  .application-card[data-authority="true"]{--jc053-shell-column:250px;box-sizing:border-box;max-width:1200px;width:100%}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region{gap:clamp(10px,2vw,32px);justify-content:flex-end}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region>.tnet-navbar-dropdown:nth-child(1),
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region>.tnet-navbar-dropdown:nth-child(2),
