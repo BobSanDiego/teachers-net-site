@@ -388,3 +388,33 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 @media (min-width:768px) and (max-width:1024px){
   .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-primary-overflow{display:block}
 }
+
+/* Compact footer authority: one dark strip below the 1024px shell. */
+@media (max-width:1024px){
+  .application-card[data-authority="true"] .tnet-jobs-app-footer{background:#122875;color:#fff}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-inner{padding:0}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns{align-items:center;display:grid;gap:0;grid-template-columns:var(--jc053-shell-column) minmax(0,1fr) auto;min-height:64px}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>section,
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav{min-width:0}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-brand{align-items:center;border-right:1px solid rgba(255,255,255,.22);display:flex;min-height:64px;padding:0 14px}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-brand p,
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(2),
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(3),
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(4){display:none}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(5){align-items:center;display:flex;flex-direction:row;gap:14px;padding:0 16px}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(5) h2{font-size:0;margin:0}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(5) h2::before{color:#fff;content:"About";font-size:12px}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(5) a:first-of-type{display:none}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(5) a{color:#fff;font-size:12px;white-space:nowrap}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-connect{align-items:flex-end;display:flex;gap:6px;min-height:64px;padding:0 14px}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-connect h2,
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-bottom{display:none}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-social{gap:6px}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-social a{background:#fff;color:#123bc6}
+}
+@media (max-width:767px){
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns{grid-template-columns:minmax(0,1fr) auto;row-gap:8px;padding:10px 0}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-brand{grid-column:1;grid-row:1}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-columns>nav:nth-child(5){grid-column:1 / -1;grid-row:2;justify-content:center;order:3;padding:0 10px}
+  .application-card[data-authority="true"] .tnet-jobs-app-footer .tnet-jobs-app-footer-connect{grid-column:2;grid-row:1}
+}
