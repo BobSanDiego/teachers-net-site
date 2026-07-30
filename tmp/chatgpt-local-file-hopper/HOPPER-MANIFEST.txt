@@ -4,15 +4,15 @@ Purpose: exact local Markdown copies for cross-session handoff and ChatGPT conte
 Source of truth: repository files under /home/bobreap/projects/teachers-net-site
 Active-copy rule: all current files are directly on this hopper root for one drag-and-drop selection.
 Archive rule: before each refresh, active files move to archive/ with a UTC timestamp-versioned filename.
-Current archive batch: 20260730T130830Z__*
+Current archive batch: 20260730T131731Z__*
 Protected path: `output.txt` is engineer-owned and excluded from all hopper operations.
 
 Active source path | Active hopper copy
 docs/community-3.0/CT-JC005-candidate-subject-market-prevalence.md | CT-JC005-candidate-subject-market-prevalence.md
 
 Archived batch files from this refresh:
-archive/20260730T130830Z__documentation-governance.md
-archive/20260730T130830Z__codex-ticket-discipline.md
+archive/20260730T131731Z__documentation-governance.md
+archive/20260730T131731Z__codex-ticket-discipline.md
 
 Prior archive batch:
 archive/20260730T130109Z__documentation-governance.md
