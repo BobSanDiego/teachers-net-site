@@ -383,6 +383,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
    alignment to the button and lifts its caret. */
 @media (min-width:1025px){
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region .tnet-navbar-dropdown:nth-child(3)>button.tnet-jobs-employer-nav-final-link{display:block}
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-product-region{padding-inline:20px}
 }
 
 @media (min-width:768px) and (max-width:1024px){
