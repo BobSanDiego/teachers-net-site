@@ -211,3 +211,84 @@ These are permanent design decisions or required decision records. The index ide
 This master plan is the product authority above engineering roadmaps and tickets. The reconciliation package remains the evidence and readiness companion. The roadmap remains sequencing guidance. The Project Cursor and Engineering Handoff remain continuity records. If these documents conflict, the conflict must be surfaced for Engineering Director decision; it must not be resolved by silently implementing the most recent wording.
 
 Current decision: **NO-GO for implementation.** The next decision is to approve, revise, or reject this master plan and authorize or decline a bounded M1 contract ticket. Until that decision, no code, schema, migration, production UI, taxonomy import, relationship activation, or communications delivery may begin.
+
+## 9. Product Success Metrics
+
+These are measurement principles and categories, not numeric targets. Metrics must be privacy-conscious, segmented only when useful and permitted, and interpreted alongside qualitative evidence. No metric by itself authorizes growth, delivery, or a product change.
+
+| Category | Indicators to define and monitor |
+|---|---|
+| Member acquisition | New authenticated members, source context, first meaningful participation, and onboarding completion or deliberate skip. |
+| Returning members | Return frequency, continued participation, reactivation, and healthy use of pause or preference controls. |
+| Posting activity | Posts by active members, contribution diversity, anonymous-post use where permitted, and successful publication outcomes. |
+| Replies and conversation depth | Reply participation, multi-party conversations, reply chains, and meaningful follow-up rather than raw volume alone. |
+| Group participation | Join/leave behavior, active membership, group breadth, directory use, and participation across mapped paths and groups. |
+| Communication engagement | Eligible notices, bell interaction, digest engagement, preference changes, unsubscribes, suppressions, bounces, and complaints. Engagement must never be treated as consent. |
+| Trust indicators | Reports, blocked or corrected content, successful appeals, abuse-control interventions, privacy corrections, and member-reported safety. |
+| Moderation effectiveness | Review timeliness, resolution quality, repeat incidents, audit completeness, and use of reversible or scoped actions. |
+| Long-term community health | Retention, contribution concentration, healthy cross-group participation, unanswered conversations, resource usefulness, and sustained member value. |
+
+The measurement system must distinguish exposure from participation, inferred interest from explicit choice, and communication relevance from communication permission. It must support correction, retention limits, suppression, and audit. Product teams should prefer a small set of interpretable indicators over optimization of a single engagement number.
+
+## 10. Cross-Product Platform Strategy
+
+Community 3.0 is a major subscriber and product domain within Teachers.Net, not the owner of every shared capability. Each product retains authority over its facts, workflows, permissions, and user promises while consuming shared contracts where those contracts provide clear value.
+
+| Product | Product ownership | Shared capabilities it may consume |
+|---|---|---|
+| Community | Participation, chatboards, groups, posts, moderation, membership, and community notifications | WordPress identity, Core Terms, Portable Views, subscriber policies, governed relationships, communications lifecycle |
+| Job Center | Job facts, provenance, employer authority, lifecycle, locations, publication, and applications | Core Terms classification, Portable Views, subscriber policies, approved relationships, eligible communications |
+| Lesson Bank | Lesson/resource facts, authoring, review, licensing, and instructional workflows | Core Terms, Portable Views, interests, relationship candidates, communications policies |
+| CE | Continuing-education facts, providers, enrollment, completion, and credential workflows | Core Terms, Portable Views, explicit interests, relationship governance, communications policies |
+| Marketplace | Listings, seller/buyer authority, transactions, fulfillment, and marketplace safety | Core Terms, Portable Views, subscriber policies, trust signals, governed communications |
+| Future products | Their own product facts, workflow, and member promise | Shared capabilities only through an explicit subscriber contract and compatibility decision |
+
+Core Terms supplies canonical semantic identity; it does not absorb product facts. Portable Views allow each subscriber to receive an appropriate presentation without redefining canonical meaning. Subscriber Policies describe selection, ordering, visibility, freshness, correction, compatibility, and failure behavior for that product. Relationship sharing is governed: a relationship candidate or approved connection may be made available to another subscriber only with evidence, authority, privacy, status, and expiry rules.
+
+Communications subscribers are also distinct from semantic subscribers. A product may consume a View without sending a message. A communication may be eligible only after consent, category, frequency, suppression, and event policy resolve. Community, Job Center, Lesson Bank, CE, Marketplace, and future products must not infer delivery permission merely from shared identity, semantic relevance, membership, or relationship.
+
+This strategy preserves product autonomy. Shared platform capabilities are a means of reducing duplicated meaning and policy logic, not a mandate to centralize product ownership or force every product into the same user experience.
+
+## 11. Canonical Architecture Diagram
+
+The following product-level diagram shows the intended authority flow. It contains no implementation topology or deployment prescription.
+
+```mermaid
+flowchart TD
+    I["WordPress Identity\nAuthentication and member identity"]
+    C["Community\nParticipation, groups, posts, moderation\nProduct ownership"]
+    T["Core Terms\nCanonical semantic authority"]
+    V["Portable Views\nVersioned reusable presentations"]
+    P["Subscriber Policies\nSelection, visibility, consent, compatibility"]
+    R["Relationship Graph\nGoverned connections, evidence, approval"]
+    M["Communications Platform\nEligibility, suppression, delivery, audit"]
+    S["Subscriber Products\nProduct-owned facts and workflows"]
+    J["Job Center"]
+    L["Lesson Bank"]
+    X["Marketplace"]
+    E["CE"]
+    C2["Community subscriber surface"]
+
+    I --> C --> T --> V --> P --> R --> M --> S
+    S --> J
+    S --> L
+    S --> X
+    S --> E
+    S --> C2
+
+    classDef identity fill:#e8f1ff,stroke:#3568a8
+    classDef semantic fill:#edf8ed,stroke:#3b7d3b
+    classDef policy fill:#fff5df,stroke:#a56b00
+    classDef relationship fill:#f4eaff,stroke:#7545a5
+    classDef comms fill:#ffe8e8,stroke:#a33a3a
+    classDef product fill:#f2f2f2,stroke:#555
+    class I identity
+    class C product
+    class T,V semantic
+    class P policy
+    class R relationship
+    class M comms
+    class S,J,L,X,E,C2 product
+```
+
+The arrows describe a governance relationship, not a requirement that every product use every layer. Product ownership remains with each subscriber. Identity is authentication; Core Terms is semantic authority; Subscriber Policies govern local selection and permission; Relationship Graphs govern connections; Communications governs eligibility and delivery. Those distinctions must remain visible in future product and engineering documents.

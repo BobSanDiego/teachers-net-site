@@ -39,7 +39,9 @@ The package concludes NO-GO until the Engineering Director reviews it and
 explicitly authorizes a bounded M1 contract ticket.
 
 C3-PLAN003 establishes `community-3.0-master-plan-v1.md` as the product
-authority above engineering roadmaps and tickets. It preserves all catalogued
+authority above engineering roadmaps and tickets. C3-PLAN004 enhanced that
+plan with product success measurement principles, cross-product autonomy, and
+the canonical product-level architecture diagram. It preserves all catalogued
 capabilities and keeps the current NO-GO implementation boundary.
 
 ## Next Decision

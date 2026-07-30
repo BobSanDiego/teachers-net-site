@@ -2,11 +2,11 @@
 
 ## 1. Current Phase
 
-Maintenance — C3-PLAN003 master plan and C3-RR001 reconciliation package complete; implementation not authorized.
+Maintenance — C3-PLAN004 enhancement of the C3-PLAN003 master plan is complete; implementation not authorized.
 
 ## 2. Current Ticket
 
-C3-RR001 and C3-PLAN003 are complete as documentation-only work. The master
+C3-RR001, C3-PLAN003, and C3-PLAN004 are complete as documentation-only work. The master
 plan is now the product authority above engineering roadmaps and tickets. The package is ready for
 Engineering Director review and concludes NO-GO pending an explicit bounded M1
 decision; do not begin implementation from this handoff.
