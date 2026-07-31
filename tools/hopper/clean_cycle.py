@@ -106,6 +106,38 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
     (current / manifest).write_text("\n".join(lines) + "\n")
 
 
+def refresh_records(project: str, identifier: str, commit: str,
+                    push: str, committed_sources: list[str]) -> None:
+    current, _ = paths(project)
+    record_path = current / f"cycle-{project}-{identifier}.json"
+    payload = json.loads(record_path.read_text())
+    if not commit or not push:
+        raise RuntimeError("finalization requires both commit and push values")
+    committed = set(committed_sources)
+    for artifact in payload["artifacts"]:
+        if artifact.get("original_path") in committed:
+            artifact["committed"] = True
+    payload["commit"] = commit
+    payload["push"] = push
+    payload["status"] = "complete"
+    record_path.write_text(json.dumps(payload, indent=2) + "\n")
+    lines = [
+        f"project={payload['project']}", f"ticket={payload['ticket']}",
+        f"cycle_id={payload['cycle_id']}", f"branch={payload['branch']}",
+        f"commit={payload['commit']}", f"push={payload['push']}",
+        f"current_hopper={payload['current_hopper']}",
+        f"archive_path={payload['archive_path']}",
+        f"report_file={payload['report_file']}",
+        f"manifest_file={payload['manifest_file']}",
+        f"cycle_record_file={payload['cycle_record_file']}",
+        f"evidence_bundle={payload.get('evidence_bundle') or ''}", "",
+        "artifacts:",
+    ]
+    for artifact in payload["artifacts"]:
+        lines.append(json.dumps(artifact, sort_keys=True))
+    (current / payload["manifest_file"]).write_text("\n".join(lines) + "\n")
+
+
 def validate(project: str, identifier: str) -> None:
     current, _ = paths(project)
     if not current.exists() or not any(current.iterdir()):
@@ -113,7 +145,21 @@ def validate(project: str, identifier: str) -> None:
     if any(item.stat().st_size == 0 for item in current.iterdir()):
         raise RuntimeError("zero-byte artifact in current hopper")
     record = current / f"cycle-{project}-{identifier}.json"
-    json.loads(record.read_text())
+    payload = json.loads(record.read_text())
+    if payload.get("status") != "complete" or not payload.get("commit"):
+        raise RuntimeError("cycle record is not finalized with a commit")
+    if payload.get("push") not in {"pushed", "success", "successful"}:
+        raise RuntimeError("cycle record does not contain a successful push status")
+    manifest = current / payload["manifest_file"]
+    if not manifest.is_file() or f"commit={payload['commit']}" not in manifest.read_text():
+        raise RuntimeError("manifest and cycle record commit state disagree")
+    if f"push={payload['push']}" not in manifest.read_text():
+        raise RuntimeError("manifest and cycle record push state disagree")
+    manifest_artifacts = manifest.read_text().splitlines()
+    for artifact in payload["artifacts"]:
+        encoded = json.dumps(artifact, sort_keys=True)
+        if encoded not in manifest_artifacts:
+            raise RuntimeError("manifest and cycle record artifacts disagree")
     for item in current.iterdir():
         if item.name == "output.txt":
             raise RuntimeError("protected output.txt must not be in project current")
@@ -122,11 +168,14 @@ def validate(project: str, identifier: str) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("begin", "collect", "validate"))
+    parser.add_argument("command", choices=("begin", "collect", "refresh", "validate"))
     parser.add_argument("--project", required=True)
     parser.add_argument("--cycle", default=None)
     parser.add_argument("--source")
     parser.add_argument("--status", default="modified")
+    parser.add_argument("--commit")
+    parser.add_argument("--push")
+    parser.add_argument("--committed-source", action="append", default=[])
     args = parser.parse_args()
     identifier = args.cycle or cycle_id()
     if args.command == "begin":
@@ -136,6 +185,12 @@ def main() -> int:
         if not args.source:
             parser.error("--source is required for collect")
         print(json.dumps(collect(args.project, identifier, Path(args.source).resolve(), args.status)))
+    elif args.command == "refresh":
+        if not args.commit or not args.push:
+            parser.error("refresh requires --commit and --push")
+        refresh_records(args.project, identifier, args.commit, args.push,
+                        args.committed_source)
+        print(f"refreshed {args.project}/{identifier}")
     else:
         validate(args.project, identifier)
     return 0

@@ -393,12 +393,28 @@ its fast human-guided loop and uses a minimal rendered check; COMPONENT MATCH
 MODE retains its existing measurements and uses this gate. It is a procedure,
 not a new lifecycle command.
 
-For responsive convergence tickets, report concise process metrics: preflight
-duration, internal attempt count, rendered verification pass count, whether
-same-symptom diagnosis was triggered, total execution time when available,
-target viewport(s), governing rule, before/after measurement, final computed
-owner, and whether cache-bypass reload was performed. Avoid routine screenshots
-unless acceptance or diagnosis requires them.
+For responsive convergence tickets, record actual phase timestamps and report
+durations: trigger timestamp, preflight start/end, implementation start/end,
+verification start/end, diagnosis start/end when invoked, Git start/end,
+hopper-packaging start/end, and total elapsed time. Use `Not invoked` for a
+phase that did not occur. Do not use approximate narrative timing when the
+timestamps are available and do not fabricate values. Also report internal
+attempt count, rendered verification pass count, same-symptom diagnosis,
+target viewports, governing rule, before/after measurement, final computed
+owner, and cache-bypass reload. Avoid routine screenshots unless acceptance or
+diagnosis requires them.
+
+The required completion order is implementation, verification, commit, push,
+manifest refresh, cycle-record refresh, hopper validation, then completion
+report. After a successful push, run:
+
+`python3 tools/hopper/clean_cycle.py refresh --project jobcenter --cycle
+<YYMMDDHHMMSS> --commit <hash> --push pushed --committed-source <repo-path>`
+
+once for each committed artifact. The refresh must set committed artifacts to
+`true`, preserve genuinely uncommitted evidence as `false`, and rewrite both
+the manifest and cycle record. Validation must confirm that report commit,
+manifest commit, cycle-record commit, and push status agree before completion.
 
 ## TWEAK MODE
 
