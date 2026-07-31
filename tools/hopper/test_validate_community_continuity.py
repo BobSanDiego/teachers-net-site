@@ -5,7 +5,7 @@ from validate_community_continuity import validate_paths
 class ContinuityValidationTests(unittest.TestCase):
     def write_set(self, cursor, handoff, ticket="C3-IMP005"):
         root=Path(tempfile.mkdtemp()); c=root/"cursor.md"; h=root/"handoff.md"; j=root/"cycle.json"; m=root/"manifest.txt"
-        c.write_text(f"Bounded implementation preparation — {ticket} complete; no delivery implementation begun.\n## Next Authorized Ticket\nNo next ticket.\n## Next Decision\nReview.")
+        c.write_text(f"Bounded implementation preparation — {ticket} complete; no delivery implementation begun.\n{ticket} is complete.\n## Next Authorized Ticket\nNo next ticket.\n## Next Decision\nReview.")
         h.write_text(f"Bounded implementation preparation — {ticket} complete; no delivery implementation begun.\n{ticket} is complete.")
         j.write_text(json.dumps({"project":"tnet-3.0","ticket":ticket,"cycle_id":"x","status":"complete","commit":"abc","push":"successful","artifacts":[]}))
         m.write_text(f"ticket={ticket}\ncycle_id=x\ncommit=abc\npush=successful\n")
