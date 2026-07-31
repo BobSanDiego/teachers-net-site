@@ -78,6 +78,8 @@ Community publisher seam. Its integration map and hook-authority decision are
 `docs/community-3.0/community-publication-integration-map-v1.md` and
 `docs/community-3.0/publication-hook-authority-v1.md`. The C3-IMP009 seam
 remains test-owned and non-authoritative.
+C3-IMP010 is complete as the current source milestone; no live publisher hook
+or delivery behavior is authorized.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
