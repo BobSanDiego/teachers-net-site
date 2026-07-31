@@ -1,0 +1,19 @@
+C3-UI001 — Community Thread View v1
+
+Status: COMPLETE — local-only read-only Thread View implementation and automated verification.
+
+Visible advancement: a local route `/community/thread/{post_id}/` now renders one canonical topic, ordered direct replies, nested replies, safe synthetic author display, lifecycle-aware visibility, and neutral retracted/deleted tombstones. The route is DDEV-gated, noindex, navigation-free, and served by the Community plugin read service. Reply composition is deferred because identity/permission/privacy boundaries remain unresolved.
+
+Seed command: `ddev wp eval-file tools/community3/local_seed_thread_view.php`. It resets only local prototype tables, creates one topic, two direct replies, one nested reply, and one retracted child, then prints the local URL.
+
+Verification: focused Thread View checks — 4 passed; all Community Python tests — 89 passed; PHP lint passed; route smoke found topic/direct/nested content and noindex; missing thread returned 404; git diff --check passed. No raw SQL exists in the view/controller; internal audit, compatibility, author IDs, idempotency, and event payloads are not rendered.
+
+Human visual QA: browser inspection was attempted but the browser bridge could not initialize in this session; no screenshot or rendered-success claim is recorded. Accessibility structure uses headings/articles, escaped output, no-JavaScript rendering, and compact relationship indentation; manual multi-width review remains pending.
+
+No production registration/access, legacy CGI, notification, migration, public indexing, or unrelated product change occurred.
+
+Next ticket: authenticated local visual QA and acceptance review, followed by a decision on a Community landing page; do not broaden UI scope yet.
+
+Commit/push: 886c75f.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.
