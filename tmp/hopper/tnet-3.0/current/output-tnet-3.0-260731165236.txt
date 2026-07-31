@@ -1,0 +1,49 @@
+C3-IMP009 — Community Post-Publication Shadow Hook
+
+Status: executed and complete with a documented repository boundary.
+
+Repository finding: no owned Community post-publication implementation or
+authoritative wp_insert_post/Community hook was present. No live production
+hook was invented or connected.
+
+Implemented:
+- Test-owned, disabled-by-default shadow seam.
+- Explicit test-only enablement (`test_mode=True, enabled=True`).
+- Safe payload delegation to GroupPostEventAdapter and the existing
+  NotificationApplicationService path.
+- Exception isolation so shadow evaluation cannot affect publication.
+- In-memory injected test recorder only.
+
+Verification:
+- python3 -m unittest discover -s tools/community3 -p 'test_*.py'
+- Result: 32 tests passed.
+- python3 -m py_compile tools/community3/*.py passed.
+- git diff --check passed.
+- Mechanical hopper validation passed.
+- Semantic continuity validation passed.
+
+Modified files included in this cycle:
+- tools/community3/group_post_shadow_hook.py (created)
+- tools/community3/test_group_post_shadow_hook.py (created)
+- docs/community-3.0/group-post-shadow-hook-v1.md (created)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+
+Source commits: fd93038 (shadow seam), 62ca4be (handoff reconciliation).
+Push: successful to origin/COMMUNITY003-semantic-community-communications-working-draft.
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/260731165236/
+
+Cycle: 260731165236
+Protected output.txt was preserved and excluded.
+
+Recommended next ticket: identify and explicitly authorize integration at the
+real Community publisher seam when that source implementation is available.
+Do not enable this test seam in production.
