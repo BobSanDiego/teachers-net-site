@@ -1,0 +1,15 @@
+C3-CORE005 — In-Memory Community Identity Resolver
+
+Status: COMPLETE — bounded process-local implementation and automated verification.
+
+Functional advancement: implemented the only executable boundary permitted to translate synthetic legacy path_id/local_path/group_id references into opaque community_id values. The resolver supports explicit resolved, missing, ambiguous, duplicate, inactive, and orphaned states; never guesses; rejects silent canonical overwrite; and deep-copies returned references/context.
+
+Implementation: tools/community3/community_identity_resolver.py with focused tests, synthetic identity-resolver fixture, and implementation/fixture documentation. No persistence, schema, ORM, migration job, publisher, membership, notification, Core Terms, Portable View, network, filesystem publication, or production integration was added.
+
+Verification: focused resolver tests — 11 passed; all tools/community3 tests — 56 passed; Python compilation passed; fixture JSON integrity passed; git diff --check passed. Resolver instances are isolated and deterministic. Missing/unresolved results contain no community_id and no-guess=true. Legacy identifiers are never required to be equal.
+
+Commit/push: 8a9250e.
+
+Next ticket: review and authorize a test-only resolver contract integration against a redacted mapping-registry fixture; do not connect production data.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.
