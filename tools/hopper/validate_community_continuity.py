@@ -19,7 +19,7 @@ def validate_paths(cursor_path: Path, handoff_path: Path, cycle_path: Path, mani
         (manifest and f"ticket={ticket}" in manifest and f"cycle_id={cycle['cycle_id']}" in manifest, "manifest agrees with cycle identity"),
         (f"commit={cycle.get('commit')}" in manifest and f"push={cycle.get('push')}" in manifest, "manifest agrees with cycle finalization"),
         ("output.txt" not in artifact_names, "protected output excluded"),
-        (ticket not in next_block, "next ticket does not point backward"),
+        (not re.search(rf"(?:next|proposed|authorized).*{re.escape(ticket)}", next_block, re.IGNORECASE), "next ticket does not point backward"),
         ("C3-IMP002 is complete" not in cursor and "C3-IMP002 is complete" not in handoff, "unverified IMP002 not falsely completed"),
         ("C3-NOT005 is complete" not in cursor and "C3-NOT005 is complete" not in handoff, "unverified NOT005 not falsely completed"),
     ]

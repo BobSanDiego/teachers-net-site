@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP005 complete; no delivery implementation begun.
+Bounded implementation preparation — OPS-CONT001 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
