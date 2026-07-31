@@ -14,11 +14,11 @@ placeholder or control text.
 `.choice-grid` is the shared choice-card layout. Its parent `.panel` provides
 the inline-size container, so the pattern responds to component width rather
 than only to viewport width. Two equal cards with a 72px OR column remain side
-by side while the panel is wider than 650px. At or below 650px, the grid
+by side while the panel is wider than 720px. At or below 720px, the grid
 becomes one column and the OR separator becomes horizontal. This threshold
-prevents the existing-school card and its controls from being compressed below
-a usable width while preserving the approved side-by-side composition at the
-1024px representative width and making 932px the first tested stacked view.
+keeps embedded controls at or above the canonical 280px minimum usable width;
+1147px remains a verified comfortable side-by-side case and 1024px is the first
+verified stacked case in the current shell.
 
 The pattern preserves card styling, equal visual weight, source and keyboard
 order, and existing state behavior. Later wizard views should reuse these

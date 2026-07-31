@@ -52,6 +52,13 @@ their minimum usable width is satisfied, then stack at the shared container
 threshold. Controls remain full width, minimum-width zero, and border-box; labels
 may wrap naturally without distorting rows.
 
+For Choice Cards, an embedded search/select control must not fall below the
+documented 280px control width. This includes the trailing-icon reservation and
+leaves approximately 242px for readable control text. The canonical Choice Card
+group therefore stacks when its containing panel is 720px wide or narrower;
+1147px remains a verified comfortable side-by-side case while 1024px is the
+first verified stacked case in the current shell.
+
 ### Choice Card
 
 Choice cards preserve equal visual weight, source and keyboard order, and
