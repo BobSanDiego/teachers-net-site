@@ -56,6 +56,8 @@ The C3-IMP007 application service is implemented in
 `tools/community3/test_notification_application_service.py`, and documented
 in `docs/community-3.0/notification-application-service-v1.md`. It is the sole
 public entry point for the current synthetic `group_post` dry run.
+C3-IMP007 is complete as the current source milestone; no delivery behavior is
+authorized.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
