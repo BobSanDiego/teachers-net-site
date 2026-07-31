@@ -375,6 +375,40 @@ confirm the selector/runtime state, inspect the final computed property or
 geometry, and compare the rendered result. Source edits, syntax checks, or
 screenshots without confirmed viewport and cache state do not prove success.
 
+### Two-stage responsive verification
+
+For responsive verification and inheritance tickets, use a two-stage matrix.
+
+Stage A is discovery: run the complete requested matrix only until a responsive
+defect is found or the ticket passes unchanged. If a defect is found, stop the
+full matrix, isolate the root cause, and implement the smallest coherent
+correction. Do not continue collecting redundant evidence from known-broken
+states.
+
+Stage B is post-fix verification. Re-run the full matrix only for the
+representative authority view, one representative Step 1 view, and one
+representative Step 2 (or highest implemented) view. Verify remaining
+implemented views only at the breakpoint family affected by the correction.
+The full matrix must be restored across all implemented views when the change
+affects renderer registration, authority inheritance, shared shell ownership,
+shared navigation, shared footer, shared stepper, routing, layout ownership, or
+state management. Otherwise, verify only directly affected views.
+
+Use the earliest implemented step, current implementation step, and authority
+reference as the default representative views. Select only the affected
+breakpoint family: navbar (1025, 1024, 900, 768, 767), footer (1024, 768,
+767, 650, 320), or choice cards (1200, 1024, 932, 900, 768). Do not run
+unrelated breakpoint families.
+
+If browser tooling cannot produce a requested viewport, record both requested
+and actual widths and explain the limitation. Never claim verification at an
+unavailable width. Stop once representative views pass, targeted inheritance
+passes when required, and the affected breakpoint family passes.
+
+This optimization applies only to responsive verification and inheritance
+tickets. It does not reduce verification breadth for implementation tickets
+that introduce new responsive behavior.
+
 If the rendered symptom is materially unchanged, mark the attempt failed
 immediately. Do not commit, push, update completion documentation, or generate
 a final hopper cycle. Diagnose the active computed style, rendered geometry,
