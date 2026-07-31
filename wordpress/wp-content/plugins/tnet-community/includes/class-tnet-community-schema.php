@@ -18,7 +18,7 @@ final class TNet_Community_Schema {
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         $t = self::table_names();
         $c = $wpdb->get_charset_collate();
-        dbDelta("CREATE TABLE {$t['posts']} (
+        $wpdb->query("CREATE TABLE IF NOT EXISTS {$t['posts']} (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, post_id VARCHAR(80) NOT NULL,
             community_id VARCHAR(80) NOT NULL, author_id VARCHAR(80) NOT NULL,
             thread_id VARCHAR(80) NOT NULL, parent_post_id VARCHAR(80) NULL,
@@ -34,14 +34,14 @@ final class TNet_Community_Schema {
             KEY thread_time_post (thread_id, created_at, post_id), KEY parent_post (parent_post_id),
             KEY author_state (author_id, publication_state)
         ) $c;");
-        dbDelta("CREATE TABLE {$t['audit']} (
+        $wpdb->query("CREATE TABLE IF NOT EXISTS {$t['audit']} (
             audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, post_id VARCHAR(80) NOT NULL,
             action VARCHAR(64) NOT NULL, actor_id VARCHAR(80) NOT NULL, reason TEXT NOT NULL,
             previous_state VARCHAR(24) NULL, new_state VARCHAR(24) NOT NULL,
             evidence_json LONGTEXT NULL, created_at DATETIME NOT NULL,
             PRIMARY KEY (audit_id), KEY post_audit (post_id, audit_id)
         ) $c;");
-        dbDelta("CREATE TABLE {$t['events']} (
+        $wpdb->query("CREATE TABLE IF NOT EXISTS {$t['events']} (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, event_id VARCHAR(80) NOT NULL,
             event_type VARCHAR(80) NOT NULL, post_id VARCHAR(80) NOT NULL,
             community_id VARCHAR(80) NOT NULL, thread_id VARCHAR(80) NOT NULL,

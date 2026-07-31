@@ -227,6 +227,13 @@ hide/retract/restore/soft-delete lifecycle actions, and audit/event viewers.
 No public Community UI, notification dispatch, legacy CGI, migration, or
 production behavior was added.
 
+C3-UI001 is complete as the local-only read-only Thread View v1. It renders a
+seeded canonical topic, direct/nested replies, lifecycle tombstones, safe
+display fields, and noindex metadata through the Community read service. Reply
+composition is deferred; no sitewide navigation, public production route, or
+notification UI was added. Browser visual QA was attempted but unavailable
+because the browser bridge failed to initialize.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does

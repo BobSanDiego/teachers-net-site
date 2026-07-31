@@ -138,6 +138,11 @@ C3-CORE011 is complete as the local sandbox lifecycle extension. Thread,
 reply, lifecycle, audit, and event controls are available through the existing
 authenticated workbench and remain DDEV-only. No visual redesign or public
 Community interface was begun.
+C3-UI001 is complete as the first local Community-facing read-only Thread View.
+The route renders seeded topics/replies and retracted tombstones through the
+repository-backed read service. It is DDEV-gated, noindex, navigation-free,
+and does not include a reply composer. Visual browser QA remains pending due to
+the unavailable browser bridge.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
