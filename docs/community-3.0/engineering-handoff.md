@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP009 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP010 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -73,6 +73,11 @@ no owned real Community publication hook, so this remains a test-owned model
 and is not connected to production.
 C3-IMP009 is complete as the current source milestone; no live publication hook
 or delivery behavior is authorized.
+The C3-IMP010 publication integration audit found no owned authoritative
+Community publisher seam. Its integration map and hook-authority decision are
+`docs/community-3.0/community-publication-integration-map-v1.md` and
+`docs/community-3.0/publication-hook-authority-v1.md`. The C3-IMP009 seam
+remains test-owned and non-authoritative.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
@@ -152,7 +157,8 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review C3-IMP009 and decide whether to authorize a separately bounded
+Review C3-IMP010 and decide whether to authorize identification of the real
+Community publisher before any live hook integration or persistence slice.
 persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.

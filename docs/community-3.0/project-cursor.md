@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP009 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP010 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -150,6 +150,11 @@ C3-IMP009 is complete as a disabled, test-owned shadow seam at
 owned real Community publication hook, so no production hook was invented or
 connected. The seam remains default-off and non-delivering.
 
+C3-IMP010 is complete as a repository audit documenting that no owned
+Community post-publication implementation or authoritative hook is currently
+verifiable. It creates no second hook. The existing C3-IMP009 seam remains the
+bounded, non-authoritative proof only.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -158,13 +163,14 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP009 is complete. Any next implementation slice requires Engineering
+C3-IMP010 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP009 and explicitly authorize any persistence or channel follow-up
+Review C3-IMP010 and explicitly authorize identification of the real Community
+publisher before any live hook integration or persistence work.
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 
