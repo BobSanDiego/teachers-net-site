@@ -307,6 +307,12 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .panel{padding:18px}
 }
 
+/* RESP006: the explicit close control belongs only to the fixed mobile drawer. */
+.application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-close{display:none}
+@media (max-width:530px){
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-close{display:block}
+}
+
 /* Shared shell axis: the visible rail and logo divider use one authority token. */
 .application-card[data-authority="true"]{--jc053-shell-column:250px}
 .application-card[data-authority="true"] .application-body{grid-template-columns:var(--jc053-shell-column) minmax(0,1fr)}
@@ -510,7 +516,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .tnet-jobs-app-utility-region{border-top:0;grid-column:3;grid-row:1;justify-content:flex-end;min-width:max-content;padding-right:0}
   .application-card[data-authority="true"] .tnet-jobs-employer-app-separator{height:30px}
 }
-@media (max-width:650px){
+@media (max-width:530px){
   .application-card[data-authority="true"]{--jc053-shell-column:100%;width:calc(100% - 24px)}
   .application-card[data-authority="true"] .tnet-jobs-app-topbar-inner{display:grid;grid-template-columns:minmax(0,1fr) max-content max-content;grid-template-rows:60px 46px;height:106px;min-height:106px;overflow:visible;padding:0 12px}
   .application-card[data-authority="true"] .tnet-jobs-app-brand-region{border-right:0;grid-column:1;grid-row:1;justify-content:flex-start;width:auto}

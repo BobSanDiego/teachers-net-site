@@ -35,6 +35,14 @@ visible. There is no intermediate compact-label range.
 Previous is on the left and Next is on the right. The shared component is used
 by every step; compact link presentation is permitted at narrow widths.
 
+### Responsive overflow menu
+
+Anchored overflow menus at 531px and above do not display an explicit close
+control. The explicit close control belongs only to the fixed mobile drawer
+mode at 530px and below; trigger toggle, item selection, outside click, Escape,
+and existing focus-departure behavior remain the dismissal mechanisms for the
+anchored menu.
+
 ### Form Control with Trailing Icon
 
 Use `.form-control-with-icon` for search fields, searchable selects, and future
