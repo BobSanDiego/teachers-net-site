@@ -123,6 +123,12 @@ C3-CORE008 is complete as the local-only persistence prototype owned by
 repository transactions, audit/event outbox storage, idempotent retrieval, and
 rollback injection tests. No production tables, routes, UI, dispatch, or
 migration were changed. Next is local developer-facing verification/QA.
+C3-CORE009 is complete as the local authenticated developer workbench at
+`Tools -> Community Publisher Workbench`. It publishes synthetic topics and
+displays persisted post/audit/event information through `tnet-community`.
+Runtime language divergence is documented as a bounded PHP adapter over the
+Python-tested contract. Automated checks and DDEV smoke/rollback checks pass;
+browser visual QA was attempted but the browser bridge could not initialize.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

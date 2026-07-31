@@ -207,6 +207,14 @@ rows, and post-commit-shaped outbox rows transactionally, proves idempotency
 and rollback seams, and has no UI, notification, migration, or production
 integration.
 
+C3-CORE009 is complete as a local DDEV developer workbench under
+`tnet-community`. An authenticated administrator can publish a synthetic topic
+through the local PHP adapter and inspect the persisted post/audit/event result.
+The workbench is DDEV-gated, hidden from public navigation, nonce/capability
+protected, and has no replies, public route, REST, notification, or production
+connection. Browser visual QA was attempted but blocked by the session browser
+bridge; no visual success is claimed.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
