@@ -296,7 +296,6 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"].authority-nav-open .left-rail{display:block}
   .application-card[data-authority="true"] .main-workspace{padding:18px 16px 24px}
   .application-card[data-authority="true"] .stepper{align-items:center;display:flex;gap:6px;justify-content:space-between;margin:22px 0 16px;position:relative}
-  .application-card[data-authority="true"] .stepper::before{content:none}
   .application-card[data-authority="true"] .stepper li{flex:0 0 30px}
   .application-card[data-authority="true"] .stepper li .stepper-label{font-size:0;margin:0;max-width:0}
   .application-card[data-authority="true"] .stepper li.is-current .stepper-label{font-size:12px;margin-top:8px;max-width:90px;white-space:nowrap}
@@ -576,10 +575,4 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .tnet-jobs-app-brand-region{grid-column:1}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region{grid-column:2;justify-content:center}
   .application-card[data-authority="true"] .tnet-jobs-app-utility-region{display:none;visibility:hidden}
-}
-
-@media (max-width:767px){
-  .application-card[data-authority="true"] .stepper{margin-bottom:68px}
-  .application-card[data-authority="true"] .stepper li.is-current .stepper-label{align-items:center;display:flex;flex-direction:column;gap:2px;left:50%;line-height:1.2;margin:0;max-width:130px;position:absolute;top:42px;transform:translateX(-50%);white-space:nowrap}
-  .application-card[data-authority="true"] .stepper-status{color:var(--muted);display:block;font-size:11px;font-weight:400;line-height:1.2}
 }
