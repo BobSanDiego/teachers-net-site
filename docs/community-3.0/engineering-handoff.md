@@ -97,6 +97,12 @@ abuse classification, legacy URL/timestamp shape, chat_posts fields,
 local_path versus group identity, duplicate and partial-write classes, and
 immutable archive metadata. No production or external side effect is possible
 through the harness; unknown behavior remains explicit.
+C3-CORE004 is complete as the canonical identity contract. The target uses an
+opaque `community_id`, retains legacy path/local-path/group references without
+renumbering, and confines translation to a resolver/repository boundary. Core
+Terms classifies the entity and Portable Views present it; neither replaces
+Community identity. The next implementation is a test-only in-memory resolver
+and mapping-registry contract.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

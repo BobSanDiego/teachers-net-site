@@ -177,6 +177,12 @@ filesystem publication, database write, notification, or WordPress publisher
 implementation. Unknown identity, moderation, edit/delete, mailring,
 concurrency, and recovery behavior remains explicitly unverified.
 
+C3-CORE004 is complete as the canonical Community identity and legacy
+compatibility contract. New Community code will use an opaque `community_id`;
+legacy path/local-path/group identifiers remain immutable compatibility keys
+behind one resolver boundary. Numeric alignment is rejected, and Core Terms
+and Portable Views remain relationships rather than identity authorities.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
