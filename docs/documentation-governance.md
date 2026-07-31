@@ -37,6 +37,37 @@ should not hold one workstream's live ticket cursor or short-term handoff state.
 
 ## Local ChatGPT File Hopper
 
+### Project-Specific Clean-Cycle Hopper Procedure
+
+The canonical active Teachers.Net hopper is `tmp/hopper/tnet-3.0/current/` with
+historical cycles in `tmp/hopper/tnet-3.0/archive/`. The slug is permanently
+`tnet-3.0`; do not vary it. At the beginning of every ticket, archive all
+prior `current/` contents into a new cycle directory before work begins. Use
+one UTC `YYMMDDHHMMSS` cycle identifier everywhere: archive directory,
+artifact names, report, manifest, JSON cycle record, and evidence bundle.
+
+Copy every file created or modified by the ticket, including uncommitted or
+blocked-cycle artifacts, flat into `current/` as
+`<base>-tnet-3.0-<cycle-id>.<extension>`, preserving original repository
+paths in `MANIFEST-tnet-3.0-<cycle-id>.txt` with size, SHA-256, status, and
+commit inclusion. Create `cycle-tnet-3.0-<cycle-id>.json` and validate that
+all entries resolve, hashes exist, files are nonzero, JSON parses, no collision
+occurred, and no unrelated dirty file was included. Bundle multiple evidence
+files as `evidence-tnet-3.0-<cycle-id>.zip` when needed.
+
+Every ticket must begin by archiving the prior project-specific `current/`
+hopper contents and must end with a validated, self-contained current-cycle
+artifact set that the user can drag into ChatGPT in one operation. A ticket is
+not complete until the current project hopper contains the report, manifest,
+cycle record, every created or modified file, and all required evidence.
+
+The final report must list every current-cycle filename, WSL and Windows
+folder paths, archive path, commit, push result, and the Explorer command. Use
+`python3 tools/hopper/clean_cycle.py` for the deterministic lifecycle. Never
+delete historical cycles, never silently overwrite a file, preserve blocked or
+incomplete cycles, and exclude unrelated dirty files. `tmp/hopper/output.txt`
+is protected and must never be touched or included.
+
 When a ticket edits a local Markdown file and that file is referenced in the
 post-ticket report, first move every currently active hopper file into the
 hopper's `archive/` directory with a UTC timestamp-versioned filename. Then
@@ -60,9 +91,11 @@ every modified file that is included in the current hopper set.
 At the end of each ticket, save a plain-text copy of the final post-ticket
 report in the shared hopper root as `output-YYMMDDHHMMSS.txt`. Generate it from
 the final report content; it is not an automatic capture of the rendered
-interface. Create a same-cycle archive duplicate under the active project's
-archive directory and include its filename/link in the report. This generated
-report is separate from the protected engineer-owned `output.txt`.
+interface or conversation surface. Create a same-cycle archive duplicate under
+the active project's archive directory and include its filename/link in the
+report. The report must separately list every modified file included in the
+current hopper set. This generated report is separate from the protected
+engineer-owned `output.txt`.
 
 When a report references local directories, include a Windows File Explorer
 link/path for each directory in addition to any WSL path. Use the native
@@ -95,6 +128,8 @@ projects' hopper operations.
 Hopper refreshes must ignore it completely: never archive it, overwrite it,
 rename it, edit it, copy it, include it in the manifest, or link it as a
 generated handoff artifact. If present, it must remain at that exact path.
+The generated `output-YYMMDDHHMMSS.txt` report artifacts are separate from this
+protected `output.txt` file and must never replace or modify it.
 
 ## Local Project-Specific Docs
 
