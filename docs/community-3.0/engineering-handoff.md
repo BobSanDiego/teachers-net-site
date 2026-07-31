@@ -71,6 +71,8 @@ The C3-IMP009 shadow seam is implemented in
 `docs/community-3.0/group-post-shadow-hook-v1.md`. Repository inspection found
 no owned real Community publication hook, so this remains a test-owned model
 and is not connected to production.
+C3-IMP009 is complete as the current source milestone; no live publication hook
+or delivery behavior is authorized.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
