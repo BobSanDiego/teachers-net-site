@@ -1,0 +1,32 @@
+C3-NOT001 — Community 3.0 Domain Event and Notification Contract
+
+Status: executed, documentation and read-only evidence only.
+
+Completed
+
+- Created docs/community-3.0/domain-event-and-notification-contract-v1.md.
+- Defined the domain-event model, lifecycle, producers, consumers, identity/idempotency, payload, visibility evaluation, candidate generation, eligibility, channel distinction, deduplication, coalescing, expiry, and audit.
+- Covered new post, reply, reaction, mention, group join/leave, moderator action, promotion/editorial action, administrative announcement, and account/security event families.
+- Documented legacy evidence and cross-product event isolation.
+- Updated the Project Cursor and Engineering Handoff.
+- Committed and pushed the documentation-only change.
+
+Verification and limits
+
+- Event, notification, eligibility, delivery, and engagement remain distinct.
+- Membership is not consent; path_id and group_id remain distinct.
+- Transactional and promotional communications remain distinct.
+- No events, bell records, queues, mail, schema, migrations, production, provider, cron, or delivery changes occurred.
+- C3-NOT002 may be considered after Engineering Director review; it is not authorized by this ticket.
+
+Commit and push
+
+Commit: d68ae0df1c2cf530d16c6bd92a83279c543ebf0a
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+Active flat handoff directory: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Project archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0
+Current-cycle archive suffix: 260731120217
+Protected output.txt was not touched, copied, renamed, archived, or included.

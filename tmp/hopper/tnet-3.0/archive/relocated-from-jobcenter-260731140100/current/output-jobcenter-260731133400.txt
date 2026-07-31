@@ -1,0 +1,72 @@
+OPS-HOPPER001 — Project-Specific Clean-Cycle Hopper Standard
+
+Project: jobcenter
+Ticket: OPS-HOPPER001
+Cycle identifier: 260731133400 UTC
+Status: completed
+
+Summary
+
+Implemented the clean-cycle project hopper procedure and reusable helper. The
+canonical current-cycle folder is now tmp/hopper/jobcenter/current/ and the
+historical archive is tmp/hopper/jobcenter/archive/. The prior shared hopper
+contents were preserved under archive/legacy-migration-260731133400/; no
+historical content was deleted. The protected tmp/hopper/output.txt was left
+untouched and excluded.
+
+Implemented procedure
+
+- One canonical project slug: jobcenter.
+- One cycle identifier reused across current filenames and records:
+  260731133400.
+- Archive-before-work structure with current/ and archive/ separation.
+- Collision-safe flat artifact copies with the cycle identifier before the
+  extension.
+- Manifest and machine-readable JSON cycle record requirements.
+- Validation for current contents, nonzero files, hashes, and JSON parsing.
+- Guidance now requires the self-contained current set and Explorer command.
+
+Created and modified files
+
+- tools/hopper/clean_cycle.py — reusable lifecycle helper, created.
+- AGENTS.md — durable repository guidance, modified.
+- docs/codex-ticket-discipline.md — durable ticket guidance, modified.
+- docs/documentation-governance.md — durable governance guidance, modified.
+- tmp/hopper/jobcenter/current/output-jobcenter-260731133400.txt — this report.
+- tmp/hopper/jobcenter/current/MANIFEST-jobcenter-260731133400.txt — artifact manifest.
+- tmp/hopper/jobcenter/current/cycle-jobcenter-260731133400.json — cycle record.
+
+Migration result
+
+Legacy root active hopper files and prior archive contents were moved into
+tmp/hopper/jobcenter/archive/legacy-migration-260731133400/ with separate root
+and archive preservation folders. The protected tmp/hopper/output.txt was not
+moved. No unrelated repository files were copied into the current cycle.
+
+Verification
+
+- Current folder contains only this cycle's report, manifest, JSON record, and
+  four ticket artifacts.
+- Every current-cycle file has a nonzero size and SHA-256 entry.
+- JSON cycle record parses successfully.
+- No filename collision or silent overwrite occurred.
+- No evidence ZIP was required; this operations ticket produced no screenshot
+  bundle.
+- No product implementation, production change, schema change, or migration
+  was performed.
+- Git diff --check passed before commit.
+
+Repository and delivery
+
+Branch: COMMUNITY003-semantic-community-communications-working-draft
+Commits: dd07112868aabfbb630021e0776ed08fac7ad5a7, bc4913162e215e3b9ea8eb1695a16beb5197e70c
+Push: confirmed to origin/COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper paths
+
+WSL current: /home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current/
+WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/archive/
+Windows current: \\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\jobcenter\current\
+Explorer command: explorer.exe "\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\jobcenter\current"
+
+The user can open current/, select all, and drag the entire set into ChatGPT.

@@ -1,0 +1,58 @@
+JC053-RESP008 — Caret Spacing and Mobile Hamburger
+
+Status: implemented, verified, committed, and pushed.
+
+Result
+
+- Compact Job Center control is preserved from 1024px through 501px.
+- Label and caret use one inline-flex alignment context with a 10px gap.
+- A 10px separation is reserved before the notification/account utility region.
+- At 500px and below, the text Job Center control is removed from the navbar and replaced by a compact 44px hamburger trigger.
+- The existing Job Center drawer is reused; no duplicate navigation source was added.
+- The drawer exposes My Jobs, Career Resources, and Teacher Resources.
+- The existing accessible heading, close control, Escape handling, aria-expanded, aria-controls, focus transfer, and focus restoration remain active.
+
+Files changed and copied to this hopper
+
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/index.html
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.css
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.js
+- /home/bobreap/projects/teachers-net-site/docs/job-center/job-center-responsive-decisions-v1.md
+
+Verification
+
+- External Chrome DevTools MCP used at http://127.0.0.1:8768/#wizard-authority-v1.
+- Requested matrix checked: 1025, 1024, 900, 769, 768, 767, 700, 651, 650, 600, 550, 501, 500, 499, 480, 390, 320.
+- Actual widths matched requests through 500px.
+- Requests for 499, 480, 390, and 320 were clamped by the renderer to actual 500px; this is recorded in the filenames and is not claimed as true sub-500 evidence.
+- At 500px, topbar height is 60px, the hamburger target is 44px, and the Job Center button accessible name is Open Job Center navigation.
+- Drawer test passed: expanded=true, hidden=false, focus moved to the drawer, and all three required links were present.
+- No horizontal overflow was observed at the tested actual widths.
+- Console contained one accessibility issue warning about two form fields lacking id/name attributes; no JavaScript error was reported. Page remained functional and rendered correctly.
+- Node syntax check passed for mockup.js using the bundled runtime.
+- git diff --check passed.
+
+Screenshots
+
+Windows directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\jc053-wizard-workbench\screenshots\resp008-2026-07-31\
+
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/resp008-2026-07-31/
+
+The directory contains closed-drawer captures for 1024, 768, 767, 650, 501, 500, 499, 390, and 320 requested widths, plus open-drawer captures for 500, 390, and 320. Each filename includes requested and actual width.
+
+Git
+
+- Commit: 79bc08f (JC053-RESP008 correct caret spacing and mobile hamburger)
+- Push: confirmed to origin/COMMUNITY003-semantic-community-communications-working-draft.
+- Unrelated pre-existing dirty files were preserved.
+- Protected tmp/hopper/output.txt was not modified.
+
+Hopper
+
+- Active hopper files were flushed to:
+  /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/260731061334/
+- Windows archive directory:
+  C:\Main\Active\Projects\Teachers.Net\tmp\hopper\archive\JobCenter\260731061334\
+- This report is duplicated to the same-cycle archive directory.

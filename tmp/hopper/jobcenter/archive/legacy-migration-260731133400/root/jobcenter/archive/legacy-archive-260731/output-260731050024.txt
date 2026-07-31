@@ -1,0 +1,71 @@
+JC053-RESP006 — Final Narrow Header and Mobile Job Center Drawer
+
+Result
+Implemented, browser-verified, committed, and pushed.
+
+Git
+- Commit: 80970f1 JC053-RESP006 implement final narrow header drawer
+- Branch: COMMUNITY003-semantic-community-communications-working-draft
+- Push: origin/COMMUNITY003-semantic-community-communications-working-draft confirmed.
+- No tag created.
+
+Modified files copied into the current hopper set
+- docs/job-center/job-center-responsive-decisions-v1.md
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+- tmp/jc053-wizard-workbench/mockup.js
+
+Root cause of the 767px failure
+The final 1024px compact-header rules were followed by legacy <=767px flex-wrap/grid rules. Those rules reintroduced competing row ownership, centered the logo through the inherited brand alignment, left utility separators in the wrong layout context, and provided no dedicated mobile navigation surface. The correction adds one final scoped responsive owner and removes reliance on the legacy wrapped-account behavior.
+
+Final responsive contract
+- 1025px and above: existing desktop header remains unchanged.
+- 768–1024px: compact one-row header with left logo region, unified Job Center control, bell, and My Account.
+- 651–767px: stable one-row header with left-aligned logo, unified Job Center dropdown, bell, and visible My Account.
+- 650px and below: compact logo/bell/avatar top row plus a full-width 44px Job Center trigger on the second row.
+- The mobile trigger reuses the existing three-link navigation data: My Jobs, Career Resources, and Teacher Resources.
+
+Implementation
+- Added a stable drawer id and close control to the existing overflow navigation.
+- Preserved the existing navigation destinations; no duplicate link source was introduced.
+- Added aria-controls to the trigger and preserved My Account's accessible name when the shared dropdown renderer replaces its source link.
+- Drawer opens with aria-expanded=true, focuses the drawer, closes with the close control or Escape, and returns focus to the trigger.
+- Removed visual utility top borders and kept separators vertical.
+- Kept layout in CSS grid/inline-flex; no transforms, negative margins, absolute layout positioning, or !important were added for header layout.
+- Updated shared responsive guidance with the final breakpoint contract.
+
+Browser verification
+External Chrome DevTools MCP was used against the local workbench.
+- Matrix checked: 1024, 900, 769, 768, 767, 700, 651, 650, 649, 480, 390, 320.
+- 651 and 767 remain one row; logo x-coordinate is left-aligned at the shell inset.
+- 650 and below use the two-row compact configuration; trigger height is 44px.
+- Drawer interaction at 650 and the supported narrow viewport opened with three expected menuitems and closed with focus restored to the trigger.
+- My Account remains accessible through the shared dropdown-rendered control and retains aria-label="My Account".
+- No horizontal overflow at all tested actual viewports.
+- Console error/warning inspection: no messages found.
+- Fresh reload and independent URL load passed.
+- The MCP resize operation clamps requested 390px and 320px to an actual 500px viewport in this environment. Those captures are labeled with both requested and actual widths; no unsupported true-width claim is made.
+
+Screenshot evidence
+Windows directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\jc053-wizard-workbench\screenshots\resp006-2026-07-31\
+
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/resp006-2026-07-31/
+
+Evidence includes closed captures for every requested matrix width and drawer-open captures for requested 650, 390, and 320 widths. The 390 and 320 captures record actual browser width 500 because the external resize operation imposed that minimum.
+
+Validation
+- git diff --check passed before commit.
+- Browser-rendered JS executed successfully through external Chrome DevTools MCP; the local shell has no `node` executable for a separate `node --check` pass.
+
+Hopper
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- Windows hopper: C:\Main\Active\Projects\Teachers.Net\tmp\hopper\
+- JobCenter archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/260731050024/
+- Windows archive: C:\Main\Active\Projects\Teachers.Net\tmp\hopper\archive\JobCenter\260731050024\
+- Generated report: output-260731050024.txt
+- Archive duplicate: archive/JobCenter/output-260731050024.txt
+- Protected engineer-owned output.txt was excluded and preserved.
+
+The report file is generated from this final post-ticket report content; it is not automatically captured from the rendered interface.

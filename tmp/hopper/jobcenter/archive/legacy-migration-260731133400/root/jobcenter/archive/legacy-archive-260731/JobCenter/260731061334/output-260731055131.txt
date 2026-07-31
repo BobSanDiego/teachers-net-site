@@ -1,0 +1,58 @@
+JC053-RESP007 — Final Header Polish and Responsive Stepper Alignment
+
+Result
+Implemented, externally browser-verified, committed, and pushed.
+
+Git
+- Commit: a71f32a JC053-RESP007 polish narrow header and stepper
+- Branch: COMMUNITY003-semantic-community-communications-working-draft
+- Push: origin/COMMUNITY003-semantic-community-communications-working-draft confirmed.
+- No tag created.
+
+Changed files copied into the current hopper set
+- docs/job-center/job-center-responsive-decisions-v1.md
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+
+Corrections
+- Replaced the full-height logo boundary with a centered 30px floating pseudo-element at the logo-region edge; the native brand border is disabled where the pseudo-element owns the divider.
+- Removed the literal whitespace flex item between the compact Job Center label and caret. The control now uses inline-flex with an explicit 8px gap and a contained 7px caret.
+- Added the 501–650px compressed one-row contract and moved final two-row mobile presentation to 500px and below.
+- Isolated the active step label beneath the circle with absolute label positioning and fixed circle geometry. All five circle centers remain on one horizontal line; inactive labels remain hidden.
+- Updated the shared JC053 responsive guidance with the 501–650 and <=500 breakpoint contract.
+
+Browser verification
+- External Chrome DevTools MCP used against the served workbench.
+- Matrix requested: 1025, 900, 768, 767, 700, 651, 650, 600, 550, 500, 480, 390, 320.
+- Desktop/compact header retains one row through 1025–651 as applicable; 501–650 is compressed one row; 500 and below use the two-row final mobile header.
+- Logo x-position is left-aligned in narrow states; divider computed pseudo-element is top 15px and height 30px, with no full-height brand border.
+- Stepper circle Y-coordinates matched within each tested viewport and the active label rendered beneath the circle.
+- No caret overlap, utility separator top artifact, or horizontal overflow observed.
+- Drawer opened with My Jobs, Career Resources, and Teacher Resources, then closed with Escape and restored focus to the trigger.
+- Console error/warning inspection: no messages found.
+- The MCP resize operation clamps requested 390px and 320px to actual 500px in this environment; evidence is labeled with requested and actual widths and does not claim true 390/320 coverage.
+- One reload call exceeded the MCP 10-second navigation timeout while the selected page remained available; subsequent live-page verification and interaction checks passed.
+
+Screenshot evidence
+Windows directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\jc053-wizard-workbench\screenshots\resp007-2026-07-31\
+
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/resp007-2026-07-31/
+
+Evidence includes closed captures for 767, 650, 500, 390, and 320 requests plus drawer-open captures for 650, 390, and 320. Requested 390 and 320 captures record actual width 500.
+
+Validation
+- git diff --check passed before commit.
+- Browser-rendered CSS/HTML behavior and JavaScript interactions passed through external Chrome DevTools MCP.
+
+Hopper
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- Windows hopper: C:\Main\Active\Projects\Teachers.Net\tmp\hopper\
+- JobCenter archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/260731055131/
+- Windows archive: C:\Main\Active\Projects\Teachers.Net\tmp\hopper\archive\JobCenter\260731055131\
+- Generated report: output-260731055131.txt
+- Archive duplicate: archive/JobCenter/output-260731055131.txt
+- Protected engineer-owned output.txt was excluded and preserved.
+
+This report is generated from the final post-ticket report content; it is not automatically captured from the rendered interface.

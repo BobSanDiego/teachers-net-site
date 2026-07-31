@@ -1,0 +1,22 @@
+{
+  "project": "jobcenter",
+  "ticket": "OPS-HOPPER001",
+  "cycle_id": "260731133236",
+  "status": "completed",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "pending",
+  "push": "pending",
+  "current_hopper": "/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current/",
+  "archive_path": "/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/archive/",
+  "report_file": "output-jobcenter-260731133236.txt",
+  "manifest_file": "MANIFEST-jobcenter-260731133236.txt",
+  "evidence_bundle": null,
+  "artifacts": [
+    {"hopper_filename":"AGENTS-jobcenter-260731133236.md","original_path":"AGENTS.md","status":"modified","sha256":"67ac2edf7e40512ffd8cac5c416e4216ebd02dac3e308b53fe0d6944cf53bf5e","size":8959,"committed":false},
+    {"hopper_filename":"codex-ticket-discipline-jobcenter-260731133236.md","original_path":"docs/codex-ticket-discipline.md","status":"modified","sha256":"bb20b056c1d5cb16a39915fd3ed4038c0075faaa191f0ee04400e94a6a33a501","size":21547,"committed":false},
+    {"hopper_filename":"jobcenter-hopper-jobcenter-260731133236.sh","original_path":"scripts/jobcenter-hopper.sh","status":"created","sha256":"7587a12f53639c458ff67bd1d8643ee14af5a82a9730e81a22dce09fcf95d328","size":2458,"committed":false},
+    {"hopper_filename":"output-jobcenter-260731133236.txt","original_path":"generated final report","status":"generated","sha256":"c324b15dd689be901b6968222aa0965c91e20830f615c81ec702e1be967b046e","size":3207,"committed":false},
+    {"hopper_filename":"MANIFEST-jobcenter-260731133236.txt","original_path":"generated hopper manifest","status":"generated","sha256":"a257e5093e13d21a61333425a5c2379394f079e0af20d73c193894574e803535","size":1594,"committed":false},
+    {"hopper_filename":"cycle-jobcenter-260731133236.json","original_path":"generated cycle metadata","status":"generated","sha256":"b7c9a4a77641c0e7430380f35bb6be9a9716f790187f3705e5c102c41847294f","size":1608,"committed":false}
+  ]
+}

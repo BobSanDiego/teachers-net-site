@@ -1,0 +1,32 @@
+Ticket completion report: JC053 responsive rollback and desktop navbar geometry
+
+Scope: static JC053 workbench only. No production changes. No commit or push.
+
+Modified files:
+- tmp/jc053-wizard-workbench/mockup.css
+
+Modified files included in hopper: none; this is a non-Markdown workbench file.
+
+Root cause: migrated 901–1099px rules hid secondary navbar dropdowns and allowed compact-state geometry to influence constrained desktop. The rollback restores the pre-migration three-link desktop structure above the compact boundary.
+
+Correction:
+- 1025–1199px now locks the shared shell column to 250px for brand, divider, rail, and workspace start.
+- Only right-side gaps/padding compress in that range.
+- My Jobs, Career Resources, Teacher Resources, notifications, and My Account remain visible.
+- Dropdown triggers are right-aligned and retain canonical caret alignment.
+- Compact mode begins at 1024px and below; Resources is absent above 1024px.
+
+Measurements:
+- 1440: shell 1200, brand 250, rail 250, divider/rail edge x=363.5, delta 0, desktop, overflow none.
+- 1200: shell 1200, brand 250, rail 250, divider/rail edge x=251, delta 0, desktop, overflow none.
+- 1199: shell 1160, brand 250, rail 250, divider/rail edge x=263, delta 0, desktop, overflow none.
+- 1100: shell 1061, brand 250, rail 250, divider/rail edge x=263, delta 0, desktop, overflow none.
+- 1025: shell 986, brand 250, rail 250, divider/rail edge x=263, delta 0, desktop, overflow none.
+- 1024: shell 985, brand 210, rail 210, compact Resources, overflow none.
+
+Screenshots:
+Windows/File Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/desktop-rollback-2026-07-30/
+WSL: /mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/desktop-rollback-2026-07-30/
+Files: desktop-rollback-1440.png, desktop-rollback-1200.png, desktop-rollback-1199.png, desktop-rollback-1100.png, desktop-rollback-1025.png, desktop-rollback-1024.png.
+
+Verification: Node syntax check and git diff --check passed. One pre-existing console issue remains about two form fields lacking id/name attributes; no runtime errors or warnings. Wizard, mobile behavior, and production files were not changed.

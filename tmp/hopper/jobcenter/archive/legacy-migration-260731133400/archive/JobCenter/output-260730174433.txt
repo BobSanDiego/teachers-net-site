@@ -1,0 +1,31 @@
+Teachers.Net Job Center Handoff Preparation — Final Report
+
+Date: 2026-07-30
+Project: Teachers.Net Job Center
+
+Handoff prepared; 15 local Job Center guidance documents were copied to the
+active hopper root and duplicated in archive/JobCenter. The startup prompt
+contains the canonical Playbook and Job Center Engineering Handoff URLs and
+instructs the next session to keep Job Center state separate from Community
+3.0 and other projects.
+
+Modified files included in the hopper:
+
+- docs/job-center/project-cursor.md
+- docs/job-center/engineering-handoff.md
+- docs/job-center/jobs-roadmap.md
+- docs/job-center/job-center-responsive-decisions-v1.md
+- docs/job-center/job-center-responsive-layout-geometry-v1.md
+- docs/job-center/job-center-responsive-convergence-audit.md
+- docs/job-center/canonical-v1-contract.md
+- docs/job-center/product-definition-v1.md
+- docs/job-center/employer-ux-v1.md
+- docs/job-center/job-center-design-system-v1.md
+- docs/job-center/job-center-ux-atlas-v1.md
+- docs/job-center/employer-access-authority-contract-v1.md
+- docs/job-center/employer-lifecycle-authority-contract-v1.md
+- docs/job-center/employer-workspace-flow-authority-v1.md
+- docs/job-center/job-posting-wizard-field-contract-v1.md
+
+Protected tmp/hopper/output.txt was excluded and preserved. No commit or push
+was made.

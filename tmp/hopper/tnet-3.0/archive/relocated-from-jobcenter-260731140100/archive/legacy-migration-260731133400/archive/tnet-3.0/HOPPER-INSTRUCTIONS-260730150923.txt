@@ -1,0 +1,46 @@
+STANDARD CODEX HOPPER PROCEDURE
+
+Standard directory:
+  \\teachers-net-site\\tmp\\hopper
+
+Use one shared hopper for every project. Keep active handoff files directly in
+the hopper root for one drag-and-drop selection.
+
+Project archives:
+  \\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\
+
+When creating or refreshing files:
+1. Identify the active project.
+2. For every handoff file, copy the active version directly into the hopper
+   root and create a duplicate archive copy at the same time under that
+   project's archive directory.
+3. Append a UTC timestamp to each archive duplicate using YYMMDDHHMMSS:
+   filename-YYMMDDHHMMSS.md
+4. Do not later move or rename active files to archive directories. The archive
+   copy was created during the same step as the active file.
+5. Before the next refresh, delete only obsolete active document files from the
+   hopper root. Never delete directories or output.txt.
+6. Update HOPPER-MANIFEST.txt with source paths, active files, archive copies,
+   and protected-file exclusions.
+7. At the end of each ticket, save a plain-text copy of the final post-ticket
+   report in the hopper root as output-YYMMDDHHMMSS.txt. Generate it from the
+   final report content; it is not an automatic capture of the rendered
+   interface. Create a same-cycle archive duplicate under the active project's
+   archive directory.
+
+Protected file:
+  output.txt is engineer-owned. Never archive, edit, overwrite, rename, copy,
+  manifest, or report it. Leave it at its exact existing path.
+
+Verify that active files are flat, each active file has a same-cycle archive
+duplicate, archive names end in YYMMDDHHMMSS, protected files are untouched,
+and no directories were deleted.
+
+Every hopper-related post-ticket report must include:
+- a link to the standard hopper directory;
+- a separate bullet list of every modified file copied into the current hopper;
+- the project-specific archive directory used;
+- the output-YYMMDDHHMMSS.txt report filename/link;
+- confirmation that output.txt was excluded and preserved.
+
+The repository remains the source of truth. Hopper files are handoff copies.

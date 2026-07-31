@@ -1,0 +1,85 @@
+JC053-ARCH001A — Desktop Boundary Correction
+
+Result
+------
+Completed, committed, and pushed as commit 0a25f54 on
+COMMUNITY003-semantic-community-communications-working-draft.
+
+Modified production/workbench file
+----------------------------------
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.css
+  Windows Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/mockup.css
+  This is the only file modified by this ticket and is copied separately into
+  this hopper as mockup.css.
+
+Corrections
+-----------
+- Removed the legacy 1100–1199px rule that hid Teacher Resources and exposed
+  the overflow control in that desktop range.
+- Preserved My Jobs, Career Resources, and Teacher Resources from 1025px up;
+  the unified compact Resources behavior remains at 1024px.
+- Restored a 16px right padding on the utility region, giving My Account a
+  measured 17px card-edge inset while preserving right alignment and dropdown
+  behavior.
+- No HTML, JavaScript, production route, new breakpoint, !important, or mobile
+  behavior was changed.
+
+Before / after desktop geometry
+-------------------------------
+At 1200px before and after: card 1161px at x=12; brand/rail 250px at x=13;
+workspace x=263px and 909px wide. The one-pixel viewport reduction at 1199px
+naturally produces card 1160px and workspace 908px; the 250px rail axis remains
+at x=263px. Before, Teacher Resources was absent and account inset was 1px.
+After, all three direct resource links are present at 1199px and account
+content has a 17px inset.
+
+Browser verification
+--------------------
+External Chrome DevTools MCP, workbench URL:
+http://127.0.0.1:8768/#wizard-authority-v1
+
+Verified at 1440, 1200, 1199, 1100, 1025, and 1024px viewport widths.
+- 1440–1025: My Jobs, Career Resources, Teacher Resources, and My Account.
+- 1024: compact My Jobs, Career Resources, and My Account state preserved.
+- rail is 250px at 1440–1025 and 210px at 1024.
+- no horizontal overflow or overlap at any verified width.
+- console errors/warnings: 0. Chrome reported one non-error accessibility issue:
+  two form fields lack id/name attributes.
+- no page errors affecting the workbench.
+
+PNG evidence
+------------
+Windows directory:
+C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/desktop-boundary-correction-2026-07-30/
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/desktop-boundary-correction-2026-07-30/
+
+Final files:
+- authority-final-1440.png — 197771 bytes
+- authority-final-1200.png — 187148 bytes
+- authority-final-1199.png — 183109 bytes
+- authority-final-1100.png — 182372 bytes
+- authority-final-1025.png — 181982 bytes
+- authority-final-1024.png — 169880 bytes
+
+Checks
+------
+- node.exe --check tmp/jc053-wizard-workbench/mockup.js: passed
+- git diff --check: passed
+
+Git
+---
+- commit: 0a25f54
+- push: origin/COMMUNITY003-semantic-community-communications-working-draft succeeded
+- parent repository retains unrelated dirty files; none were staged.
+- nested tnet-jobs plugin has no ticket changes.
+
+Hopper paths
+------------
+- Windows hopper: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- JobCenter archive: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/archive/JobCenter/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/
+- This report is generated from the final post-ticket report content, not
+  captured automatically from the rendered interface. It is separate from the
+  protected engineer-owned output.txt.

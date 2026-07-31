@@ -1,0 +1,12 @@
+Hopper refresh: 2026-07-31 UTC
+Project: JobCenter
+Archive batch: tmp/hopper/archive/JobCenter/*-260731111303.*
+
+Active copied files:
+- AGENTS.md -> tmp/hopper/AGENTS.md
+- docs/job-center/engineering-handoff.md -> tmp/hopper/job-center-engineering-handoff.md
+- docs/job-center/project-cursor.md -> tmp/hopper/job-center-project-cursor.md
+- tools/qa/launch-chrome-cdp-9222.ps1 -> tmp/hopper/launch-chrome-cdp-9222.ps1
+- generated final report -> tmp/hopper/output-260731111303.txt
+
+Protected file preserved and excluded: tmp/hopper/output.txt

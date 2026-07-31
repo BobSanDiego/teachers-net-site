@@ -1,0 +1,33 @@
+C3-TRUST001 — Community 3.0 Subscriber Policy Contract
+
+Status: executed, documentation and read-only evidence only.
+
+Completed
+
+- Created docs/community-3.0/subscriber-policy-contract-v1.md.
+- Defined subscriber and preference concepts without collapsing membership, interest, consent, eligibility, suppression, or delivery.
+- Defined communication categories, channels, defaults, frequencies, group overrides, pause, unsubscribe, suppression, history, audit, correction, restoration, and precedence.
+- Documented legacy fields and behavior including tnet_memberships.email_posts, group frequency controls, BuddyPress notification state, dormant mail code, and bulk-mail uncertainty.
+- Added product subscriber matrix, decision examples, open evidence gaps, and later acceptance criteria.
+- Updated the Project Cursor and Engineering Handoff.
+- Committed and pushed the documentation-only change.
+
+Verification and limits
+
+- path_id and group_id remain distinct.
+- Transactional and promotional communications remain distinct.
+- Cross-product consent inference is prohibited.
+- No database writes, mail sends, schema changes, migrations, production edits, cron/provider changes, or delivery enablement occurred.
+- C3-TRUST002 may be considered after Engineering Director review; it is not authorized by this ticket.
+
+Commit and push
+
+Commit: af23e6599ead3353efa8a5369ec43e4102c46f86
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+Active flat handoff directory: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Project archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0
+Current-cycle archive suffix: 260731113351
+Protected output.txt was not touched, copied, renamed, archived, or included.

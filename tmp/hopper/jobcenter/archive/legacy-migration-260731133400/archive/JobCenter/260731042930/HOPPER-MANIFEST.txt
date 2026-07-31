@@ -1,0 +1,17 @@
+Hopper refresh: 2026-07-31 UTC
+Project: JobCenter
+Active files:
+- AGENTS.md -> tmp/hopper/AGENTS.md
+- docs/job-center/engineering-handoff.md -> tmp/hopper/job-center-engineering-handoff.md
+- docs/job-center/project-cursor.md -> tmp/hopper/job-center-project-cursor.md
+- final report -> tmp/hopper/output-260731111518.txt
+Protected file preserved and excluded: tmp/hopper/output.txt
+
+Current ticket: C3-GO001 Community 3.0 implementation authorization
+Project: tnet-3.0
+Current-cycle archive suffix: 260731112505
+Community active files:
+- project-cursor.md
+- engineering-handoff.md
+- output-260731112600.txt
+Community timestamped duplicates: archive/tnet-3.0/

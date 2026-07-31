@@ -1,0 +1,100 @@
+JC053-ARCH001C — Restore Strict 1200px Shell Maximum
+
+Result
+------
+Completed, committed, and pushed as commit f57b042 on
+COMMUNITY003-semantic-community-communications-working-draft.
+
+Modified file
+-------------
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.css
+  Windows Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/mockup.css
+  This is the only file modified by this ticket and is copied separately into
+  this hopper as mockup.css.
+
+Shell owner and correction
+--------------------------
+The canonical outer shell is:
+
+.application-card[data-authority="true"]
+
+It contains the navbar, application body with rail/workspace, and footer.
+The winning shell declaration already used width:min(1200px,calc(100% - 24px))
+but had no explicit max-width. The correction adds max-width:1200px to that
+same canonical shell rule. No inner region uses viewport width or was changed.
+
+Before live values
+------------------
+At 1199: shell width 1160px, max-width none, x=12.
+At 1200: shell width 1161px, max-width none, x=12.
+At 1201: shell width 1162px, max-width none, x=12.
+At 1440: shell width 1200px, max-width none, x=112.5.
+At 1600: shell width 1200px, max-width none, x=192.5.
+At 1920: shell width 1200px, max-width none, x=352.5.
+
+The apparent expansion above 1200 was limited by the min() width expression,
+but the canonical max-width contract was not explicitly present.
+
+After live values
+-----------------
+At 1199: shell width 1160px, max-width 1200px, x=12.
+At 1200: shell width 1161px, max-width 1200px, x=12.
+At 1201: shell width 1162px, max-width 1200px, x=12.
+At 1440: shell width 1200px, max-width 1200px, x=112.5.
+At 1600: shell width 1200px, max-width 1200px, x=192.5.
+At 1920: shell width 1200px, max-width 1200px, x=352.5.
+
+The sub-1200 measurements reflect the browser’s vertical scrollbar and
+available document width; the exact available document widths were 1184px at
+1199 and 1185px at 1200. Above 1200, the shell is exactly 1200px and centered.
+Navbar, body, and footer share the shell’s interior boundary; the 250px rail
+axis remains unchanged through 1025px.
+
+Browser verification
+--------------------
+External Chrome DevTools MCP, workbench URL:
+http://127.0.0.1:8768/#wizard-authority-v1
+
+Verified at 1199, 1200, 1201, 1440, 1600, and 1920px.
+- shell never exceeds 1200px;
+- shell is centered above 1200px;
+- 250px rail/workspace axis is preserved;
+- no horizontal overflow;
+- no alternate 1200px layout transition;
+- console errors/warnings: 0. One non-error accessibility issue remains:
+  two form fields lack id/name attributes;
+- no page errors materially affecting the workbench.
+
+PNG evidence
+------------
+Windows directory:
+C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/strict-shell-2026-07-30/
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/strict-shell-2026-07-30/
+
+Final captures:
+- authority-1199.png — 183572 bytes
+- authority-1200.png — 187158 bytes
+- authority-1201.png — 188231 bytes
+- authority-1440.png — 197771 bytes
+- authority-1600.png — 201409 bytes
+- authority-1920.png — 207906 bytes
+
+Checks and Git
+--------------
+- node.exe --check tmp/jc053-wizard-workbench/mockup.js: passed
+- git diff --check: passed
+- commit: f57b042
+- push: origin/COMMUNITY003-semantic-community-communications-working-draft succeeded
+- parent repository retains unrelated dirty files; none were staged.
+- nested tnet-jobs plugin has no ticket changes.
+
+Hopper paths
+------------
+- Windows hopper: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- JobCenter archive: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/archive/JobCenter/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/
+- This report is generated from the final post-ticket report content, not
+  captured automatically from the rendered interface. It is separate from the
+  protected engineer-owned output.txt.

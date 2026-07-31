@@ -1,0 +1,93 @@
+Project: Job Center
+Ticket: OPS-HOPPER001 — Project-Specific Clean-Cycle Hopper Standard
+Cycle: 260731133236
+Status: completed
+
+Summary
+
+Created the canonical Job Center hopper structure, migrated existing hopper
+content without deletion, added a deterministic collection/validation helper,
+and updated durable repository guidance.
+
+Canonical paths
+
+WSL current hopper:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current/
+Windows current hopper:
+C:\Main\Active\Projects\Teachers.Net\tmp\hopper\jobcenter\current\
+WSL archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/archive/
+Windows archive:
+C:\Main\Active\Projects\Teachers.Net\tmp\hopper\jobcenter\archive\
+
+Migration
+
+- Prior active hopper files were moved to archive/legacy-260731/.
+- The former shared archive was preserved by copying it to
+  archive/legacy-archive-260731/.
+- The protected engineer-owned tmp/hopper/output.txt was left in place and
+  was not edited, copied, or archived.
+- No historical content was deleted.
+
+Files created or modified by this ticket
+
+- /home/bobreap/projects/teachers-net-site/scripts/jobcenter-hopper.sh
+- /home/bobreap/projects/teachers-net-site/AGENTS.md
+- /home/bobreap/projects/teachers-net-site/docs/codex-ticket-discipline.md
+
+Current-cycle copies are the three corresponding cycle-stamped files listed
+in the manifest. They are included in this current hopper for drag-and-drop
+ingestion.
+
+Tooling
+
+Script:
+/home/bobreap/projects/teachers-net-site/scripts/jobcenter-hopper.sh
+Windows path:
+C:\Main\Active\Projects\Teachers.Net\scripts\jobcenter-hopper.sh
+
+Example invocation:
+scripts/jobcenter-hopper.sh init OPS-HOPPER001
+scripts/jobcenter-hopper.sh collect OPS-HOPPER001 <cycle> <source> <status> <original-path>
+scripts/jobcenter-hopper.sh validate <cycle>
+
+The helper archives current contents, refuses artifact collisions, copies
+cycle-stamped files, and validates report/manifest/JSON/artifact presence.
+
+Guidance updates
+
+- AGENTS.md now defines the project-specific clean-cycle hopper procedure.
+- docs/codex-ticket-discipline.md now defines the durable project-specific
+  procedure, naming, archive, manifest, JSON, evidence, validation, and
+  Explorer requirements.
+
+Validation
+
+- Current contains only this cycle's three source copies plus this report,
+  manifest, and cycle record.
+- All current-cycle artifacts are nonzero and hashable.
+- JSON cycle record parses successfully.
+- No filename collisions occurred.
+- Protected output.txt was excluded.
+- Unrelated dirty repository files were not copied.
+- git diff --check passed.
+- Script syntax checked with bash -n.
+
+Git
+
+- Branch: COMMUNITY003-semantic-community-communications-working-draft
+- Commit: pending at report generation; this ticket requires one focused
+  commit after final validation.
+- Push: pending at report generation.
+
+Current-cycle files
+
+- AGENTS-jobcenter-260731133236.md
+- codex-ticket-discipline-jobcenter-260731133236.md
+- jobcenter-hopper-jobcenter-260731133236.sh
+- output-jobcenter-260731133236.txt
+- MANIFEST-jobcenter-260731133236.txt
+- cycle-jobcenter-260731133236.json
+
+Explorer command:
+explorer.exe "C:\Main\Active\Projects\Teachers.Net\tmp\hopper\jobcenter\current\"

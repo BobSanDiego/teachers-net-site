@@ -1,0 +1,23 @@
+project=jobcenter
+ticket=OPS-HOPPER001
+cycle_id=260731133400
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=dd07112
+push=confirmed
+current_hopper=tmp/hopper/jobcenter/current/
+archive_path=tmp/hopper/jobcenter/archive/
+report_file=output-jobcenter-260731133400.txt
+manifest_file=MANIFEST-jobcenter-260731133400.txt
+cycle_record_file=cycle-jobcenter-260731133400.json
+evidence_bundle=
+
+artifact|hopper_filename|original_path|status|size|sha256|committed|purpose
+source|clean_cycle-jobcenter-260731133400.py|tools/hopper/clean_cycle.py|created|5382|372e0b7b33c11bb9844f117b9638c0cf4cd3ba64fec465dffb1f5862c127aca0|false|reusable hopper lifecycle helper
+source|AGENTS-jobcenter-260731133400.md|AGENTS.md|modified|8978|03b503a4b6328045ff633da5b8077ae027db60dd81f4e9f77710ec1214cb6313|false|durable repository guidance
+source|codex-ticket-discipline-jobcenter-260731133400.md|docs/codex-ticket-discipline.md|modified|21507|007fd55b4bc9f58620f49672d30c381da962ba3297387414def2b96fffe7ded7|false|durable ticket guidance
+source|documentation-governance-jobcenter-260731133400.md|docs/documentation-governance.md|modified|11142|20691134bc6298e6c0b5976665166c1fc4f1d682d81352f2a371f3ac3fb18741|false|durable governance guidance
+generated|output-jobcenter-260731133400.txt|ticket report|generated|3233|a16a0fc6d30cab7710cfa6bdb2a970e8f98d758665b66b80bbe4692e4f07bf60|false|final post-ticket report
+generated|MANIFEST-jobcenter-260731133400.txt|cycle manifest|generated|self-referential|self-referential|false|machine-readable handoff manifest
+generated|cycle-jobcenter-260731133400.json|cycle record|generated|self-referential|self-referential|false|machine-readable cycle record
+
+Protected file excluded: tmp/hopper/output.txt

@@ -1,0 +1,39 @@
+Ticket completion report: JC053 compact workspace mode
+
+Scope: static JC053 workbench only. No production changes. No commit or push.
+
+Modified files:
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+
+Modified files included in hopper: none; these are non-Markdown workbench files.
+
+Breakpoint and token:
+- 1024px remains full desktop.
+- Compact Workspace activates at max-width 1023px and min-width 768px.
+- Shared token: --jc053-shell-column, normalized to 210px across compact mode.
+
+Compact behavior:
+- Brand, divider, rail edge, and workspace start share the same coordinate.
+- Top navigation becomes centered Resources, containing Career Resources and Teacher Resources only.
+- My Jobs is removed from the compact top navigation.
+- Rail icons are hidden and counts render inline as parenthetical counts.
+- Tip-card explanatory copy is hidden; heading and View Posting Tips remain.
+
+Measurements:
+- 1023px: brand 210px, rail 210px, divider/rail edge x=223, delta 0px, overflow none.
+- 900px: brand 210px, rail 210px, divider/rail edge x=223, delta 0px, overflow none.
+- 1024px: brand and rail remain 250px; full desktop navigation remains active.
+
+Accessibility:
+- Resources opens with aria-expanded=true.
+- Closed menu item has display:none and is not focusable; Career Resources and Teacher Resources remain keyboard reachable when open.
+- Rail links retain their text accessible names.
+
+Screenshots:
+Windows/File Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/compact-workspace-2026-07-30/
+WSL: /mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/compact-workspace-2026-07-30/
+
+Files: compact-workspace-1024.png, compact-workspace-1023.png, compact-workspace-900.png.
+
+Verification: Node syntax check passed; git diff --check passed. One pre-existing console issue remains about two form fields lacking id/name attributes; no runtime errors or warnings. Wizard, mobile content, and production code were not changed.

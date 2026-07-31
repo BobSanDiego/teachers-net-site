@@ -1,0 +1,55 @@
+JC053-RESP005 — Consolidate Compact Header Label at 1024px
+
+Result
+Implemented, verified, committed, and pushed.
+
+Commit
+c448d33 JC053-RESP005 consolidate compact Job Center header
+Branch: COMMUNITY003-semantic-community-communications-working-draft
+Push: origin/COMMUNITY003-semantic-community-communications-working-draft confirmed.
+
+Changed files included in this hopper
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+
+Implementation
+- At widths 1025px and above, the desktop product label remains visible and the compact menu control remains Resources.
+- At widths 1024px and below, the separate Job Center product region is removed from layout and the single compact menu control reads Job Center.
+- Compact typography matches the desktop product label: Nunito, 22px, 700, 22px line-height.
+- Compact caret is 7px with an 8px inline gap.
+- Tablet and narrow grid tracks were explicitly reassigned so primary navigation and utility controls do not overlap or reserve the hidden product region.
+- The existing overflow menu behavior is preserved.
+
+Browser verification
+- External Chrome DevTools MCP, authenticated workbench, 1440×1000-height capture workflow.
+- Tested requested widths: 1200, 1025, 1024, 1023, 1000, 900, 784, 768, 701, 700, and 699.
+- At 1200 and 1025 the separate product label is visible and compact control is hidden.
+- At 1024 through 699 the product region is display:none, the compact control reads Job Center, and utility controls remain right aligned.
+- No horizontal overflow at any tested width.
+- Console error/warning inspection: no messages found.
+- Menu interaction at 1024: opens with aria-expanded=true and three menu items, then closes with aria-expanded=false.
+- Fresh reload and second independent load at 1024 passed.
+- Computed compact and desktop label typography matched exactly: Nunito, 22px, 700, 22px line-height.
+- Compact caret computed at 7px × 7px with 8px left margin.
+
+Screenshot evidence
+Windows directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\jc053-wizard-workbench\screenshots\resp005-2026-07-31\
+
+Files:
+- resp005-2026-07-31-1200px-final.png
+- resp005-2026-07-31-1025px-final.png
+- resp005-2026-07-31-1024px-final.png
+- resp005-2026-07-31-1023px-final.png
+- resp005-2026-07-31-1000px-final.png
+- resp005-2026-07-31-900px-final.png
+- resp005-2026-07-31-784px-final.png
+- resp005-2026-07-31-768px-final.png
+- resp005-2026-07-31-701px-final.png
+- resp005-2026-07-31-700px-final.png
+- resp005-2026-07-31-699px-final.png
+
+The screenshot report is generated from this final report content; it is not captured automatically from the rendered interface. Protected engineer-owned output.txt was not modified.
+
+Worktree note
+Unrelated pre-existing dirty files remain preserved outside this focused commit.

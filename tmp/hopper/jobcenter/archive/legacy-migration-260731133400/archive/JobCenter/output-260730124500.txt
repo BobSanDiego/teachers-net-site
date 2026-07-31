@@ -1,0 +1,79 @@
+JC053-RESP003A — Preserve Job Center Left Padding at 1199px
+
+Result
+------
+Completed, committed, and pushed as commit e033c87 on
+COMMUNITY003-semantic-community-communications-working-draft.
+
+Modified file
+-------------
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.css
+  Windows Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/mockup.css
+  This is the only modified file and is copied separately into this hopper as
+  mockup.css. No markup or JavaScript changed.
+
+Cause and correction
+--------------------
+The pre-existing 1025–1199px product-region declaration set
+padding-inline:10px, while the desktop canonical value was 20px. The final
+authority-scoped CSS now restores padding-inline:20px on
+.application-card[data-authority="true"] .tnet-jobs-app-topbar
+.tnet-jobs-app-product-region for the 1025px-and-up desktop range. The compact
+1024px state remains governed by its existing 12px padding.
+
+Before:
+- 1200px: padding-left 20px, Job Center label x=271.
+- 1199px: padding-left 10px, Job Center label x=261.
+- 1025px: padding-left 10px, Job Center label x=261.
+- 1024px: padding-left 12px, Job Center label x=235 in the compact shell.
+
+After:
+- 1201, 1200, 1199, 1198, 1100, 1025px: padding-left 20px, label x=271.
+- 1024px: padding-left 12px, label x=235; compact transition unchanged.
+
+Browser verification
+--------------------
+External Chrome DevTools MCP, workbench URL:
+http://127.0.0.1:8768/#wizard-authority-v1
+
+Verified at 1201, 1200, 1199, 1198, 1100, 1025, and 1024px.
+- Job Center left inset is constant through 1025px;
+- full navbar visibility is preserved;
+- 1024px compact behavior remains unchanged;
+- no horizontal overflow;
+- console errors/warnings: 0. One non-error accessibility issue remains:
+  two form fields lack id/name attributes.
+
+PNG evidence
+------------
+Windows directory:
+C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/product-padding-2026-07-30/
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/product-padding-2026-07-30/
+
+Final captures:
+- authority-1201.png
+- authority-1200.png
+- authority-1199.png
+- authority-1198.png
+- authority-1100.png
+- authority-1025.png
+- authority-1024.png
+
+Checks and Git
+--------------
+- node.exe --check: passed
+- git diff --check: passed
+- commit: e033c87
+- push: succeeded
+- unrelated dirty files were preserved.
+
+Hopper paths
+------------
+- Windows hopper: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- JobCenter archive: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/archive/JobCenter/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/
+- This report is generated from the final post-ticket report content, not
+  captured automatically from the rendered interface. It is separate from the
+  protected engineer-owned output.txt.

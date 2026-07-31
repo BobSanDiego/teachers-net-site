@@ -1,0 +1,101 @@
+JC053-ARCH001B — Remove 1200px Layout Transition
+
+Result
+------
+Completed, committed, and pushed as commit 96a1d0e on
+COMMUNITY003-semantic-community-communications-working-draft.
+
+Modified file
+-------------
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.css
+  Windows Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/mockup.css
+  This is the only file modified by this ticket and is copied separately into
+  this hopper as mockup.css.
+
+Cause and correction
+--------------------
+The winning transition came from the existing authority media block at the
+stylesheet’s responsive refinement section. Its selector was:
+
+@media (min-width:768px) and (max-width:1199px)
+
+Within that block, the winning declarations changed the left rail to
+padding: 22px 14px and the main workspace to padding: 24px 22px 28px.
+Those declarations began at 1199px even though the governing architecture
+requires no structural desktop transition there.
+
+The block’s upper bound was narrowed to 1024px. The 1024px compact transition
+is therefore preserved, while 1201, 1200, 1199, and 1198 retain the same
+desktop rail/workspace geometry and padding.
+
+Before / after geometry
+-----------------------
+Before:
+- 1201: card x=12, width=1162; rail x=13 width=250; workspace x=263 width=910;
+  rail padding 28px 18px; workspace padding 30px 34px 34px.
+- 1200: card width=1161; rail width=250; workspace x=263 width=909;
+  same desktop padding.
+- 1199: card width=1160; rail width=250; workspace x=263 width=908;
+  rail padding changed to 22px 14px and workspace padding to 24px 22px 28px.
+- 1198: card width=1159; rail width=250; workspace x=263 width=907;
+  compact-range padding remained active.
+
+After:
+- 1201: card width=1162; rail width=250; workspace x=263 width=910.
+- 1200: card width=1161; rail width=250; workspace x=263 width=909.
+- 1199: card width=1160; rail width=250; workspace x=263 width=908.
+- 1198: card width=1159; rail width=250; workspace x=263 width=907.
+
+After 1201→1198, only the natural one-pixel viewport reduction changes the
+card and workspace widths. The rail/workspace axis remains x=263, with the
+same 250px rail through 1025px. At 1024px the authorized compact state remains:
+rail width 210px, workspace x=223, no horizontal overflow.
+
+Browser verification
+--------------------
+External Chrome DevTools MCP, workbench URL:
+http://127.0.0.1:8768/#wizard-authority-v1
+
+Verified at 1201, 1200, 1199, 1198, 1100, 1025, and 1024px.
+- no rail, divider, workspace, or main-panel jump across the 1201→1198 range;
+- Teacher Resources remains visible through 1025px;
+- 1024px compact navigation remains unchanged;
+- no horizontal overflow or overlap at any verified width;
+- console errors/warnings: 0. One non-error accessibility issue remains:
+  two form fields lack id/name attributes;
+- no page errors materially affecting the workbench.
+
+PNG evidence
+------------
+Windows directory:
+C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/desktop-boundary-correction-2026-07-30/
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/desktop-boundary-correction-2026-07-30/
+
+Final captures:
+- authority-arch001b-1201.png — 188231 bytes
+- authority-arch001b-1200.png — 187158 bytes
+- authority-arch001b-1199.png — 183572 bytes
+- authority-arch001b-1198.png — 184895 bytes
+- authority-arch001b-1100.png — 183019 bytes
+- authority-arch001b-1025.png — 182643 bytes
+- authority-arch001b-1024.png — 169880 bytes
+
+Checks and Git
+--------------
+- node.exe --check tmp/jc053-wizard-workbench/mockup.js: passed
+- git diff --check: passed
+- commit: 96a1d0e
+- push: origin/COMMUNITY003-semantic-community-communications-working-draft succeeded
+- parent repository retains unrelated dirty files; none were staged.
+- nested tnet-jobs plugin has no ticket changes.
+
+Hopper paths
+------------
+- Windows hopper: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- JobCenter archive: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/archive/JobCenter/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/
+- This report is generated from the final post-ticket report content, not
+  captured automatically from the rendered interface. It is separate from the
+  protected engineer-owned output.txt.

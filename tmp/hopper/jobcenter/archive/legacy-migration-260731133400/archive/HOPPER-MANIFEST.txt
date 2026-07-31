@@ -1,0 +1,53 @@
+Job Center hopper manifest — 2026-07-31 05:00:24
+
+Active report:
+- output-260731050024.txt
+
+Modified files included in current hopper set:
+- docs/job-center/job-center-responsive-decisions-v1.md
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+- tmp/jc053-wizard-workbench/mockup.js
+
+Screenshot evidence directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\jc053-wizard-workbench\screenshots\resp006-2026-07-31\
+
+Archive cycle:
+- archive/JobCenter/260731050024/
+- archive/JobCenter/output-260731050024.txt
+
+Protected file:
+- output.txt preserved and excluded from hopper operations.
+
+Community ticket: C3-NOT001 domain event and notification contract
+Project: tnet-3.0
+Current-cycle archive suffix: 260731120217
+Active files:
+- domain-event-and-notification-contract-v1.md
+- project-cursor.md
+- engineering-handoff.md
+- output-260731120300.txt
+Timestamped duplicates: archive/tnet-3.0/
+Protected output.txt remains excluded.
+
+Community ticket: C3-NOT003 reply notification contract
+Project: tnet-3.0
+Current-cycle archive suffix: 260731124732
+Active files:
+- reply-notification-contract-v1.md
+- project-cursor.md
+- engineering-handoff.md
+- output-260731124800.txt
+Timestamped duplicates: archive/tnet-3.0/
+Protected output.txt remains excluded.
+
+Community ticket: C3-NOT002 bell and read-state contract
+Project: tnet-3.0
+Current-cycle archive suffix: 260731120659
+Active files:
+- bell-and-read-state-contract-v1.md
+- project-cursor.md
+- engineering-handoff.md
+- output-260731120800.txt
+Timestamped duplicates: archive/tnet-3.0/
+Protected output.txt remains excluded.

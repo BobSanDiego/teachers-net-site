@@ -1,0 +1,31 @@
+C3-PLAN004 — Community 3.0 Master Plan Enhancement
+
+Status: executed, documentation-only; authority, sequencing, and architecture were preserved.
+
+Completed
+
+- Added product success measurement principles and categories without inventing numeric targets.
+- Added cross-product platform strategy for Community, Job Center, Lesson Bank, CE, Marketplace, and future products.
+- Clarified product ownership, semantic subscribers, communications subscribers, Core Terms, Portable Views, subscriber policies, and relationship sharing.
+- Added a durable product-level Mermaid architecture diagram distinguishing identity, semantic authority, subscriber policy, relationships, communications, and product ownership.
+- Updated the Project Cursor and Engineering Handoff to record the enhancement.
+
+Verification
+
+- No capability was removed.
+- The roadmap was not rewritten.
+- No engineering sequence was altered.
+- No authority conflict was introduced.
+- No code, schema, migration, production, database, or communications change was made.
+
+Commit and push
+
+Commit: db30575a6e5fb5e4dfba7917ecc89c7ae8b6e1f3
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+Active flat handoff directory: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Project archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0
+Current-cycle archive suffix: 260730215029
+Protected output.txt was not touched, copied, renamed, archived, or included.

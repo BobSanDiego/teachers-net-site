@@ -1,0 +1,19 @@
+Ticket completion report
+
+Scope: Update durable hopper/report-generation procedure for the Job Center project.
+
+Modified files included in hopper:
+- docs/documentation-governance.md
+- docs/codex-ticket-discipline.md
+
+Procedure recorded:
+- Generate a plain-text copy of the final post-ticket report as output-YYMMDDHHMMSS.txt in the shared hopper root.
+- Create a same-cycle duplicate under archive/JobCenter/ for this project.
+- Include the report filename/link in the final response.
+- Separately list every modified file included in the hopper.
+- Generate the report from final report content, not by automatically capturing the rendered interface or conversation surface.
+- Keep generated report artifacts separate from the protected engineer-owned output.txt.
+
+Verification:
+- git diff --check passed.
+- No commit or push was requested.
