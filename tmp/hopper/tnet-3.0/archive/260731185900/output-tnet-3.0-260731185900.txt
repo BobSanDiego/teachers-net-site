@@ -1,0 +1,15 @@
+C3-CORE002 — Legacy Community Publisher Architecture and Migration Audit
+
+Status: COMPLETE — read-only architecture, compatibility, migration assessment, and documentation only.
+
+Recommendation: The legacy engine is worth carrying forward as a behavioral reference and temporary read-only compatibility boundary. It is not a Community 3.0 foundation or new-write bridge. Its CGI/static-file execution architecture is a retirement target after URL and archive migration is proven.
+
+Evidence: Sandy's /var/www/www.teachers.net/cgi-bin/chatboard/chatboard.cgi, chatpost.cgi, posted.cgi, and /var/www/www.teachers.net/htdocs/chatboard. Verified behaviors include validation, legacy spam checks, timestamp-named HTML, include/cap updates, topic/reply paths, and chat_posts persistence. Canonical group mapping, modern publication callbacks, edit/delete/retract, complete moderation/admin behavior, and concurrency/idempotency remain unverified.
+
+Six audit documents classify behavior and mechanisms, compare strategies A-D, define preservation boundaries, recommend native WordPress reconstruction, and specify minimum characterization tests. No secrets, personal data, post bodies, production datasets, implementation, or production mutation were used.
+
+Validation: git diff --check passed. C3-CORE001's existing 32 Community tests remain passing; this ticket changed documentation only. Hopper mechanical and semantic validation passed.
+
+No production changes. Next recommended boundary: obtain authorized source ownership/redacted characterization evidence and explicitly define legacy URL/archive compatibility before implementation authorization.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.
