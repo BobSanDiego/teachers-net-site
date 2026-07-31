@@ -1,5 +1,26 @@
 (() => {
   const workbenchBuild = document.documentElement.dataset.workbenchBuild || "1";
+  const schoolJobsiteFixture = {
+    full_name: "Los Angeles Unified School District",
+    display_name: "LAUSD",
+  };
+  const applySchoolJobsiteDisplayNameRule = () => {
+    const initial = document.querySelector("#initial-school");
+    if (initial && !initial.querySelector("option[data-full-name]")) {
+      const option = document.createElement("option");
+      option.value = "lausd";
+      option.textContent = schoolJobsiteFixture.display_name;
+      option.dataset.fullName = schoolJobsiteFixture.full_name;
+      initial.append(option);
+    }
+    ["#selected-school-configured", "#selected-school"].forEach((selector) => {
+      const option = document.querySelector(`${selector} option`);
+      if (!option) return;
+      option.textContent = schoolJobsiteFixture.display_name;
+      option.dataset.fullName = schoolJobsiteFixture.full_name;
+    });
+  };
+  applySchoolJobsiteDisplayNameRule();
   document
     .querySelectorAll(".main-workspace .info-callout")
     .forEach((callout) => callout.remove());
