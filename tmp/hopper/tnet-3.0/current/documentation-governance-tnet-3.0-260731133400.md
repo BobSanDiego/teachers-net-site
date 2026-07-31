@@ -1,0 +1,253 @@
+# Teachers.Net Documentation Governance
+
+Status: Canonical workflow structure
+Scope: Multi-project Teachers.Net engineering documentation
+
+## Purpose
+
+Teachers.Net has multiple concurrent workstreams. Shared engineering governance
+belongs in shared documents. Workstream-specific state belongs in the relevant
+project directory.
+
+Do not use Job Center state as the default for Core Terms, Membership Taxonomy,
+or future Teachers.Net modules.
+
+## Local Shared Governance Docs
+
+Local shared governance documents apply across Teachers.Net workstreams and
+live in this repository:
+
+- `docs/codex-direction-manual.md`
+- `docs/codex-ticket-discipline.md`
+- `docs/design-system-v1.md`
+- `docs/plugin-architecture.md`
+- `docs/decision-log.md`
+- `docs/local-dev.md`
+- `docs/stack.md`
+
+External Google Drive operating documents:
+
+- Engineering Director Playbook
+- the active project's Engineering Handoff
+
+The Playbook contains reusable methodology. The Handoff contains only current
+operational state. Shared local documents should contain environment rules,
+cross-plugin boundaries, global design direction, and global decisions. They
+should not hold one workstream's live ticket cursor or short-term handoff state.
+
+## Local ChatGPT File Hopper
+
+### Project-Specific Clean-Cycle Hopper Procedure
+
+The canonical active Teachers.Net hopper is `tmp/hopper/tnet-3.0/current/` with
+historical cycles in `tmp/hopper/tnet-3.0/archive/`. The slug is permanently
+`tnet-3.0`; do not vary it. At the beginning of every ticket, archive all
+prior `current/` contents into a new cycle directory before work begins. Use
+one UTC `YYMMDDHHMMSS` cycle identifier everywhere: archive directory,
+artifact names, report, manifest, JSON cycle record, and evidence bundle.
+
+Copy every file created or modified by the ticket, including uncommitted or
+blocked-cycle artifacts, flat into `current/` as
+`<base>-tnet-3.0-<cycle-id>.<extension>`, preserving original repository
+paths in `MANIFEST-tnet-3.0-<cycle-id>.txt` with size, SHA-256, status, and
+commit inclusion. Create `cycle-tnet-3.0-<cycle-id>.json` and validate that
+all entries resolve, hashes exist, files are nonzero, JSON parses, no collision
+occurred, and no unrelated dirty file was included. Bundle multiple evidence
+files as `evidence-tnet-3.0-<cycle-id>.zip` when needed.
+
+Every ticket must begin by archiving the prior project-specific `current/`
+hopper contents and must end with a validated, self-contained current-cycle
+artifact set that the user can drag into ChatGPT in one operation. A ticket is
+not complete until the current project hopper contains the report, manifest,
+cycle record, every created or modified file, and all required evidence.
+
+The final report must list every current-cycle filename, WSL and Windows
+folder paths, archive path, commit, push result, and the Explorer command. Use
+`python3 tools/hopper/clean_cycle.py` for the deterministic lifecycle. Never
+delete historical cycles, never silently overwrite a file, preserve blocked or
+incomplete cycles, and exclude unrelated dirty files. `tmp/hopper/output.txt`
+is protected and must never be touched or included.
+
+When a ticket edits a local Markdown file and that file is referenced in the
+post-ticket report, first move every currently active hopper file into the
+hopper's `archive/` directory with a UTC timestamp-versioned filename. Then
+copy the new final files directly into the hopper root:
+
+`\\teachers-net-site\\tmp\\hopper\\`
+
+All active files must be on the same root level for one drag-and-drop selection;
+do not nest active files under source-path directories. Use timestamp-versioned
+names in `archive/` so every prior handoff remains recoverable. Update
+`HOPPER-MANIFEST.txt` with the active source/copy paths and archive batch. Link
+the hopper directory and copied file(s) in the report. This applies to Markdown
+guidance, audit, roadmap, cursor, handoff, and other documentation files. It
+does not apply to non-Markdown website files unless explicitly requested.
+Hopper copies are handoff artifacts, not a second source of truth.
+
+Every post-ticket report that involves hopper file creation or refresh must
+include a link to the hopper directory and, separately, a bullet list naming
+every modified file that is included in the current hopper set.
+
+At the end of each ticket, save a plain-text copy of the final post-ticket
+report in the shared hopper root as `output-YYMMDDHHMMSS.txt`. Generate it from
+the final report content; it is not an automatic capture of the rendered
+interface or conversation surface. Create a same-cycle archive duplicate under
+the active project's archive directory and include its filename/link in the
+report. The report must separately list every modified file included in the
+current hopper set. This generated report is separate from the protected
+engineer-owned `output.txt`.
+
+When a report references local directories, include a Windows File Explorer
+link/path for each directory in addition to any WSL path. Use the native
+Windows path as the link target where the report renderer supports local path
+links, and keep the plain `C:\\...` path visible for copy/paste. Do not replace
+the Windows path with `C:\\home\\...` or omit it when a WSL path is also shown.
+
+Use project-specific archives under
+`\\teachers-net-site\\tmp\\hopper\\archive\\<project-name>\\`. For the
+active Job Center project, the exact archive is
+`\\teachers-net-site\\tmp\\hopper\\archive\\JobCenter\\`. When each
+handoff or other referenced local guidance file is first created or refreshed,
+create both its active root copy and a duplicate archive copy in that archive,
+appending a UTC `YYMMDDHHMMSS` timestamp before the archive extension. Do not
+later move or rename active files into archives. Before a later refresh, delete
+only obsolete active document files; never delete directories or `output.txt`.
+Active files remain directly in the shared hopper root.
+
+This hopper preservation rule applies to local Markdown guidance, audit,
+roadmap, cursor, handoff, and related documentation files referenced by the
+ticket or post-ticket report. It does not apply to website non-Markdown files
+such as HTML, CSS, JavaScript, images, fonts, or other generated/site assets
+unless the user explicitly requests their preservation. The repository remains
+the source of truth; hopper copies are handoff artifacts.
+
+### Engineer-owned hopper exception
+
+`output.txt` is engineer-owned working material and is excluded from all
+projects' hopper operations.
+Hopper refreshes must ignore it completely: never archive it, overwrite it,
+rename it, edit it, copy it, include it in the manifest, or link it as a
+generated handoff artifact. If present, it must remain at that exact path.
+The generated `output-YYMMDDHHMMSS.txt` report artifacts are separate from this
+protected `output.txt` file and must never replace or modify it.
+
+## Local Project-Specific Docs
+
+Project documents belong under their project directory:
+
+- `docs/job-center/`
+- `docs/core-terms/`
+- `docs/membership-taxonomy/`
+
+Each active project should maintain:
+
+- Project Cursor
+- Engineering Handoff
+- any additional continuity document declared by its Project Cursor
+- capability snapshot, if applicable
+- architecture notes, if applicable
+- roadmap, if applicable
+- project-specific specifications
+
+The Project Cursor preserves durable project state. Engineering Handoff v2 is
+the delta-oriented session continuity document and follows
+`docs/engineering-handoff-template.md`. Roadmaps, architecture docs, contracts,
+design systems, manifests, and specifications remain deeper references.
+
+Every Project Cursor must declare one project state:
+
+- Planning
+- Active Development
+- Stabilization
+- Maintenance
+- Archived
+
+Use the state to orient a cold-start session quickly. Do not use it as a
+substitute for the current ticket or handoff.
+
+## Google Drive Operational Docs
+
+Google Drive is the operational recovery layer for ChatGPT Engineering Director
+sessions. It is not a mirror of this repository.
+
+Canonical Google Drive startup structure:
+
+- `Teachers.Net Engineering/Shared/Engineering Director Playbook` —
+  <https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ>
+- `Teachers.Net Engineering/Projects/<Project Name>/<Project Name> Engineering Handoff`
+
+The active Project Cursor must record the Handoff's full Google Docs URL.
+Startup prompts must reproduce both full URLs beneath their exact document
+titles; a title alone is not sufficient recovery information.
+
+Google Drive may retain supporting governance documents, but a fresh ChatGPT
+session reads only the Playbook and current Engineering Handoff by default. The
+Project Cursor, product contract, UX specification, design system, visual
+manifest, roadmap, and implementation documents are consulted only when the
+ticket requires them. Drive does not mirror repository architecture,
+implementation detail, full roadmaps, or ticket history.
+
+Codex should read local repository docs directly. ChatGPT should use Google
+Drive only to recover operational context at the start of a new session.
+
+## Startup Rule
+
+Every new ChatGPT project session should read:
+
+1. Engineering Director Playbook, using its canonical full Google Docs URL.
+2. The target project's Engineering Handoff, using the full URL recorded in
+   that project's Project Cursor.
+
+It should adopt that state without summarizing either document and report only
+current phase, current ticket, last completed milestone, next five planned
+tickets, and current blockers. Deeper governance and repository docs are read
+only as needed for the ticket. Codex still follows repository `AGENTS.md` and
+ticket-specific local read requirements before changing files.
+
+If the project is unclear, stop and ask which workstream is active before using
+Job Center, Core Terms, or Membership Taxonomy state.
+
+## Current Project Directories
+
+### Job Center
+
+Path: `docs/job-center/`
+
+Primary local operational docs:
+
+- `docs/job-center/project-cursor.md`
+- `docs/job-center/engineering-handoff.md`
+- `docs/job-center/v1-execution-plan.md`
+
+### Core Terms
+
+Path: `docs/core-terms/`
+
+Primary local operational docs:
+
+- `docs/core-terms/project-cursor.md`
+- `docs/core-terms/engineering-handoff.md`
+
+Core Terms capability, admin IA, and integration contract docs currently live in
+the Core Terms plugin repository under
+`wordpress/wp-content/plugins/profilaxes/docs/`. Root Core Terms docs may point
+there rather than duplicating plugin-owned detail.
+
+### Membership Taxonomy
+
+Path: `docs/membership-taxonomy/`
+
+Primary local operational docs:
+
+- `docs/membership-taxonomy/project-cursor.md`
+- `docs/membership-taxonomy/engineering-handoff.md`
+
+Membership Taxonomy is the curation, classification, and human-review workstream
+for historic Teachers.Net chatboard taxonomy. It is separate from Core Terms:
+
+- Core Terms is the plugin/platform/runtime/API/editor/compiler/archive system.
+- Membership Taxonomy is not a Core Terms rename or implementation ticket
+  stream.
+
+Do not seed Membership Taxonomy with Job Center state, Core Terms implementation
+state, imports, schema changes, or plugin rename assumptions.

@@ -1,0 +1,19 @@
+Project: JobCenter
+Generated: 2026-07-31 06:13:34 America/Los_Angeles
+Active report: output-260731061334.txt
+Archive cycle: archive/JobCenter/260731061334/
+Protected file: output.txt (preserved, not modified)
+
+Active files:
+- HOPPER-MANIFEST.txt
+- index.html
+- job-center-responsive-decisions-v1.md
+- mockup.css
+- mockup.js
+- output-260731061334.txt
+
+Windows hopper directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\hopper\
+
+Windows screenshot directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\jc053-wizard-workbench\screenshots\resp008-2026-07-31\

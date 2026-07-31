@@ -1,0 +1,10 @@
+Community ticket: C3-TRUST002 suppression and abuse-control contract
+Project: tnet-3.0
+Current-cycle archive suffix: 260731115602
+Active files:
+- suppression-and-abuse-control-contract-v1.md
+- project-cursor.md
+- engineering-handoff.md
+- output-260731115700.txt
+Timestamped duplicates: archive/tnet-3.0/
+Protected output.txt is preserved and excluded.

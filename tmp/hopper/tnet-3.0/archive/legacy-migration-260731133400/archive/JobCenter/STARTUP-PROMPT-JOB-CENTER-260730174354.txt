@@ -1,0 +1,30 @@
+Teachers.Net Job Center handoff startup
+
+Active project: Teachers.Net Job Center
+
+Read these exact Google Drive documents first:
+
+1. Engineering Director Playbook v2
+   https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ
+2. Job Center Engineering Handoff
+   https://docs.google.com/document/d/1foiIgRjBcQcKUbGRsHRuCaPDk0R7o2BCwuFmx96Z3AE
+
+Then read the 15 local Job Center guidance files in the hopper root, beginning
+with job-center-project-cursor.md and job-center-engineering-handoff.md.
+Treat local repository documents as the engineering source of truth and Drive
+as operational recovery context. Do not import Community 3.0, Core Terms, or
+other project state.
+
+Current handoff state: Active Development / Visual Convergence Sprint. JC053
+responsive shell work is provisional implementation-target evidence, not an
+approved production authority. The final browser and human acceptance gate is
+open. Use external chrome-devtools-mcp@1.6.0 at CDP
+http://127.0.0.1:9222 with --allow-unrestricted-paths and
+--no-usage-statistics; local Windows-visible PNG files are required.
+
+Reply with only:
+- current phase
+- current ticket
+- last completed milestone
+- next five planned tickets
+- current blockers

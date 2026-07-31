@@ -1,0 +1,30 @@
+C3-NOT003 — Community 3.0 Reply Notification Contract
+
+Status: executed, documentation and read-only evidence only.
+
+Completed
+
+- Created docs/community-3.0/reply-notification-contract-v1.md.
+- Defined reply events, eligible recipients, visibility, direct/nested/self-reply behavior, bell, optional email, digest, dedupe/coalescing, suppression, moderation, audit, and cross-product isolation.
+- Covered direct reply, nested reply, self-reply, moderation, deletion/retraction, muted group, paused email, bell-only, and multi-reply scenarios.
+- Updated the Project Cursor and Engineering Handoff.
+- Committed and pushed the documentation-only change.
+
+Verification and limits
+
+- Reply event, notification, eligibility, delivery, read state, and engagement remain distinct.
+- Bell remains distinct from email; path_id and group_id remain distinct.
+- No reply notifications, bell records, UI, APIs, mail, queues, schema, migrations, production, provider, or delivery changes occurred.
+- C3-NOT004 may be considered after Engineering Director review; it is not authorized by this ticket.
+
+Commit and push
+
+Commit: 9547af9383ac53782e3a1405705d8962e17918e7
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+Active flat handoff directory: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Project archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0
+Current-cycle archive suffix: 260731124732
+Protected output.txt was not touched, copied, renamed, archived, or included.

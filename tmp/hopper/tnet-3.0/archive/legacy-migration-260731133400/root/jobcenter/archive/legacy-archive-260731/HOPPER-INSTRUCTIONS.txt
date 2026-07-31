@@ -1,0 +1,5 @@
+JobCenter handoff hopper
+
+Windows-visible root: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/
+WSL root: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+Protected output.txt is engineer-owned and must not be modified or copied.

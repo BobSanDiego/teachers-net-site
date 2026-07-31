@@ -1,0 +1,78 @@
+JC053-RESP003 — Compact Footer Transition at 1024px
+
+Result
+------
+Completed, committed, and pushed as commit 30a22d2 on
+COMMUNITY003-semantic-community-communications-working-draft.
+
+Modified file
+-------------
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.css
+  Windows Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/mockup.css
+  This is the only modified file and is copied separately into this hopper as
+  mockup.css. No markup or JavaScript changed.
+
+Implementation
+--------------
+At 1024px and below, the existing footer markup is reused with CSS-only state
+composition:
+- one continuous dark-blue footer strip;
+- logo-only left brand zone tied to --jc053-shell-column;
+- About, Contact Us, Terms of Service, and Privacy Policy as the compact utility
+  group, with the existing About heading retained visually as a compact label;
+- existing social links in the right zone;
+- desktop footer columns remain unchanged above 1024px;
+- at mobile widths the same groups wrap into two controlled rows.
+
+Verification
+------------
+External Chrome DevTools MCP, workbench URL:
+http://127.0.0.1:8768/#wizard-authority-v1
+
+- 1025px: existing multi-column desktop footer unchanged.
+- 1024px: compact dark strip; 210px brand zone aligns to compact rail axis;
+  utility links and social controls visible; footer height 65px.
+- 900px: compact strip, no overflow; footer height 65px.
+- 768px: compact strip, no overflow; footer height 65px.
+- 767px: controlled two-row wrap; footer height 108px; no overflow.
+- 600px: controlled two-row wrap; no overflow.
+- 500px: controlled two-row wrap; no overflow.
+- no duplicate desktop footer content remains visible at compact widths;
+- footer remains in normal document flow below page content;
+- social controls remain visible and keyboard-focusable;
+- console errors/warnings: 0. One non-error accessibility issue remains:
+  two form fields lack id/name attributes.
+
+PNG evidence
+------------
+Windows directory:
+C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/compact-footer-2026-07-30/
+WSL directory:
+/mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/compact-footer-2026-07-30/
+
+Final captures:
+- footer-1025.png
+- footer-1024.png
+- footer-900.png
+- footer-768.png
+- footer-767.png
+- footer-600.png
+- footer-500.png
+
+Checks and Git
+--------------
+- node.exe --check: passed
+- git diff --check: passed
+- commit: 30a22d2
+- push: succeeded
+- unrelated dirty files were preserved.
+
+Hopper paths
+------------
+- Windows hopper: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- JobCenter archive: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/archive/JobCenter/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/
+- This report is generated from the final post-ticket report content, not
+  captured automatically from the rendered interface. It is separate from the
+  protected engineer-owned output.txt.

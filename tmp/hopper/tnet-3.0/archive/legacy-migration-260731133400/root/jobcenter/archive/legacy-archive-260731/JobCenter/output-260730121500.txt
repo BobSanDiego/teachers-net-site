@@ -1,0 +1,50 @@
+JC053 Compact Resources Caret Alignment
+
+Result
+------
+Corrected the centered compact Resources caret alignment, committed as ee991d4,
+and pushed to origin/COMMUNITY003-semantic-community-communications-working-draft.
+
+Modified file
+-------------
+- /home/bobreap/projects/teachers-net-site/tmp/jc053-wizard-workbench/mockup.css
+  Windows Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/mockup.css
+  This is the only modified file and is copied separately into this hopper as
+  mockup.css.
+
+Correction
+----------
+At compact widths, the centered Resources control inherited flex rendering and
+its caret sat high inside the button. The authority-scoped 768–1024px rule now
+uses the same block rendering as the desktop dropdown buttons. At 1024px the
+caret moved from y=94.921px to y=102.921px within the 30.843px button, matching
+the inline text baseline treatment. The same rule applies at 900px.
+
+Browser verification
+--------------------
+External Chrome DevTools MCP:
+- verified at 1024px and 900px;
+- compact Resources remains centered;
+- no horizontal overflow;
+- screenshot: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/navbar-resources-caret-2026-07-30.png
+- WSL screenshot: /mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/navbar-resources-caret-2026-07-30.png
+- no console errors or warnings; one non-error accessibility issue remains:
+  two form fields lack id/name attributes.
+
+Checks and Git
+--------------
+- node.exe --check: passed
+- git diff --check: passed
+- commit: ee991d4
+- push: succeeded
+- unrelated dirty files were preserved.
+
+Hopper paths
+------------
+- Windows hopper: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/
+- WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/
+- JobCenter archive: C:/Main/Active/Projects/Teachers.Net/tmp/hopper/archive/JobCenter/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter/
+- This report is generated from the final post-ticket report content, not
+  captured automatically from the rendered interface. It is separate from the
+  protected engineer-owned output.txt.

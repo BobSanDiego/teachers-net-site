@@ -1,0 +1,73 @@
+# JC053-OPS002 — Final Post-Ticket Report
+
+Status: completed
+
+## Result
+
+Created and verified the canonical Windows Chrome QA launcher. It uses the
+installed Chrome executable, an isolated QA profile, CDP on 127.0.0.1:9222,
+and the JC053 workbench URL.
+
+Initial CDP failure was recovered by launching the dedicated profile. External
+chrome-devtools-mcp inspection then succeeded.
+
+## Launcher
+
+- Repository script: tools/qa/launch-chrome-cdp-9222.ps1
+- Windows profile: C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\chrome-qa-profile
+- Chrome executable: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
+- CDP endpoint: http://127.0.0.1:9222/json/version
+- MCP: chrome-devtools-mcp@1.6.0
+- Required flags: --browser-url=http://127.0.0.1:9222
+  --allow-unrestricted-paths --no-usage-statistics
+
+## Responsive verification
+
+Verified at 1025, 1024, 1001, 1000, 999, 900, 768, 701, 700, and 699px.
+
+- Job Center remained in normal flow and left-aligned through 701px.
+- Job Center was absent at 700px and 699px.
+- Resources remained in its independent primary region.
+- Utility controls remained in the right utility region.
+- No horizontal overflow was reported.
+- Fresh reload and second browser load matched.
+- Console errors and warnings: none.
+
+PNG captures are valid RGB PNGs at the requested viewport dimensions.
+
+## Guidance updated
+
+- AGENTS.md
+- docs/job-center/engineering-handoff.md
+- docs/job-center/project-cursor.md
+
+The guidance now names the launcher, isolated profile, endpoint, MCP flags,
+automatic recovery rule, and bounded failure condition.
+
+## Hopper
+
+WSL hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Windows hopper: C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\hopper
+JobCenter archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/JobCenter
+Windows archive: C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\hopper\\archive\\JobCenter
+Screenshot directory: /mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/resp004-2026-07-31
+Windows screenshot directory: C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\jc053-wizard-workbench\\screenshots\\resp004-2026-07-31
+
+Modified files included in the current hopper set:
+
+- AGENTS.md
+- docs/job-center/engineering-handoff.md
+- docs/job-center/project-cursor.md
+- tools/qa/launch-chrome-cdp-9222.ps1
+
+The protected engineer-owned output.txt was preserved and excluded.
+
+## Git
+
+Commit: 88d9653
+Push: origin/COMMUNITY003-semantic-community-communications-working-draft succeeded.
+
+## Verification
+
+git diff --check passed.
+

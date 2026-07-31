@@ -1,0 +1,34 @@
+C3-RR001 — Community 3.0 Reconciliation and Go-Point Package
+
+Status: executed, documentation-only; implementation and production changes were not authorized.
+
+Completed
+
+- Created the capability catalog, current-state census, roadmap crosswalk, external research register, integrated M0-M9 roadmap, go-point readiness record, next-ticket queue, and package index.
+- Updated the Community 3.0 Project Cursor and Engineering Handoff to record package completion and the remaining decision boundary.
+- Preserved the verified identity invariant: path_id is chatboard/path/feed identity; group_id is teacher-group identity; explicit mapping is required.
+- Performed read-only local and production-access checks only. No database writes, migrations, production edits, mail delivery, Google Drive changes, or implementation work occurred.
+
+Reconciled disposition
+
+- Preserved: Core Terms, Portable Views, subscriber policies, interests/onboarding, chatboard/group mapping, relationships, and the Communications Platform lifecycle as distinct governed workstreams.
+- Accelerated: identity, visibility, consent, suppression, notification/event contracts, moderation, retention, and oversight.
+- Resequenced: provider and campaign delivery after policy, event, audit, and suppression contracts.
+- Deferred: relationship discovery, recommendations, AI, integrations, campaigns, analytics, SES/provider rollout, and post-view expansion until prerequisites are accepted.
+
+Go point
+
+NO-GO — unresolved items are production membership/mail evidence, acceptance of subscriber/notification/suppression/audit contracts, completion or explicit deferral of external research questions, and explicit Engineering Director authorization for bounded M1 work.
+
+Exact next decision
+
+Engineering Director should approve, revise, or reject the reconciliation package and decide whether to authorize a bounded M1 contract ticket. Until then, remain in planning.
+
+Commit and push
+
+Commit: 384ff8f52cad4d57edc557ea1c3e8b0dc95d7d1d
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+The active flat handoff directory is /home/bobreap/projects/teachers-net-site/tmp/hopper. Timestamped duplicates are in /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0. The protected output.txt was not touched, copied, renamed, archived, or included.

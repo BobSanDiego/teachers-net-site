@@ -1,0 +1,33 @@
+C3-NOT002 — Community 3.0 Bell and Read-State Contract
+
+Status: executed, documentation and read-only evidence only.
+
+Completed
+
+- Created docs/community-3.0/bell-and-read-state-contract-v1.md.
+- Defined the bell model, lifecycle, unread/read/archive/dismissed/expired/retracted/blocked states, grouping, coalescing, expiry, retention, badge/count behavior, synchronization, and accessibility expectations.
+- Covered reply, reaction, mention, group activity, moderator action, administrative notice, and account/security notice families.
+- Preserved strict separation of bell, email, digest, delivery, and engagement.
+- Documented legacy evidence and cross-product isolation.
+- Updated the Project Cursor and Engineering Handoff.
+- Committed and pushed the documentation-only change.
+
+Verification and limits
+
+- Domain events remain distinct from bell records.
+- Read is not delivered; archived is not deleted; notification is not engagement.
+- path_id and group_id remain distinct.
+- No bell records, UI, APIs, mail, schema, queues, migrations, production, provider, or delivery changes occurred.
+- C3-NOT003 may be considered after Engineering Director review; it is not authorized by this ticket.
+
+Commit and push
+
+Commit: 2009c4827023e411e5201f6ecbfddd72491b6202
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+Active flat handoff directory: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Project archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0
+Current-cycle archive suffix: 260731120659
+Protected output.txt was not touched, copied, renamed, archived, or included.

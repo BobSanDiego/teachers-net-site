@@ -1,0 +1,30 @@
+Ticket completion report: JC053 compact navbar breakpoint and style correction
+
+Scope: static JC053 workbench only. No production changes. No commit or push.
+
+Modified files:
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+
+Modified files included in hopper: none; these are non-Markdown workbench files.
+
+Root cause: earlier navigation-collapse rules targeted the 901–1099px range and hid secondary dropdowns at 1024px. The compact Resources control also had generic button styling instead of the canonical dropdown button rule.
+
+Correction:
+- Full desktop is explicitly restored at min-width 1024px, including My Jobs, Career Resources, and Teacher Resources.
+- Compact Resources activates only at max-width 1023px.
+- Resources now shares the canonical dropdown button font, weight, line-height, padding, and caret treatment through the shared dropdown rule.
+- Compact centering remains on the complete Resources control.
+
+Verification:
+- 1200px: full desktop; Resources hidden; all three primary dropdowns visible; no overflow.
+- 1024px: full desktop; Resources hidden; all three primary dropdowns visible; no overflow.
+- 1023px: compact; Resources visible; My Jobs and the two individual resource controls hidden; rail/brand remain 210px.
+- Resource style matches canonical dropdown: Manrope, 13px, 700 weight, 18.85px line-height, 8px top / 4px bottom padding.
+- Node syntax check and git diff --check passed.
+- One pre-existing console issue remains about two form fields lacking id/name attributes; no runtime errors or warnings.
+
+Screenshots:
+Windows/File Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/navbar-breakpoint-style-2026-07-30/
+WSL: /mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/navbar-breakpoint-style-2026-07-30/
+Files: navbar-breakpoint-style-1200.png, navbar-breakpoint-style-1024.png, navbar-breakpoint-style-1023.png.

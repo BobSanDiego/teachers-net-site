@@ -1,0 +1,22 @@
+Ticket completion report: JC053 navbar architecture four bounded regions
+
+Scope: static JC053 workbench only. No production changes. No commit or push.
+
+Root cause: the header had competing brand, product, navigation, and utility siblings while legacy rules defined incompatible three-, five-, and six-track grids. Implicit tracks and breakpoint overrides caused collisions and premature navigation hiding.
+
+Implemented: explicit bounded brand, Job Center product, flexible primary-navigation, and protected utility regions. Only primary navigation yields space. At 1200px+ all primary items remain visible; at 1100px Teacher Resources moves behind More; at 1024px/980px Career Resources and Teacher Resources move behind More; at 900px/768px More is the primary-nav affordance. Existing workspace-menu behavior remains separate.
+
+Modified files:
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+- tmp/jc053-wizard-workbench/mockup.js
+
+Modified files included in hopper: none. Non-Markdown workbench implementation files are excluded from the guidance hopper.
+
+Verification: external Chrome DevTools MCP; 60px navbar and no horizontal overflow at 1440, 1200, 1100, 1024, 980, 900, and 768; 61px at 600 and 500 from existing mobile shell behavior. Desktop regions do not overlap and brand/rail alignment remains intact. More opens with aria-expanded=true and exposes collapsed links, then closes with aria-expanded=false. One pre-existing accessibility issue remains: two form fields lack id/name attributes. No runtime error or warning. Node syntax check and git diff --check passed.
+
+Screenshots:
+WSL: /mnt/c/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/navbar-architecture-2026-07-30/
+Windows/File Explorer: C:/Main/Active/Projects/Teachers.Net/tmp/jc053-wizard-workbench/screenshots/navbar-architecture-2026-07-30/
+
+Before captures were retained from the pre-ticket responsive/shell-alignment series and copied under the requested naming pattern. No commit or push performed.

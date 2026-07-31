@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" data-workbench-build="1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JC053 Wizard Workbench</title>
+  <link rel="stylesheet" href="mockup.css?v=jc053-20260730-compact-01">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="workbench-bar">
+    <strong>JC053 Workbench</strong>
+    <span>Static design artifact · no production behavior</span>
+    <label for="view-select">Workbench Views</label><select id="view-select"></select><span id="view-status">step-01-return</span>
+    <button id="diagnostics-toggle" type="button">Show diagnostics</button>
+  </div>
+
+  <main class="application-card" data-shell="1200px">
+    <svg class="icon-definitions" aria-hidden="true" width="0" height="0" focusable="false">
+      <defs>
+        <symbol id="school-jobsite-select" viewBox="0 0 48 48">
+          <path d="M6 42V27h9v15M33 42V27h9v15M15 42V21h18v21M4 42h40M15 21l9-5 9 5M24 16V5M24 5h8v6h-8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 42V31c0-2.2 1.8-4 4-4s4 1.8 4 4v11M18 27h.01M30 27h.01" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="section-briefcase" viewBox="0 0 24 24">
+          <rect x="3.5" y="7.5" width="17" height="12.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8.5 7.5V5.8a1.8 1.8 0 0 1 1.8-1.8h3.4a1.8 1.8 0 0 1 1.8 1.8v1.7M3.5 12h17M10.5 12v1.8h3V12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="section-location-pin" viewBox="0 0 24 24">
+          <path d="M19 10.2c0 5.1-7 10.3-7 10.3S5 15.3 5 10.2a7 7 0 1 1 14 0Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        </symbol>
+        <symbol id="section-calendar" viewBox="0 0 24 24">
+          <rect x="4" y="5.5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 3.5v4M16 3.5v4M4 9.5h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="section-compensation" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M14.5 9.2c-.6-.7-1.4-1-2.5-1-1.4 0-2.4.7-2.4 1.8 0 2.6 5 1.2 5 3.8 0 1.1-1 1.9-2.5 1.9-1.1 0-2-.3-2.7-1M12 6.8v10.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="school-jobsite-add" viewBox="0 0 48 48">
+          <path d="M4 42V27h8v15M29 42V27h8v15M12 42V21h17v21M2 42h35M12 21l8.5-5 8.5 5M20.5 16V5M20.5 5h8v6h-8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17 42V31c0-2.2 1.6-4 3.5-4s3.5 1.8 3.5 4v11M15 27h.01M26 27h.01" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="36" cy="36" r="8" fill="var(--workspace)" stroke="currentColor" stroke-width="2.6"/>
+          <path d="M36 32v8M32 36h8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+        </symbol>
+      </defs>
+    </svg>
+    <header class="tnet-jobs-app-topbar tnet-jobs-employer-app-topbar">
+      <div class="tnet-jobs-app-topbar-inner">
+        <div class="tnet-jobs-app-topbar-region tnet-jobs-app-brand-region">
+          <a class="tnet-jobs-app-brand" href="#step-01-nav-back" aria-label="Teachers.Net">
+            <img class="tnet-jobs-employer-logo" src="assets/logo-globe-158x42.png" alt="Teachers.Net">
+          </a>
+        </div>
+        <div class="tnet-jobs-app-topbar-region tnet-jobs-app-product-region">
+          <span class="tnet-jobs-app-brand-label">Job Center</span>
+        </div>
+        <nav class="tnet-jobs-app-topbar-region tnet-jobs-app-nav tnet-jobs-app-primary-region" aria-label="Employer navigation">
+          <a data-dropdown="my-jobs" href="#step-01-nav-back">My Jobs <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+          <a data-dropdown="career-resources" href="#step-01-nav-back">Career Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+          <a class="tnet-jobs-employer-nav-final-link" data-dropdown="teacher-resources" href="#step-01-nav-back">Teacher Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+          <button class="tnet-jobs-app-primary-overflow" type="button" aria-haspopup="menu" aria-expanded="false"><span class="tnet-jobs-app-primary-overflow-label tnet-jobs-app-primary-overflow-label-desktop">Resources</span><span class="tnet-jobs-app-primary-overflow-label tnet-jobs-app-primary-overflow-label-compact">Job Center</span> <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></button>
+          <div id="jc053-mobile-job-center-drawer" class="tnet-jobs-app-primary-overflow-menu" role="menu" hidden>
+            <button class="tnet-jobs-app-primary-overflow-close" type="button" aria-label="Close Job Center navigation">×</button>
+            <a role="menuitem" data-overflow-link="my-jobs" href="#step-01-nav-back">My Jobs</a>
+            <a role="menuitem" data-overflow-link="career-resources" href="#step-01-nav-back">Career Resources</a>
+            <a role="menuitem" data-overflow-link="teacher-resources" href="#step-01-nav-back">Teacher Resources</a>
+          </div>
+        </nav>
+        <div class="tnet-jobs-app-topbar-region tnet-jobs-app-account tnet-jobs-employer-app-account tnet-jobs-app-utility-region">
+          <span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><button class="tnet-jobs-employer-app-notification" type="button" aria-label="3 notifications"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><b aria-hidden="true">3</b></button><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><a data-dropdown="my-account" class="tnet-jobs-employer-app-account-link" href="#step-01-nav-back" aria-label="My Account">My Account <span aria-hidden="true" class="tnet-jobs-employer-app-avatar-chevron"></span></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="application-body">
+      <aside class="tnet-jobs-employer-operations-nav left-rail" aria-label="Employer workspace navigation">
+        <a class="tnet-jobs-employer-operations-nav-link" href="#step-01-nav-back"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 12h16M10 12v1h4v-1"/></svg></span><strong>My Jobs</strong><span class="tnet-jobs-employer-operations-nav-count">3</span></span></a>
+        <a class="tnet-jobs-employer-operations-nav-link is-current" href="#step-01-nav-back" aria-current="page"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg></span><strong>Post a Job</strong></span></a>
+        <a class="tnet-jobs-employer-operations-nav-link" href="#step-01-school-selected"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-4 8 4v11M7 20v-8h10v8M10 20v-4h4v4M9 12h.01M12 12h.01M15 12h.01"/></svg></span><strong>Schools / Jobsites</strong><span class="tnet-jobs-employer-operations-nav-count">5</span></span></a>
+        <a class="tnet-jobs-employer-operations-nav-link" href="#step-01-nav-back"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-1.99 1.68l-.11.65a2 2 0 0 1-1.9 1.3l-.66-.08a2 2 0 0 0-1.99 1.15l-.22.38a2 2 0 0 0 .42 2.4l.5.47a2 2 0 0 1 0 2.9l-.5.47a2 2 0 0 0-.42 2.4l.22.38a2 2 0 0 0 1.99 1.15l.66-.08a2 2 0 0 1 1.9 1.3l.11.65A2 2 0 0 0 11.78 22h.44a2 2 0 0 0 1.99-1.68l.11-.65a2 2 0 0 1 1.9-1.3l.66.08a2 2 0 0 0 1.99-1.15l.22-.38a2 2 0 0 0-.42-2.4l-.5-.47a2 2 0 0 1 0-2.9l.5-.47a2 2 0 0 0 .42-2.4l-.22-.38a2 2 0 0 0-1.99-1.15l-.66.08a2 2 0 0 1-1.9-1.3l-.11-.65A2 2 0 0 0 12.22 2Z"/><circle cx="12" cy="12" r="3"/></svg></span><strong>Account Settings</strong></span></a>
+        <span class="tnet-jobs-employer-operations-nav-link is-disabled" aria-disabled="true"><span class="tnet-jobs-employer-operations-nav-link-main"><span class="tnet-jobs-employer-operations-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4zM3 4h18v3H3zM9 11h6"/></svg></span><strong>Archived Jobs</strong></span></span>
+        <div class="tnet-jobs-employer-operations-promotion"><h3>First time posting?</h3><p>Our quick wizard helps you create a job listing in just a few minutes</p><button type="button" disabled>View Posting Tips</button></div>
+      </aside>
+
+      <section class="main-workspace" aria-labelledby="page-title">
+        <div class="workspace-head">
+        <div class="default-page-heading"><h1 id="page-title">Post a Job</h1><p class="subtitle">Create a new job listing in just a few simple steps.</p></div>
+        <div class="add-school-page-heading"><a class="add-school-back-link" href="#step-01-initial">←　Back to Schools / Jobsites</a><h1>Add / Edit School / Jobsite</h1><p class="subtitle">Add a new school, campus, office, or jobsite or edit the details below.</p></div>
+          <div class="head-actions"><a class="button secondary" href="#step-01-nav-back">Cancel</a><a id="save-draft-action" class="button secondary" href="#step-01-nav-back">Save Draft</a></div>
+        </div>
+        <ol class="stepper" aria-label="Job posting steps" data-wizard-stepper></ol>
+
+        <article class="panel" id="step-01-return-legacy" data-view="step-01-return-legacy" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Step 1 of 5</p><h2>Choose a School / Jobsite</h2><p>Select and existing school or jobsite, or add a new one.<br>You can always manage your schools or jobsites from your workspace.</p></div></div>
+          <div class="choice-grid"><div class="selected-card"><div class="selected-icon">⌂✓</div><div><strong>Selected School / Jobsite</strong><select id="selected-school" name="selected-school" aria-label="Selected School / Jobsite"><option>Los Angeles Unified School District (LAUSD)</option></select><div class="school-detail"><strong>Los Angeles Unified School District (LAUSD)</strong><span>⌖ Los Angeles, CA</span><span>✉ jobs@lausd.net　·　(213) 241-1000</span><span class="checks">● Website　● Logo　● Contact Info　● Defaults</span><button class="change-button" type="button">Change School / Jobsite</button></div></div></div>
+          <div class="tnet-choice-separator" aria-hidden="true"><span class="tnet-choice-separator__label">OR</span></div>
+          <div class="add-card"><span class="add-icon">⌂＋</span><span><strong>Add New School / Jobsite</strong><small>Add a school or jobsite that you don't<br>see in your list.</small><button class="add-button" type="button">Add New School / Jobsite</button></span></div></div>
+          <aside class="info-callout"><strong>ⓘ　Every job belongs to a School or Jobsite.</strong><p>　　　 Once created, you'll be able to reuse it for future listings.</p></aside>
+        </article>
+        <article class="panel" id="step-01-initial" data-view="step-01-initial" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Step 1 of 5</p><h2>Choose a School / Jobsite</h2><p>Select an existing school or jobsite, or add a new one.<br>You can always manage your schools or jobsites from your workspace.</p></div></div>
+          <div class="choice-grid"><div class="selected-card initial-school-card"><div class="selected-icon school-jobsite-select-icon"><svg aria-hidden="true" focusable="false"><use href="#school-jobsite-select"></use></svg></div><div><strong>Select a School / Jobsite</strong><p class="initial-card-support">Select from your existing schools or jobsites.</p><input class="initial-school-search" type="search" placeholder="Search schools or jobsites..." aria-label="Search schools or jobsites"><select id="initial-school" name="initial-school" aria-label="Select a School / Jobsite"><option value="">Choose a school or jobsite</option></select></div></div>
+          <div class="tnet-choice-separator" aria-hidden="true"><span class="tnet-choice-separator__label">OR</span></div>
+          <div class="add-card initial-add-card"><span class="add-icon school-jobsite-add-icon"><svg aria-hidden="true" focusable="false"><use href="#school-jobsite-add"></use></svg></span><span><strong>Add New School / Jobsite</strong><small>Add a school or jobsite that you don't<br>see in your list.</small><button class="add-button" type="button">Add New School / Jobsite</button></span></div></div>
+          <aside class="info-callout"><strong>ⓘ　Every job belongs to a School or Jobsite.</strong><p>　　　 Once created, you'll be able to reuse it for future listings.</p></aside>
+        </article>
+        <article class="panel" id="step-01-school-selected" data-view="step-01-school-selected" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Step 1 of 5</p><h2>Choose a School / Jobsite</h2><p>Select an existing school or jobsite, or add a new one.<br>You can always manage your schools or jobsites from your workspace.</p></div></div>
+          <div class="choice-grid school-selected-card-pair"><div class="selected-card initial-school-card"><div class="selected-icon school-jobsite-select-icon"><svg aria-hidden="true" focusable="false"><use href="#school-jobsite-select"></use></svg></div><div><strong>Select a School / Jobsite</strong><p class="initial-card-support">Select from your existing schools or jobsites.</p><input class="initial-school-search" type="search" placeholder="Search schools or jobsites..." aria-label="Search schools or jobsites"><select id="selected-school-configured" name="selected-school-configured" aria-label="Selected School / Jobsite"><option>Los Angeles Unified School District (LAUSD)</option></select></div></div>
+          <div class="tnet-choice-separator" aria-hidden="true"><span class="tnet-choice-separator__label">OR</span></div>
+          <div class="add-card initial-add-card"><span class="add-icon school-jobsite-add-icon"><svg aria-hidden="true" focusable="false"><use href="#school-jobsite-add"></use></svg></span><span><strong>Add New School / Jobsite</strong><small>Add a school or jobsite that you don't<br>see in your list.</small><button class="add-button" type="button">Add New School / Jobsite</button></span></div></div>
+          <aside class="info-callout"><strong>ⓘ　Every job belongs to a School or Jobsite.</strong><p>　　　 Once created, you'll be able to reuse it for future listings.</p></aside>
+        </article>
+        <article class="panel" id="step-01-add-school-us" data-view="step-01-add-school-us" hidden>
+          <section class="location-type-section" aria-labelledby="location-type-heading"><div class="form-section-heading"><span class="form-section-number">1</span><div><h3 id="location-type-heading">Location Type</h3></div></div><div class="form-field location-type-field"><select class="location-type" id="location-type" name="location-type" aria-label="Location Type"><option selected>Physical U.S. Location</option><option>International</option></select></div></section>
+          <section class="jobsite-information-section" aria-labelledby="jobsite-information-heading"><div class="form-section-heading"><span class="form-section-number">2</span><div><h3 id="jobsite-information-heading">Jobsite Information</h3><p>Add the primary details for this organization.</p></div></div><div class="organization-form" aria-label="New U.S. school or jobsite details"><div class="form-field form-field-full-name"><label for="organization-name">School / Jobsite Name (Full) <span aria-hidden="true">*</span></label><input id="organization-name" type="text" placeholder="Enter the school or jobsite name"></div><div class="form-field form-field-display-name"><label for="organization-display-name">Display Name <span aria-hidden="true">*</span></label><input id="organization-display-name" type="text" placeholder="Short display name"></div><div class="form-field form-field-zip"><label for="organization-zip">ZIP Code <span aria-hidden="true">*</span></label><input id="organization-zip" type="text" inputmode="numeric" placeholder="ZIP code"></div><div class="form-field form-field-city"><label for="organization-city">City <span aria-hidden="true">*</span></label><input id="organization-city" type="text" placeholder="City"></div><div class="form-field form-field-state"><label for="organization-state">State <span aria-hidden="true">*</span></label><select id="organization-state"><option value="">Select</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option disabled>──────────</option><option>DC — District of Columbia</option><option>PR — Puerto Rico</option></select></div><div class="form-field form-field-address"><label for="organization-address">Street Address <small>(Optional)</small></label><input id="organization-address" type="text" placeholder="e.g., 333 S. Beaudry Avenue"></div><div class="form-field form-field-suite"><label for="organization-suite">Suite / Room <small>(Optional)</small></label><input id="organization-suite" type="text" placeholder="e.g., Suite 200"></div></div></section>
+          <details class="workbench-accordion optional-section" aria-label="Jobsite Image optional"><summary>Jobsite Image <small>(Optional)</small></summary><div class="upload-surface"><div class="surface-heading"><span>Upload a logo or photo that represents this jobsite.</span></div><div class="upload-empty-state"><span class="upload-icon" aria-hidden="true">＋</span><div><strong>No image selected</strong><p>Upload JPG, PNG, or WebP. Recommended minimum 400 × 300px.</p></div><button type="button" class="upload-button">Browse Image</button></div></div></details><details class="workbench-accordion optional-section" aria-label="Additional Information optional"><summary>Additional Information <small>(Optional)</small></summary><div class="additional-information-surface"><div class="surface-heading"><span>Website and contact details for this jobsite.</span></div><div class="additional-fields"><div class="form-field phone-field"><label for="organization-phone">Phone <small>(Optional)</small></label><input id="organization-phone" type="tel" placeholder="(555) 555-5555"></div><div class="form-field website-field"><label for="organization-website">Website <small>(Optional)</small></label><input id="organization-website" type="url" placeholder="https://example.org"></div></div></div></details>
+          <aside class="info-callout"><strong>ⓘ　Control what appears in your job listings.</strong><p>　　　 You will have the option to display, hide, or supply custom versions of these details in each individual job posting.</p></aside>
+        </article>
+        <div class="placeholder" id="placeholder" hidden><h2>Planned workbench view</h2><p>This view is registered for later authority work and is intentionally not implemented.</p></div>
+        <div class="view-nav" aria-label="Wizard navigation"></div>
+      </section>
+    </div>
+
+    <footer class="tnet-jobs-app-footer footer"><div class="tnet-jobs-app-footer-inner"><div class="tnet-jobs-app-footer-columns"><section class="tnet-jobs-app-footer-brand"><img class="tnet-jobs-app-footer-logo" src="assets/logo-globe-158x42.png" alt="Teachers.Net"><p>Serving Teachers. Supporting Education.</p></section><nav class="tnet-jobs-app-footer-links" aria-label="Job Center footer links"><h2>Job Center</h2><a href="#step-01-nav-back">Browse Jobs</a><a href="#step-01-nav-back">Post a Job</a></nav><nav class="tnet-jobs-app-footer-links" aria-label="Community footer links"><h2>Chatboards</h2><a href="#step-01-nav-back">Teachers</a><a href="#step-01-nav-back">Grade Levels</a><a href="#step-01-nav-back">Subject Areas</a><a href="#step-01-nav-back">States</a></nav><nav class="tnet-jobs-app-footer-links" aria-label="Teacher Resources footer links"><h2>Lesson Plans</h2><a href="#step-01-nav-back">Lesson Plans</a><a href="#step-01-nav-back">Grade Levels</a><a href="#step-01-nav-back">Subject Areas</a><a href="#step-01-nav-back">Search Lessons</a></nav><nav class="tnet-jobs-app-footer-links" aria-label="About footer links"><h2>About</h2><a href="#step-01-nav-back">About Teachers.Net</a><a href="#step-01-nav-back">Contact Us</a><a href="#step-01-nav-back">Terms of Service</a><a href="#step-01-nav-back">Privacy Policy</a></nav><section class="tnet-jobs-app-footer-connect" aria-label="Connect with us"><h2>Connect With Us</h2><div class="tnet-jobs-app-footer-social"><a href="#step-01-nav-back" aria-label="X">X</a><a href="#step-01-nav-back" aria-label="Facebook">f</a><a href="#step-01-nav-back" aria-label="Pinterest">p</a><a href="#step-01-nav-back" aria-label="Email">@</a></div><div class="tnet-jobs-app-footer-bottom"><span>© 2026 Teachers.Net</span></div></section></div></div></footer>
+  </main>
+  <div class="workbench-utility" aria-label="Workbench utility controls">
+    <nav id="workbench-traversal" class="workbench-traversal" aria-label="Workbench view traversal">
+      <a id="workbench-previous" href="#" hidden>← Previous View</a>
+      <a id="workbench-next" href="#">Next View →</a>
+    </nav>
+    <div class="workbench-build-marker" aria-label="Workbench build">BUILD JC053-20260728-01</div>
+  </div>
+  <pre id="diagnostics" hidden></pre>
+  <script src="mockup.js?v=jc053-20260730-navbar-01"></script>
+</body>
+</html>

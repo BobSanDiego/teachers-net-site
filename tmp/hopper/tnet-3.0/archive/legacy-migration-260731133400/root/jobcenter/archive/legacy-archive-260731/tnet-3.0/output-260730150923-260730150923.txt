@@ -1,0 +1,15 @@
+Post-ticket report
+Date: 2026-07-30
+
+Updated the durable hopper procedures to require a plain-text copy of each
+final post-ticket report named output-YYMMDDHHMMSS.txt in the shared hopper
+root, with a same-cycle archive duplicate under the active project's archive.
+
+Modified files included in the hopper:
+- docs/documentation-governance.md
+- docs/codex-ticket-discipline.md
+- tmp/hopper/HOPPER-INSTRUCTIONS.txt
+- tmp/hopper/HOPPER-MANIFEST.txt
+
+Protected output.txt was excluded and preserved.
+The repository remains the source of truth.

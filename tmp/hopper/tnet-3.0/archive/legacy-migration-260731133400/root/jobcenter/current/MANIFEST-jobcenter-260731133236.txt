@@ -1,0 +1,21 @@
+Project: jobcenter
+Ticket: OPS-HOPPER001
+Cycle: 260731133236
+Branch: COMMUNITY003-semantic-community-communications-working-draft
+Current hopper: /home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current/
+Windows current hopper: C:\Main\Active\Projects\Teachers.Net\tmp\hopper\jobcenter\current\
+Archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/archive/
+Windows archive: C:\Main\Active\Projects\Teachers.Net\tmp\hopper\jobcenter\archive\
+Commit: pending
+Push: pending
+Report: output-jobcenter-260731133236.txt
+Cycle record: cycle-jobcenter-260731133236.json
+Evidence bundle: none required
+
+Filename | Original repository path | Status | Size | SHA-256 | Committed | Included in ticket commit | Purpose
+AGENTS-jobcenter-260731133236.md | AGENTS.md | modified | 8959 | 67ac2edf7e40512ffd8cac5c416e4216ebd02dac3e308b53fe0d6944cf53bf5e | no | yes | durable project instructions
+codex-ticket-discipline-jobcenter-260731133236.md | docs/codex-ticket-discipline.md | modified | 21547 | bb20b056c1d5cb16a39915fd3ed4038c0075faaa191f0ee04400e94a6a33a501 | no | yes | durable hopper procedure
+jobcenter-hopper-jobcenter-260731133236.sh | scripts/jobcenter-hopper.sh | created | 2458 | 7587a12f53639c458ff67bd1d8643ee14af5a82a9730e81a22dce09fcf95d328 | no | yes | reusable clean-cycle tooling
+output-jobcenter-260731133236.txt | generated final report | generated | 3207 | c324b15dd689be901b6968222aa0965c91e20830f615c81ec702e1be967b046e | no | no | post-ticket report
+MANIFEST-jobcenter-260731133236.txt | generated hopper manifest | generated | 1594 | a257e5093e13d21a61333425a5c2379394f079e0af20d73c193894574e803535 | no | no | artifact inventory as written before final hash refresh
+cycle-jobcenter-260731133236.json | generated cycle record | generated | 1608 | b7c9a4a77641c0e7430380f35bb6be9a9716f790187f3705e5c102c41847294f | no | no | machine-readable cycle metadata as written before final hash refresh

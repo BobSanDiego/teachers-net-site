@@ -1,0 +1,27 @@
+C3-PLAN003 — Community 3.0 Master Plan (Product Authority)
+
+Status: executed, documentation-only; implementation and production changes were not authorized.
+
+Completed
+
+- Created community-3.0-master-plan-v1.md as the product authority above engineering roadmaps and tickets.
+- Added Executive Vision, Product Principles, Community Experience journeys, Capability Model, user-visible Release Strategy, Platform Strategy, Engineering Alignment, and ADR Index.
+- Preserved every reconciled capability, including Core Terms, Portable Views, subscriber policies, chatboard/path/group mapping, interests/onboarding, relationship governance, and Communications Platform lifecycle.
+- Updated the Community 3.0 Project Cursor and Engineering Handoff.
+- Committed and pushed the documentation-only change.
+
+Decision boundary
+
+NO-GO for implementation. The exact next decision is whether the Engineering Director approves, revises, or rejects the master plan and authorizes a bounded M1 contract ticket. No code, schema, migration, production UI, taxonomy import, relationship activation, or communications delivery was performed.
+
+Commit and push
+
+Commit: 8ae4c1dd27bab796bf06df62fb2deb8d400fafd5
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+Active flat handoff directory: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Project archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0
+Current-cycle archive suffix: 260730213232
+Protected output.txt was not touched, copied, renamed, archived, or included.

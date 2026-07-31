@@ -1,0 +1,29 @@
+JC053-RESP006 — Final Narrow Header and Mobile Job Center Drawer
+
+Result: implemented, externally browser-verified, committed, and pushed.
+
+Commit: 80970f1 JC053-RESP006 implement final narrow header drawer
+Branch: COMMUNITY003-semantic-community-communications-working-draft
+Push: confirmed to origin.
+
+Modified files in the current hopper set:
+- docs/job-center/job-center-responsive-decisions-v1.md
+- tmp/jc053-wizard-workbench/index.html
+- tmp/jc053-wizard-workbench/mockup.css
+- tmp/jc053-wizard-workbench/mockup.js
+
+Contract:
+- 768–1024: compact single-row header.
+- 651–767: single-row header with left-aligned logo, Job Center, bell, and My Account.
+- 650 and below: compact logo/bell/avatar row plus full-width Job Center drawer trigger.
+
+Verification:
+- Matrix checked 1024, 900, 769, 768, 767, 700, 651, 650, 649, 480, 390, 320.
+- Drawer opened with My Jobs, Career Resources, and Teacher Resources; close returned focus to trigger.
+- No overflow and no console errors/warnings.
+- Requested 390/320 resized to actual 500 by the MCP and are labeled accordingly.
+
+Screenshot directory:
+C:\Main\Active\Projects\Teachers.Net\tmp\jc053-wizard-workbench\screenshots\resp006-2026-07-31\
+
+Protected output.txt was preserved. This report is generated from final report content, not captured automatically from the interface.
