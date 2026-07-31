@@ -59,6 +59,10 @@ group therefore stacks when its containing panel is 720px wide or narrower;
 1147px remains a verified comfortable side-by-side case while 1024px is the
 first verified stacked case in the current shell.
 
+Selects using the trailing-icon primitive own exactly one SVG chevron. Native
+select indicators and legacy background-image chevrons are suppressed while
+native keyboard and selection behavior remain intact.
+
 ### Choice Card
 
 Choice cards preserve equal visual weight, source and keyboard order, and
