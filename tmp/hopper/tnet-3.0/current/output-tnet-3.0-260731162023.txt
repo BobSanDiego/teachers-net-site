@@ -1,0 +1,47 @@
+C3-IMP007 — Notification Application Service (In-Memory)
+
+Status: executed and complete.
+
+Implemented:
+- Community-owned `NotificationApplicationService.notify(event)` entry point.
+- Validation for synthetic `group_post` events only.
+- Delegation to the existing dry-run pipeline without duplicated logic.
+- Deterministic duplicate-event behavior and deep-copied reports.
+- State isolation across service instances.
+
+Verification:
+- python3 -m unittest discover -s tools/community3 -p 'test_*.py'
+- Result: 21 tests passed.
+- python3 -m py_compile tools/community3/*.py passed.
+- git diff --check passed.
+
+The service preserves event, evaluation, candidate, candidate storage, bell,
+delivery, and engagement distinctions and keeps path_id/group_id distinct.
+No database, schema, migration, queue, mail, digest, UI, network, production,
+or persistent filesystem behavior was added.
+
+Modified files included in this cycle:
+- tools/community3/notification_application_service.py (created)
+- tools/community3/test_notification_application_service.py (created)
+- docs/community-3.0/notification-application-service-v1.md (created)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+- tools/hopper/clean_cycle.py (modified: protected output validation correction)
+
+Source commits: 8b00088 (application service), 774610a (mechanical hopper validation correction), 3df0bdd (handoff reconciliation)
+Push: successful to origin/COMMUNITY003-semantic-community-communications-working-draft.
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/260731162023/
+
+Cycle: 260731162023
+Protected output.txt was preserved and excluded.
+
+Recommended next ticket: Engineering Director review before any persistence,
+delivery-channel, UI, or production-event integration.
