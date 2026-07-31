@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP010 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -155,6 +155,13 @@ Community post-publication implementation or authoritative hook is currently
 verifiable. It creates no second hook. The existing C3-IMP009 seam remains the
 bounded, non-authoritative proof only.
 
+C3-CORE001 is complete. Read-only Sandy inspection identified the legacy Perl
+publisher at `/var/www/www.teachers.net/cgi-bin/chatboard/chatboard.cgi`, but
+the source is not owned by this repository and lacks canonical group mapping.
+Authority decision: publisher exists but source is not owned/available. A
+minimum publisher contract was documented; live notification attachment remains
+blocked.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -163,14 +170,14 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP010 is complete. Any next implementation slice requires Engineering
+C3-CORE001 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP010 and explicitly authorize identification of the real Community
-publisher before any live hook integration or persistence work.
+Review C3-CORE001 and explicitly authorize source ownership/compatibility work
+before any live hook integration or persistence work.
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 

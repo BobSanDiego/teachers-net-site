@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP010 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -80,6 +80,12 @@ Community publisher seam. Its integration map and hook-authority decision are
 remains test-owned and non-authoritative.
 C3-IMP010 is complete as the current source milestone; no live publisher hook
 or delivery behavior is authorized.
+C3-CORE001 identified the Sandy legacy Perl publisher at
+`/var/www/www.teachers.net/cgi-bin/chatboard/chatboard.cgi`. It exists in
+production but is not owned or available in this repository and does not expose
+canonical group mapping. Live notification attachment remains blocked. The
+source census, lifecycle, authority decision, and minimum contract are the
+four C3-CORE001 documents.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
@@ -159,8 +165,9 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review C3-IMP010 and decide whether to authorize identification of the real
-Community publisher before any live hook integration or persistence slice.
+Review C3-CORE001 and decide whether to authorize source ownership and a
+read-only compatibility boundary before any live hook integration or
+persistence slice.
 persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.
