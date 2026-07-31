@@ -278,6 +278,13 @@ resume the ticket. Do not repeatedly search for ad hoc commands or use the
 built-in/obsolete WSL browser bridge; stop only if the canonical launcher
 itself fails after its bounded timeout.
 
+Verified troubleshooting detail: Windows PowerShell must invoke the launcher
+through the WSL UNC path; translating the Linux repository to `C:\home\...`
+fails. Inspect Windows process command lines rather than killing Chrome
+blindly. WSL loopback HTTP checks can time out while the external MCP route is
+healthy, so confirm with MCP `list_pages`. Use a cache-bypassing reload before
+responsive measurements and screenshots to avoid stale workbench CSS.
+
 - Employer UX authority convergence remains incomplete across JC052–JC056;
   the implementation capability audit and later implementation remain deferred
   until those authorities are complete.

@@ -148,3 +148,17 @@ workbench. Retain `chrome-devtools-mcp@1.6.0` with
 the ticket. Do not use the normal Chrome profile, built-in browser bridge, or
 obsolete WSL bridge. Stop only after the launcher itself fails its bounded
 timeout.
+
+Troubleshooting sequence when recovery is needed:
+
+1. Check `127.0.0.1:9222/json/version` and call external MCP `list_pages`.
+2. Inspect Windows Chrome command lines; do not terminate normal Chrome
+   processes. A normal Chrome process without `--remote-debugging-port=9222`
+   is not the QA instance.
+3. Invoke the launcher through the WSL UNC path from Windows PowerShell; a
+   `C:\home\...` path does not refer to the WSL repository. Use
+   `\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\launch-chrome-cdp-9222.ps1`.
+4. Treat the launcher output and external MCP as authoritative. WSL `curl`
+   to Windows loopback may time out even when MCP can connect successfully.
+5. After MCP reports a page, reload with cache bypass before responsive
+   screenshots so the current workbench CSS is actually served.

@@ -99,6 +99,16 @@ active ticket automatically. Stop only when this launcher itself fails after
 its bounded attempt; do not substitute the built-in or obsolete WSL browser
 bridges.
 
+### Recovery troubleshooting notes
+
+The verified recovery sequence is: test `/json/version`, inspect Windows
+Chrome command lines without touching normal Chrome, invoke the launcher via
+the `\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\...` UNC
+path, then call external MCP `list_pages`. Do not interpret a WSL `curl`
+timeout against Windows loopback as conclusive if MCP can inspect the browser.
+Once MCP is connected, reload the workbench with cache bypass before taking
+responsive evidence; otherwise an older CSS build can remain visible.
+
 - Canonical V1 Contract.
 - Employer UX V1.
 - Job Center Design System v1.
