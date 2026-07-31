@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Post-reconciliation planning package complete; implementation remains unauthorized.
+Bounded implementation preparation authorized; no feature implementation begun.
 
 ## Current Milestone
 
@@ -44,11 +44,29 @@ plan with product success measurement principles, cross-product autonomy, and
 the canonical product-level architecture diagram. It preserves all catalogued
 capabilities and keeps the current NO-GO implementation boundary.
 
+C3-GO001 records GO authorization for bounded Community 3.0 implementation
+preparation. The authorized next ticket is C3-TRUST001 — Subscriber Policy
+Contract. It may inspect current implementation and production evidence
+read-only, but may not send mail, change schema, migrate preferences, or enable
+delivery.
+
+## Authorization Status
+
+GO — bounded implementation preparation is authorized. This authorization does
+not authorize C3-TRUST001 execution, delivery, migration, or production change
+within this ticket.
+
+## Next Authorized Ticket
+
+C3-TRUST001 — Subscriber Policy Contract: define communication categories,
+explicit consent, global pause, unsubscribe, suppression, frequency, group
+overrides, precedence, preference history, restoration, audit, and correction.
+
 ## Next Decision
 
 No new group architecture or redesign is authorized by this correction,
-C3-RR001, or C3-PLAN003. The exact next decision is whether to approve or
-revise the master plan and authorize bounded M1 work.
+C3-RR001, C3-PLAN003, or C3-GO001. The next decision follows completion and
+verification of the bounded C3-TRUST001 contract ticket.
 
 ## Strategic Roadmap Alignment
 

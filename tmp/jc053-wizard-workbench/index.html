@@ -18,16 +18,28 @@
   <main class="application-card" data-shell="1200px">
     <header class="tnet-jobs-app-topbar tnet-jobs-employer-app-topbar">
       <div class="tnet-jobs-app-topbar-inner">
-      <a class="tnet-jobs-app-brand" href="#step-01-nav-back" aria-label="Teachers.Net">
-        <img class="tnet-jobs-employer-logo" src="assets/teachers-net-logo.png" alt="Teachers.Net">
-      </a>
-      <span class="tnet-jobs-app-brand-divider" aria-hidden="true"></span>
-      <span class="tnet-jobs-app-brand-label">Job Center</span>
-      <nav class="tnet-jobs-app-nav" aria-label="Employer navigation">
-        <a data-dropdown="my-jobs" href="#step-01-nav-back">My Jobs <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
-        <a data-dropdown="career-resources" href="#step-01-nav-back">Career Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a><a class="tnet-jobs-employer-nav-final-link" data-dropdown="teacher-resources" href="#step-01-nav-back">Teacher Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
-      </nav>
-      <div class="tnet-jobs-app-account tnet-jobs-employer-app-account"><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><button class="tnet-jobs-employer-app-notification" type="button" aria-label="3 notifications"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><b aria-hidden="true">3</b></button><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><a data-dropdown="my-account" class="tnet-jobs-employer-app-account-link" href="#step-01-nav-back" aria-label="My Account">My Account <span aria-hidden="true" class="tnet-jobs-employer-app-avatar-chevron"></span></a></div>
+        <div class="tnet-jobs-app-topbar-region tnet-jobs-app-brand-region">
+          <a class="tnet-jobs-app-brand" href="#step-01-nav-back" aria-label="Teachers.Net">
+            <img class="tnet-jobs-employer-logo" src="assets/logo-globe-158x42.png" alt="Teachers.Net">
+          </a>
+        </div>
+        <div class="tnet-jobs-app-topbar-region tnet-jobs-app-product-region">
+          <span class="tnet-jobs-app-brand-label">Job Center</span>
+        </div>
+        <nav class="tnet-jobs-app-topbar-region tnet-jobs-app-nav tnet-jobs-app-primary-region" aria-label="Employer navigation">
+          <a data-dropdown="my-jobs" href="#step-01-nav-back">My Jobs <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+          <a data-dropdown="career-resources" href="#step-01-nav-back">Career Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+          <a class="tnet-jobs-employer-nav-final-link" data-dropdown="teacher-resources" href="#step-01-nav-back">Teacher Resources <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></a>
+          <button class="tnet-jobs-app-primary-overflow" type="button" aria-haspopup="menu" aria-expanded="false"><span class="tnet-jobs-app-primary-overflow-label tnet-jobs-app-primary-overflow-label-desktop">Resources</span><span class="tnet-jobs-app-primary-overflow-label tnet-jobs-app-primary-overflow-label-compact">Job Center</span> <span aria-hidden="true" class="tnet-jobs-app-nav-chevron"></span></button>
+          <div class="tnet-jobs-app-primary-overflow-menu" role="menu" hidden>
+            <a role="menuitem" data-overflow-link="my-jobs" href="#step-01-nav-back">My Jobs</a>
+            <a role="menuitem" data-overflow-link="career-resources" href="#step-01-nav-back">Career Resources</a>
+            <a role="menuitem" data-overflow-link="teacher-resources" href="#step-01-nav-back">Teacher Resources</a>
+          </div>
+        </nav>
+        <div class="tnet-jobs-app-topbar-region tnet-jobs-app-account tnet-jobs-employer-app-account tnet-jobs-app-utility-region">
+          <span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><button class="tnet-jobs-employer-app-notification" type="button" aria-label="3 notifications"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><b aria-hidden="true">3</b></button><span class="tnet-jobs-employer-app-separator" aria-hidden="true"></span><a data-dropdown="my-account" class="tnet-jobs-employer-app-account-link" href="#step-01-nav-back" aria-label="My Account">My Account <span aria-hidden="true" class="tnet-jobs-employer-app-avatar-chevron"></span></a>
+        </div>
       </div>
     </header>
 

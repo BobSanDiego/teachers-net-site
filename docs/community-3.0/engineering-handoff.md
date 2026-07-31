@@ -2,14 +2,16 @@
 
 ## 1. Current Phase
 
-Maintenance — C3-PLAN004 enhancement of the C3-PLAN003 master plan is complete; implementation not authorized.
+Bounded implementation preparation — C3-GO001 authorized preparation; no feature implementation begun.
 
 ## 2. Current Ticket
 
-C3-RR001, C3-PLAN003, and C3-PLAN004 are complete as documentation-only work. The master
-plan is now the product authority above engineering roadmaps and tickets. The package is ready for
-Engineering Director review and concludes NO-GO pending an explicit bounded M1
-decision; do not begin implementation from this handoff.
+C3-RR001, C3-PLAN003, and C3-PLAN004 are complete as documentation-only work.
+C3-GO001 records GO authorization for bounded implementation preparation. The
+master plan is the product authority above engineering roadmaps and tickets.
+The next authorized ticket is C3-TRUST001 — Subscriber Policy Contract. Do not
+send mail, change schema, migrate preferences, or enable delivery under this
+authorization.
 
 ## 3. Last Completed Milestone
 
@@ -82,9 +84,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Engineering Director review of the C3-RR001 package is the immediate priority.
-Review and approve, revise, or reject the C3-PLAN003 master plan; resolve or
-explicitly accept the production mail/membership evidence gaps, external
-research questions, and M1 scope. Stop before code, schema, migration,
-production UI, taxonomy import, relationship activation, or communications
-delivery.
+Execute only C3-TRUST001 as the next bounded contract ticket. Its evidence
+gathering may be read-only. Stop before mail sending, schema changes,
+preference migration, delivery enablement, production edits, relationship
+activation, or unrelated Job Center implementation.
