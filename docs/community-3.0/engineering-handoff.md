@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP004 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP005 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -40,6 +40,12 @@ implemented in `tools/community3/notification_candidate_store.py` and
 `docs/community-3.0/continuity-flush-diagnostic-v1.md`.
 C3-IMP002 has no verified implementation commit and is not complete. C3-NOT005
 has no verified contract or implementation commit and is not complete.
+C3-IMP005 is complete as a test-only in-memory bell repository at
+`tools/community3/notification_bell_repository.py`, covered by
+`tools/community3/test_notification_bell_repository.py`, and documented in
+`docs/community-3.0/bell-repository-interface-v1.md`. It consumes only eligible
+validated candidates and preserves bell state separately from delivery and
+engagement.
 C3-GO001 records GO authorization for bounded implementation preparation. The
 master plan is the product authority above engineering roadmaps and tickets.
 

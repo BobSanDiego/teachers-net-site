@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP004 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP005 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -120,6 +120,11 @@ flush correction. The store is implemented in
 continuity guard is `tools/hopper/validate_community_continuity.py`. No
 persistence or delivery was added.
 
+C3-IMP005 is complete as a test-only in-memory bell repository at
+`tools/community3/notification_bell_repository.py`, with tests and interface
+documentation. It consumes only eligible validated candidates, preserves bell
+state separately from delivery and engagement, and adds no persistence or UI.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -128,13 +133,13 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP004 is complete. Any next implementation slice requires Engineering
+C3-IMP005 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP004 and explicitly authorize any persistence or channel follow-up
+Review C3-IMP005 and explicitly authorize any persistence or channel follow-up
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 
@@ -155,3 +160,9 @@ production UI work, or communication delivery.
 
 The active Google Drive operational handoff is
 <https://docs.google.com/document/d/1oxqqgFHkPwrJQpQ563-hho0jPf_MWrTEPE_qCJa-BeY>.
+persistence or delivery was added.
+
+C3-IMP005 is complete as a test-only in-memory bell repository at
+`tools/community3/notification_bell_repository.py`, with tests and interface
+documentation. It consumes only eligible validated candidates, preserves bell
+state separately from delivery and engagement, and adds no persistence or UI.
