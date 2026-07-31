@@ -1,21 +1,51 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-workbench-build="1">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JC053 Wizard Workbench</title>
-  <link rel="stylesheet" href="mockup.css">
+  <link rel="stylesheet" href="mockup.css?v=jc053-20260730-compact-01">
   <link rel="icon" href="data:,">
 </head>
 <body>
   <div class="workbench-bar">
     <strong>JC053 Workbench</strong>
     <span>Static design artifact · no production behavior</span>
-    <label for="view-select">Workbench Views</label><select id="view-select"></select><span id="view-status">step-01-nav-back</span>
+    <label for="view-select">Workbench Views</label><select id="view-select"></select><span id="view-status">step-01-return</span>
     <button id="diagnostics-toggle" type="button">Show diagnostics</button>
   </div>
 
   <main class="application-card" data-shell="1200px">
+    <svg class="icon-definitions" aria-hidden="true" width="0" height="0" focusable="false">
+      <defs>
+        <symbol id="school-jobsite-select" viewBox="0 0 48 48">
+          <path d="M6 42V27h9v15M33 42V27h9v15M15 42V21h18v21M4 42h40M15 21l9-5 9 5M24 16V5M24 5h8v6h-8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 42V31c0-2.2 1.8-4 4-4s4 1.8 4 4v11M18 27h.01M30 27h.01" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="section-briefcase" viewBox="0 0 24 24">
+          <rect x="3.5" y="7.5" width="17" height="12.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8.5 7.5V5.8a1.8 1.8 0 0 1 1.8-1.8h3.4a1.8 1.8 0 0 1 1.8 1.8v1.7M3.5 12h17M10.5 12v1.8h3V12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="section-location-pin" viewBox="0 0 24 24">
+          <path d="M19 10.2c0 5.1-7 10.3-7 10.3S5 15.3 5 10.2a7 7 0 1 1 14 0Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        </symbol>
+        <symbol id="section-calendar" viewBox="0 0 24 24">
+          <rect x="4" y="5.5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 3.5v4M16 3.5v4M4 9.5h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="section-compensation" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M14.5 9.2c-.6-.7-1.4-1-2.5-1-1.4 0-2.4.7-2.4 1.8 0 2.6 5 1.2 5 3.8 0 1.1-1 1.9-2.5 1.9-1.1 0-2-.3-2.7-1M12 6.8v10.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="school-jobsite-add" viewBox="0 0 48 48">
+          <path d="M4 42V27h8v15M29 42V27h8v15M12 42V21h17v21M2 42h35M12 21l8.5-5 8.5 5M20.5 16V5M20.5 5h8v6h-8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17 42V31c0-2.2 1.6-4 3.5-4s3.5 1.8 3.5 4v11M15 27h.01M26 27h.01" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="36" cy="36" r="8" fill="var(--workspace)" stroke="currentColor" stroke-width="2.6"/>
+          <path d="M36 32v8M32 36h8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+        </symbol>
+      </defs>
+    </svg>
     <header class="tnet-jobs-app-topbar tnet-jobs-employer-app-topbar">
       <div class="tnet-jobs-app-topbar-inner">
         <div class="tnet-jobs-app-topbar-region tnet-jobs-app-brand-region">

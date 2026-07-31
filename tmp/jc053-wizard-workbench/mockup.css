@@ -388,6 +388,29 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .tnet-jobs-app-utility-region{grid-column:3}
 }
 
+/* Compact header authority: consolidate product identity into the one
+   accessible Resources menu control at 1024px and below. */
+@media (min-width:1025px){
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-label-compact{display:none}
+}
+@media (max-width:1024px){
+  .application-card[data-authority="true"] .tnet-jobs-app-product-region{display:none}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-label-desktop{display:none}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-label-compact{display:inline}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{color:#001735;font-family:"Nunito","Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;font-size:22px;font-weight:700;line-height:22px;padding-bottom:0}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow .tnet-jobs-app-nav-chevron{height:7px;margin-left:8px;vertical-align:middle;width:7px}
+}
+@media (min-width:768px) and (max-width:1024px){
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-topbar-inner{grid-template-columns:210px minmax(0,1fr) max-content}
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-primary-region{grid-column:2}
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-utility-region{grid-column:3}
+}
+@media (max-width:767px){
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-topbar-inner{grid-template-columns:minmax(0,1fr) max-content max-content}
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar .tnet-jobs-app-primary-region{grid-column:2}
+  .application-card[data-authority="true"] .tnet-jobs-app-utility-region{grid-column:3}
+}
+
 /* Desktop boundary correction: preserve the third direct resource link through
    the 1025px desktop range; the unified Resources control begins at 1024px. */
 @media (min-width:1025px){
