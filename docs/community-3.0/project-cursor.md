@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-NOT001 complete; no feature implementation begun.
+Bounded implementation preparation — C3-NOT002 complete; no feature implementation begun.
 
 ## Current Milestone
 
@@ -68,6 +68,13 @@ event identity, lifecycle, producers, consumers, visibility, candidates,
 eligibility, channels, deduplication, coalescing, expiry, audit, and
 cross-product isolation. C3-NOT002 may be considered after Engineering
 Director review; it is not authorized by this ticket.
+
+C3-NOT002 is complete as a documentation and read-only evidence package at
+`docs/community-3.0/bell-and-read-state-contract-v1.md`. It defines bell
+notification lifecycle, read/archive state, grouping, expiry, badge behavior,
+cross-device synchronization, accessibility, and product isolation.
+C3-NOT003 may be considered after Engineering Director review; it is not
+authorized by this ticket.
 
 ## Authorization Status
 
