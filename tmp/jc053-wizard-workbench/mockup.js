@@ -267,8 +267,7 @@
       this.states = states;
     }
     render() {
-      this.root.replaceChildren(
-        ...this.steps.map((step, index) => {
+      const items = this.steps.map((step, index) => {
           const state = this.states[index] || "is-upcoming";
           const item = document.createElement("li");
           item.className = state;
@@ -294,8 +293,13 @@
           content.append(marker, label);
           item.append(content);
           return item;
-        }),
-      );
+        });
+      const currentIndex = this.states.findIndex((state) => state === "is-current");
+      const status = document.createElement("div");
+      status.className = "stepper-status";
+      status.setAttribute("aria-live", "polite");
+      status.innerHTML = `<strong>Step ${currentIndex + 1} of ${this.steps.length}</strong><span>${this.steps[currentIndex]?.label || ""}</span>`;
+      this.root.replaceChildren(...items, status);
     }
   }
   const wizardStepper = new WizardStepper(
