@@ -1,0 +1,15 @@
+C3-CORE003 — Legacy Publisher Characterization Fixture and Test Harness
+
+Status: COMPLETE — bounded local-only implementation and verification.
+
+Functional advancement: added the first executable characterization baseline for selected verified legacy Community publisher behavior. The pure model emits observations for topics, replies, validation, abuse gates, URL/timestamp shape, chat_posts fields, local_path/path_id/group_id distinction, missing mapping, duplicate classification, partial-write classification, and immutable archive metadata.
+
+Created synthetic/redacted fixtures under tests/fixtures/community3/legacy-publisher/ and documentation for the harness, fixture catalog, and compatibility observation contract. No production personal data, post bodies, credentials, cookies, tokens, IPs, moderation records, or datasets are present.
+
+Verification: focused characterization tests — 13 passed; all tools/community3 tests — 45 passed; py_compile passed; fixture JSON integrity passed; git diff --check passed. No CGI execution, network access, filesystem publication, database write, schema change, queue, mail, notification, UI change, or production call occurred. path_id 241 and group_id 227 remain explicitly distinct. Unknown identity, anonymous posting, edit/delete/retract, moderator authorization, mailring, concurrency, and recovery behavior remain unsupported/unverified.
+
+Commit/push: 86b2abf.
+
+Next ticket: obtain authorized source ownership or redacted characterization evidence, then define the legacy URL/archive compatibility boundary before publisher implementation authorization.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.
