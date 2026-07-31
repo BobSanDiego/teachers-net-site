@@ -113,6 +113,11 @@ preferred behind a narrow repository; WordPress identity and canonical
 community/post IDs remain authoritative. New posts use post-first moderation,
 and notification events occur only after commit. No schema or runtime publisher
 was added. The next slice is C3-CORE007, test-only domain core.
+C3-CORE007 is complete as that pure domain core. Topics, direct/nested replies,
+validation, post-first/pending moderation, lifecycle transitions, idempotency,
+and canonical event construction are executable against synthetic data only.
+Persistence, WordPress runtime, notifications, forms, and migration remain
+deferred. The next boundary is persistence implementation authorization.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

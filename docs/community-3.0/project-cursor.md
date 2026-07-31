@@ -195,6 +195,12 @@ narrow repository, defines canonical post/thread identity and post-first
 moderation, requires post-commit events, and preserves legacy data through
 immutable compatibility records. No schema or publisher runtime was written.
 
+C3-CORE007 is complete as the pure test-only WordPress-native publisher domain
+core. It creates synthetic canonical topics/replies, validates ownership and
+threading, executes lifecycle and moderation transitions, proves process-local
+idempotency, and produces canonical post-commit-shaped events. No WordPress
+runtime, persistence, notification, or production integration was added.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
