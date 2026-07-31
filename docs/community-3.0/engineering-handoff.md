@@ -6,7 +6,7 @@ Bounded implementation preparation — C3-GO001 authorized preparation; no featu
 
 ## 2. Current Ticket
 
-C3-RR001, C3-PLAN003, C3-PLAN004, C3-TRUST001, C3-TRUST002, C3-NOT001, C3-NOT002, and C3-NOT003 are complete as
+C3-RR001, C3-PLAN003, C3-PLAN004, C3-TRUST001, C3-TRUST002, C3-NOT001, C3-NOT002, C3-NOT003, and C3-NOT004 are complete as
 documentation/read-only evidence work. The accepted subscriber-policy contract
 is `docs/community-3.0/subscriber-policy-contract-v1.md`; the accepted
 suppression and abuse-control contract is
@@ -17,9 +17,12 @@ bell and read-state contract is
 `docs/community-3.0/bell-and-read-state-contract-v1.md`; the accepted reply
 notification contract is
 `docs/community-3.0/reply-notification-contract-v1.md`.
+`docs/community-3.0/reply-notification-contract-v1.md`; the accepted reaction
+notification contract is
+`docs/community-3.0/reaction-notification-contract-v1.md`.
 C3-GO001 records GO authorization for bounded implementation preparation. The
-The master plan is the product authority above engineering roadmaps and tickets.
-C3-NOT004 may be considered after Engineering Director review; it is not
+master plan is the product authority above engineering roadmaps and tickets.
+C3-NOT005 may be considered after Engineering Director review; it is not
 authorized by this handoff.
 
 ## 3. Last Completed Milestone
@@ -93,7 +96,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review the C3-NOT003 contract and decide whether to authorize C3-NOT004.
+Review the C3-NOT004 contract and decide whether to authorize C3-NOT005.
 Any follow-up evidence gathering remains read-only. Stop before mail sending,
 schema changes, preference migration, delivery enablement, production edits,
 relationship activation, or unrelated Job Center implementation.
