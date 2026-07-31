@@ -43,6 +43,21 @@ icon-bearing controls. The wrapper is relative and full width; its control uses
 trailing padding and an SVG icon positioned at the trailing edge. No text may
 render beneath the icon.
 
+### School / Jobsite Selector Label Rule
+
+Compact school/jobsite selectors display `display_name` when present and fall
+back to `full_name` only when no display name is available. `full_name` remains
+the canonical record identity. Full names are appropriate in detail, summary,
+review, administrative, tooltip, title, and accessible-context surfaces where
+complete identity is needed.
+
+Do not introduce responsive breakpoints to swap labels, and do not solve long
+selected values with font reduction, icon compression, or arbitrary clipping.
+The existing display-name field exists to provide a concise human-readable
+identity for constrained choice controls. Later implementation work must reuse
+that field, preserve the full-name fallback, and verify Initial, School
+Selected, Return, and later school/jobsite chooser consumers.
+
 ### Wizard Responsive Form Grid
 
 Use the shared responsive form-grid primitive for School / Jobsite, Job Basics,
