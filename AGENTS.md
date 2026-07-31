@@ -92,6 +92,12 @@ Engineering Director/site-owner guided CSS/token tuning. Use it only when
 explicitly entered with `Enter VISUAL TUNE MODE`, and follow its finalize or
 abort lifecycle commands exactly.
 
+For existing responsive or visual component changes, use the named Responsive
+Convergence Procedure in `docs/codex-ticket-discipline.md`: perform a bounded
+rendered-state preflight, correct the active governing rule, and require live
+cache-bypassed browser evidence before commit. Do not repeat an unchanged
+rendered attempt speculatively; diagnose the active authority first.
+
 `docs/codex-ticket-discipline.md` also defines COMPONENT MATCH MODE for
 high-fidelity matching of one existing UI component to an approved reference.
 Use it only when explicitly entered with `Enter COMPONENT MATCH MODE: [component

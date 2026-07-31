@@ -350,6 +350,56 @@ Human visual QA is performed by the Engineering Director after implementation.
 
 Codex should optimize for minimum compute while maintaining engineering confidence.
 
+## Responsive Convergence Procedure
+
+Apply this procedure only to existing responsive or visual components where
+success depends on the rendered browser result: breakpoint behavior, navbar or
+footer layout, rails and panels, flex/grid alignment, spacing, visibility,
+ordering, dropdowns, carets, icons, and similar CSS/token refinements. Do not
+apply it automatically to backend, database, routing, authentication,
+authorization, email, cron, documentation-only, or ordinary mechanical work.
+
+Before editing, perform one narrow rendered-state preflight at the failing or
+target viewport. Inspect only the affected component's rendered DOM and the
+active authority: computed display, flex/grid ownership, gap, margin, padding,
+width, position, overflow, white-space, media-query rules, source order,
+specificity, pseudo-elements, runtime classes, and JavaScript rerendering where
+relevant. Stop once the governing rule is identified; if it cannot be
+identified in a bounded 30–90 second pass, escalate diagnostically rather than
+making a speculative change.
+
+Implement the smallest authoritative correction, removing a conflicting owner
+when appropriate. Do not add `!important` merely to force convergence. After
+each attempt, reload with cache bypass, set the exact requested viewport,
+confirm the selector/runtime state, inspect the final computed property or
+geometry, and compare the rendered result. Source edits, syntax checks, or
+screenshots without confirmed viewport and cache state do not prove success.
+
+If the rendered symptom is materially unchanged, mark the attempt failed
+immediately. Do not commit, push, update completion documentation, or generate
+a final hopper cycle. Diagnose the active computed style, rendered geometry,
+media-query/source-order authority, runtime classes, and rerender path before
+another attempt. Permit at most three internal implementation/verification
+iterations in one ticket; keep them uncommitted until convergence. Stop and
+report a diagnostic blocker if the authority remains unidentified, three
+attempts fail, DOM and rendered state disagree, CSS is overwritten after load,
+stale or duplicate render sources are suspected, the correction expands into
+architecture, browser verification is unavailable after canonical recovery,
+or the objective is contradictory.
+
+This procedure supplements existing modes: TWEAK MODE retains deferred commit
+and push while using this preflight and acceptance gate; VISUAL TUNE MODE keeps
+its fast human-guided loop and uses a minimal rendered check; COMPONENT MATCH
+MODE retains its existing measurements and uses this gate. It is a procedure,
+not a new lifecycle command.
+
+For responsive convergence tickets, report concise process metrics: preflight
+duration, internal attempt count, rendered verification pass count, whether
+same-symptom diagnosis was triggered, total execution time when available,
+target viewport(s), governing rule, before/after measurement, final computed
+owner, and whether cache-bypass reload was performed. Avoid routine screenshots
+unless acceptance or diagnosis requires them.
+
 ## TWEAK MODE
 
 TWEAK MODE is a deferred-commit workflow for small, tightly bounded changes.
