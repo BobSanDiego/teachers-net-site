@@ -1,0 +1,17 @@
+C3-CORE006 — WordPress-Native Community Publisher Contract and Data Model
+
+Status: COMPLETE — bounded architecture design and documentation only.
+
+Design-ready conclusion: yes, at the contract level. The selected architecture is dedicated WordPress custom tables behind a narrow repository/service, consistent with existing `$wpdb`/`dbDelta` patterns. No schema or migration was created.
+
+Canonical model: opaque community_id owns Community context; opaque post_id owns CommunityPost; thread_id and nullable parent_post_id define root topics and replies. Legacy topic_dir/files are reference evidence only. Normal posts use post-first moderation; pending is an explicit product mode. Admin evidence is retained for accept/promote, spam/remove, and user disable/remove actions.
+
+Persistence/event boundary: canonical state, initial audit transition, and post-commit outbox record are one atomic write unit. Idempotency keys prevent duplicate posts. The authoritative publication event is emitted only after commit; notification failure cannot roll back publication and downstream code uses canonical identity/scoped group context.
+
+Compatibility: preserve URLs, archives, timestamps, threads, reconciled authorship, chat_posts evidence, moderation/deleted evidence, redirects, SEO, and immutable legacy references. Legacy CGI is not a new-write authority. Core Terms and Portable Views classify/present without owning post identity.
+
+Verification: git diff --check passed. No publisher runtime, form, database, schema, migration, route, UI, membership, notification, mail, queue, or production behavior changed. Mechanical and semantic hopper validation passed.
+
+Exact next ticket: C3-CORE007 — Test-Only WordPress-Native Publisher Domain Core.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.
