@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP007 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP008 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -140,6 +140,11 @@ service at `tools/community3/notification_application_service.py`, with tests
 and documentation. It supports only synthetic `group_post` events and delegates
 to the existing dry-run pipeline without exposing repository mutation APIs.
 
+C3-IMP008 is complete as a fixture-backed Community group-post event adapter at
+`tools/community3/group_post_event_adapter.py`, with integrated tests and
+documentation. It requires explicit path/group mapping evidence and feeds only
+the existing application service.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -148,13 +153,13 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP007 is complete. Any next implementation slice requires Engineering
+C3-IMP008 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP007 and explicitly authorize any persistence or channel follow-up
+Review C3-IMP008 and explicitly authorize any persistence or channel follow-up
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 

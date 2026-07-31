@@ -29,7 +29,8 @@ class DryRunNotificationPipeline:
             if evaluated["decision"] == "eligible":
                 candidate = build_candidate(evaluated)
                 self.candidates.add(candidate)
-                bell = self.bells.create_bell(candidate)
+                if event.get("bell_enabled", True):
+                    bell = self.bells.create_bell(candidate)
         else:
             raise ValueError("unsupported evaluator decision")
         report = {"event_id":event_id,"recipient_id":str(event["recipient_id"]),"path_id":int(event["path_id"]),"group_id":int(event["group_id"]),"eligibility_decision":evaluated["decision"],"reason_codes":list(evaluated["reasons"]),"candidate_id":candidate["candidate_id"] if candidate else None,"bell_id":bell["bell_id"] if bell else None,"bell_state":bell["state"] if bell else None,"channels":{"bell":"eligible" if bell else "not-created","email":"suppressed" if event.get("email_paused") else "deferred","digest":"deferred","delivery":"deferred"},"side_effects":{"database":False,"schema":False,"queue":False,"email":False,"digest":False,"production":False,"ui":False}}
