@@ -4,18 +4,21 @@ Status: proposed sequence; implementation is not authorized by this document.
 
 ## Sequence
 
-1. C3-IMP002: build and verify a test-only dry-run group-post candidate
-   evaluator with synthetic identities and explicit path/group mapping.
-2. Resolve the missing Mention Notification Contract and reconcile any open
+1. C3-IMP002: proposed dry-run evaluator; no committed implementation was
+   found in the verified repository history. Do not represent it as complete.
+2. C3-IMP003: completed the test-only candidate/audit boundary; its current
+   implementation consumes evaluator-shaped output and remains non-persistent.
+3. C3-IMP004: adds the process-local candidate store and continuity guard.
+4. Resolve the missing Mention Notification Contract and reconcile any open
    recipient/category decisions.
-3. Add a read-only contract-to-fixture census covering post, reply, reaction,
+5. Add a read-only contract-to-fixture census covering post, reply, reaction,
    group activity, mention, visibility, suppression, and frequency states.
-4. Obtain Engineering Director approval for one persistence boundary, if still
+6. Obtain Engineering Director approval for one persistence boundary, if still
    justified, with rollback and kill-switch design.
-5. Implement a non-delivering candidate/audit boundary behind tests and a
+7. Implement a non-delivering candidate/audit boundary behind tests and a
    disabled feature flag; no bell or email yet.
-6. Review a separate bell/read-state implementation ticket.
-7. Review a separate optional email/digest/queue ticket only after consent,
+8. Review a separate bell/read-state implementation ticket.
+9. Review a separate optional email/digest/queue ticket only after consent,
    abuse, provider, and operational decisions are complete.
 
 ## Dependency order

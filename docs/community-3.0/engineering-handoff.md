@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP003 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP004 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -33,10 +33,15 @@ The C3-IMP003 candidate/audit boundary is implemented in
 `tools/community3/test_notification_candidate_boundary.py`, and documented in
 `docs/community-3.0/candidate-audit-boundary-v1.md`. It is test-only,
 non-persistent, redacted, and non-delivering.
+The C3-IMP004 process-local candidate store and continuity flush correction are
+implemented in `tools/community3/notification_candidate_store.py` and
+`tools/hopper/validate_community_continuity.py`, with documentation in
+`docs/community-3.0/candidate-store-interface-v1.md` and
+`docs/community-3.0/continuity-flush-diagnostic-v1.md`.
+C3-IMP002 has no verified implementation commit and is not complete. C3-NOT005
+has no verified contract or implementation commit and is not complete.
 C3-GO001 records GO authorization for bounded implementation preparation. The
 master plan is the product authority above engineering roadmaps and tickets.
-C3-NOT005 may be considered after Engineering Director review; it is not
-authorized by this handoff.
 
 ## 3. Last Completed Milestone
 
@@ -109,7 +114,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review C3-IMP003 and decide whether to authorize a separately bounded
+Review C3-IMP004 and decide whether to authorize a separately bounded
 persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.

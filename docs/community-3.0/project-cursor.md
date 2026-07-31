@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP003 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP004 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -114,6 +114,12 @@ evaluator result, returns deterministic non-persistent candidate and redacted
 audit objects, and has no database, schema, queue, bell, email, digest, UI, or
 production side effect.
 
+C3-IMP004 is complete as a bounded process-local candidate store and continuity
+flush correction. The store is implemented in
+`tools/community3/notification_candidate_store.py` with tests, and the
+continuity guard is `tools/hopper/validate_community_continuity.py`. No
+persistence or delivery was added.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -122,13 +128,13 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP003 is complete. Any next implementation slice requires Engineering
-Director review and explicit authorization; delivery and persistence remain
+C3-IMP004 is complete. Any next implementation slice requires Engineering
+Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP003 and explicitly authorize any persistence or channel follow-up
+Review C3-IMP004 and explicitly authorize any persistence or channel follow-up
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 
