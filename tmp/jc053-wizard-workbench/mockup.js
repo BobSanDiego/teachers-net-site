@@ -1216,7 +1216,11 @@
       link.id = item === config.previous ? "previous-view" : "next-view";
       link.className = "button";
       link.href = item.target;
-      link.textContent = item.label;
+      link.setAttribute("aria-label", item.label);
+      const compactLabel = item.label
+        .replace("← Previous: ", "← ")
+        .replace("Next: ", "");
+      link.innerHTML = `<span class="wizard-nav-label-full">${item.label}</span><span class="wizard-nav-label-compact" aria-hidden="true">${compactLabel}</span>`;
       if (item === config.next) {
         link.dataset.target = item.target.slice(1);
         link.dataset.requiresInput = String(Boolean(item.requiresInput));
