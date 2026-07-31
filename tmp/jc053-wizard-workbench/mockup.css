@@ -57,7 +57,16 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 @media (min-width:768px) and (max-width:1024px){
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{display:inline-flex}
 }
-@media (max-width:650px){
+@media (min-width:501px) and (max-width:650px){
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar-inner{display:grid;grid-template-columns:minmax(0,1fr) max-content max-content;grid-template-rows:60px;height:60px;min-height:60px;padding:0 12px}
+  .application-card[data-authority="true"] .tnet-jobs-app-brand-region{grid-column:1;grid-row:1}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-region{grid-column:2;grid-row:1;min-width:max-content}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{display:inline-flex;font-size:18px;gap:8px;line-height:22px}
+  .application-card[data-authority="true"] .tnet-jobs-app-utility-region{grid-column:3;grid-row:1}
+  .application-card[data-authority="true"] .tnet-jobs-employer-app-account-link{font-size:.8rem;min-width:0}
+  .application-card[data-authority="true"] .tnet-jobs-employer-app-account-link::before{display:none}
+}
+@media (max-width:500px){
   .application-card[data-authority="true"] .tnet-jobs-app-brand{justify-content:flex-start}
 }
 .application-card .tnet-jobs-employer-app-notification{
@@ -495,7 +504,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{align-items:center;background:#fff;border:1px solid var(--line);border-radius:6px;color:#001735;display:flex;font-family:"Nunito","Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;font-size:18px;font-weight:700;gap:8px;justify-content:space-between;line-height:22px;min-height:44px;padding:0 14px;width:100%}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-label-desktop{display:none}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-label-compact{display:inline}
-  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow .tnet-jobs-app-nav-chevron{height:7px;margin-left:auto;width:7px}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow .tnet-jobs-app-nav-chevron{flex:0 0 7px;height:7px;margin-left:0;width:7px}
   .application-card[data-authority="true"] .tnet-jobs-app-utility-region{border-top:0;grid-column:3;grid-row:1;justify-content:flex-end;min-width:max-content;padding-right:0}
   .application-card[data-authority="true"] .tnet-jobs-employer-app-separator{height:30px}
   .application-card[data-authority="true"] .tnet-jobs-employer-app-account-link{align-items:center;display:inline-flex;font-size:0;gap:0;justify-content:center;min-height:44px;min-width:44px}
@@ -506,4 +515,38 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-menu::before{color:#071b4d;content:"Job Center";font-size:18px;font-weight:700;left:16px;position:absolute;top:18px}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-close{background:transparent;border:0;color:#071b4d;font-size:28px;line-height:1;padding:4px;position:absolute;right:12px;top:12px}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow-menu a{font-size:15px;padding:13px 12px}
+}
+
+/* RESP007: the logo boundary is a centered floating separator, not a full
+   height border. The compact trigger uses one inline-flex alignment context. */
+@media (min-width:768px){
+  .application-card[data-authority="true"] .tnet-jobs-app-brand-region{border-right:0;position:relative}
+  .application-card[data-authority="true"] .tnet-jobs-app-brand-region::after{background:var(--line);content:"";height:30px;position:absolute;right:0;top:15px;width:1px}
+}
+@media (min-width:501px) and (max-width:1024px){
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{align-items:center;display:inline-flex;gap:8px;white-space:nowrap}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow .tnet-jobs-app-nav-chevron{flex:0 0 7px;height:7px;margin-left:0;width:7px}
+}
+@media (max-width:767px){
+  .application-card[data-authority="true"] .stepper{align-items:flex-start;margin-bottom:52px}
+  .application-card[data-authority="true"] .stepper li{flex:0 0 30px;height:34px;position:relative}
+  .application-card[data-authority="true"] .stepper li .stepper-label{font-size:0;margin:0;max-width:0;position:absolute;top:42px;white-space:nowrap}
+  .application-card[data-authority="true"] .stepper li.is-current .stepper-label{font-size:12px;left:50%;margin:0;max-width:120px;transform:translateX(-50%)}
+  .application-card[data-authority="true"] .stepper li::after{top:16px}
+}
+@media (min-width:501px) and (max-width:650px){
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar-inner{grid-template-columns:minmax(0,1fr) max-content max-content;grid-template-rows:60px;height:60px;min-height:60px}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-region{grid-column:2;grid-row:1;min-width:max-content}
+  .application-card[data-authority="true"] .tnet-jobs-app-brand{justify-content:flex-start}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{display:inline-flex;font-size:18px;gap:8px;line-height:22px;min-height:30px;width:auto}
+  .application-card[data-authority="true"] .tnet-jobs-app-utility-region{grid-column:3;grid-row:1}
+  .application-card[data-authority="true"] .tnet-jobs-employer-app-account-link{font-size:.8rem;min-width:0}
+  .application-card[data-authority="true"] .tnet-jobs-employer-app-account-link::before{display:none}
+}
+@media (max-width:500px){
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar-inner{grid-template-columns:minmax(0,1fr) max-content max-content;grid-template-rows:60px 46px;height:106px;min-height:106px}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-region{grid-column:1 / -1;grid-row:2;min-width:0;width:100%}
+  .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{display:flex;font-size:18px;min-height:44px;width:100%}
+  .application-card[data-authority="true"] .tnet-jobs-employer-app-account-link{font-size:0;min-width:44px}
+  .application-card[data-authority="true"] .tnet-jobs-employer-app-account-link::before{display:inline-flex}
 }

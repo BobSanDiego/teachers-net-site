@@ -33,12 +33,13 @@ header with the left logo region, unified Job Center control, bell, and My
 Account; 651–767px remains a single row with the same visible controls and
 left-aligned logo; 650px and below uses a compact logo/bell/avatar top row plus
 a full-width Job Center trigger that opens the existing three-link navigation
-as a right-side drawer. No legacy wrapped account row may return, and mobile
-navigation capability must not be removed to make the header fit. The drawer
-uses the existing My Jobs, Career Resources, and Teacher Resources destinations,
-has an accessible close control, Escape dismissal, and returns focus to its
-trigger. This remains an implementation target pending external browser and
-human acceptance.
+as a right-side drawer. Between 501–650px the header remains a compressed
+single row; at 500px and below it uses the two-row final mobile presentation.
+No legacy wrapped account row may return, and mobile navigation capability must
+not be removed to make the header fit. The drawer uses the existing My Jobs,
+Career Resources, and Teacher Resources destinations, has an accessible close
+control, Escape dismissal, and returns focus to its trigger. This remains an
+implementation target pending external browser and human acceptance.
 
 ## 1. Navigation
 
