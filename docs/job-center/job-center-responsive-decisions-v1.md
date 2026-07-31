@@ -211,3 +211,11 @@ centered hamburger; the utility region is visually and assistively hidden.
 The drawer retains My Jobs, Career Resources, Teacher Resources, Notifications,
 and My Account, with the existing accessible heading, close control, Escape
 dismissal, aria-expanded/aria-controls state, and focus restoration.
+
+## 14. Responsive Convergence Conflict Record
+
+RESP009 exposed a governing cascade conflict: a later 768–1024px rule set the
+compact Job Center trigger to `display:block`, overriding the intended flex
+formatting context. A declared `gap` therefore did not control the rendered
+label/caret spacing. Future responsive audits should check later breakpoint
+owners before adding spacing overrides.

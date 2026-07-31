@@ -291,6 +291,12 @@
           const label = document.createElement("strong");
           label.textContent = step.label;
           label.className = "stepper-label";
+          if (state === "is-current") {
+            const status = document.createElement("span");
+            status.className = "stepper-status";
+            status.textContent = `Step ${index + 1} of ${this.steps.length}`;
+            label.append(status);
+          }
           content.append(marker, label);
           item.append(content);
           return item;
