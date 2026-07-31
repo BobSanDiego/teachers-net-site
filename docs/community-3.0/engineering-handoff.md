@@ -46,6 +46,11 @@ C3-IMP005 is complete as a test-only in-memory bell repository at
 `docs/community-3.0/bell-repository-interface-v1.md`. It consumes only eligible
 validated candidates and preserves bell state separately from delivery and
 engagement.
+OPS-CONT001 is complete as a continuity and hopper process audit. The durable
+governance and validation documents are
+`docs/process/community-continuity-root-cause-v1.md`,
+`docs/process/community-hopper-governance-v1.md`, and
+`docs/process/community-continuity-validation-v1.md`.
 C3-GO001 records GO authorization for bounded implementation preparation. The
 master plan is the product authority above engineering roadmaps and tickets.
 
@@ -120,7 +125,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review C3-IMP004 and decide whether to authorize a separately bounded
+Review OPS-CONT001 and decide whether to authorize a separately bounded
 persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.

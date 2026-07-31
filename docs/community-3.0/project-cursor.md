@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP005 complete; no delivery implementation begun.
+Bounded implementation preparation — OPS-CONT001 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -125,6 +125,11 @@ C3-IMP005 is complete as a test-only in-memory bell repository at
 documentation. It consumes only eligible validated candidates, preserves bell
 state separately from delivery and engagement, and adds no persistence or UI.
 
+OPS-CONT001 is complete as a process audit and validation correction. It
+documents the verified continuity drift cause and adds the semantic guard at
+`tools/hopper/validate_community_continuity.py`. C3-IMP002 and C3-NOT005 remain
+unverified and are not represented as complete.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -133,13 +138,13 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP005 is complete. Any next implementation slice requires Engineering
+OPS-CONT001 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP005 and explicitly authorize any persistence or channel follow-up
+Review OPS-CONT001 and explicitly authorize any persistence or channel follow-up
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 
