@@ -515,6 +515,15 @@
     primaryOverflowMenu = document.querySelector(".tnet-jobs-app-primary-overflow-menu");
   if (primaryOverflow && primaryOverflowMenu) {
     primaryOverflow.setAttribute("aria-controls", primaryOverflowMenu.id);
+    const syncPrimaryOverflowLabel = () => {
+      if (window.matchMedia("(max-width: 500px)").matches) {
+        primaryOverflow.setAttribute("aria-label", "Open Job Center navigation");
+      } else {
+        primaryOverflow.removeAttribute("aria-label");
+      }
+    };
+    syncPrimaryOverflowLabel();
+    window.addEventListener("resize", syncPrimaryOverflowLabel);
     const primaryOverflowClose = primaryOverflowMenu.querySelector(
       ".tnet-jobs-app-primary-overflow-close",
     );

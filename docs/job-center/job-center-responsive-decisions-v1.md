@@ -172,3 +172,27 @@ Browser QA
         ↓
 Production Authority
 ```
+
+## 12. JC053 RESP008 Navbar Breakpoint Contract
+
+The JC053 workbench keeps the compact Job Center control visible from 1024px
+through 501px. In that range the label and caret share one inline alignment
+context with an explicit 10px gap; the control remains separated from the
+notification/account utility region and does not create a second navigation
+source.
+
+At 500px and below, the text Job Center control is removed from the navbar.
+The top row contains the logo, notification/account utilities, and a compact
+44px hamburger trigger. The trigger reuses the existing Job Center navigation
+drawer, which exposes My Jobs, Career Resources, and Teacher Resources. The
+drawer retains its accessible Job Center heading, close control, Escape
+dismissal, aria-expanded/aria-controls state, focus transfer, and focus
+restoration. No duplicate navigation markup is introduced.
+
+The governed breakpoint bands are: 1025px and above desktop; 768px through
+1024px compact; 651px through 767px narrow one-row; 501px through 650px
+compressed one-row; and 500px and below final mobile hamburger. At the
+requested 390px and 320px checks, the workbench renderer may clamp the browser
+surface to its supported 500px minimum; such results must be recorded with
+both requested and actual widths rather than treated as true 390px/320px
+evidence.
