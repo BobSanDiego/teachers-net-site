@@ -63,6 +63,8 @@ The C3-IMP008 fixture-backed group-post adapter is implemented in
 `tools/community3/test_group_post_event_adapter.py`, and documented in
 `docs/community-3.0/group-post-event-adapter-v1.md`. It remains disconnected
 from live hooks and production data.
+C3-IMP008 is complete as the current source milestone; no additional event
+family or delivery behavior is authorized.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
