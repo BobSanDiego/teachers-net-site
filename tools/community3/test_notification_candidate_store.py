@@ -13,7 +13,9 @@ class CandidateStoreTests(unittest.TestCase):
         store=InMemoryCandidateStore()
         for decision in ("eligible","blocked","ineligible"): store.add(candidate(decision, f"{decision}-member", f"{decision}-event"))
         with self.assertRaises(ValueError): store.add({"candidate_id":"bad"})
-        with self.assertRaises(ValueError): store.add(candidate("eligible"))
+        duplicate = candidate("eligible")
+        store.add(duplicate)
+        with self.assertRaises(ValueError): store.add(duplicate)
     def test_duplicate_and_external_mutation_are_safe(self):
         store=InMemoryCandidateStore(); item=candidate("eligible"); store.add(item); item["reason_codes"]=("mutated",); self.assertEqual(store.get(item["candidate_id"])["reason_codes"],());
         with self.assertRaises(ValueError): store.add(candidate("eligible"))
