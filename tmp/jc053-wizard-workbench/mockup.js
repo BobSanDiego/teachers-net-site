@@ -633,15 +633,15 @@
     select.value = id;
     status.textContent = id;
     const card = document.querySelector(".application-card");
-    document.documentElement.dataset.authority =
-      id === "wizard-authority-v1" ? "true" : "false";
+    const implemented = Boolean(statePanels[id]);
+    document.documentElement.dataset.authority = implemented ? "true" : "false";
     card.dataset.view =
       id === "step-01-add-school-international"
         ? "step-01-add-school-us"
         : id === "wizard-authority-v1"
           ? "step-02-job-basics"
           : id;
-    card.dataset.authority = id === "wizard-authority-v1" ? "true" : "false";
+    card.dataset.authority = implemented ? "true" : "false";
     Object.values(statePanels).forEach((viewPanel) => {
       viewPanel.hidden = viewPanel !== statePanels[id];
     });
