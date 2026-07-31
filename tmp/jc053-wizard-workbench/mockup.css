@@ -369,7 +369,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 }
 @media (min-width:768px) and (max-width:1024px){
   .application-card[data-authority="true"]{--jc053-shell-column:210px;width:calc(100% - 24px)}
-  .application-card[data-authority="true"] .tnet-jobs-app-topbar-inner{overflow:hidden}
+  .application-card[data-authority="true"] .tnet-jobs-app-topbar-inner{overflow:visible}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region{justify-content:center}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region>.tnet-navbar-dropdown{display:none}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{display:inline-flex}
