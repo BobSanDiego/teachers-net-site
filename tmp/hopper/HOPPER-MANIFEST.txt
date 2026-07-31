@@ -29,3 +29,14 @@ Active files:
 - output-260731120300.txt
 Timestamped duplicates: archive/tnet-3.0/
 Protected output.txt remains excluded.
+
+Community ticket: C3-NOT002 bell and read-state contract
+Project: tnet-3.0
+Current-cycle archive suffix: 260731120659
+Active files:
+- bell-and-read-state-contract-v1.md
+- project-cursor.md
+- engineering-handoff.md
+- output-260731120800.txt
+Timestamped duplicates: archive/tnet-3.0/
+Protected output.txt remains excluded.
