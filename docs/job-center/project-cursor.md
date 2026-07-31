@@ -259,6 +259,25 @@ remote inclusion and distance-sort behavior is governed by
 
 ## Open Risks
 
+## Canonical Chrome QA Recovery
+
+An initially unavailable CDP endpoint is a recoverable QA-environment
+condition, not a ticket blocker. Run:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\launch-chrome-cdp-9222.ps1'
+```
+
+The launcher path is
+`tools/qa/launch-chrome-cdp-9222.ps1`; it uses the isolated Windows profile
+`C:\Main\Active\Projects\Teachers.Net\tmp\chrome-qa-profile`, Chrome CDP at
+`127.0.0.1:9222`, and the JC053 workbench URL. The MCP process must be
+`chrome-devtools-mcp@1.6.0` with `--allow-unrestricted-paths` and
+`--no-usage-statistics`. Verify `/json/version`, MCP inspection, and then
+resume the ticket. Do not repeatedly search for ad hoc commands or use the
+built-in/obsolete WSL browser bridge; stop only if the canonical launcher
+itself fails after its bounded timeout.
+
 - Employer UX authority convergence remains incomplete across JC052–JC056;
   the implementation capability audit and later implementation remain deferred
   until those authorities are complete.

@@ -125,3 +125,26 @@ Current launch blocker:
 No global P0 runtime blocker is currently known. Do not begin V2 features until
 V1 release-candidate status is explicitly declared or the Engineering Director
 redirects.
+
+## Canonical Chrome MCP Recovery
+
+When `127.0.0.1:9222` is unavailable, run the canonical launcher before
+reporting browser verification blocked:
+
+`tools/qa/launch-chrome-cdp-9222.ps1`
+
+From Windows PowerShell:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\launch-chrome-cdp-9222.ps1'
+```
+
+It uses the dedicated profile
+`C:\Main\Active\Projects\Teachers.Net\tmp\chrome-qa-profile`, launches the
+installed Windows Chrome at CDP `http://127.0.0.1:9222`, and opens the JC053
+workbench. Retain `chrome-devtools-mcp@1.6.0` with
+`--browser-url=http://127.0.0.1:9222 --allow-unrestricted-paths
+--no-usage-statistics`; verify `/json/version` and MCP inspection, then resume
+the ticket. Do not use the normal Chrome profile, built-in browser bridge, or
+obsolete WSL bridge. Stop only after the launcher itself fails its bounded
+timeout.

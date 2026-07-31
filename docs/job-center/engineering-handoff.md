@@ -78,6 +78,27 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 ## 6. Recently Adopted Governance Documents
 
+## Canonical Chrome QA Recovery
+
+If `http://127.0.0.1:9222/json/version` is unavailable, run the repository
+launcher before reporting browser verification as blocked:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\launch-chrome-cdp-9222.ps1'
+```
+
+The launcher uses the installed Windows Chrome executable and the isolated
+profile `C:\Main\Active\Projects\Teachers.Net\tmp\chrome-qa-profile`, never
+the normal Chrome profile. It serves the JC053 workbench at
+`http://127.0.0.1:8768/#wizard-authority-v1`, enables CDP on
+`http://127.0.0.1:9222`, and polls `/json/version` with a bounded timeout.
+External `chrome-devtools-mcp@1.6.0` must retain
+`--browser-url=http://127.0.0.1:9222 --allow-unrestricted-paths
+--no-usage-statistics`. After recovery, confirm MCP inspection and resume the
+active ticket automatically. Stop only when this launcher itself fails after
+its bounded attempt; do not substitute the built-in or obsolete WSL browser
+bridges.
+
 - Canonical V1 Contract.
 - Employer UX V1.
 - Job Center Design System v1.
