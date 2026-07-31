@@ -25,10 +25,10 @@ step-specific patterns. It supplements the broader Job Center Design System at
 
 The stepper is a progress indicator, not navigation. Bottom Previous/Next
 controls perform navigation. Five indicators remain visible at every width.
-From 768px through 401px, the active label remains beneath the current ball
-with sufficient outer padding to prevent clipping. At 400px and below,
-individual labels are hidden and the centered status block shows `Step X of 5`
-and the current step name while all five balls remain visible.
+At 768px and above, all five indicators retain their labels beneath the balls.
+At 767px and below, every per-ball label is hidden and one centered status
+block shows `Step X of 5` and the current step name while all five balls remain
+visible. There is no intermediate compact-label range.
 
 ### Bottom navigation
 

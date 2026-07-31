@@ -544,13 +544,6 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow{align-items:center;display:inline-flex;gap:10px;white-space:nowrap}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-overflow .tnet-jobs-app-nav-chevron{flex:0 0 7px;height:7px;margin-left:0;width:7px}
 }
-@media (max-width:767px){
-  .application-card[data-authority="true"] .stepper{align-items:flex-start;margin-bottom:52px}
-  .application-card[data-authority="true"] .stepper li{flex:0 0 30px;height:34px;position:relative}
-  .application-card[data-authority="true"] .stepper li .stepper-label{font-size:0;margin:0;max-width:0;position:absolute;top:42px;white-space:nowrap}
-  .application-card[data-authority="true"] .stepper li.is-current .stepper-label{font-size:12px;left:50%;margin:0;max-width:120px;transform:translateX(-50%)}
-  .application-card[data-authority="true"] .stepper li::after{top:16px}
-}
 @media (min-width:501px) and (max-width:650px){
   .application-card[data-authority="true"] .tnet-jobs-app-topbar-inner{grid-template-columns:minmax(0,1fr) max-content max-content;grid-template-rows:60px;height:60px;min-height:60px}
   .application-card[data-authority="true"] .tnet-jobs-app-primary-region{grid-column:2;grid-row:1;min-width:max-content}
@@ -619,5 +612,14 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card .organization-form input,.application-card .organization-form select,.application-card .job-basics-form input,.application-card .job-basics-form select,.application-card .work-location-alternate-fields input,.application-card .work-location-alternate-fields select,.application-card .multiple-location-fields input,.application-card .multiple-location-fields select,.application-card .additional-fields input,.application-card .additional-fields select{box-sizing:border-box;min-width:0;width:100%}
 @container (max-width:650px){.application-card .organization-form,.application-card .job-basics-form,.application-card .work-location-alternate-fields,.application-card .multiple-location-fields,.application-card .additional-fields{grid-template-columns:minmax(0,1fr)!important}.application-card .organization-form .form-field,.application-card .job-basics-form .form-field,.application-card .work-location-alternate-fields .form-field,.application-card .multiple-location-fields .form-field,.application-card .additional-fields .form-field{grid-column:1!important;max-width:none}.application-card .organization-form label,.application-card .job-basics-form label,.application-card .work-location-alternate-fields label,.application-card .multiple-location-fields label,.application-card .additional-fields label{line-height:1.3;min-width:0}}
 .stepper-status{display:none}
-@media (min-width:401px) and (max-width:767px){.application-card[data-authority="true"] .stepper{padding-inline:18px}}
-@media (max-width:400px){.application-card[data-authority="true"] .stepper{flex-wrap:wrap;gap:2px;justify-content:center;padding-inline:6px;row-gap:0}.application-card[data-authority="true"] .stepper li{flex:0 0 28px;height:30px}.application-card[data-authority="true"] .stepper li .stepper-circle{flex-basis:28px;height:28px;width:28px}.application-card[data-authority="true"] .stepper li .stepper-label{display:none}.application-card[data-authority="true"] .stepper li::after{left:28px;top:14px;width:calc(100% - 28px)}.application-card[data-authority="true"] .stepper-status{display:flex;flex:0 0 100%;flex-direction:column;gap:2px;margin-top:10px;text-align:center}.application-card[data-authority="true"] .stepper-status strong{color:var(--primary);font-size:12px}.application-card[data-authority="true"] .stepper-status span{color:var(--ink);font-size:12px;font-weight:600}}
+/* RESP005: one compact authority mode applies at every width below 768px. */
+@media (max-width:767px){
+  .application-card[data-authority="true"] .stepper{align-items:flex-start;flex-wrap:wrap;gap:2px;justify-content:center;margin-bottom:52px;padding-inline:6px;row-gap:0}
+  .application-card[data-authority="true"] .stepper li{flex:0 0 30px;height:34px;position:relative}
+  .application-card[data-authority="true"] .stepper li .stepper-circle{flex-basis:30px;height:30px;width:30px}
+  .application-card[data-authority="true"] .stepper li .stepper-label{display:none}
+  .application-card[data-authority="true"] .stepper li::after{left:30px;top:16px;width:calc(100% - 30px)}
+  .application-card[data-authority="true"] .stepper-status{display:flex;flex:0 0 100%;flex-direction:column;gap:2px;margin-top:10px;text-align:center}
+  .application-card[data-authority="true"] .stepper-status strong{color:var(--primary);font-size:12px}
+  .application-card[data-authority="true"] .stepper-status span{color:var(--ink);font-size:12px;font-weight:600}
+}
