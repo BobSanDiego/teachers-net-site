@@ -1,0 +1,22 @@
+project=tnet-3.0
+ticket=C3-CORE001
+cycle_id=260731185410
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=02a07ae
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+report_file=output-tnet-3.0-260731185410.txt
+manifest_file=MANIFEST-tnet-3.0-260731185410.txt
+cycle_record_file=cycle-tnet-3.0-260731185410.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "community-publisher-source-census-v1-tnet-3.0-260731185410.md", "original_path": "docs/community-3.0/community-publisher-source-census-v1.md", "purpose": "ticket artifact", "sha256": "a1d5aa7057ca0d79307820037fca5e8aaf811f9106f666c13e3974a52319ec62", "size": 2433, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publication-lifecycle-v1-tnet-3.0-260731185410.md", "original_path": "docs/community-3.0/community-publication-lifecycle-v1.md", "purpose": "ticket artifact", "sha256": "b1d13f79126a8fb41baf9eaa3f3a0eef740917a18d788076c038f0e7d428eda9", "size": 1771, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-authority-decision-v1-tnet-3.0-260731185410.md", "original_path": "docs/community-3.0/community-publisher-authority-decision-v1.md", "purpose": "ticket artifact", "sha256": "4e149d1223497a1eae22acd8ca14262091cf8edf24ed82f6c5f22906f149650d", "size": 1119, "status": "modified"}
+{"committed": true, "hopper_filename": "minimum-community-publisher-contract-v1-tnet-3.0-260731185410.md", "original_path": "docs/community-3.0/minimum-community-publisher-contract-v1.md", "purpose": "ticket artifact", "sha256": "2c3ade1e51415d5b450bfc851385d63400f0d33b2b410cfefc2ba44e13897ed0", "size": 1564, "status": "modified"}
+{"committed": false, "hopper_filename": "group_post_shadow_hook-tnet-3.0-260731185410.py", "original_path": "tools/community3/group_post_shadow_hook.py", "purpose": "ticket artifact", "sha256": "d04e766ddd04b6bd2661dacec0b5820769ee5975ea1865d27506678eead8fdc1", "size": 1353, "status": "modified"}
+{"committed": false, "hopper_filename": "test_group_post_shadow_hook-tnet-3.0-260731185410.py", "original_path": "tools/community3/test_group_post_shadow_hook.py", "purpose": "ticket artifact", "sha256": "6530e3d751a8b21e59c2148e286f2702a4a8cf5616ad64b8dbcaa61fca7bb50d", "size": 3451, "status": "modified"}
+{"committed": true, "hopper_filename": "project-cursor-tnet-3.0-260731185410.md", "original_path": "docs/community-3.0/project-cursor.md", "purpose": "ticket artifact", "sha256": "7bb0313f608ea41f62f7926400677c41670cd24bfab44ea96c5924e568e0b7c0", "size": 10505, "status": "modified"}
+{"committed": true, "hopper_filename": "engineering-handoff-tnet-3.0-260731185410.md", "original_path": "docs/community-3.0/engineering-handoff.md", "purpose": "ticket artifact", "sha256": "974e498688c250637ba580360b45d9290f74d6bf804aa396412f911ce0ee356e", "size": 9471, "status": "modified"}
