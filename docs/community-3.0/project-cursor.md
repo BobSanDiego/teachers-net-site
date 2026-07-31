@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — OPS-CONT001 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP006 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -130,6 +130,11 @@ documents the verified continuity drift cause and adds the semantic guard at
 `tools/hopper/validate_community_continuity.py`. C3-IMP002 and C3-NOT005 remain
 unverified and are not represented as complete.
 
+C3-IMP006 is complete as a test-only end-to-end dry-run pipeline at
+`tools/community3/notification_dry_run_pipeline.py`, with tests and policy
+documentation. It connects evaluator, candidate boundary, in-memory candidate
+store, and in-memory bell repository without persistence or delivery.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -138,13 +143,13 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-OPS-CONT001 is complete. Any next implementation slice requires Engineering
+C3-IMP006 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review OPS-CONT001 and explicitly authorize any persistence or channel follow-up
+Review C3-IMP006 and explicitly authorize any persistence or channel follow-up
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 

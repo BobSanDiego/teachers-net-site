@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — OPS-CONT001 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP006 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -46,6 +46,11 @@ C3-IMP005 is complete as a test-only in-memory bell repository at
 `docs/community-3.0/bell-repository-interface-v1.md`. It consumes only eligible
 validated candidates and preserves bell state separately from delivery and
 engagement.
+The C3-IMP006 end-to-end dry-run pipeline is implemented in
+`tools/community3/notification_dry_run_pipeline.py`, covered by
+`tools/community3/test_notification_dry_run_pipeline.py`, and documented in
+`docs/community-3.0/dry-run-notification-pipeline-v1.md`. It remains test-only,
+non-persistent, and non-delivering.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
@@ -125,7 +130,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review OPS-CONT001 and decide whether to authorize a separately bounded
+Review C3-IMP006 and decide whether to authorize a separately bounded
 persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.
