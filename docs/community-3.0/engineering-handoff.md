@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP008 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP009 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -65,6 +65,12 @@ The C3-IMP008 fixture-backed group-post adapter is implemented in
 from live hooks and production data.
 C3-IMP008 is complete as the current source milestone; no additional event
 family or delivery behavior is authorized.
+The C3-IMP009 shadow seam is implemented in
+`tools/community3/group_post_shadow_hook.py`, covered by
+`tools/community3/test_group_post_shadow_hook.py`, and documented in
+`docs/community-3.0/group-post-shadow-hook-v1.md`. Repository inspection found
+no owned real Community publication hook, so this remains a test-owned model
+and is not connected to production.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
@@ -144,7 +150,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review C3-IMP008 and decide whether to authorize a separately bounded
+Review C3-IMP009 and decide whether to authorize a separately bounded
 persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.

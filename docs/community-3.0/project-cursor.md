@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP008 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP009 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -145,6 +145,11 @@ C3-IMP008 is complete as a fixture-backed Community group-post event adapter at
 documentation. It requires explicit path/group mapping evidence and feeds only
 the existing application service.
 
+C3-IMP009 is complete as a disabled, test-owned shadow seam at
+`tools/community3/group_post_shadow_hook.py`. Repository inspection found no
+owned real Community publication hook, so no production hook was invented or
+connected. The seam remains default-off and non-delivering.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -153,13 +158,13 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP008 is complete. Any next implementation slice requires Engineering
+C3-IMP009 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP008 and explicitly authorize any persistence or channel follow-up
+Review C3-IMP009 and explicitly authorize any persistence or channel follow-up
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 
