@@ -2,11 +2,43 @@
 
 **Status:** Governing responsive decisions
 
-**Date:** 2026-07-13
+**Date:** 2026-07-30
 
 Desktop visual authority remains unchanged. These decisions govern only the
 responsive interpretation needed before responsive visual authority is
 created.
+
+## 0. Employer Operations responsive workstream (JC053)
+
+The JC053 responsive shell series is an active implementation-target
+workstream, not an approved production authority. Acceptance requires local
+PNG evidence, external browser inspection, and human visual review; inline
+captures alone are insufficient.
+
+The verified route is external `chrome-devtools-mcp@1.6.0` at
+`http://127.0.0.1:9222`, launched with `--allow-unrestricted-paths
+--no-usage-statistics` against the dedicated QA Chrome profile. The built-in
+and obsolete WSL browser bridges are not valid QA paths.
+
+Intended Employer Operations rules are: `>=1200px` preserves the 1200px shell,
+250px brand/rail, and full navbar; `1025–1199px` retains the 250px brand/rail
+and compresses only right-side spacing; `<=1024px` may enter compact mode with
+a 210px brand/rail and one unified centered Resources control. Full My Jobs,
+Career Resources, and Teacher Resources remain visible through 1025px. Shared
+structural axes—brand/rail width, rail/workspace divider, navbar divider, and
+workspace origin—must be driven by shared tokens, not view-specific offsets.
+
+The latest JC053 header contract is: 768–1024px uses the compact single-row
+header with the left logo region, unified Job Center control, bell, and My
+Account; 651–767px remains a single row with the same visible controls and
+left-aligned logo; 650px and below uses a compact logo/bell/avatar top row plus
+a full-width Job Center trigger that opens the existing three-link navigation
+as a right-side drawer. No legacy wrapped account row may return, and mobile
+navigation capability must not be removed to make the header fit. The drawer
+uses the existing My Jobs, Career Resources, and Teacher Resources destinations,
+has an accessible close control, Escape dismissal, and returns focus to its
+trigger. This remains an implementation target pending external browser and
+human acceptance.
 
 ## 1. Navigation
 
