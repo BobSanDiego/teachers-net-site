@@ -1,0 +1,47 @@
+OPS-HOPPER001 — tnet-3.0 Hopper Reconstruction
+
+Project slug: tnet-3.0
+Cycle identifier: 260731134500 UTC
+Status: completed
+
+The tracked tnet-3.0 hopper structure was restored after another Codex window
+used the wrong project slug and removed this project's current structure. A
+fresh clean cycle was then started. The prior tnet-3.0 current cycle was
+preserved under archive/260731134500/ before repopulation. No JobCenter slug
+or files were used for this current cycle.
+
+Current-cycle artifacts
+
+- clean_cycle-tnet-3.0-260731134500.py
+- AGENTS-tnet-3.0-260731134500.md
+- codex-ticket-discipline-tnet-3.0-260731134500.md
+- documentation-governance-tnet-3.0-260731134500.md
+- output-tnet-3.0-260731134500.txt
+- MANIFEST-tnet-3.0-260731134500.txt
+- cycle-tnet-3.0-260731134500.json
+
+Validation
+
+- `current/` contains only this tnet-3.0 cycle.
+- The prior current cycle was archived without deletion.
+- All source artifacts have original paths, sizes, and SHA-256 hashes.
+- The JSON cycle record parses successfully.
+- No collision or silent overwrite occurred.
+- No evidence ZIP was required.
+- Protected `tmp/hopper/output.txt` remains outside the project current folder
+  and was not touched, moved, copied, renamed, or archived.
+
+Repository state
+
+The repository restore and hopper reconstruction are local operations. The
+source guidance and reusable helper remain governed by the existing pushed
+commits; this reconstruction cycle itself has no new source commit.
+
+Hopper paths
+
+WSL current: /home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/
+Windows current: \\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+Explorer command: explorer.exe "\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current"
+
+The user can open current/, select all, and drag the entire set into ChatGPT.

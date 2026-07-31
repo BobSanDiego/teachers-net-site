@@ -2,16 +2,16 @@
 
 ## Project-Specific Clean-Cycle Hopper Procedure
 
-For the active Teachers.Net project, the canonical slug is `tnet-3.0`. Every ticket
+For the active Teachers.Net project, the canonical slug is `jobcenter`. Every ticket
 must begin by running `python3 tools/hopper/clean_cycle.py begin
---project tnet-3.0 --cycle <YYMMDDHHMMSS>`. This archives the prior
-`tmp/hopper/tnet-3.0/current/` contents into the never-deleted
-`tmp/hopper/tnet-3.0/archive/<cycle-id>/` directory and leaves `current/`
+--project jobcenter --cycle <YYMMDDHHMMSS>`. This archives the prior
+`tmp/hopper/jobcenter/current/` contents into the never-deleted
+`tmp/hopper/jobcenter/archive/<cycle-id>/` directory and leaves `current/`
 ready for one drag-and-drop handoff.
 
 During the cycle, collect every created or modified artifact with the helper's
 `collect` command. The helper copies files flat into `current/` using
-`<base>-tnet-3.0-<cycle-id>.<extension>`, refuses collisions, records original
+`<base>-jobcenter-<cycle-id>.<extension>`, refuses collisions, records original
 paths and hashes, and never touches the protected `output.txt`. Create the
 project report, manifest, valid JSON cycle record, and any required evidence
 bundle using the same cycle identifier. A ticket is not complete until
@@ -21,7 +21,7 @@ command.
 
 The final screen report must print the full current-cycle filename list, WSL
 path, Windows path, archive path, commit, push result, and the command
-`explorer.exe "\\wsl$\\Ubuntu-24.04\\home\\bobreap\\projects\\teachers-net-site\\tmp\\hopper\\tnet-3.0\\current"`.
+`explorer.exe "\\wsl$\\Ubuntu-24.04\\home\\bobreap\\projects\\teachers-net-site\\tmp\\hopper\\jobcenter\\current"`.
 Preserve blocked and incomplete cycles, exclude unrelated dirty files, never
 silently overwrite artifacts, and never delete historical cycles. The user's
 ingestion action is to open `current/`, select all, and drag the set into

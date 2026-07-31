@@ -1,0 +1,21 @@
+{
+  "project": "tnet-3.0",
+  "ticket": "OPS-HOPPER001-reconstruction",
+  "cycle_id": "260731134500",
+  "status": "completed",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": null,
+  "push": "not-pushed-new-source",
+  "current_hopper": "tmp/hopper/tnet-3.0/current/",
+  "archive_path": "tmp/hopper/tnet-3.0/archive/",
+  "report_file": "output-tnet-3.0-260731134500.txt",
+  "manifest_file": "MANIFEST-tnet-3.0-260731134500.txt",
+  "cycle_record_file": "cycle-tnet-3.0-260731134500.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {"hopper_filename":"clean_cycle-tnet-3.0-260731134500.py","original_path":"tools/hopper/clean_cycle.py","status":"created","sha256":"372e0b7b33c11bb9844f117b9638c0cf4cd3ba64fec465dffb1f5862c127aca0","size":5382,"committed":true},
+    {"hopper_filename":"AGENTS-tnet-3.0-260731134500.md","original_path":"AGENTS.md","status":"modified","sha256":"2e2d9e4a4f2ef43fce25fb7e3dd1730c3082263d4367e26018ffd043a2347cad","size":8980,"committed":true},
+    {"hopper_filename":"codex-ticket-discipline-tnet-3.0-260731134500.md","original_path":"docs/codex-ticket-discipline.md","status":"modified","sha256":"9ba5110e44e7782774de83b7374b72a1ef7e475b0774f231299e1dc6d256daac","size":21513,"committed":true},
+    {"hopper_filename":"documentation-governance-tnet-3.0-260731134500.md","original_path":"docs/documentation-governance.md","status":"modified","sha256":"5875a69093932fd51ef0defee4a07df9724583e402c75312b323a90abf823765","size":11149,"committed":true}
+  ]
+}

@@ -39,21 +39,21 @@ should not hold one workstream's live ticket cursor or short-term handoff state.
 
 ### Project-Specific Clean-Cycle Hopper Procedure
 
-The canonical active Teachers.Net hopper is `tmp/hopper/tnet-3.0/current/` with
-historical cycles in `tmp/hopper/tnet-3.0/archive/`. The slug is permanently
-`tnet-3.0`; do not vary it. At the beginning of every ticket, archive all
+The canonical active Teachers.Net hopper is `tmp/hopper/jobcenter/current/` with
+historical cycles in `tmp/hopper/jobcenter/archive/`. The slug is permanently
+`jobcenter`; do not vary it. At the beginning of every ticket, archive all
 prior `current/` contents into a new cycle directory before work begins. Use
 one UTC `YYMMDDHHMMSS` cycle identifier everywhere: archive directory,
 artifact names, report, manifest, JSON cycle record, and evidence bundle.
 
 Copy every file created or modified by the ticket, including uncommitted or
 blocked-cycle artifacts, flat into `current/` as
-`<base>-tnet-3.0-<cycle-id>.<extension>`, preserving original repository
-paths in `MANIFEST-tnet-3.0-<cycle-id>.txt` with size, SHA-256, status, and
-commit inclusion. Create `cycle-tnet-3.0-<cycle-id>.json` and validate that
+`<base>-jobcenter-<cycle-id>.<extension>`, preserving original repository
+paths in `MANIFEST-jobcenter-<cycle-id>.txt` with size, SHA-256, status, and
+commit inclusion. Create `cycle-jobcenter-<cycle-id>.json` and validate that
 all entries resolve, hashes exist, files are nonzero, JSON parses, no collision
 occurred, and no unrelated dirty file was included. Bundle multiple evidence
-files as `evidence-tnet-3.0-<cycle-id>.zip` when needed.
+files as `evidence-jobcenter-<cycle-id>.zip` when needed.
 
 Every ticket must begin by archiving the prior project-specific `current/`
 hopper contents and must end with a validated, self-contained current-cycle

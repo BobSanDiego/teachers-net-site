@@ -129,11 +129,11 @@ redirects.
 ## Project-Specific Clean-Cycle Hopper Procedure
 
 The active Teachers.Net continuity artifacts use the canonical project hopper
-`tmp/hopper/tnet-3.0/`, with active files only in `current/` and preserved
+`tmp/hopper/jobcenter/`, with active files only in `current/` and preserved
 history only in `archive/`. Every ticket begins by archiving the prior
 `current/` contents and generating one `YYMMDDHHMMSS` cycle identifier. Every
 created or modified ticket artifact and required evidence is copied into the
-current folder using `<base>-tnet-3.0-<cycle>.<extension>` filenames; the
+current folder using `<base>-jobcenter-<cycle>.<extension>` filenames; the
 cycle identifier precedes the extension and collisions fail rather than
 overwrite.
 

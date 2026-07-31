@@ -1,0 +1,23 @@
+project=tnet-3.0
+ticket=OPS-HOPPER001-reconstruction
+cycle_id=260731134500
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=none-new
+push=not-pushed-new-source
+current_hopper=tmp/hopper/tnet-3.0/current/
+archive_path=tmp/hopper/tnet-3.0/archive/
+report_file=output-tnet-3.0-260731134500.txt
+manifest_file=MANIFEST-tnet-3.0-260731134500.txt
+cycle_record_file=cycle-tnet-3.0-260731134500.json
+evidence_bundle=
+
+artifact|hopper_filename|original_path|status|size|sha256|committed|purpose
+source|clean_cycle-tnet-3.0-260731134500.py|tools/hopper/clean_cycle.py|created|5382|372e0b7b33c11bb9844f117b9638c0cf4cd3ba64fec465dffb1f5862c127aca0|true|reusable hopper lifecycle helper
+source|AGENTS-tnet-3.0-260731134500.md|AGENTS.md|modified|8980|2e2d9e4a4f2ef43fce25fb7e3dd1730c3082263d4367e26018ffd043a2347cad|true|durable repository guidance
+source|codex-ticket-discipline-tnet-3.0-260731134500.md|docs/codex-ticket-discipline.md|modified|21513|9ba5110e44e7782774de83b7374b72a1ef7e475b0774f231299e1dc6d256daac|true|durable ticket guidance
+source|documentation-governance-tnet-3.0-260731134500.md|docs/documentation-governance.md|modified|11149|5875a69093932fd51ef0defee4a07df9724583e402c75312b323a90abf823765|true|durable governance guidance
+generated|output-tnet-3.0-260731134500.txt|ticket report|generated|self-referential|self-referential|false|final report
+generated|MANIFEST-tnet-3.0-260731134500.txt|cycle manifest|generated|self-referential|self-referential|false|manifest
+generated|cycle-tnet-3.0-260731134500.json|cycle record|generated|self-referential|self-referential|false|machine-readable cycle record
+
+Protected file excluded: tmp/hopper/output.txt
