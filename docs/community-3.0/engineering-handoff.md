@@ -86,6 +86,11 @@ production but is not owned or available in this repository and does not expose
 canonical group mapping. Live notification attachment remains blocked. The
 source census, lifecycle, authority decision, and minimum contract are the
 four C3-CORE001 documents.
+C3-CORE002 is complete as the follow-on read-only architecture and migration
+audit. The recommendation is to preserve behavior as reference and provide a
+temporary read-only compatibility boundary, while rebuilding new writes
+natively in WordPress and retiring the legacy CGI execution path after URL and
+archive migration is proven. Six C3-CORE002 documents capture the decision.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

@@ -162,6 +162,14 @@ Authority decision: publisher exists but source is not owned/available. A
 minimum publisher contract was documented; live notification attachment remains
 blocked.
 
+C3-CORE002 is complete as a read-only architecture, compatibility, and
+migration audit. The legacy engine is retained as a behavioral reference and
+temporary read-only compatibility boundary, not as a WordPress-native
+foundation or new-write bridge. Its execution architecture is a retirement
+target after URL and archive migration is proven. Six audit and recommendation
+documents record the subsystem matrix, migration options, preservation
+boundaries, and characterization-test plan.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
