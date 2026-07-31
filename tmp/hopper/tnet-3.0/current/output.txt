@@ -1,0 +1,35 @@
+C3-NOT006 is complete.
+
+Created:
+
+- [Group Activity Notification Contract](</home/bobreap/projects/teachers-net-site/docs/community-3.0/group-activity-notification-contract-v1.md>)
+- Updated Project Cursor
+- Updated Engineering Handoff
+
+No implementation, schema, queues, email, bell records, or production changes were made.
+
+Commits pushed:
+
+- Documentation: `a6a3619`
+- Hopper cycle: `b490d19`
+
+Hopper current directory:
+
+[Open hopper folder](</home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/>)
+
+Windows Explorer path:
+
+`\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\`
+
+Cycle: `260731140048`
+
+Current hopper files:
+
+- `group-activity-notification-contract-v1-tnet-3.0-260731140048.md`
+- `project-cursor-tnet-3.0-260731140048.md`
+- `engineering-handoff-tnet-3.0-260731140048.md`
+- `output-tnet-3.0-260731140048.txt`
+- `MANIFEST-tnet-3.0-260731140048.txt`
+- `cycle-tnet-3.0-260731140048.json`
+
+The prior cycle was archived, and protected `output.txt` was untouched.
