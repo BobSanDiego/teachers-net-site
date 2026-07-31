@@ -189,6 +189,12 @@ orphaned states with no-guess results and immutable returned copies. It has no
 persistence, production mapping, publisher, membership, notification, Core
 Terms, or Portable View integration.
 
+C3-CORE006 is complete as the WordPress-native Community publisher contract
+and logical data-model design. It selects dedicated custom tables behind a
+narrow repository, defines canonical post/thread identity and post-first
+moderation, requires post-commit events, and preserves legacy data through
+immutable compatibility records. No schema or publisher runtime was written.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does

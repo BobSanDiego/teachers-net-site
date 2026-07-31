@@ -107,6 +107,12 @@ C3-CORE005 is complete as the corresponding test-only in-memory resolver. It
 resolves legacy path/local/group references only through explicit synthetic
 mappings, preserves unresolved states, rejects silent overwrite, and deep-copies
 returned references/context. No persistence or product integration exists.
+C3-CORE006 is complete as the publisher domain, lifecycle, storage, logical
+model, event, compatibility, and test contracts. Dedicated custom tables are
+preferred behind a narrow repository; WordPress identity and canonical
+community/post IDs remain authoritative. New posts use post-first moderation,
+and notification events occur only after commit. No schema or runtime publisher
+was added. The next slice is C3-CORE007, test-only domain core.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
