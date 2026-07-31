@@ -1,0 +1,23 @@
+{
+  "project":"tnet-3.0",
+  "ticket":"C3-IMP008",
+  "cycle_id":"260731164405",
+  "status":"complete",
+  "commit":"014a253",
+  "push":"successful",
+  "branch":"COMMUNITY003-semantic-community-communications-working-draft",
+  "current_hopper":"tmp/hopper/tnet-3.0/current",
+  "archive_path":"tmp/hopper/tnet-3.0/archive",
+  "report_file":"output-tnet-3.0-260731164405.txt",
+  "manifest_file":"MANIFEST-tnet-3.0-260731164405.txt",
+  "cycle_record_file":"cycle-tnet-3.0-260731164405.json",
+  "protected_file":"output.txt",
+  "artifacts":[
+    {"committed":true,"hopper_filename":"group_post_event_adapter-tnet-3.0-260731164405.py","original_path":"tools/community3/group_post_event_adapter.py","status":"created"},
+    {"committed":true,"hopper_filename":"test_group_post_event_adapter-tnet-3.0-260731164405.py","original_path":"tools/community3/test_group_post_event_adapter.py","status":"created"},
+    {"committed":true,"hopper_filename":"notification_dry_run_pipeline-tnet-3.0-260731164405.py","original_path":"tools/community3/notification_dry_run_pipeline.py","status":"modified"},
+    {"committed":true,"hopper_filename":"group-post-event-adapter-v1-tnet-3.0-260731164405.md","original_path":"docs/community-3.0/group-post-event-adapter-v1.md","status":"created"},
+    {"committed":true,"hopper_filename":"project-cursor-tnet-3.0-260731164405.md","original_path":"docs/community-3.0/project-cursor.md","status":"modified"},
+    {"committed":true,"hopper_filename":"engineering-handoff-tnet-3.0-260731164405.md","original_path":"docs/community-3.0/engineering-handoff.md","status":"modified"}
+  ]
+}
