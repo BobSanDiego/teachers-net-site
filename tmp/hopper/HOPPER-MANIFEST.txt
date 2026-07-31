@@ -30,6 +30,17 @@ Active files:
 Timestamped duplicates: archive/tnet-3.0/
 Protected output.txt remains excluded.
 
+Community ticket: C3-NOT003 reply notification contract
+Project: tnet-3.0
+Current-cycle archive suffix: 260731124732
+Active files:
+- reply-notification-contract-v1.md
+- project-cursor.md
+- engineering-handoff.md
+- output-260731124800.txt
+Timestamped duplicates: archive/tnet-3.0/
+Protected output.txt remains excluded.
+
 Community ticket: C3-NOT002 bell and read-state contract
 Project: tnet-3.0
 Current-cycle archive suffix: 260731120659
