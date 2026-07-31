@@ -6,12 +6,13 @@ Bounded implementation preparation — C3-GO001 authorized preparation; no featu
 
 ## 2. Current Ticket
 
-C3-RR001, C3-PLAN003, and C3-PLAN004 are complete as documentation-only work.
+C3-RR001, C3-PLAN003, C3-PLAN004, and C3-TRUST001 are complete as
+documentation/read-only evidence work. The accepted subscriber-policy contract
+is `docs/community-3.0/subscriber-policy-contract-v1.md`.
 C3-GO001 records GO authorization for bounded implementation preparation. The
-master plan is the product authority above engineering roadmaps and tickets.
-The next authorized ticket is C3-TRUST001 — Subscriber Policy Contract. Do not
-send mail, change schema, migrate preferences, or enable delivery under this
-authorization.
+The master plan is the product authority above engineering roadmaps and tickets.
+C3-TRUST002 may be considered after Engineering Director review; it is not
+authorized by this handoff.
 
 ## 3. Last Completed Milestone
 
@@ -84,7 +85,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Execute only C3-TRUST001 as the next bounded contract ticket. Its evidence
-gathering may be read-only. Stop before mail sending, schema changes,
-preference migration, delivery enablement, production edits, relationship
-activation, or unrelated Job Center implementation.
+Review the C3-TRUST001 contract and decide whether to authorize C3-TRUST002.
+Any follow-up evidence gathering remains read-only. Stop before mail sending,
+schema changes, preference migration, delivery enablement, production edits,
+relationship activation, or unrelated Job Center implementation.

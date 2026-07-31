@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation authorized; no feature implementation begun.
+Bounded implementation preparation — C3-TRUST001 complete; no feature implementation begun.
 
 ## Current Milestone
 
@@ -50,6 +50,11 @@ Contract. It may inspect current implementation and production evidence
 read-only, but may not send mail, change schema, migrate preferences, or enable
 delivery.
 
+C3-TRUST001 is complete as a documentation and read-only evidence package at
+`docs/community-3.0/subscriber-policy-contract-v1.md`. C3-TRUST002 may be
+considered after Engineering Director review; it is not authorized by this
+ticket.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -58,9 +63,8 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-TRUST001 — Subscriber Policy Contract: define communication categories,
-explicit consent, global pause, unsubscribe, suppression, frequency, group
-overrides, precedence, preference history, restoration, audit, and correction.
+C3-TRUST001 — Subscriber Policy Contract is complete. The accepted contract is
+`docs/community-3.0/subscriber-policy-contract-v1.md`.
 
 ## Next Decision
 
