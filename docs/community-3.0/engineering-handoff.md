@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP001 complete; no feature implementation begun.
+Bounded implementation preparation — C3-IMP003 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -28,6 +28,11 @@ The C3-IMP001 readiness, gap, and sequence documents are
 `docs/community-3.0/notification-implementation-sequence-v1.md`. They identify
 the missing Mention Notification Contract and propose C3-IMP002 as a test-only
 dry-run evaluator, pending explicit authorization.
+The C3-IMP003 candidate/audit boundary is implemented in
+`tools/community3/notification_candidate_boundary.py`, covered by
+`tools/community3/test_notification_candidate_boundary.py`, and documented in
+`docs/community-3.0/candidate-audit-boundary-v1.md`. It is test-only,
+non-persistent, redacted, and non-delivering.
 C3-GO001 records GO authorization for bounded implementation preparation. The
 master plan is the product authority above engineering roadmaps and tickets.
 C3-NOT005 may be considered after Engineering Director review; it is not
@@ -104,8 +109,8 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review C3-IMP001 and decide whether to authorize C3-IMP002. Keep the proposed
-slice test-only and non-delivering. Stop before mail sending, schema changes,
+Review C3-IMP003 and decide whether to authorize a separately bounded
+persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.
 Any follow-up evidence gathering remains read-only. Stop before mail sending,

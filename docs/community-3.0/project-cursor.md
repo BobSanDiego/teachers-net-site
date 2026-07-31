@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP001 complete; no feature implementation begun.
+Bounded implementation preparation — C3-IMP003 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -106,6 +106,14 @@ the missing local Mention Notification Contract and recommends C3-IMP002 as a
 test-only dry-run group-post candidate evaluator. No code, schema, queue, bell,
 email, or production change was made.
 
+C3-IMP003 is complete as a bounded test-only candidate/audit boundary at
+`tools/community3/notification_candidate_boundary.py`, with tests and policy
+documentation at `tools/community3/test_notification_candidate_boundary.py`
+and `docs/community-3.0/candidate-audit-boundary-v1.md`. It consumes only the
+evaluator result, returns deterministic non-persistent candidate and redacted
+audit objects, and has no database, schema, queue, bell, email, digest, UI, or
+production side effect.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -114,15 +122,15 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP002 is proposed as the next bounded implementation ticket, subject to
-Engineering Director review and explicit authorization. It is not authorized
-by C3-IMP001 itself.
+C3-IMP003 is complete. Any next implementation slice requires Engineering
+Director review and explicit authorization; delivery and persistence remain
+deferred.
 
 ## Next Decision
 
-Review C3-IMP001 and explicitly authorize C3-IMP002 or stop. No group
-notification implementation, delivery, schema, queue, preference migration, or
-production work is authorized by this ticket.
+Review C3-IMP003 and explicitly authorize any persistence or channel follow-up
+or stop. No delivery, schema, queue, preference migration, or production work
+is authorized by this ticket.
 
 ## Strategic Roadmap Alignment
 
