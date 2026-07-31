@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-TRUST001 complete; no feature implementation begun.
+Bounded implementation preparation — C3-TRUST002 complete; no feature implementation begun.
 
 ## Current Milestone
 
@@ -54,6 +54,13 @@ C3-TRUST001 is complete as a documentation and read-only evidence package at
 `docs/community-3.0/subscriber-policy-contract-v1.md`. C3-TRUST002 may be
 considered after Engineering Director review; it is not authorized by this
 ticket.
+
+C3-TRUST002 is complete as a documentation and read-only evidence package at
+`docs/community-3.0/suppression-and-abuse-control-contract-v1.md`. It defines
+suppression, complaints, bounces, abuse controls, moderation interaction,
+kill-switch governance, audit, recovery, and acceptance criteria. C3-NOT001
+may be considered after Engineering Director review; it is not authorized by
+this ticket.
 
 ## Authorization Status
 
