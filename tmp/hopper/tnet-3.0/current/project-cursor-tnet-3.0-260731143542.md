@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-NOT006 complete; no feature implementation begun.
+Bounded implementation preparation — C3-IMP001 complete; no feature implementation begun.
 
 ## Current Milestone
 
@@ -98,6 +98,14 @@ audit, and cross-product isolation. No implementation or production change was
 made. The next notification contract requires Engineering Director review and
 explicit authorization.
 
+C3-IMP001 is complete as a repository-inspection and implementation-planning
+package at `docs/community-3.0/notification-implementation-readiness-v1.md`,
+`docs/community-3.0/implementation-gap-analysis-v1.md`, and
+`docs/community-3.0/notification-implementation-sequence-v1.md`. It identifies
+the missing local Mention Notification Contract and recommends C3-IMP002 as a
+test-only dry-run group-post candidate evaluator. No code, schema, queue, bell,
+email, or production change was made.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -106,14 +114,15 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-No next notification implementation ticket is authorized. Engineering Director
-review must determine the next bounded contract after C3-NOT006.
+C3-IMP002 is proposed as the next bounded implementation ticket, subject to
+Engineering Director review and explicit authorization. It is not authorized
+by C3-IMP001 itself.
 
 ## Next Decision
 
-Review C3-NOT006 and explicitly authorize the next bounded notification
-contract or stop. No group-notification implementation, delivery, schema,
-queue, preference migration, or production work is authorized by this ticket.
+Review C3-IMP001 and explicitly authorize C3-IMP002 or stop. No group
+notification implementation, delivery, schema, queue, preference migration, or
+production work is authorized by this ticket.
 
 ## Strategic Roadmap Alignment
 
