@@ -1,0 +1,17 @@
+C3-CORE004 — Canonical Community Identity and Legacy Compatibility Contract
+
+Status: COMPLETE — bounded architecture audit and documentation only.
+
+Advancement: defined opaque community_id as the canonical Community identity and contained legacy path_id, local_path, and group_id translation behind one resolver boundary. Chatboards and companion groups are explicit relationships to a Community; one Community may have multiple streams/views. Core Terms classifies Community entities; Portable Views present them; neither owns identity.
+
+Mapping findings: repository evidence supports local_path-based lookup to group context, while path and group identifiers remain distinct. Missing, duplicate, ambiguous, inactive, and orphaned mappings must remain explicit unresolved states. No production rows were queried or changed by this ticket.
+
+ID alignment: reject numeric realignment. Create canonical community_id and retain both legacy key families as immutable compatibility references. Historical URLs, archives, posts, replies, memberships, settings, moderator evidence, redirects, SEO references, and audit history remain queryable without becoming new-write authority.
+
+Resolver contract: resolve by legacy path or group; retrieve legacy references, group context, and publisher context by community_id. Only this compatibility boundary may translate legacy identifiers. New application code must not join, authorize, route, notify, or persist by legacy IDs.
+
+Verification: git diff --check passed; no schema, IDs, records, routes, memberships, posts, groups, notifications, or production behavior changed. Mechanical and semantic hopper validation passed.
+
+Next ticket: a test-only in-memory canonical identity resolver and mapping-registry contract with resolved, missing, ambiguous, and duplicate fixtures. No schema or production mappings.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.
