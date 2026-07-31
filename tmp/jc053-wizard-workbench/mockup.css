@@ -50,6 +50,9 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   font-weight:700;
 }
 
+/* RESET002: shared desktop navigation button owner; compact breakpoints override this family. */
+.application-card .view-nav #previous-view.button,.application-card .view-nav #next-view.button{display:inline-flex;border:1px solid #aab9d3;border-radius:6px;min-height:40px;padding:0 16px;color:var(--primary)}
+
 
 @media (min-width:651px) and (max-width:767px){
   .application-card[data-authority="true"] .tnet-jobs-app-brand{justify-content:flex-start}

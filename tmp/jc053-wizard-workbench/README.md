@@ -189,3 +189,12 @@ For the shared Teachers.Net evidence root, use:
 
 This same root may be used by responsive capture and contact-sheet workflows;
 do not create a second project-specific export root without an explicit ticket.
+
+### RESET002 correction
+
+The earlier RESET001 visual-completion claim is superseded by RESET002. The
+prior automation checked structural counts but did not assert SVG symbol
+resolution or the rendered/computed desktop navigation border and box model.
+RESET002 verifies the visible section-document icon, its resolved shared SVG
+symbol and nonzero dimensions, plus the shared desktop/compact navigation
+styles at the governed widths.
