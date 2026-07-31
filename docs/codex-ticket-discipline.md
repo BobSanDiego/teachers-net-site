@@ -1,5 +1,32 @@
 # Codex Ticket Discipline
 
+## Project-Specific Clean-Cycle Hopper Procedure
+
+For the active Teachers.Net project, the canonical slug is `tnet-3.0`. Every ticket
+must begin by running `python3 tools/hopper/clean_cycle.py begin
+--project tnet-3.0 --cycle <YYMMDDHHMMSS>`. This archives the prior
+`tmp/hopper/tnet-3.0/current/` contents into the never-deleted
+`tmp/hopper/tnet-3.0/archive/<cycle-id>/` directory and leaves `current/`
+ready for one drag-and-drop handoff.
+
+During the cycle, collect every created or modified artifact with the helper's
+`collect` command. The helper copies files flat into `current/` using
+`<base>-tnet-3.0-<cycle-id>.<extension>`, refuses collisions, records original
+paths and hashes, and never touches the protected `output.txt`. Create the
+project report, manifest, valid JSON cycle record, and any required evidence
+bundle using the same cycle identifier. A ticket is not complete until
+`current/` contains the report, manifest, cycle record, every created or
+modified file, and required evidence and passes the helper's `validate`
+command.
+
+The final screen report must print the full current-cycle filename list, WSL
+path, Windows path, archive path, commit, push result, and the command
+`explorer.exe "\\wsl$\\Ubuntu-24.04\\home\\bobreap\\projects\\teachers-net-site\\tmp\\hopper\\tnet-3.0\\current"`.
+Preserve blocked and incomplete cycles, exclude unrelated dirty files, never
+silently overwrite artifacts, and never delete historical cycles. The user's
+ingestion action is to open `current/`, select all, and drag the set into
+ChatGPT.
+
 One ticket.
 
 One goal.
@@ -57,6 +84,34 @@ Reports that reference local directories must provide a Windows File Explorer
 link/path for every directory referenced, alongside the WSL path used for
 commands. Keep the native `C:\\...` path copyable and never translate it to
 `C:\\home\\...`.
+
+## Project-Specific Clean-Cycle Hopper Procedure
+
+For the Job Center project, the canonical hopper is
+`tmp/hopper/jobcenter/`. Active-cycle files belong only in `current/`; prior
+cycles belong only in `archive/`. At the beginning of every ticket, archive
+all existing `current/` contents without deletion. Generate one
+`YYMMDDHHMMSS` identifier and reuse it for the archive directory, report,
+manifest, JSON cycle record, copied artifact names, and evidence bundle.
+
+Copy every created or modified artifact and required evidence, including
+uncommitted or blocked work, into `current/` using the cycle identifier before
+the extension. Preserve original repository paths in
+`MANIFEST-jobcenter-<cycle>.txt`; include file status, size, SHA-256, commit
+state, and purpose. Create
+`cycle-jobcenter-<cycle>.json` and, when multiple evidence files exist,
+`evidence-jobcenter-<cycle>.zip`. Fail on filename collisions, never silently
+overwrite, never delete historical cycles, and exclude unrelated dirty files
+and protected `output.txt`.
+
+Every Codex ticket must begin by archiving the prior project-specific
+`current/` hopper contents and must end with a validated, self-contained
+current-cycle artifact set that the user can drag into ChatGPT in one
+operation. A ticket is not complete until the current project hopper contains
+the report, manifest, cycle record, every created or modified file, and all
+required evidence. Final screen output must include the full filenames and
+copyable WSL and Windows Explorer paths. Use
+`scripts/jobcenter-hopper.sh` rather than ad hoc hopper handling.
 
 Reuse existing routes, services, repositories, and validation.
 

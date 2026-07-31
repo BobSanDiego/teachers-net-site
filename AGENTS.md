@@ -126,6 +126,37 @@ No global P0 runtime blocker is currently known. Do not begin V2 features until
 V1 release-candidate status is explicitly declared or the Engineering Director
 redirects.
 
+## Project-Specific Clean-Cycle Hopper Procedure
+
+The active Teachers.Net continuity artifacts use the canonical project hopper
+`tmp/hopper/tnet-3.0/`, with active files only in `current/` and preserved
+history only in `archive/`. Every ticket begins by archiving the prior
+`current/` contents and generating one `YYMMDDHHMMSS` cycle identifier. Every
+created or modified ticket artifact and required evidence is copied into the
+current folder using `<base>-tnet-3.0-<cycle>.<extension>` filenames; the
+cycle identifier precedes the extension and collisions fail rather than
+overwrite.
+
+Each cycle must contain a plain-text final report, a manifest with original
+paths, statuses, sizes, SHA-256 hashes, commit/push state, and purpose, a
+machine-readable JSON cycle record, and an evidence ZIP when multiple evidence
+files exist. Validate that every reported artifact exists, is nonzero, and is
+represented in the manifest and cycle record. Preserve blocked and incomplete
+cycles; never delete historical content or unrelated dirty files. The
+engineer-owned `output.txt` remains protected and is never edited, copied, or
+archived by this procedure.
+
+Every Codex ticket must begin by archiving the prior project-specific
+`current/` hopper contents and must end with a validated, self-contained
+current-cycle artifact set that the user can drag into ChatGPT in one
+operation. A ticket is not complete until `current/` contains the report,
+manifest, cycle record, every created or modified file, and required evidence.
+
+Use `python3 tools/hopper/clean_cycle.py` for the deterministic initialization and
+collection workflow. Final responses must print the full current-cycle file
+list, WSL paths, and copyable Windows Explorer command:
+`explorer.exe "<Windows path to current/>"`.
+
 ## Canonical Chrome MCP Recovery
 
 When `127.0.0.1:9222` is unavailable, run the canonical launcher before
