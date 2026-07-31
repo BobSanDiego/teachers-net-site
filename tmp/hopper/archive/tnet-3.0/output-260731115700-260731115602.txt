@@ -1,0 +1,32 @@
+C3-TRUST002 — Community 3.0 Suppression and Abuse-Control Contract
+
+Status: executed, documentation and read-only evidence only.
+
+Completed
+
+- Created docs/community-3.0/suppression-and-abuse-control-contract-v1.md.
+- Defined first-class suppression states, complaint and bounce handling, abuse controls, moderation interaction, kill switches, precedence, recovery, audit, and acceptance criteria.
+- Preserved the distinctions among preference, suppression, moderation, promotion, notification eligibility, and delivery.
+- Documented legacy and production evidence gaps without mutating data or queues.
+- Updated the Project Cursor and Engineering Handoff.
+- Committed and pushed the documentation-only change.
+
+Verification and limits
+
+- path_id and group_id remain distinct.
+- Transactional and promotional communications remain distinct.
+- Cross-product consent and suppression inference are prohibited.
+- No database writes, mail sends, schema changes, migrations, production edits, queue mutations, provider changes, cron changes, or kill-switch activations occurred.
+- C3-NOT001 may be considered after Engineering Director review; it is not authorized by this ticket.
+
+Commit and push
+
+Commit: 0df72ca5b1e32227392fae492e76b9eb75910c84
+Branch pushed: COMMUNITY003-semantic-community-communications-working-draft
+
+Hopper
+
+Active flat handoff directory: /home/bobreap/projects/teachers-net-site/tmp/hopper
+Project archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/archive/tnet-3.0
+Current-cycle archive suffix: 260731115602
+Protected output.txt was not touched, copied, renamed, archived, or included.
