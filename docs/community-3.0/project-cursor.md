@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-TRUST002 complete; no feature implementation begun.
+Bounded implementation preparation — C3-NOT001 complete; no feature implementation begun.
 
 ## Current Milestone
 
@@ -61,6 +61,13 @@ suppression, complaints, bounces, abuse controls, moderation interaction,
 kill-switch governance, audit, recovery, and acceptance criteria. C3-NOT001
 may be considered after Engineering Director review; it is not authorized by
 this ticket.
+
+C3-NOT001 is complete as a documentation and read-only evidence package at
+`docs/community-3.0/domain-event-and-notification-contract-v1.md`. It defines
+event identity, lifecycle, producers, consumers, visibility, candidates,
+eligibility, channels, deduplication, coalescing, expiry, audit, and
+cross-product isolation. C3-NOT002 may be considered after Engineering
+Director review; it is not authorized by this ticket.
 
 ## Authorization Status
 
