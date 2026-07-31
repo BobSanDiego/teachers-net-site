@@ -1,0 +1,5 @@
+{
+  "parent_id": "legacy-42",
+  "thread_id": "legacy-thread-7",
+  "expected": "accepted reply retaining parent and thread identity"
+}

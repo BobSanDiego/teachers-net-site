@@ -1,0 +1,8 @@
+{
+  "invalid": "required_field_missing",
+  "abuse": "abuse_gate_rejected",
+  "mapping": "canonical_group_mapping_unverified",
+  "duplicate": "duplicate_behavior_unverified",
+  "partial_write": "file_database_divergence",
+  "unknown": ["anonymous_posting", "edit_delete_retract", "moderator_authorization", "mailring", "concurrency", "recovery"]
+}

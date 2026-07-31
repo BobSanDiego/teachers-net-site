@@ -91,6 +91,12 @@ audit. The recommendation is to preserve behavior as reference and provide a
 temporary read-only compatibility boundary, while rebuilding new writes
 natively in WordPress and retiring the legacy CGI execution path after URL and
 archive migration is proven. Six C3-CORE002 documents capture the decision.
+C3-CORE003 is complete as a local-only characterization baseline. The pure
+model and synthetic fixtures characterize accepted topics/replies, validation,
+abuse classification, legacy URL/timestamp shape, chat_posts fields,
+local_path versus group identity, duplicate and partial-write classes, and
+immutable archive metadata. No production or external side effect is possible
+through the harness; unknown behavior remains explicit.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

@@ -1,0 +1,6 @@
+{
+  "title": "Synthetic topic",
+  "body": "Redacted fixture body",
+  "timestamp": "2014-01-14T12:34:56",
+  "expected": "accepted post with timestamp URL and chat_posts field contract"
+}

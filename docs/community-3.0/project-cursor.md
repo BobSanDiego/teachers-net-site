@@ -170,6 +170,13 @@ target after URL and archive migration is proven. Six audit and recommendation
 documents record the subsystem matrix, migration options, preservation
 boundaries, and characterization-test plan.
 
+C3-CORE003 is complete as the first executable, synthetic characterization
+harness. It adds a pure observation model, redacted fixtures, focused tests,
+and an observation contract. It performs no CGI execution, production access,
+filesystem publication, database write, notification, or WordPress publisher
+implementation. Unknown identity, moderation, edit/delete, mailring,
+concurrency, and recovery behavior remains explicitly unverified.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
