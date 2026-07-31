@@ -1,0 +1,55 @@
+C3-IMP010 — Community Publisher Integration Audit
+
+Status: executed and complete.
+
+Verified finding:
+No owned Community post-publication implementation or authoritative
+wp_insert_post/Community hook was found in the inspected repository. The
+repository contains Core Terms, Job Center, Lesson Bank, and theme code, but
+no canonical Community post lifecycle owner.
+
+Completed:
+- Traced the available create/validate/publish/persist/render evidence.
+- Produced the Community publication integration map.
+- Produced the publication hook authority decision.
+- Preserved C3-IMP009 as the only test-owned, disabled proof-of-attachment.
+- Updated Project Cursor and Engineering Handoff.
+
+The correct authority status is “not selected,” not Core Terms, Job Center,
+theme, generic WordPress, or an invented legacy component. No production hook,
+notification behavior, persistence, queue, email, digest, UI, network access,
+or unrelated product change was added.
+
+Verification:
+- python3 -m unittest discover -s tools/community3 -p 'test_*.py'
+- Result: 32 tests passed.
+- python3 -m py_compile tools/community3/*.py passed.
+- git diff --check passed.
+- Mechanical and semantic hopper validation passed.
+
+Modified files included in this cycle:
+- docs/community-3.0/community-publication-integration-map-v1.md (created)
+- docs/community-3.0/publication-hook-authority-v1.md (created)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+- tools/community3/group_post_shadow_hook.py (included existing prototype)
+- tools/community3/test_group_post_shadow_hook.py (included existing tests)
+
+Source commits: 8ad94f0 (audit), 1ff8e62 (handoff reconciliation)
+Push: successful to origin/COMMUNITY003-semantic-community-communications-working-draft.
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/260731165943/
+
+Cycle: 260731165943
+Protected output.txt was preserved and excluded.
+
+Recommended next ticket: identify the real Community publisher source
+implementation and authorize a read-only seam feasibility audit before any
+live hook attachment.
