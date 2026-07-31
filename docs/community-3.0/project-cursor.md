@@ -183,6 +183,12 @@ legacy path/local-path/group identifiers remain immutable compatibility keys
 behind one resolver boundary. Numeric alignment is rejected, and Core Terms
 and Portable Views remain relationships rather than identity authorities.
 
+C3-CORE005 is complete as a test-only, process-local in-memory resolver. It
+implements explicit resolved, missing, ambiguous, duplicate, inactive, and
+orphaned states with no-guess results and immutable returned copies. It has no
+persistence, production mapping, publisher, membership, notification, Core
+Terms, or Portable View integration.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does

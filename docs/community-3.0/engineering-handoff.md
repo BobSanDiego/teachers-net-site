@@ -103,6 +103,10 @@ renumbering, and confines translation to a resolver/repository boundary. Core
 Terms classifies the entity and Portable Views present it; neither replaces
 Community identity. The next implementation is a test-only in-memory resolver
 and mapping-registry contract.
+C3-CORE005 is complete as the corresponding test-only in-memory resolver. It
+resolves legacy path/local/group references only through explicit synthetic
+mappings, preserves unresolved states, rejects silent overwrite, and deep-copies
+returned references/context. No persistence or product integration exists.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

@@ -1,0 +1,9 @@
+{
+  "resolved": ["path-a", "board-a", "group-a"],
+  "missing": ["path-missing", "group-missing"],
+  "ambiguous": ["path-ambiguous"],
+  "duplicate": ["path-duplicate"],
+  "inactive": ["path-inactive"],
+  "orphaned": ["group-orphan"],
+  "redaction": "synthetic identifiers only; no production records"
+}
