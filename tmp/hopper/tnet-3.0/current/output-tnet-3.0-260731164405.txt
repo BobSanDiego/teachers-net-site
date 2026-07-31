@@ -38,7 +38,7 @@ Modified files included in this cycle:
 - docs/community-3.0/project-cursor.md (modified)
 - docs/community-3.0/engineering-handoff.md (modified)
 
-Source commit: 014a253
+Source commits: 014a253 (adapter), 2269897 (handoff reconciliation)
 Push: successful to origin/COMMUNITY003-semantic-community-communications-working-draft.
 
 Hopper current (WSL):
