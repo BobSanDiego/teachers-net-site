@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-IMP006 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP007 complete; no delivery implementation begun.
 
 ## Current Milestone
 
@@ -135,6 +135,11 @@ C3-IMP006 is complete as a test-only end-to-end dry-run pipeline at
 documentation. It connects evaluator, candidate boundary, in-memory candidate
 store, and in-memory bell repository without persistence or delivery.
 
+C3-IMP007 is complete as the single Community-owned in-memory application
+service at `tools/community3/notification_application_service.py`, with tests
+and documentation. It supports only synthetic `group_post` events and delegates
+to the existing dry-run pipeline without exposing repository mutation APIs.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -143,13 +148,13 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-IMP006 is complete. Any next implementation slice requires Engineering
+C3-IMP007 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
 
-Review C3-IMP006 and explicitly authorize any persistence or channel follow-up
+Review C3-IMP007 and explicitly authorize any persistence or channel follow-up
 or stop. No delivery, schema, queue, preference migration, or production work
 is authorized by this ticket.
 

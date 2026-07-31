@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-IMP006 complete; no delivery implementation begun.
+Bounded implementation preparation — C3-IMP007 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
 
@@ -51,6 +51,11 @@ The C3-IMP006 end-to-end dry-run pipeline is implemented in
 `tools/community3/test_notification_dry_run_pipeline.py`, and documented in
 `docs/community-3.0/dry-run-notification-pipeline-v1.md`. It remains test-only,
 non-persistent, and non-delivering.
+The C3-IMP007 application service is implemented in
+`tools/community3/notification_application_service.py`, covered by
+`tools/community3/test_notification_application_service.py`, and documented
+in `docs/community-3.0/notification-application-service-v1.md`. It is the sole
+public entry point for the current synthetic `group_post` dry run.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
@@ -130,7 +135,7 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review C3-IMP006 and decide whether to authorize a separately bounded
+Review C3-IMP007 and decide whether to authorize a separately bounded
 persistence or channel slice. Keep delivery disabled. Stop before mail sending,
 preference migration, delivery enablement, production edits, relationship
 activation, or unrelated Job Center implementation.
