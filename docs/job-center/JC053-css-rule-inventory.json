@@ -1,0 +1,37 @@
+{
+  "file": "tmp/jc053-wizard-workbench/mockup.css",
+  "bytes": 124394,
+  "lines": 610,
+  "approximate_rule_blocks": 1022,
+  "approximate_declarations": 2730,
+  "media_query_conditions": 78,
+  "selector_occurrences": 1100,
+  "distinct_selector_strings": 665,
+  "repeated_selector_strings": 190,
+  "repeat_occurrences": 435,
+  "important_declarations": 6,
+  "runtime_checked_widths": [1200, 1024, 768, 767, 650, 530, 400, 320],
+  "authority_blocks": {
+    "topbar_and_navbar": "late authority-scoped blocks; active at all reviewed widths",
+    "footer": "compact max-width 1024 block plus stacked max-width 767 block",
+    "stepper": "shared stepper plus max-width 767 compact presentation",
+    "bottom_navigation": "shared renderer styling plus max-width 650 compact labels"
+  },
+  "classification": {
+    "safe_to_remove_now": 0,
+    "safe_to_consolidate_now": "candidate groups only; no unverified deletion",
+    "must_remain_until_wizard_completion": "state-specific and renderer-dependent rules",
+    "requires_rendered_regression_proof": "all responsive geometry and visibility rules",
+    "uncertain_manual_review": "inactive-view, generated-markup, and source-order candidates"
+  },
+  "estimates": {
+    "safe_removal_bytes_now": "0-3000; not authorized by this audit",
+    "consolidation_bytes_now": "4000-12000; requires batch proof",
+    "post_cleanup_size": "110000-120000 bytes after Phase A, estimate only"
+  },
+  "notes": [
+    "Counts are static approximate metrics because the stylesheet contains compressed legacy blocks.",
+    "Text search does not establish deadness for inactive views or generated markup.",
+    "No CSS was modified."
+  ]
+}

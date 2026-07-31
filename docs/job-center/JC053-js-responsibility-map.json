@@ -1,0 +1,44 @@
+{
+  "file": "tmp/jc053-wizard-workbench/mockup.js",
+  "bytes": 59191,
+  "lines": 1267,
+  "approximate_function_or_arrow_occurrences": 81,
+  "responsibilities": [
+    {"name":"bootstrap_and_view_selection","status":"active","classification":"C"},
+    {"name":"view_registration_and_state_panels","status":"active","classification":"C"},
+    {"name":"wizard_shell_renderer","status":"active","classification":"C"},
+    {"name":"stepper_renderer_and_state_sync","status":"active","classification":"C"},
+    {"name":"bottom_navigation_renderer","status":"active","classification":"C"},
+    {"name":"navbar_dropdown_behavior","status":"active","classification":"D"},
+    {"name":"primary_overflow_and_mobile_drawer","status":"active","classification":"D"},
+    {"name":"step_1_behavior","status":"active","classification":"C"},
+    {"name":"step_2_behavior","status":"active","classification":"C"},
+    {"name":"step_3_foundation","status":"active","classification":"C"},
+    {"name":"diagnostics_and_build_markers","status":"workbench_only","classification":"E"},
+    {"name":"event_delegation_and_focus","status":"active","classification":"D"},
+    {"name":"generated_markup_and_shell_cloning","status":"active","classification":"C"}
+  ],
+  "parallel_or_late_paths": [
+    "The renderer replaces panel content and then applies wizard shell configuration.",
+    "Legacy source panels remain available for inactive views and must not be removed by text search.",
+    "Late state synchronization and view transition logic require rendered transition proof."
+  ],
+  "safe_to_remove_now": [],
+  "safe_to_consolidate_now": [],
+  "defer_until_wizard_completion": [
+    "renderer modularization",
+    "generated markup cleanup",
+    "Step 1-5 state-management consolidation",
+    "shared form infrastructure extraction",
+    "broader JavaScript decomposition"
+  ],
+  "estimated_bytes": {
+    "removable_now": "0; no branch removal proven",
+    "deferrable_after_completion": "6000-16000; estimate only",
+    "final_size_after_completion": "43000-52000 bytes; estimate only"
+  },
+  "notes": [
+    "No JavaScript was modified.",
+    "The map is an audit map, not an architecture redesign."
+  ]
+}
