@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-NOT002 complete; no feature implementation begun.
+Bounded implementation preparation — C3-NOT003 complete; no feature implementation begun.
 
 ## Current Milestone
 
@@ -75,6 +75,13 @@ notification lifecycle, read/archive state, grouping, expiry, badge behavior,
 cross-device synchronization, accessibility, and product isolation.
 C3-NOT003 may be considered after Engineering Director review; it is not
 authorized by this ticket.
+
+C3-NOT003 is complete as a documentation and read-only evidence package at
+`docs/community-3.0/reply-notification-contract-v1.md`. It defines direct and
+nested reply recipients, visibility, bell/email/digest behavior, suppression,
+moderation, grouping, audit, and cross-product isolation. C3-NOT004 may be
+considered after Engineering Director review; it is not authorized by this
+ticket.
 
 ## Authorization Status
 
