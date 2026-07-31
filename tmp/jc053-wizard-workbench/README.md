@@ -69,6 +69,14 @@ in `mockup.js`, then add only the state-specific markup needed for that view.
 Keep shell geometry and shared tokens in `mockup.css`; do not duplicate the
 navbar, rail, footer, or stepper.
 
+## Step 3 foundation reset
+
+`step-03-job-description` is rebased on the shared WizardShell and canonical
+Wizard Design System. Its reset state intentionally contains only the shared
+Step 3 heading, one canonical section icon, and one labeled representative
+dropdown with one trailing icon. Job Description feature implementation begins
+only after this foundation is visually accepted.
+
 ## Calibration and authority workflow
 
 Central tokens are at the top of `mockup.css`, including the 1200px shell,

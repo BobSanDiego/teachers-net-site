@@ -1130,7 +1130,7 @@
   const step3Content = document.createElement("section");
   step3Content.className = "position-classification-section step3-foundation-card";
   step3Content.innerHTML =
-    '<div class="position-section-title"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#section-document"></use></svg></span><h3>Job Description</h3></div><p>Step 3 content foundation — design in progress.</p>';
+    '<div class="position-section-title"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#section-document"></use></svg></span><h3>Job Description</h3></div><div class="form-field step3-representative-field"><label for="step3-description-format">Description format</label><div class="form-control-with-icon"><select id="step3-description-format"><option value="">Select a format</option><option value="standard">Standard description</option></select><span class="form-control-with-icon__icon" aria-hidden="true"></span></div></div>';
   const wizardShellConfigs = {
     "step-02-job-basics": {
       viewId: "step-02-job-basics",
