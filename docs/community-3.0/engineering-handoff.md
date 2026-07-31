@@ -80,7 +80,7 @@ Community publisher seam. Its integration map and hook-authority decision are
 remains test-owned and non-authoritative.
 C3-IMP010 is complete as the current source milestone; no live publisher hook
 or delivery behavior is authorized.
-C3-CORE001 identified the Sandy legacy Perl publisher at
+C3-CORE001 is complete. It identified the Sandy legacy Perl publisher at
 `/var/www/www.teachers.net/cgi-bin/chatboard/chatboard.cgi`. It exists in
 production but is not owned or available in this repository and does not expose
 canonical group mapping. Live notification attachment remains blocked. The
