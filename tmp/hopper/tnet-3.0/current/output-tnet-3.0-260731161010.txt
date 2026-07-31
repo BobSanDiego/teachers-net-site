@@ -1,0 +1,56 @@
+OPS-CONT001 — Community Continuity & Hopper Flush Root-Cause Analysis
+
+Status: executed and complete.
+
+Verified root cause:
+- Continuity source documents were not reconciled before later export.
+- Hopper collection copied stale source files.
+- Mechanical hopper validation checked file/commit/push metadata but not
+  semantic agreement between completed ticket, cursor, handoff, manifest, and
+  cycle JSON.
+
+Correction:
+- Added fail-closed semantic validation in
+  tools/hopper/validate_community_continuity.py.
+- Added regression tests for stale-cursor rejection and corrected-state pass.
+- Reconciled Project Cursor and Engineering Handoff to OPS-CONT001.
+- Added process root-cause, governance, and validation documents.
+
+Verification:
+- Community tests: 12 passed.
+- Hopper validation tests: 2 passed.
+- Python compilation passed.
+- git diff --check passed.
+- Final continuity guard passed against source cursor, handoff, manifest, and
+  cycle JSON after correcting an initial phase/guard test failure.
+
+Reconciled state:
+- C3-IMP002 has no verified implementation commit and is not complete.
+- C3-NOT005 has no verified contract or implementation commit and is not complete.
+- C3-IMP003, C3-IMP004, and C3-IMP005 remain completed.
+
+Modified files included in this cycle:
+- tools/hopper/validate_community_continuity.py (modified)
+- tools/hopper/test_validate_community_continuity.py (created)
+- docs/process/community-continuity-root-cause-v1.md (created)
+- docs/process/community-hopper-governance-v1.md (created)
+- docs/process/community-continuity-validation-v1.md (created)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+
+Commits pushed:
+- 38278e7 — workflow correction
+- 5453e97 — corrected validation fixture
+- edd950d — reconciled phase and backward-reference checks
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/260731161010/
+
+Cycle: 260731161010
+Protected output.txt was preserved and excluded.
