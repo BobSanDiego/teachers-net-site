@@ -1,0 +1,25 @@
+project=tnet-3.0
+ticket=C3-CORE011
+cycle_id=260731214000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=929cac2
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+report_file=output-tnet-3.0-260731214000.txt
+manifest_file=MANIFEST-tnet-3.0-260731214000.txt
+cycle_record_file=cycle-tnet-3.0-260731214000.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "class-tnet-community-publisher-domain-tnet-3.0-260731214000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-publisher-domain.php", "purpose": "ticket artifact", "sha256": "ab28a3c96916908c74b93f3c62b650b6b75f94be99bd1e98fcdc902a06a85030", "size": 5937, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-publisher-application-tnet-3.0-260731214000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-publisher-application.php", "purpose": "ticket artifact", "sha256": "599da53490b0dddef1e8da8041a93fe2638f09aee203c874ca0c9bf2ac4c1c55", "size": 915, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-publisher-repository-tnet-3.0-260731214000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-publisher-repository.php", "purpose": "ticket artifact", "sha256": "2529c26445bef45d46ca8394e9931de3fdd4cbb3323479e156c791b190be4ed2", "size": 6829, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-workbench-service-tnet-3.0-260731214000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-workbench-service.php", "purpose": "ticket artifact", "sha256": "476218eb0cf5608538befb321cd281860c567a3124836018b601aa66f409a047", "size": 2363, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-workbench-tnet-3.0-260731214000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/admin/class-tnet-community-workbench.php", "purpose": "ticket artifact", "sha256": "1d8276e1395fc9ae2541c006f178f0cb4d7e5dc4d2ce80fed1b51f013ca8032e", "size": 9050, "status": "modified"}
+{"committed": true, "hopper_filename": "test_developer_sandbox-tnet-3.0-260731214000.py", "original_path": "tools/community3/test_developer_sandbox.py", "purpose": "ticket artifact", "sha256": "19bb84f9b4be8ae6f33b495bbe23f5dcf428defc590815e175cc084cad2921cb", "size": 953, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-developer-sandbox-v1-tnet-3.0-260731214000.md", "original_path": "docs/community-3.0/community-publisher-developer-sandbox-v1.md", "purpose": "ticket artifact", "sha256": "cdf2e54fbcc8d09a52788d314ac796a4a7194aa2e77a763ef773e29cc702724a", "size": 648, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-thread-browser-v1-tnet-3.0-260731214000.md", "original_path": "docs/community-3.0/community-publisher-thread-browser-v1.md", "purpose": "ticket artifact", "sha256": "d25a1aa3dcc3e461eb9388ed37b86fc5d5afb53964ef9323c4905b22a1b33b0a", "size": 465, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-audit-viewer-v1-tnet-3.0-260731214000.md", "original_path": "docs/community-3.0/community-publisher-audit-viewer-v1.md", "purpose": "ticket artifact", "sha256": "5847c5464944044d6ca1e9e04ff4060c812946fe3152303fa6b6d985cad15319", "size": 391, "status": "modified"}
+{"committed": true, "hopper_filename": "project-cursor-tnet-3.0-260731214000.md", "original_path": "docs/community-3.0/project-cursor.md", "purpose": "ticket artifact", "sha256": "d202325cc4f63f3846943001c90e15f8ad97904209490490c73d4e21c5c516a9", "size": 14437, "status": "modified"}
+{"committed": true, "hopper_filename": "engineering-handoff-tnet-3.0-260731214000.md", "original_path": "docs/community-3.0/engineering-handoff.md", "purpose": "ticket artifact", "sha256": "b215606300e84fa3df54adbe63650f2aaf2efd9e237b16360576983b5c7f5777", "size": 13316, "status": "modified"}
