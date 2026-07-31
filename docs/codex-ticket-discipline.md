@@ -416,6 +416,50 @@ once for each committed artifact. The refresh must set committed artifacts to
 the manifest and cycle record. Validation must confirm that report commit,
 manifest commit, cycle-record commit, and push status agree before completion.
 
+## CONTACT SHEET PROCEDURE
+
+The explicit Engineering Director trigger `contact sheet` (or an equivalent
+request for a responsive contact sheet) creates a durable screenshot package
+for the current unambiguous project, workbench/route, authority view, and
+responsive breakpoint set. Do not trigger this procedure automatically for an
+ordinary ticket.
+
+Store each run beneath:
+
+`tmp/contact-sheets/<project-slug>/<YYYYMMDD-HHMMSS>/`
+
+Use the actual run-start timestamp and never overwrite an earlier run. The
+default Job Center viewport set is 1440, 1200, 1024, 1025, 900, 768, 767, 651,
+650, 531, 530, 500, 400, 375, 360, and 320px; omit only widths without value
+for the target and add explicitly governed transitions when relevant.
+
+For every width, use the established external Chrome DevTools workflow, load
+the correct served URL and authority/hash, reload with cache bypass, use device
+scale factor 1, settle the layout, ensure transient controls are in their
+baseline state, and capture the full relevant page. Record width/height,
+document scroll width, overflow result, console-error count, active view,
+responsive mode, and screenshot success. If a capture fails, retry once,
+record the failure, and continue; stop before capture if the source or target
+cannot be confirmed.
+
+Each completed run contains deterministic files named `viewport-<width>.png`,
+one `contact-sheet.png` (or wide/tablet/mobile sheets if one image would be
+unreadable), `index.md`, and `manifest.json`. The sheet orders captures widest
+to narrowest, labels every viewport, uses a neutral background and consistent
+spacing, and does not crop or visually correct the captures. The index records
+project, ticket/context, served URL, authority/hash, browser, device scale,
+timestamp, viewport list, filenames, objective results, and limitations. The
+manifest repeats the metadata and file list in machine-readable form.
+
+The final response must include the exact WSL directory, the native Windows
+directory, and a clickable Explorer action targeting the timestamped directory
+(or the proven Explorer command):
+
+`explorer.exe "\\wsl$\\Ubuntu-24.04\\home\\bobreap\\projects\\teachers-net-site\\tmp\\contact-sheets\\<project-slug>\\<timestamp>"`
+
+Report only objective findings unless visual analysis was requested, and end
+the contact-sheet report with: `Human visual review pending.`
+
 ## TWEAK MODE
 
 TWEAK MODE is a deferred-commit workflow for small, tightly bounded changes.
