@@ -7,8 +7,9 @@ authentication, and a nonce. It is not public navigation, REST, AJAX, or a
 production route.
 
 The simple form accepts synthetic Community ID, author ID, submission key,
-title, body, visibility, and publication mode. It calls the PHP workbench
-adapter, the approved repository, and the local prototype tables. The result
+title, body, visibility, and publication mode. It delegates to the authoritative
+PHP publisher domain/application service, the approved repository, and the local
+prototype tables. The result
 displays accepted/rejected state, IDs, lifecycle/moderation state, timestamps,
 audit count, and pending event details with escaping.
 

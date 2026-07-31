@@ -129,6 +129,11 @@ displays persisted post/audit/event information through `tnet-community`.
 Runtime language divergence is documented as a bounded PHP adapter over the
 Python-tested contract. Automated checks and DDEV smoke/rollback checks pass;
 browser visual QA was attempted but the browser bridge could not initialize.
+C3-CORE010 is complete. PHP is the authoritative runtime domain under
+`tnet-community`; the workbench no longer constructs canonical publisher
+objects manually. Topics and replies share the PHP domain, and the shared JSON
+fixture/parity checks preserve semantic agreement with Python regression
+evidence. No Python runtime bridge, production deployment, or migration exists.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

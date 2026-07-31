@@ -215,6 +215,12 @@ protected, and has no replies, public route, REST, notification, or production
 connection. Browser visual QA was attempted but blocked by the session browser
 bridge; no visual success is claimed.
 
+C3-CORE010 is complete as the authoritative PHP Community publisher domain and
+shared-fixture parity boundary. PHP now owns runtime topic/reply validation,
+threading, moderation, lifecycle, idempotency, and event construction. The
+workbench delegates through the PHP application service; Python remains
+characterization/regression support and is not executed by WordPress.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
