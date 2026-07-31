@@ -6,7 +6,7 @@ Maintenance
 
 ## Current Phase
 
-Bounded implementation preparation — C3-NOT004 complete; no feature implementation begun.
+Bounded implementation preparation — C3-NOT006 complete; no feature implementation begun.
 
 ## Current Milestone
 
@@ -90,6 +90,14 @@ suppression, moderation, audit, and cross-product isolation. C3-NOT005 may be
 considered after Engineering Director review; it is not authorized by this
 ticket.
 
+C3-NOT006 is complete as a documentation and read-only evidence package at
+`docs/community-3.0/group-activity-notification-contract-v1.md`. It defines
+group activity events, recipient eligibility, membership and frequency,
+visibility, bell/email/digest behavior, grouping, suppression, moderation,
+audit, and cross-product isolation. No implementation or production change was
+made. The next notification contract requires Engineering Director review and
+explicit authorization.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
@@ -98,14 +106,14 @@ within this ticket.
 
 ## Next Authorized Ticket
 
-C3-TRUST001 — Subscriber Policy Contract is complete. The accepted contract is
-`docs/community-3.0/subscriber-policy-contract-v1.md`.
+No next notification implementation ticket is authorized. Engineering Director
+review must determine the next bounded contract after C3-NOT006.
 
 ## Next Decision
 
-No new group architecture or redesign is authorized by this correction,
-C3-RR001, C3-PLAN003, or C3-GO001. The next decision follows completion and
-verification of the bounded C3-TRUST001 contract ticket.
+Review C3-NOT006 and explicitly authorize the next bounded notification
+contract or stop. No group-notification implementation, delivery, schema,
+queue, preference migration, or production work is authorized by this ticket.
 
 ## Strategic Roadmap Alignment
 

@@ -2,7 +2,7 @@
 
 ## 1. Current Phase
 
-Bounded implementation preparation — C3-GO001 authorized preparation; no feature implementation begun.
+Bounded implementation preparation — C3-NOT006 complete; no feature implementation begun.
 
 ## 2. Current Ticket
 
@@ -20,6 +20,8 @@ notification contract is
 `docs/community-3.0/reply-notification-contract-v1.md`; the accepted reaction
 notification contract is
 `docs/community-3.0/reaction-notification-contract-v1.md`.
+The accepted group-activity notification contract is
+`docs/community-3.0/group-activity-notification-contract-v1.md`.
 C3-GO001 records GO authorization for bounded implementation preparation. The
 master plan is the product authority above engineering roadmaps and tickets.
 C3-NOT005 may be considered after Engineering Director review; it is not
@@ -96,7 +98,8 @@ design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
 
-Review the C3-NOT004 contract and decide whether to authorize C3-NOT005.
+Review the C3-NOT006 contract and decide whether to authorize the next bounded
+notification contract.
 Any follow-up evidence gathering remains read-only. Stop before mail sending,
 schema changes, preference migration, delivery enablement, production edits,
 relationship activation, or unrelated Job Center implementation.
