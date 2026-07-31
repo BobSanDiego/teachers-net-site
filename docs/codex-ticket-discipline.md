@@ -85,34 +85,6 @@ link/path for every directory referenced, alongside the WSL path used for
 commands. Keep the native `C:\\...` path copyable and never translate it to
 `C:\\home\\...`.
 
-## Project-Specific Clean-Cycle Hopper Procedure
-
-For the Job Center project, the canonical hopper is
-`tmp/hopper/jobcenter/`. Active-cycle files belong only in `current/`; prior
-cycles belong only in `archive/`. At the beginning of every ticket, archive
-all existing `current/` contents without deletion. Generate one
-`YYMMDDHHMMSS` identifier and reuse it for the archive directory, report,
-manifest, JSON cycle record, copied artifact names, and evidence bundle.
-
-Copy every created or modified artifact and required evidence, including
-uncommitted or blocked work, into `current/` using the cycle identifier before
-the extension. Preserve original repository paths in
-`MANIFEST-jobcenter-<cycle>.txt`; include file status, size, SHA-256, commit
-state, and purpose. Create
-`cycle-jobcenter-<cycle>.json` and, when multiple evidence files exist,
-`evidence-jobcenter-<cycle>.zip`. Fail on filename collisions, never silently
-overwrite, never delete historical cycles, and exclude unrelated dirty files
-and protected `output.txt`.
-
-Every Codex ticket must begin by archiving the prior project-specific
-`current/` hopper contents and must end with a validated, self-contained
-current-cycle artifact set that the user can drag into ChatGPT in one
-operation. A ticket is not complete until the current project hopper contains
-the report, manifest, cycle record, every created or modified file, and all
-required evidence. Final screen output must include the full filenames and
-copyable WSL and Windows Explorer paths. Use
-`scripts/jobcenter-hopper.sh` rather than ad hoc hopper handling.
-
 Reuse existing routes, services, repositories, and validation.
 
 Avoid duplicate systems.
