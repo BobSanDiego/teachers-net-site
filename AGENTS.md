@@ -77,6 +77,7 @@ Before coding:
    - `docs/job-center/engineering-handoff.md`
    - `docs/job-center/jobs-roadmap.md`
    - `docs/job-center/product-definition-v1.md`
+   - `docs/job-center/jc053-wizard-design-system-v1.md`
    - `docs/design-system-v1.md`
    - `docs/codex-ticket-discipline.md`
 
@@ -126,6 +127,14 @@ Current next task:
 Use the active project's Project Cursor and Engineering Handoff. Do not treat
 Job Center V1 visual QA as the default task for Core Terms, Membership
 Taxonomy, or future workstreams.
+
+JC053 wizard authority:
+Future wizard tickets must reuse the canonical primitives defined in
+`docs/job-center/jc053-wizard-design-system-v1.md`, including the Wizard
+Responsive Form Grid, Form Control with Trailing Icon, shared stepper, bottom
+navigation, and Choice Card patterns. The Job Center roadmap and Engineering
+Handoff must point to this authority; do not re-explain or fork those patterns
+in step-specific guidance unless the content is genuinely unique.
 
 Current launch blocker:
 No global P0 runtime blocker is currently known. Do not begin V2 features until

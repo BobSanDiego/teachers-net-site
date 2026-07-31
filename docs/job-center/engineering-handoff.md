@@ -7,8 +7,10 @@ implementation detail remain in the referenced repository documents.
 
 Active Development - Visual Convergence Sprint.
 
-Responsive Design is complete for the approved authority set. Employer
-Remaining UX authority convergence is the active workstream. Approved
+Responsive Design is complete only for the previously approved public and
+job-detail authority set. JC053 Employer Operations responsive convergence is
+an active implementation-target workstream. Remaining UX authority
+convergence is the active workstream. Approved
 visual authorities remain Patch Mode references and must not be altered during
 implementation.
 
@@ -29,6 +31,8 @@ Active bounded workstreams are JC052 Employer Workspace Completion, JC053 Job
 Posting Wizard Re-Convergence, JC054 Teacher Discovery Final Pass, JC055
 Teacher Account Modules, and JC056 Identity & Onboarding. JC057 is the later
 implementation capability audit; JC058+ is generated from its findings.
+The JC053 V1 field inventory and admission contract is recorded at
+`docs/job-center/job-posting-wizard-field-contract-v1.md`.
 
 ## 3. Last Completed Milestone
 
@@ -66,17 +70,33 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 4. JC055 Teacher Account Modules.
 5. JC056 Identity & Onboarding, followed by the JC057 implementation capability audit.
 
+JC053 shared UI authority is now durable at
+`docs/job-center/jc053-wizard-design-system-v1.md`. Future wizard work must
+reuse the Wizard Responsive Form Grid, Form Control with Trailing Icon,
+Stepper, Bottom Navigation, and Choice Card primitives defined there rather
+than restating or forking shared patterns.
+
 ## 5. Current Blockers
 
 - UX authority convergence remains incomplete across JC052–JC056; implementation
   audit and later implementation sequencing remain deferred.
 - Employer mobile implementation is intentionally held until desktop acceptance.
+- JC053 responsive acceptance remains open. Required evidence is a local
+  Windows-visible PNG series captured through external
+  `chrome-devtools-mcp@1.6.0` at CDP `http://127.0.0.1:9222` with
+  `--allow-unrestricted-paths`, plus browser and human review. Intended rules
+  retain the 250px brand/rail and full navbar through 1025px, then use compact
+  210px brand/rail and a unified Resources control at 1024px and below.
 - Exact Expired-to-Closed timing, archive semantics, retention policy,
   Duplicate versus Repost wording, notification behavior, and deeper analytics
   remain unresolved and must not be invented during implementation.
 - No production deployment is established by the verified history.
 
 ## 6. Recently Adopted Governance Documents
+
+- JC053 Wizard Design System v1:
+  `docs/job-center/jc053-wizard-design-system-v1.md` — canonical shared wizard
+  shell, controls, navigation, choice-card, and responsive form-grid guidance.
 
 ## Canonical Chrome QA Recovery
 

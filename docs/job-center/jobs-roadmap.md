@@ -40,6 +40,15 @@ Launch Readiness → Explicit V1 Acceptance → Production Launch
 
 ## Current Authorized Workstream
 
+JC053 responsive shell refinement is a bounded active implementation-target
+workstream within the wizard workstream. It is not an approved production
+authority. Acceptance requires local Windows-visible PNG evidence, external
+Chrome DevTools verification, and human visual review. The intended contract
+retains full 250px brand/rail and full navbar through 1025px, then uses compact
+210px brand/rail with one unified Resources control at 1024px and below.
+Shared structural axes are authoritative; page-specific offsets and partial
+navigation collapse are not accepted.
+
 The project is in a **Visual Convergence Sprint**. The immediate objective is
 to complete remaining UX authority work before the implementation capability
 audit. The governing philosophy is **design first, audit second, implement
@@ -62,6 +71,12 @@ Revisit the existing wizard using the finalized shell, reusable controls,
 spacing, progressive disclosure, School / Jobsite selection, organization
 defaults, listing overrides, image behavior, and validation improvements. The
 wizard becomes authoritative after this convergence.
+The field inventory, admission rule, deferrals, and open decisions are recorded
+at `docs/job-center/job-posting-wizard-field-contract-v1.md`. Shared JC053 UI
+authority is defined in
+`docs/job-center/jc053-wizard-design-system-v1.md`; future tickets must reuse
+its Wizard Responsive Form Grid, trailing-icon control, stepper, bottom
+navigation, and Choice Card primitives.
 
 ### JC054 — Teacher Discovery Final Pass
 
