@@ -201,6 +201,12 @@ threading, executes lifecycle and moderation transitions, proves process-local
 idempotency, and produces canonical post-commit-shaped events. No WordPress
 runtime, persistence, notification, or production integration was added.
 
+C3-CORE008 is complete as a local-only WordPress custom-table persistence
+prototype in `tnet-community`. It persists synthetic domain results, audit
+rows, and post-commit-shaped outbox rows transactionally, proves idempotency
+and rollback seams, and has no UI, notification, migration, or production
+integration.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does

@@ -118,6 +118,11 @@ validation, post-first/pending moderation, lifecycle transitions, idempotency,
 and canonical event construction are executable against synthetic data only.
 Persistence, WordPress runtime, notifications, forms, and migration remain
 deferred. The next boundary is persistence implementation authorization.
+C3-CORE008 is complete as the local-only persistence prototype owned by
+`wordpress/wp-content/plugins/tnet-community/`. It defines opt-in schema,
+repository transactions, audit/event outbox storage, idempotent retrieval, and
+rollback injection tests. No production tables, routes, UI, dispatch, or
+migration were changed. Next is local developer-facing verification/QA.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,
