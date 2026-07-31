@@ -196,3 +196,18 @@ requested 390px and 320px checks, the workbench renderer may clamp the browser
 surface to its supported 500px minimum; such results must be recorded with
 both requested and actual widths rather than treated as true 390px/320px
 evidence.
+
+## 13. JC053 RESP009 Navbar Breakpoint Contract
+
+From 1024px through 531px, the compact Job Center control is an inline-flex
+control. Its label and caret use a 10px gap, the caret remains inside the
+button's measured box, and the primary track retains explicit separation from
+the utility region. The caret must not intrude into an adjacent grid region.
+
+At 530px through 401px, the existing Job Center drawer trigger replaces the
+text control while the notification bell and account control remain in the
+navbar. At 400px and below, the navbar shows only the Teachers.Net logo and a
+centered hamburger; the utility region is visually and assistively hidden.
+The drawer retains My Jobs, Career Resources, Teacher Resources, Notifications,
+and My Account, with the existing accessible heading, close control, Escape
+dismissal, aria-expanded/aria-controls state, and focus restoration.
