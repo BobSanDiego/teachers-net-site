@@ -134,6 +134,10 @@ C3-CORE010 is complete. PHP is the authoritative runtime domain under
 objects manually. Topics and replies share the PHP domain, and the shared JSON
 fixture/parity checks preserve semantic agreement with Python regression
 evidence. No Python runtime bridge, production deployment, or migration exists.
+C3-CORE011 is complete as the local sandbox lifecycle extension. Thread,
+reply, lifecycle, audit, and event controls are available through the existing
+authenticated workbench and remain DDEV-only. No visual redesign or public
+Community interface was begun.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

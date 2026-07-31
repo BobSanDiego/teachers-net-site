@@ -5,6 +5,7 @@ final class TNet_Community_Publisher_Domain {
     private array $posts = [];
     private array $submissions = [];
     private const TRANSITIONS = ['draft'=>['validated','failed'],'validated'=>['published','pending'],'pending'=>['published','hidden','spam','failed'],'published'=>['hidden','moderated','spam','retracted','deleted'],'hidden'=>['published','spam','deleted','restored'],'moderated'=>['published','spam','deleted','restored'],'spam'=>['restored','deleted'],'retracted'=>['restored','deleted'],'deleted'=>['restored'],'restored'=>['published']];
+    public function seed_post(array $post): void { if (!empty($post['post_id'])) $this->posts[$post['post_id']]=$post; }
     public function publish(array $draft, array $communities, string $moderation = 'clear', bool $fail_event = false): array {
         $key=(string)($draft['submission_id']??''); if (isset($this->submissions[$key])) { $old=$this->submissions[$key]; return $old['draft']===$draft?$old['result']:['accepted'=>false,'reason_code'=>'IDEMPOTENCY_CONFLICT']; }
         $validation=$this->validate($draft,$communities,$moderation); if (!$validation['valid']) { $result=['accepted'=>false,'validation'=>$validation,'reason_code'=>$validation['reason_codes'][0]]; $this->submissions[$key]=['draft'=>$draft,'result'=>$result]; return $result; }

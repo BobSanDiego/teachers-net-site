@@ -221,6 +221,12 @@ threading, moderation, lifecycle, idempotency, and event construction. The
 workbench delegates through the PHP application service; Python remains
 characterization/regression support and is not executed by WordPress.
 
+C3-CORE011 is complete as the local Developer Sandbox extension. The existing
+workbench now supports thread browsing, direct/nested synthetic replies,
+hide/retract/restore/soft-delete lifecycle actions, and audit/event viewers.
+No public Community UI, notification dispatch, legacy CGI, migration, or
+production behavior was added.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
