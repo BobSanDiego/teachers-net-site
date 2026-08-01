@@ -1187,16 +1187,16 @@
         </div>
         <div class="step3-optional-sections">
           ${["Responsibilities","Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
-          <section class="step3-benefits" aria-labelledby="step3-benefits-heading">
-            <h4 id="step3-benefits-heading">Benefits</h4>
+          <details class="step3-benefits">
+            <summary>Benefits</summary>
             <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
-            <p class="step3-benefits-help">Select all benefits that apply. Click any item below to add or remove it.</p>
+            <p class="step3-benefits-help">Select all benefits that apply. (Click items to add or remove benefits from the listing.)</p>
             <div id="step3-benefits-categories" class="step3-benefits-categories"></div>
             <label class="step3-benefits-additional-toggle"><input id="step3-benefits-additional-enabled" type="checkbox"> <span>Additional benefits</span></label>
             <p class="step3-benefits-additional-help">Describe any benefits not listed above.</p>
             <textarea id="step3-benefits-additional" maxlength="300" rows="3" aria-label="Additional benefits" hidden></textarea>
             <div class="step3-counter"><span data-counter-for="step3-benefits-additional">0</span>/300 characters</div>
-          </section>
+          </details>
         </div>
       </div>
       <aside class="step3-preview-pane" aria-label="Listing Preview"><div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>This is how your job listing will look to teachers.</p></div><span>Live preview</span></div><div id="step3-preview" class="step3-preview-card"></div><p class="step3-preview-note">Step 5 remains the canonical full review surface.</p></aside>
@@ -1238,7 +1238,7 @@
     if (!selected || !categories) return;
     const values = [...step3State.selectedBenefits];
     selected.innerHTML = values.length
-      ? `<span class="step3-benefits-selected-label">Selected (${values.length}):</span> ${values.map((value) => `<span class="step3-benefits-selected-item">${step3Escape(value)} <button type="button" data-benefit-remove="${step3Escape(value)}" aria-label="Remove ${step3Escape(value)}">×</button></span>`).join(" ")} <button type="button" class="step3-benefits-clear" data-benefit-clear>Clear all</button>`
+      ? `<span class="step3-benefits-selected-label">Selected (${values.length}):</span> ${values.map((value) => `<button type="button" class="step3-benefits-selected-item" data-benefit-remove="${step3Escape(value)}" aria-label="Remove ${step3Escape(value)}">${step3Escape(value)} <span aria-hidden="true">×</span></button>`).join(", ")} <button type="button" class="step3-benefits-clear" data-benefit-clear>Clear all</button>`
       : `<span class="step3-benefits-empty">No benefits selected yet.</span>`;
     categories.innerHTML = Object.entries(step3Benefits).map(([category, options]) => `<div class="step3-benefits-category"><span class="step3-benefits-category-label">${category}:</span> <span class="step3-benefits-options">${options.map((option) => `<button type="button" class="step3-benefit-option${step3State.selectedBenefits.has(option) ? " is-selected" : ""}" data-benefit-option="${step3Escape(option)}" aria-pressed="${step3State.selectedBenefits.has(option)}">${step3Escape(option)}</button>`).join(", ")}</span></div>`).join("");
   };
