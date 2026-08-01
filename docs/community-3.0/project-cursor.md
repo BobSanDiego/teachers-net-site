@@ -305,6 +305,13 @@ production UI work, or communication delivery.
 
 The active Google Drive operational handoff is
 <https://docs.google.com/document/d/1oxqqgFHkPwrJQpQ563-hho0jPf_MWrTEPE_qCJa-BeY>.
+
+C3-UI003 is implemented locally at `/community/new/`. It is DDEV-gated,
+authenticated, nonce-protected, uses the authoritative PHP publisher
+application and repository, validates a bounded local Community selection, and
+redirects successful publication to Thread View. Automated verification is
+complete; human responsive browser QA remains required. No production, CGI,
+notification, migration, or Core Terms behavior changed.
 persistence or delivery was added.
 
 C3-IMP005 is complete as a test-only in-memory bell repository at

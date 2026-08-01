@@ -260,3 +260,11 @@ activation, or unrelated Job Center implementation.
 Any follow-up evidence gathering remains read-only. Stop before mail sending,
 schema changes, preference migration, delivery enablement, production edits,
 relationship activation, or unrelated Job Center implementation.
+
+C3-UI003 is implemented in
+`wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-topic-composer-controller.php`.
+The local authenticated `/community/new/` form uses the PHP publisher
+application, nonce and capability checks, bounded Community selection,
+generated idempotency key, server-side validation, and a Post/Redirect/Get to
+Thread View. Automated checks are complete; desktop, tablet, and mobile human
+visual QA remains pending. No production or delivery behavior changed.
