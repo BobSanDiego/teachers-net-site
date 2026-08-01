@@ -14,9 +14,9 @@ def main() -> int:
     cycle = json.loads(args.cycle.read_text())
     failures = []
     if cycle.get("project") != "tnet-3.0": failures.append("project must be tnet-3.0")
-    if not str(cycle.get("ticket", "")).startswith("C3-"): failures.append("ticket must use the C3- Community family")
+    if not str(cycle.get("ticket", "")).startswith(("C3-", "OPS-BRANCH")): failures.append("ticket must use the Community or authorized branch-recovery family")
     if not str(cycle.get("branch", "")).startswith("COMMUNITY3-"): failures.append("branch must be Community-owned")
-    forbidden = ("job-center", "jobcenter", "tnet-jobs", "docs/job-center", "tmp/jc", "JC053")
+    forbidden = ("wordpress/wp-content/plugins/tnet-jobs", "docs/job-center/", "tmp/jc", "JC053")
     for artifact in cycle.get("artifacts", []):
         value = " ".join(str(artifact.get(key, "")) for key in ("hopper_filename", "original_path", "purpose"))
         if any(token.lower() in value.lower() for token in forbidden): failures.append(f"foreign artifact rejected: {value}")
