@@ -99,6 +99,16 @@ checks; verification tickets use representative views when shared inheritance
 changes. Contact sheets are milestone evidence, not a substitute for targeted
 rendered checks.
 
+### Page-head action and compact-stepper rules
+
+At 768px and above, page-head actions use the desktop heading composition. From
+767px through 501px, the compact shell keeps Cancel and Save Draft, when
+present, at the top right with normal button dimensions. At 500px and below,
+actions move beneath the heading into the existing mobile action row, with two
+actions side by side when both are present and a coherent single-action layout
+otherwise. The compact stepper-to-panel gap is intentionally tighter below
+768px; its shared bottom margin is 42px.
+
 ## New primitive checklist
 
 Before adding CSS or JavaScript, ask whether an existing primitive already

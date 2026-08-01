@@ -626,7 +626,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .stepper-status{display:none}
 /* RESP005: one compact authority mode applies at every width below 768px. */
 @media (max-width:767px){
-  .application-card[data-authority="true"] .stepper{align-items:flex-start;flex-wrap:wrap;gap:2px;justify-content:center;margin-bottom:52px;padding-inline:6px;row-gap:0}
+  .application-card[data-authority="true"] .stepper{align-items:flex-start;flex-wrap:wrap;gap:2px;justify-content:center;margin-bottom:42px;padding-inline:6px;row-gap:0}
   .application-card[data-authority="true"] .stepper li{flex:0 0 30px;height:34px;position:relative}
   .application-card[data-authority="true"] .stepper li .stepper-circle{flex-basis:30px;height:30px;width:30px}
   .application-card[data-authority="true"] .stepper li .stepper-label{display:none}
@@ -634,4 +634,12 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .stepper-status{display:flex;flex:0 0 100%;flex-direction:column;gap:2px;margin-top:10px;text-align:center}
   .application-card[data-authority="true"] .stepper-status strong{color:var(--primary);font-size:12px}
   .application-card[data-authority="true"] .stepper-status span{color:var(--ink);font-size:12px;font-weight:600}
+}
+/* RESP010: retain inline page-head actions from 767px through 501px. */
+@media (min-width:501px) and (max-width:767px){
+  .application-card[data-authority="true"] .workspace-head{align-items:flex-start;display:flex;gap:16px;justify-content:space-between}
+  .application-card[data-authority="true"] .workspace-head>div:first-child{min-width:0}
+  .application-card[data-authority="true"] .head-actions{align-items:flex-start;display:flex;flex:0 0 auto;gap:8px;margin-top:0}
+  .application-card[data-authority="true"] .head-actions .button{flex:0 0 auto;justify-content:center}
+  .application-card[data-authority="true"] .stepper{margin-bottom:42px}
 }
