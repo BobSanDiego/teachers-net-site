@@ -1239,6 +1239,7 @@
     selected.innerHTML = values.length
       ? `<span class="step3-benefits-selected-label">Benefits offered:</span> ${values.map((value) => `<button type="button" class="step3-benefits-selected-item" data-benefit-remove="${step3Escape(value)}" aria-label="Remove ${step3Escape(value)}">${step3Escape(value)} <span aria-hidden="true">×</span></button>`).join(", ")} <button type="button" class="step3-benefits-clear" data-benefit-clear>Clear all</button>`
       : `<span class="step3-benefits-selected-label">Benefits offered:</span> <span class="step3-benefits-selected-guidance"><span class="step3-benefits-help-click">Click</span> any benefit to add or remove it.</span>`;
+    selected.closest(".step3-benefits")?.classList.toggle("is-empty", values.length === 0);
     categories.innerHTML = Object.entries(step3Benefits).map(([category, options]) => `<div class="step3-benefits-category"><span class="step3-benefits-category-label">${category}:</span> <span class="step3-benefits-options">${options.map((option) => `<button type="button" class="step3-benefit-option${step3State.selectedBenefits.has(option) ? " is-selected" : ""}" data-benefit-option="${step3Escape(option)}" aria-pressed="${step3State.selectedBenefits.has(option)}">${step3Escape(option)}</button>`).join(", ")}</span></div>`).join("");
   };
   const step3BenefitsText = () => [...step3State.selectedBenefits].join(", ");
