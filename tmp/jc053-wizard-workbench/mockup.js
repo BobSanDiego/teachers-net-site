@@ -1188,7 +1188,7 @@
         <div class="step3-optional-sections">
           ${["Responsibilities","Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
           <details class="step3-benefits">
-            <summary><span class="step3-benefits-title">Benefits</span><span class="step3-benefits-help">Click items to add or remove benefits from your job listing.</span></summary>
+            <summary><span class="step3-benefits-title">Benefits</span><span class="step3-benefits-help"><span class="step3-benefits-help-click">Click</span> any benefit to add or remove it.</span></summary>
             <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
             <div id="step3-benefits-categories" class="step3-benefits-categories"></div>
             <label class="step3-benefits-additional-toggle"><input id="step3-benefits-additional-enabled" type="checkbox"> <span>Additional benefits</span></label>

@@ -16,7 +16,12 @@ their typography. No empty-state message is rendered when the selected set is
 empty. Guidance is inline in the expanded section header and hidden while
 collapsed, in italic normal-weight secondary text:
 `Click items to add or remove benefits from your job listing.` Selected
-category options use underline and normal weight. The native shared marker is
+category options use normal weight with a subtle light-blue background when
+selected. The canonical guidance is `Click any benefit to add or remove it.`
+and is 12px italic secondary text; the noninteractive word `Click` uses the
+same selected-state text/background treatment. Unselected options use readable
+blue-gray text with pointer and visible hover/focus underlines. No additional
+explanatory UI is required. The native shared marker is
 the sole disclosure controller. The Additional benefits
 counter follows the textarea visibility and remains hidden while disabled.
 The canonical review URL is `http://127.0.0.1:8768/#step-03-job-description`.
