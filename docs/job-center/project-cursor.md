@@ -285,6 +285,15 @@ blindly. WSL loopback HTTP checks can time out while the external MCP route is
 healthy, so confirm with MCP `list_pages`. Use a cache-bypassing reload before
 responsive measurements and screenshots to avoid stale workbench CSS.
 
+The canonical JC053 workbench server is `tools/qa/serve-jc053-workbench.py`.
+Run it from the Job Center-owned checkout with
+`python3 tools/qa/serve-jc053-workbench.py --port 8768`, then open
+`http://127.0.0.1:8768/#step-03-job-description`. It rejects non-
+`JOB-CENTER-*` branches, verifies the PATCH001 and UX002 asset markers, derives
+cache-busting from the current commit, injects a visible runtime identity
+banner, and serves no-store responses. The mixed Community branch and generic
+static servers are not authoritative for JC053 verification.
+
 - Employer UX authority convergence remains incomplete across JC052–JC056;
   the implementation capability audit and later implementation remain deferred
   until those authorities are complete.

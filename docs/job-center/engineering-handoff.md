@@ -116,6 +116,21 @@ same workstream; mixed-project payloads are invalid.
 The deterministic hopper helper enforces this contract for `begin`, `collect`,
 `refresh`, and `validate`.
 
+## Canonical JC053 workbench runtime
+
+The authoritative Job Center workbench runs from the active
+`JOB-CENTER-JC053-wizard-workbench` checkout using:
+
+```bash
+python3 tools/qa/serve-jc053-workbench.py --port 8768
+```
+
+Open `http://127.0.0.1:8768/#step-03-job-description`. The server derives
+the asset query version from the current commit, rejects non-Job-Center
+branches, verifies the PATCH001 and UX002 markers, injects a visible branch /
+commit / asset / root / build-time banner, and sends no-store headers. Do not
+serve the workbench from the mixed historical branch or an ad hoc static root.
+
 ## Canonical Chrome QA Recovery
 
 If `http://127.0.0.1:9222/json/version` is unavailable, run the repository
