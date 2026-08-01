@@ -242,6 +242,18 @@ within this ticket.
 
 ## Next Authorized Ticket
 
+C3-URL001 is complete as a bounded, documentation-only permalink and legacy
+redirect contract. The selected production pattern is
+`/community/{community-slug}/{thread-slug}/`; internal IDs remain hidden from
+normal URLs, thread slugs are immutable after publication, and legacy URLs
+redirect only after verified mapping and public-visibility checks. The six
+contract documents are the URL architecture, thread permalink, slug, legacy
+redirect, WordPress routing, and migration test-plan documents in this
+directory. No production route, rewrite, database, sitemap, schema, or
+redirect changed. The next bounded ticket is C3-URL002 — Local Canonical
+Community Routing Prototype. UI002 remains gated until the permalink contract
+is accepted.
+
 C3-CORE001 is complete. Any next implementation slice requires Engineering
 Director review and explicit authorization; persistence and delivery remain
 deferred.

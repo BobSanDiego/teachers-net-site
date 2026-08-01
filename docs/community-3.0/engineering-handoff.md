@@ -6,6 +6,17 @@ Bounded implementation preparation — C3-CORE001 complete; no delivery implemen
 
 ## 2. Current Ticket
 
+C3-URL001 is complete as a documentation-only routing decision and
+compatibility design. It selects `/community/{community-slug}/{thread-slug}/`
+for public canonical threads, keeps opaque IDs internal, freezes published
+thread slugs, and requires verified mappings before legacy redirects. Its six
+documents are in `docs/community-3.0/` under the URL architecture, thread
+permalink, slug, legacy redirect, WordPress routing, and migration test-plan
+names. No production routing, rewrite, sitemap, schema, database, or redirect
+was changed. C3-URL002 — Local Canonical Community Routing Prototype is next;
+retain the current DDEV-only `/community/thread/{post_id}/` route only as an
+explicit temporary local alias while testing the new contract.
+
 C3-RR001, C3-PLAN003, C3-PLAN004, C3-TRUST001, C3-TRUST002, C3-NOT001, C3-NOT002, C3-NOT003, and C3-NOT004 are complete as
 documentation/read-only evidence work. The accepted subscriber-policy contract
 is `docs/community-3.0/subscriber-policy-contract-v1.md`; the accepted
