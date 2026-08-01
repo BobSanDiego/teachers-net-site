@@ -1188,8 +1188,7 @@
         <div class="step3-optional-sections">
           ${["Responsibilities","Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
           <details class="step3-benefits">
-            <summary>Benefits</summary>
-            <p class="step3-benefits-help">Click items to add or remove benefits from your job listing.</p>
+            <summary><span class="step3-benefits-title">Benefits</span><span class="step3-benefits-help">Click items to add or remove benefits from your job listing.</span></summary>
             <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
             <div id="step3-benefits-categories" class="step3-benefits-categories"></div>
             <label class="step3-benefits-additional-toggle"><input id="step3-benefits-additional-enabled" type="checkbox"> <span>Additional benefits</span></label>
@@ -1239,7 +1238,7 @@
     const values = [...step3State.selectedBenefits];
     selected.innerHTML = values.length
       ? `<span class="step3-benefits-selected-label">Benefits offered:</span> ${values.map((value) => `<button type="button" class="step3-benefits-selected-item" data-benefit-remove="${step3Escape(value)}" aria-label="Remove ${step3Escape(value)}">${step3Escape(value)} <span aria-hidden="true">×</span></button>`).join(", ")} <button type="button" class="step3-benefits-clear" data-benefit-clear>Clear all</button>`
-      : `<span class="step3-benefits-empty">No benefits selected yet.</span>`;
+      : ``;
     categories.innerHTML = Object.entries(step3Benefits).map(([category, options]) => `<div class="step3-benefits-category"><span class="step3-benefits-category-label">${category}:</span> <span class="step3-benefits-options">${options.map((option) => `<button type="button" class="step3-benefit-option${step3State.selectedBenefits.has(option) ? " is-selected" : ""}" data-benefit-option="${step3Escape(option)}" aria-pressed="${step3State.selectedBenefits.has(option)}">${step3Escape(option)}</button>`).join(", ")}</span></div>`).join("");
   };
   const step3BenefitsText = () => [...step3State.selectedBenefits].join(", ");

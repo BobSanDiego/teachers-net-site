@@ -4,15 +4,17 @@ The Benefits section is an optional collapsed disclosure in the shared Step 3
 authoring renderer and uses the same native disclosure owner as the neighboring
 optional sections. Its disclosure state affects only authoring visibility; it
 does not suppress selected benefits or Additional benefits from the live
-preview. The wrapper reuses the ordinary optional-section `<details>` and
+preview. Disclosure spacing is wholly owned by the shared optional-section
+grid. The wrapper reuses the ordinary optional-section `<details>` and
 `<summary>` structure; no Benefits-specific disclosure-controller CSS exists.
 
 Selected benefits are rendered as lightweight, comma-separated whole-item
 buttons under the `Benefits offered:` label. Activating an item removes it and
 exposes the accessible name `Remove <benefit>`. Category options remain inline
 toggle buttons with `aria-pressed` state, and selected summary items match
-their typography. Guidance is hidden while collapsed and appears as the first
-content in the expanded body, in italic normal-weight secondary text:
+their typography. No empty-state message is rendered when the selected set is
+empty. Guidance is inline in the expanded section header and hidden while
+collapsed, in italic normal-weight secondary text:
 `Click items to add or remove benefits from your job listing.` Selected
 category options use underline and normal weight. The native shared marker is
 the sole disclosure controller. The Additional benefits
