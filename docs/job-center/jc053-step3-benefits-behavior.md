@@ -6,8 +6,10 @@ does not suppress selected benefits or Additional benefits from the live
 preview.
 
 Selected benefits are rendered as lightweight, comma-separated whole-item
-buttons. Activating an item removes it and exposes the accessible name
-`Remove <benefit>`. Category options remain inline toggle buttons with
-`aria-pressed` state. The helper instruction explicitly explains both adding
-and removing benefits. Additional benefits remains progressively revealed,
-limited to 300 characters, and retains its session state when disabled.
+buttons under the `Benefits offered:` label. Activating an item removes it and
+exposes the accessible name `Remove <benefit>`. Category options remain inline
+toggle buttons with `aria-pressed` state, and selected summary items match
+their typography. The single guidance line immediately beneath the Benefits
+title is: `Click items to add or remove benefits from your job listing.`
+Additional benefits remains progressively revealed, limited to 300 characters,
+and retains its session state when disabled.
