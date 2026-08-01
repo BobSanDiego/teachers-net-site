@@ -352,3 +352,14 @@ security, accessibility, moderation, lifecycle, feed, notification, and
 subject-compatibility contracts; AI remains assistive and deferred. No code,
 schema, migration, UI, feed, notification, or production work was performed.
 Next ticket: C3-PUB002 — Community Rich Composer Foundation.
+
+C3-PUB002 is complete as a bounded local foundation. `/community/new/` now
+uses modular native sections for context, writing, and progressive attachment
+disclosure. Post-mode placeholders are Discussion, Question, Candle, and Idea;
+all continue through the ordinary text topic publisher. Empty attachments and
+link references are represented in existing compatibility metadata, with no
+uploads, enrichment, schema, storage, feed, notification, AI, or production
+behavior. DDEV lint, route protection, markup, and ordinary-text publication
+checks passed. Authenticated browser screenshots remain pending because browser
+control was unavailable in the WSL session. Next ticket: C3-PUB003 — Community
+Link Enrichment and Preview Pipeline.

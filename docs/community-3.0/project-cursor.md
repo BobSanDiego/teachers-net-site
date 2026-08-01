@@ -398,3 +398,15 @@ behind security, accessibility, moderation, lifecycle, subject-compatibility,
 feed, and notification contracts. No implementation, schema, migration, UI,
 feed, notification, or production change was made. Next ticket:
 C3-PUB002 — Community Rich Composer Foundation.
+
+C3-PUB002 is implemented locally as a bounded rich-composer foundation. The
+authenticated `/community/new/` form now has modular context, writing, and
+progressively disclosed attachment sections; Discussion, Question, Candle,
+and Idea placeholders; an empty attachment framework; a link-reference field
+with enrichment deferred; and accessible native keyboard controls. Composer
+metadata is carried through existing `compatibility_refs` without schema or
+storage changes. Ordinary text publishing remains compatible. No uploads,
+enrichment, feeds, notifications, AI, or production work was performed.
+Authenticated visual browser screenshots remain pending because browser
+control was unavailable in this WSL session. Next ticket: C3-PUB003 —
+Community Link Enrichment and Preview Pipeline.
