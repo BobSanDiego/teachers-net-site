@@ -9,7 +9,10 @@ Selected benefits are rendered as lightweight, comma-separated whole-item
 buttons under the `Benefits offered:` label. Activating an item removes it and
 exposes the accessible name `Remove <benefit>`. Category options remain inline
 toggle buttons with `aria-pressed` state, and selected summary items match
-their typography. The single guidance line immediately beneath the Benefits
-title is: `Click items to add or remove benefits from your job listing.`
+their typography. Benefits uses the exact shared optional disclosure
+controller; its normal-weight secondary guidance remains inline immediately
+after the `Benefits` title, including while collapsed: `Click items to add or
+remove benefits from your job listing.` The selected-summary row has deliberate
+separation before category options.
 Additional benefits remains progressively revealed, limited to 300 characters,
 and retains its session state when disabled.
