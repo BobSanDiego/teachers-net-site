@@ -643,3 +643,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card[data-authority="true"] .head-actions .button{flex:0 0 auto;justify-content:center}
   .application-card[data-authority="true"] .stepper{margin-bottom:42px}
 }
+/* RESP011: lighten only the mobile page-head actions without changing their layout. */
+@media (max-width:500px){
+  .application-card[data-authority="true"] .head-actions .button{min-height:38px}
+}

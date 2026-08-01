@@ -109,6 +109,17 @@ actions side by side when both are present and a coherent single-action layout
 otherwise. The compact stepper-to-panel gap is intentionally tighter below
 768px; its shared bottom margin is 42px.
 
+### Responsive shell freeze candidate
+
+Following JC053-WIZARD-RESP011 verification, the recommendation is:
+
+**JC053 Responsive Wizard Shell v1 — Frozen**
+
+This freeze applies to the shared shell, responsive breakpoints, page-head
+composition, compact stepper, shared navigation, footer, and responsive
+spacing primitives. Future changes to these areas require an explicit
+exception ticket.
+
 ## New primitive checklist
 
 Before adding CSS or JavaScript, ask whether an existing primitive already
