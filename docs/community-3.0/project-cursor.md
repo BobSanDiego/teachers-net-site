@@ -342,3 +342,6 @@ composer rendering, and successful publication were verified. The final QA
 Thread View was `/community/thread/post:8e78f134fdbc8a86/`. Two narrow composer
 defects found during QA were corrected: Community identifier sanitization and
 encoded-colon redirect construction. The next ticket is C3-UI004.
+Replay of the same submitted form was also verified to return the same Thread
+View at `/community/thread/post:c2b49047485cf50d/` without creating a second
+topic.

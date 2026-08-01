@@ -37,6 +37,9 @@ Against the existing local Teachers.Net clone at `https://teachers-net.ddev.site
 - A hidden submission identifier is carried through the form for replay
   deduplication. The disposable local QA records and account must be removed
   when the QA fixture is retired.
+- Browser back/replay of the same submitted form returned the same Thread View
+  at `/community/thread/post:c2b49047485cf50d/`; the database contains one
+  matching topic for that submission.
 
 ## OPS001 runtime boundary
 
