@@ -1,4 +1,4 @@
-name: teachers-net
+name: teachers-net-community3
 type: wordpress
 docroot: wordpress
 php_version: "8.4"

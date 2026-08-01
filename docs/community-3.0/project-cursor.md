@@ -325,3 +325,11 @@ with dedicated DDEV project `teachers-net-community3` and hostname
 `https://teachers-net-community3.ddev.site`. Runtime configuration exists, but
 web/db health and browser reachability remain blocked at the current checkpoint;
 no database, activation, schema, rewrite, or production change was made.
+
+C3-OPS002-DIAG001 diagnosed the dedicated HTTP 502 as the absent ignored
+WordPress bootstrap/runtime at the persistent worktree's configured docroot.
+Restoring the local runtime resolved the infrastructure 502; the dedicated
+hostname now returns the WordPress installation redirect. The dedicated
+Database remains uninstalled and no import, URL update, activation, schema, or
+rewrite operation has been performed. The original runtime and production are
+untouched.

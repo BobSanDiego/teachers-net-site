@@ -12,12 +12,14 @@ contains repository-owned plugin/docs files but not the ignored WordPress core
 needed for DDEV's `wordpress` docroot. The Community plugin directory was
 preserved from this branch and was not overwritten.
 
-At the C3-OPS001 checkpoint, DDEV configuration exists and the dedicated
-containers were created, but the web/db services did not remain healthy after
-the runtime copy and the dedicated hostname returned HTTP 502. No database
-import, URL update, activation, schema install, rewrite flush, or browser QA
-was performed. The original `teachers-net` runtime and database were not
-stopped or modified.
+The C3-OPS002-DIAG001 diagnosis found that the initial persistent worktree
+lacked the ignored WordPress bootstrap/runtime at the configured docroot. After
+restoring that local runtime, the dedicated web and database containers remain
+healthy and the hostname returns a WordPress installation redirect rather than
+HTTP 502. The dedicated database is still uninstalled; no database import, URL
+update, activation, schema install, rewrite flush, or browser QA has been
+performed. The original `teachers-net` runtime and database were not stopped or
+modified.
 
 Recovery must continue in this worktree. First establish healthy `ddev status`
 for `teachers-net-community3`; then inspect the dedicated database, set only

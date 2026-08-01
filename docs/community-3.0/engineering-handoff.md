@@ -278,3 +278,12 @@ plugin. DDEV web/db health did not remain available and the hostname returned
 502, so database alignment, plugin activation, schema installation, rewrite
 flush, and C3-UI003 browser QA remain pending. The original `teachers-net`
 runtime/database was not modified.
+
+C3-OPS002-DIAG001 diagnosed the dedicated HTTP 502: the persistent worktree
+lacked the ignored WordPress bootstrap/runtime required by the configured
+`wordpress` docroot. After restoring the local runtime, both dedicated DDEV
+containers are healthy and the hostname returns HTTP 302 to WordPress install.
+The database is not installed; no import, URL update, plugin activation,
+schema install, rewrite flush, or product QA has been performed. Continue with
+local database/runtime initialization only; the original runtime and
+production remain untouched.
