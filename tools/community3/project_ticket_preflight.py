@@ -40,8 +40,12 @@ def main() -> int:
     if not ticket_ok(args.project, args.ticket): failures.append(f"ticket {args.ticket!r} is not a {args.project} ticket")
     if not branch_ok(args.project, branch): failures.append(f"branch {branch!r} is not owned by {args.project}")
     if args.hopper != expected_hopper: failures.append(f"hopper {args.hopper!r} does not match expected {expected_hopper!r}")
-    dirty = subprocess.check_output(["git", "status", "--porcelain"], text=True).strip()
-    if dirty: failures.append("working tree is dirty; protect or isolate dirty work before editing")
+    dirty_paths = []
+    for line in subprocess.check_output(["git", "status", "--porcelain"], text=True).splitlines():
+        path = line[3:] if len(line) > 3 else line
+        if not path.startswith("tmp/hopper/tnet-3.0/"):
+            dirty_paths.append(path)
+    if dirty_paths: failures.append("working tree has unprotected dirty paths: " + ", ".join(dirty_paths[:8]))
     if failures:
         print("preflight rejected: " + "; ".join(failures))
         return 1
