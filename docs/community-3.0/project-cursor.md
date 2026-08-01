@@ -357,3 +357,10 @@ unlimited logical targeting. Exact parent lineage remains authoritative; future
 stored fields are `conversation_root_id`, `reply_to_post_id`, and
 `reply_to_author_id`. No schema or migration work was performed. C3-ARCH002 is
 the next implementation ticket for data/domain support and tests.
+
+C3-ARCH002-AUDIT001 confirms that standalone topics and future Lesson/Article
+discussions should share one Community thread engine while subject products
+retain ownership of their subject objects. No universal conversations table is
+required now. Before metadata implementation, add a validated subject-reference
+value object and compatibility tests; do not execute schema or migration work.
+The next ticket remains C3-ARCH002 with this compatibility boundary.

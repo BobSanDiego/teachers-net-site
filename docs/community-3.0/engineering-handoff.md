@@ -310,3 +310,10 @@ with unlimited logical targeting. Exact parent lineage remains stored; the
 selected hybrid model adds future branch-root and explicit-target fields without
 executing schema or migration work. Next implementation ticket: C3-ARCH002 —
 Community Thread Branch and Reply-Target Data Support.
+
+C3-ARCH002-AUDIT001 confirms one Community thread engine for standalone and
+future attached discussions. Subject products retain subject ownership; the
+selected near-term model is a validated subject-reference value object plus
+future nullable attachment fields, not a new universal conversations table.
+No schema, migration, feed, notification, UI, or production work was done.
+Extend C3-ARCH002 only with the required subject-identity compatibility tests.
