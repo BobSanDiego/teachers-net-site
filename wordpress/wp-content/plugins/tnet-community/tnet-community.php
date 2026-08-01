@@ -13,5 +13,8 @@ require_once __DIR__ . '/includes/class-tnet-community-workbench-service.php';
 require_once __DIR__ . '/admin/class-tnet-community-workbench.php';
 require_once __DIR__ . '/includes/class-tnet-community-thread-view.php';
 require_once __DIR__ . '/includes/class-tnet-community-thread-controller.php';
+require_once __DIR__ . '/includes/class-tnet-community-landing-view.php';
+require_once __DIR__ . '/includes/class-tnet-community-landing-controller.php';
 add_action('admin_menu', static function (): void { TNet_Community_Workbench::register(); });
 add_action('init', static function (): void { TNet_Community_Thread_Controller::register(); });
+add_action('init', static function (): void { TNet_Community_Landing_Controller::register(); });

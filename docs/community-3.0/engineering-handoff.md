@@ -154,6 +154,13 @@ The route renders seeded topics/replies and retracted tombstones through the
 repository-backed read service. It is DDEV-gated, noindex, navigation-free,
 and does not include a reply composer. Visual browser QA remains pending due to
 the unavailable browser bridge.
+C3-UI002 is complete as the local DDEV-only Community Landing Page v1 at
+`/community/`. It uses the Community repository/read-service boundary to list
+recent topics, safe author display, reply counts, last activity, empty state,
+and links to the existing Thread View. Start Discussion is disabled as
+Coming next. Browser snapshot and PNG evidence passed for the seeded state;
+the linked Thread View was also verified. No production behavior changed.
+Next bounded ticket: C3-URL002 — Local Canonical Community Routing Prototype.
 OPS-CONT001 is complete as a continuity and hopper process audit. The durable
 governance and validation documents are
 `docs/process/community-continuity-root-cause-v1.md`,

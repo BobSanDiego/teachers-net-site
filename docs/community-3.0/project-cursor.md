@@ -234,6 +234,15 @@ composition is deferred; no sitewide navigation, public production route, or
 notification UI was added. Browser visual QA was attempted but unavailable
 because the browser bridge failed to initialize.
 
+C3-UI002 is complete as the local-only Community Landing Page v1 at
+`/community/`. It lists recent published topics through the repository/read
+service, shows safe author display, reply counts, last activity, an empty
+state, a disabled Start Discussion control, and links to the existing local
+Thread View. The route is DDEV-gated and noindex. No production route,
+notification, CGI, migration, schema, or persistence behavior was added. The
+next bounded route ticket remains C3-URL002 — Local Canonical Community Routing
+Prototype.
+
 ## Authorization Status
 
 GO — bounded implementation preparation is authorized. This authorization does
