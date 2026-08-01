@@ -1186,7 +1186,17 @@
           <textarea id="step3-summary" maxlength="160" rows="3"></textarea><div class="step3-counter"><span data-counter-for="step3-summary">0</span>/160 characters</div>
         </div>
         <div class="step3-optional-sections">
-          ${["Responsibilities","Preferred Qualifications","Benefits","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
+          ${["Responsibilities","Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
+          <section class="step3-benefits" aria-labelledby="step3-benefits-heading">
+            <h4 id="step3-benefits-heading">Benefits</h4>
+            <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
+            <p class="step3-benefits-help">Select all benefits that apply. Click any item below to add or remove it.</p>
+            <div id="step3-benefits-categories" class="step3-benefits-categories"></div>
+            <label class="step3-benefits-additional-toggle"><input id="step3-benefits-additional-enabled" type="checkbox"> <span>Additional benefits</span></label>
+            <p class="step3-benefits-additional-help">Describe any benefits not listed above.</p>
+            <textarea id="step3-benefits-additional" maxlength="300" rows="3" aria-label="Additional benefits" hidden></textarea>
+            <div class="step3-counter"><span data-counter-for="step3-benefits-additional">0</span>/300 characters</div>
+          </section>
         </div>
       </div>
       <aside class="step3-preview-pane" aria-label="Listing Preview"><div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>This is how your job listing will look to teachers.</p></div><span>Live preview</span></div><div id="step3-preview" class="step3-preview-card"></div><p class="step3-preview-note">Step 5 remains the canonical full review surface.</p></aside>
@@ -1216,17 +1226,42 @@
     .map((line) => `<p>${step3Escape(line)}</p>`)
     .join("");
   const step3Text = (html) => step3PlainText(html).textContent.replace(/\\s+/g, " ").trim();
-  const step3State = { previewTimer: null };
+  const step3Benefits = {
+    Insurance: ["Medical Insurance", "Dental Insurance", "Vision Insurance", "Life Insurance", "Disability Insurance"],
+    Financial: ["Retirement Plan", "401(k) Plan", "403(b) Plan", "Pension Plan", "Employer Match", "Tuition Assistance", "Relocation Assistance"],
+    Scheduling: ["Paid Time Off", "Paid Holidays", "Paid Sick Leave", "Personal Days", "Flexible Schedule", "Remote / Hybrid Eligible"],
+    Other: ["Professional Development", "Mentoring / Coaching", "Conference Support", "Classroom Resources", "Employee Assistance Program", "Wellness Program", "Student Loan Assistance"],
+  };
+  const step3State = { previewTimer: null, selectedBenefits: new Set() };
+  const renderStep3Benefits = () => {
+    const selected = document.querySelector("#step3-benefits-selected"), categories = document.querySelector("#step3-benefits-categories");
+    if (!selected || !categories) return;
+    const values = [...step3State.selectedBenefits];
+    selected.innerHTML = values.length
+      ? `<span class="step3-benefits-selected-label">Selected (${values.length}):</span> ${values.map((value) => `<span class="step3-benefits-selected-item">${step3Escape(value)} <button type="button" data-benefit-remove="${step3Escape(value)}" aria-label="Remove ${step3Escape(value)}">×</button></span>`).join(" ")} <button type="button" class="step3-benefits-clear" data-benefit-clear>Clear all</button>`
+      : `<span class="step3-benefits-empty">No benefits selected yet.</span>`;
+    categories.innerHTML = Object.entries(step3Benefits).map(([category, options]) => `<div class="step3-benefits-category"><span class="step3-benefits-category-label">${category}:</span> <span class="step3-benefits-options">${options.map((option) => `<button type="button" class="step3-benefit-option${step3State.selectedBenefits.has(option) ? " is-selected" : ""}" data-benefit-option="${step3Escape(option)}" aria-pressed="${step3State.selectedBenefits.has(option)}">${step3Escape(option)}</button>`).join(", ")}</span></div>`).join("");
+  };
+  const step3BenefitsText = () => [...step3State.selectedBenefits].join(", ");
+  const step3BenefitsActive = () => step3State.selectedBenefits.size > 0 || !!document.querySelector("#step3-benefits-additional-enabled")?.checked && !!document.querySelector("#step3-benefits-additional")?.value.trim();
   const renderStep3Preview = () => {
     const preview = document.querySelector("#step3-preview");
     if (!preview) return;
     const description = document.querySelector("#step3-description-editor"), requirements = document.querySelector("#step3-requirements-editor"), summary = document.querySelector("#step3-summary");
-    preview.innerHTML = `<div class="step3-preview-school"><strong>${schoolJobsiteFixture.display_name}</strong><span>Los Angeles, CA · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${summary.value.trim()}</p>` : ""}<h5>Job Description</h5><div>${step3Sanitized(description?.innerHTML)}</div><h5>Requirements / Qualifications</h5><div>${step3Sanitized(requirements?.innerHTML)}</div>${[0,1,2,3].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return el && step3Text(el.innerHTML) ? `<h5>${["Responsibilities","Preferred Qualifications","Benefits","About Our School"][i]}</h5><div>${step3Sanitized(el.innerHTML)}</div>` : "";}).join("")}`;
+    const additional = document.querySelector("#step3-benefits-additional"), benefits = step3BenefitsActive() ? `<h5>Benefits</h5><div>${step3BenefitsText()}${additional?.checked || document.querySelector("#step3-benefits-additional-enabled")?.checked && additional?.value.trim() ? `${step3State.selectedBenefits.size ? ", " : ""}${step3Escape(additional.value.trim())}` : ""}</div>` : "";
+    preview.innerHTML = `<div class="step3-preview-school"><strong>${schoolJobsiteFixture.display_name}</strong><span>Los Angeles, CA · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${summary.value.trim()}</p>` : ""}<h5>Job Description</h5><div>${step3Sanitized(description?.innerHTML)}</div><h5>Requirements / Qualifications</h5><div>${step3Sanitized(requirements?.innerHTML)}</div>${[0,1,2].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return el && step3Text(el.innerHTML) ? `<h5>${["Responsibilities","Preferred Qualifications","About Our School"][i]}</h5><div>${step3Sanitized(el.innerHTML)}</div>` : "";}).join("")}${benefits}`;
   };
   const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
   step3Content.querySelectorAll("[data-format-command]").forEach((control) => control.addEventListener("click", () => { const command=control.dataset.formatCommand; if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }));
   step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
+  step3Content.addEventListener("change", (event) => { if (event.target.matches("#step3-benefits-additional-enabled")) { const field=document.querySelector("#step3-benefits-additional"); field.hidden=!event.target.checked; updateStep3Counters(); scheduleStep3Preview(); } });
+  step3Content.addEventListener("click", (event) => {
+    const option = event.target.closest("[data-benefit-option]"), remove = event.target.closest("[data-benefit-remove]"), clear = event.target.closest("[data-benefit-clear]");
+    if (option) { const value=option.dataset.benefitOption; step3State.selectedBenefits.has(value) ? step3State.selectedBenefits.delete(value) : step3State.selectedBenefits.add(value); renderStep3Benefits(); scheduleStep3Preview(); return; }
+    if (remove) { step3State.selectedBenefits.delete(remove.dataset.benefitRemove); renderStep3Benefits(); scheduleStep3Preview(); return; }
+    if (clear) { step3State.selectedBenefits.clear(); renderStep3Benefits(); scheduleStep3Preview(); }
+  });
   step3Content.querySelectorAll("[contenteditable]").forEach((editor) => editor.addEventListener("paste", (event) => {
     event.preventDefault();
     const clipboard = event.clipboardData || window.clipboardData;
@@ -1238,6 +1273,7 @@
     scheduleStep3Preview();
     refreshNextAction();
   }));
+  requestAnimationFrame(renderStep3Benefits);
   renderStep3Preview();
   const wizardShellConfigs = {
     "step-02-job-basics": {
