@@ -364,3 +364,16 @@ retain ownership of their subject objects. No universal conversations table is
 required now. Before metadata implementation, add a validated subject-reference
 value object and compatibility tests; do not execute schema or migration work.
 The next ticket remains C3-ARCH002 with this compatibility boundary.
+
+C3-ARCH002 is implemented locally. Schema version 2 adds nullable branch,
+reply-target, and subject-reference fields plus additive lookup indexes through
+an idempotent `dbDelta()` upgrade. The PHP domain validates subject references,
+rejects missing/cyclic/cross-thread/cross-community/restricted targets, derives
+the nearest L1 conversation root, and snapshots the exact target author.
+Repository persistence round-trips the fields transactionally and remains
+idempotent. The required implementation and QA documents are
+`community-thread-data-support-v1.md`,
+`community-subject-reference-implementation-v1.md`, and
+`community-thread-data-support-qa-v1.md`. No UI, migration/backfill,
+notifications, feeds, or production work was performed. Next ticket:
+C3-ARCH003 for flat L1/L2 rendering and explicit targets.

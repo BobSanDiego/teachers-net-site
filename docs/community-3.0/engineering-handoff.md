@@ -317,3 +317,17 @@ selected near-term model is a validated subject-reference value object plus
 future nullable attachment fields, not a new universal conversations table.
 No schema, migration, feed, notification, UI, or production work was done.
 Extend C3-ARCH002 only with the required subject-identity compatibility tests.
+
+C3-ARCH002 is now complete locally. The schema is version 2 and upgrades
+additively/idempotently with nullable `conversation_root_id`,
+`reply_to_post_id`, `reply_to_author_id`, `owner_product`, `subject_type`,
+`subject_id`, `source_namespace`, and `subject_revision` fields plus indexes
+for the required query paths. `TNet_Community_Subject_Reference` validates
+standalone Community topics and synthetic Lesson Bank/Teachers.Net attached
+identities. The publisher domain derives nearest-L1 roots, preserves exact
+parents, snapshots target authors, rejects missing/cyclic/cross-thread,
+cross-community, restricted, malformed, and unsupported references, and the
+repository persists the fields transactionally. Required implementation and
+QA documents are present in `docs/community-3.0/`. No rendering, UI,
+notifications, migration/backfill, or production work was performed. The next
+ticket is C3-ARCH003: flat L1/L2 rendering and explicit targets.

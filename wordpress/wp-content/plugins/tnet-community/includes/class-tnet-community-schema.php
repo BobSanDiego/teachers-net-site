@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 final class TNet_Community_Schema {
-    public const VERSION = '1';
+    public const VERSION = '2';
 
     public static function table_names(): array {
         global $wpdb;
@@ -18,37 +18,76 @@ final class TNet_Community_Schema {
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         $t = self::table_names();
         $c = $wpdb->get_charset_collate();
-        $wpdb->query("CREATE TABLE IF NOT EXISTS {$t['posts']} (
-            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, post_id VARCHAR(80) NOT NULL,
-            community_id VARCHAR(80) NOT NULL, author_id VARCHAR(80) NOT NULL,
-            thread_id VARCHAR(80) NOT NULL, parent_post_id VARCHAR(80) NULL,
-            post_type VARCHAR(16) NOT NULL, title TEXT NOT NULL, body LONGTEXT NOT NULL,
-            visibility VARCHAR(24) NOT NULL, moderation_state VARCHAR(24) NOT NULL,
-            publication_state VARCHAR(24) NOT NULL, created_at DATETIME NOT NULL,
-            updated_at DATETIME NOT NULL, published_at DATETIME NULL,
-            idempotency_key VARCHAR(128) NOT NULL, revision INT UNSIGNED NOT NULL DEFAULT 1,
-            safe_target VARCHAR(255) NOT NULL, compatibility_json LONGTEXT NULL,
-            audit_json LONGTEXT NULL, PRIMARY KEY (id), UNIQUE KEY post_id (post_id),
+        dbDelta("CREATE TABLE {$t['posts']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            post_id VARCHAR(80) NOT NULL,
+            community_id VARCHAR(80) NOT NULL,
+            author_id VARCHAR(80) NOT NULL,
+            thread_id VARCHAR(80) NOT NULL,
+            parent_post_id VARCHAR(80) NULL,
+            post_type VARCHAR(16) NOT NULL,
+            title TEXT NOT NULL,
+            body LONGTEXT NOT NULL,
+            visibility VARCHAR(24) NOT NULL,
+            moderation_state VARCHAR(24) NOT NULL,
+            publication_state VARCHAR(24) NOT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            published_at DATETIME NULL,
+            idempotency_key VARCHAR(128) NOT NULL,
+            revision INT UNSIGNED NOT NULL DEFAULT 1,
+            safe_target VARCHAR(255) NOT NULL,
+            compatibility_json LONGTEXT NULL,
+            audit_json LONGTEXT NULL,
+            conversation_root_id VARCHAR(80) NULL,
+            reply_to_post_id VARCHAR(80) NULL,
+            reply_to_author_id VARCHAR(80) NULL,
+            owner_product VARCHAR(64) NULL,
+            subject_type VARCHAR(80) NULL,
+            subject_id VARCHAR(128) NULL,
+            source_namespace VARCHAR(128) NULL,
+            subject_revision VARCHAR(64) NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY post_id (post_id),
             UNIQUE KEY submission (community_id, author_id, idempotency_key),
             KEY community_state_time (community_id, publication_state, published_at),
-            KEY thread_time_post (thread_id, created_at, post_id), KEY parent_post (parent_post_id),
-            KEY author_state (author_id, publication_state)
+            KEY thread_time_post (thread_id, created_at, post_id),
+            KEY parent_post (parent_post_id),
+            KEY author_state (author_id, publication_state),
+            KEY conversation_root_time (conversation_root_id, created_at, post_id),
+            KEY reply_target_state (reply_to_post_id, publication_state),
+            KEY subject_identity (owner_product, subject_type, subject_id)
         ) $c;");
-        $wpdb->query("CREATE TABLE IF NOT EXISTS {$t['audit']} (
-            audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, post_id VARCHAR(80) NOT NULL,
-            action VARCHAR(64) NOT NULL, actor_id VARCHAR(80) NOT NULL, reason TEXT NOT NULL,
-            previous_state VARCHAR(24) NULL, new_state VARCHAR(24) NOT NULL,
-            evidence_json LONGTEXT NULL, created_at DATETIME NOT NULL,
-            PRIMARY KEY (audit_id), KEY post_audit (post_id, audit_id)
+        dbDelta("CREATE TABLE {$t['audit']} (
+            audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            post_id VARCHAR(80) NOT NULL,
+            action VARCHAR(64) NOT NULL,
+            actor_id VARCHAR(80) NOT NULL,
+            reason TEXT NOT NULL,
+            previous_state VARCHAR(24) NULL,
+            new_state VARCHAR(24) NOT NULL,
+            evidence_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (audit_id),
+            KEY post_audit (post_id, audit_id)
         ) $c;");
-        $wpdb->query("CREATE TABLE IF NOT EXISTS {$t['events']} (
-            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, event_id VARCHAR(80) NOT NULL,
-            event_type VARCHAR(80) NOT NULL, post_id VARCHAR(80) NOT NULL,
-            community_id VARCHAR(80) NOT NULL, thread_id VARCHAR(80) NOT NULL,
-            parent_post_id VARCHAR(80) NULL, event_version INT UNSIGNED NOT NULL DEFAULT 1,
-            payload_json LONGTEXT NOT NULL, delivery_status VARCHAR(24) NOT NULL DEFAULT 'pending',
-            dedupe_key VARCHAR(128) NOT NULL, created_at DATETIME NOT NULL, dispatched_at DATETIME NULL,
-            PRIMARY KEY (id), UNIQUE KEY event_id (event_id), UNIQUE KEY dedupe (dedupe_key),
+        dbDelta("CREATE TABLE {$t['events']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            event_id VARCHAR(80) NOT NULL,
+            event_type VARCHAR(80) NOT NULL,
+            post_id VARCHAR(80) NOT NULL,
+            community_id VARCHAR(80) NOT NULL,
+            thread_id VARCHAR(80) NOT NULL,
+            parent_post_id VARCHAR(80) NULL,
+            event_version INT UNSIGNED NOT NULL DEFAULT 1,
+            payload_json LONGTEXT NOT NULL,
+            delivery_status VARCHAR(24) NOT NULL DEFAULT 'pending',
+            dedupe_key VARCHAR(128) NOT NULL,
+            created_at DATETIME NOT NULL,
+            dispatched_at DATETIME NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY event_id (event_id),
+            UNIQUE KEY dedupe (dedupe_key),
             KEY pending_events (delivery_status, id)
         ) $c;");
         update_option('tnet_community_schema_version', self::VERSION, false);
