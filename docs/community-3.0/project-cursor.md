@@ -333,3 +333,12 @@ hostname now returns the WordPress installation redirect. The dedicated
 Database remains uninstalled and no import, URL update, activation, schema, or
 rewrite operation has been performed. The original runtime and production are
 untouched.
+
+C3-OPS003 resumed Community development against the existing local Teachers.Net
+clone. The dedicated runtime experiment is suspended. The Community plugin is
+mounted read-only from the isolated branch into the existing local DDEV web
+container. Landing, Thread View, anonymous composer redirect, authenticated
+composer rendering, and successful publication were verified. The final QA
+Thread View was `/community/thread/post:8e78f134fdbc8a86/`. Two narrow composer
+defects found during QA were corrected: Community identifier sanitization and
+encoded-colon redirect construction. The next ticket is C3-UI004.

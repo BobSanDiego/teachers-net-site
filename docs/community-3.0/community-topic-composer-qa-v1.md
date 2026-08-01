@@ -23,6 +23,21 @@ using an authenticated local account, verify desktop, tablet, and mobile widths:
 Visual completion requires human browser evidence; source or CLI checks alone
 do not claim that portion complete.
 
+## C3-OPS003 verification record
+
+Against the existing local Teachers.Net clone at `https://teachers-net.ddev.site`:
+
+- Landing page rendered at HTTP 200 and was reviewed at desktop and mobile widths.
+- Seeded Thread View rendered successfully at `/community/thread/post:2064f7fc314c6f0f/`.
+- Anonymous `/community/new/` access redirected to WordPress login.
+- An authenticated local QA account rendered the composer and published a topic.
+- Final successful QA Thread View: `/community/thread/post:8e78f134fdbc8a86/`.
+- Community identifier sanitization and encoded-colon redirect defects found in
+  QA were corrected; PHP lint and Community tests then passed.
+- A hidden submission identifier is carried through the form for replay
+  deduplication. The disposable local QA records and account must be removed
+  when the QA fixture is retired.
+
 ## OPS001 runtime boundary
 
 The composer cannot be accepted as visually complete until the dedicated

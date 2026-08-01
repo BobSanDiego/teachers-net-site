@@ -70,6 +70,16 @@ Core Terms and Membership Taxonomy are related but distinct:
 
 ## ChatGPT And Codex Roles
 
+## Infrastructure Sprint-Alignment Rule
+
+Before proposing infrastructure work, verify that it directly advances the
+approved sprint objective. If a proposal introduces a parallel runtime,
+duplicate environment, migration path, or process exceeding one implementation
+ticket, stop and require explicit Engineering Director approval with a written
+cost/benefit justification. Recommendations must optimize for the shortest path
+to validated product functionality, minimal infrastructure and schedule impact,
+minimal AI/Codex effort, reversibility, and avoidance of architectural drift.
+
 ChatGPT role:
 
 - product direction

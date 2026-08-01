@@ -287,3 +287,12 @@ The database is not installed; no import, URL update, plugin activation,
 schema install, rewrite flush, or product QA has been performed. Continue with
 local database/runtime initialization only; the original runtime and
 production remain untouched.
+
+C3-OPS003 suspended the dedicated Community runtime experiment and resumed
+validation against the existing `teachers-net` clone. The branch plugin is
+mounted read-only into the existing local DDEV web container. Landing, seeded
+Thread View, anonymous login redirect, authenticated composer rendering, and
+successful publication were verified. Final QA Thread View:
+`/community/thread/post:8e78f134fdbc8a86/`. Composer fixes preserved the
+canonical Community identifier and Thread View colon, and added a carried
+submission identifier for replay deduplication. Next ticket: C3-UI004.
