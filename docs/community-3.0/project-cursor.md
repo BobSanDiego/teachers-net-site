@@ -351,3 +351,9 @@ Composer v1. It uses the existing PHP publisher application/domain/repository,
 nonce and capability checks, safe parent/thread validation, carried submission
 identifiers, and anchored Post/Redirect/Get. Direct and nested browser QA passed
 against the existing clone. The next ticket is C3-UI005.
+C3-ARCH001 adopts the hybrid Community Thread Architecture Contract v1. The
+visible hierarchy is topic -> flat L1 comments -> flat L2 descendants with
+unlimited logical targeting. Exact parent lineage remains authoritative; future
+stored fields are `conversation_root_id`, `reply_to_post_id`, and
+`reply_to_author_id`. No schema or migration work was performed. C3-ARCH002 is
+the next implementation ticket for data/domain support and tests.

@@ -303,3 +303,10 @@ eligibility checks remain in the domain/repository boundary; forms use nonces,
 capability checks, carried submission identifiers, and anchored PRG redirects.
 Direct and nested browser QA passed at the existing clone. Next ticket:
 C3-UI005.
+
+C3-ARCH001 is complete as the adopted Community Thread Architecture Contract
+v1. The visible model is one topic, flat L1 comments, and flat L2 descendants
+with unlimited logical targeting. Exact parent lineage remains stored; the
+selected hybrid model adds future branch-root and explicit-target fields without
+executing schema or migration work. Next implementation ticket: C3-ARCH002 —
+Community Thread Branch and Reply-Target Data Support.
