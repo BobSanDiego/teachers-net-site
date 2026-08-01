@@ -377,3 +377,14 @@ idempotent. The required implementation and QA documents are
 `community-thread-data-support-qa-v1.md`. No UI, migration/backfill,
 notifications, feeds, or production work was performed. Next ticket:
 C3-ARCH003 for flat L1/L2 rendering and explicit targets.
+
+C3-ARCH003 is implemented locally. Thread View renders one topic, chronological
+L1 branches, and one visually flat L2 layer while preserving exact parent
+metadata. L2 replies show safe explicit target links and stable
+`#reply-post:{opaque-id}` anchors. Legacy NULL branch fields derive safely;
+cycles and missing parents do not hang rendering. Restricted L1 branches are
+suppressed in full, while restricted L2 replies are suppressed individually.
+The composer is one topic-level form with an explicit target selector.
+DDEV/HTTP and synthetic read-model checks passed. Browser screenshot QA is
+pending because browser control could not initialize in this WSL session. The
+next task is the untouched interaction ticket for one-open composer behavior.

@@ -25,17 +25,22 @@ final class TNet_Community_Thread_Controller {
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
         $root = $data['root'];
         $html = '<main><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . wp_kses_post(wpautop(esc_html($root['body']))) . '</div></article>';
-        $html .= self::reply_form($root['post_id'], $root['post_id'], $errors);
+        $html .= self::reply_form($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;
         foreach ($data['rows'] as $row) {
             if ($row['post_id'] === $root['post_id']) continue;
             $reply_count++;
-            $class = $row['_tombstone'] ? 'reply tombstone' : 'reply';
-            $html .= '<article id="reply-' . esc_attr($row['post_id']) . '" class="' . esc_attr($class) . '" aria-label="Reply" style="margin-left:' . esc_attr((string) (min($row['_depth'], 6) * 24 + 16)) . 'px"><p class="meta">' . esc_html($row['_tombstone'] ? 'This reply is no longer available' : $row['_author_display'] . ' · ' . $row['created_at']) . '</p>';
-            if (!$row['_tombstone']) {
-                $html .= '<div>' . wp_kses_post(wpautop(esc_html($row['body']))) . '</div>' . self::reply_form($row['post_id'], $root['post_id'], $errors);
+            $class = 'reply reply-level-' . (int)$row['_level'];
+            $html .= '<article id="reply-post:' . esc_attr($row['post_id']) . '" class="' . esc_attr($class) . '" aria-label="' . esc_attr($row['_level'] === 1 ? 'Level 1 reply' : 'Level 2 reply') . '"><p class="meta">' . esc_html($row['_author_display'] . ' · ' . $row['created_at']) . '</p>';
+            if (!empty($row['_target_display'])) {
+                $target = $row['_target_display'];
+                $html .= '<p class="reply-target"><span class="screen-reader-text">Reply target: </span>';
+                $html .= $target['post_id'] ? '<a href="#reply-post:' . esc_attr($target['post_id']) . '">' . esc_html($target['label']) . '</a>' : esc_html($target['label']);
+                $html .= '</p>';
             }
+            $html .= '<div>' . wp_kses_post(wpautop(esc_html($row['body']))) . '</div>';
+            if (is_user_logged_in()) $html .= '<p><a href="#reply-composer" data-reply-target="' . esc_attr($row['post_id']) . '">Reply to this ' . esc_html($row['_level'] === 1 ? 'comment' : 'reply') . '</a></p>';
             $html .= '</article>';
         }
         if (!$reply_count) $html .= '<p>No replies yet.</p>';
@@ -57,16 +62,18 @@ final class TNet_Community_Thread_Controller {
         if (empty($result['accepted']) || empty($result['post']['post_id'])) return ['The reply could not be published. Please try again.'];
         $reply_path = str_replace('%3A', ':', rawurlencode($result['post']['post_id']));
         $root_path = str_replace('%3A', ':', rawurlencode($data['root']['post_id']));
-        wp_safe_redirect(home_url('/community/thread/' . $root_path . '/#reply-' . $reply_path));
+        wp_safe_redirect(home_url('/community/thread/' . $root_path . '/#reply-post:' . $reply_path));
         return [];
     }
 
-    private static function reply_form(string $parent_id, string $root_id, array $errors): string {
-        if (!is_user_logged_in()) return '<p class="meta"><a href="' . esc_url(wp_login_url(home_url('/community/thread/' . str_replace('%3A', ':', rawurlencode($root_id)) . '/'))) . '">Log in to reply.</a></p>';
+    private static function reply_form(array $root, array $rows, array $errors): string {
+        if (!is_user_logged_in()) return '<p class="meta"><a href="' . esc_url(wp_login_url(home_url('/community/thread/' . str_replace('%3A', ':', rawurlencode($root['post_id'])) . '/'))) . '">Log in to reply.</a></p>';
         $key = 'reply-' . wp_generate_uuid4();
         $html = '';
         if ($errors) { $html .= '<div class="errors" role="alert"><ul>'; foreach ($errors as $error) $html .= '<li>' . esc_html($error) . '</li>'; $html .= '</ul></div>'; }
-        return $html . '<form class="reply-composer" method="post"><p><strong>Reply</strong></p>' . wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false) . '<input type="hidden" name="parent_post_id" value="' . esc_attr($parent_id) . '"><input type="hidden" name="submission_id" value="' . esc_attr($key) . '"><label for="reply-body-' . esc_attr($parent_id) . '">Your reply</label><textarea id="reply-body-' . esc_attr($parent_id) . '" name="body" rows="4" required></textarea><button type="submit">Post Reply</button></form>';
+        $options = '<option value="' . esc_attr($root['post_id']) . '">Topic (new L1 reply)</option>';
+        foreach ($rows as $row) $options .= '<option value="' . esc_attr($row['post_id']) . '">Reply to ' . esc_html($row['_author_display']) . '</option>';
+        return $html . '<form id="reply-composer" class="reply-composer" method="post"><p><strong>Reply</strong></p>' . wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false) . '<input type="hidden" name="submission_id" value="' . esc_attr($key) . '"><label for="reply-target">Reply target</label><select id="reply-target" name="parent_post_id">' . $options . '</select><label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="4" required></textarea><button type="submit">Post Reply</button></form>';
     }
 
     private static function shell(string $body): void {

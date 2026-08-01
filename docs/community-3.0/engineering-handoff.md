@@ -331,3 +331,15 @@ repository persists the fields transactionally. Required implementation and
 QA documents are present in `docs/community-3.0/`. No rendering, UI,
 notifications, migration/backfill, or production work was performed. The next
 ticket is C3-ARCH003: flat L1/L2 rendering and explicit targets.
+
+C3-ARCH003 is complete as a bounded local rendering increment. Thread View
+projects topic -> chronological L1 branches -> one flat L2 layer, with exact
+parent lineage preserved. It derives legacy NULL branch identity safely,
+prevents cycles from hanging, suppresses hidden L1 branches as units, and
+suppresses hidden L2 replies individually. Every L2 reply exposes safe target
+context and a stable `#reply-post:{opaque-id}` anchor. The composer is now one
+topic-level form with an explicit target selector; one-open JavaScript and
+dirty-state warnings remain deferred. DDEV lint, HTTP smoke, synthetic
+projection, anchor, and removal checks passed. Browser viewport screenshots
+remain pending because browser control could not initialize in this WSL
+session; do not claim visual completion until canonical Chrome QA is rerun.
