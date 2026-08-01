@@ -343,3 +343,12 @@ dirty-state warnings remain deferred. DDEV lint, HTTP smoke, synthetic
 projection, anchor, and removal checks passed. Browser viewport screenshots
 remain pending because browser control could not initialize in this WSL
 session; do not claim visual completion until canonical Chrome QA is rerun.
+
+C3-PUB001-AUDIT001 is complete as a documentation-only audit. Six publishing
+artifacts are present in `docs/community-3.0/`: capability, rich-media,
+link-enrichment, feed-card, feed-balance, and composer-matrix contracts. Plain
+text is V1; rich media and specialized modes are planned behind storage,
+security, accessibility, moderation, lifecycle, feed, notification, and
+subject-compatibility contracts; AI remains assistive and deferred. No code,
+schema, migration, UI, feed, notification, or production work was performed.
+Next ticket: C3-PUB002 — Community Rich Composer Foundation.

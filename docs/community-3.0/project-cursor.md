@@ -388,3 +388,13 @@ The composer is one topic-level form with an explicit target selector.
 DDEV/HTTP and synthetic read-model checks passed. Browser screenshot QA is
 pending because browser control could not initialize in this WSL session. The
 next task is the untouched interaction ticket for one-open composer behavior.
+
+C3-PUB001-AUDIT001 is complete as a documentation-only publishing capability
+audit. Six artifacts define the mature-composer boundary: publishing
+capability, rich media, link enrichment, feed cards, feed balance, and the
+composer capability matrix. Plain text remains the V1 baseline. Rich media,
+enrichment, specialized post modes, and AI assistance are deferred or planned
+behind security, accessibility, moderation, lifecycle, subject-compatibility,
+feed, and notification contracts. No implementation, schema, migration, UI,
+feed, notification, or production change was made. Next ticket:
+C3-PUB002 — Community Rich Composer Foundation.
