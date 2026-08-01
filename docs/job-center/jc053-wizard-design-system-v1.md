@@ -120,6 +120,19 @@ composition, compact stepper, shared navigation, footer, and responsive
 spacing primitives. Future changes to these areas require an explicit
 exception ticket.
 
+### Step 3 authoring workspace exception
+
+Step 3 is an authoring workspace rather than a generic multi-field form. At
+wide desktop it may collapse the employer rail to a narrow accessible strip
+with a session-persistent expand/collapse control and use a two-pane authoring
+and Listing Preview composition. At compact widths the persistent preview is
+hidden and the authoring pane uses the frozen single-pane shell. Only Job
+Description exposes a visible formatting toolbar. Requirements / Qualifications
+and optional sections remain rich-paste capable without persistent toolbars.
+Short Summary follows the primary writing fields and uses deterministic,
+non-AI summary assistance only when the user continues without a summary. Step
+5 remains the canonical full preview surface.
+
 ## New primitive checklist
 
 Before adding CSS or JavaScript, ask whether an existing primitive already

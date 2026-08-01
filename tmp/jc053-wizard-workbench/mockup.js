@@ -776,6 +776,11 @@
       return Boolean(
         document.querySelector("#job-title-authority")?.value.trim(),
       );
+    if (id === "step-03-job-description")
+      return Boolean(
+        step3Text(document.querySelector("#step3-description-editor")?.innerHTML) &&
+          step3Text(document.querySelector("#step3-requirements-editor")?.innerHTML),
+      );
     if (id === "step-01-add-school-us")
       return Boolean(
         document.querySelector("#organization-name")?.value.trim() &&
@@ -808,8 +813,36 @@
     if (ready)
       next.href = ["step-02-job-basics", "wizard-authority-v1"].includes(id)
         ? "#step-03-job-description"
-        : "#step-02-job-basics";
+        : id === "step-03-job-description"
+          ? "#step-04-application-process"
+          : "#step-02-job-basics";
     else next.removeAttribute("href");
+  };
+  const buildStep3SummaryDraft = () => {
+    const source = step3Text(document.querySelector("#step3-description-editor")?.innerHTML);
+    if (!source) return "";
+    const sentence = source.match(/^(.{1,160}?[.!?])(?:\\s|$)/)?.[1];
+    if (sentence) return sentence;
+    if (source.length <= 160) return source;
+    return `${source.slice(0, 157).trim().replace(/\\s+\\S*$/, "")}…`;
+  };
+  const openStep3SummaryAssist = () => {
+    let modal = document.querySelector("#step3-summary-assist");
+    if (!modal) {
+      modal = document.createElement("div");
+      modal.id = "step3-summary-assist";
+      modal.className = "step3-summary-assist";
+      modal.setAttribute("role", "dialog");
+      modal.setAttribute("aria-modal", "true");
+      document.body.append(modal);
+    }
+    const draft = buildStep3SummaryDraft();
+    modal.innerHTML = `<div class="step3-summary-assist-card"><h3>One last recommendation before you continue</h3><p>Short summaries help your listing stand out when it is featured, shared, or promoted across Teachers.Net.</p><p>We prepared a draft from your job description. Review it and make any changes for the best display across the site.</p>${draft ? `<textarea id="step3-summary-draft" maxlength="160">${draft}</textarea>` : `<p class="step3-summary-no-draft">Add a Job Description before using a summary draft.</p>`}<div class="step3-summary-assist-actions"><button type="button" class="button primary" data-summary-action="use">Use and continue</button><button type="button" class="button secondary" data-summary-action="edit">Edit summary</button><button type="button" class="button secondary" data-summary-action="skip">Continue without summary</button></div></div>`;
+    modal.hidden = false;
+    modal.querySelector('[data-summary-action="use"]').disabled = !draft;
+    modal.querySelector('[data-summary-action="use"]').addEventListener("click", () => { document.querySelector("#step3-summary").value = modal.querySelector("#step3-summary-draft")?.value || ""; modal.hidden=true; refreshNextAction(); setView("step-04-application-process"); });
+    modal.querySelector('[data-summary-action="edit"]').addEventListener("click", () => { modal.hidden=true; document.querySelector("#step3-summary")?.focus({preventScroll:true}); });
+    modal.querySelector('[data-summary-action="skip"]').addEventListener("click", () => { modal.hidden=true; setView("step-04-application-process"); });
   };
   let salaryTypeUserControlled = false;
   const salaryTypeField = document.querySelector("#salary-type-step2"),
@@ -1129,8 +1162,65 @@
   );
   const step3Content = document.createElement("section");
   step3Content.className = "position-classification-section step3-foundation-card";
-  step3Content.innerHTML =
-    '<div class="position-section-title"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#section-document"></use></svg></span><h3>Job Description</h3></div><div class="form-field step3-representative-field"><label for="step3-description-format">Description format</label><div class="form-control-with-icon"><select id="step3-description-format"><option value="">Select a format</option><option value="standard">Standard description</option></select><span class="form-control-with-icon__icon" aria-hidden="true"></span></div></div>';
+  step3Content.innerHTML = `
+    <div class="step3-authoring-layout">
+      <div class="step3-authoring-pane">
+        <div class="step3-field step3-description-field">
+          <label for="step3-description-editor">Job Description <span aria-hidden="true">*</span></label>
+          <p class="step3-field-help">Paste your existing job description or write from scratch. Formatting from Word, Google Docs, district websites, and most ATS systems will be preserved.</p>
+          <div class="step3-toolbar" role="toolbar" aria-label="Job Description formatting">
+            <select data-format-command="formatBlock" aria-label="Paragraph style"><option value="p">Paragraph</option><option value="h3">Heading</option></select>
+            <button type="button" data-format-command="bold" aria-label="Bold"><strong>B</strong></button><button type="button" data-format-command="italic" aria-label="Italic"><em>I</em></button><button type="button" data-format-command="insertUnorderedList" aria-label="Bulleted list">•</button><button type="button" data-format-command="insertOrderedList" aria-label="Numbered list">1.</button><button type="button" data-format-command="createLink" aria-label="Insert link">Link</button><button type="button" data-format-command="removeFormat" aria-label="Clear formatting">Clear formatting</button>
+          </div>
+          <div id="step3-description-editor" class="step3-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Job Description"></div>
+          <div class="step3-counter"><span data-counter-for="step3-description-editor">0</span> characters</div>
+        </div>
+        <div class="step3-field step3-requirements-field">
+          <label for="step3-requirements-editor">Requirements / Qualifications <span aria-hidden="true">*</span></label>
+          <p class="step3-field-help">List the required qualifications, certifications, education, and experience for this role.</p>
+          <div id="step3-requirements-editor" class="step3-editor step3-editor-requirements" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Requirements / Qualifications"></div>
+          <div class="step3-counter"><span data-counter-for="step3-requirements-editor">0</span> characters</div>
+        </div>
+        <div class="step3-field step3-summary-field">
+          <label for="step3-summary">Short Summary</label><p class="step3-field-help">Summarize this opportunity in one or two sentences. This may appear when your job is featured, shared, or promoted across Teachers.Net.</p>
+          <textarea id="step3-summary" maxlength="160" rows="3"></textarea><div class="step3-counter"><span data-counter-for="step3-summary">0</span>/160 characters</div>
+        </div>
+        <div class="step3-optional-sections">
+          ${["Responsibilities","Preferred Qualifications","Benefits","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
+        </div>
+      </div>
+      <aside class="step3-preview-pane" aria-label="Listing Preview"><div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>This is how your job listing will look to teachers.</p></div><span>Live preview</span></div><div id="step3-preview" class="step3-preview-card"></div><p class="step3-preview-note">Step 5 remains the canonical full review surface.</p></aside>
+    </div>`;
+  const step3Editors = ["#step3-description-editor", "#step3-requirements-editor"];
+  const step3PlainText = (html) => {
+    const node = document.createElement("div");
+    node.innerHTML = html || "";
+    node.querySelectorAll("script,style,iframe,object,embed").forEach((item) => item.remove());
+    node.querySelectorAll("*").forEach((item) => [...item.attributes].forEach((attr) => {
+      if (attr.name.toLowerCase().startsWith("on")) item.removeAttribute(attr.name);
+      if (item.tagName === "A" && attr.name === "href" && !/^https?:/i.test(attr.value)) item.removeAttribute(attr.name);
+    }));
+    return node;
+  };
+  const step3Sanitized = (html) => {
+    const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","UL","OL","LI","A","H3"]);
+    node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
+    return node.innerHTML;
+  };
+  const step3Text = (html) => step3PlainText(html).textContent.replace(/\\s+/g, " ").trim();
+  const step3State = { previewTimer: null };
+  const renderStep3Preview = () => {
+    const preview = document.querySelector("#step3-preview");
+    if (!preview) return;
+    const description = document.querySelector("#step3-description-editor"), requirements = document.querySelector("#step3-requirements-editor"), summary = document.querySelector("#step3-summary");
+    preview.innerHTML = `<div class="step3-preview-school"><strong>${schoolJobsiteFixture.display_name}</strong><span>Los Angeles, CA · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${summary.value.trim()}</p>` : ""}<h5>Job Description</h5><div>${step3Sanitized(description?.innerHTML)}</div><h5>Requirements / Qualifications</h5><div>${step3Sanitized(requirements?.innerHTML)}</div>${[0,1,2,3].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return el && step3Text(el.innerHTML) ? `<h5>${["Responsibilities","Preferred Qualifications","Benefits","About Our School"][i]}</h5><div>${step3Sanitized(el.innerHTML)}</div>` : "";}).join("")}`;
+  };
+  const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
+  const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
+  step3Content.querySelectorAll("[data-format-command]").forEach((control) => control.addEventListener("click", () => { const command=control.dataset.formatCommand; if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }));
+  step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
+  step3Content.querySelectorAll("[contenteditable]").forEach((editor) => editor.addEventListener("paste", (event) => { event.preventDefault(); const text=(event.clipboardData || window.clipboardData).getData("text/plain"); document.execCommand("insertText",false,text); updateStep3Counters(); scheduleStep3Preview(); refreshNextAction(); }));
+  renderStep3Preview();
   const wizardShellConfigs = {
     "step-02-job-basics": {
       viewId: "step-02-job-basics",
@@ -1218,6 +1308,32 @@
     }
     const rail = card?.querySelector(".left-rail");
     if (rail) rail.id = "authority-left-rail";
+    const step3Mode = config.viewId === "step-03-job-description";
+    card?.classList.toggle("step3-workspace-mode", step3Mode);
+    card?.classList.toggle("step3-rail-expanded", step3Mode && sessionStorage.getItem("jc053-step3-rail") === "expanded");
+    if (rail && step3Mode) {
+      let railToggle = rail.querySelector("[data-step3-rail-toggle]");
+      if (!railToggle) {
+        railToggle = document.createElement("button");
+        railToggle.type = "button";
+        railToggle.dataset.step3RailToggle = "true";
+        railToggle.className = "step3-rail-toggle";
+        railToggle.setAttribute("aria-label", "Expand navigation");
+        railToggle.title = "Expand navigation";
+        railToggle.innerHTML = "<span aria-hidden=\"true\">☰</span>";
+        rail.prepend(railToggle);
+        railToggle.addEventListener("click", () => {
+          const expanded = card.classList.toggle("step3-rail-expanded");
+          sessionStorage.setItem("jc053-step3-rail", expanded ? "expanded" : "collapsed");
+          railToggle.setAttribute("aria-label", expanded ? "Collapse navigation" : "Expand navigation");
+          railToggle.title = expanded ? "Collapse navigation" : "Expand navigation";
+        });
+      }
+      railToggle.setAttribute("aria-label", card.classList.contains("step3-rail-expanded") ? "Collapse navigation" : "Expand navigation");
+      railToggle.title = card.classList.contains("step3-rail-expanded") ? "Collapse navigation" : "Expand navigation";
+    } else {
+      card?.querySelector("[data-step3-rail-toggle]")?.remove();
+    }
     card?.classList.toggle("authority-nav-open", false);
     const heading = jobBasicsPanel
       .querySelector(".job-basics-heading")
@@ -1256,6 +1372,10 @@
             return;
           }
           event.preventDefault();
+          if (config.viewId === "step-03-job-description" && !document.querySelector("#step3-summary")?.value.trim()) {
+            openStep3SummaryAssist();
+            return;
+          }
           setView(link.dataset.target);
         });
       }
@@ -1271,6 +1391,11 @@
     const id = location.hash.slice(1) || "step-01-return";
     const config = wizardShellConfigs[id];
     if (config) renderWizardShell(config, statePanels[id], shellContent(id));
+    else {
+      const card = document.querySelector(".application-card");
+      card?.classList.remove("step3-workspace-mode", "step3-rail-expanded");
+      card?.querySelector("[data-step3-rail-toggle]")?.remove();
+    }
   };
   render();
   updateStepper(location.hash.slice(1) || "step-01-return");
