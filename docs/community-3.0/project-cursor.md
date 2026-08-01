@@ -345,3 +345,9 @@ encoded-colon redirect construction. The next ticket is C3-UI004.
 Replay of the same submitted form was also verified to return the same Thread
 View at `/community/thread/post:c2b49047485cf50d/` without creating a second
 topic.
+
+C3-UI004 is complete as the local authenticated direct and nested Reply
+Composer v1. It uses the existing PHP publisher application/domain/repository,
+nonce and capability checks, safe parent/thread validation, carried submission
+identifiers, and anchored Post/Redirect/Get. Direct and nested browser QA passed
+against the existing clone. The next ticket is C3-UI005.

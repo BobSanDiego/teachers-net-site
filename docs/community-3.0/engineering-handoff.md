@@ -296,3 +296,10 @@ successful publication were verified. Final QA Thread View:
 `/community/thread/post:8e78f134fdbc8a86/`. Composer fixes preserved the
 canonical Community identifier and Thread View colon, and added a carried
 submission identifier for replay deduplication. Next ticket: C3-UI004.
+
+C3-UI004 is complete. The Thread View now has authenticated direct and nested
+reply forms backed by the existing PHP publisher flow. Parent/thread and
+eligibility checks remain in the domain/repository boundary; forms use nonces,
+capability checks, carried submission identifiers, and anchored PRG redirects.
+Direct and nested browser QA passed at the existing clone. Next ticket:
+C3-UI005.

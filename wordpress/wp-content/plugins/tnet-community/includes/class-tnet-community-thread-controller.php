@@ -1,7 +1,75 @@
 <?php
 defined('ABSPATH') || exit;
+
 final class TNet_Community_Thread_Controller {
-    public static function register(): void { if (!self::local()) return; add_rewrite_rule('^community/thread/([^/]+)/?$', 'index.php?tnet_community_thread=$matches[1]', 'top'); add_filter('query_vars', static function($vars){$vars[]='tnet_community_thread'; return $vars;}); add_action('template_redirect',[self::class,'render']); }
-    private static function local(): bool { return defined('DDEV_PROJECT') || (bool)getenv('DDEV_PROJECT'); }
-    public static function render(): void { $id=get_query_var('tnet_community_thread'); if (!$id) return; $data=(new TNet_Community_Thread_View())->find(urldecode(sanitize_text_field($id)),current_user_can('manage_options')); status_header($data?200:404); nocache_headers(); header('X-Robots-Tag: noindex, nofollow'); echo '<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Community Thread</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1d2327}.thread-card,.reply{border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin:1rem 0}.reply{margin-left:min(3rem,8vw);background:#f6f7f7}.tombstone{color:#646970;font-style:italic}.meta{color:#646970;font-size:.9rem}h1{line-height:1.2}</style></head><body>'; if (!$data) { echo '<main><h1>Thread not found</h1><p>This local Community thread is unavailable.</p></main></body></html>'; exit; } echo '<main><p class="meta">Local Community thread</p><h1>'.esc_html($data['root']['title']).'</h1><article class="thread-card"><p class="meta">'.esc_html($data['root']['_author_display'].' · '.$data['root']['created_at']).'</p><div>'.wp_kses_post(wpautop(esc_html($data['root']['body']))).'</div></article><section aria-labelledby="replies"><h2 id="replies">Replies</h2>'; $reply_count=0; foreach($data['rows'] as $row) { if($row['post_id']===$data['root']['post_id']) continue; $reply_count++; $class=$row['_tombstone']?'reply tombstone':'reply'; echo '<article class="'.esc_attr($class).'" aria-label="Reply" style="margin-left:'.esc_attr((string)(min($row['_depth'],6)*24+16)).'px"><p class="meta">'.esc_html($row['_tombstone']?'This reply is no longer available':$row['_author_display'].' · '.$row['created_at']).'</p>'; if(!$row['_tombstone']) echo '<div>'.wp_kses_post(wpautop(esc_html($row['body']))).'</div>'; echo '</article>'; } if(!$reply_count) echo '<p>No replies yet.</p>'; echo '</section><p class="meta">Reply composition is deferred until local identity and permission contracts are approved.</p></main></body></html>'; exit; }
+    public static function register(): void {
+        if (!self::local()) return;
+        add_rewrite_rule('^community/thread/([^/]+)/?$', 'index.php?tnet_community_thread=$matches[1]', 'top');
+        add_filter('query_vars', static function (array $vars): array { $vars[] = 'tnet_community_thread'; return $vars; });
+        add_action('template_redirect', [self::class, 'render']);
+    }
+
+    private static function local(): bool { return defined('DDEV_PROJECT') || (bool) getenv('DDEV_PROJECT'); }
+
+    public static function render(): void {
+        $id = get_query_var('tnet_community_thread');
+        if (!$id) return;
+        $post_id = urldecode(sanitize_text_field($id));
+        $data = (new TNet_Community_Thread_View())->find($post_id, current_user_can('manage_options'));
+        if (!$data) { status_header(404); self::shell('<main><h1>Thread not found</h1><p>This local Community thread is unavailable.</p></main>'); }
+        $errors = [];
+        if ('POST' === strtoupper($_SERVER['REQUEST_METHOD'] ?? '')) {
+            $errors = self::submit($data);
+            if (!$errors) exit;
+        }
+        status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
+        $root = $data['root'];
+        $html = '<main><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . wp_kses_post(wpautop(esc_html($root['body']))) . '</div></article>';
+        $html .= self::reply_form($root['post_id'], $root['post_id'], $errors);
+        $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
+        $reply_count = 0;
+        foreach ($data['rows'] as $row) {
+            if ($row['post_id'] === $root['post_id']) continue;
+            $reply_count++;
+            $class = $row['_tombstone'] ? 'reply tombstone' : 'reply';
+            $html .= '<article id="reply-' . esc_attr($row['post_id']) . '" class="' . esc_attr($class) . '" aria-label="Reply" style="margin-left:' . esc_attr((string) (min($row['_depth'], 6) * 24 + 16)) . 'px"><p class="meta">' . esc_html($row['_tombstone'] ? 'This reply is no longer available' : $row['_author_display'] . ' · ' . $row['created_at']) . '</p>';
+            if (!$row['_tombstone']) {
+                $html .= '<div>' . wp_kses_post(wpautop(esc_html($row['body']))) . '</div>' . self::reply_form($row['post_id'], $root['post_id'], $errors);
+            }
+            $html .= '</article>';
+        }
+        if (!$reply_count) $html .= '<p>No replies yet.</p>';
+        $html .= '</section><p class="meta">Reply composition is available to authenticated local users.</p></main>';
+        self::shell($html);
+    }
+
+    private static function submit(array $data): array {
+        if (!is_user_logged_in() || !current_user_can('read')) { auth_redirect(); }
+        if (!isset($_POST['tnet_reply_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tnet_reply_nonce'])), 'tnet_community_reply')) return ['Nonce verification failed. Please try again.'];
+        $parent_id = sanitize_text_field(wp_unslash($_POST['parent_post_id'] ?? ''));
+        $body = sanitize_textarea_field(wp_unslash($_POST['body'] ?? ''));
+        $submission_id = sanitize_text_field(wp_unslash($_POST['submission_id'] ?? '')) ?: 'reply-' . wp_generate_uuid4();
+        if ($body === '') return ['Enter a reply.'];
+        $parent = (new TNet_Community_Publisher_Repository())->find_post($parent_id);
+        if (!$parent || $parent['thread_id'] !== $data['thread_id'] || $parent['community_id'] !== $data['root']['community_id']) return ['That reply target is not available in this thread.'];
+        $draft = ['submission_id' => $submission_id, 'community_id' => $data['root']['community_id'], 'author_id' => 'user:' . (int) get_current_user_id(), 'post_type' => 'reply', 'title' => '', 'body' => $body, 'parent_post_id' => $parent_id, 'thread_id' => $data['thread_id'], 'visibility' => 'public', 'publication_mode' => 'post_first', 'moderation_input' => 'clear', 'compatibility_refs' => [], 'audit_context' => ['source' => 'local-reply-composer']];
+        $result = (new TNet_Community_Publisher_Application())->publish_reply($draft, $parent, [$draft['community_id'] => ['active' => true]], ['actor_id' => $draft['author_id']]);
+        if (empty($result['accepted']) || empty($result['post']['post_id'])) return ['The reply could not be published. Please try again.'];
+        $reply_path = str_replace('%3A', ':', rawurlencode($result['post']['post_id']));
+        $root_path = str_replace('%3A', ':', rawurlencode($data['root']['post_id']));
+        wp_safe_redirect(home_url('/community/thread/' . $root_path . '/#reply-' . $reply_path));
+        return [];
+    }
+
+    private static function reply_form(string $parent_id, string $root_id, array $errors): string {
+        if (!is_user_logged_in()) return '<p class="meta"><a href="' . esc_url(wp_login_url(home_url('/community/thread/' . str_replace('%3A', ':', rawurlencode($root_id)) . '/'))) . '">Log in to reply.</a></p>';
+        $key = 'reply-' . wp_generate_uuid4();
+        $html = '';
+        if ($errors) { $html .= '<div class="errors" role="alert"><ul>'; foreach ($errors as $error) $html .= '<li>' . esc_html($error) . '</li>'; $html .= '</ul></div>'; }
+        return $html . '<form class="reply-composer" method="post"><p><strong>Reply</strong></p>' . wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false) . '<input type="hidden" name="parent_post_id" value="' . esc_attr($parent_id) . '"><input type="hidden" name="submission_id" value="' . esc_attr($key) . '"><label for="reply-body-' . esc_attr($parent_id) . '">Your reply</label><textarea id="reply-body-' . esc_attr($parent_id) . '" name="body" rows="4" required></textarea><button type="submit">Post Reply</button></form>';
+    }
+
+    private static function shell(string $body): void {
+        echo '<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Community Thread</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1d2327}.thread-card,.reply{border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin:1rem 0}.reply{margin-left:min(3rem,8vw);background:#f6f7f7}.tombstone{color:#646970;font-style:italic}.meta{color:#646970;font-size:.9rem}h1{line-height:1.2}.reply-composer{background:#fff;border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin:1rem 0}.reply-composer label{display:block;font-weight:600;margin:.5rem 0 .3rem}.reply-composer textarea{box-sizing:border-box;width:100%;min-height:6rem;padding:.6rem;font:inherit;resize:vertical}.reply-composer button{background:#135e96;color:#fff;border:0;border-radius:4px;padding:.6rem .9rem;font:inherit;font-weight:600;margin-top:.7rem}.errors{border-left:4px solid #b32d2e;background:#fcf0f1;padding:.5rem 1rem}</style></head><body>' . $body . '</body></html>'; exit;
+    }
 }
