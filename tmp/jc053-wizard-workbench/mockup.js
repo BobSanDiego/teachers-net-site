@@ -1188,12 +1188,12 @@
         <div class="step3-optional-sections">
           ${["Responsibilities","Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
           <details class="step3-benefits">
-            <summary><span class="step3-benefits-title">Benefits</span><span class="step3-benefits-help"><span class="step3-benefits-help-click">Click</span> any benefit to add or remove it.</span></summary>
+            <summary>Benefits</summary>
             <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
             <div id="step3-benefits-categories" class="step3-benefits-categories"></div>
             <label class="step3-benefits-additional-toggle"><input id="step3-benefits-additional-enabled" type="checkbox"> <span>Additional benefits</span></label>
-            <p class="step3-benefits-additional-help">Describe any benefits not listed above.</p>
-            <textarea id="step3-benefits-additional" maxlength="300" rows="3" aria-label="Additional benefits" hidden></textarea>
+            <p id="step3-benefits-additional-help" class="step3-benefits-additional-help" hidden>Describe any benefits not listed above.</p>
+            <textarea id="step3-benefits-additional" maxlength="300" rows="3" aria-label="Additional benefits" aria-describedby="step3-benefits-additional-help" hidden></textarea>
             <div class="step3-counter" hidden><span data-counter-for="step3-benefits-additional">0</span>/300 characters</div>
           </details>
         </div>
@@ -1238,7 +1238,7 @@
     const values = [...step3State.selectedBenefits];
     selected.innerHTML = values.length
       ? `<span class="step3-benefits-selected-label">Benefits offered:</span> ${values.map((value) => `<button type="button" class="step3-benefits-selected-item" data-benefit-remove="${step3Escape(value)}" aria-label="Remove ${step3Escape(value)}">${step3Escape(value)} <span aria-hidden="true">×</span></button>`).join(", ")} <button type="button" class="step3-benefits-clear" data-benefit-clear>Clear all</button>`
-      : ``;
+      : `<span class="step3-benefits-selected-label">Benefits offered:</span> <span class="step3-benefits-selected-guidance"><span class="step3-benefits-help-click">Click</span> any benefit to add or remove it.</span>`;
     categories.innerHTML = Object.entries(step3Benefits).map(([category, options]) => `<div class="step3-benefits-category"><span class="step3-benefits-category-label">${category}:</span> <span class="step3-benefits-options">${options.map((option) => `<button type="button" class="step3-benefit-option${step3State.selectedBenefits.has(option) ? " is-selected" : ""}" data-benefit-option="${step3Escape(option)}" aria-pressed="${step3State.selectedBenefits.has(option)}">${step3Escape(option)}</button>`).join(", ")}</span></div>`).join("");
   };
   const step3BenefitsText = () => [...step3State.selectedBenefits].join(", ");
@@ -1254,7 +1254,7 @@
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
   step3Content.querySelectorAll("[data-format-command]").forEach((control) => control.addEventListener("click", () => { const command=control.dataset.formatCommand; if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }));
   step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
-  step3Content.addEventListener("change", (event) => { if (event.target.matches("#step3-benefits-additional-enabled")) { const field=document.querySelector("#step3-benefits-additional"), counter=document.querySelector('[data-counter-for="step3-benefits-additional"]')?.closest(".step3-counter"); field.hidden=!event.target.checked; if(counter) counter.hidden=!event.target.checked; updateStep3Counters(); scheduleStep3Preview(); } });
+  step3Content.addEventListener("change", (event) => { if (event.target.matches("#step3-benefits-additional-enabled")) { const field=document.querySelector("#step3-benefits-additional"), helper=document.querySelector("#step3-benefits-additional-help"), counter=document.querySelector('[data-counter-for="step3-benefits-additional"]')?.closest(".step3-counter"); field.hidden=!event.target.checked; if(helper) helper.hidden=!event.target.checked; if(counter) counter.hidden=!event.target.checked; updateStep3Counters(); scheduleStep3Preview(); } });
   step3Content.addEventListener("click", (event) => {
     const option = event.target.closest("[data-benefit-option]"), remove = event.target.closest("[data-benefit-remove]"), clear = event.target.closest("[data-benefit-clear]");
     if (option) { const value=option.dataset.benefitOption; step3State.selectedBenefits.has(value) ? step3State.selectedBenefits.delete(value) : step3State.selectedBenefits.add(value); renderStep3Benefits(); scheduleStep3Preview(); return; }
