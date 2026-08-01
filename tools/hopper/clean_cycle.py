@@ -19,6 +19,30 @@ ROOT = Path(__file__).resolve().parents[2]
 HOPPER = ROOT / "tmp" / "hopper"
 
 
+def enforce_branch(project: str, integration: bool = False) -> str:
+    """Reject project payloads on the wrong or mixed historical branch."""
+    import subprocess
+
+    branch = subprocess.run(
+        ["git", "branch", "--show-current"], cwd=ROOT, check=True,
+        capture_output=True, text=True,
+    ).stdout.strip()
+    if integration:
+        return branch
+    if project == "jobcenter":
+        allowed = branch.startswith("JOB-CENTER-")
+    elif project in {"tnet-3.0", "community"}:
+        allowed = branch.startswith("COMMUNITY3-") or branch.startswith("COMMUNITY-")
+    else:
+        raise RuntimeError(f"no branch ownership rule for project: {project}")
+    if not allowed:
+        raise RuntimeError(
+            f"project/branch mismatch: project={project} branch={branch or '(detached)'}; "
+            "use the project-owned branch or pass --integration for explicitly authorized integration work"
+        )
+    return branch
+
+
 def cycle_id() -> str:
     return datetime.now(timezone.utc).strftime("%y%m%d%H%M%S")
 
@@ -176,8 +200,13 @@ def main() -> int:
     parser.add_argument("--commit")
     parser.add_argument("--push")
     parser.add_argument("--committed-source", action="append", default=[])
+    parser.add_argument(
+        "--integration", action="store_true",
+        help="explicitly authorize a shared/integration branch for this operation",
+    )
     args = parser.parse_args()
     identifier = args.cycle or cycle_id()
+    enforce_branch(args.project, args.integration)
     if args.command == "begin":
         begin(args.project, identifier)
         print(identifier)

@@ -98,6 +98,24 @@ than restating or forking shared patterns.
   `docs/job-center/jc053-wizard-design-system-v1.md` — canonical shared wizard
   shell, controls, navigation, choice-card, and responsive form-grid guidance.
 
+## Branch ownership and hopper guard
+
+Job Center tickets run on a Job Center-owned branch named with the
+`JOB-CENTER-` prefix. Community / TNET 3.0 tickets run on a Community-owned
+branch using the established `COMMUNITY3-` or `COMMUNITY-` prefix. The mixed
+historical branch `COMMUNITY003-semantic-community-communications-working-draft`
+is preserved for history only and is not a feature-work branch.
+
+Before editing, confirm that the ticket project and active branch agree. A
+cross-project mismatch stops before changes. The only exception is an
+explicitly authorized repository-integration ticket, which must pass
+`--integration` to the hopper helper and state the integration scope in its
+report. Hopper project, ticket, branch, and artifact paths must describe the
+same workstream; mixed-project payloads are invalid.
+
+The deterministic hopper helper enforces this contract for `begin`, `collect`,
+`refresh`, and `validate`.
+
 ## Canonical Chrome QA Recovery
 
 If `http://127.0.0.1:9222/json/version` is unavailable, run the repository
