@@ -22,3 +22,9 @@ using an authenticated local account, verify desktop, tablet, and mobile widths:
 
 Visual completion requires human browser evidence; source or CLI checks alone
 do not claim that portion complete.
+
+## OPS001 runtime boundary
+
+The composer cannot be accepted as visually complete until the dedicated
+`teachers-net-community3` DDEV project is healthy. Use the persistent Community
+worktree, not the mixed workspace, for all follow-up QA.

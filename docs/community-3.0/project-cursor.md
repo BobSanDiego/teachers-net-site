@@ -318,3 +318,10 @@ C3-IMP005 is complete as a test-only in-memory bell repository at
 `tools/community3/notification_bell_repository.py`, with tests and interface
 documentation. It consumes only eligible validated candidates, preserves bell
 state separately from delivery and engagement, and adds no persistence or UI.
+
+C3-OPS001 checkpoint: the Community branch is now persistent at
+`/home/bobreap/projects/teachers-net-community3` on `COMMUNITY3-ui-working`,
+with dedicated DDEV project `teachers-net-community3` and hostname
+`https://teachers-net-community3.ddev.site`. Runtime configuration exists, but
+web/db health and browser reachability remain blocked at the current checkpoint;
+no database, activation, schema, rewrite, or production change was made.

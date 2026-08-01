@@ -268,3 +268,13 @@ application, nonce and capability checks, bounded Community selection,
 generated idempotency key, server-side validation, and a Post/Redirect/Get to
 Thread View. Automated checks are complete; desktop, tablet, and mobile human
 visual QA remains pending. No production or delivery behavior changed.
+
+C3-OPS001 is an incomplete bounded runtime-alignment checkpoint. The persistent
+Community worktree is `/home/bobreap/projects/teachers-net-community3` on
+`COMMUNITY3-ui-working`; the dedicated DDEV project is
+`teachers-net-community3`. The ignored WordPress runtime files required for the
+DDEV docroot were copied locally while preserving the branch's Community
+plugin. DDEV web/db health did not remain available and the hostname returned
+502, so database alignment, plugin activation, schema installation, rewrite
+flush, and C3-UI003 browser QA remain pending. The original `teachers-net`
+runtime/database was not modified.
