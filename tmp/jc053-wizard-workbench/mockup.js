@@ -1207,6 +1207,14 @@
     node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
     return node.innerHTML;
   };
+  const step3Escape = (value) => String(value).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[character]));
+  const step3PlainPasteHtml = (text) => String(text || "")
+    .replace(/\r\n?/g, "\n")
+    .split("\n")
+    .map((line) => `<p>${step3Escape(line)}</p>`)
+    .join("");
   const step3Text = (html) => step3PlainText(html).textContent.replace(/\\s+/g, " ").trim();
   const step3State = { previewTimer: null };
   const renderStep3Preview = () => {
@@ -1219,7 +1227,17 @@
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
   step3Content.querySelectorAll("[data-format-command]").forEach((control) => control.addEventListener("click", () => { const command=control.dataset.formatCommand; if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }));
   step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
-  step3Content.querySelectorAll("[contenteditable]").forEach((editor) => editor.addEventListener("paste", (event) => { event.preventDefault(); const text=(event.clipboardData || window.clipboardData).getData("text/plain"); document.execCommand("insertText",false,text); updateStep3Counters(); scheduleStep3Preview(); refreshNextAction(); }));
+  step3Content.querySelectorAll("[contenteditable]").forEach((editor) => editor.addEventListener("paste", (event) => {
+    event.preventDefault();
+    const clipboard = event.clipboardData || window.clipboardData;
+    const html = clipboard?.getData("text/html");
+    const text = clipboard?.getData("text/plain") || "";
+    const sanitized = html ? step3Sanitized(html) : step3PlainPasteHtml(text);
+    document.execCommand("insertHTML", false, sanitized);
+    updateStep3Counters();
+    scheduleStep3Preview();
+    refreshNextAction();
+  }));
   renderStep3Preview();
   const wizardShellConfigs = {
     "step-02-job-basics": {
