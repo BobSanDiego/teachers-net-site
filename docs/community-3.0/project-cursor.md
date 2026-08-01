@@ -4,6 +4,16 @@
 
 Maintenance
 
+## Branch and Worktree Authority
+
+Community work must run from `/tmp/community3-ui-working` on
+`COMMUNITY3-ui-working`, based on verified Community milestone `621708b`.
+The prior `COMMUNITY003-semantic-community-communications-working-draft` is a
+mixed recovery source containing Job Center commits and is not a valid active
+Community implementation branch. Run
+`tools/community3/project_ticket_preflight.py` before editing and
+`tools/community3/validate_hopper_payload.py` before finalizing a payload.
+
 ## Current Phase
 
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
@@ -268,6 +278,10 @@ Director review and explicit authorization; persistence and delivery remain
 deferred.
 
 ## Next Decision
+
+OPS-BRANCH001 is complete as branch/worktree recovery and process isolation.
+C3-UI003 is unblocked only from `/tmp/community3-ui-working` on
+`COMMUNITY3-ui-working`; do not implement it from the mixed recovery branch.
 
 Review C3-CORE001 and explicitly authorize source ownership/compatibility work
 before any live hook integration or persistence work.

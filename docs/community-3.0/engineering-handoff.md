@@ -2,6 +2,13 @@
 
 ## 1. Current Phase
 
+Branch authority: Community implementation work uses
+`/tmp/community3-ui-working` on `COMMUNITY3-ui-working`, based on `621708b`.
+The original `COMMUNITY003-semantic-community-communications-working-draft`
+is preserved as a mixed recovery workspace and must not receive new Community
+or Job Center ticket edits. Preflight and Community hopper payload validation
+are required before edits and handoff.
+
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
@@ -239,6 +246,10 @@ distinction between verified implementation, approved direction, proposed
 design, exploratory concept, and deferred work.
 
 ## 10. Immediate Engineering Priorities
+
+OPS-BRANCH001 is complete. The next Community ticket, C3-UI003, may begin only
+from `/tmp/community3-ui-working` on `COMMUNITY3-ui-working`. The recovery
+worktree contains no C3-UI003 implementation.
 
 Review C3-CORE001 and decide whether to authorize source ownership and a
 read-only compatibility boundary before any live hook integration or
