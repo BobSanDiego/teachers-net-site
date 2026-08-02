@@ -1405,7 +1405,7 @@
     Scheduling: ["Paid Time Off", "Paid Holidays", "Paid Sick Leave", "Personal Days", "Flexible Schedule", "Remote / Hybrid Eligible"],
     Other: ["Professional Development", "Mentoring / Coaching", "Conference Support", "Classroom Resources", "Employee Assistance Program", "Wellness Program", "Student Loan Assistance"],
   };
-  const step3State = { previewTimer: null, selectedBenefits: new Set() };
+  const step3State = { previewTimer: null, selectedBenefits: new Set(), expandedPreviewSections: new Set() };
   let step3SavedRange = null;
   const step3EditorForRange = (range) => { const node=range?.commonAncestorContainer; return (node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement)?.closest("[contenteditable]"); };
   const clearStep3Formatting = () => {
@@ -1446,10 +1446,22 @@
     const preview = document.querySelector("#step3-preview");
     if (!preview) return;
     const description = document.querySelector("#step3-description-editor"), requirements = document.querySelector("#step3-requirements-editor"), summary = document.querySelector("#step3-summary");
-    const section = (title, html) => step3Text(html) ? `<h5>${title}</h5><div>${step3Sanitized(html)}</div>` : "";
+    const section = (title, html, key) => step3Text(html) ? `<h5>${title}</h5><div class="step3-preview-section" data-preview-section="${key}"><div class="step3-preview-section-body" id="step3-preview-${key}">${step3Sanitized(html)}</div><button type="button" class="step3-preview-toggle" data-preview-toggle="${key}" aria-controls="step3-preview-${key}" aria-expanded="false">Show more…</button></div>` : "";
     const additional = document.querySelector("#step3-benefits-additional"), additionalEnabled = document.querySelector("#step3-benefits-additional-enabled")?.checked, additionalText = additionalEnabled ? additional?.value.trim() || "" : "";
     const benefits = step3BenefitsActive() ? `<h5>Benefits</h5><div>${step3Escape([step3BenefitsText(), additionalText].filter(Boolean).join(", "))}</div>` : "";
-    preview.innerHTML = `<div class="step3-preview-school"><strong>${schoolJobsiteFixture.display_name}</strong><span>Los Angeles, CA · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${step3Escape(summary.value.trim())}</p>` : ""}${section("Job Description", description?.innerHTML)}${section("Requirements / Qualifications", requirements?.innerHTML)}${[0,1,2].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return section(["Responsibilities","Preferred Qualifications","About Our School"][i],el?.innerHTML);}).join("")}${benefits}`;
+    preview.innerHTML = `<div class="step3-preview-school"><strong>${schoolJobsiteFixture.display_name}</strong><span>Los Angeles, CA · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${step3Escape(summary.value.trim())}</p>` : ""}${section("Job Description", description?.innerHTML, "description")}${section("Requirements / Qualifications", requirements?.innerHTML, "requirements")}${[0,1,2].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return section(["Responsibilities","Preferred Qualifications","About Our School"][i],el?.innerHTML,["responsibilities","preferred","about"][i]);}).join("")}${benefits}`;
+    syncPreviewCollapsibles();
+  };
+  const syncPreviewCollapsibles = () => {
+    const preview = document.querySelector("#step3-preview");
+    if (!preview) return;
+    preview.querySelectorAll("[data-preview-section]").forEach((section) => {
+      const body = section.querySelector(".step3-preview-section-body"), button = section.querySelector("[data-preview-toggle]"), lineHeight = parseFloat(getComputedStyle(body).lineHeight) || 18, limit = lineHeight * 8, overflowing = body.scrollHeight > limit + 1, expanded = step3State.expandedPreviewSections.has(section.dataset.previewSection);
+      button.hidden = !overflowing;
+      section.classList.toggle("is-collapsed", overflowing && !expanded);
+      button.setAttribute("aria-expanded", String(expanded));
+      button.textContent = expanded ? "Show less" : "Show more…";
+    });
   };
   const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
@@ -1490,6 +1502,13 @@
     scheduleStep3Preview();
     refreshNextAction();
   }));
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-preview-toggle]");
+    if (!button) return;
+    const key = button.dataset.previewToggle, expanded = step3State.expandedPreviewSections.has(key);
+    expanded ? step3State.expandedPreviewSections.delete(key) : step3State.expandedPreviewSections.add(key);
+    syncPreviewCollapsibles();
+  });
   requestAnimationFrame(renderStep3Benefits);
   renderStep3Preview();
   const wizardShellConfigs = {
