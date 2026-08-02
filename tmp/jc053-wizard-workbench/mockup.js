@@ -1214,10 +1214,15 @@
   };
   const step3Sanitized = (html) => {
     const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","UL","OL","LI","A","H3"]);
+    const blockTags = new Set(["H1","H2","H3","H4","H5","H6","P","UL","OL","TABLE"]);
     node.querySelectorAll("div").forEach((item) => {
-      const paragraph = document.createElement("p");
-      paragraph.innerHTML = item.innerHTML;
-      item.replaceWith(paragraph);
+      const isWrapper = item.parentNode === node && [...item.children].some((child) => blockTags.has(child.tagName));
+      if (isWrapper) item.replaceWith(...item.childNodes);
+      else {
+        const paragraph = document.createElement("p");
+        paragraph.innerHTML = item.innerHTML;
+        item.replaceWith(paragraph);
+      }
     });
     node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
     return node.innerHTML;
