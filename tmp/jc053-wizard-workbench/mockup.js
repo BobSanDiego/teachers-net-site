@@ -1215,7 +1215,7 @@
   const step3Sanitized = (html) => {
     const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","UL","OL","LI","A","H3"]);
     const blockTags = new Set(["H1","H2","H3","H4","H5","H6","P","UL","OL","TABLE"]);
-    node.querySelectorAll("div").forEach((item) => {
+    [...node.querySelectorAll("div")].reverse().forEach((item) => {
       const isWrapper = item.parentNode === node && [...item.children].some((child) => blockTags.has(child.tagName));
       if (isWrapper) item.replaceWith(...item.childNodes);
       else {
