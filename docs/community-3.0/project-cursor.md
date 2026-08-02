@@ -456,3 +456,14 @@ personalization, infinite scroll, ads, live fetching, notifications, AI,
 uploads, and production work remain out of scope. Browser viewport screenshots
 remain pending because browser control was unavailable. Next ticket:
 C3-FEED002 — Community Feed Card Polish and Responsive Refinement.
+
+C3-COMP001 is implemented locally as the natural composer foundation. The
+body is primary; HTTPS URLs are detected without altering body text and one
+mocked representative preview may be selected or dismissed. One local
+JPEG/PNG/WebP image may be staged by chooser or drag/drop, validated with
+required alt text, and uploaded only through the authenticated DDEV WordPress
+boundary as a normalized uploads-relative reference. No raw bytes, base64,
+live retrieval, production upload, or inline document model was added.
+Browser screenshots remain pending because browser control was unavailable.
+Next ticket: C3-FEED002 — Community Feed Card Polish and Responsive
+Refinement.

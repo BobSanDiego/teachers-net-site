@@ -413,3 +413,11 @@ AI, uploads, or production behavior was added. DDEV lint, HTTP smoke, mixed
 content, card-link, and diff checks passed. Browser screenshots remain pending
 because browser control was unavailable. Next ticket: C3-FEED002 — Community
 Feed Card Polish and Responsive Refinement.
+
+C3-COMP001 is complete as a bounded local natural-composer foundation. The
+four C3-COMP001 documents in this directory are the authority. Browser
+screenshots and interaction acceptance remain pending; review URL:
+`https://teachers-net.ddev.site/community/new/`. Do not begin live link
+enrichment, additional media families, production uploads, or inline document
+serialization. Preferred next ticket: C3-FEED002 — Community Feed Card Polish
+and Responsive Refinement.
