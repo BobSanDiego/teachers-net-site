@@ -1219,12 +1219,19 @@
       const isWrapper = item.parentNode === node && [...item.children].some((child) => blockTags.has(child.tagName));
       if (isWrapper) item.replaceWith(...item.childNodes);
       else {
+        if (!item.textContent.trim() && !item.querySelector("br")) { item.remove(); return; }
         const paragraph = document.createElement("p");
         paragraph.innerHTML = item.innerHTML;
         item.replaceWith(paragraph);
       }
     });
     node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
+    let previousBlank = false;
+    [...node.children].forEach((item) => {
+      const blank = item.tagName === "P" && !item.textContent.trim() && !item.querySelector("br");
+      if (blank && previousBlank) item.remove();
+      else previousBlank = blank;
+    });
     return node.innerHTML;
   };
   const step3Escape = (value) => String(value).replace(/[&<>"']/g, (character) => ({
@@ -1243,6 +1250,53 @@
     Other: ["Professional Development", "Mentoring / Coaching", "Conference Support", "Classroom Resources", "Employee Assistance Program", "Wellness Program", "Student Loan Assistance"],
   };
   const step3State = { previewTimer: null, selectedBenefits: new Set() };
+  let step3SavedRange = null;
+  const step3EditorForRange = (range) => { const node=range?.commonAncestorContainer; return (node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement)?.closest("[contenteditable]"); };
+  const clearStep3Formatting = () => {
+    const range = step3SavedRange?.cloneRange();
+    const editor = step3EditorForRange(range);
+    if (!range || !editor) return;
+    const fragment = range.extractContents();
+    const normalize = (node) => {
+      [...node.childNodes].forEach((child) => {
+        if (child.nodeType !== Node.ELEMENT_NODE) return;
+        const tag = child.tagName;
+        if (tag === "UL" || tag === "OL") {
+          const replacement = document.createDocumentFragment();
+          [...child.children].forEach((item) => {
+            const paragraph = document.createElement("p");
+            paragraph.append(...item.childNodes);
+            normalize(paragraph);
+            replacement.append(paragraph);
+          });
+          child.replaceWith(replacement);
+          return;
+        }
+        normalize(child);
+        if (/^H[1-6]$/.test(tag) || tag === "LI") {
+          const paragraph = document.createElement("p");
+          paragraph.append(...child.childNodes);
+          child.replaceWith(paragraph);
+        } else if (tag === "P") {
+          child.replaceChildren(...child.childNodes);
+          [...child.attributes].forEach((attribute) => child.removeAttribute(attribute.name));
+        } else if (tag !== "BR") {
+          child.replaceWith(...child.childNodes);
+        }
+      });
+    };
+    normalize(fragment);
+    range.deleteContents();
+    const first = fragment.firstChild, last = fragment.lastChild;
+    range.insertNode(fragment);
+    if (first && last) {
+      const selection = window.getSelection();
+      const nextRange = document.createRange();
+      nextRange.setStartBefore(first); nextRange.setEndAfter(last);
+      selection.removeAllRanges(); selection.addRange(nextRange); step3SavedRange = nextRange.cloneRange();
+    }
+    updateStep3Counters(); scheduleStep3Preview(); refreshNextAction(); editor.focus();
+  };
   const renderStep3Benefits = () => {
     const selected = document.querySelector("#step3-benefits-selected"), categories = document.querySelector("#step3-benefits-categories");
     if (!selected || !categories) return;
@@ -1266,7 +1320,15 @@
   };
   const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
-  step3Content.querySelectorAll("[data-format-command]").forEach((control) => control.addEventListener("click", () => { const command=control.dataset.formatCommand; if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }));
+  document.addEventListener("selectionchange", () => { const selection=window.getSelection(), range=selection?.rangeCount ? selection.getRangeAt(0) : null; if(range && step3EditorForRange(range)) step3SavedRange=range.cloneRange(); });
+  step3Content.querySelectorAll("[data-format-command]").forEach((control) => {
+    control.addEventListener("mousedown", (event) => { if(event.button === 0) event.preventDefault(); });
+    control.addEventListener("click", () => {
+      const command=control.dataset.formatCommand;
+      if(command === "removeFormat") clearStep3Formatting();
+      else { if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }
+    });
+  });
   step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
   step3Content.addEventListener("change", (event) => { if (event.target.matches("#step3-benefits-additional-enabled")) { const field=document.querySelector("#step3-benefits-additional"), helper=document.querySelector("#step3-benefits-additional-help"), counter=document.querySelector('[data-counter-for="step3-benefits-additional"]')?.closest(".step3-counter"); field.hidden=!event.target.checked; if(helper) helper.hidden=!event.target.checked; if(counter) counter.hidden=!event.target.checked; updateStep3Counters(); scheduleStep3Preview(); } });
   step3Content.addEventListener("click", (event) => {
