@@ -1228,7 +1228,7 @@
     node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
     let previousBlank = false;
     [...node.children].forEach((item) => {
-      const blank = item.tagName === "P" && !item.textContent.trim() && !item.querySelector("br");
+      const blank = item.tagName === "P" && !item.textContent.trim() && [...item.childNodes].every((child) => child.nodeType === Node.TEXT_NODE ? !child.textContent.trim() : child.nodeType === Node.ELEMENT_NODE && child.tagName === "BR");
       if (blank && previousBlank) item.remove();
       else previousBlank = blank;
     });
