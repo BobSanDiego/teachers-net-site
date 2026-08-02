@@ -27,6 +27,13 @@ silently overwrite artifacts, and never delete historical cycles. The user's
 ingestion action is to open `current/`, select all, and drag the set into
 ChatGPT.
 
+Job Center cycles must be initialized and packaged from
+`/home/bobreap/projects/teachers-net-jobcenter` on
+`JOB-CENTER-JC053-wizard-workbench`. The root controlling worktree is
+noncanonical for execution. Cycle records must include `execution_worktree`,
+`execution_branch`, and `packaging_worktree`; validation fails if the execution
+branch differs from the branch checked out in the execution worktree.
+
 One ticket.
 
 One goal.

@@ -1,5 +1,13 @@
 This is a WordPress/DDEV project in WSL. Do not work from OneDrive or Windows UNC paths.
 
+Job Center routing: use the persistent worktree
+`/home/bobreap/projects/teachers-net-jobcenter` on branch
+`JOB-CENTER-JC053-wizard-workbench`. The root controlling worktree
+`/home/bobreap/projects/teachers-net-site` is noncanonical for Job Center
+ticket execution and is reserved for explicit worktree administration. Do not
+run Job Center Git, browser, startup, or hopper operations from the Community
+worktree or the mixed root worktree.
+
 Owned repos:
 
 - `wordpress/wp-content/plugins/profilaxes` = Core Terms dependency. Visible product name: Core Terms.
@@ -182,7 +190,7 @@ reporting browser verification blocked:
 From Windows PowerShell:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File '\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\launch-chrome-cdp-9222.ps1'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-jobcenter\tools\qa\launch-chrome-cdp-9222.ps1'
 ```
 
 It uses the dedicated profile
@@ -203,7 +211,7 @@ Troubleshooting sequence when recovery is needed:
    is not the QA instance.
 3. Invoke the launcher through the WSL UNC path from Windows PowerShell; a
    `C:\home\...` path does not refer to the WSL repository. Use
-   `\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\launch-chrome-cdp-9222.ps1`.
+   `\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-jobcenter\tools\qa\launch-chrome-cdp-9222.ps1`.
 4. Treat the launcher output and external MCP as authoritative. WSL `curl`
    to Windows loopback may time out even when MCP can connect successfully.
 5. After MCP reports a page, reload with cache bypass before responsive

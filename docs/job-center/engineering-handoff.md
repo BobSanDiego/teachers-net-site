@@ -1,5 +1,10 @@
 # Job Center Engineering Handoff
 
+Canonical execution worktree: `/home/bobreap/projects/teachers-net-jobcenter`
+Canonical execution branch: `JOB-CENTER-JC053-wizard-workbench`
+The root controlling worktree `/home/bobreap/projects/teachers-net-site` is
+noncanonical for Job Center ticket execution.
+
 Operational state only. Permanent product, design, architecture, and
 implementation detail remain in the referenced repository documents.
 

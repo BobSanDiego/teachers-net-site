@@ -1,7 +1,13 @@
 # Local Development
 
-Project root:
-cd /home/bobreap/projects/teachers-net-site
+Job Center project root:
+cd /home/bobreap/projects/teachers-net-jobcenter
+
+Expected branch:
+JOB-CENTER-JC053-wizard-workbench
+
+The controlling repository root `/home/bobreap/projects/teachers-net-site` is
+noncanonical for Job Center ticket execution.
 
 Start:
 ddev start

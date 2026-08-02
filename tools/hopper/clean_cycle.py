@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import shutil
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -106,9 +107,17 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
     report = f"output-{project}-{identifier}.txt"
     manifest = f"MANIFEST-{project}-{identifier}.txt"
     record = f"cycle-{project}-{identifier}.json"
+    execution_branch = subprocess.run(
+        ["git", "branch", "--show-current"], cwd=ROOT, check=True,
+        capture_output=True, text=True,
+    ).stdout.strip()
+    execution_worktree = str(ROOT)
     payload = {
         "project": project, "ticket": ticket, "cycle_id": identifier,
         "status": status, "branch": branch, "commit": commit,
+        "execution_worktree": execution_worktree,
+        "execution_branch": execution_branch,
+        "packaging_worktree": execution_worktree,
         "push": push, "current_hopper": str(current.relative_to(ROOT)),
         "archive_path": str((current.parent / "archive").relative_to(ROOT)),
         "report_file": report, "manifest_file": manifest,
@@ -119,6 +128,9 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
     lines = [
         f"project={project}", f"ticket={ticket}", f"cycle_id={identifier}",
         f"branch={branch}", f"commit={commit or ''}", f"push={push}",
+        f"execution_worktree={execution_worktree}",
+        f"execution_branch={execution_branch}",
+        f"packaging_worktree={execution_worktree}",
         f"current_hopper={current.relative_to(ROOT)}",
         f"archive_path={(current.parent / 'archive').relative_to(ROOT)}",
         f"report_file={report}", f"manifest_file={manifest}",
@@ -170,6 +182,14 @@ def validate(project: str, identifier: str) -> None:
         raise RuntimeError("zero-byte artifact in current hopper")
     record = current / f"cycle-{project}-{identifier}.json"
     payload = json.loads(record.read_text())
+    current_branch = subprocess.run(
+        ["git", "branch", "--show-current"], cwd=ROOT, check=True,
+        capture_output=True, text=True,
+    ).stdout.strip()
+    if payload.get("execution_branch") and payload["execution_branch"] != current_branch:
+        raise RuntimeError(
+            f"execution branch mismatch: record={payload['execution_branch']} current={current_branch}"
+        )
     if payload.get("status") != "complete" or not payload.get("commit"):
         raise RuntimeError("cycle record is not finalized with a commit")
     if payload.get("push") not in {"pushed", "success", "successful"}:

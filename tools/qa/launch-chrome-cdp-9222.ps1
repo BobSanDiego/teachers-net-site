@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$Url = 'http://127.0.0.1:8768/#wizard-authority-v1',
+    [string]$Url = 'http://127.0.0.1:8768/?#step-03-job-description',
     [int]$Port = 9222,
     [int]$TimeoutSeconds = 20
 )

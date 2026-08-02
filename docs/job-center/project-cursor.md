@@ -1,5 +1,9 @@
 # Job Center Project Cursor
 
+Canonical execution worktree: `/home/bobreap/projects/teachers-net-jobcenter`
+Canonical execution branch: `JOB-CENTER-JC053-wizard-workbench`
+Use the root controlling repository only for explicit worktree administration.
+
 ## Project State
 
 Active Development

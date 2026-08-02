@@ -6,6 +6,11 @@ Core Terms is the reusable classification dependency. The repo/folder is still n
 
 Teachers.Net Jobs is the active job board plugin at `wordpress/wp-content/plugins/tnet-jobs`.
 
+Job Center execution worktree: `/home/bobreap/projects/teachers-net-jobcenter`.
+Expected branch: `JOB-CENTER-JC053-wizard-workbench`. The controlling root
+repository at `/home/bobreap/projects/teachers-net-site` is noncanonical for
+Job Center ticket execution; use it only for explicit worktree administration.
+
 Primary rule:
 Terms classify. Jobs authorizes. WordPress authenticates.
 
