@@ -101,7 +101,15 @@ forking shared patterns.
   remain unresolved and must not be invented during implementation.
 - No production deployment is established by the verified history.
 
+Drive sync primary-code transitions: `0 / 10`
+Last successful Drive sync: `Unknown — baseline established under PROCESS-GOV002 on cycle 260802014510.`
+Ordinary ticket completion does not trigger a Drive Handoff update. The next
+sync requires PREPARE HANDOFF, an explicit Engineering Director request, a
+major milestone/phase transition, or the tenth primary-code transition.
+
 ## 6. Recently Adopted Governance Documents
+
+- PROCESS-GOV002 — Google Drive Synchronization Cadence.
 
 - JC053 Wizard Design System v1:
   `docs/job-center/jc053-wizard-design-system-v1.md` — canonical shared wizard

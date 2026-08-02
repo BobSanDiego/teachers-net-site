@@ -62,3 +62,9 @@ Draft candidates are not approved visual references.
 - Verified against canonical URL: <YES/NO>
 - Runtime ownership: <PID, command line, cwd, docroot, loaded asset paths, and relevant hashes.>
 - If NO: <identify canonical and alternate URLs, explain the blocker, and stop without completion.>
+
+## Google Drive Synchronization State (PROCESS-GOV002)
+
+- Drive sync primary-code transitions: <N / 10>
+- Last successful Drive sync: <date/cycle/commit, or “Unknown — baseline not yet recorded.”>
+- Next sync trigger: <PREPARE HANDOFF, explicit request, milestone/phase transition, or tenth primary-code transition.>

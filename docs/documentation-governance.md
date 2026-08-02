@@ -187,6 +187,17 @@ manifest, roadmap, and implementation documents are consulted only when the
 ticket requires them. Drive does not mirror repository architecture,
 implementation detail, full roadmaps, or ticket history.
 
+### PROCESS-GOV002 — Google Drive Synchronization Cadence
+
+Repository documentation is authoritative. Synchronize the operational Google
+Drive Handoff only for PREPARE HANDOFF, an explicit Engineering Director
+request, a major milestone or phase transition, or ten primary ticket-code
+transitions since the last successful sync. Count leading primary codes rather
+than suffixes; related JC053 sub-tickets remain JC053. Maintain the durable
+counter in the active local Engineering Handoff and reset it to `0 / 10` only
+after a successful Drive write and connector readback. When no trigger exists,
+do not invoke Drive.
+
 Codex should read local repository docs directly. ChatGPT should use Google
 Drive only to recover operational context at the start of a new session.
 

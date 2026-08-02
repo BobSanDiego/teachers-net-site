@@ -281,6 +281,13 @@ continuity documents first, compare the exact Drive Handoff, and reconcile
 legitimate newer Drive facts before writing. Verify the Drive write by connector
 readback. Do not claim synchronization without confirmation.
 
+PROCESS-GOV002 limits ordinary Drive Handoff synchronization. Sync only for
+PREPARE HANDOFF, an explicit Engineering Director request, a major milestone
+or phase transition, or ten primary-code transitions. Related suffix tickets
+remain one primary code. Keep the durable counter and last successful sync in
+the active local Engineering Handoff; reset the counter only after a successful
+Drive write and connector readback. Do not invoke Drive when no trigger exists.
+
 Update the execution plan only when the critical path, priority order, phase
 boundary, V1/V1.1/V2 classification, settled decision, major dependency, or
 pilot/release acceptance changes. Update the roadmap only when durable sequence

@@ -48,6 +48,16 @@ hard reload and confirm expected assets. If the canonical runtime is stale,
 broken, unreachable, or different from the intended source, stop and repair it
 before verification; an alternate runtime cannot satisfy the ticket.
 
+## Google Drive Synchronization Cadence (PROCESS-GOV002)
+
+Local repository documentation is authoritative. Sync the operational Drive
+Handoff only for PREPARE HANDOFF, an explicit Engineering Director request, a
+major milestone or phase transition, or the tenth primary ticket-code
+transition since the last successful sync. Count leading primary codes, not
+suffixes. Maintain `Drive sync primary-code transitions: N / 10` in the active
+local Engineering Handoff and reset it only after Drive write and connector
+readback. Otherwise do not invoke Drive.
+
 Local repository docs remain the durable engineering source for architecture,
 roadmaps, specifications, implementation details, and verification instructions.
 

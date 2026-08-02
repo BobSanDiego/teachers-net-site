@@ -259,6 +259,12 @@ its separate verification gate passes.
 
 ## Required Google Drive Context
 
+Drive sync primary-code transitions: `0 / 10`. Last successful Drive sync:
+unknown; baseline established under PROCESS-GOV002 on cycle `260802014510`.
+Do not synchronize the operational Handoff after ordinary tickets. Sync only
+for PREPARE HANDOFF, explicit Engineering Director request, major milestone or
+phase transition, or the tenth primary-code transition.
+
 A new ChatGPT session reads only these by default:
 
 1. Engineering Director Playbook v2
