@@ -38,6 +38,7 @@
     ["wizard-authority-v1", "Authority — Wizard UI v1"],
     ["step-02-job-basics", "Step 2 — Job Basics"],
     ["step-03-job-description", "Step 3 — Job Description"],
+    ["step-03-clipboard-diagnostics", "Step 3 — Clipboard Diagnostics"],
     ["step-04-application-process", "Step 4 — Application Process"],
     ["step-05-review-publish", "Step 5 — Review & Publish"],
   ];
@@ -624,6 +625,7 @@
       "step-01-return",
       "wizard-authority-v1",
       "step-02-job-basics",
+      "step-03-clipboard-diagnostics",
     ].includes(id);
     select.append(o);
   });
@@ -1137,6 +1139,13 @@
   step3Panel.dataset.view = "step-03-job-description";
   jobBasicsPanel.after(step3Panel);
   statePanels["step-03-job-description"] = step3Panel;
+  const clipboardDiagnosticsPanel = document.createElement("article");
+  clipboardDiagnosticsPanel.className = "panel";
+  clipboardDiagnosticsPanel.id = "step-03-clipboard-diagnostics";
+  clipboardDiagnosticsPanel.dataset.view = "step-03-clipboard-diagnostics";
+  clipboardDiagnosticsPanel.hidden = true;
+  step3Panel.after(clipboardDiagnosticsPanel);
+  statePanels["step-03-clipboard-diagnostics"] = clipboardDiagnosticsPanel;
   const step3Option = select.querySelector(
     'option[value="step-03-job-description"]',
   );
@@ -1201,6 +1210,40 @@
       </div>
       <aside class="step3-preview-pane" aria-label="Listing Preview"><div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>This is how your job listing will look to teachers.</p></div><span>Live preview</span></div><div id="step3-preview" class="step3-preview-card"></div><p class="step3-preview-note">Step 5 remains the canonical full review surface.</p></aside>
     </div>`;
+  const clipboardDiagnosticsContent = document.createElement("section");
+  clipboardDiagnosticsContent.className = "clipboard-diagnostics-content";
+  clipboardDiagnosticsContent.innerHTML = `<div class="clipboard-diagnostics-intro"><h2>Clipboard Diagnostics</h2><p>Static diagnostic artifact · not production behavior</p></div><div class="clipboard-diagnostics-controls"><label for="clipboard-source-label">Source label</label><select id="clipboard-source-label"><option>Microsoft Word</option><option>Google Docs</option><option>Indeed</option><option>Outlook</option><option>Other</option></select><button type="button" class="button secondary" data-clipboard-capture>Capture Clipboard Payload</button><button type="button" class="button secondary" data-clipboard-reset>Reset</button></div><div id="clipboard-capture-surface" class="clipboard-capture-surface" contenteditable="true" role="textbox" aria-label="Paste source here">Paste source here</div><div class="clipboard-diagnostics-meta" data-clipboard-meta>No capture yet.</div><div class="clipboard-diagnostics-actions"><button type="button" class="button secondary" data-clipboard-copy="html">Copy raw HTML</button><button type="button" class="button secondary" data-clipboard-copy="text">Copy raw text</button><button type="button" class="button primary" data-clipboard-download>Download capture bundle</button></div><div class="clipboard-diagnostics-panels"><div><h3>text/html</h3><pre data-clipboard-output="html"></pre></div><div><h3>text/plain</h3><pre data-clipboard-output="text"></pre></div><div><h3>Clipboard MIME types</h3><pre data-clipboard-output="types"></pre></div></div>`;
+  clipboardDiagnosticsPanel.append(clipboardDiagnosticsContent);
+  let clipboardCapture = null;
+  const clipboardSha256 = async (value) => { const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)); return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join(""); };
+  const clipboardRender = () => {
+    const meta = clipboardDiagnosticsContent.querySelector("[data-clipboard-meta]");
+    if (!clipboardCapture) { meta.textContent = "No capture yet."; clipboardDiagnosticsContent.querySelectorAll("[data-clipboard-output]").forEach((output) => { output.textContent = ""; }); return; }
+    meta.textContent = `Captured ${clipboardCapture.timestamp} · ${clipboardCapture.sourceLabel} · ${clipboardCapture.userAgent} · build ${clipboardCapture.build}`;
+    clipboardDiagnosticsContent.querySelector('[data-clipboard-output="html"]').textContent = clipboardCapture.html;
+    clipboardDiagnosticsContent.querySelector('[data-clipboard-output="text"]').textContent = clipboardCapture.text;
+    clipboardDiagnosticsContent.querySelector('[data-clipboard-output="types"]').textContent = clipboardCapture.types.join("\n");
+  };
+  const clipboardCaptureEvent = async (event) => {
+    const data = event.clipboardData;
+    if (!data) return;
+    event.preventDefault();
+    clipboardCapture = { html: data.getData("text/html"), text: data.getData("text/plain"), types: [...data.types], timestamp: new Date().toISOString(), userAgent: navigator.userAgent, build: workbenchBuild, sourceLabel: clipboardDiagnosticsContent.querySelector("#clipboard-source-label").value, htmlSha256: await clipboardSha256(data.getData("text/html")), textSha256: await clipboardSha256(data.getData("text/plain")) };
+    localStorage.setItem("jc053-clipboard-capture", JSON.stringify(clipboardCapture));
+    clipboardRender();
+  };
+  const clipboardDownload = () => {
+    if (!clipboardCapture) return;
+    const stamp = clipboardCapture.timestamp.replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+    [["html", clipboardCapture.html, "text/html"], ["txt", clipboardCapture.text, "text/plain"], ["json", JSON.stringify(clipboardCapture, null, 2), "application/json"]].forEach(([extension, value, type]) => { const link = document.createElement("a"); link.href = URL.createObjectURL(new Blob([value], { type })); link.download = `clipboard-capture-${stamp}.${extension}`; link.click(); URL.revokeObjectURL(link.href); });
+  };
+  const clipboardSurface = clipboardDiagnosticsContent.querySelector("#clipboard-capture-surface");
+  clipboardSurface.addEventListener("paste", clipboardCaptureEvent);
+  clipboardDiagnosticsContent.querySelector("[data-clipboard-capture]").addEventListener("click", () => { if (!clipboardCapture) clipboardSurface.focus(); else clipboardDownload(); });
+  clipboardDiagnosticsContent.querySelector("[data-clipboard-reset]").addEventListener("click", () => { clipboardCapture = null; localStorage.removeItem("jc053-clipboard-capture"); clipboardRender(); clipboardSurface.textContent = "Paste source here"; });
+  clipboardDiagnosticsContent.querySelectorAll("[data-clipboard-copy]").forEach((button) => button.addEventListener("click", () => { if (clipboardCapture) navigator.clipboard?.writeText(clipboardCapture[button.dataset.clipboardCopy]); }));
+  clipboardDiagnosticsContent.querySelector("[data-clipboard-download]").addEventListener("click", clipboardDownload);
+  try { const saved = JSON.parse(localStorage.getItem("jc053-clipboard-capture") || "null"); if (saved) { clipboardCapture = saved; clipboardRender(); } } catch {}
   const step3Editors = ["#step3-description-editor", "#step3-requirements-editor"];
   const step3NormalizeGoogleDocs = (node) => {
     const googleRedirect = [...node.querySelectorAll("a")].some((link) => /^https:\/\/www\.google\.com\/url(?:\?|$)/i.test(link.getAttribute("href") || ""));
@@ -1481,6 +1524,20 @@
       stepperState: ["is-complete", "is-current", "is-upcoming", "is-upcoming", "is-upcoming"],
       completedTargets: ["step-01-return", null, null, null, null],
       content: authorityContent,
+    },
+    "step-03-clipboard-diagnostics": {
+      viewId: "step-03-clipboard-diagnostics",
+      stepNumber: "3",
+      title: "Clipboard Diagnostics",
+      supportingCopy: "Capture untouched native clipboard payloads for engineering diagnostics.",
+      authority: false,
+      showCancel: false,
+      showSaveDraft: false,
+      previous: null,
+      next: null,
+      stepperState: ["is-complete", "is-complete", "is-current", "is-upcoming", "is-upcoming"],
+      completedTargets: ["step-01-return", "step-02-job-basics", null, null, null],
+      content: clipboardDiagnosticsContent,
     },
     "step-03-job-description": {
       viewId: "step-03-job-description",
