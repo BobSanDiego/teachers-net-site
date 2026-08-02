@@ -17,7 +17,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-HOPPER = ROOT / "tmp" / "hopper"
+COMMON_GIT_DIR = Path(subprocess.run(
+    ["git", "-C", str(ROOT), "rev-parse", "--path-format=absolute", "--git-common-dir"],
+    check=True, capture_output=True, text=True,
+).stdout.strip())
+CONTROLLING_ROOT = COMMON_GIT_DIR.parent
+HOPPER = CONTROLLING_ROOT / "tmp" / "hopper"
 
 
 def enforce_branch(project: str, integration: bool = False) -> str:
@@ -118,7 +123,7 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         "execution_worktree": execution_worktree,
         "execution_branch": execution_branch,
         "packaging_worktree": execution_worktree,
-        "push": push, "current_hopper": str(current.relative_to(ROOT)),
+        "push": push, "current_hopper": str(current.relative_to(CONTROLLING_ROOT)),
         "archive_path": str((current.parent / "archive").relative_to(ROOT)),
         "report_file": report, "manifest_file": manifest,
         "cycle_record_file": record, "evidence_bundle": evidence,
@@ -131,8 +136,8 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         f"execution_worktree={execution_worktree}",
         f"execution_branch={execution_branch}",
         f"packaging_worktree={execution_worktree}",
-        f"current_hopper={current.relative_to(ROOT)}",
-        f"archive_path={(current.parent / 'archive').relative_to(ROOT)}",
+        f"current_hopper={current.relative_to(CONTROLLING_ROOT)}",
+        f"archive_path={(current.parent / 'archive').relative_to(CONTROLLING_ROOT)}",
         f"report_file={report}", f"manifest_file={manifest}",
         f"cycle_record_file={record}", f"evidence_bundle={evidence or ''}",
         "", "artifacts:",

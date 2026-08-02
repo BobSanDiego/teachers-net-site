@@ -22,6 +22,12 @@ command.
 The final screen report must print the full current-cycle filename list, WSL
 path, Windows path, archive path, commit, push result, and the command
 `explorer.exe "\\wsl$\\Ubuntu-24.04\\home\\bobreap\\projects\\teachers-net-site\\tmp\\hopper\\jobcenter\\current"`.
+
+The canonical Job Center hopper is controlled by the root repository at
+`/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current/`.
+Execution and packaging may run from the persistent Job Center worktree, but
+cycle artifacts must be written to that root-controlled hopper and report both
+the execution and packaging worktree fields.
 Preserve blocked and incomplete cycles, exclude unrelated dirty files, never
 silently overwrite artifacts, and never delete historical cycles. The user's
 ingestion action is to open `current/`, select all, and drag the set into

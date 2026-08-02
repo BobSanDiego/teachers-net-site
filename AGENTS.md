@@ -8,6 +8,11 @@ ticket execution and is reserved for explicit worktree administration. Do not
 run Job Center Git, browser, startup, or hopper operations from the Community
 worktree or the mixed root worktree.
 
+Canonical Job Center hopper packaging path is controlled by the root
+repository: `/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current/`.
+Package from the persistent Job Center worktree, but use that root-controlled
+hopper path for handoff artifacts.
+
 Owned repos:
 
 - `wordpress/wp-content/plugins/profilaxes` = Core Terms dependency. Visible product name: Core Terms.
