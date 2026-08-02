@@ -1132,9 +1132,9 @@
   );
   normalizeMultipleLocationLabels();
   jobBasicsPanel.querySelector(".grade-level-field label").innerHTML =
-    "Grade Level(s) <small>(Recommended for matching)</small>";
+    "Grade Level(s) <small>(Recommended)</small>";
   jobBasicsPanel.querySelector(".subject-area-field label").innerHTML =
-    "Subject Area(s) <small>(Recommended for matching)</small>";
+    "Subject Area(s) <small>(Recommended)</small>";
   const employmentTypeStep2 = jobBasicsPanel.querySelector(
     "#employment-type-step2",
   );
