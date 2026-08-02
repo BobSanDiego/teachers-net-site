@@ -1409,48 +1409,25 @@
   let step3SavedRange = null;
   const step3EditorForRange = (range) => { const node=range?.commonAncestorContainer; return (node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement)?.closest("[contenteditable]"); };
   const clearStep3Formatting = () => {
-    const range = step3SavedRange?.cloneRange();
-    const editor = step3EditorForRange(range);
-    if (!range || !editor) return;
-    const fragment = range.extractContents();
+    const saved = step3SavedRange?.cloneRange(), active = document.activeElement?.closest("[contenteditable]");
+    const editor = step3EditorForRange(saved) || active;
+    if (!editor) return;
+    const range = saved && step3EditorForRange(saved) === editor && !saved.collapsed ? saved : null;
+    const container = document.createElement("div");
+    container.innerHTML = range ? (() => { const fragment = range.cloneContents(); const holder = document.createElement("div"); holder.append(...fragment.childNodes); return holder.innerHTML; })() : editor.innerHTML;
     const normalize = (node) => {
       [...node.childNodes].forEach((child) => {
         if (child.nodeType !== Node.ELEMENT_NODE) return;
         const tag = child.tagName;
-        if (tag === "UL" || tag === "OL") {
-          const replacement = document.createDocumentFragment();
-          [...child.children].forEach((item) => {
-            const paragraph = document.createElement("p");
-            paragraph.append(...item.childNodes);
-            normalize(paragraph);
-            replacement.append(paragraph);
-          });
-          child.replaceWith(replacement);
-          return;
-        }
         normalize(child);
-        if (/^H[1-6]$/.test(tag) || tag === "LI") {
-          const paragraph = document.createElement("p");
-          paragraph.append(...child.childNodes);
-          child.replaceWith(paragraph);
-        } else if (tag === "P") {
-          child.replaceChildren(...child.childNodes);
-          [...child.attributes].forEach((attribute) => child.removeAttribute(attribute.name));
-        } else if (tag !== "BR") {
-          child.replaceWith(...child.childNodes);
-        }
+        if (tag === "A" || tag === "SPAN" || tag === "B" || tag === "I" || tag === "STRONG" || tag === "EM") child.replaceWith(...child.childNodes);
+        else if (/^H[1-6]$/.test(tag)) { const paragraph = document.createElement("p"); paragraph.append(...child.childNodes); child.replaceWith(paragraph); }
+        [...(child.attributes || [])].forEach((attribute) => { if (!(tag === "OL" && attribute.name === "start")) child.removeAttribute(attribute.name); });
       });
     };
-    normalize(fragment);
-    range.deleteContents();
-    const first = fragment.firstChild, last = fragment.lastChild;
-    range.insertNode(fragment);
-    if (first && last) {
-      const selection = window.getSelection();
-      const nextRange = document.createRange();
-      nextRange.setStartBefore(first); nextRange.setEndAfter(last);
-      selection.removeAllRanges(); selection.addRange(nextRange); step3SavedRange = nextRange.cloneRange();
-    }
+    normalize(container);
+    if (range) { const fragment = document.createDocumentFragment(); fragment.append(...container.childNodes); range.deleteContents(); range.insertNode(fragment); }
+    else editor.innerHTML = container.innerHTML;
     updateStep3Counters(); scheduleStep3Preview(); refreshNextAction(); editor.focus();
   };
   const renderStep3Benefits = () => {
