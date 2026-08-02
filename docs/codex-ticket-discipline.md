@@ -766,6 +766,21 @@ When aborting COMPONENT MATCH MODE:
 - do not push
 - report reverted files and repo cleanliness
 
+## Canonical Review URL Discipline (PROCESS-GOV001)
+
+Every UI implementation, browser-QA, screenshot, DOM, console, accessibility,
+and human-acceptance report must begin with the exact Engineering Director
+review URL and `Verified against canonical URL: YES` or `NO`. The canonical
+review URL is the authority; another port, server, worktree, launcher, or
+runtime is not a substitute.
+
+Before verification, record PID, command line, cwd, docroot, loaded asset paths,
+and relevant SHA-256 hashes. Hard-reload with cache bypass and confirm the
+expected assets. If the canonical URL is stale, broken, unreachable, or serves
+different code, stop verification and repair the canonical runtime first. If
+canonical verification is `NO`, identify both URLs and stop without claiming
+completion.
+
 ## Browser Verification Environment
 
 Teachers.Net browser verification is project-owned and runs from the root repo

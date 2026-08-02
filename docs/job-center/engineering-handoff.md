@@ -31,6 +31,14 @@ Active bounded workstreams are JC052 Employer Workspace Completion, JC053 Job
 Posting Wizard Re-Convergence, JC054 Teacher Discovery Final Pass, JC055
 Teacher Account Modules, and JC056 Identity & Onboarding. JC057 is the later
 implementation capability audit; JC058+ is generated from its findings.
+Canonical Engineering Director review URL for JC053 Step 3:
+`http://127.0.0.1:8768/?#step-03-job-description`.
+All UI verification must use this exact URL and report
+`Verified against canonical URL: YES` or `NO`, plus PID, command line, cwd,
+docroot, loaded asset paths, and relevant hashes. If the canonical runtime is
+stale, broken, unreachable, or serves different code, stop and repair the
+canonical runtime before verification; an alternate runtime is not acceptable.
+
 The JC053 V1 field inventory and admission contract is recorded at
 `docs/job-center/job-posting-wizard-field-contract-v1.md`.
 
@@ -73,8 +81,9 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 JC053 shared UI authority is now durable at
 `docs/job-center/jc053-wizard-design-system-v1.md`. Future wizard work must
 reuse the Wizard Responsive Form Grid, Form Control with Trailing Icon,
-Stepper, Bottom Navigation, and Choice Card primitives defined there rather
-than restating or forking shared patterns.
+Stepper, Bottom Navigation, Choice Card, Step 3 authoring, Benefits selector,
+and incremental preview primitives defined there rather than restating or
+forking shared patterns.
 
 ## 5. Current Blockers
 
@@ -175,6 +184,7 @@ responsive evidence; otherwise an older CSS build can remain visible.
 - Job Finder Search Contract v1.
 - Employer Workspace Flow Authority v1.
 - Codex Fast Operations and verification-proportionality protocol.
+- PROCESS-GOV001 — Canonical Review URL Discipline.
 
 ## 7. Recently Approved Product Decisions
 

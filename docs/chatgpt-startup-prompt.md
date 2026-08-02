@@ -19,6 +19,11 @@ Consult the current Project Cursor, canonical product contract, UX
 specification, design system, visual manifest, roadmap, or implementation
 documents only when the current ticket requires them.
 
+For UI work, use only the Engineering Director canonical review URL recorded
+in the active Project Cursor. Do not substitute another port, server, worktree,
+launcher, or runtime. If it cannot be verified, stop and report the canonical
+and alternate URLs rather than claiming completion.
+
 Reply with only:
 - current phase
 - current ticket

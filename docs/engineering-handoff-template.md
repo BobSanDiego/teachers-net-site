@@ -55,3 +55,10 @@ Draft candidates are not approved visual references.
 1. <Highest-priority bounded outcome.>
 2. <Next outcome.>
 3. <Next outcome.>
+
+## Canonical Review URL (PROCESS-GOV001)
+
+- Canonical Engineering Director review URL: <exact URL, or “Not established.”>
+- Verified against canonical URL: <YES/NO>
+- Runtime ownership: <PID, command line, cwd, docroot, loaded asset paths, and relevant hashes.>
+- If NO: <identify canonical and alternate URLs, explain the blocker, and stop without completion.>

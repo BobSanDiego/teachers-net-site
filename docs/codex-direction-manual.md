@@ -37,6 +37,17 @@ Google Drive is for ChatGPT operational recovery only. It is not a mirror of
 repository architecture, implementation detail, full roadmaps, contracts,
 design systems, visual manifests, or ticket history.
 
+## Canonical Review URL Discipline
+
+The Engineering Director review URL is the sole authority for UI verification.
+Do not substitute another port, server, worktree, launcher, or runtime. Every
+UI completion report starts with the exact canonical URL and
+`Verified against canonical URL: YES` or `NO`. Record PID, command line, cwd,
+docroot, loaded asset paths, and relevant SHA-256 values. Use a cache-bypassed
+hard reload and confirm expected assets. If the canonical runtime is stale,
+broken, unreachable, or different from the intended source, stop and repair it
+before verification; an alternate runtime cannot satisfy the ticket.
+
 Local repository docs remain the durable engineering source for architecture,
 roadmaps, specifications, implementation details, and verification instructions.
 

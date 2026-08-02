@@ -104,6 +104,11 @@ The bounded convergence workstreams are:
 - JC053 Job Posting Wizard Re-Convergence: finalized shell and controls,
   spacing, progressive disclosure, School / Jobsite selection, organization
   defaults, listing overrides, image behavior, and validation.
+  Field contract: `docs/job-center/job-posting-wizard-field-contract-v1.md`.
+  Current Step 3 direction is paste-first rich authoring, required Short Summary,
+  grouped Optional Fields, compact Benefits selection with inline empty-state
+  teaching, and incremental populated-content preview. Authority is recorded in
+  `docs/job-center/jc053-wizard-design-system-v1.md` and the field contract.
 - JC054 Teacher Discovery Final Pass: search, filters, sort, browse, listing
   cards, detail, employer/location presentation, imagery, and promoted listings.
 - JC055 Teacher Account Modules: Saved Jobs, Job Alerts, alert management,
@@ -159,14 +164,20 @@ and privacy footer. Exact Expired-to-Closed timing, archive semantics,
 retention policy, Duplicate versus Repost wording, notification
 implementation, and deeper analytics remain unresolved and must not be inferred
 from the approved mockups.
-Responsive/mobile presentation is now recorded as two provisional candidate
+Employer Operations / JC053 responsive presentation is an active
+implementation-target workstream, not an approved authority. The latest
+rollback retains full navigation through 1025px and enters compact Resources
+at 1024px; final browser and human acceptance remain open. Responsive/mobile
+presentation is also recorded as two provisional candidate
 rasters (contracted and expanded selector) under
 `docs/job-center/design/draft/`. They are Implementation Targets pending
 Browser Verification, not Approved authorities. Team Members, bottom
 navigation, list/grid switching, and other explicit exclusions remain
 unapproved or deferred to V1.1.
 
-The approved responsive visual authority set is complete. JC-030 Narrow Tablet
+The approved responsive visual authority set for the established public and
+job-detail surfaces is complete. JC053 Employer Operations responsive
+convergence remains provisional and active. JC-030 Narrow Tablet
 v1.0, JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010
 Mobile v1.0 are in Patch Mode. Desktop JC-010 v1.1, JC-011 v1.0, JC-014 v1.0,
@@ -198,6 +209,11 @@ lifecycle, presentation, and application behavior.
   `127.0.0.1:9222`, authenticate as `jobman`, use 1440 × 1000, and verify
   route, screenshot, DOM, console/page errors, overflow, selector state, and
   the relevant filter/rows-per-page state.
+- Canonical Engineering Director review URL for the active JC053 Step 3
+  review: `http://127.0.0.1:8768/?#step-03-job-description`. All browser QA,
+  screenshots, DOM, console, accessibility, and human acceptance must use
+  this exact URL. Confirm runtime ownership before verification; an alternate
+  port, server, worktree, launcher, or runtime does not satisfy the ticket.
 - Current shell architecture: a 1200px app canvas with a white shared navbar,
   approved Teachers.Net PNG logo, Job Center label, notification/account
   controls, a 250px gray Employer Operations rail, and a flexible workspace
