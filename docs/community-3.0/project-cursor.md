@@ -436,3 +436,13 @@ define URL admission, DNS/SSRF, bounded transport, extraction, provider,
 cache, moderation/privacy, adapter, and deterministic mock-test boundaries.
 No live DNS/HTTP, schema, feed, notification, or production work was done.
 Next ticket: C3-PUB006 — Mocked Safe Link Fetch Policy and Adapter.
+
+C3-PUB006 is implemented locally as a deterministic no-network adapter. URL
+admission, mock destination authorization, bounded transport outcomes,
+metadata extraction/sanitization, provider classification, cache lifecycle,
+and a Community-owned application service are present with explicit reason
+codes. Focused threat-case tests and no-network assertions pass; visible
+fixture preview behavior is preserved and no diagnostic public route was
+added. Reassessment: READY WITH REQUIRED PRECONDITIONS for a separately
+authorized allowlisted pilot, not ready for general live retrieval. Next
+ticket: C3-PUB007 — isolated allowlisted live-fetch pilot design/approval.
