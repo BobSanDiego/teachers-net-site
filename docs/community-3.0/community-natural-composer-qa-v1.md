@@ -5,3 +5,8 @@ PHP lint passed in DDEV for the composer controller and attachment model; `git d
 No production host, live metadata service, remote fetch, or unrestricted upload was used. Browser control was unavailable, so screenshots and interactive keyboard/drag/drop acceptance remain pending at `https://teachers-net.ddev.site/community/new/`.
 
 Manual follow-up: verify file selection, paste/drop, replacement/removal, representative promotion, required-alt errors, ordinary and no-JavaScript publishing, Thread View and Activity Feed safety, and mobile layout.
+
+FIX001 also checks the JavaScript contract for one paste handler, DataTransfer
+submission, object-URL preview/revocation, remove/replace controls, preview
+state, and JPEG/PNG/WebP values. Browser execution at 1440px and 390px remains
+pending because browser control is unavailable.

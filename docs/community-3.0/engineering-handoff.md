@@ -421,3 +421,11 @@ screenshots and interaction acceptance remain pending; review URL:
 enrichment, additional media families, production uploads, or inline document
 serialization. Preferred next ticket: C3-FEED002 — Community Feed Card Polish
 and Responsive Refinement.
+
+C3-COMP001-FIX001 is the completed acceptance-correction pass. Paste, chooser,
+and drop share one staging path; dropped files enter the submitted input;
+preview/remove/replace state is explicit; PNG and WebP render as safe local
+upload URLs; alt is checked before upload and attempted uploads are cleaned on
+later failure. Browser QA remains pending because browser control was
+unavailable. Do not begin FEED002 or live/media expansion before human browser
+acceptance.

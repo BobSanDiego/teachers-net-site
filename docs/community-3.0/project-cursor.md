@@ -467,3 +467,10 @@ live retrieval, production upload, or inline document model was added.
 Browser screenshots remain pending because browser control was unavailable.
 Next ticket: C3-FEED002 — Community Feed Card Polish and Responsive
 Refinement.
+
+C3-COMP001-FIX001 completes clipboard paste, DataTransfer-backed drop
+submission, visible preview, remove/replace cleanup, JPEG/PNG/WebP validation,
+pre-upload alt validation, failed-publication upload cleanup, safe local-upload
+rendering, and representative mocked preview state. Browser QA remains
+pending because browser control was unavailable. Next ticket after human
+acceptance: C3-FEED002 — Community Feed Card Polish and Responsive Refinement.
