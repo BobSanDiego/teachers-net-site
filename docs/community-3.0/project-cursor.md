@@ -410,3 +410,11 @@ enrichment, feeds, notifications, AI, or production work was performed.
 Authenticated visual browser screenshots remain pending because browser
 control was unavailable in this WSL session. Next ticket: C3-PUB003 —
 Community Link Enrichment and Preview Pipeline.
+
+C3-PUB003 is implemented locally as a fixture-only link preview foundation.
+The link attachment service and cached preview object support keep/remove/raw
+author choices, deterministic local metadata, composer preview placeholder,
+raw-link fallback, and repository round-trip through existing compatibility
+JSON. No live fetching, SSRF networking, uploads, feeds, notifications, AI,
+schema, or production work was performed. Next ticket: C3-PUB004 — Community
+Rich Media Attachments.

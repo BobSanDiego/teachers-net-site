@@ -363,3 +363,12 @@ behavior. DDEV lint, route protection, markup, and ordinary-text publication
 checks passed. Authenticated browser screenshots remain pending because browser
 control was unavailable in the WSL session. Next ticket: C3-PUB003 — Community
 Link Enrichment and Preview Pipeline.
+
+C3-PUB003 is complete as a fixture-only local link preview foundation. The
+attachment service and cached preview model implement deterministic fixture
+metadata, keep/remove/raw author choices, a composer placeholder, graceful
+raw-link fallback, and repository persistence through existing compatibility
+JSON. Live Open Graph/Twitter/oEmbed fetching, SSRF networking, uploads, feeds,
+notifications, schema, and production remain out of scope. DDEV lint, fixture
+choice checks, composer markup, and cached-preview round-trip passed. Next
+ticket: C3-PUB004 — Community Rich Media Attachments.
