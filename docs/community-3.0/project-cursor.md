@@ -446,3 +446,13 @@ fixture preview behavior is preserved and no diagnostic public route was
 added. Reassessment: READY WITH REQUIRED PRECONDITIONS for a separately
 authorized allowlisted pilot, not ready for general live retrieval. Next
 ticket: C3-PUB007 — isolated allowlisted live-fetch pilot design/approval.
+
+C3-FEED001 is implemented locally as the first Community Activity Feed. The
+`/community/` projection renders text-first mixed cards from repository data,
+including safe fixture attachment and mocked-preview treatments, author/title,
+excerpt/activity/reply metadata, moderation-aware visibility, responsive
+single-column layout, and canonical Thread View links. Ranking,
+personalization, infinite scroll, ads, live fetching, notifications, AI,
+uploads, and production work remain out of scope. Browser viewport screenshots
+remain pending because browser control was unavailable. Next ticket:
+C3-FEED002 — Community Feed Card Polish and Responsive Refinement.

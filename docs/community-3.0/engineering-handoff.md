@@ -402,3 +402,14 @@ unchanged and no public diagnostic route was needed. Reassessment: READY WITH
 REQUIRED PRECONDITIONS for a separately authorized allowlisted pilot, not ready
 for general live retrieval. Next ticket: C3-PUB007 — isolated allowlisted
 live-fetch pilot design/approval.
+
+C3-FEED001 is complete as a bounded local activity-feed implementation. The
+`/community/` route now projects text-first mixed cards from existing
+repository data, including safe fixture media and mocked link-preview
+presentation, with author/title/excerpt/activity/reply metadata and canonical
+Thread View links. Publication/moderation boundaries remain intact. No
+ranking, personalization, infinite scroll, ads, live fetching, notifications,
+AI, uploads, or production behavior was added. DDEV lint, HTTP smoke, mixed
+content, card-link, and diff checks passed. Browser screenshots remain pending
+because browser control was unavailable. Next ticket: C3-FEED002 — Community
+Feed Card Polish and Responsive Refinement.
