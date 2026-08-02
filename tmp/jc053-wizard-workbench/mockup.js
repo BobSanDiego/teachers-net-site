@@ -1238,6 +1238,10 @@
     });
     return node.innerHTML;
   };
+  step3Content.querySelectorAll("[contenteditable]").forEach((editor) => {
+    const normalized = step3Sanitized(editor.innerHTML);
+    if (normalized !== editor.innerHTML) editor.innerHTML = normalized;
+  });
   const step3Escape = (value) => String(value).replace(/[&<>"']/g, (character) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
   }[character]));
