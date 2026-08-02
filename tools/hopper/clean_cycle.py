@@ -187,8 +187,9 @@ def validate(project: str, identifier: str) -> None:
         raise RuntimeError("zero-byte artifact in current hopper")
     record = current / f"cycle-{project}-{identifier}.json"
     payload = json.loads(record.read_text())
+    execution_worktree = Path(payload.get("execution_worktree", str(ROOT))).resolve()
     current_branch = subprocess.run(
-        ["git", "branch", "--show-current"], cwd=ROOT, check=True,
+        ["git", "branch", "--show-current"], cwd=execution_worktree, check=True,
         capture_output=True, text=True,
     ).stdout.strip()
     if payload.get("execution_branch") and payload["execution_branch"] != current_branch:
@@ -197,6 +198,22 @@ def validate(project: str, identifier: str) -> None:
         )
     if payload.get("status") != "complete" or not payload.get("commit"):
         raise RuntimeError("cycle record is not finalized with a commit")
+    commit = payload["commit"]
+    exists = subprocess.run(
+        ["git", "cat-file", "-e", f"{commit}^{{commit}}"],
+        cwd=execution_worktree, capture_output=True,
+    )
+    if exists.returncode != 0:
+        raise RuntimeError(f"recorded commit does not exist: {commit}")
+    branch_ref = payload.get("execution_branch") or current_branch
+    ancestry = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", commit, branch_ref],
+        cwd=execution_worktree, capture_output=True,
+    )
+    if ancestry.returncode != 0:
+        raise RuntimeError(
+            f"recorded commit is not reachable from execution branch: commit={commit} branch={branch_ref}"
+        )
     if payload.get("push") not in {"pushed", "success", "successful"}:
         raise RuntimeError("cycle record does not contain a successful push status")
     manifest = current / payload["manifest_file"]
