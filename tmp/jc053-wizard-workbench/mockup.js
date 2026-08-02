@@ -1662,6 +1662,7 @@
     heading.querySelector("p").textContent = config.supportingCopy;
     panel.classList.add("wizard-shell-panel");
     panel.replaceChildren(heading, content);
+    syncWizardValueStates(panel);
     wizardStepper.states = config.stepperState;
     wizardStepper.completedTargets = config.completedTargets;
     wizardStepper.render();
