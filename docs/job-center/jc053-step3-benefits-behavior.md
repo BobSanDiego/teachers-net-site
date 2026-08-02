@@ -25,6 +25,16 @@ benefits counter and helper follow the textarea visibility and remain hidden
 while disabled.
 The canonical review URL is `http://127.0.0.1:8768/#step-03-job-description`.
 
+## Current rhythm and preview rules
+
+Selected summary removal controls use 600 weight. The Benefits category list is
+inset by approximately 25px at wide widths, with category rows at 1.25 line
+height and 5px spacing between categories. The final category retains its
+quiet bottom breathing room. The live Listing Preview is assembled from
+populated sections only: empty or visually empty editor content emits neither
+its heading nor its content container, and Benefits appears only when a
+benefit or enabled Additional benefits text is present.
+
 ## Deferred UX review
 
 After the controller and contrast defects are resolved, schedule **JC053-
