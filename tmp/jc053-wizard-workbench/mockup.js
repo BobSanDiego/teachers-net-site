@@ -640,6 +640,15 @@
     "step-01-return": document.querySelector("#step-01-school-selected"),
     "step-01-initial": document.querySelector("#step-01-initial"),
   };
+  const syncWizardValueStates = (root = document) => {
+    root.querySelectorAll("input:not([type=checkbox]):not([type=radio]), select, textarea").forEach((control) => {
+      const value = control.tagName === "SELECT" ? control.options[control.selectedIndex] : control;
+      const placeholder = control.tagName === "SELECT"
+        ? !control.value || (control.selectedIndex === 0 && /^(select|choose|search|pick)/i.test(value?.textContent.trim() || ""))
+        : !control.value.trim();
+      control.dataset.valueState = placeholder ? "empty" : "filled";
+    });
+  };
   const implementedViews = views.map(([id]) => id);
   const syncWorkbenchTraversal = (id) => {
     const index = implementedViews.indexOf(id),
@@ -669,6 +678,7 @@
           ? "step-02-job-basics"
           : id;
     card.dataset.authority = implemented ? "true" : "false";
+    syncWizardValueStates(card);
     Object.values(statePanels).forEach((viewPanel) => {
       viewPanel.hidden = viewPanel !== statePanels[id];
     });
@@ -946,6 +956,7 @@
     }
   });
   document.addEventListener("input", (event) => {
+    if (event.target.matches("input, select, textarea")) syncWizardValueStates(event.target.closest(".application-card") || document);
     if (event.target.matches("#next-view, input, select, textarea")) {
       if (event.target.matches("#salary-minimum-step2")) syncCompensation();
       if (
@@ -958,6 +969,7 @@
     }
   });
   document.addEventListener("change", (event) => {
+    if (event.target.matches("input, select, textarea")) syncWizardValueStates(event.target.closest(".application-card") || document);
     if (event.target.matches("#salary-visibility-step2")) {
       syncCompensation();
       if (event.target.value === "Show salary")
