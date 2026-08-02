@@ -1182,9 +1182,10 @@
           <div class="step3-counter"><span data-counter-for="step3-requirements-editor">0</span> characters</div>
         </div>
         <div class="step3-field step3-summary-field">
-          <label for="step3-summary">Short Summary</label><p class="step3-field-help">Summarize this opportunity in one or two sentences. This may appear when your job is featured, shared, or promoted across Teachers.Net.</p>
+          <label for="step3-summary">Short Summary <span aria-hidden="true">*</span></label><p class="step3-field-help">Summarize this opportunity in one or two sentences. This may appear when your job is featured, shared, or promoted across Teachers.Net.</p>
           <textarea id="step3-summary" maxlength="160" rows="3"></textarea><div class="step3-counter"><span data-counter-for="step3-summary">0</span>/160 characters</div>
         </div>
+        <div class="step3-optional-intro"><h4>Optional Fields</h4><p>The following sections are optional, but providing additional detail helps teachers better understand your opportunity and improves matching and discovery throughout Teachers.Net.</p></div>
         <div class="step3-optional-sections">
           ${["Responsibilities","Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
           <details class="step3-benefits">
