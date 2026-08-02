@@ -1214,6 +1214,10 @@
       ["margin-left","margin-right","margin-inline-start","margin-inline-end","padding-left","padding-right","padding-inline-start","padding-inline-end","text-indent","list-style-position","mso-list","mso-margin-left-alt","mso-text-indent-alt"].forEach((property) => item.style.removeProperty(property));
       if (!item.getAttribute("style")?.trim()) item.removeAttribute("style");
     });
+    node.querySelectorAll("P").forEach((item) => {
+      ["margin-top","margin-bottom","margin-block-start","margin-block-end"].forEach((property) => item.style.removeProperty(property));
+      if (!item.getAttribute("style")?.trim()) item.removeAttribute("style");
+    });
     return node;
   };
   const step3Sanitized = (html) => {
