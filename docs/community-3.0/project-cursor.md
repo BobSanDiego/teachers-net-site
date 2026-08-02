@@ -428,3 +428,11 @@ real media services remain prohibited. The production upload readiness gap is
 documented. Browser viewport screenshots remain pending because browser
 control was unavailable. Next ticket: C3-PUB005 — Safe Live Link Metadata
 Fetching Readiness and Adapter audit.
+
+C3-PUB005 is complete as a documentation-only readiness and threat-model
+audit. Decision: NOT READY for live URL retrieval. The fixture preview
+interfaces and compatibility JSON are retained. The nine audit artifacts
+define URL admission, DNS/SSRF, bounded transport, extraction, provider,
+cache, moderation/privacy, adapter, and deterministic mock-test boundaries.
+No live DNS/HTTP, schema, feed, notification, or production work was done.
+Next ticket: C3-PUB006 — Mocked Safe Link Fetch Policy and Adapter.

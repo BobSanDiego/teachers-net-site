@@ -384,3 +384,11 @@ derivatives/transcoding, CDN/private access, moderation/copyright,
 retention/deletion, and quotas/rate limits. Browser screenshots remain pending
 because browser control was unavailable. Next ticket: C3-PUB005 — Safe Live
 Link Metadata Fetching Readiness and Adapter audit.
+
+C3-PUB005 is complete as a repository/threat-model audit. Decision: NOT READY
+for live retrieval. Fixture preview interfaces and compatibility JSON remain
+the authority. The nine documents define URL admission, private-address and
+DNS-rebinding controls, bounded transport, extraction/sanitization, provider
+policy, cache lifecycle, interface separation, and deterministic mock tests.
+No live DNS/HTTP, schema, feed, notification, or production work was done.
+Next ticket: C3-PUB006 — Mocked Safe Link Fetch Policy and Adapter.
