@@ -474,3 +474,11 @@ pre-upload alt validation, failed-publication upload cleanup, safe local-upload
 rendering, and representative mocked preview state. Browser QA remains
 pending because browser control was unavailable. Next ticket after human
 acceptance: C3-FEED002 — Community Feed Card Polish and Responsive Refinement.
+
+C3-FEED002 establishes the shared local Community visual language across Feed,
+Natural Composer, and Thread View: text-first hierarchy, restrained media,
+consistent cards and metadata, shared focus treatment, bounded media, and
+responsive single-column flow. The presentation layer is scoped to Community
+routes and does not change architecture or publishing behavior. Human visual
+acceptance at 1440, 1200, 1024, 768, and 390 remains pending because browser
+control was unavailable. Next ticket remains C3-FEED003 after visual review.

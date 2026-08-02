@@ -429,3 +429,11 @@ upload URLs; alt is checked before upload and attempted uploads are cleaned on
 later failure. Browser QA remains pending because browser control was
 unavailable. Do not begin FEED002 or live/media expansion before human browser
 acceptance.
+
+C3-FEED002 adds the Community-owned visual-language stylesheet and local route
+injection for Feed, Composer, and Thread View. It supplies shared shell,
+spacing, card, metadata, focus, media-bound, and responsive rules while
+leaving queries, schemas, routes, publishing, attachments, previews, and
+replies unchanged. Required screenshots and direct browser review are still
+pending. Do not treat this as visual acceptance or begin the next ticket until
+the named widths and mixed-content states are reviewed.
