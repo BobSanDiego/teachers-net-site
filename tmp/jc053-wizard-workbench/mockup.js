@@ -38,7 +38,6 @@
     ["wizard-authority-v1", "Authority — Wizard UI v1"],
     ["step-02-job-basics", "Step 2 — Job Basics"],
     ["step-03-job-description", "Step 3 — Job Description"],
-    ["step-03-clipboard-diagnostics", "Step 3 — Clipboard Diagnostics"],
     ["step-04-application-process", "Step 4 — Application Process"],
     ["step-05-review-publish", "Step 5 — Review & Publish"],
   ];
@@ -46,24 +45,6 @@
     status = document.querySelector("#view-status"),
     panel = document.querySelector("#step-01-return"),
     placeholder = document.querySelector("#placeholder");
-  const clipboardDiagnostics = document.createElement("article");
-  clipboardDiagnostics.className = "panel clipboard-diagnostics-panel";
-  clipboardDiagnostics.id = "step-03-clipboard-diagnostics";
-  clipboardDiagnostics.dataset.view = "step-03-clipboard-diagnostics";
-  clipboardDiagnostics.hidden = true;
-  clipboardDiagnostics.innerHTML = `<div class="job-basics-heading"><span class="form-section-number">3</span><div><h2>Clipboard Diagnostics</h2><p>Static diagnostic artifact · not production behavior</p></div></div><section class="clipboard-diagnostics" aria-labelledby="clipboard-title"><h3 id="clipboard-title">Native clipboard capture</h3><p>Capture the browser paste event before normalization or mutation.</p><label for="clipboard-source-label">Source label <small>(Optional)</small></label><input id="clipboard-source-label" type="text" placeholder="Microsoft Word, Google Docs, Indeed, Outlook, or Other"><label for="clipboard-capture-surface">Paste source here</label><div id="clipboard-capture-surface" class="clipboard-capture-surface" contenteditable="true" role="textbox" aria-multiline="true" aria-describedby="clipboard-help"></div><p id="clipboard-help">Use ordinary Ctrl+V or paste. Captured HTML is never executed.</p><div class="clipboard-actions"><button type="button" class="button primary" id="clipboard-capture-button">Capture Clipboard Payload</button><button type="button" class="button secondary" id="clipboard-reset-button">Reset</button></div><div id="clipboard-capture-status" role="status" aria-live="polite"></div><div class="clipboard-panels"><section><h4>text/html</h4><pre id="clipboard-html-display"></pre><button type="button" id="clipboard-copy-html">Copy raw HTML</button><a id="clipboard-download-html" download>Download HTML</a></section><section><h4>text/plain</h4><pre id="clipboard-text-display"></pre><button type="button" id="clipboard-copy-text">Copy raw text</button><a id="clipboard-download-text" download>Download text</a></section><section><h4>Metadata</h4><pre id="clipboard-meta-display"></pre><a id="clipboard-download-meta" download>Download metadata</a></section></div></section>`;
-  document.querySelector("#step-01-return-legacy").before(clipboardDiagnostics);
-  const installClipboardDiagnostics = () => {
-    const surface = clipboardDiagnostics.querySelector("#clipboard-capture-surface"), state = { html: "", text: "", types: [], capturedAt: "", sourceLabel: "" }, htmlOut = clipboardDiagnostics.querySelector("#clipboard-html-display"), textOut = clipboardDiagnostics.querySelector("#clipboard-text-display"), metaOut = clipboardDiagnostics.querySelector("#clipboard-meta-display"), statusOut = clipboardDiagnostics.querySelector("#clipboard-capture-status"), label = clipboardDiagnostics.querySelector("#clipboard-source-label");
-    let pending = null;
-    const render = () => { htmlOut.textContent = state.html; textOut.textContent = state.text; const meta = { types: state.types, source_timestamp: state.capturedAt, browser_user_agent: navigator.userAgent, source_label: state.sourceLabel, build: document.documentElement.dataset.workbenchBuild || "unknown", html_sha256: "client-export-checksum-required", text_length: state.text.length, html_length: state.html.length }; metaOut.textContent = JSON.stringify(meta, null, 2); const stamp = state.capturedAt ? state.capturedAt.replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z") : "pending"; const set = (id, value, ext) => { const a = clipboardDiagnostics.querySelector(id); a.href = URL.createObjectURL(new Blob([value], { type: ext })); a.download = `clipboard-capture-${stamp}.${ext === "text/html" ? "html" : ext === "text/plain" ? "txt" : "json"}`; }; if (state.capturedAt) { set("#clipboard-download-html", state.html, "text/html"); set("#clipboard-download-text", state.text, "text/plain"); set("#clipboard-download-meta", JSON.stringify(meta, null, 2), "application/json"); } };
-    const capture = () => { if (!pending) { statusOut.textContent = "Paste a source into the capture surface first."; return; } state.html = pending.html; state.text = pending.text; state.types = pending.types.slice(); state.capturedAt = new Date().toISOString(); state.sourceLabel = label.value; render(); statusOut.textContent = "Clipboard payload captured without normalization."; };
-    surface.addEventListener("paste", (event) => { const data = event.clipboardData; pending = { html: data.getData("text/html"), text: data.getData("text/plain"), types: Array.from(data.types) }; event.preventDefault(); statusOut.textContent = "Native paste payload staged; capture it to store the exact values."; });
-    clipboardDiagnostics.querySelector("#clipboard-capture-button").addEventListener("click", capture);
-    clipboardDiagnostics.querySelector("#clipboard-reset-button").addEventListener("click", () => { pending = null; Object.assign(state, { html: "", text: "", types: [], capturedAt: "", sourceLabel: "" }); surface.textContent = ""; label.value = ""; render(); statusOut.textContent = "Capture reset."; });
-    clipboardDiagnostics.querySelector("#clipboard-copy-html").addEventListener("click", () => navigator.clipboard?.writeText(state.html)); clipboardDiagnostics.querySelector("#clipboard-copy-text").addEventListener("click", () => navigator.clipboard?.writeText(state.text)); render();
-  };
-  installClipboardDiagnostics();
   const jobBasicsPanel = document
     .querySelector("#step-01-return-legacy")
     .cloneNode(true);
@@ -656,7 +637,6 @@
     ),
     "step-01-return": document.querySelector("#step-01-school-selected"),
     "step-01-initial": document.querySelector("#step-01-initial"),
-    "step-03-clipboard-diagnostics": clipboardDiagnostics,
   };
   const implementedViews = views.map(([id]) => id);
   const syncWorkbenchTraversal = (id) => {
