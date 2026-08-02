@@ -1214,6 +1214,11 @@
   };
   const step3Sanitized = (html) => {
     const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","UL","OL","LI","A","H3"]);
+    node.querySelectorAll("div").forEach((item) => {
+      const paragraph = document.createElement("p");
+      paragraph.innerHTML = item.innerHTML;
+      item.replaceWith(paragraph);
+    });
     node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
     return node.innerHTML;
   };

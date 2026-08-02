@@ -661,6 +661,7 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card.step3-workspace-mode.step3-rail-expanded .application-body{grid-template-columns:250px minmax(0,1fr)}
   .application-card.step3-workspace-mode.step3-rail-expanded .left-rail{padding:28px 18px;width:250px}
   .application-card.step3-workspace-mode.step3-rail-expanded .left-rail>*{display:flex}
+  .application-card.step3-workspace-mode.step3-rail-expanded .left-rail>.tnet-jobs-employer-operations-promotion{display:block;min-width:0;width:100%}
   .application-card.step3-workspace-mode.step3-rail-expanded .step3-rail-toggle{display:inline-flex;margin-bottom:12px}
   .application-card.step3-workspace-mode.step3-rail-expanded .step3-authoring-layout{display:block}
   .application-card.step3-workspace-mode.step3-rail-expanded .step3-preview-pane{display:none}
