@@ -779,10 +779,7 @@
         document.querySelector("#job-title-authority")?.value.trim(),
       );
     if (id === "step-03-job-description")
-      return Boolean(
-        step3Text(document.querySelector("#step3-description-editor")?.innerHTML) &&
-          step3Text(document.querySelector("#step3-requirements-editor")?.innerHTML),
-      );
+      return Boolean(step3Text(document.querySelector("#step3-description-editor")?.innerHTML));
     if (id === "step-01-add-school-us")
       return Boolean(
         document.querySelector("#organization-name")?.value.trim() &&
@@ -823,10 +820,10 @@
   const buildStep3SummaryDraft = () => {
     const source = step3Text(document.querySelector("#step3-description-editor")?.innerHTML);
     if (!source) return "";
-    const sentence = source.match(/^(.{1,160}?[.!?])(?:\\s|$)/)?.[1];
+    const sentence = source.match(/^(.{1,160}?[.!?])(?:\s|$)/)?.[1];
     if (sentence) return sentence;
     if (source.length <= 160) return source;
-    return `${source.slice(0, 157).trim().replace(/\\s+\\S*$/, "")}…`;
+    return `${source.slice(0, 157).trim().replace(/\s+\S*$/, "")}…`;
   };
   const openStep3SummaryAssist = () => {
     let modal = document.querySelector("#step3-summary-assist");
@@ -839,12 +836,16 @@
       document.body.append(modal);
     }
     const draft = buildStep3SummaryDraft();
-    modal.innerHTML = `<div class="step3-summary-assist-card"><h3>One last recommendation before you continue</h3><p>Short summaries help your listing stand out when it is featured, shared, or promoted across Teachers.Net.</p><p>We prepared a draft from your job description. Review it and make any changes for the best display across the site.</p>${draft ? `<textarea id="step3-summary-draft" maxlength="160">${draft}</textarea>` : `<p class="step3-summary-no-draft">Add a Job Description before using a summary draft.</p>`}<div class="step3-summary-assist-actions"><button type="button" class="button primary" data-summary-action="use">Use and continue</button><button type="button" class="button secondary" data-summary-action="edit">Edit summary</button><button type="button" class="button secondary" data-summary-action="skip">Continue without summary</button></div></div>`;
+    const summaryField = document.querySelector("#step3-summary");
+    if (draft && !summaryField.value) { summaryField.value = draft; summaryField.dispatchEvent(new Event("input", { bubbles: true })); }
+    modal.innerHTML = `<div class="step3-summary-assist-card"><h3 id="step3-summary-assist-title">One last recommendation before you continue</h3><p>Short summaries help teachers understand your opportunity in search results, featured placements, shared links, and promotions.</p><p>Here is the summary Teachers.Net will use:</p>${draft ? `<textarea id="step3-summary-draft" maxlength="160">${step3Escape(summaryField.value || draft)}</textarea>` : `<p class="step3-summary-no-draft">Add a Job Description before using a summary draft.</p>`}<div class="step3-summary-assist-actions"><button type="button" class="button primary" data-summary-action="use">Use this summary and continue</button><button type="button" class="button secondary" data-summary-action="edit">Edit summary</button></div></div>`;
     modal.hidden = false;
+    modal.setAttribute("aria-labelledby", "step3-summary-assist-title");
     modal.querySelector('[data-summary-action="use"]').disabled = !draft;
-    modal.querySelector('[data-summary-action="use"]').addEventListener("click", () => { document.querySelector("#step3-summary").value = modal.querySelector("#step3-summary-draft")?.value || ""; modal.hidden=true; refreshNextAction(); setView("step-04-application-process"); });
+    modal.querySelector('[data-summary-action="use"]').addEventListener("click", () => { const value = (modal.querySelector("#step3-summary-draft")?.value || "").slice(0, 160); if (!value.trim()) return; summaryField.value = value; summaryField.dispatchEvent(new Event("input", { bubbles: true })); modal.hidden=true; refreshNextAction(); setView("step-04-application-process"); });
     modal.querySelector('[data-summary-action="edit"]').addEventListener("click", () => { modal.hidden=true; document.querySelector("#step3-summary")?.focus({preventScroll:true}); });
-    modal.querySelector('[data-summary-action="skip"]').addEventListener("click", () => { modal.hidden=true; setView("step-04-application-process"); });
+    modal.addEventListener("keydown", (event) => { if (event.key === "Escape") { event.preventDefault(); modal.hidden=true; summaryField.focus({ preventScroll: true }); } });
+    modal.querySelector("#step3-summary-draft")?.focus({ preventScroll: true });
   };
   let salaryTypeUserControlled = false;
   const salaryTypeField = document.querySelector("#salary-type-step2"),
@@ -1184,19 +1185,19 @@
           <div id="step3-description-editor" class="step3-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Job Description"></div>
           <div class="step3-counter"><span data-counter-for="step3-description-editor">0</span> characters</div>
         </div>
-        <div class="step3-field step3-requirements-field">
-          <label for="step3-requirements-editor">Requirements / Qualifications <span aria-hidden="true">*</span></label>
-          <p class="step3-field-help">List the required qualifications, certifications, education, and experience for this role.</p>
-          <div id="step3-requirements-editor" class="step3-editor step3-editor-requirements" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Requirements / Qualifications"></div>
-          <div class="step3-counter"><span data-counter-for="step3-requirements-editor">0</span> characters</div>
-        </div>
         <div class="step3-field step3-summary-field">
-          <label for="step3-summary">Short Summary <span aria-hidden="true">*</span></label><p class="step3-field-help">Summarize this opportunity in one or two sentences. This may appear when your job is featured, shared, or promoted across Teachers.Net.</p>
+          <label for="step3-summary">Short Summary <small>(Recommended)</small></label><p class="step3-field-help">Used in search results, featured placements, shared links, and promotions. A concise summary helps teachers understand the opportunity before opening the full listing.</p>
           <textarea id="step3-summary" maxlength="160" rows="3"></textarea><div class="step3-counter"><span data-counter-for="step3-summary">0</span>/160 characters</div>
         </div>
         <div class="step3-optional-intro"><h4>Optional Fields</h4><p>The following sections are optional, but providing additional detail helps teachers better understand your opportunity and improves matching and discovery throughout Teachers.Net.</p></div>
+        <div class="step3-field step3-requirements-field">
+          <label for="step3-requirements-editor">Requirements / Qualifications <small>(Recommended for matching)</small></label>
+          <p class="step3-field-help">Separating requirements can improve matching and help applicants quickly assess fit.</p>
+          <div id="step3-requirements-editor" class="step3-editor step3-editor-requirements" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Requirements / Qualifications"></div>
+          <div class="step3-counter"><span data-counter-for="step3-requirements-editor">0</span> characters</div>
+        </div>
         <div class="step3-optional-sections">
-          ${["Responsibilities","Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
+          ${["Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index+1}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
           <details class="step3-benefits">
             <summary>Benefits</summary>
             <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
@@ -1449,7 +1450,8 @@
     const section = (title, html, key) => step3Text(html) ? `<h5>${title}</h5><div class="step3-preview-section" data-preview-section="${key}"><div class="step3-preview-section-body" id="step3-preview-${key}">${step3Sanitized(html)}</div><button type="button" class="step3-preview-toggle" data-preview-toggle="${key}" aria-controls="step3-preview-${key}" aria-expanded="false">Show more…</button></div>` : "";
     const additional = document.querySelector("#step3-benefits-additional"), additionalEnabled = document.querySelector("#step3-benefits-additional-enabled")?.checked, additionalText = additionalEnabled ? additional?.value.trim() || "" : "";
     const benefits = step3BenefitsActive() ? `<h5>Benefits</h5><div>${step3Escape([step3BenefitsText(), additionalText].filter(Boolean).join(", "))}</div>` : "";
-    preview.innerHTML = `<div class="step3-preview-school"><strong>${schoolJobsiteFixture.display_name}</strong><span>Los Angeles, CA · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${step3Escape(summary.value.trim())}</p>` : ""}${section("Job Description", description?.innerHTML, "description")}${section("Requirements / Qualifications", requirements?.innerHTML, "requirements")}${[0,1,2].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return section(["Responsibilities","Preferred Qualifications","About Our School"][i],el?.innerHTML,["responsibilities","preferred","about"][i]);}).join("")}${benefits}`;
+    const compactSummary = summary?.value.trim() ? step3Escape(summary.value.trim()) : "Add a short summary to preview how this listing may appear across Teachers.Net.";
+    preview.innerHTML = `<div class="step3-compact-listing"><strong>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</strong><span>${schoolJobsiteFixture.display_name} · Los Angeles, CA</span><p>${compactSummary}</p></div><h4>Listing Preview</h4>${section("Job Description", description?.innerHTML, "description")}${section("Requirements / Qualifications", requirements?.innerHTML, "requirements")}${[1,2].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return section(["Preferred Qualifications","About Our School"][i-1],el?.innerHTML,["preferred","about"][i-1]);}).join("")}${benefits}`;
     syncPreviewCollapsibles();
   };
   const syncPreviewCollapsibles = () => {
