@@ -1336,7 +1336,7 @@
     return node;
   };
   const step3Sanitized = (html) => {
-    const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","UL","OL","LI","A","H3"]);
+    const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","SPAN","UL","OL","LI","A","H3"]);
     const blockTags = new Set(["H1","H2","H3","H4","H5","H6","P","UL","OL","TABLE"]);
     [...node.querySelectorAll("div")].reverse().forEach((item) => {
       const isWrapper = item.parentNode === node && [...item.children].some((child) => blockTags.has(child.tagName));
@@ -1349,13 +1349,42 @@
       }
     });
     node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
+    node.querySelectorAll("B").forEach((item) => { const replacement = document.createElement("strong"); replacement.replaceChildren(...item.childNodes); item.replaceWith(replacement); });
+    node.querySelectorAll("I").forEach((item) => { const replacement = document.createElement("em"); replacement.replaceChildren(...item.childNodes); item.replaceWith(replacement); });
+    node.querySelectorAll("SPAN").forEach((item) => {
+      const style = item.getAttribute("style") || "";
+      const bold = /font-weight\s*:\s*(?:bold|[6-9]00)/i.test(style), italic = /font-style\s*:\s*italic/i.test(style);
+      if (bold || italic) { const replacement = document.createElement(bold && italic ? "strong" : bold ? "strong" : "em"); replacement.replaceChildren(...item.childNodes); if (bold && italic) { const emphasis = document.createElement("em"); emphasis.replaceChildren(...replacement.childNodes); replacement.append(emphasis); } item.replaceWith(replacement); }
+      else item.replaceWith(...item.childNodes);
+    });
+    node.querySelectorAll("*").forEach((item) => {
+      [...item.attributes].forEach((attribute) => {
+        const name = attribute.name.toLowerCase();
+        if (item.tagName === "A" && name === "href") return;
+        if (item.tagName === "OL" && name === "start" && /^\d+$/.test(attribute.value)) return;
+        item.removeAttribute(attribute.name);
+      });
+    });
+    [...node.children].forEach((item, index, items) => {
+      const next = items[index + 1];
+      if (next && ["UL", "OL"].includes(item.tagName) && item.tagName === next.tagName) { item.append(...next.childNodes); next.remove(); }
+    });
     let previousBlank = false;
     [...node.children].forEach((item) => {
       const blank = item.tagName === "P" && !item.textContent.trim() && [...item.childNodes].every((child) => child.nodeType === Node.TEXT_NODE ? !child.textContent.trim() : child.nodeType === Node.ELEMENT_NODE && child.tagName === "BR");
       if (blank && previousBlank) item.remove();
       else previousBlank = blank;
     });
+    while (node.lastElementChild && node.lastElementChild.tagName === "P" && !node.lastElementChild.textContent.trim() && !node.lastElementChild.querySelector("img")) node.lastElementChild.remove();
     return node.innerHTML;
+  };
+  const step3CanonicalizeClipboard = (html, text = "") => {
+    const source = html ? "html" : "plain-text";
+    const input = html || step3PlainPasteHtml(text);
+    const output = step3Sanitized(input);
+    const sourceFamily = /MsoListParagraph|mso-list|Microsoft Office/i.test(html) ? "Microsoft Word" : /lst-kix|docs-internal|google/i.test(html) ? "Google Docs" : /Indeed Sans|jobDescriptionTitle|indeed/i.test(html) ? "Indeed" : /olk-copy|Outlook|Aptos/i.test(html) ? "Outlook" : html ? "Generic HTML" : "Plain text";
+    window.__jc053LastClipboardTransform = { source, sourceFamily, confidence: sourceFamily === "Generic HTML" ? "medium" : "high", inputLength: input.length, outputLength: output.length, fallback: !html, transformations: ["safety-prefilter", "semantic-conversion", "block-normalization", "list-normalization", "blank-line-normalization", "link-normalization", "presentation-stripping", "structural-validation"], warnings: [] };
+    return output;
   };
   step3Content.querySelectorAll("[contenteditable]").forEach((editor) => {
     const normalized = step3Sanitized(editor.innerHTML);
@@ -1478,7 +1507,7 @@
     const clipboard = event.clipboardData || window.clipboardData;
     const html = clipboard?.getData("text/html");
     const text = clipboard?.getData("text/plain") || "";
-    const sanitized = html ? step3Sanitized(html) : step3PlainPasteHtml(text);
+    const sanitized = step3CanonicalizeClipboard(html, text);
     document.execCommand("insertHTML", false, sanitized);
     updateStep3Counters();
     scheduleStep3Preview();
