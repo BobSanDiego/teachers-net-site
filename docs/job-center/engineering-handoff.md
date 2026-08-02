@@ -294,6 +294,16 @@ new implementation, browser, accessibility, responsive, or workflow evidence.
 
 ## Known Production Deltas
 
+### JC053 verification handoff
+
+VERIFY001 established that repeated Step 3 false positives were caused by
+conflating synthetic automation with native clipboard, focus, selection, and
+rendered-geometry behavior. Future Step 3 formatting tickets use automated
+checks as preflight only and require human visual acceptance at
+`http://127.0.0.1:8768/?#step-03-job-description`: raw clipboard provenance,
+before/after screenshots, and ordinary mouse/keyboard selection. No further
+Step 3 implementation should begin until that evidence is available.
+
 Production remains the behavioral baseline and has not been converted to this
 authority. Known deltas include shell/card composition, rail width, navigation,
 heading caret, CTA wording, organization identity removal, Archived Jobs,

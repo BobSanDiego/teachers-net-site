@@ -347,6 +347,16 @@ static servers are not authoritative for JC053 verification.
 
 ## Stop Boundary
 
+### JC053 verification standard (VERIFY001)
+
+Step 3 editor/clipboard/selection/formatting tickets now require option-B
+verification: automated DOM/event/fixture checks are preflight evidence only;
+human visual acceptance at the canonical URL is mandatory. Acceptance must
+include raw clipboard provenance, cache-bypassed runtime banner, before/after
+editor and preview screenshots, and ordinary mouse/keyboard selection for
+formatting commands. Do not close a ticket from synthetic ranges, injected
+`innerHTML`, hand-built clipboard objects, or HTML equality alone.
+
 Stop each approval or implementation ticket at its named boundary. Do not
 reopen approved design, expand JC-030 into new product work, schedule UX Atlas
 placeholders, or let the JC-030 audit backlog replace the broader
