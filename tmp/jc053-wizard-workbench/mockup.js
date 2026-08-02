@@ -1202,6 +1202,54 @@
       <aside class="step3-preview-pane" aria-label="Listing Preview"><div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>This is how your job listing will look to teachers.</p></div><span>Live preview</span></div><div id="step3-preview" class="step3-preview-card"></div><p class="step3-preview-note">Step 5 remains the canonical full review surface.</p></aside>
     </div>`;
   const step3Editors = ["#step3-description-editor", "#step3-requirements-editor"];
+  const step3ConvertWordLists = (node) => {
+    const wordParagraph = (item) => item.tagName === "P" && (item.className.match(/MsoListParagraph/i) || /(?:^|;)\s*mso-list\s*:/i.test(item.getAttribute("style") || "") || item.querySelector('[style*="mso-list:Ignore"], [style*="mso-list: Ignore"]'));
+    const markerInfo = (item) => {
+      const marker = item.querySelector('[style*="mso-list:Ignore"], [style*="mso-list: Ignore"]');
+      const markerText = marker?.textContent || "";
+      const source = `${markerText} ${item.textContent}`;
+      const levelMatch = (item.getAttribute("style") || "").match(/level\s*(\d+)/i);
+      const bulletMarker = /^[\s\u00a0]*[•·▪◦○‣⁃]/.test(markerText) || /^[\s\u00a0]*[•·▪◦○‣⁃]/.test(item.textContent);
+      const ordered = !bulletMarker && (/\d/.test(markerText) || /^[\s\u00a0]*\d+[.)]\s+/.test(source) || /^[\s\u00a0]*[A-Za-z][.)]/.test(markerText));
+      return { level: levelMatch ? Math.max(1, Number(levelMatch[1])) : 1, ordered };
+    };
+    const cleanItem = (item, info) => {
+      const clone = item.cloneNode(true);
+      clone.removeAttribute("class"); clone.removeAttribute("style");
+      clone.querySelectorAll('[style*="mso-list:Ignore"], [style*="mso-list: Ignore"]').forEach((marker) => marker.remove());
+      clone.querySelectorAll("*").forEach((child) => {
+        ["mso-list", "mso-list:ignore", "mso-margin-left-alt", "mso-text-indent-alt", "text-indent"].forEach((property) => child.style.removeProperty(property));
+        if (!child.getAttribute("style")?.trim()) child.removeAttribute("style");
+      });
+      while (clone.firstChild && clone.firstChild.nodeType === Node.TEXT_NODE && /^[\s\u00a0]*(?:[•·▪◦○‣⁃]|\d+[.)])?[\s\u00a0]*/.test(clone.firstChild.textContent)) {
+        clone.firstChild.textContent = clone.firstChild.textContent.replace(/^[\s\u00a0]*(?:[•·▪◦○‣⁃]|\d+[.)])?[\s\u00a0]*/, "");
+        if (!clone.firstChild.textContent) clone.removeChild(clone.firstChild);
+        else break;
+      }
+      const li = document.createElement("li");
+      li.append(...clone.childNodes);
+      return li;
+    };
+    const children = [...node.children], replacement = document.createDocumentFragment();
+    let stack = [], lastWasWord = false;
+    children.forEach((child) => {
+      if (!wordParagraph(child)) { replacement.append(child); stack = []; lastWasWord = false; return; }
+      const info = markerInfo(child);
+      while (stack.length && stack.at(-1).level > info.level) stack.pop();
+      let list = stack.at(-1)?.list;
+      if (stack.length && stack.at(-1).level === info.level && list?.tagName !== (info.ordered ? "OL" : "UL")) stack.pop();
+      list = stack.at(-1)?.list;
+      if (!list || stack.at(-1).level !== info.level) {
+        list = document.createElement(info.ordered ? "ol" : "ul");
+        const parentLi = stack.at(-1)?.li;
+        (parentLi || replacement).append(list);
+      }
+      const li = cleanItem(child, info); list.append(li);
+      stack.push({ level: info.level, list, li }); lastWasWord = true;
+    });
+    node.replaceChildren(replacement);
+    return node;
+  };
   const step3PlainText = (html) => {
     const node = document.createElement("div");
     node.innerHTML = html || "";
@@ -1210,6 +1258,7 @@
       if (attr.name.toLowerCase().startsWith("on")) item.removeAttribute(attr.name);
       if (item.tagName === "A" && attr.name === "href" && !/^https?:/i.test(attr.value)) item.removeAttribute(attr.name);
     }));
+    step3ConvertWordLists(node);
     node.querySelectorAll("UL,OL,LI").forEach((item) => {
       ["margin-left","margin-right","margin-inline-start","margin-inline-end","padding-left","padding-right","padding-inline-start","padding-inline-end","text-indent","list-style-position","mso-list","mso-margin-left-alt","mso-text-indent-alt"].forEach((property) => item.style.removeProperty(property));
       if (!item.getAttribute("style")?.trim()) item.removeAttribute("style");
