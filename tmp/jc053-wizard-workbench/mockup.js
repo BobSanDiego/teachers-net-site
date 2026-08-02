@@ -1328,13 +1328,22 @@
   };
   const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
+  const step3LinkForSelection = () => { const selection=window.getSelection(), node=selection?.anchorNode; return (node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement)?.closest("a"); };
+  const editStep3Link = () => {
+    const link = step3LinkForSelection(), current = link?.getAttribute("href") || "", value = window.prompt(link ? "Edit link URL (leave blank to remove)" : "Link URL", current);
+    if (value === null) return;
+    if (!value.trim()) { if (link) link.replaceWith(...link.childNodes); else document.execCommand("unlink", false, null); }
+    else if (/^https?:/i.test(value.trim())) { if (link) link.setAttribute("href", value.trim()); else document.execCommand("createLink", false, value.trim()); }
+    else return;
+    updateStep3Counters(); scheduleStep3Preview(); refreshNextAction();
+  };
   document.addEventListener("selectionchange", () => { const selection=window.getSelection(), range=selection?.rangeCount ? selection.getRangeAt(0) : null; if(range && step3EditorForRange(range)) step3SavedRange=range.cloneRange(); });
   step3Content.querySelectorAll("[data-format-command]").forEach((control) => {
     control.addEventListener("mousedown", (event) => { if(event.button === 0) event.preventDefault(); });
     control.addEventListener("click", () => {
       const command=control.dataset.formatCommand;
       if(command === "removeFormat") clearStep3Formatting();
-      else { if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }
+      else { if(command === "createLink") editStep3Link(); else { document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); } }
     });
   });
   step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
