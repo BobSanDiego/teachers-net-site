@@ -1202,6 +1202,28 @@
       <aside class="step3-preview-pane" aria-label="Listing Preview"><div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>This is how your job listing will look to teachers.</p></div><span>Live preview</span></div><div id="step3-preview" class="step3-preview-card"></div><p class="step3-preview-note">Step 5 remains the canonical full review surface.</p></aside>
     </div>`;
   const step3Editors = ["#step3-description-editor", "#step3-requirements-editor"];
+  const step3NormalizeGoogleDocs = (node) => {
+    const googleRedirect = [...node.querySelectorAll("a")].some((link) => /^https:\/\/www\.google\.com\/url(?:\?|$)/i.test(link.getAttribute("href") || ""));
+    const googleClass = [...node.querySelectorAll("*")].some((item) => /(?:lst-kix|docs-|google-docs|google-docs)/i.test(item.getAttribute("class") || ""));
+    if (!googleRedirect && !googleClass) return node;
+    node.querySelectorAll("a").forEach((link) => {
+      const href = link.getAttribute("href") || "";
+      if (!/^https:\/\/www\.google\.com\/url(?:\?|$)/i.test(href)) return;
+      let destination = "";
+      try { destination = new URL(href).searchParams.get("q") || ""; } catch { destination = ""; }
+      try { destination = decodeURIComponent(destination); } catch { destination = ""; }
+      if (/^https?:\/\//i.test(destination)) link.setAttribute("href", destination);
+      else link.removeAttribute("href");
+    });
+    node.querySelectorAll("UL,OL,LI").forEach((item) => {
+      item.removeAttribute("class");
+      ["margin-left","margin-right","margin-inline-start","margin-inline-end","padding-left","padding-right","padding-inline-start","padding-inline-end","text-indent","list-style","list-style-type","list-style-position"].forEach((property) => item.style.removeProperty(property));
+      if (!item.getAttribute("style")?.trim()) item.removeAttribute("style");
+    });
+    const blank = (item) => item.tagName === "P" && !item.textContent.trim() && [...item.childNodes].every((child) => child.nodeType === Node.TEXT_NODE ? !child.textContent.trim() : child.nodeType === Node.ELEMENT_NODE && child.tagName === "BR");
+    while (node.lastElementChild && blank(node.lastElementChild)) node.lastElementChild.remove();
+    return node;
+  };
   const step3ConvertWordLists = (node) => {
     const wordParagraph = (item) => item.tagName === "P" && (item.className.match(/MsoListParagraph/i) || /(?:^|;)\s*mso-list\s*:/i.test(item.getAttribute("style") || "") || item.querySelector('[style*="mso-list:Ignore"], [style*="mso-list: Ignore"]'));
     const markerInfo = (item) => {
@@ -1258,6 +1280,7 @@
       if (attr.name.toLowerCase().startsWith("on")) item.removeAttribute(attr.name);
       if (item.tagName === "A" && attr.name === "href" && !/^https?:/i.test(attr.value)) item.removeAttribute(attr.name);
     }));
+    step3NormalizeGoogleDocs(node);
     step3ConvertWordLists(node);
     node.querySelectorAll("UL,OL,LI").forEach((item) => {
       ["margin-left","margin-right","margin-inline-start","margin-inline-end","padding-left","padding-right","padding-inline-start","padding-inline-end","text-indent","list-style-position","mso-list","mso-margin-left-alt","mso-text-indent-alt"].forEach((property) => item.style.removeProperty(property));
