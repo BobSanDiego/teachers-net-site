@@ -24,7 +24,7 @@ final class TNet_Community_Thread_Controller {
         }
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
         $root = $data['root'];
-        $html = '<main><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . wp_kses_post(wpautop(esc_html($root['body']))) . '</div></article>';
+        $html = '<main><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . wp_kses_post(wpautop(esc_html($root['body']))) . '</div>' . self::attachments($root) . '</article>';
         $html .= self::reply_form($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;
@@ -39,7 +39,7 @@ final class TNet_Community_Thread_Controller {
                 $html .= $target['post_id'] ? '<a href="#reply-post:' . esc_attr($target['post_id']) . '">' . esc_html($target['label']) . '</a>' : esc_html($target['label']);
                 $html .= '</p>';
             }
-            $html .= '<div>' . wp_kses_post(wpautop(esc_html($row['body']))) . '</div>';
+            $html .= '<div>' . wp_kses_post(wpautop(esc_html($row['body']))) . '</div>' . self::attachments($row);
             if (is_user_logged_in()) $html .= '<p><a href="#reply-composer" data-reply-target="' . esc_attr($row['post_id']) . '">Reply to this ' . esc_html($row['_level'] === 1 ? 'comment' : 'reply') . '</a></p>';
             $html .= '</article>';
         }
@@ -75,8 +75,9 @@ final class TNet_Community_Thread_Controller {
         foreach ($rows as $row) $options .= '<option value="' . esc_attr($row['post_id']) . '">Reply to ' . esc_html($row['_author_display']) . '</option>';
         return $html . '<form id="reply-composer" class="reply-composer" method="post"><p><strong>Reply</strong></p>' . wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false) . '<input type="hidden" name="submission_id" value="' . esc_attr($key) . '"><label for="reply-target">Reply target</label><select id="reply-target" name="parent_post_id">' . $options . '</select><label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="4" required></textarea><button type="submit">Post Reply</button></form>';
     }
+    private static function attachments(array $row): string { if (!empty($row['attachments']) && in_array($row['publication_state'], ['published','restored'], true)) { $html=''; foreach($row['attachments'] as $attachment) $html.=TNet_Community_Attachment::render((array)$attachment); return $html; } return ''; }
 
     private static function shell(string $body): void {
-        echo '<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Community Thread</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1d2327}.thread-card,.reply{border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin:1rem 0}.reply{margin-left:min(3rem,8vw);background:#f6f7f7}.tombstone{color:#646970;font-style:italic}.meta{color:#646970;font-size:.9rem}h1{line-height:1.2}.reply-composer{background:#fff;border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin:1rem 0}.reply-composer label{display:block;font-weight:600;margin:.5rem 0 .3rem}.reply-composer textarea{box-sizing:border-box;width:100%;min-height:6rem;padding:.6rem;font:inherit;resize:vertical}.reply-composer button{background:#135e96;color:#fff;border:0;border-radius:4px;padding:.6rem .9rem;font:inherit;font-weight:600;margin-top:.7rem}.errors{border-left:4px solid #b32d2e;background:#fcf0f1;padding:.5rem 1rem}</style></head><body>' . $body . '</body></html>'; exit;
+        echo '<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Community Thread</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1d2327}.thread-card,.reply{border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin:1rem 0}.reply{margin-left:min(3rem,8vw);background:#f6f7f7}.tombstone{color:#646970;font-style:italic}.meta{color:#646970;font-size:.9rem}h1{line-height:1.2}.reply-composer{background:#fff;border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin:1rem 0}.reply-composer label{display:block;font-weight:600;margin:.5rem 0 .3rem}.reply-composer textarea{box-sizing:border-box;width:100%;min-height:6rem;padding:.6rem;font:inherit;resize:vertical}.reply-composer button{background:#135e96;color:#fff;border:0;border-radius:4px;padding:.6rem .9rem;font:inherit;font-weight:600;margin-top:.7rem}.attachment-card{border:1px solid #ccd0d4;border-radius:6px;padding:1rem;margin-top:1rem;background:#fff}.attachment-image div{min-height:8rem;background:#e5e7eb;display:grid;place-items:center}.attachment-card figcaption span{display:block;color:#646970}.attachment-fallback{color:#646970}.errors{border-left:4px solid #b32d2e;background:#fcf0f1;padding:.5rem 1rem}</style></head><body>' . $body . '</body></html>'; exit;
     }
 }

@@ -372,3 +372,15 @@ JSON. Live Open Graph/Twitter/oEmbed fetching, SSRF networking, uploads, feeds,
 notifications, schema, and production remain out of scope. DDEV lint, fixture
 choice checks, composer markup, and cached-preview round-trip passed. Next
 ticket: C3-PUB004 — Community Rich Media Attachments.
+
+C3-PUB004 is complete as a local fixture-only rich-media foundation. Validated
+image/video/audio/document records persist in existing compatibility JSON; the
+composer supports one fixture at a time, required image alt text, and removal;
+Thread View renders safe cards with readable fallbacks. No uploads, remote
+sources, embeds, scripts, data URLs, production storage, feeds, notifications,
+or real media services were added. The production upload readiness gap lists
+durable storage, authority, MIME inspection, malware quarantine,
+derivatives/transcoding, CDN/private access, moderation/copyright,
+retention/deletion, and quotas/rate limits. Browser screenshots remain pending
+because browser control was unavailable. Next ticket: C3-PUB005 — Safe Live
+Link Metadata Fetching Readiness and Adapter audit.

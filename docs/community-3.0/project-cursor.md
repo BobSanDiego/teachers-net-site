@@ -418,3 +418,13 @@ raw-link fallback, and repository round-trip through existing compatibility
 JSON. No live fetching, SSRF networking, uploads, feeds, notifications, AI,
 schema, or production work was performed. Next ticket: C3-PUB004 — Community
 Rich Media Attachments.
+
+C3-PUB004 is implemented locally as a deterministic fixture-only rich-media
+foundation. A validated image/video/audio/document model persists through
+existing compatibility JSON; the composer supports one fixture at a time,
+image alt text, and removal; Thread View renders safe text-degrading cards.
+Remote sources, uploads, embeds, scripts, data URLs, production storage, and
+real media services remain prohibited. The production upload readiness gap is
+documented. Browser viewport screenshots remain pending because browser
+control was unavailable. Next ticket: C3-PUB005 — Safe Live Link Metadata
+Fetching Readiness and Adapter audit.

@@ -47,5 +47,5 @@ final class TNet_Community_Publisher_Repository {
         $refs=$post['compatibility_json'] ?? []; $refs['composer']['preview']=$preview;
         return false !== $wpdb->update($this->tables['posts'],['compatibility_json'=>wp_json_encode($refs),'updated_at'=>current_time('mysql',true)],['post_id'=>$post_id],['%s','%s'],['%s']);
     }
-    private function decode(array $row): array { foreach(['compatibility_json','audit_json'] as $key) if (isset($row[$key])) $row[$key]=json_decode($row[$key],true) ?: []; return $row; }
+    private function decode(array $row): array { foreach(['compatibility_json','audit_json'] as $key) if (isset($row[$key])) $row[$key]=json_decode($row[$key],true) ?: []; if (isset($row['compatibility_json'])) $row['compatibility_refs']=$row['compatibility_json']; if (isset($row['audit_json'])) $row['audit_metadata']=$row['audit_json']; return $row; }
 }

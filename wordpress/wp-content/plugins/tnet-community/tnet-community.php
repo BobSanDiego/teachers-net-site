@@ -9,6 +9,7 @@ require_once __DIR__ . '/includes/class-tnet-community-schema.php';
 require_once __DIR__ . '/includes/class-tnet-community-subject-reference.php';
 require_once __DIR__ . '/includes/class-tnet-community-link-preview.php';
 require_once __DIR__ . '/includes/class-tnet-community-link-attachment-service.php';
+require_once __DIR__ . '/includes/class-tnet-community-attachment.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-repository.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-domain.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-application.php';
