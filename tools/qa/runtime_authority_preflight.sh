@@ -6,7 +6,7 @@ commit=$(git rev-parse HEAD)
 branch=$(git rev-parse --abbrev-ref HEAD)
 ddev start >/dev/null
 for attempt in $(seq 1 30); do
-    hash=$(ddev exec -q wp --path=/var/www/html/wordpress eval 'echo TNet_Community_Runtime_Authority::facts()["plugin_tree_hash"];' 2>/dev/null) && [ -n "$hash" ] && break
+    hash=$(ddev exec -q wp --path=/var/www/html/wordpress eval 'echo TNet_Community_Runtime_Authority::facts()["plugin_tree_hash"];' 2>/dev/null | rg -o '[a-f0-9]{64}' | tail -n 1) && [ -n "$hash" ] && break
     sleep 1
 done
 [ -n "${hash:-}" ]
