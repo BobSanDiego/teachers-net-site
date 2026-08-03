@@ -717,3 +717,6 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .step4-preview-card .step4-preview-instructions{margin-top:12px}
 .step4-preview-card .step4-preview-instructions-label{color:var(--navy);font-size:11px;font-weight:700;line-height:1.4;margin:0 0 4px}
 .step4-preview-card .step4-preview-instructions-body{color:var(--ink);font-size:12px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap}
+.wizard-shell-content-step2{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 360px}
+.wizard-shell-content-step2 .step2-preview-pane{align-self:start;position:sticky;top:16px}
+@media (max-width:1199px){.wizard-shell-content-step2{display:block}.wizard-shell-content-step2 .step2-preview-pane{margin-top:16px;position:static;display:block}}

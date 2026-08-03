@@ -658,6 +658,27 @@
     "step-01-return": document.querySelector("#step-01-school-selected"),
     "step-01-initial": document.querySelector("#step-01-initial"),
   };
+  // WIZARD-STATE001: one page-lifetime source of truth for Steps 2–5.
+  const wizardState = {
+    school: { displayName: schoolJobsiteFixture.display_name, location: "Los Angeles, CA", defaultContact: { email: "jobs@lausd.net", phone: "(213) 241-1000" }, image: null },
+    basics: { jobTitle: "", employmentType: "", gradeLevels: "", subjectAreas: "", workLocation: "", alternateLocation: { zip: "", city: "", state: "" }, alternateZip: "", alternateCity: "", alternateState: "", remoteEligibility: "", remoteStates: [], multipleLocations: [], locationNote: "", startTiming: "", specificStartDate: "", salaryVisibility: "", salaryMinimum: "", salaryMaximum: "", salaryType: "" },
+    description: { jobDescription: "", shortSummary: "", requirements: "", aboutSchool: "", benefits: [], additionalBenefitsEnabled: false, additionalBenefits: "" },
+    application: { method: "", url: "", email: "", instructions: "", deadlineMode: "open", deadline: "", closeOnDeadline: false, contactMode: "default", contactName: "", contactEmail: "", contactPhone: "", hideContact: false, materials: [], otherMaterials: "" },
+    media: {},
+    ui: { railExpanded: false },
+  };
+  const wizardControlMap = {
+    "#job-title-step2": ["basics", "jobTitle"], "#employment-type-step2": ["basics", "employmentType"], "#grade-levels-step2": ["basics", "gradeLevels"], "#subject-areas-step2": ["basics", "subjectAreas"], "#work-location-step2": ["basics", "workLocation"], "#work-location-zip-step2": ["basics", "alternateZip"], "#work-location-city-step2": ["basics", "alternateCity"], "#work-location-state-step2": ["basics", "alternateState"], "#remote-eligibility-step2": ["basics", "remoteEligibility"], "#remote-states-step2": ["basics", "remoteStates"], "#work-location-note-step2": ["basics", "locationNote"], "#job-start-step2": ["basics", "startTiming"], "#job-specific-date-step2": ["basics", "specificStartDate"], "#salary-visibility-step2": ["basics", "salaryVisibility"], "#salary-minimum-step2": ["basics", "salaryMinimum"], "#salary-maximum-step2": ["basics", "salaryMaximum"], "#salary-type-step2": ["basics", "salaryType"],
+    "#step3-description-editor": ["description", "jobDescription"], "#step3-summary": ["description", "shortSummary"], "#step3-optional-1": ["description", "requirements"], "#step3-optional-2": ["description", "aboutSchool"], "#step3-benefits-additional-enabled": ["description", "additionalBenefitsEnabled"], "#step3-benefits-additional": ["description", "additionalBenefits"],
+    "#step4-method": ["application", "method"], "#step4-url": ["application", "url"], "#step4-email": ["application", "email"], "#step4-instructions": ["application", "instructions"], "#step4-deadline-mode": ["application", "deadlineMode"], "#step4-deadline": ["application", "deadline"], "#step4-close-on-deadline": ["application", "closeOnDeadline"], "#step4-contact-mode": ["application", "contactMode"], "#step4-contact-name": ["application", "contactName"], "#step4-contact-email": ["application", "contactEmail"], "#step4-contact-phone": ["application", "contactPhone"], "#step4-hide-contact": ["application", "hideContact"], "#step4-other-materials": ["application", "otherMaterials"],
+  };
+  const readWizardControl = (control) => control.type === "checkbox" ? control.checked : control.multiple ? [...control.selectedOptions].map((option) => option.value) : control.isContentEditable ? control.innerHTML : control.value;
+  const writeWizardControl = (control, value) => { if (control.type === "checkbox") control.checked = Boolean(value); else if (control.multiple) [...control.options].forEach((option) => { option.selected = (value || []).includes(option.value); }); else if (control.isContentEditable) control.innerHTML = value || ""; else if (value !== undefined && value !== null) control.value = value; };
+  const syncWizardStateFromControl = (control) => { const mapping = Object.entries(wizardControlMap).find(([selector]) => document.querySelector(selector) === control); if (!mapping) return; const [section, key] = mapping[1]; wizardState[section][key] = readWizardControl(control); };
+  const hydrateWizardState = (root = document) => { Object.entries(wizardControlMap).forEach(([selector, [section, key]]) => { const control = root.querySelector(selector) || document.querySelector(selector); if (control && wizardState[section][key] !== undefined) writeWizardControl(control, wizardState[section][key]); }); };
+  let wizardStatePrimed = false;
+  const primeWizardState = () => { if (wizardStatePrimed) return; Object.entries(wizardControlMap).forEach(([selector, [section, key]]) => { const control = document.querySelector(selector); if (control) wizardState[section][key] = readWizardControl(control); }); wizardStatePrimed = true; };
+  window.__jc053WizardState = wizardState;
   const syncWizardValueStates = (root = document) => {
     root.querySelectorAll("input:not([type=checkbox]):not([type=radio]), select, textarea").forEach((control) => {
       const value = control.tagName === "SELECT" ? control.options[control.selectedIndex] : control;
@@ -987,6 +1008,7 @@
         return;
       }
       multipleLocations.push(location);
+      wizardState.basics.multipleLocations = multipleLocations.map((item) => ({ ...item }));
       renderMultipleLocations();
       multipleEditor.hidden = true;
       multipleAdd.hidden = false;
@@ -1001,6 +1023,8 @@
     }
   });
   document.addEventListener("input", (event) => {
+    if (event.target.matches("input, select, textarea, [contenteditable=\"true\"]")) syncWizardStateFromControl(event.target);
+    if (event.target.closest?.(".wizard-shell-content-step2")) renderStep2Preview();
     if (event.target.matches("input, select, textarea")) syncWizardValueStates(event.target.closest(".application-card") || document);
     if (event.target.matches("#next-view, input, select, textarea")) {
       if (event.target.matches("#salary-minimum-step2")) syncCompensation();
@@ -1014,6 +1038,8 @@
     }
   });
   document.addEventListener("change", (event) => {
+    if (event.target.matches("input, select, textarea, [contenteditable=\"true\"]")) syncWizardStateFromControl(event.target);
+    if (event.target.closest?.(".wizard-shell-content-step2")) renderStep2Preview();
     if (event.target.matches("input, select, textarea")) syncWizardValueStates(event.target.closest(".application-card") || document);
     if (event.target.matches("#salary-visibility-step2")) {
       syncCompensation();
@@ -1215,6 +1241,11 @@
       (child) => !child.classList.contains("job-basics-heading"),
     ),
   );
+  const step2PreviewPane = document.createElement("aside");
+  step2PreviewPane.className = "step2-preview-pane step3-preview-pane";
+  step2PreviewPane.setAttribute("aria-label", "Listing Preview");
+  step2PreviewPane.innerHTML = '<div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>Live cumulative preview.</p></div><span>Live preview</span></div><div id="step2-preview" class="step3-preview-card"></div>';
+  step2Content.append(step2PreviewPane);
   const authorityContent = document.createElement("div");
   authorityContent.className = "wizard-shell-content wizard-shell-content-authority";
   const authoritySource = document.createElement("div");
@@ -1504,10 +1535,10 @@
     if (!preview) return;
     const description = document.querySelector("#step3-description-editor"), requirements = document.querySelector("#step3-requirements-editor"), summary = document.querySelector("#step3-summary");
     const section = (title, html, key) => step3Text(html) ? `<h5>${title}</h5><div class="step3-preview-section" data-preview-section="${key}"><div class="step3-preview-section-body" id="step3-preview-${key}">${step3Sanitized(html)}</div><button type="button" class="step3-preview-toggle" data-preview-toggle="${key}" aria-controls="step3-preview-${key}" aria-expanded="false">Show more…</button></div>` : "";
-    const additional = document.querySelector("#step3-benefits-additional"), additionalEnabled = document.querySelector("#step3-benefits-additional-enabled")?.checked, additionalText = additionalEnabled ? additional?.value.trim() || "" : "";
+    const additional = document.querySelector("#step3-benefits-additional"), additionalEnabled = wizardState.description.additionalBenefitsEnabled, additionalText = additionalEnabled ? wizardState.description.additionalBenefits.trim() : "";
     const benefits = step3BenefitsActive() ? `<h5>Benefits</h5><div>${step3Escape([step3BenefitsText(), additionalText].filter(Boolean).join(", "))}</div>` : "";
-    const compactSummary = summary?.value ? step3Escape(summary.value) : "Add a short summary to preview how this listing may appear across Teachers.Net.";
-    preview.innerHTML = `<div class="step3-compact-listing"><strong>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</strong><span>${schoolJobsiteFixture.display_name} · Los Angeles, CA</span><p>${compactSummary}</p></div><h4>Listing Preview</h4>${section("Job Description", description?.innerHTML, "description")}${section("Requirements / Qualifications", document.querySelector("#step3-optional-1")?.innerHTML, "requirements")}${section("About Our School", document.querySelector("#step3-optional-2")?.innerHTML, "about")}${benefits}`;
+    const compactSummary = wizardState.description.shortSummary ? step3Escape(wizardState.description.shortSummary) : "Add a short summary to preview how this listing may appear across Teachers.Net.";
+    preview.innerHTML = `<div class="step3-compact-listing"><strong>${step3Escape(wizardState.basics.jobTitle.trim() || "Teacher position")}</strong><span>${step3Escape(wizardState.school.displayName)} · ${step3Escape(wizardState.school.location)}</span><p>${compactSummary}</p></div><h4>Listing Preview</h4>${section("Job Description", wizardState.description.jobDescription, "description")}${section("Requirements / Qualifications", wizardState.description.requirements, "requirements")}${section("About Our School", wizardState.description.aboutSchool, "about")}${benefits}`;
     syncPreviewCollapsibles();
   };
   const syncPreviewCollapsibles = () => {
@@ -1550,9 +1581,9 @@
   step3Content.addEventListener("change", (event) => { if (event.target.matches("#step3-benefits-additional-enabled")) { const field=document.querySelector("#step3-benefits-additional"), helper=document.querySelector("#step3-benefits-additional-help"), counter=document.querySelector('[data-counter-for="step3-benefits-additional"]')?.closest(".step3-counter"); field.hidden=!event.target.checked; if(helper) helper.hidden=!event.target.checked; if(counter) counter.hidden=!event.target.checked; updateStep3Counters(); scheduleStep3Preview(); } });
   step3Content.addEventListener("click", (event) => {
     const option = event.target.closest("[data-benefit-option]"), remove = event.target.closest("[data-benefit-remove]"), clear = event.target.closest("[data-benefit-clear]");
-    if (option) { const value=option.dataset.benefitOption, keyboardActivation=event.detail === 0; step3State.selectedBenefits.add(value); renderStep3Benefits(); scheduleStep3Preview(); if (keyboardActivation) document.querySelector(`[data-benefit-remove="${CSS.escape(value)}"]`)?.focus(); else document.activeElement?.blur(); return; }
-    if (remove) { const value=remove.dataset.benefitRemove, keyboardActivation=event.detail === 0; step3State.selectedBenefits.delete(value); renderStep3Benefits(); scheduleStep3Preview(); if (keyboardActivation) { const focusTarget=document.querySelector("[data-benefit-clear]") || document.querySelector("[data-benefit-remove]") || document.querySelector("[data-benefit-option]"); focusTarget?.focus(); } else document.activeElement?.blur(); return; }
-    if (clear) { const keyboardActivation=event.detail === 0; step3State.selectedBenefits.clear(); renderStep3Benefits(); scheduleStep3Preview(); if (keyboardActivation) document.querySelector("[data-benefit-clear]")?.focus(); else document.activeElement?.blur(); }
+    if (option) { const value=option.dataset.benefitOption, keyboardActivation=event.detail === 0; step3State.selectedBenefits.add(value); wizardState.description.benefits=[...step3State.selectedBenefits]; renderStep3Benefits(); scheduleStep3Preview(); if (keyboardActivation) document.querySelector(`[data-benefit-remove="${CSS.escape(value)}"]`)?.focus(); else document.activeElement?.blur(); return; }
+    if (remove) { const value=remove.dataset.benefitRemove, keyboardActivation=event.detail === 0; step3State.selectedBenefits.delete(value); wizardState.description.benefits=[...step3State.selectedBenefits]; renderStep3Benefits(); scheduleStep3Preview(); if (keyboardActivation) { const focusTarget=document.querySelector("[data-benefit-clear]") || document.querySelector("[data-benefit-remove]") || document.querySelector("[data-benefit-option]"); focusTarget?.focus(); } else document.activeElement?.blur(); return; }
+    if (clear) { const keyboardActivation=event.detail === 0; step3State.selectedBenefits.clear(); wizardState.description.benefits=[]; renderStep3Benefits(); scheduleStep3Preview(); if (keyboardActivation) document.querySelector("[data-benefit-clear]")?.focus(); else document.activeElement?.blur(); }
   });
   step3Content.querySelectorAll("[contenteditable]").forEach((editor) => editor.addEventListener("paste", (event) => {
     event.preventDefault();
@@ -1625,9 +1656,15 @@
     if(e.target.matches("#step4-method")) step4Sync(e.target.value==="url"?"#step4-url":e.target.value==="email"?"#step4-email":"#step4-instructions");
     else if(e.target.matches("#step4-deadline-mode")) step4Sync(e.target.value==="specific"?"#step4-deadline":null);
     else if(e.target.matches("#step4-contact-mode")) step4Sync();
-    else if(e.target.matches(".step4-materials input")){e.target.checked?step4State.materials.add(e.target.value):step4State.materials.delete(e.target.value);step4Sync(e.target.value==="other"?"#step4-other-materials":null);}
+    else if(e.target.matches(".step4-materials input")){e.target.checked?step4State.materials.add(e.target.value):step4State.materials.delete(e.target.value);wizardState.application.materials=[...step4State.materials];step4Sync(e.target.value==="other"?"#step4-other-materials":null);}
     else step4Sync();
   });
+  const renderStep2Preview = () => {
+    const preview = document.querySelector("#step2-preview");
+    if (!preview) return;
+    const basics = wizardState.basics, title = basics.jobTitle.trim() || "Teacher position", details = [basics.employmentType, basics.gradeLevels, basics.subjectAreas].filter(Boolean), salary = basics.salaryVisibility === "Do not show" ? "" : [basics.salaryMinimum && `$${basics.salaryMinimum}`, basics.salaryMaximum && `– $${basics.salaryMaximum}`, basics.salaryType].filter(Boolean).join(" "), start = basics.startTiming === "Specific Date" && basics.specificStartDate ? basics.specificStartDate : basics.startTiming;
+    preview.innerHTML = `<div class="step3-compact-listing"><strong>${step4Escape(title)}</strong><span>${step4Escape(wizardState.school.displayName)} · ${step4Escape(wizardState.school.location)}</span>${details.length ? `<p>${details.map(step4Escape).join(" · ")}</p>` : ""}${salary || start ? `<p>${[salary, start].filter(Boolean).map(step4Escape).join(" · ")}</p>` : ""}</div><h4>Listing Preview</h4><p>${wizardState.description.shortSummary ? step4Escape(wizardState.description.shortSummary) : "Add job details to preview this listing."}</p>`;
+  };
   const wizardShellConfigs = {
     "step-01-initial": {
       viewId: "step-01-initial", stepNumber: "1", title: "Choose a School / Jobsite",
@@ -1767,10 +1804,10 @@
     }
     const rail = card?.querySelector(".left-rail");
     if (rail) rail.id = "authority-left-rail";
-    const step3Mode = config.viewId === "step-03-job-description";
-    card?.classList.toggle("step3-workspace-mode", step3Mode);
-    card?.classList.toggle("step3-rail-expanded", step3Mode && sessionStorage.getItem("jc053-step3-rail") === "expanded");
-    if (rail && step3Mode) {
+    const wizardRailMode = ["step-02-job-basics", "wizard-authority-v1", "step-03-job-description", "step-04-application-process", "step-05-review-publish"].includes(config.viewId);
+    card?.classList.toggle("step3-workspace-mode", wizardRailMode);
+    card?.classList.toggle("step3-rail-expanded", wizardRailMode && wizardState.ui.railExpanded);
+    if (rail && wizardRailMode) {
       let railToggle = rail.querySelector("[data-step3-rail-toggle]");
       if (!railToggle) {
         railToggle = document.createElement("button");
@@ -1783,7 +1820,7 @@
         rail.prepend(railToggle);
         railToggle.addEventListener("click", () => {
           const expanded = card.classList.toggle("step3-rail-expanded");
-          sessionStorage.setItem("jc053-step3-rail", expanded ? "expanded" : "collapsed");
+          wizardState.ui.railExpanded = expanded;
           railToggle.setAttribute("aria-label", expanded ? "Collapse navigation" : "Expand navigation");
           railToggle.title = expanded ? "Collapse navigation" : "Expand navigation";
         });
@@ -1798,12 +1835,15 @@
     panel.classList.add("wizard-shell-panel");
     const body = content?.childNodes.length ? content : stageContent(panel);
     panel.replaceChildren(heading, body);
+    primeWizardState();
+    hydrateWizardState(panel);
     initializeStep3Benefits(panel);
     syncWizardValueStates(panel);
     wizardStepper.states = config.stepperState;
     wizardStepper.completedTargets = config.completedTargets;
     wizardStepper.render();
     syncAuthorityMarker(config.authority ? config.viewId : "");
+    renderStep2Preview();
     const saveDraft = document.querySelector("#save-draft-action");
     if (saveDraft) saveDraft.hidden = !config.showSaveDraft;
     const nav = document.querySelector(".view-nav");

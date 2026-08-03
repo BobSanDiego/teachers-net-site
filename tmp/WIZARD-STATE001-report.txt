@@ -1,0 +1,39 @@
+WIZARD-STATE001 — In-Memory Wizard State, Cumulative Preview, and Collapsed Rail
+
+Status: Implemented
+Canonical review URLs:
+- Step 2: http://127.0.0.1:8768/?#step-02-job-basics
+- Step 3: http://127.0.0.1:8768/?#step-03-job-description
+- Step 4: http://127.0.0.1:8768/?#step-04-application-process
+- Step 5: http://127.0.0.1:8768/?#step-05-review-publish
+
+Implementation
+- Added `window.__jc053WizardState`, a page-lifetime `wizardState` with school, basics, description, application, media, and UI rail state branches.
+- Added centralized control mapping, write-through on input/change, first-render priming, and re-entry hydration. No wizard state uses localStorage, sessionStorage, server drafts, APIs, or persistence.
+- Added a Step 2 right-side live preview that updates from canonical state.
+- Routed Step 3 preview title, school/location, summary, description, requirements, About Our School, benefits, and additional benefits through canonical state.
+- Mapped Step 4 application controls and material selections into canonical state while preserving existing validation and conditional behavior.
+- Standardized the existing rail toggle across Steps 2–5. The rail is collapsed by default, the toggle remains available, and the expanded/collapsed choice survives in-memory navigation only.
+- Preserved the existing responsive layout rules and Step 1 behavior.
+
+State audit mapping
+Step 1 downstream source: `school.displayName`, `school.location`, `school.defaultContact.email`, `school.defaultContact.phone`, `school.image`.
+Step 2: `basics.jobTitle`, `employmentType`, `gradeLevels`, `subjectAreas`, `workLocation`, `alternateZip`, `alternateCity`, `alternateState`, `remoteEligibility`, `remoteStates`, `multipleLocations`, `locationNote`, `startTiming`, `specificStartDate`, `salaryVisibility`, `salaryMinimum`, `salaryMaximum`, `salaryType`.
+Step 3: `description.jobDescription`, `shortSummary`, `requirements`, `aboutSchool`, `benefits`, `additionalBenefitsEnabled`, `additionalBenefits`.
+Step 4: `application.method`, `url`, `email`, `instructions`, `deadlineMode`, `deadline`, `closeOnDeadline`, `contactMode`, `contactName`, `contactEmail`, `contactPhone`, `hideContact`, `materials`, `otherMaterials`.
+Step 5: no parallel state is introduced. The registered future integration point is `window.__jc053WizardState` plus the shared state-backed preview surfaces; full Step 5 implementation remains outside this ticket.
+
+Verification
+- `git diff --check`: passed.
+- Canonical server HTTP 200.
+- Served JavaScript byte length matched the current worktree and contained the canonical state and Step 2 preview.
+- Static checks confirmed no sessionStorage/localStorage use for wizard state and confirmed collapsed rail state is held in memory.
+- Live browser interaction, console inspection, and responsive visual checks were blocked because the Chrome connector rejected the WSL sandbox context before attachment. No live visual acceptance is claimed.
+
+Changed files
+- `tmp/jc053-wizard-workbench/mockup.js`
+- `tmp/jc053-wizard-workbench/mockup.css`
+- `tmp/WIZARD-STATE001-report.txt`
+
+Risk / next step
+- The foundation is intentionally workbench-only. Recommended next step is live browser verification across the four canonical URLs and desktop/mobile widths when browser attachment is available.
