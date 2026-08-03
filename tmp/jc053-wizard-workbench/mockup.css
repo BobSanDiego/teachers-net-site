@@ -746,3 +746,24 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
   .application-card.step3-workspace-mode .left-rail>*:not(.step3-rail-toggle){display:none}
   .application-card.step3-workspace-mode .step3-rail-toggle{display:inline-flex}
 }
+/* STEP2-RESP001: reflow from effective authoring-column width, not viewport width. */
+.wizard-shell-content-step2 .step2-authoring-column{container:step2-authoring / inline-size}
+.wizard-shell-content-step2 .step2-authoring-column>*{min-width:0}
+.wizard-shell-content-step2 .step2-authoring-column input,.wizard-shell-content-step2 .step2-authoring-column select{box-sizing:border-box;min-width:0;max-width:100%}
+@container step2-authoring (max-width:760px){
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-basics-form{grid-template-columns:minmax(0,1fr)}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-basics-form .job-title-field,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-basics-form .employment-type-field{grid-column:auto}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .work-location-form{grid-template-columns:minmax(0,1fr)}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .work-location-field{grid-column:1;max-width:none}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .work-location-field select{width:100%}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-form{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-guidance{grid-column:1 / -1;grid-row:3;margin-top:10px;min-width:0}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .compensation-form{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .compensation-form>.compensation-guidance{grid-column:1 / -1;margin-top:10px;top:0;min-width:0}
+}
+@container step2-authoring (max-width:520px){
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-form{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-timing-label,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-form .job-start-field,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-date-label,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-form .job-specific-date-field,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .job-start-form .job-start-guidance{grid-column:auto;grid-row:auto}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .compensation-form{grid-template-columns:minmax(0,1fr)}
+  .application-card[data-view="step-02-job-basics"] .step2-authoring-column .compensation-form>.salary-visibility-field,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .compensation-form>.salary-minimum-field,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .compensation-form>.salary-maximum-field,.application-card[data-view="step-02-job-basics"] .step2-authoring-column .compensation-form>.salary-type-field{grid-column:auto}
+}

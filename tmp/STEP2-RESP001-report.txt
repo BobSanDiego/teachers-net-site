@@ -1,0 +1,35 @@
+STEP2-RESP001 — Restore Responsive Field Reflow
+
+Status: Implementation complete; live visual QA pending
+Canonical review URL: http://127.0.0.1:8768/?#step-02-job-basics
+Worktree: /home/bobreap/projects/teachers-net-jobcenter
+Branch: JOB-CENTER-JC053-wizard-workbench
+Inspection time: 2026-08-03T22:50:53Z (UTC)
+
+Pre-change inspection
+- Step 2 form sections were correctly grouped under `.step2-authoring-column` after WIZARD-STATE002, with `.step2-preview-pane` as the sibling preview owner.
+- Existing Step 2 reflow rules were primarily `@media(max-width:600px)` and therefore tracked viewport width rather than the reduced authoring-column width.
+- Existing Work Location rules used a 50% grid track, and Starting Date/Compensation guidance occupied adjacent grid space too long.
+- Existing global input/select rules already supplied `min-width:0` and `width:100%` for several form families, but the new authoring wrapper needed explicit child containment and section-level reflow ownership.
+- Required live computed widths/grid measurements at 1200, 1135, 1043, 1000, 987, 932, 900, and 768px were unavailable because the Chrome connector rejected the WSL sandbox context before attachment.
+
+Implementation
+- Added a named `step2-authoring` inline-size container on the authoring column.
+- Added min-width safety to Step 2 section/grid children and authoring-column inputs/selects.
+- At effective authoring width <=760px: Position becomes one column, Work Location selector becomes full width, Starting Date keeps a usable two-control row with full-width guidance beneath, and Compensation uses two usable columns with full-width guidance.
+- At effective authoring width <=520px: Starting Date and Compensation stack to one column.
+- Preserved Step 2 card order, conditional workflows, validation, focus transfer, cumulative state, collapsed rail, and right-side preview ownership.
+- Did not change preview stacking threshold or global shell breakpoints.
+
+Verification
+- `git diff --check`: passed.
+- Canonical server returned HTTP 200 and served the new container-query rules.
+- Static checks confirmed the effective-width container query, min-width safety, Position reflow, Starting Date guidance row, and Compensation reflow.
+- Required live width matrix, screenshots, computed grid table, console checks, and visual PASS are not claimed; browser attachment remained unavailable.
+
+Changed files
+- `tmp/jc053-wizard-workbench/mockup.css`
+- `tmp/STEP2-RESP001-report.txt`
+
+Risk / next step
+- The correction is scoped to Step 2 responsive field layout. Run the ticket’s live matrix at 1440, 1200, 1135, 1043, 1000, 987, 932, 900, 768, 650, 530, and 400px when Chrome QA attachment is available.
