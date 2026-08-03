@@ -3,6 +3,7 @@ wordpress/
 
 # DDEV runtime
 .ddev/.webimageBuild/
+.ddev/runtime-authority.json
 
 # mac/windows noise
 .DS_Store

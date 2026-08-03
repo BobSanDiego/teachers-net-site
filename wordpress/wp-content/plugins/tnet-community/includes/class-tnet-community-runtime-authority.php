@@ -12,8 +12,9 @@ final class TNet_Community_Runtime_Authority {
         $expectedHost = (string) (getenv('C3_AUTHORITY_HOSTNAME') ?: 'teachers-net-community3.ddev.site');
         $expectedProject = (string) (getenv('C3_AUTHORITY_PROJECT') ?: 'teachers-net-community3');
         $worktree = (string) (getenv('C3_AUTHORITY_WORKTREE') ?: '/home/bobreap/projects/teachers-net-community3');
-        $branch = (string) (getenv('C3_AUTHORITY_BRANCH') ?: self::git('rev-parse --abbrev-ref HEAD'));
-        $commit = (string) (getenv('C3_AUTHORITY_COMMIT') ?: self::git('rev-parse HEAD'));
+        $record = self::authority_record();
+        $branch = (string) ($record['branch'] ?? getenv('C3_AUTHORITY_BRANCH') ?: self::git('rev-parse --abbrev-ref HEAD'));
+        $commit = (string) ($record['commit'] ?? getenv('C3_AUTHORITY_COMMIT') ?: self::git('rev-parse HEAD'));
         $hash = self::tree_hash($plugin);
         $facts = [
             'hostname' => strtolower((string) ($_SERVER['HTTP_HOST'] ?? '')),
@@ -26,7 +27,7 @@ final class TNet_Community_Runtime_Authority {
             'git_branch' => $branch,
             'git_commit' => $commit,
             'plugin_tree_hash' => $hash,
-            'expected_plugin_tree_hash' => (string) (getenv('C3_AUTHORITY_PLUGIN_HASH') ?: ''),
+            'expected_plugin_tree_hash' => (string) ($record['plugin_tree_hash'] ?? getenv('C3_AUTHORITY_PLUGIN_HASH') ?: ''),
             'route' => self::route(),
             'controller' => self::controller(),
             'runtime_timestamp' => gmdate('c'),
@@ -66,6 +67,13 @@ final class TNet_Community_Runtime_Authority {
         $root = defined('ABSPATH') ? rtrim(ABSPATH, '/') . '/..' : '';
         $value = $root ? shell_exec('git -C '.escapeshellarg($root).' '.$args.' 2>/dev/null') : '';
         return trim((string) $value);
+    }
+
+    private static function authority_record(): array {
+        $path = defined('ABSPATH') ? rtrim(ABSPATH, '/') . '/../.ddev/runtime-authority.json' : '';
+        if (!$path || !is_readable($path)) return [];
+        $record = json_decode((string) file_get_contents($path), true);
+        return is_array($record) ? $record : [];
     }
 
     private static function tree_hash(string $path): string {
