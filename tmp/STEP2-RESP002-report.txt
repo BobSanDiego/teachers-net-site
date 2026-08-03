@@ -1,0 +1,84 @@
+Ticket:
+STEP2-RESP002
+
+STEP2-RESP001 regression removed:
+PASS
+
+Position two-column layout restored:
+PASS
+
+Work Location responsive width:
+PASS
+
+Starting Date progressive reflow:
+PASS
+
+Compensation progressive reflow:
+PASS
+
+Preview preserved:
+PASS
+
+Rail preserved:
+PASS
+
+Live responsive QA:
+PASS
+
+Canonical review URL
+http://127.0.0.1:8768/?#step-02-job-basics
+
+Live inspection
+Inspection was performed through the canonical Chrome CDP/MCP QA browser on 2026-08-03. The browser was cache-busted with a query-string URL before measurements.
+
+Measured matrix
+
+| Viewport | Authoring width | Position | Starting Date | Compensation | Preview | Rail | Overflow |
+|---:|---:|---|---|---|---|---|---|
+| 1440 | 648 | 2 columns | 4 columns | 4 columns | beside form | collapsed toggle | no |
+| 1200 | 633 | 2 columns | 4 columns | 4 columns | beside form | collapsed toggle | no |
+| 1135 | 568 | 2 columns | 2 columns + guidance row | 2 columns + guidance row | beside form | collapsed toggle | no |
+| 1043 | 476 | 2 columns | 2 columns + guidance row | 2 columns + guidance row | beside form | collapsed toggle | no |
+| 1000 | 433 | 1 column | 1 column | 1 column | beside form | collapsed toggle | no |
+| 987 | 420 | 1 column | 1 column | 1 column | beside form | collapsed toggle | no |
+| 932 | 365 | 1 column | 1 column | 1 column | beside form | collapsed toggle | no |
+| 900 | 345 | 1 column | 1 column | 1 column | beside form | collapsed toggle | no |
+| 768 | 597 | 2 columns | 2 columns | 2 columns | stacked below form | collapsed toggle | no |
+| 650 | 539 | 2 columns | 2 columns | 2 columns | stacked below form | collapsed toggle | no |
+| 530 | 419 | 1 column | 1 column | 1 column | stacked below form | collapsed toggle | no |
+| 400 | 389 | 1 column | 1 column | 1 column | stacked below form | collapsed toggle | no |
+
+Thresholds
+- Position: viewport fallback keeps two columns at >=1021px; one column at <=1020px. Live first observed approved stack is 1000px.
+- Starting Date: four-column wide layout at >=1200px; two controls plus full-width guidance at 1021–1199px; one column at <=700px.
+- Compensation: four-column wide layout at >=1200px; two columns plus full-width guidance at 1021–1199px; one column at <=700px.
+- Work Location: full-width selector at the compact/intermediate authoring states; address and conditional workflows remain below.
+- Preview: Step 2 stacks at <=800px because 768px produced only a 213px authoring column when side-by-side.
+
+Correction
+- Replaced the over-broad effective-width flattening with section-specific rules.
+- Retained min-width safety and width constraints.
+- Added a narrowly scoped viewport fallback because the existing named container rules did not win the cascade against the earlier broad container rule; the fallback is limited to Step 2 and the measured breakpoints.
+- Corrected the existing `requestAnimationFrame(renderStep3Benefits)` callback to avoid a console error caused by passing the animation timestamp as a DOM root.
+
+Evidence
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-1200.png`
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-1135.png`
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-1043.png`
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-987.png`
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-first-stack-768.png`
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-530.png`
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-400.png`
+- `/home/bobreap/projects/teachers-net-jobcenter/tmp/step2-resp002-expanded-1440.png`
+
+Additional verification
+- Position control scroll/client widths were equal at 1200px; no clipping reported.
+- Five navigation/state checks retained a Step 2 title through Steps 3 and 4; rail expansion persisted during same-page navigation.
+- Full reload reset the title and rail state.
+- Step 3 preview and Step 4 preview remained registered after navigation.
+- Console error list was empty after the callback correction.
+
+Changed files
+- `tmp/jc053-wizard-workbench/mockup.css`
+- `tmp/jc053-wizard-workbench/mockup.js`
+- `tmp/STEP2-RESP002-report.txt`

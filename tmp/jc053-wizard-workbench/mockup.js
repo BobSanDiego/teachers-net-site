@@ -1607,7 +1607,7 @@
     expanded ? step3State.expandedPreviewSections.delete(key) : step3State.expandedPreviewSections.add(key);
     syncPreviewCollapsibles();
   });
-  requestAnimationFrame(renderStep3Benefits);
+  requestAnimationFrame(() => renderStep3Benefits());
   renderStep3Preview();
   const step4State = { materials: new Set() };
   const step4Content = document.createElement("section");
