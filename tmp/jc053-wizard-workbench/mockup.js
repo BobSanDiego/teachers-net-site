@@ -626,6 +626,7 @@
       "wizard-authority-v1",
       "step-02-job-basics",
       "step-03-clipboard-diagnostics",
+      "step-04-application-process",
     ].includes(id);
     select.append(o);
   });
