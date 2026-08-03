@@ -53,11 +53,14 @@ final class TNet_Community_Thread_Controller {
         if (!isset($_POST['tnet_reply_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tnet_reply_nonce'])), 'tnet_community_reply')) return ['Nonce verification failed. Please try again.'];
         $parent_id = sanitize_text_field(wp_unslash($_POST['parent_post_id'] ?? ''));
         $body = sanitize_textarea_field(wp_unslash($_POST['body'] ?? ''));
+        $urls = TNet_Community_Composer_Contracts::https_urls($body);
+        $attachment = null;
+        try { $attachment = TNet_Community_Composer_Contracts::upload_image(sanitize_text_field(wp_unslash($_POST['attachment_alt'] ?? ''))); } catch (Throwable $e) { return [$e->getMessage()]; }
         $submission_id = sanitize_text_field(wp_unslash($_POST['submission_id'] ?? '')) ?: 'reply-' . wp_generate_uuid4();
         if ($body === '') return ['Enter a reply.'];
         $parent = (new TNet_Community_Publisher_Repository())->find_post($parent_id);
         if (!$parent || $parent['thread_id'] !== $data['thread_id'] || $parent['community_id'] !== $data['root']['community_id']) return ['That reply target is not available in this thread.'];
-        $draft = ['submission_id' => $submission_id, 'community_id' => $data['root']['community_id'], 'author_id' => 'user:' . (int) get_current_user_id(), 'post_type' => 'reply', 'title' => '', 'body' => $body, 'parent_post_id' => $parent_id, 'thread_id' => $data['thread_id'], 'visibility' => 'public', 'publication_mode' => 'post_first', 'moderation_input' => 'clear', 'compatibility_refs' => [], 'audit_context' => ['source' => 'local-reply-composer']];
+        $draft = ['submission_id' => $submission_id, 'community_id' => $data['root']['community_id'], 'author_id' => 'user:' . (int) get_current_user_id(), 'post_type' => 'reply', 'title' => '', 'body' => $body, 'parent_post_id' => $parent_id, 'thread_id' => $data['thread_id'], 'visibility' => 'public', 'publication_mode' => 'post_first', 'moderation_input' => 'clear', 'compatibility_refs' => ['composer'=>['attachments'=>$attachment?[$attachment]:[],'links'=>array_map(static fn($url)=>['url'=>$url,'enrichment'=>'mocked'], $urls),'representative_url'=>$urls[0]??'','preview'=>(new TNet_Community_Link_Attachment_Service())->prepare($urls[0]??'','keep')]], 'audit_context' => ['source' => 'local-reply-composer']];
         $result = (new TNet_Community_Publisher_Application())->publish_reply($draft, $parent, [$draft['community_id'] => ['active' => true]], ['actor_id' => $draft['author_id']]);
         if (empty($result['accepted']) || empty($result['post']['post_id'])) return ['The reply could not be published. Please try again.'];
         $reply_path = str_replace('%3A', ':', rawurlencode($result['post']['post_id']));
@@ -74,7 +77,7 @@ final class TNet_Community_Thread_Controller {
         $submission = '<input type="hidden" name="submission_id" value="' . esc_attr($key) . '">';
         $target = '<input type="hidden" id="reply-target" name="parent_post_id" value="' . esc_attr($root['post_id']) . '">';
         $context = '<p id="reply-context"><strong>Reply</strong></p>';
-        $body = '<label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="5" required></textarea>';
+        $body = '<label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="5" required></textarea><label for="reply-image-file">Photo (optional)</label><input id="reply-image-file" name="image_file" type="file" accept="image/jpeg,image/png,image/webp"><label for="attachment_alt">Image description</label><input id="attachment_alt" name="attachment_alt" type="text">';
         $help = '<details><summary>Formatting help</summary><p>Use **bold**, *italic*, \`code\`, quotes, lists, or [links](https://example.com).</p></details>';
         $script = '<script>document.querySelectorAll("[data-reply-target]").forEach(function(a){a.addEventListener("click",function(){document.getElementById("reply-target").value=a.dataset.replyTarget;document.getElementById("reply-context").textContent="Replying to "+a.textContent;document.getElementById("reply-body").focus()})});</script>';
         return TNet_Community_Composer_View::reply($html . '<form id="reply-composer" class="reply-composer" method="post">' . $nonce . $submission . $target . $context . $body . $help . '<button type="submit">Post Reply</button></form>' . $script);
