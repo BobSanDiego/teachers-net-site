@@ -25,7 +25,7 @@ final class TNet_Community_Thread_Controller {
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
         $root = $data['root'];
         $html = '<main><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . '</article>';
-        $html .= self::reply_form($root, $data['rows'], $errors);
+        $html .= self::reply_form_normalized($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;
         foreach ($data['rows'] as $row) {
@@ -64,6 +64,20 @@ final class TNet_Community_Thread_Controller {
         $root_path = str_replace('%3A', ':', rawurlencode($data['root']['post_id']));
         wp_safe_redirect(home_url('/community/thread/' . $root_path . '/#reply-post:' . $reply_path));
         return [];
+    }
+
+    private static function reply_form_normalized(array $root, array $rows, array $errors): string {
+        if (!is_user_logged_in()) { $url = home_url('/community/thread/' . str_replace('%3A', ':', rawurlencode($root['post_id'])) . '/'); return '<p class="meta"><a href="' . esc_url(wp_login_url($url)) . '">Log in to reply.</a></p>'; }
+        $key = 'reply-' . wp_generate_uuid4(); $html = '';
+        if ($errors) { $html .= '<div class="errors" role="alert"><ul>'; foreach ($errors as $error) $html .= '<li>' . esc_html($error) . '</li>'; $html .= '</ul></div>'; }
+        $nonce = wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false);
+        $submission = '<input type="hidden" name="submission_id" value="' . esc_attr($key) . '">';
+        $target = '<input type="hidden" id="reply-target" name="parent_post_id" value="' . esc_attr($root['post_id']) . '">';
+        $context = '<p id="reply-context"><strong>Reply</strong></p>';
+        $body = '<label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="5" required></textarea>';
+        $help = '<details><summary>Formatting help</summary><p>Use **bold**, *italic*, \`code\`, quotes, lists, or [links](https://example.com).</p></details>';
+        $script = '<script>document.querySelectorAll("[data-reply-target]").forEach(function(a){a.addEventListener("click",function(){document.getElementById("reply-target").value=a.dataset.replyTarget;document.getElementById("reply-context").textContent="Replying to "+a.textContent;document.getElementById("reply-body").focus()})});</script>';
+        return $html . '<form id="reply-composer" class="reply-composer" method="post">' . $nonce . $submission . $target . $context . $body . $help . '<button type="submit">Post Reply</button></form>' . $script;
     }
 
     private static function reply_form(array $root, array $rows, array $errors): string {
