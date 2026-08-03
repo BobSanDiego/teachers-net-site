@@ -1227,7 +1227,7 @@
         </div>
         <div class="step3-optional-intro"><h4>Optional Fields</h4><p>The following sections are optional, but providing additional detail helps teachers better understand your opportunity and improves matching and discovery throughout Teachers.Net.</p></div>
         <div class="step3-optional-sections">
-          ${["Requirements / Qualifications","About Our School"].map((title,index)=>{const limit=index===0?2000:1500; return `<details><summary>${title}</summary><div id="step3-optional-${index+1}" class="step3-editor step3-optional-editor" data-maxlength="${limit}" contenteditable="true" role="textbox" aria-label="${title}"></div><div class="step3-counter step3-optional-counter" hidden><span data-counter-for="step3-optional-${index+1}">0</span>/${limit} characters</div></details>`;}).join("")}
+          ${["Requirements / Qualifications","About Our School"].map((title,index)=>{const limit=5000; return `<details><summary>${title}</summary><div id="step3-optional-${index+1}" class="step3-editor step3-optional-editor" data-maxlength="${limit}" contenteditable="true" role="textbox" aria-label="${title}"></div><p class="step3-truncation-notice" role="status" aria-live="polite" hidden>Teachers.Net imported the first 5,000 characters. Additional content was omitted.</p><div class="step3-counter step3-optional-counter" hidden><span data-counter-for="step3-optional-${index+1}">0</span>/${limit} characters</div></details>`;}).join("")}
           <details class="step3-benefits">
             <summary>Benefits</summary>
             <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
@@ -1498,7 +1498,8 @@
   };
   const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); const length=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; counter.textContent=length; const limit=Number(field?.dataset.maxlength || 0); counter.closest(".step3-optional-counter")?.toggleAttribute("hidden", !limit || length < limit - 100); });
-  const limitStep3Editor = (editor) => { const limit=Number(editor.dataset.maxlength || 0); if (!limit) return; const walker=document.createTreeWalker(editor, NodeFilter.SHOW_TEXT); let remaining=limit; const nodes=[]; while (walker.nextNode()) nodes.push(walker.currentNode); nodes.forEach((node) => { if (remaining <= 0) node.textContent=""; else if (node.textContent.length > remaining) { node.textContent=node.textContent.slice(0, remaining); remaining=0; } else remaining-=node.textContent.length; }); };
+  const truncateStep3Html = (html, limit) => { const container=document.createElement("div"); container.innerHTML=html; let remaining=Math.max(0, limit), truncated=false; const walker=document.createTreeWalker(container, NodeFilter.SHOW_TEXT), nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode); nodes.forEach((node) => { if(!node.textContent) return; if(remaining <= 0){ node.remove(); truncated=true; } else if(node.textContent.length > remaining){ node.textContent=node.textContent.slice(0, remaining); remaining=0; truncated=true; } else remaining-=node.textContent.length; }); container.querySelectorAll("p,h1,h2,h3,h4,h5,h6,li").forEach((node) => { if(!step3Text(node.innerHTML) && !node.querySelector("img")) node.remove(); }); container.querySelectorAll("ul,ol").forEach((node) => { if(!node.querySelector("li")) node.remove(); }); while(container.lastElementChild && ["P","H1","H2","H3","H4","H5","H6"].includes(container.lastElementChild.tagName) && !step3Text(container.lastElementChild.innerHTML) && !container.lastElementChild.querySelector("img")) container.lastElementChild.remove(); return { html:container.innerHTML, truncated }; };
+  const limitStep3Editor = (editor) => { const limit=Number(editor.dataset.maxlength || 0); if (!limit) return; const result=truncateStep3Html(editor.innerHTML, limit); if(result.truncated) editor.innerHTML=result.html; };
   const collapseStep3Description = () => { const editor=document.querySelector("#step3-description-editor"); if (!editor || step3Text(editor.innerHTML).length <= 500) return; editor.classList.add("is-collapsed"); };
   const step3LinkForSelection = () => { const selection=window.getSelection(), node=selection?.anchorNode; return (node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement)?.closest("a"); };
   const editStep3Link = () => {
@@ -1534,7 +1535,9 @@
     const html = clipboard?.getData("text/html");
     const text = clipboard?.getData("text/plain") || "";
     const sanitized = step3CanonicalizeClipboard(html, text);
-    document.execCommand("insertHTML", false, sanitized);
+    const limit=Number(editor.dataset.maxlength || 0), currentLength=step3Text(editor.innerHTML).length, capacity=limit ? Math.max(0, limit-currentLength) : 0, result=limit ? truncateStep3Html(sanitized, capacity) : { html:sanitized, truncated:false };
+    document.execCommand("insertHTML", false, result.html);
+    if(result.truncated){ const notice=editor.closest("details")?.querySelector(".step3-truncation-notice"); if(notice) notice.hidden=false; }
     updateStep3Counters();
     scheduleStep3Preview();
     refreshNextAction();

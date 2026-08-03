@@ -688,4 +688,5 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .step3-summary-assist-card textarea{resize:none}
 .step3-summary-assist-card label{margin-bottom:6px}.step3-summary-assist-card textarea{min-height:82px;overflow-y:hidden;resize:none}
 .step3-summary-field textarea{height:62px;max-height:62px;min-height:62px;overflow-y:hidden;resize:none}.step3-description-editor.is-collapsed{max-height:9em;overflow:hidden}.step3-optional-counter{margin-top:4px}
+.step3-truncation-notice{color:var(--muted);font-size:11px;margin:4px 0 8px}
 .step3-benefit-option:hover,.step3-benefit-option:active,.step3-benefit-option:focus{color:#52627d;text-decoration:none;outline:0}.step3-benefit-option:focus-visible{color:#52627d;text-decoration:none;outline:2px solid #9eb2ed;outline-offset:2px}
