@@ -475,6 +475,13 @@ rendering, and representative mocked preview state. Browser QA remains
 pending because browser control was unavailable. Next ticket after human
 acceptance: C3-FEED002 — Community Feed Card Polish and Responsive Refinement.
 
+C3-COMP002 adds the first authentic authoring foundation: shared bounded
+Markdown rendering in Feed and Thread View, natural reply context without
+topology terminology, and preserved local publication boundaries. Existing
+topic image/link behavior remains authoritative; full topic/reply media parity
+and browser acceptance remain pending. Next step after human acceptance is a
+representative Community product-QA session and one bounded refinement list.
+
 C3-FEED002 establishes the shared local Community visual language across Feed,
 Natural Composer, and Thread View: text-first hierarchy, restrained media,
 consistent cards and metadata, shared focus treatment, bounded media, and

@@ -24,7 +24,7 @@ final class TNet_Community_Thread_Controller {
         }
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
         $root = $data['root'];
-        $html = '<main><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . wp_kses_post(wpautop(esc_html($root['body']))) . '</div>' . self::attachments($root) . '</article>';
+        $html = '<main><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . '</article>';
         $html .= self::reply_form($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;
@@ -39,7 +39,7 @@ final class TNet_Community_Thread_Controller {
                 $html .= $target['post_id'] ? '<a href="#reply-post:' . esc_attr($target['post_id']) . '">' . esc_html($target['label']) . '</a>' : esc_html($target['label']);
                 $html .= '</p>';
             }
-            $html .= '<div>' . wp_kses_post(wpautop(esc_html($row['body']))) . '</div>' . self::attachments($row);
+            $html .= '<div>' . TNet_Community_Authoring::markdown($row['body']) . '</div>' . self::attachments($row);
             if (is_user_logged_in()) $html .= '<p><a href="#reply-composer" data-reply-target="' . esc_attr($row['post_id']) . '">Reply to this ' . esc_html($row['_level'] === 1 ? 'comment' : 'reply') . '</a></p>';
             $html .= '</article>';
         }
@@ -71,9 +71,7 @@ final class TNet_Community_Thread_Controller {
         $key = 'reply-' . wp_generate_uuid4();
         $html = '';
         if ($errors) { $html .= '<div class="errors" role="alert"><ul>'; foreach ($errors as $error) $html .= '<li>' . esc_html($error) . '</li>'; $html .= '</ul></div>'; }
-        $options = '<option value="' . esc_attr($root['post_id']) . '">Topic (new L1 reply)</option>';
-        foreach ($rows as $row) $options .= '<option value="' . esc_attr($row['post_id']) . '">Reply to ' . esc_html($row['_author_display']) . '</option>';
-        return $html . '<form id="reply-composer" class="reply-composer" method="post"><p><strong>Reply</strong></p>' . wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false) . '<input type="hidden" name="submission_id" value="' . esc_attr($key) . '"><label for="reply-target">Reply target</label><select id="reply-target" name="parent_post_id">' . $options . '</select><label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="4" required></textarea><button type="submit">Post Reply</button></form>';
+        return $html . '<form id="reply-composer" class="reply-composer" method="post">' . wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false) . '<input type="hidden" name="submission_id" value="' . esc_attr($key) . '"><input type="hidden" id="reply-target" name="parent_post_id" value="'.esc_attr($root['post_id']).'"><p id="reply-context"><strong>Reply</strong></p><label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="5" required></textarea><details><summary>Formatting help</summary><p>Use **bold**, *italic*, `code`, quotes, lists, or [links](https://example.com).</p></details><button type="submit">Post Reply</button></form><script>document.querySelectorAll("[data-reply-target]").forEach(function(a){a.addEventListener("click",function(){document.getElementById("reply-target").value=a.dataset.replyTarget;document.getElementById("reply-context").textContent="Replying to "+a.textContent;document.getElementById("reply-body").focus()})});</script>';
     }
     private static function attachments(array $row): string { if (!empty($row['attachments']) && in_array($row['publication_state'], ['published','restored'], true)) { $html=''; foreach($row['attachments'] as $attachment) $html.=TNet_Community_Attachment::render((array)$attachment); return $html; } return ''; }
 

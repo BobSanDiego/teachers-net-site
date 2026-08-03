@@ -430,6 +430,13 @@ later failure. Browser QA remains pending because browser control was
 unavailable. Do not begin FEED002 or live/media expansion before human browser
 acceptance.
 
+C3-COMP002 is partially bounded around shared authoring/rendering foundations:
+the new Community authoring helper provides escaped Markdown rendering and
+Thread View reply context no longer exposes topology selectors. PHP lint
+passes. Browser QA remains pending. Do not infer completion of full shared
+topic/reply media parity until the remaining composer extraction and browser
+review are explicitly completed.
+
 C3-FEED002 adds the Community-owned visual-language stylesheet and local route
 injection for Feed, Composer, and Thread View. It supplies shared shell,
 spacing, card, metadata, focus, media-bound, and responsive rules while
