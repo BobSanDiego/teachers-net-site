@@ -1,0 +1,137 @@
+Ticket:
+WIZARD-DIAG001
+
+Implementation changed:
+NO
+
+Canonical Initial URL:
+http://127.0.0.1:8768/?#step-01-initial
+
+Canonical Add School URL:
+http://127.0.0.1:8768/?#step-01-add-school-us
+
+Runtime matches HEAD:
+PASS
+
+Root cause proven:
+PASS
+
+Conclusion
+==========
+The apparent spacing regression is a render-path mismatch, not a timing, cache,
+font-loading, or fractional-layout artifact. The Initial view uses the static
+legacy `.panel-heading` markup in index.html. Add School and Steps 2-4 use the
+newer `.wizard-stage-heading` markup produced by the shared JavaScript renderer.
+Those paths have different DOM ownership and different winning CSS rules.
+
+Initial path (live DOM)
+-----------------------
+`.panel-heading > div > .eyebrow, h2, p` with a panel-heading border and
+horizontal padding. The broad legacy rules in mockup.css line 21 win:
+
+- `.eyebrow`: 11px, line-height 15.95px, margin-bottom 10px, letter-spacing
+  .22px at this runtime.
+- `.panel h2`: 22px with the browser-derived 31.9px line-height.
+- `.panel-heading p:not(.eyebrow)`: margin 5px 0 0.
+- The support paragraph is nested under the inner div, not a direct heading
+  child, and the heading carries a bottom border/padding treatment.
+
+Add School and Steps 2-4 path (live DOM)
+----------------------------------------
+`.wizard-stage-heading > .eyebrow, h2, p`, created by JavaScript. The canonical
+stage rules in mockup.css line 691 win:
+
+- `.eyebrow`: 12px, line-height 17.4px, margin-bottom 4px, letter-spacing
+  .24px.
+- `.wizard-stage-heading h2`: 22px, line-height 26.4px, margin-bottom 4px.
+- `.wizard-stage-heading > p:last-child`: margin 0.
+- The heading has margin-bottom 28px and no border/padding of its own.
+
+Live geometry at the canonical desktop viewport
+------------------------------------------------
+                         Initial             Add School / Steps 2-4
+Panel top to eyebrow     27px                27px
+Eyebrow to h2            10px                4px
+h2 to support            5px                 4px
+Support to content       37px                28px
+Heading height            122.421875px        72.078125px
+
+The supplied reference captures corroborate the two visual states. They were
+available at the originally referenced Windows-mounted location despite the
+attachment-reader error and were copied into the hopper as evidence:
+
+- good-spacing.png SHA-256 6cfba2ace2ab553c77a1ffbaf3680c8a8c4ec8bec63eaf63210597cb28f623ac
+- bad-spacing.png SHA-256 105fd84a9a6335539eff60a600e407d7558b50205232032035efdef938515227
+
+Timing and event investigation
+==============================
+Hash transitions were checked at setTimeout(0), first requestAnimationFrame,
+second requestAnimationFrame, 250ms, and after document.fonts.ready. Initial
+and Add School measurements were stable at every checkpoint; font status was
+`loaded`. The live comparison used actual canonical views and their real DOM,
+not synthetic fixtures. The mismatch is therefore present in the shipped
+markup/style ownership before and after settling.
+
+Verification matrix
+===================
+Test                                      Automated/live result   Identical?
+Initial heading structure                 distinct legacy path     N/A
+Add School heading structure              distinct stage path      N/A
+Eyebrow-to-heading rhythm                 10px vs 4px              NO
+Heading/support rhythm                    5px vs 4px               NO
+Support-to-content rhythm                 37px vs 28px             NO
+Font readiness                            loaded/stable            YES
+Runtime asset and build identity           exact current assets     YES
+Cache-bypass response                     200/no-store             YES
+
+The false-positive mechanism is that automated checks can validate the newer
+shared stage renderer (or its expected selectors) while the browser-visible
+Initial view remains owned by the untouched static legacy structure. A selector
+or fixture assertion that does not exercise both canonical hashes can pass
+without proving visual convergence.
+
+Runtime and repository evidence
+================================
+Canonical server: port 8768, HTTP 200 for CSS and JS; response headers include
+no-store/no-cache. Runtime banner reported branch
+JOB-CENTER-JC053-wizard-workbench, commit c70c3e8, asset jc053-c70c3e8, and the
+current worktree root. Served and worktree SHA-256 values matched:
+
+- mockup.css e8c1959093542a1dc884c449947cc7690839ad6158d9e06039a3d76177b566c7
+- mockup.js 736b83260f500b264a2432ede095e5871a824135894fcb306582e3d59b34a323
+
+`git diff --check` passed. No implementation file was modified by this ticket.
+The supplied image captures were inspected; a new live screenshot could not be
+produced because the browser screenshot operation hung, so this report does
+not claim newly captured live screenshots. Console-load inspection showed no
+reported load errors.
+
+Diagnostic helper
+=================
+Non-production console helper: `tmp/WIZARD-DIAG001-helper.js`. It measures all
+five canonical views, computed styles, DOM hierarchy, rectangles, gaps, font
+status, and timestamps without changing DOM or styles.
+
+Classification
+==============
+Paragraph spacing: implementation/render-path ownership mismatch, with legacy
+CSS contributing to the observed geometry.
+List indentation, bullet positioning, numbered positioning, Clear Formatting:
+not implicated or re-tested by this ticket; no classification is authorized
+from this heading-only evidence.
+
+Smallest safe recommendation
+=============================
+In a separate implementation ticket, make the static Initial view render
+through the same canonical `.wizard-stage-heading` structure and shared owner
+used by Add School and Steps 2-4, then require live canonical visual acceptance
+for both Initial and Add School. Do not patch spacing in isolation before that
+normalization. This ticket intentionally makes no product change.
+
+Git/process state
+=================
+Worktree: /home/bobreap/projects/teachers-net-jobcenter
+Branch: JOB-CENTER-JC053-wizard-workbench
+Diagnostic artifacts are the only files introduced by this ticket; the
+implementation remains unchanged. The report/helper may be committed and
+pushed as documentation/process evidence only.
