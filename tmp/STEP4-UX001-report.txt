@@ -1,0 +1,53 @@
+Ticket: STEP4-UX001
+
+Implementation changed: YES
+Canonical review URL: http://127.0.0.1:8768/?#step-04-application-process
+
+Completed bounded Step 4 refinement
+====================================
+- Added 10px vertical spacing through the shared `.step4-field` owner with
+  narrow first-field suppression.
+- Replaced the Application Method link symbol with the shared SVG
+  `section-send` paper-airplane symbol.
+- Corrected conditional URL/email/instructions visibility and required state.
+- Added user-change focus movement for method, specific deadline, and Other
+  Materials fields; initial render does not steal focus.
+- Added URL and email validation without alerts; invalid values suppress preview
+  actions and show concise inline messages after blur/continuation.
+- Changed preview actions to compact secondary buttons and escaped entered text.
+- Synchronized instructions, deadline, contact mode/privacy, and application
+  materials into the live preview on input/change.
+- Removed override Contact Email required behavior; entered override email is
+  validated only when non-empty.
+
+Readiness contract
+==================
+Step 4 requires a selected method, a valid active destination or meaningful
+instructions, a selected deadline mode, a future date when Specific date is
+selected, and a valid non-empty override email only when one is entered.
+
+Browser verification
+====================
+HTTP 200 passed. Cache-busted live browser verification confirmed:
+
+- URL, Email, and Instructions only reveal only their active destination;
+- required markers/attributes switch correctly;
+- focus moves to URL, Email, Instructions, Specific date, and Other Materials;
+- valid URL/email actions appear; invalid values do not produce actions;
+- contact fields remain optional and hide correctly when privacy is selected;
+- preview updates with instructions, deadline, contact, and materials;
+- entered instructions render as escaped text with line breaks;
+- no horizontal overflow and no console errors were observed.
+
+Files changed
+=============
+- `tmp/jc053-wizard-workbench/index.html`
+- `tmp/jc053-wizard-workbench/mockup.js`
+- `tmp/jc053-wizard-workbench/mockup.css`
+- `tmp/STEP4-UX001-report.txt`
+
+Git status: unrelated pre-existing hopper/archive changes preserved.
+Push status: successful.
+Final commit: recorded in the cycle manifest and final response.
+Remaining risks: full human visual screenshot acceptance remains a separate
+visual-QA concern; this ticket's functional and computed-state checks passed.
