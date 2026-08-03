@@ -55,7 +55,7 @@ final class TNet_Community_Thread_Controller {
         $body = sanitize_textarea_field(wp_unslash($_POST['body'] ?? ''));
         $urls = TNet_Community_Composer_Contracts::https_urls($body);
         $attachment = null;
-        try { $attachment = TNet_Community_Composer_Contracts::upload_image(sanitize_text_field(wp_unslash($_POST['attachment_alt'] ?? ''))); } catch (Throwable $e) { return [$e->getMessage()]; }
+        try { $attachment = TNet_Community_Composer_Contracts::upload_image(TNet_Community_Authoring::image_alt('', $body, sanitize_text_field(wp_unslash($_POST['attachment_alt'] ?? '')))); } catch (Throwable $e) { return [$e->getMessage()]; }
         $submission_id = sanitize_text_field(wp_unslash($_POST['submission_id'] ?? '')) ?: 'reply-' . wp_generate_uuid4();
         if ($body === '') return ['Enter a reply.'];
         $parent = (new TNet_Community_Publisher_Repository())->find_post($parent_id);
@@ -78,7 +78,7 @@ final class TNet_Community_Thread_Controller {
         $submission = '<input type="hidden" name="submission_id" value="' . esc_attr($key) . '">';
         $target = '<input type="hidden" id="reply-target" name="parent_post_id" value="' . esc_attr($root['post_id']) . '">';
         $context = '<p id="reply-context"><strong>Reply</strong></p>';
-        $body = '<label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="5" required></textarea><label for="reply-image-file">Photo (optional)</label><input id="reply-image-file" name="image_file" type="file" accept="image/jpeg,image/png,image/webp"><label for="attachment_alt">Image description</label><input id="attachment_alt" name="attachment_alt" type="text">';
+        $body = '<textarea id="reply-body" name="body" rows="2" placeholder="Reply to '.esc_attr($root['_author_display']??'this author').'…" aria-label="Reply to '.esc_attr($root['_author_display']??'this author').'…" required></textarea><label class="reply-photo-action" for="reply-image-file">📷 Photo</label><input id="reply-image-file" name="image_file" type="file" accept="image/jpeg,image/png,image/webp" hidden>';
         $help = '<details><summary>Formatting help</summary><p>Use **bold**, *italic*, \`code\`, quotes, lists, or [links](https://example.com).</p></details>';
         $script = '<script>document.querySelectorAll("[data-reply-target]").forEach(function(a){a.addEventListener("click",function(){document.getElementById("reply-target").value=a.dataset.replyTarget;document.getElementById("reply-context").textContent="Replying to "+a.textContent;document.getElementById("reply-body").focus()})});</script>';
         return TNet_Community_Composer_View::reply($html . '<form id="reply-composer" class="reply-composer" method="post">' . $nonce . $submission . $target . $context . $body . $help . '<button type="submit">Post Reply</button></form>' . $script);
