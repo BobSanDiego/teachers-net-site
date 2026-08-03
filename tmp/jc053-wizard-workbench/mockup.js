@@ -795,6 +795,7 @@
       );
     if (id === "step-03-job-description")
       return Boolean(step3Text(document.querySelector("#step3-description-editor")?.innerHTML));
+    if (id === "step-04-application-process") return step4Ready();
     if (id === "step-01-add-school-us")
       return Boolean(
         document.querySelector("#organization-name")?.value.trim() &&
@@ -830,6 +831,8 @@
         ? "#step-03-job-description"
         : id === "step-03-job-description"
           ? "#step-04-application-process"
+          : id === "step-04-application-process"
+            ? "#step-05-review-publish"
           : "#step-02-job-basics";
     else next.removeAttribute("href");
   };
@@ -1551,6 +1554,26 @@
   });
   requestAnimationFrame(renderStep3Benefits);
   renderStep3Preview();
+  const step4State = { materials: new Set() };
+  const step4Content = document.createElement("section");
+  step4Content.className = "step4-foundation-layout";
+  step4Content.innerHTML = `<div class="step4-form-column">
+    <section class="step4-section"><div class="step4-section-heading"><span class="form-section-number">1</span><div><h3>Application Method</h3><p>Choose how candidates should apply.</p></div></div>
+      <div class="step4-field"><label for="step4-method">Application Method <span aria-hidden="true">*</span></label><select id="step4-method"><option value="">Select application method</option><option value="url">External URL</option><option value="email">Email</option><option value="instructions">Instructions only</option></select></div>
+      <div class="step4-field" data-step4-method="url" hidden><label for="step4-url">Application URL <span aria-hidden="true">*</span></label><input id="step4-url" type="url" placeholder="https://example.org/apply"></div>
+      <div class="step4-field" data-step4-method="email" hidden><label for="step4-email">Application Email <span aria-hidden="true">*</span></label><input id="step4-email" type="email" placeholder="jobs@example.org"></div>
+      <div class="step4-field" data-step4-instructions hidden><label for="step4-instructions">Application Instructions <span class="step4-required-marker">*</span><span class="step4-optional-marker"> (Optional)</span></label><textarea id="step4-instructions" rows="3" placeholder="Tell candidates what to do next."></textarea></div>
+    </section>
+    <section class="step4-section"><div class="step4-section-heading"><span class="form-section-number">2</span><div><h3>Application Deadline</h3><p>Tell candidates when applications close.</p></div></div><div class="step4-compact-row"><div class="step4-field"><label for="step4-deadline-mode">Deadline Mode <span aria-hidden="true">*</span></label><select id="step4-deadline-mode"><option value="">Select deadline</option><option value="specific">Specific date</option><option value="open">Open until filled</option><option value="none">No published deadline</option></select></div><div class="step4-field" data-step4-specific hidden><label for="step4-deadline">Application Deadline <span aria-hidden="true">*</span></label><input id="step4-deadline" type="date"></div></div><label class="step4-check" data-step4-specific hidden><input id="step4-close-on-deadline" type="checkbox"> Close job on application deadline</label></section>
+    <section class="step4-section"><div class="step4-section-heading"><span class="form-section-number">3</span><div><h3>Contact Information</h3><p>Choose the contact information candidates should see.</p></div></div><div class="step4-choice-row"><label><input type="radio" name="step4-contact" value="default" checked> Use School / Jobsite default contact</label><label><input type="radio" name="step4-contact" value="override"> Override contact</label></div><div class="step4-override-fields" hidden><div class="step4-field"><label for="step4-contact-name">Contact Name</label><input id="step4-contact-name" type="text"></div><div class="step4-field"><label for="step4-contact-email">Contact Email <span>*</span></label><input id="step4-contact-email" type="email"></div><div class="step4-field"><label for="step4-contact-phone">Contact Phone</label><input id="step4-contact-phone" type="tel"></div></div><label class="step4-check"><input id="step4-hide-contact" type="checkbox"> Hide contact details publicly</label></section>
+    <section class="step4-section"><div class="step4-section-heading"><span class="form-section-number">4</span><div><h3>Required Application Materials</h3><p>Select any materials candidates should provide.</p></div></div><div class="step4-materials"><label><input type="checkbox" value="resume"> Resume / CV</label><label><input type="checkbox" value="cover"> Cover Letter</label><label><input type="checkbox" value="references"> References</label><label><input type="checkbox" value="credentials"> Credentials / Certificates</label><label><input type="checkbox" value="transcripts"> Transcripts</label><label><input type="checkbox" value="other"> Other</label></div><div class="step4-field" data-step4-other hidden><label for="step4-other-materials">Other Materials</label><input id="step4-other-materials" type="text"></div></section>
+    <div class="step4-notice" role="note"><strong>Routing &amp; Privacy</strong><p>Teachers.Net does not collect or receive applications. Candidates will be directed to your selected destination.</p></div></div>
+    <aside class="step4-preview-pane" aria-label="Listing Preview"><div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>This is a workbench approximation.</p></div><span>Live preview</span></div><div id="step4-preview" class="step3-preview-card"></div></aside>`;
+  const step4Panel = document.createElement("article"); step4Panel.className = "panel"; step4Panel.id = "step-04-application-process"; step4Panel.dataset.view = "step-04-application-process"; step4Panel.hidden = true; step4Panel.append(step4Content); statePanels["step-04-application-process"] = step4Panel; step3Panel.after(step4Panel);
+  const step4Escape = (value) => String(value || "").replace(/[&<>\"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'\"':"&quot;","'":"&#39;"}[c]));
+  const step4Ready = () => { const method=step4Content.querySelector("#step4-method")?.value, mode=step4Content.querySelector("#step4-deadline-mode")?.value, instructions=step4Content.querySelector("#step4-instructions")?.value.trim(), date=step4Content.querySelector("#step4-deadline")?.value, contact=step4Content.querySelector("input[name=step4-contact]:checked")?.value, email=step4Content.querySelector("#step4-contact-email")?.value.trim(); const destination=method==="url"?step4Content.querySelector("#step4-url")?.value.trim():method==="email"?step4Content.querySelector("#step4-email")?.value.trim():method==="instructions"?instructions:""; return Boolean(method&&destination&&mode&&(mode!=="specific"||(date&&date>=new Date().toISOString().slice(0,10)))&&(contact!=="override"||email?.includes("@"))); };
+  const step4Sync = () => { const method=step4Content.querySelector("#step4-method")?.value, mode=step4Content.querySelector("#step4-deadline-mode")?.value, contact=step4Content.querySelector("input[name=step4-contact]:checked")?.value; step4Content.querySelectorAll("[data-step4-method]").forEach((f)=>f.hidden=f.dataset.step4Method!==method); const instruction=step4Content.querySelector("[data-step4-instructions]"); instruction.hidden=!method; instruction.querySelector(".step4-required-marker").hidden=method!=="instructions"; instruction.querySelector(".step4-optional-marker").hidden=method==="instructions"; step4Content.querySelector("#step4-instructions").required=method==="instructions"; step4Content.querySelectorAll("[data-step4-specific]").forEach((f)=>f.hidden=mode!=="specific"); step4Content.querySelector("#step4-deadline").required=mode==="specific"; step4Content.querySelector(".step4-override-fields").hidden=contact!=="override"; step4Content.querySelector("#step4-contact-email").required=contact==="override"; step4Content.querySelector("[data-step4-other]").hidden=!step4State.materials.has("other"); const preview=step4Content.querySelector("#step4-preview"), instructionsText=step4Content.querySelector("#step4-instructions")?.value.trim(); const action=method==="url"?"<button type=\"button\" class=\"button primary\">Apply on Employer Site</button>":method==="email"?"<button type=\"button\" class=\"button primary\">Apply by Email</button>":""; preview.innerHTML=`<div class=\"step3-compact-listing\"><strong>${step4Escape(document.querySelector("#job-title-step2")?.value||"Teacher position")}</strong><span>LAUSD · Los Angeles, CA</span><p>${step4Escape(document.querySelector("#step3-summary")?.value||"Add a short summary to preview this listing.")}</p></div><h4>How to Apply</h4>${method==="instructions"?`<p>${step4Escape(instructionsText)||"Application instructions will appear here."}</p>`:method?`<p>Candidates will be directed to the selected destination.</p>${action}`:"<p>Select an application method to preview how candidates will apply.</p>"}${mode==="specific"&&step4Content.querySelector("#step4-deadline")?.value?`<p><strong>Deadline:</strong> ${step4Escape(step4Content.querySelector("#step4-deadline").value)}</p>`:mode==="open"?"<p><strong>Deadline:</strong> Open until filled</p>":""}`; refreshNextAction(); };
+  step4Content.addEventListener("input", step4Sync); step4Content.addEventListener("change", (e)=>{if(e.target.matches(".step4-materials input")){e.target.checked?step4State.materials.add(e.target.value):step4State.materials.delete(e.target.value)} step4Sync();});
   const wizardShellConfigs = {
     "step-02-job-basics": {
       viewId: "step-02-job-basics",
@@ -1630,6 +1653,11 @@
       ],
       completedTargets: ["step-01-return", "step-02-job-basics", null, null, null],
       content: step3Content,
+    },
+    "step-04-application-process": {
+      viewId: "step-04-application-process", stepNumber: "4", title: "Application Process", supportingCopy: "Tell candidates how to apply for this position.", authority: false, showCancel: true, showSaveDraft: true,
+      previous: { label: "← Previous: Job Description", target: "#step-03-job-description" }, next: { label: "Next: Review & Publish →", target: "#step-05-review-publish", requiresInput: true },
+      stepperState: ["is-complete", "is-complete", "is-complete", "is-current", "is-upcoming"], completedTargets: ["step-01-return", "step-02-job-basics", "step-03-job-description", null, null], content: step4Content,
     },
   };
   const renderWizardShell = (config, panel, content) => {
@@ -1727,6 +1755,7 @@
       nav.append(link);
     }
     saveDraft.hidden = !config.showSaveDraft;
+    if (config.viewId === "step-04-application-process") step4Sync();
     refreshNextAction();
   };
   const shellContent = (id) => wizardShellConfigs[id]?.content;
