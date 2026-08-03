@@ -1236,7 +1236,9 @@
   if (step3Option) step3Option.disabled = false;
   const step2Content = document.createElement("div");
   step2Content.className = "wizard-shell-content wizard-shell-content-step2";
-  step2Content.append(
+  const step2AuthoringColumn = document.createElement("div");
+  step2AuthoringColumn.className = "step2-authoring-column";
+  step2AuthoringColumn.append(
     ...[...jobBasicsPanel.children].filter(
       (child) => !child.classList.contains("job-basics-heading"),
     ),
@@ -1245,7 +1247,7 @@
   step2PreviewPane.className = "step2-preview-pane step3-preview-pane";
   step2PreviewPane.setAttribute("aria-label", "Listing Preview");
   step2PreviewPane.innerHTML = '<div class="step3-preview-heading"><div><h3>Listing Preview</h3><p>Live cumulative preview.</p></div><span>Live preview</span></div><div id="step2-preview" class="step3-preview-card"></div>';
-  step2Content.append(step2PreviewPane);
+  step2Content.append(step2AuthoringColumn, step2PreviewPane);
   const authorityContent = document.createElement("div");
   authorityContent.className = "wizard-shell-content wizard-shell-content-authority";
   const authoritySource = document.createElement("div");

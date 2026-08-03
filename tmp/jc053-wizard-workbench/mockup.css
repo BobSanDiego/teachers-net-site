@@ -720,3 +720,29 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .wizard-shell-content-step2{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 360px}
 .wizard-shell-content-step2 .step2-preview-pane{align-self:start;position:sticky;top:16px}
 @media (max-width:1199px){.wizard-shell-content-step2{display:block}.wizard-shell-content-step2 .step2-preview-pane{margin-top:16px;position:static;display:block}}
+/* WIZARD-STATE002: shared rail and preview ownership across Steps 2–5. */
+.wizard-shell-content-step2{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 360px}
+.wizard-shell-content-step2 .step2-authoring-column{display:grid;gap:12px;min-width:0}
+.wizard-shell-content-step2 .step2-preview-pane{display:block;min-width:0}
+@media (min-width:651px){
+  .application-card.step3-workspace-mode .application-body{grid-template-columns:44px minmax(0,1fr)}
+  .application-card.step3-workspace-mode .left-rail{overflow:hidden;padding:14px 6px;width:44px}
+  .application-card.step3-workspace-mode .left-rail>*:not(.step3-rail-toggle){display:none}
+  .application-card.step3-workspace-mode .step3-rail-toggle{display:inline-flex}
+  .application-card.step3-workspace-mode .main-workspace{width:auto}
+  .application-card.step3-workspace-mode.step3-rail-expanded .application-body{grid-template-columns:250px minmax(0,1fr)}
+  .application-card.step3-workspace-mode.step3-rail-expanded .left-rail{padding:28px 18px;width:250px}
+  .application-card.step3-workspace-mode.step3-rail-expanded .left-rail>*{display:flex}
+  .application-card.step3-workspace-mode.step3-rail-expanded .step3-rail-toggle{display:inline-flex;margin-bottom:12px}
+  .application-card.step3-workspace-mode.step3-rail-expanded .step3-authoring-layout{display:block}
+  .application-card.step3-workspace-mode.step3-rail-expanded .step3-preview-pane{display:block}
+  .application-card.step3-workspace-mode .step3-preview-pane{display:block}
+}
+@media (max-width:650px){
+  .wizard-shell-content-step2{display:block}
+  .wizard-shell-content-step2 .step2-preview-pane{margin-top:16px;position:static}
+  .application-card.step3-workspace-mode .application-body{grid-template-columns:1fr}
+  .application-card.step3-workspace-mode .left-rail{width:100%}
+  .application-card.step3-workspace-mode .left-rail>*:not(.step3-rail-toggle){display:none}
+  .application-card.step3-workspace-mode .step3-rail-toggle{display:inline-flex}
+}

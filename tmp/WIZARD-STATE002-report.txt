@@ -1,0 +1,38 @@
+WIZARD-STATE002 — Correct Step 2 Workspace Structure and Rail/Preview Breakpoints
+
+Status: Implemented; live visual acceptance pending
+Canonical review URL: http://127.0.0.1:8768/?#step-02-job-basics
+Worktree: /home/bobreap/projects/teachers-net-jobcenter
+Branch: JOB-CENTER-JC053-wizard-workbench
+Inspection time: 2026-08-03T20:57:09Z (UTC)
+
+Changes
+- Wrapped all Step 2 form cards in `.step2-authoring-column` and kept `.step2-preview-pane` as the only sibling occupying the preview column.
+- Preserved Position, Work Location, Starting Date, and Compensation order.
+- Added the explicit Step 2 grid owner and narrow mobile stacking rule.
+- Normalized the existing rail-collapse owner so Steps 2–5 use the same in-memory toggle state beginning at tablet/desktop widths, rather than only at 1200px and above.
+- Kept the preview visible at intermediate widths where the two-column layout remains usable; stack it below the form at the bounded 650px threshold.
+- Preserved Step 1, Step 3, Step 4, state mappings, validation, and conditional behavior.
+
+Required pre-change inspection
+- Static source inspection confirmed the defect: Step 2 sections and preview were direct children of a two-column grid, and the old responsive rule changed that grid to block at max-width 1199px.
+- Existing rail CSS was limited to `@media (min-width:1200px)` and the old preview CSS hid `.step3-preview-pane` below 1200px.
+- The required live computed-style measurements at 1203, 1200, 1024, 932, and 900px could not be obtained because the Chrome connector rejected the WSL sandbox context before attachment.
+
+Verification completed
+- `git diff --check`: passed.
+- Canonical server HTTP 200.
+- Served JavaScript contained the authoring wrapper and matched the current worktree byte length.
+- Static checks confirmed explicit wrapper/sibling structure, shared in-memory rail state, intermediate-width rail rules, and mobile stacking rule.
+
+Verification pending / truth boundary
+- The 1440, 1203, 1200, 1199, 1024, 932, 900, 768, 650, 530, and 400px live matrix is not claimed complete.
+- Required screenshots, DOM/computed placement capture, console inspection, navigation-cycle verification, and full-reload state-reset verification remain pending until live browser attachment is available.
+
+Changed files
+- `tmp/jc053-wizard-workbench/mockup.js`
+- `tmp/jc053-wizard-workbench/mockup.css`
+- `tmp/WIZARD-STATE002-report.txt`
+
+Risk / next step
+- The CSS correction is narrowly scoped but must receive live responsive confirmation before visual release acceptance. Recommended next step: attach the canonical Chrome QA browser and run the ticket’s full verification matrix.
