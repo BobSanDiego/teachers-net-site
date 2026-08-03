@@ -1,0 +1,79 @@
+Ticket:
+STEP3-BENEFITS001
+
+Root cause:
+The Benefits catalog rendered only during initial setup via
+`requestAnimationFrame(renderStep3Benefits)`. Step 3 content is subsequently
+inserted/replaced by `renderWizardShell()` during selector and navigation entry,
+but that activation path did not invoke the catalog renderer. The live Step 3
+root therefore contained empty selected/category containers until a reload.
+
+Direct load:
+PASS
+
+Top selector entry:
+PASS
+
+Bottom navigation entry:
+PASS
+
+Repeated re-entry:
+PASS
+
+State preservation:
+PASS
+
+Duplicate handler check:
+PASS
+
+Lifecycle path corrected
+========================
+`renderWizardShell()` now calls `initializeStep3Benefits(panel)` after the
+current Step 3 content is installed. The initializer is idempotent and scoped
+to the active Step 3 root. It calls the existing `renderStep3Benefits()`
+function, restoring the selected-benefit set without resetting valid state.
+Existing delegated Step 3 handlers remain attached once to `step3Content`; no
+selector-specific or navigation-specific handler was added.
+
+Verification
+============
+Direct load and cache-busted runtime entry produced 25 available benefit
+options and 29 categories immediately. Re-entry after leaving Step 3 produced
+the catalog without reload. Selecting benefits removed them from the available
+list; selected chips, Additional benefits checkbox/text, and available-state
+filtering survived leaving and returning. Repeated entry did not duplicate
+options or IDs. HTTP 200, no console errors, and no horizontal overflow passed.
+`git diff --check` and bundled Node syntax checking passed.
+
+Files changed
+=============
+- `tmp/jc053-wizard-workbench/mockup.js`
+- `tmp/STEP3-BENEFITS001-report.txt`
+
+Canonical review URL:
+http://127.0.0.1:8768/?#step-03-job-description
+
+Branch:
+JOB-CENTER-JC053-wizard-workbench
+
+Final commit:
+Recorded in the hopper cycle and final response.
+
+Runtime commit/build:
+Runtime served the current worktree assets; CSS/JS HTTP 200 and served JS hash
+matched the current worktree hash.
+
+Git status:
+Only unrelated pre-existing hopper/archive changes remain outside the ticket
+scope.
+
+Push status:
+Pushed successfully.
+
+Remaining risks:
+The browser screenshot tool was not required for this functional ticket. No
+known functional risk remains within the requested Benefits entry lifecycle.
+
+Preferred next ticket:
+No follow-up is required for this defect; continue with the next authorized
+Step 3 work item.

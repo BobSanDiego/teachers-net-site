@@ -1482,8 +1482,8 @@
     else editor.innerHTML = container.innerHTML;
     updateStep3Counters(); scheduleStep3Preview(); refreshNextAction(); editor.focus();
   };
-  const renderStep3Benefits = () => {
-    const selected = document.querySelector("#step3-benefits-selected"), categories = document.querySelector("#step3-benefits-categories");
+  const renderStep3Benefits = (activeRoot = document) => {
+    const selected = activeRoot.querySelector("#step3-benefits-selected"), categories = activeRoot.querySelector("#step3-benefits-categories");
     if (!selected || !categories) return;
     const values = [...step3State.selectedBenefits];
     selected.innerHTML = values.length
@@ -1492,6 +1492,10 @@
     selected.closest(".step3-benefits")?.classList.toggle("is-empty", values.length === 0);
     categories.innerHTML = Object.entries(step3Benefits).map(([category, options]) => { const availableOptions=options.filter((option) => !step3State.selectedBenefits.has(option)); return availableOptions.length ? `<div class="step3-benefits-category" data-benefit-category="${step3Escape(category)}"><span class="step3-benefits-category-label">${category}:</span> <span class="step3-benefits-options">${availableOptions.map((option) => `<button type="button" class="step3-benefit-option" data-benefit-option="${step3Escape(option)}" data-benefit-category="${step3Escape(category)}">${step3Escape(option)}</button>`).join(", ")}</span></div>` : ""; }).join("");
     categories.hidden = !categories.querySelector("[data-benefit-option]");
+  };
+  const initializeStep3Benefits = (activeStep3Root) => {
+    if (!activeStep3Root?.matches?.("#step-03-job-description")) return;
+    renderStep3Benefits(activeStep3Root);
   };
   const step3BenefitsText = () => [...step3State.selectedBenefits].join(", ");
   const step3BenefitsActive = () => step3State.selectedBenefits.size > 0 || !!document.querySelector("#step3-benefits-additional-enabled")?.checked && !!document.querySelector("#step3-benefits-additional")?.value.trim();
@@ -1764,6 +1768,7 @@
     panel.classList.add("wizard-shell-panel");
     const body = content?.childNodes.length ? content : stageContent(panel);
     panel.replaceChildren(heading, body);
+    initializeStep3Benefits(panel);
     syncWizardValueStates(panel);
     wizardStepper.states = config.stepperState;
     wizardStepper.completedTargets = config.completedTargets;
