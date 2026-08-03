@@ -1429,7 +1429,7 @@
     .split("\n")
     .map((line) => `<p>${step3Escape(line)}</p>`)
     .join("");
-  const step3Text = (html) => step3PlainText(html).textContent.replace(/\\s+/g, " ").trim();
+  const step3Text = (html) => step3PlainText(html).textContent.replace(/\s+/g, " ").trim();
   const step3Benefits = {
     Insurance: ["Medical Insurance", "Dental Insurance", "Vision Insurance", "Life Insurance", "Disability Insurance"],
     Financial: ["Retirement Plan", "401(k) Plan", "403(b) Plan", "Pension Plan", "Employer Match", "Tuition Assistance", "Relocation Assistance"],
