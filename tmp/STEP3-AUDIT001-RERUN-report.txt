@@ -1,0 +1,147 @@
+Canonical review URL:
+http://127.0.0.1:8768/?#step-03-job-description
+
+Canonical runtime commit:
+69bdab9
+
+Smoke gate: PASS
+Audit verdict: ACCEPTABLE DEBT
+Step 3 freeze recommendation: MAINTAIN
+Preferred next ticket: STEP3-MAINT001 — Preserve optional-editor caret and reset truncation notice state
+
+Smoke evidence
+
+- Runtime banner matched branch JOB-CENTER-JC053-wizard-workbench, commit
+  69bdab9, and the canonical workbench root.
+- Canonical URL returned HTTP 200 with no-store headers.
+- Step 3 loaded with Job Description, Short Summary, and Listing Preview.
+- Job Description input produced counter 49 and a compact preview.
+- The summary gate opened from the Step 3 next action.
+- Browser console contained no warning or error messages.
+- One summary modal instance was present after the smoke flow.
+- Browser verification used the canonical URL after cache-bypassed navigation.
+
+A. Executive verdict
+
+ACCEPTABLE DEBT — Step 3 is coherent enough to remain frozen for bug fixes only.
+The workbench should not be copied directly into production. Two bounded
+behavioral risks should be addressed before production implementation, while
+the remaining findings are maintainability/documentation debt.
+
+B. Verified strengths
+
+- `step3Text()` now normalizes actual whitespace at mockup.js:1432 and is the
+  shared readable-text basis for readiness, counters, preview presence,
+  fallback generation, capacity, and collapse checks.
+- Selected benefits remain Set-owned at mockup.js:1445 and available options
+  are derived from the canonical catalog at mockup.js:1473.
+- Summary modal listeners are attached once at creation and the modal is reused
+  at mockup.js:845-882; repeated opens do not create additional modal nodes.
+- Paste processing has one visible Step 3 listener at mockup.js:1531-1544 and
+  uses the existing sanitize/canonicalization path before insertion.
+- The runtime has no console warnings/errors in the smoke pass.
+
+C. Findings table
+
+| ID | Severity | Area | Evidence | Consequence | Preferred smallest correction | Ticket |
+|---|---|---|---|---|---|---|
+| AUD-001 | Medium | Optional editor input | `limitStep3Editor()` replaces `editor.innerHTML` when over limit at mockup.js:1502; delegated input calls it at mockup.js:1523 | Typing past a limit can replace the editing DOM and lose caret/selection context | Enforce remaining capacity before mutation or preserve/restore a bounded Range; keep paste truncation unchanged | YES |
+| AUD-002 | Medium | Truncation notice state | Paste sets `.step3-truncation-notice.hidden=false` at mockup.js:1540; no later input/edit path hides it | A notice can remain visible after the user edits content below the limit or performs a later non-truncating paste | Hide/reset the notice on the next non-truncating input or successful non-truncating paste | YES |
+| AUD-003 | Medium | CSS authority | Step 3 CSS has 178 selector occurrences, 33 duplicate selector occurrences, and 86 media blocks; duplicate/late rules include `.step3-benefit-option:hover`, `.step3-benefit-option:focus`, `.step3-benefits-categories`, and `.step3-summary-assist-card textarea` at mockup.css:652-692 | Behavior depends on source order and makes future state changes difficult to verify | One documentation-only CSS consolidation ticket after behavioral risks; preserve cascade contracts | YES |
+| AUD-004 | Low | Dead CSS candidates | `.step3-editor-requirements` remains at mockup.css:654 although the standalone editor was removed; `.step3-benefit-option.is-selected` remains at mockup.css:672-673 although JS no longer emits it | Stale hooks invite reintroduction of removed state and obscure ownership | Remove only after a selector-reference audit confirms no fixture needs them | YES |
+| AUD-005 | Medium | Rich-text contract | `document.execCommand()` is used for formatting and insertion at mockup.js:1459, 1508, and 1539 | Browser-dependent editing behavior remains fragile and is not a production-ready abstraction | Formalize an editor adapter/contract before production; do not redesign the frozen workbench | YES |
+| AUD-006 | Medium | Accessibility | Contenteditable fields use textbox semantics, but toolbar command state is not exposed and the dialog has no modal focus trap at mockup.js:1217-1222 and 851-864 | Assistive-technology and keyboard users may lack command-state context or be able to tab behind the dialog | Add focused accessibility QA and a production dialog/editor contract before reuse | NO (production boundary) |
+
+D. Dead or duplicate code candidates
+
+- `.step3-editor-requirements` is a stale style hook.
+- `.step3-benefit-option.is-selected` is stale state styling; current available
+  options are filtered out instead.
+- Duplicate late Step 3 rules are concentrated in mockup.css:672-692.
+- `requirements` is still queried but unused in the preview declaration at
+  mockup.js:1480.
+- Workbench diagnostics, authority fixtures, and production-like shell code
+  share the same file; this is acceptable for the artifact but not a production
+  module boundary.
+
+E. State-authority map
+
+| State | Canonical source | Risk |
+|---|---|---|
+| Job Description | `#step3-description-editor.innerHTML` | DOM-owned; editor mutation and preview are event-driven |
+| Short Summary | `#step3-summary.value` | Strong single source; modal draft synchronizes into it |
+| Optional editors | `#step3-optional-1/2.innerHTML` | DOM-owned; over-limit input replacement risks caret loss |
+| Selected benefits | `step3State.selectedBenefits` | Clear Set authority; rendered list is derived |
+| Expanded preview sections | `step3State.expandedPreviewSections` | Set authority is clear; render rebuilds section DOM |
+| Description collapsed state | `.is-collapsed` on editor | DOM-only; reset by focus and summary-return workflow |
+| Dialog open state | modal `hidden` plus `aria-hidden` | Reused node with ad hoc `modal.__closeToListing` property |
+| Readiness/validation | `stateIsReady()`, `step3SummaryQuality()` | Derived correctly, but coupled to DOM text extraction |
+| Empty/filled state | `syncWizardValueStates()` data attributes | Derived DOM presentation; must follow all programmatic writes |
+| Truncation notice | notice `hidden` attribute | No reset path after later successful edits (AUD-002) |
+
+F. CSS authority summary
+
+The Step 3 CSS is a late appended convergence block beginning at
+mockup.css:652. It has clear broad component ownership, but later patches
+override earlier rules for benefits, summary dialog, preview, and responsive
+states. Quantified inspection found 178 Step 3 selector occurrences, 33
+duplicate selector occurrences, and 86 media blocks in the full workbench CSS.
+No `!important` use was found in the inspected Step 3 block. This is
+maintainability debt, not a reason to reopen the frozen design.
+
+G. Accessibility summary
+
+Verified strengths: labels, textbox roles, aria-multiline, dialog labeling,
+Escape/backdrop/return paths, live regions for summary quality/truncation, and
+native buttons for benefits. Risks: no formal focus trap, no exposed toolbar
+pressed/state semantics, contenteditable behavior depends on browser editing
+commands, and live assistive-technology verification remains outstanding.
+
+H. Production-readiness boundary
+
+The workbench is acceptable as a static UX benchmark and source of interaction
+contracts. Its DOM-owned state, `execCommand` editing, direct innerHTML renders,
+fixture data, client-only readiness, and lack of server validation must not be
+copied directly into production. Production needs a component/editor adapter,
+server-side limits and sanitization, persisted draft/state contracts, explicit
+validation/error semantics, and browser/AT acceptance.
+
+I. Recommended ticket sequence
+
+1. STEP3-MAINT001 — Preserve optional-editor caret and reset truncation notice
+   state. Preferred next ticket.
+2. STEP3-A11Y001 — Establish production-boundary editor/dialog accessibility
+   contract and browser/AT verification.
+3. STEP3-CSS001 — Consolidate duplicate Step 3 CSS authority after behavioral
+   tickets are complete.
+4. STEP3-PROD001 — Define production editor, persistence, sanitization, and
+   server-validation contracts.
+
+J. Freeze recommendation
+
+MAINTAIN — Step 3 may remain frozen for bug fixes only. Do not reopen design or
+issue further visual polish from this audit. The preferred maintenance ticket
+is AUD-001/AUD-002 only.
+
+Git and artifact state
+
+Implementation files changed: NONE
+Audit artifact: tmp/STEP3-AUDIT001-RERUN-report.txt
+Branch: JOB-CENTER-JC053-wizard-workbench
+Audit commit: pending
+Push status: pending
+Git status: implementation preserved; only this report is new.
+
+Remaining verification gaps
+
+The smoke pass covered load, input/counter, preview, summary gate, modal count,
+and console messages. Full rich-paste, 5,000-character, responsive, keyboard,
+focus, and assistive-technology regression coverage remains future maintenance
+or production-boundary work.
+
+Explorer hopper path:
+C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\hopper\\jobcenter\\current
+WSL hopper path:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current
+
+Hopper cycle: 260803121716
