@@ -1,0 +1,26 @@
+STEP4-UX004 — Remove Redundant Deadline Placeholder
+
+Status: Implemented
+Canonical review URL: http://127.0.0.1:8768/?#step-04-application-process
+Worktree: /home/bobreap/projects/teachers-net-jobcenter
+Branch: JOB-CENTER-JC053-wizard-workbench
+
+Change
+- Removed “Select deadline” from the Step 4 Deadline Mode selector.
+- Set the exact approved option order: Open until filled, Specific date, Do not publish deadline.
+- Preserved `open`, `specific`, and `none` values and the existing conditional field, focus, validation, preview, and synchronization logic.
+
+Verification
+- Static option inspection found exactly three options in the required order.
+- Open until filled remains selected in the markup and remains the existing default on Step 4 construction/re-entry.
+- Existing source logic still hides date/checkbox unless `specific`, reveals them for `specific`, focuses the date field on selection, and omits deadline preview content for `none`.
+- Canonical server returned HTTP 200; served `mockup.js` contains the updated selector.
+- `git diff --check`: passed.
+- Live browser interaction and responsive visual checks were not completed because the Chrome connector rejected the WSL sandbox context before attachment. No live visual acceptance is claimed.
+
+Git
+- Commit/push recorded in the final hopper cycle.
+- Scope limited to the Step 4 deadline selector and this report.
+
+Risk / next step
+- Low risk: this is a markup-only option cleanup using unchanged state values and behavior. Recommended next step is live browser confirmation when the canonical Chrome connector is attachable.
