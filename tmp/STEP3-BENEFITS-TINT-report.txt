@@ -1,0 +1,6 @@
+Bounded styling change: collected Step 3 Benefits chips now use background tint
+`#dff9ee` through the existing `.step3-benefits-selected-item` owner.
+
+No labels, chip geometry, interaction behavior, available options, or unrelated
+colors were changed. The served CSS matched the worktree, HTTP 200 passed, and
+the change passed `git diff --check`.

@@ -704,3 +704,4 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .wizard-stage-heading .wizard-stage-heading__eyebrow{font-size:11px;line-height:1.45;letter-spacing:.06em;font-weight:700;color:var(--primary);margin:0 0 10px}
 .wizard-stage-heading .wizard-stage-heading__title{font-size:22px;line-height:1.45;font-weight:700;color:var(--navy);margin:0 0 5px}
 .wizard-stage-heading .wizard-stage-heading__support{font-size:14px;line-height:1.45;color:var(--muted);margin:5px 0 0}
+.step3-benefits-selected-item{background:#dff9ee}
