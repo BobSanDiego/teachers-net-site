@@ -1,0 +1,37 @@
+Ticket: WIZARD-VISUAL005 ADDENDUM
+
+StageHeadingTitle font-weight 700:
+PASS
+
+Change made
+===========
+Set the shared selector below to `font-weight: 700`:
+
+`.wizard-stage-heading .wizard-stage-heading__title`
+
+No per-view overrides were added. No layout, spacing, hierarchy, or unrelated
+wizard styling was changed.
+
+Computed verification
+=====================
+The computed `font-weight` was `700` for the `.wizard-stage-heading__title`
+on all required views:
+
+- Step 1 Initial
+- Step 1 Add School U.S.
+- Step 2 Job Basics
+- Step 3 Job Description
+- Step 4 Application Process
+
+The shared owner and class were identical in all five views. Supporting copy
+remained weight 400 and the eyebrow remained weight 700. Geometry remained
+unchanged at 10px eyebrow-to-title, 5px title-to-support, and 37px
+support-to-content. No horizontal overflow was observed at the responsive
+verification widths.
+
+Runtime verification
+====================
+HTTP 200 passed. Served CSS matched the worktree SHA-256. Console inspection
+reported no errors. `git diff --check` passed. Browser stylesheet cache was
+explicitly bypassed with a cache-busted stylesheet reload before computed
+verification.

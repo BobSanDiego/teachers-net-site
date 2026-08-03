@@ -702,5 +702,5 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card .wizard-stage-heading + .choice-grid,.application-card .wizard-stage-heading + .location-type-section,.application-card .wizard-stage-heading + .step4-foundation-layout,.application-card .wizard-stage-heading + .wizard-shell-content,.application-card .wizard-stage-heading + .step3-foundation-card{margin-top:18px}
 .wizard-stage-heading .eyebrow,.wizard-stage-heading h2,.wizard-stage-heading>p:last-child{font:inherit;letter-spacing:inherit;color:inherit;margin:inherit}
 .wizard-stage-heading .wizard-stage-heading__eyebrow{font-size:11px;line-height:1.45;letter-spacing:.06em;font-weight:700;color:var(--primary);margin:0 0 10px}
-.wizard-stage-heading .wizard-stage-heading__title{font-size:22px;line-height:1.45;color:var(--navy);margin:0 0 5px}
+.wizard-stage-heading .wizard-stage-heading__title{font-size:22px;line-height:1.45;font-weight:700;color:var(--navy);margin:0 0 5px}
 .wizard-stage-heading .wizard-stage-heading__support{font-size:14px;line-height:1.45;color:var(--muted);margin:5px 0 0}
