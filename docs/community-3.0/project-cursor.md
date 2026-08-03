@@ -489,3 +489,10 @@ responsive single-column flow. The presentation layer is scoped to Community
 routes and does not change architecture or publishing behavior. Human visual
 acceptance at 1440, 1200, 1024, 768, and 390 remains pending because browser
 control was unavailable. Next ticket remains C3-FEED003 after visual review.
+
+UX003-DIAG001 maps the canonical-composer refactor. Topic and reply controllers
+remain separate around shared pure services and a shared view/field component.
+Topic owns complete URL/media behavior; reply owns parent/thread validation and
+publication but lacks media/link parity. Next bounded ticket: extract URL,
+Markdown-help, and staged-media contracts without route, schema, repository,
+upload, or publication changes.

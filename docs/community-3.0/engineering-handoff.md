@@ -444,3 +444,10 @@ leaving queries, schemas, routes, publishing, attachments, previews, and
 replies unchanged. Required screenshots and direct browser review are still
 pending. Do not treat this as visual acceptance or begin the next ticket until
 the named widths and mixed-content states are reviewed.
+
+UX003-DIAG001 is complete as a diagnostic-only refactor map. Do not merge the
+controllers. Extract shared pure services and a view partial in narrow steps;
+retain topic-only fields and reply parent/thread, nonce, idempotency, PRG, and
+publication responsibilities in their respective controllers. Next ticket:
+the first extraction of URL detection, Markdown help, and staged-media
+contracts.
