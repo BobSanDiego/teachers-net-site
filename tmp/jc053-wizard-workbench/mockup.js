@@ -873,7 +873,7 @@
     modal.setAttribute("aria-labelledby", "step3-summary-assist-title");
     const draftField = modal.querySelector("#step3-summary-draft"), use = modal.querySelector('[data-summary-action="use"]'), returnButton = modal.querySelector('[data-summary-action="return"]'), qualityMessage = modal.querySelector(".step3-summary-quality-message");
     const sync = () => { summaryField.value = draftField.value.slice(0, 160); summaryField.dispatchEvent(new Event("input", { bubbles: true })); updateStep3Counters(); renderStep3Preview(); const valid = step3SummaryQuality(draftField.value); use.disabled = !valid; returnButton.classList.toggle("primary", !valid); returnButton.classList.toggle("secondary", valid); qualityMessage.hidden = valid; };
-    const closeToListing = () => { sync(); step3State.expandedPreviewSections.delete("description"); renderStep3Preview(); modal.hidden = true; modal.setAttribute("aria-hidden", "true"); refreshNextAction(); summaryField.scrollIntoView({ block: "center" }); summaryField.focus({ preventScroll: true }); };
+    const closeToListing = () => { sync(); step3State.expandedPreviewSections.delete("description"); renderStep3Preview(); collapseStep3Description(); modal.hidden = true; modal.setAttribute("aria-hidden", "true"); refreshNextAction(); summaryField.scrollIntoView({ block: "center" }); summaryField.focus({ preventScroll: true }); };
     modal.__closeToListing = closeToListing;
     draftField.addEventListener("input", sync);
     use.addEventListener("click", () => { sync(); if (!step3SummaryQuality(draftField.value)) return; modal.hidden = true; modal.setAttribute("aria-hidden", "true"); refreshNextAction(); setView("step-04-application-process"); });
@@ -1218,7 +1218,8 @@
             <select data-format-command="formatBlock" aria-label="Paragraph style"><option value="p">Paragraph</option><option value="h3">Heading</option></select>
             <button type="button" data-format-command="bold" aria-label="Bold"><strong>B</strong></button><button type="button" data-format-command="italic" aria-label="Italic"><em>I</em></button><button type="button" data-format-command="insertUnorderedList" aria-label="Bulleted list">•</button><button type="button" data-format-command="insertOrderedList" aria-label="Numbered list">1.</button><button type="button" data-format-command="createLink" aria-label="Insert link">Link</button><button type="button" data-format-command="removeFormat" aria-label="Clear formatting">Clear formatting</button>
           </div>
-          <div id="step3-description-editor" class="step3-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Job Description"></div>
+          <div id="step3-description-editor" class="step3-editor step3-description-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Job Description"></div>
+          <button type="button" class="step3-description-toggle" data-step3-description-toggle hidden>Expand Job Description</button>
           <div class="step3-counter"><span data-counter-for="step3-description-editor">0</span> characters</div>
         </div>
         <div class="step3-field step3-summary-field">
@@ -1226,14 +1227,8 @@
           <textarea id="step3-summary" maxlength="160" rows="3"></textarea><div class="step3-counter"><span data-counter-for="step3-summary">0</span>/160 characters</div>
         </div>
         <div class="step3-optional-intro"><h4>Optional Fields</h4><p>The following sections are optional, but providing additional detail helps teachers better understand your opportunity and improves matching and discovery throughout Teachers.Net.</p></div>
-        <div class="step3-field step3-requirements-field">
-          <label for="step3-requirements-editor">Requirements / Qualifications <small>(Recommended for matching)</small></label>
-          <p class="step3-field-help">Separating requirements can improve matching and help applicants quickly assess fit.</p>
-          <div id="step3-requirements-editor" class="step3-editor step3-editor-requirements" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Requirements / Qualifications"></div>
-          <div class="step3-counter"><span data-counter-for="step3-requirements-editor">0</span> characters</div>
-        </div>
         <div class="step3-optional-sections">
-          ${["Preferred Qualifications","About Our School"].map((title,index)=>`<details><summary>${title}</summary><div id="step3-optional-${index+1}" class="step3-editor step3-optional-editor" contenteditable="true" role="textbox" aria-label="${title}"></div></details>`).join("")}
+          ${["Requirements / Qualifications","About Our School"].map((title,index)=>{const limit=index===0?2000:1500; return `<details><summary>${title}</summary><div id="step3-optional-${index+1}" class="step3-editor step3-optional-editor" data-maxlength="${limit}" contenteditable="true" role="textbox" aria-label="${title}"></div><div class="step3-counter step3-optional-counter" hidden><span data-counter-for="step3-optional-${index+1}">0</span>/${limit} characters</div></details>`;}).join("")}
           <details class="step3-benefits">
             <summary>Benefits</summary>
             <div id="step3-benefits-selected" class="step3-benefits-selected" aria-live="polite"></div>
@@ -1281,7 +1276,7 @@
   clipboardDiagnosticsContent.querySelectorAll("[data-clipboard-copy]").forEach((button) => button.addEventListener("click", () => { if (clipboardCapture) navigator.clipboard?.writeText(clipboardCapture[button.dataset.clipboardCopy]); }));
   clipboardDiagnosticsContent.querySelector("[data-clipboard-download]").addEventListener("click", clipboardDownload);
   try { const saved = JSON.parse(localStorage.getItem("jc053-clipboard-capture") || "null"); if (saved) { clipboardCapture = saved; clipboardRender(); } } catch {}
-  const step3Editors = ["#step3-description-editor", "#step3-requirements-editor"];
+  const step3Editors = ["#step3-description-editor", "#step3-optional-1", "#step3-optional-2"];
   const step3NormalizeGoogleDocs = (node) => {
     const googleRedirect = [...node.querySelectorAll("a")].some((link) => /^https:\/\/www\.google\.com\/url(?:\?|$)/i.test(link.getAttribute("href") || ""));
     const googleClass = [...node.querySelectorAll("*")].some((item) => /(?:lst-kix|docs-|google-docs|google-docs)/i.test(item.getAttribute("class") || ""));
@@ -1487,7 +1482,7 @@
     const additional = document.querySelector("#step3-benefits-additional"), additionalEnabled = document.querySelector("#step3-benefits-additional-enabled")?.checked, additionalText = additionalEnabled ? additional?.value.trim() || "" : "";
     const benefits = step3BenefitsActive() ? `<h5>Benefits</h5><div>${step3Escape([step3BenefitsText(), additionalText].filter(Boolean).join(", "))}</div>` : "";
     const compactSummary = summary?.value ? step3Escape(summary.value) : "Add a short summary to preview how this listing may appear across Teachers.Net.";
-    preview.innerHTML = `<div class="step3-compact-listing"><strong>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</strong><span>${schoolJobsiteFixture.display_name} · Los Angeles, CA</span><p>${compactSummary}</p></div><h4>Listing Preview</h4>${section("Job Description", description?.innerHTML, "description")}${section("Requirements / Qualifications", requirements?.innerHTML, "requirements")}${[1,2].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return section(["Preferred Qualifications","About Our School"][i-1],el?.innerHTML,["preferred","about"][i-1]);}).join("")}${benefits}`;
+    preview.innerHTML = `<div class="step3-compact-listing"><strong>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</strong><span>${schoolJobsiteFixture.display_name} · Los Angeles, CA</span><p>${compactSummary}</p></div><h4>Listing Preview</h4>${section("Job Description", description?.innerHTML, "description")}${section("Requirements / Qualifications", document.querySelector("#step3-optional-1")?.innerHTML, "requirements")}${section("About Our School", document.querySelector("#step3-optional-2")?.innerHTML, "about")}${benefits}`;
     syncPreviewCollapsibles();
   };
   const syncPreviewCollapsibles = () => {
@@ -1502,7 +1497,9 @@
     });
   };
   const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
-  const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
+  const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); const length=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; counter.textContent=length; const limit=Number(field?.dataset.maxlength || 0); counter.closest(".step3-optional-counter")?.toggleAttribute("hidden", !limit || length < limit - 100); });
+  const limitStep3Editor = (editor) => { const limit=Number(editor.dataset.maxlength || 0); if (!limit) return; const walker=document.createTreeWalker(editor, NodeFilter.SHOW_TEXT); let remaining=limit; const nodes=[]; while (walker.nextNode()) nodes.push(walker.currentNode); nodes.forEach((node) => { if (remaining <= 0) node.textContent=""; else if (node.textContent.length > remaining) { node.textContent=node.textContent.slice(0, remaining); remaining=0; } else remaining-=node.textContent.length; }); };
+  const collapseStep3Description = () => { const editor=document.querySelector("#step3-description-editor"), toggle=document.querySelector("[data-step3-description-toggle]"); if (!editor || !toggle || step3Text(editor.innerHTML).length <= 500) return; editor.classList.add("is-collapsed"); toggle.hidden=false; toggle.textContent="Expand Job Description"; toggle.setAttribute("aria-expanded","false"); };
   const step3LinkForSelection = () => { const selection=window.getSelection(), node=selection?.anchorNode; return (node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement)?.closest("a"); };
   const editStep3Link = () => {
     const link = step3LinkForSelection(), current = link?.getAttribute("href") || "", value = window.prompt(link ? "Edit link URL (leave blank to remove)" : "Link URL", current);
@@ -1521,9 +1518,12 @@
       else { if(command === "createLink") editStep3Link(); else { document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); } }
     });
   });
-  step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
+  step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){ if(event.target.id === "step3-summary"){ event.target.value=event.target.value.slice(0,160).replace(/\s+/g," "); } if(event.target.isContentEditable) limitStep3Editor(event.target); updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
+  step3Content.addEventListener("keydown", (event) => { if(event.target.id === "step3-summary" && event.key === "Enter"){ event.preventDefault(); const start=event.target.selectionStart, end=event.target.selectionEnd; event.target.setRangeText(" ", start, end, "end"); event.target.dispatchEvent(new Event("input", { bubbles:true })); } });
   step3Content.addEventListener("change", (event) => { if (event.target.matches("#step3-benefits-additional-enabled")) { const field=document.querySelector("#step3-benefits-additional"), helper=document.querySelector("#step3-benefits-additional-help"), counter=document.querySelector('[data-counter-for="step3-benefits-additional"]')?.closest(".step3-counter"); field.hidden=!event.target.checked; if(helper) helper.hidden=!event.target.checked; if(counter) counter.hidden=!event.target.checked; updateStep3Counters(); scheduleStep3Preview(); } });
   step3Content.addEventListener("click", (event) => {
+    const descriptionToggle=event.target.closest("[data-step3-description-toggle]");
+    if(descriptionToggle){ const editor=document.querySelector("#step3-description-editor"); const expanded=editor.classList.toggle("is-collapsed") === false; descriptionToggle.textContent=expanded ? "Collapse Job Description" : "Expand Job Description"; descriptionToggle.setAttribute("aria-expanded",String(expanded)); return; }
     const option = event.target.closest("[data-benefit-option]"), remove = event.target.closest("[data-benefit-remove]"), clear = event.target.closest("[data-benefit-clear]");
     if (option) { const value=option.dataset.benefitOption; step3State.selectedBenefits.has(value) ? step3State.selectedBenefits.delete(value) : step3State.selectedBenefits.add(value); renderStep3Benefits(); scheduleStep3Preview(); return; }
     if (remove) { step3State.selectedBenefits.delete(remove.dataset.benefitRemove); renderStep3Benefits(); scheduleStep3Preview(); return; }
