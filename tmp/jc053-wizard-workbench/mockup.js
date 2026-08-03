@@ -613,6 +613,10 @@
   internationalPanel.querySelector(".organization-form").innerHTML =
     '<div class="form-field form-field-intl-full-name"><label for="organization-name-international">School / Jobsite Name (Full) <span aria-hidden="true">*</span></label><input id="organization-name-international" type="text" placeholder="Enter the school or jobsite name"></div><div class="form-field form-field-intl-display-name"><label for="organization-display-name-international">Display Name <span aria-hidden="true">*</span></label><input id="organization-display-name-international" type="text" placeholder="Short display name"></div><div class="form-field form-field-intl-country"><label for="organization-country-international">Country <span aria-hidden="true">*</span></label><select id="organization-country-international"><option selected>Choose a country</option><option>Canada</option><option>United Kingdom</option><option>Australia</option><option>Mexico</option><option>Japan</option></select></div><div class="form-field form-field-intl-city"><label for="organization-city-international">City / Locality <span aria-hidden="true">*</span></label><input id="organization-city-international" type="text" placeholder="City or locality"></div><div class="form-field form-field-intl-region"><label for="organization-region-international">State / Province / Region <small>(Optional)</small></label><input id="organization-region-international" type="text" placeholder="State, province, or region"></div><div class="form-field form-field-intl-postal"><label for="organization-postal-international">Postal Code <small>(Optional)</small></label><input id="organization-postal-international" type="text" placeholder="Postal code"></div><div class="form-field form-field-intl-address"><label for="organization-address-international">Street Address <small>(Optional)</small></label><input id="organization-address-international" type="text" placeholder="Street address"></div><div class="form-field form-field-intl-suite"><label for="organization-suite-international">Suite / Room <small>(Optional)</small></label><input id="organization-suite-international" type="text" placeholder="Suite or room"></div>';
   document.querySelector("#step-01-add-school-us").after(internationalPanel);
+  document.querySelectorAll("#step-01-add-school-us .form-section-number, #step-01-add-school-international .form-section-number").forEach((marker) => marker.remove());
+  const addSchoolPageHeading = document.querySelector(".add-school-page-heading");
+  if (addSchoolPageHeading && !addSchoolPageHeading.querySelector(".eyebrow")) addSchoolPageHeading.insertAdjacentHTML("afterbegin", '<p class="eyebrow">Step 1 of 5</p>');
+  if (addSchoolPageHeading) { addSchoolPageHeading.querySelector("h1").textContent = "Add a School / Jobsite"; addSchoolPageHeading.querySelector(".subtitle").textContent = "Add a new school, campus, office, or jobsite before continuing your job post."; }
   views.forEach(([id, label]) => {
     const o = document.createElement("option");
     o.value = id;
@@ -1710,13 +1714,9 @@
       card?.querySelector("[data-step3-rail-toggle]")?.remove();
     }
     card?.classList.toggle("authority-nav-open", false);
-    const heading = jobBasicsPanel
-      .querySelector(".job-basics-heading")
-      .cloneNode(true);
-    heading.querySelector(".form-section-number").textContent =
-      config.stepNumber;
-    heading.querySelector("h2").textContent = config.title;
-    heading.querySelector("p").textContent = config.supportingCopy;
+    const heading = document.createElement("div");
+    heading.className = "wizard-stage-heading";
+    heading.innerHTML = `<p class="eyebrow">Step ${config.stepNumber} of 5</p><h2>${config.title}</h2><p>${config.supportingCopy}</p>`;
     panel.classList.add("wizard-shell-panel");
     panel.replaceChildren(heading, content);
     syncWizardValueStates(panel);
