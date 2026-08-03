@@ -1,0 +1,64 @@
+STEPPER-DIAG001 — Diagnose Live Connector Overdraw and Incorrect Progress Color
+
+Canonical review URL:
+http://127.0.0.1:8768/?#step-03-job-description
+
+Runtime aligned: YES
+Post-Step-5 painter identified: YES
+Step 3 blue painter identified: YES
+Diagnosis: RUNTIME/CACHE MISMATCH
+Preferred corrective ticket: STEPPER-DIAG002 — Reproduce and reconcile the stale visual-QA runtime/screenshot path before any CSS change.
+
+Runtime:
+- Job Center worktree HEAD: 367f4cc (direct STEPPER001 commit).
+- Branch: JOB-CENTER-JC053-wizard-workbench.
+- Runtime banner: commit=367f4cc; asset=jc053-367f4cc; root=/home/bobreap/projects/teachers-net-jobcenter/tmp/jc053-wizard-workbench.
+- HTTP status: 200.
+- Served stylesheet: http://127.0.0.1:8768/mockup.css, containing `.application-card .stepper li.is-complete::after` at source line 124 and `.application-card .stepper li:last-child::after{display:none}` at source line 127.
+
+Live Step 3 DOM:
+- Steps 1–5 classes: `is-complete`, `is-complete`, `is-current`, `is-upcoming`, `is-upcoming`.
+- Each li contains only a stepper-step wrapper, circle, and label; there are no connector DOM elements.
+- Browser stylesheet inspection found no matching connector `::before` painter and no stepper-step/circle/label pseudo-element painter. Connector painting is through li::after only.
+
+Winning live rules and geometry (desktop 1440×1000):
+- Base `.application-card .stepper li::after`: position absolute; left 135.594px; width 163.203px (163.188px at edges); top 17px; height 1px; background var(--line); z-index 0.
+- `.application-card .stepper li.is-complete::after`: winning background rgb(0, 61, 238). This paints 1→2 and 2→3 only.
+- `.application-card .stepper li:last-child::after`: winning display none; computed Step 5 `::after`: content none, position static, width auto, height auto, background transparent.
+- Step 3 `::after`: content `""`, display block, absolute, left 135.594px, width 163.203px, top 17px, height 1px, background rgb(217,224,235) gray.
+- Step 4 `::after`: same gray geometry, width 163.203px.
+- Step 5 `::after`: suppressed as above.
+- `.stepper`, its bounding rectangle, and all five li rectangles were inspected. No parent border/background/gradient/box-shadow/SVG painter was found.
+
+Segment comparison:
+| Segment | Expected | DOM state | Winning CSS painter | Rendered result | Cause |
+|---|---|---|---|---|---|
+| before Step 1 | none | first li complete | no before painter | none | no painter |
+| 1→2 | blue | Step 1 complete | li.is-complete::after | blue | correct |
+| 2→3 | blue | Step 2 complete | li.is-complete::after | blue | correct |
+| 3→4 | gray | Step 3 current | base li::after | gray | correct |
+| 4→5 | gray | Step 4 upcoming | base li::after | gray | correct |
+| after Step 5 | none | Step 5 upcoming | li:last-child::after display:none | none | correct |
+
+Defect-source conclusion:
+- Post-Step-5: the current aligned runtime has no rendered post-Step-5 painter. The earlier visible line cannot be explained by the current DOM/CSS; it is evidence of a stale screenshot/tab, another runtime root, or a different served asset.
+- Step 3 blue: the current aligned runtime has no blue Step 3→4 painter. The blue source would require the superseded `li.is-current::after` authority, which is absent from the served stylesheet and browser CSS rules.
+
+Screenshots:
+- Requested pseudo-element-highlight screenshots were attempted through the browser screenshot tool after adding temporary diagnostic overlays. The tool did not return within its bounded wait and was terminated. No screenshot is claimed or included; the computed-style and live-DOM evidence above is the authoritative diagnostic evidence available in this cycle.
+
+Files inspected:
+- tmp/jc053-wizard-workbench/mockup.css
+- tmp/jc053-wizard-workbench/mockup.js
+- tmp/jc053-wizard-workbench/index.html
+- served http://127.0.0.1:8768/mockup.css
+
+Implementation files changed: NONE.
+Audit/diagnostic artifact: this report.
+Git status: no implementation changes made; unrelated dirty files preserved.
+Commit and push: diagnostic report only, if committed by project process.
+
+Explorer hopper path:
+C:\Main\Active\Projects\Teachers.Net\tmp\hopper\jobcenter\current
+
+Stop boundary honored: no CSS, JavaScript, or markup correction was implemented.
