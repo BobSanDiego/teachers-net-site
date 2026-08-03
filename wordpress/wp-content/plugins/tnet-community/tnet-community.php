@@ -23,6 +23,7 @@ require_once __DIR__ . '/includes/class-tnet-community-landing-controller.php';
 require_once __DIR__ . '/includes/class-tnet-community-topic-composer-controller.php';
 require_once __DIR__ . '/includes/class-tnet-community-authoring.php';
 require_once __DIR__ . '/includes/class-tnet-community-composer-contracts.php';
+require_once __DIR__ . '/includes/class-tnet-community-composer-view.php';
 add_action('admin_menu', static function (): void { TNet_Community_Workbench::register(); });
 add_action('init', static function (): void { TNet_Community_Thread_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Landing_Controller::register(); });
