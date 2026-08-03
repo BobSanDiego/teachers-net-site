@@ -59,10 +59,11 @@ final class TNet_Community_Thread_Controller {
         $submission_id = sanitize_text_field(wp_unslash($_POST['submission_id'] ?? '')) ?: 'reply-' . wp_generate_uuid4();
         if ($body === '') return ['Enter a reply.'];
         $parent = (new TNet_Community_Publisher_Repository())->find_post($parent_id);
-        if (!$parent || $parent['thread_id'] !== $data['thread_id'] || $parent['community_id'] !== $data['root']['community_id']) return ['That reply target is not available in this thread.'];
+        if (!$parent || $parent['thread_id'] !== $data['thread_id'] || $parent['community_id'] !== $data['root']['community_id']) { TNet_Community_Composer_Contracts::cleanup_created_uploads(); return ['That reply target is not available in this thread.']; }
         $draft = ['submission_id' => $submission_id, 'community_id' => $data['root']['community_id'], 'author_id' => 'user:' . (int) get_current_user_id(), 'post_type' => 'reply', 'title' => '', 'body' => $body, 'parent_post_id' => $parent_id, 'thread_id' => $data['thread_id'], 'visibility' => 'public', 'publication_mode' => 'post_first', 'moderation_input' => 'clear', 'compatibility_refs' => ['composer'=>['attachments'=>$attachment?[$attachment]:[],'links'=>array_map(static fn($url)=>['url'=>$url,'enrichment'=>'mocked'], $urls),'representative_url'=>$urls[0]??'','preview'=>(new TNet_Community_Link_Attachment_Service())->prepare($urls[0]??'','keep')]], 'audit_context' => ['source' => 'local-reply-composer']];
-        $result = (new TNet_Community_Publisher_Application())->publish_reply($draft, $parent, [$draft['community_id'] => ['active' => true]], ['actor_id' => $draft['author_id']]);
-        if (empty($result['accepted']) || empty($result['post']['post_id'])) return ['The reply could not be published. Please try again.'];
+        try { $result = (new TNet_Community_Publisher_Application())->publish_reply($draft, $parent, [$draft['community_id'] => ['active' => true]], ['actor_id' => $draft['author_id']]); } catch (Throwable $e) { TNet_Community_Composer_Contracts::cleanup_created_uploads(); return ['The reply could not be published. Please try again.']; }
+        if (empty($result['accepted']) || empty($result['post']['post_id'])) { TNet_Community_Composer_Contracts::cleanup_created_uploads(); return ['The reply could not be published. Please try again.']; }
+        TNet_Community_Composer_Contracts::retain_created_uploads();
         $reply_path = str_replace('%3A', ':', rawurlencode($result['post']['post_id']));
         $root_path = str_replace('%3A', ':', rawurlencode($data['root']['post_id']));
         wp_safe_redirect(home_url('/community/thread/' . $root_path . '/#reply-post:' . $reply_path));

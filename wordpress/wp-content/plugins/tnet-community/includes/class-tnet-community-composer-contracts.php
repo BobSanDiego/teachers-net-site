@@ -1,6 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 final class TNet_Community_Composer_Contracts {
+    private static array $created_uploads = [];
     public static function https_urls(string $body): array { preg_match_all('~https://[^\s<>"\']+~i', $body, $matches); $urls=[]; foreach($matches[0]??[] as $url){$url=rtrim($url,'.,!?;:)');if(!in_array($url,$urls,true))$urls[]=$url;} return $urls; }
     public static function representative(array $urls,string $selected=''): string { return in_array($selected,$urls,true)?$selected:($urls[0]??''); }
     public static function markdown_help(): string { return 'Use **bold**, *italic*, inline code, quotes, lists, or [links](https://example.com).'; }
@@ -14,6 +15,9 @@ final class TNet_Community_Composer_Contracts {
         require_once ABSPATH.'wp-admin/includes/file.php'; $result=wp_handle_upload($file,['test_form'=>false,'mimes'=>['jpg'=>'image/jpeg','jpeg'=>'image/jpeg','png'=>'image/png','webp'=>'image/webp']]);
         if(isset($result['error'])) throw new RuntimeException('Image upload failed.');
         $relative=str_replace(wp_upload_dir()['basedir'].'/','',$result['file']);
+        self::$created_uploads[]=$result['file'];
         return ['attachment_id'=>'upload:'.substr(hash('sha256',$relative),0,16),'attachment_type'=>'image','source_kind'=>'local_upload','source_reference'=>'wp-content/uploads/'.$relative,'title'=>sanitize_file_name($file['name']),'description'=>'','alt_text'=>sanitize_text_field($alt),'mime_type'=>$result['type'],'file_size'=>(int)$file['size'],'rights_status'=>'author_declared','moderation_state'=>'clear','lifecycle_state'=>'active','created_at'=>gmdate('Y-m-d H:i:s')];
     }
+    public static function cleanup_created_uploads(): void { foreach(self::$created_uploads as $path) if(is_string($path)&&is_file($path)) @unlink($path); self::$created_uploads=[]; }
+    public static function retain_created_uploads(): void { self::$created_uploads=[]; }
 }
