@@ -1,0 +1,68 @@
+Ticket: STEP4-FIX001
+
+Implementation changed: YES
+Canonical review URL: http://127.0.0.1:8768/?#step-04-application-process
+
+Correction
+==========
+Restored native hidden-state authority with narrow Step 4 rules:
+
+- `.step4-field:not([hidden]) { display:flex }`
+- `.step4-field[hidden], .step4-override-fields[hidden],
+  .step4-check[hidden] { display:none }`
+
+No global `[hidden]` override, `!important`, JavaScript concealment, timeout,
+or shared-shell change was added.
+
+Computed-style verification
+===========================
+Initial hidden states resolved to `display:none`:
+
+Element                                      hidden   visible display
+URL method field                             true     none
+Email method field                           true     none
+Instructions method field                    true     none
+Application Deadline                         true     none
+Close job on application deadline             true     none
+Override contact fields                      true     none
+Other Materials                              true     none
+
+Visible-state checks resolved as intended:
+
+- External URL: URL flex; Email none; Instructions flex.
+- Email: URL none; Email flex; Instructions flex.
+- Instructions only: URL none; Email none; Instructions flex.
+- Specific date: date flex; close checkbox flex.
+- Override contact: override grid; default summary and privacy checkbox none.
+- Default contact: default summary block; privacy checkbox flex; override grid
+  none.
+
+Verification
+============
+Direct initial load, top selector entry, Step 3 navigation-equivalent entry,
+method switching, deadline switching, contact switching, Other Materials
+selection/deselection, and repeated Step 4 re-entry passed without reload.
+Five same-width live screenshots were captured: initial, External URL, Specific
+date, Default Contact, and Override Contact. Responsive overflow checks passed
+at 1440, 1200, 1024, 932, 900, 768, 650, 530, and the browser minimum
+attainable width near 500px. HTTP 200, no console errors, no duplicate IDs,
+JavaScript syntax, and `git diff --check` passed.
+
+Files changed
+=============
+- `tmp/jc053-wizard-workbench/mockup.css`
+- `tmp/STEP4-FIX001-report.txt`
+- five screenshot evidence files under `tmp/STEP4-FIX001-*.png`
+
+Runtime identity
+================
+Branch: JOB-CENTER-JC053-wizard-workbench
+Base runtime commit: 40a1bca
+Final commit: recorded in the hopper manifest and final response.
+Served CSS matched the worktree hash; HTTP response was 200 with no-store
+cache headers.
+
+Git status: unrelated pre-existing hopper/archive changes preserved.
+Push status: successful.
+Remaining risks: no known hidden-state functional risk remains within Step 4;
+visual acceptance is supported by the captured state series.
