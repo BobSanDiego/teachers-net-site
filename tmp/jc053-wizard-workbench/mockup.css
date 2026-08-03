@@ -708,4 +708,5 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .step4-field{margin-top:10px}
 .step4-section-heading + .step4-field,.step4-section-heading + .step4-compact-row .step4-field,.step4-section-heading + .step4-choice-row + .step4-override-fields .step4-field:first-child{margin-top:0}
 .step4-validation{color:#b42318;font-size:11px;margin:4px 0 0}
+.step4-default-contact{color:var(--muted);font-size:12px;line-height:1.45;margin-top:10px}
 .step4-preview-pane .step4-preview-action{display:inline-flex;margin-top:8px;width:auto}

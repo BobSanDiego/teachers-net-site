@@ -1,0 +1,82 @@
+Ticket:
+STEP4-UX002
+
+Initial Step 4:
+PASS
+
+External URL:
+PASS
+
+Email:
+PASS
+
+Instructions only:
+PASS
+
+Specific date:
+PASS
+
+Default contact:
+PASS
+
+Override contact:
+PASS
+
+Root cause/correction
+=====================
+Step 4 had not yet applied the final progressive-disclosure contract: its
+dependent method fields were initialized together with an unset deadline mode,
+and contact selection remained radio-based. The implementation now initializes
+the method selector with all dependent fields hidden, defaults Deadline Mode to
+Open until filled, and uses one Contact Information dropdown.
+
+Implemented behavior
+====================
+- URL, Email, and Instructions fields reveal exclusively by method.
+- Method changes focus the newly revealed field.
+- Open until filled hides date controls and appears in preview by default.
+- Specific date reveals and focuses the date field and requires a future date.
+- Default contact displays the existing LAUSD contact fixture values and the
+  Do not publish contact information checkbox.
+- Override contact reveals optional prefilled fields and hides the privacy
+  checkbox without erasing current-session values.
+- Preview synchronizes method, deadline, default/override contact, and privacy
+  state immediately.
+
+Verification
+============
+HTTP 200, JavaScript syntax, `git diff --check`, no duplicate IDs, no console
+errors, and no horizontal overflow passed. Responsive overflow was checked at
+1440, 1200, 1024, 932, 900, 768, 650, 530, and the browser minimum attainable
+width near 500px. Cache-busted browser checks confirmed initial disclosure,
+focus movement, required-state switching, deadline focus, contact dropdown
+state, default contact values, override prefill, and preview output.
+
+Files changed
+=============
+- `tmp/jc053-wizard-workbench/index.html`
+- `tmp/jc053-wizard-workbench/mockup.js`
+- `tmp/jc053-wizard-workbench/mockup.css`
+- `tmp/STEP4-UX002-report.txt`
+
+Canonical review URL:
+http://127.0.0.1:8768/?#step-04-application-process
+
+Branch:
+JOB-CENTER-JC053-wizard-workbench
+
+Final commit:
+Recorded in the hopper manifest and final response.
+
+Runtime commit/build:
+Current worktree assets served successfully with matching CSS/JS hashes.
+
+Git status:
+Unrelated pre-existing hopper/archive changes preserved.
+
+Push status:
+Successful.
+
+Remaining risks:
+No known functional risk remains within this bounded Step 4 correction;
+human visual acceptance remains a separate QA concern.
