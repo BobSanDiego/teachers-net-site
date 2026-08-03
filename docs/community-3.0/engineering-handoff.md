@@ -451,3 +451,9 @@ retain topic-only fields and reply parent/thread, nonce, idempotency, PRG, and
 publication responsibilities in their respective controllers. Next ticket:
 the first extraction of URL detection, Markdown help, and staged-media
 contracts.
+
+UX003-REF001 is complete as the first reversible extraction. The topic
+controller delegates pure HTTPS URL detection to the shared contract class;
+the staged-image contract and focused PHP test are present. No reply upload,
+shared view, route, publication, or schema work was performed. Next:
+UX003-REF002 — Shared Composer View Partial for Topic.

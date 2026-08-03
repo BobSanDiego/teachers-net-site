@@ -496,3 +496,8 @@ Topic owns complete URL/media behavior; reply owns parent/thread validation and
 publication but lacks media/link parity. Next bounded ticket: extract URL,
 Markdown-help, and staged-media contracts without route, schema, repository,
 upload, or publication changes.
+
+UX003-REF001 extracted shared HTTPS URL detection and representative selection
+plus a normalized staged-image contract with focused tests. Topic and reply
+controllers, uploads, publication, routing, and metadata remain separate and
+unchanged. Next: UX003-REF002 — Shared Composer View Partial for Topic.

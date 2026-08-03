@@ -8,3 +8,7 @@
 6. Run desktop/mobile browser QA, then remove superseded inline markup only after parity evidence.
 
 Risks: uploads, target confusion, idempotency collisions, draft/error preservation, and no-JavaScript text publication. Commit each step separately.
+
+REF001 completed the pure URL and staged-image contract seams without migrating
+reply uploads or introducing a shared view. Next: REF002, the topic-first
+shared composer view partial.

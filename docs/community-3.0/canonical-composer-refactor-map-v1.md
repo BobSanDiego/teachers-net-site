@@ -11,3 +11,7 @@ Topic authoring is in class-tnet-community-topic-composer-controller.php with UR
 | Security/publication | topic nonce, idempotency, PRG, application publish | reply nonce, parent/thread checks, PRG, reply publish | retain separately |
 
 Recommendation: retain thin topic and reply controllers around shared services and a shared view/field component. Do not merge controllers or move parent/thread validation into a generic component.
+
+REF001 extracts the pure HTTPS URL detector and normalized staged-image value
+contract. Controller-owned nonce, idempotency, PRG, upload, parent/thread, and
+publication boundaries remain unchanged.
