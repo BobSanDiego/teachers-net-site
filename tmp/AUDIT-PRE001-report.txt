@@ -1,0 +1,66 @@
+AUDIT-PRE001 — Restore Canonical Runtime Alignment Before Step 3 Audit
+
+Canonical review URL:
+http://127.0.0.1:8768/?#step-03-job-description
+
+Git HEAD:
+69bdab9c38762ff9d4e4620489afba15c65c2c7a
+
+Runtime commit:
+69bdab9
+
+Runtime path:
+/home/bobreap/projects/teachers-net-jobcenter/tmp/jc053-wizard-workbench
+
+Server process/PID:
+python3 -u tools/qa/serve-jc053-workbench.py --port 8768
+PID 1287548
+
+Runtime serves HEAD or direct descendant:
+YES — runtime serves HEAD 69bdab9, which is a direct descendant of required
+STEP3-REGEX001 commit 4d87bcff80a8744b3ce5924473f47ae717ff2632.
+
+Investigation
+
+The stale runtime was an older instance of the canonical `tools/qa/serve-
+jc053-workbench.py` process, started from the correct Job Center worktree but
+before the latest commits. Its banner reported 5bbe198. The old process was
+stopped and the same canonical server script was restarted from the current
+worktree on port 8768.
+
+Verification
+
+- HTTP response: PASS, status 200.
+- Served build banner: branch=JOB-CENTER-JC053-wizard-workbench,
+  commit=69bdab9, root=/home/bobreap/projects/teachers-net-jobcenter/tmp/
+  jc053-wizard-workbench.
+- Git ancestry: PASS; 4d87bcf is an ancestor of 69bdab9.
+- Cache headers: PASS; no-store/no-cache headers present.
+- Page payload: returned normally from the canonical URL.
+- Browser hard refresh: NOT RUN; browser control could not attach in this
+  session.
+- Console errors: NOT OBSERVED because browser control was unavailable.
+- Step 3 interactive smoke: NOT RUN; this infrastructure ticket explicitly
+  stops before the Step 3 audit and browser control was unavailable.
+
+No Step 3 implementation files were modified. No audit conclusions were made.
+
+Recommendation
+
+Rerun STEP3-AUDIT001 now that the canonical runtime is aligned. Do not perform
+the architecture audit from this report alone, and do not declare the Step 3
+freeze until that audit's smoke gate and required browser verification pass.
+
+Git
+
+Branch: JOB-CENTER-JC053-wizard-workbench
+Infrastructure/documentation commit: pending
+Push status: pending
+Git status: implementation unchanged; only this report is new.
+
+Explorer hopper path:
+C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\hopper\\jobcenter\\current
+WSL hopper path:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current
+
+Hopper cycle: 260803121344
