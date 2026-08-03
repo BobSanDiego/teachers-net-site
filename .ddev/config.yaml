@@ -16,7 +16,7 @@ web_environment:
     - C3_AUTHORITY_PROJECT=teachers-net-community3
     - C3_AUTHORITY_WORKTREE=/home/bobreap/projects/teachers-net-community3
     - C3_AUTHORITY_BRANCH=COMMUNITY3-ui-working
-    - C3_AUTHORITY_COMMIT=2a021ee7347596a597e60211859d5ca71b19d966
+    - C3_AUTHORITY_COMMIT=4ffa0681d18575b74211110684d2303d0eccf127
     - C3_AUTHORITY_PLUGIN_HASH=081a1572c8bee5f2926dd18d49d201a8a21aea0e7b63234f591fbacb3b2b4fed
 corepack_enable: false
 webimage_extra_packages:
