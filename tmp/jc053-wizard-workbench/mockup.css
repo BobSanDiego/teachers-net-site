@@ -686,3 +686,4 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 /* STEP3-SUMMARY004: native hidden state must override the modal display rule. */
 .step3-summary-assist[hidden]{display:none}
 .step3-summary-assist-card textarea{resize:none}
+.step3-summary-assist-card label{margin-bottom:6px}.step3-summary-assist-card textarea{min-height:82px;overflow-y:hidden;resize:none}
