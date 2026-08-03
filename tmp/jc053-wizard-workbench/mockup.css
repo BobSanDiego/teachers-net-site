@@ -712,3 +712,8 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .step4-field:not([hidden]){display:flex}
 .step4-field[hidden],.step4-override-fields[hidden],.step4-check[hidden]{display:none}
 .step4-preview-pane .step4-preview-action{display:inline-flex;margin-top:8px;width:auto}
+.step4-preview-card .step4-preview-method-lead{color:var(--ink);font-size:12px;font-weight:600;line-height:1.5;margin:0 0 6px}
+.step4-preview-card .step4-preview-destination{color:var(--ink);margin:0 0 8px;overflow-wrap:anywhere;white-space:normal}
+.step4-preview-card .step4-preview-instructions{margin-top:12px}
+.step4-preview-card .step4-preview-instructions-label{color:var(--navy);font-size:11px;font-weight:700;line-height:1.4;margin:0 0 4px}
+.step4-preview-card .step4-preview-instructions-body{color:var(--ink);font-size:12px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap}

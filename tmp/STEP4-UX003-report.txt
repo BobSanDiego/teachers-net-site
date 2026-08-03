@@ -1,0 +1,29 @@
+STEP4-UX003 — Structured Method-Specific How-to-Apply Preview
+
+Status: Implemented
+Worktree: /home/bobreap/projects/teachers-net-jobcenter
+Branch: JOB-CENTER-JC053-wizard-workbench
+Canonical URL: http://127.0.0.1:8768/?#step-04-application-process
+
+Changes
+- Replaced generic Step 4 preview destination prose with method-specific lead copy.
+- External URL now shows only the valid, content-width “Open application page” action.
+- Email now shows a valid address as selectable text and no button or mailto action.
+- Instructions-only now shows its method lead and entered instructions without a destination.
+- Optional instructions use a subordinate label and escaped pre-wrap body, preserving meaningful line breaks and preventing HTML execution, list conversion, or horizontal overflow.
+- Invalid URL/email values produce no preview destination/action while existing form validation remains unchanged.
+- Existing deadline rendering and live input/change synchronization remain in place.
+
+Production contract recorded
+Future public listings should support tracked “Reveal email address”, an email-reveal metric, an optional “Open email app” metric, and server-side retrieval rather than embedding the email address in initial public HTML. This ticket does not implement that production pipeline.
+
+Verification
+- `git diff --check`: passed.
+- Canonical HTTP request: 200.
+- Served `mockup.js` and `mockup.css` SHA-256 content matched the current worktree files.
+- Served source contains the new action and instruction styles.
+- Static inspection confirms the old generic preview copy and “Apply by Email” preview action are removed from the Step 4 preview renderer.
+- Live browser interaction could not be completed because the installed Chrome connector rejected the WSL sandbox context before attaching (`sandboxCwd ... is not a local file URI`). No visual/browser acceptance is claimed from that failed attachment.
+
+Scope boundary
+No Step 1–3, Step 5, Quick Post, shared shell, validation, or production email-reveal implementation was changed.
