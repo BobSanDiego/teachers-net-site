@@ -1,0 +1,64 @@
+Canonical review URL:
+http://127.0.0.1:8768/?#step-03-job-description
+
+Caret preserved: PASS
+Truncation notice resets: PASS
+
+Implementation approach
+
+- Removed the input-time `limitStep3Editor()` innerHTML replacement path.
+- Added delegated `beforeinput` enforcement for optional contenteditable
+  editors. InsertText and insertCompositionText are prevented only when the
+  normalized readable text, adjusted for the current selection, would exceed
+  the existing 5,000-character limit. This preserves the live DOM, caret, and
+  selection.
+- Preserved the existing pre-insertion paste truncation algorithm and
+  structural cleanup unchanged.
+- Added notice reset on every subsequent optional-editor input. The notice is
+  still shown only after an actual truncating paste.
+
+Files changed
+
+- tmp/jc053-wizard-workbench/mockup.js
+
+Tests
+
+- git diff --check: PASS
+- Cache-bypassed canonical browser reload: PASS.
+- Browser beforeinput smoke at the canonical URL: an optional editor with
+  4,999 characters rejected a two-character insertion with
+  `defaultPrevented: true`; HTML remained intact at 4,999 characters.
+- Notice reset smoke: setting the notice visible then dispatching a subsequent
+  editor input hid it; counter remained 4999.
+- Browser build banner during test: commit 69bdab9, aligned descendant of the
+  required runtime. The implementation commit was created after the running
+  server's banner, so a fresh server restart is required for the new commit's
+  banner.
+- Console errors: none observed during the browser smoke.
+- Screenshots: none; no visual change was authorized by this ticket.
+- Full real-paste, selection-replacement, composition, and responsive QA remain
+  pending.
+
+Git
+
+Branch: JOB-CENTER-JC053-wizard-workbench
+Commit: d01d235bb0dd62a7d972f18ded8d08eeede8e3ff
+Canonical runtime commit observed during test: 69bdab9
+Implementation commit: d01d235bb0dd62a7d972f18ded8d08eeede8e3ff
+Push: succeeded to origin/JOB-CENTER-JC053-wizard-workbench
+Git status: the ticket file is committed; unrelated pre-existing hopper
+working-tree changes remain preserved and unstaged.
+
+Remaining risks
+
+The running server must be restarted so the canonical banner reports the new
+commit before final full browser acceptance. Selection replacement and IME
+composition should receive dedicated live checks before production editor
+reuse.
+
+Explorer hopper path:
+C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\hopper\\jobcenter\\current
+WSL hopper path:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/current
+
+Hopper cycle: 260803122615
