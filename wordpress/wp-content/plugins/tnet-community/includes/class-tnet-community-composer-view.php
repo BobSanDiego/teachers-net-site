@@ -12,6 +12,6 @@ final class TNet_Community_Composer_View {
         $help = '<details class="composer-formatting-help"><summary>Formatting help</summary><p>'.esc_html(TNet_Community_Composer_Contracts::markdown_help()).'</p></details>';
         $markup = str_replace('<form id="reply-composer"', '<form data-composer-view="shared-reply" id="reply-composer"', $markup);
         $markup = str_replace('<details><summary>Formatting help</summary><p>Use **bold**, *italic*, \`code\`, quotes, lists, or [links](https://example.com).</p></details>', $help, $markup);
-        return $markup;
+        return '<div id="reply-composer-shell" hidden>'.$markup.'</div><script>(function(){document.querySelectorAll("[data-reply-target]").forEach(function(link){link.addEventListener("click",function(){var shell=document.getElementById("reply-composer-shell");if(shell)shell.hidden=false})})})();</script>';
     }
 }

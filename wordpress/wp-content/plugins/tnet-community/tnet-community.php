@@ -33,6 +33,8 @@ add_action('template_redirect', static function (): void {
     ob_start(static function (string $html): string {
         $href = esc_url(plugins_url('assets/community-visual-language-v1.css', __FILE__));
         $html = preg_replace('/<body([^>]*)>/', '<body$1 class="c3-visual-language">', $html, 1) ?? $html;
-        return str_replace('</head>', '<link rel="stylesheet" href="'.$href.'">\n</head>', $html);
+        $html = str_replace('</head>', '<link rel="stylesheet" href="'.$href.'">\n</head>', $html);
+        if (strpos($html, 'feed-card') !== false) $html = str_replace('</body>', '<script>(function(){document.querySelectorAll(".feed-card").forEach(function(card){card.addEventListener("click",function(e){if(e.target.closest("a,button,input,select,textarea,img,video,audio,.card-preview,.feed-excerpt"))return;var link=card.querySelector("h2 a");if(link)location.href=link.href})})})();</script></body>', $html);
+        return $html;
     });
 }, 0);
