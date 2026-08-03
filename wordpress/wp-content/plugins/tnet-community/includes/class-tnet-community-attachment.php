@@ -22,9 +22,9 @@ final class TNet_Community_Attachment {
         try { self::validate($a); } catch (Throwable $e) { return '<p class="attachment-fallback">Attachment unavailable.</p>'; }
         $label=esc_html($a['title']??ucfirst($a['attachment_type'])); $desc=esc_html($a['description']??''); $type=$a['attachment_type'];
         if ($type==='image') {
-            if (($a['source_kind']??'')==='local_fixture') return '<figure class="attachment-card attachment-image"><div role="img" aria-label="'.esc_attr($a['alt_text']).'">Image fixture</div><figcaption>'.$label.'</figcaption></figure>';
+            if (($a['source_kind']??'')==='local_fixture') return '<div class="story-image-placeholder" role="img" aria-label="'.esc_attr($a['alt_text']).'"></div>';
             $ref=(string)$a['source_reference']; $url=content_url(substr($ref,strlen('wp-content/')));
-            return '<figure class="attachment-card attachment-image"><img src="'.esc_url($url).'" alt="'.esc_attr($a['alt_text']).'" loading="lazy"><figcaption>'.$label.($desc!==''?'<span>'.$desc.'</span>':'').'</figcaption></figure>';
+            return '<img class="story-image" src="'.esc_url($url).'" alt="'.esc_attr($a['alt_text']).'" loading="lazy">';
         }
         return '<div class="attachment-card"><strong>'.$label.'</strong><p>'.$desc.'</p></div>';
     }
