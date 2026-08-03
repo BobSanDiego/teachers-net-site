@@ -24,7 +24,7 @@ final class TNet_Community_Thread_Controller {
         }
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
         $root = $data['root'];
-        $html = '<main><p><a class="back-to-community" href="'.esc_url(home_url('/community/')).'">← Back to Community</a></p><p class="meta">Local Community thread</p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . '</article>';
+        $html = '<main><p class="thread-navigation"><a class="back-to-community" href="'.esc_url(home_url('/community/')).'">← Back to Community</a></p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . '</article>';
         $html .= self::reply_form_normalized($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;
