@@ -1,0 +1,85 @@
+Ticket:
+STEP2-RESP003
+
+Prior STEP2-RESP002 report reliable:
+NO
+
+Screenshots matched reported widths:
+NO — the supplied screenshot is a single 1312×1925 bitmap and does not contain an authoritative viewport-width overlay. Its visible runtime banner identifies commit `c70c3e8`, not the reported `a29b5e4`.
+
+Screenshots matched reported computed layouts:
+NO — the supplied image shows Position stacked vertically, while the current a29b5e4 MCP runtime at 1043px computes Position `208px 208px`.
+
+Stale or wrong assets detected:
+YES — the supplied evidence was captured from a different runtime/commit. The current page’s resource URLs still carry the stale version label `v=jc053-c70c3e8`, although the fetched asset bytes match the current worktree hashes; provenance labeling is therefore also unreliable.
+
+Exact root cause:
+The evidence bundle mixed a screenshot from the c70c3e8 runtime with the a29b5e4 STEP2-RESP002 report, so the written matrix and screenshot did not describe the same rendered page.
+
+Commit tested
+- `a29b5e4` (`Restore Step 2 approved responsive groupings`)
+- Branch: `JOB-CENTER-JC053-wizard-workbench`
+- Git worktree contains pre-existing unrelated dirty hopper/report artifacts; no CSS/JS changes were made by this diagnostic.
+
+Canonical URL
+http://127.0.0.1:8768/?#step-02-job-basics
+
+Server/runtime
+- Canonical server: `http://127.0.0.1:8768/`
+- Browser was launched through `tools/qa/launch-chrome-cdp-9222.ps1` and inspected with the Chrome DevTools MCP server.
+- Cache-busted review URL: `http://127.0.0.1:8768/?qa=resp003current232724#step-02-job-basics`
+- Browser runtime: `window.innerWidth=1043`, `window.outerWidth=1059`, `devicePixelRatio=1`.
+- Supplied screenshot bitmap: 1312×1925.
+- Supplied screenshot visible banner: `branch=JOB-CENTER-JC053-wizard-workbench · commit=c70c3e8 · asset=jc053-c70c3e8`.
+
+Asset proof
+- Page resource URLs: `/mockup.css?v=jc053-c70c3e8` and `/mockup.js?v=jc053-c70c3e8`.
+- Fetched browser JS SHA-256: `b49d547edca82d8cec7a92a475f4254b3f5b20c9efb1e69771840b04ae476e3f`.
+- Fetched browser CSS SHA-256: `e47130081edeb091ed96bea210aa412179ff7fca7b1c0fd1f745abf69171a08f`.
+- Current worktree JS/CSS hashes matched those bytes.
+- The stale `c70c3e8` URL/build label remains a provenance defect even where the current server returned current bytes.
+
+Corrected live truth table — a29b5e4 runtime
+
+| Viewport | Authoring width | Position columns | Starting Date columns | Compensation columns | Preview position | Rail state | Overflow |
+|---:|---:|---|---|---|---|---|---|
+| 1440 | 648 | `294px 294px` | `158.25px 121.75px 121.734px 158.266px` | same | beside form | collapsed | no |
+| 1200 | 633 | `286.5px 286.5px` | `154.016px 118.484px 118.469px 154.031px` | same | beside form | collapsed | no |
+| 1135 | 568 | `254px 254px` | `254px 254px` | `254px 254px` | beside form | collapsed | no |
+| 1043 | 476 | `208px 208px` | `208px 208px` | `208px 208px` | beside form | collapsed | no |
+| 1000 | 433 | `387px` | `387px` | `387px` | beside form | collapsed | no |
+| 987 | 420 | `374px` | `374px` | `374px` | beside form | collapsed | no |
+| 932 | 365 | `319px` | `319px` | `319px` | beside form | collapsed | no |
+| 900 | 345 | `299px` | `299px` | `299px` | beside form | collapsed | no |
+| 768 | 597 | `551px` | `551px` | `551px` | stacked below | collapsed | no |
+| 650 | 539 | `493px` | `493px` | `493px` | stacked below | collapsed | no |
+| 530 | 419 | `373px` | `373px` | `373px` | stacked below | collapsed | no |
+| 400 | 389 | `343px` | `343px` | `343px` | stacked below | collapsed | no |
+
+At 1043px, live control clientWidth equaled scrollWidth for Position and Work Location controls; no clipping was reported. Console errors were empty after the earlier committed callback correction.
+
+Winning CSS ownership — a29b5e4
+- Position: the final scoped Step 2 viewport fallback at `@media (min-width:1021px)` wins with `grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important`; `@media (max-width:1020px)` wins with one column.
+- Starting Date and Compensation: final scoped fallback uses two columns at `min-width:1021px`, four columns at `min-width:1200px`, and one column at `max-width:700px`.
+- Work Location: final scoped Step 2 rules set the selector to `width:100%` in the intermediate/wide fallback; compact rules preserve full width.
+- Step 2 workspace: `.wizard-shell-content-step2` owns the two-column authoring/preview structure; `@media (min-width:651px) and (max-width:800px)` stacks the Step 2 preview.
+- Rail: `.application-card.step3-workspace-mode` owns collapsed rail geometry; the in-memory `wizardState.ui.railExpanded` controls expansion.
+- Earlier named container-query rules remain in source but did not win the cascade for the observed Position result; this is a CSS ownership concern for a future cleanup ticket, not a license for a new patch here.
+
+False prior PASS claims
+- “Live MCP QA passed at all requested widths”: not reliable as a statement about the supplied evidence bundle.
+- “Screenshots are live evidence for the reported matrix”: false for the supplied c70c3e8 screenshot.
+- “Position remains two-column through 1043px”: true for the a29b5e4 runtime measured here, but not established by the supplied screenshot.
+- “Screenshots matched the reported computed layouts”: false.
+- “No horizontal overflow”: current a29b5e4 runtime measured no overflow; this does not validate the c70c3e8 screenshot.
+
+Screenshot identity proof
+- Supplied: `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/Captures/Screenshot_3-8-2026_162633_127.0.0.1.jpeg` — 1312×1925, visible c70c3e8 banner.
+- New current diagnostic: `/home/bobreap/projects/teachers-net-jobcenter/tmp/resp003-current-1043-diagnostics.png` — overlay includes commit, URL, inner/outer width, DPR, authoring width, preview width, rail width, computed grids, and scroll width.
+
+Files changed
+- `tmp/STEP2-RESP003-report.txt`
+- No `mockup.css` or `mockup.js` changes.
+
+Disposition
+STEP2-RESP002 should be amended for evidence provenance, not reverted. The implementation was not changed by this diagnostic. Recommended next ticket: repair the runtime build/asset version banner so the served `v=` label and visible build marker are generated from the actual commit, then regenerate all responsive evidence from one cache-busted runtime with the diagnostic overlay retained.
