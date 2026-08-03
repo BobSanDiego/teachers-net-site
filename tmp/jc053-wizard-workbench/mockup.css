@@ -692,3 +692,15 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 .application-card[data-view="step-01-add-school-us"] .default-page-heading,.application-card[data-view="step-01-add-school-international"] .default-page-heading{display:block}
 @media (max-width:1199px){.step4-preview-pane{position:static}.step4-foundation-layout{display:block}.step4-preview-pane{margin-top:16px}}
 @media (max-width:767px){.step4-foundation-layout{display:block}.step4-preview-pane{margin-top:16px}.step4-compact-row{grid-template-columns:1fr}.step4-override-fields{grid-template-columns:1fr}.step4-materials{grid-template-columns:1fr}}
+
+/* WIZARD-VISUAL005: one canonical StageHeading owner. */
+.wizard-stage-heading{display:block;border-bottom:1px solid #edf0f5;padding-bottom:18px;margin:0}
+.wizard-stage-heading__eyebrow{font-size:11px;line-height:1.45;letter-spacing:.06em;font-weight:700;color:var(--primary);margin:0 0 10px}
+.wizard-stage-heading__title{margin:0;color:var(--navy);font-size:22px;line-height:1.45}
+.wizard-stage-heading__support{margin:5px 0 0;color:var(--muted)}
+.wizard-stage-heading + .choice-grid,.wizard-stage-heading + .location-type-section,.wizard-stage-heading + .step4-foundation-layout,.wizard-stage-heading + .wizard-shell-content,.wizard-stage-heading + .step3-foundation-card{margin-top:18px}
+.application-card .wizard-stage-heading + .choice-grid,.application-card .wizard-stage-heading + .location-type-section,.application-card .wizard-stage-heading + .step4-foundation-layout,.application-card .wizard-stage-heading + .wizard-shell-content,.application-card .wizard-stage-heading + .step3-foundation-card{margin-top:18px}
+.wizard-stage-heading .eyebrow,.wizard-stage-heading h2,.wizard-stage-heading>p:last-child{font:inherit;letter-spacing:inherit;color:inherit;margin:inherit}
+.wizard-stage-heading .wizard-stage-heading__eyebrow{font-size:11px;line-height:1.45;letter-spacing:.06em;font-weight:700;color:var(--primary);margin:0 0 10px}
+.wizard-stage-heading .wizard-stage-heading__title{font-size:22px;line-height:1.45;color:var(--navy);margin:0 0 5px}
+.wizard-stage-heading .wizard-stage-heading__support{font-size:14px;line-height:1.45;color:var(--muted);margin:5px 0 0}

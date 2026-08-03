@@ -614,9 +614,21 @@
     '<div class="form-field form-field-intl-full-name"><label for="organization-name-international">School / Jobsite Name (Full) <span aria-hidden="true">*</span></label><input id="organization-name-international" type="text" placeholder="Enter the school or jobsite name"></div><div class="form-field form-field-intl-display-name"><label for="organization-display-name-international">Display Name <span aria-hidden="true">*</span></label><input id="organization-display-name-international" type="text" placeholder="Short display name"></div><div class="form-field form-field-intl-country"><label for="organization-country-international">Country <span aria-hidden="true">*</span></label><select id="organization-country-international"><option selected>Choose a country</option><option>Canada</option><option>United Kingdom</option><option>Australia</option><option>Mexico</option><option>Japan</option></select></div><div class="form-field form-field-intl-city"><label for="organization-city-international">City / Locality <span aria-hidden="true">*</span></label><input id="organization-city-international" type="text" placeholder="City or locality"></div><div class="form-field form-field-intl-region"><label for="organization-region-international">State / Province / Region <small>(Optional)</small></label><input id="organization-region-international" type="text" placeholder="State, province, or region"></div><div class="form-field form-field-intl-postal"><label for="organization-postal-international">Postal Code <small>(Optional)</small></label><input id="organization-postal-international" type="text" placeholder="Postal code"></div><div class="form-field form-field-intl-address"><label for="organization-address-international">Street Address <small>(Optional)</small></label><input id="organization-address-international" type="text" placeholder="Street address"></div><div class="form-field form-field-intl-suite"><label for="organization-suite-international">Suite / Room <small>(Optional)</small></label><input id="organization-suite-international" type="text" placeholder="Suite or room"></div>';
   document.querySelector("#step-01-add-school-us").after(internationalPanel);
   document.querySelectorAll("#step-01-add-school-us .form-section-number, #step-01-add-school-international .form-section-number").forEach((marker) => marker.remove());
-  const addSchoolStageHeading = (panel) => { const heading = document.createElement("div"); heading.className = "wizard-stage-heading"; heading.innerHTML = '<p class="eyebrow">Step 1 of 5</p><h2>Add a School / Jobsite</h2><p>Add a new school, campus, office, or jobsite before continuing your job post.</p>'; panel.prepend(heading); };
-  addSchoolStageHeading(document.querySelector("#step-01-add-school-us"));
-  addSchoolStageHeading(internationalPanel);
+  document.querySelectorAll(".panel-heading").forEach((heading) => heading.remove());
+  const StageHeading = ({ stepNumber, title, supportingCopy }) => {
+    const heading = document.createElement("header");
+    heading.className = "wizard-stage-heading";
+    heading.innerHTML = `<p class="wizard-stage-heading__eyebrow">Step ${stepNumber} of 5</p><h2 class="wizard-stage-heading__title">${title}</h2><p class="wizard-stage-heading__support">${supportingCopy}</p>`;
+    return heading;
+  };
+  const stageContent = (panel) => {
+    const content = document.createDocumentFragment();
+    [...panel.children].forEach((child) => {
+      if (child.matches(".panel-heading, .wizard-stage-heading")) child.remove();
+      else content.append(child);
+    });
+    return content;
+  };
   document.querySelector(".add-school-page-heading")?.remove();
   views.forEach(([id, label]) => {
     const o = document.createElement("option");
@@ -1583,6 +1595,38 @@
   const step4Sync = () => { const method=step4Content.querySelector("#step4-method")?.value, mode=step4Content.querySelector("#step4-deadline-mode")?.value, contact=step4Content.querySelector("input[name=step4-contact]:checked")?.value; step4Content.querySelectorAll("[data-step4-method]").forEach((f)=>f.hidden=f.dataset.step4Method!==method); const instruction=step4Content.querySelector("[data-step4-instructions]"); instruction.hidden=!method; instruction.querySelector(".step4-required-marker").hidden=method!=="instructions"; instruction.querySelector(".step4-optional-marker").hidden=method==="instructions"; step4Content.querySelector("#step4-instructions").required=method==="instructions"; step4Content.querySelectorAll("[data-step4-specific]").forEach((f)=>f.hidden=mode!=="specific"); step4Content.querySelector("#step4-deadline").required=mode==="specific"; step4Content.querySelector(".step4-override-fields").hidden=contact!=="override"; step4Content.querySelector("#step4-contact-email").required=contact==="override"; step4Content.querySelector("[data-step4-other]").hidden=!step4State.materials.has("other"); const preview=step4Content.querySelector("#step4-preview"), instructionsText=step4Content.querySelector("#step4-instructions")?.value.trim(); const action=method==="url"?"<button type=\"button\" class=\"button primary\">Apply on Employer Site</button>":method==="email"?"<button type=\"button\" class=\"button primary\">Apply by Email</button>":""; preview.innerHTML=`<div class=\"step3-compact-listing\"><strong>${step4Escape(document.querySelector("#job-title-step2")?.value||"Teacher position")}</strong><span>LAUSD · Los Angeles, CA</span><p>${step4Escape(document.querySelector("#step3-summary")?.value||"Add a short summary to preview this listing.")}</p></div><h4>How to Apply</h4>${method==="instructions"?`<p>${step4Escape(instructionsText)||"Application instructions will appear here."}</p>`:method?`<p>Candidates will be directed to the selected destination.</p>${action}`:"<p>Select an application method to preview how candidates will apply.</p>"}${mode==="specific"&&step4Content.querySelector("#step4-deadline")?.value?`<p><strong>Deadline:</strong> ${step4Escape(step4Content.querySelector("#step4-deadline").value)}</p>`:mode==="open"?"<p><strong>Deadline:</strong> Open until filled</p>":""}`; refreshNextAction(); };
   step4Content.addEventListener("input", step4Sync); step4Content.addEventListener("change", (e)=>{if(e.target.matches(".step4-materials input")){e.target.checked?step4State.materials.add(e.target.value):step4State.materials.delete(e.target.value)} step4Sync();});
   const wizardShellConfigs = {
+    "step-01-initial": {
+      viewId: "step-01-initial", stepNumber: "1", title: "Choose a School / Jobsite",
+      supportingCopy: "Select an existing school or jobsite, or add a new one.<br>You can always manage your schools or jobsites from your workspace.",
+      authority: false, showCancel: false, showSaveDraft: false,
+      previous: null, next: null,
+      stepperState: ["is-current", "is-upcoming", "is-upcoming", "is-upcoming", "is-upcoming"],
+      completedTargets: [null, null, null, null, null], content: stageContent(document.querySelector("#step-01-initial")),
+    },
+    "step-01-school-selected": {
+      viewId: "step-01-school-selected", stepNumber: "1", title: "Choose a School / Jobsite",
+      supportingCopy: "Select an existing school or jobsite, or add a new one.<br>You can always manage your schools or jobsites from your workspace.",
+      authority: false, showCancel: false, showSaveDraft: false,
+      previous: null, next: null,
+      stepperState: ["is-current", "is-upcoming", "is-upcoming", "is-upcoming", "is-upcoming"],
+      completedTargets: [null, null, null, null, null], content: stageContent(document.querySelector("#step-01-school-selected")),
+    },
+    "step-01-add-school-us": {
+      viewId: "step-01-add-school-us", stepNumber: "1", title: "Add a School / Jobsite",
+      supportingCopy: "Add a new school, campus, office, or jobsite before continuing your job post.",
+      authority: false, showCancel: false, showSaveDraft: false,
+      previous: null, next: null,
+      stepperState: ["is-current", "is-upcoming", "is-upcoming", "is-upcoming", "is-upcoming"],
+      completedTargets: [null, null, null, null, null], content: stageContent(document.querySelector("#step-01-add-school-us")),
+    },
+    "step-01-add-school-international": {
+      viewId: "step-01-add-school-international", stepNumber: "1", title: "Add a School / Jobsite",
+      supportingCopy: "Add a new school, campus, office, or jobsite before continuing your job post.",
+      authority: false, showCancel: false, showSaveDraft: false,
+      previous: null, next: null,
+      stepperState: ["is-current", "is-upcoming", "is-upcoming", "is-upcoming", "is-upcoming"],
+      completedTargets: [null, null, null, null, null], content: stageContent(internationalPanel),
+    },
     "step-02-job-basics": {
       viewId: "step-02-job-basics",
       stepNumber: "2",
@@ -1668,6 +1712,7 @@
       stepperState: ["is-complete", "is-complete", "is-complete", "is-current", "is-upcoming"], completedTargets: ["step-01-return", "step-02-job-basics", "step-03-job-description", null, null], content: step4Content,
     },
   };
+  wizardShellConfigs["step-01-return"] = wizardShellConfigs["step-01-school-selected"];
   const renderWizardShell = (config, panel, content) => {
     const card = document.querySelector(".application-card"),
       topbar = card?.querySelector(".tnet-jobs-app-topbar-inner");
@@ -1715,11 +1760,10 @@
       card?.querySelector("[data-step3-rail-toggle]")?.remove();
     }
     card?.classList.toggle("authority-nav-open", false);
-    const heading = document.createElement("div");
-    heading.className = "wizard-stage-heading";
-    heading.innerHTML = `<p class="eyebrow">Step ${config.stepNumber} of 5</p><h2>${config.title}</h2><p>${config.supportingCopy}</p>`;
+    const heading = StageHeading(config);
     panel.classList.add("wizard-shell-panel");
-    panel.replaceChildren(heading, content);
+    const body = content?.childNodes.length ? content : stageContent(panel);
+    panel.replaceChildren(heading, body);
     syncWizardValueStates(panel);
     wizardStepper.states = config.stepperState;
     wizardStepper.completedTargets = config.completedTargets;

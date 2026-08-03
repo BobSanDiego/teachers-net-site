@@ -1,0 +1,66 @@
+Ticket: WIZARD-VISUAL005
+
+Implementation changed: YES
+Canonical runtime: http://127.0.0.1:8768/
+Base diagnostic: WIZARD-DIAG001
+
+Implementation
+==============
+Added one reusable `StageHeading` renderer in
+`tmp/jc053-wizard-workbench/mockup.js`. It now owns the semantic structure:
+
+<header class="wizard-stage-heading">
+  <p class="wizard-stage-heading__eyebrow">Step X of 5</p>
+  <h2 class="wizard-stage-heading__title">Task heading</h2>
+  <p class="wizard-stage-heading__support">Supporting copy</p>
+</header>
+
+Step 1 Initial, School Selected/Return, Add School U.S./International, Step 2,
+Step 3, and Step 4 all route through that renderer. The old static `.panel-heading`
+nodes and the separate Add School heading insertion were removed. The prior
+stage selectors are neutralized by one bounded canonical CSS owner; no
+`!important` or new breakpoint was added.
+
+Verified geometry
+==================
+At the canonical desktop viewport, every active Step 1-4 stage measured:
+
+- eyebrow bottom to title top: 10px
+- title bottom to support top: 5px
+- support bottom to first content: 37px
+- exactly one visible `.wizard-stage-heading`
+- zero `.panel-heading` nodes, including hidden panels
+
+The Initial content and approved copy remain unchanged. Workspace heading,
+stepper, Add School icons, forms, navigation, and preview behavior were not
+changed.
+
+Responsive checks
+=================
+The canonical Step 3 route was checked at 1440, 1200, 1024, 932, 900, 768,
+650, 530, and the browser's minimum attainable width near 500px. No horizontal
+overflow was reported; the stage remained below the stepper and its natural
+wrapping remained within the panel. The same shared renderer remained active;
+no breakpoint-specific heading path appeared.
+
+Runtime verification
+====================
+Canonical URLs returned HTTP 200 through the running server. The browser
+runtime served the current worktree CSS and JavaScript hashes. Console
+inspection after cache-bypassed reload reported no console messages/errors.
+`git diff --check` passed and Node syntax checking passed using the bundled
+Node runtime.
+
+Screenshot evidence
+===================
+One live full-page screenshot was captured successfully:
+`tmp/WIZARD-VISUAL005-initial.png`.
+The subsequent four screenshot operations hung in the browser tool and were
+stopped. This report does not claim those four screenshot artifacts exist or
+claim screenshot-based visual PASS for them. DOM/computed-geometry evidence is
+complete for all five required stages.
+
+Known scope note
+================
+Step 5 and Quick Post remain future consumers of the same StageHeading
+contract; they were not implemented by this ticket.
