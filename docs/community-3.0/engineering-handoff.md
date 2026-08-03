@@ -3,11 +3,19 @@
 ## 1. Current Phase
 
 Branch authority: Community implementation work uses
-`/tmp/community3-ui-working` on `COMMUNITY3-ui-working`, based on `621708b`.
+`/home/bobreap/projects/teachers-net-community3` on `COMMUNITY3-ui-working`.
+The canonical local review runtime is DDEV project `teachers-net-community3`
+at `https://teachers-net-community3.ddev.site`, with the complete plugin tree
+mounted from that worktree.
 The original `COMMUNITY003-semantic-community-communications-working-draft`
 is preserved as a mixed recovery workspace and must not receive new Community
 or Job Center ticket edits. Preflight and Community hopper payload validation
-are required before edits and handoff.
+are required before edits and handoff. The mandatory runtime gate is
+`docs/community-3.0/community-runtime-authority-preflight-v1.md`: any runtime,
+mount, branch, or commit mismatch stops execution pending explicit user
+acknowledgment. UX reports must identify the canonical URL, DDEV project/path,
+mounted plugin path, branch, commit, and browser evidence status; code
+inspection alone cannot establish browser acceptance.
 
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
 

@@ -6,13 +6,22 @@ Maintenance
 
 ## Branch and Worktree Authority
 
-Community work must run from `/tmp/community3-ui-working` on
-`COMMUNITY3-ui-working`, based on verified Community milestone `621708b`.
+Community work must run from `/home/bobreap/projects/teachers-net-community3` on
+`COMMUNITY3-ui-working`, based on the current verified branch head. The
+canonical local review runtime is DDEV project `teachers-net-community3` at
+`https://teachers-net-community3.ddev.site`; it must not be silently replaced
+by the main `teachers-net` project.
 The prior `COMMUNITY003-semantic-community-communications-working-draft` is a
 mixed recovery source containing Job Center commits and is not a valid active
 Community implementation branch. Run
 `tools/community3/project_ticket_preflight.py` before editing and
 `tools/community3/validate_hopper_payload.py` before finalizing a payload.
+Before any browser-dependent UX ticket, apply
+`docs/community-3.0/community-runtime-authority-preflight-v1.md`. A mismatch
+between worktree, branch, DDEV project, mounted plugin tree, or commit stops
+execution until the user explicitly acknowledges it. UX reports must include
+the canonical URL, DDEV project/path, mounted plugin path, branch, commit, and
+browser evidence status.
 
 ## Current Phase
 

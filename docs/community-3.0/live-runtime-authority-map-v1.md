@@ -54,3 +54,29 @@ Community entry point and some current Community controller changes, while the
 full plugin tree is not source-identical to the Community worktree. This is a
 runtime/source-boundary defect, not evidence that the accepted UX work is
 absent from the Community branch.
+
+## CORR001 alignment result
+
+The bounded correction established the isolated runtime:
+
+- DDEV project: `teachers-net-community3`
+- DDEV path: `/home/bobreap/projects/teachers-net-community3`
+- Review hostname: `https://teachers-net-community3.ddev.site`
+- Mounted plugin path: `/var/www/html/wordpress/wp-content/plugins/tnet-community`
+- Authoritative source: `/home/bobreap/projects/teachers-net-community3/wordpress/wp-content/plugins/tnet-community`
+- Branch: `COMMUNITY3-ui-working`
+- HEAD: `d77134c44dab1b912f1fbb5545415eebb33b862d`
+
+The complete plugin tree is available in the selected runtime through the
+worktree DDEV mount; the entry point hash is identical to the authoritative
+source. The runtime database was populated from the existing local
+`teachers-net` DDEV database dump only; production was not accessed or
+modified. The isolated database now has WordPress installed and the active
+`tnet-community` plugin.
+
+HTTP smoke now succeeds for Feed and the representative Thread. The Topic
+Composer redirects unauthenticated users to the isolated runtime’s login page;
+with the local synthetic `community.qa` account, the composer renders and the
+authenticated representative thread exposes reply controls. Chrome screenshot
+capture remains pending because the browser-control connection could not be
+initialized in this session.
