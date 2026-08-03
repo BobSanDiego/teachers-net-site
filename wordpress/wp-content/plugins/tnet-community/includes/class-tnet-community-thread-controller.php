@@ -77,7 +77,7 @@ final class TNet_Community_Thread_Controller {
         $body = '<label for="reply-body">Your reply</label><textarea id="reply-body" name="body" rows="5" required></textarea>';
         $help = '<details><summary>Formatting help</summary><p>Use **bold**, *italic*, \`code\`, quotes, lists, or [links](https://example.com).</p></details>';
         $script = '<script>document.querySelectorAll("[data-reply-target]").forEach(function(a){a.addEventListener("click",function(){document.getElementById("reply-target").value=a.dataset.replyTarget;document.getElementById("reply-context").textContent="Replying to "+a.textContent;document.getElementById("reply-body").focus()})});</script>';
-        return $html . '<form id="reply-composer" class="reply-composer" method="post">' . $nonce . $submission . $target . $context . $body . $help . '<button type="submit">Post Reply</button></form>' . $script;
+        return TNet_Community_Composer_View::reply($html . '<form id="reply-composer" class="reply-composer" method="post">' . $nonce . $submission . $target . $context . $body . $help . '<button type="submit">Post Reply</button></form>' . $script);
     }
 
     private static function reply_form(array $root, array $rows, array $errors): string {
