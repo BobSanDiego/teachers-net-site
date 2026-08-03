@@ -648,7 +648,12 @@
         : !control.value.trim();
       control.dataset.valueState = placeholder ? "empty" : "filled";
     });
+    root.querySelectorAll("[contenteditable=\"true\"]").forEach((editor) => {
+      editor.dataset.valueState = editor.textContent.trim() ? "filled" : "empty";
+    });
   };
+  const formStateObserver = new MutationObserver((records) => { if (records.some((record) => record.type === "childList" || record.type === "characterData")) syncWizardValueStates(document.querySelector(".application-card") || document); });
+  formStateObserver.observe(document.querySelector(".application-card"), { childList: true, characterData: true, subtree: true });
   const implementedViews = views.map(([id]) => id);
   const syncWorkbenchTraversal = (id) => {
     const index = implementedViews.indexOf(id),
@@ -812,6 +817,7 @@
     return false;
   };
   const refreshNextAction = () => {
+    syncWizardValueStates(document.querySelector(".application-card") || document);
     const id = location.hash.slice(1) || "step-01-return",
       next = document.querySelector("#next-view");
     if (!next) return;
