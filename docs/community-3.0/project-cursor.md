@@ -23,6 +23,14 @@ execution until the user explicitly acknowledges it. UX reports must include
 the canonical URL, DDEV project/path, mounted plugin path, branch, commit, and
 browser evidence status.
 
+RUNTIME-BLOCKER001 is resolved. The canonical Community review runtime is the
+dedicated `teachers-net-community3` DDEV project at
+`https://teachers-net-community3.ddev.site`, backed by the complete plugin
+tree in this worktree. The previous `teachers-net.ddev.site` URL is not a
+Community3 acceptance URL. The resolution is documented in
+`docs/community-3.0/runtime-blocker001-resolution-v1.md`. Runtime authority is
+restored; authenticated responsive browser evidence remains the next gate.
+
 ## Current Phase
 
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.

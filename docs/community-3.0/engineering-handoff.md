@@ -17,6 +17,13 @@ acknowledgment. UX reports must identify the canonical URL, DDEV project/path,
 mounted plugin path, branch, commit, and browser evidence status; code
 inspection alone cannot establish browser acceptance.
 
+RUNTIME-BLOCKER001 is resolved. The dedicated `teachers-net-community3` DDEV
+runtime is running at `https://teachers-net-community3.ddev.site`, and its
+mounted plugin tree matches the complete Community3 worktree. Do not use
+`teachers-net.ddev.site` for Community acceptance. The resolution record is
+`docs/community-3.0/runtime-blocker001-resolution-v1.md`; the next gate is
+authenticated responsive browser evidence, not feature implementation.
+
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
 
 ## 2. Current Ticket
