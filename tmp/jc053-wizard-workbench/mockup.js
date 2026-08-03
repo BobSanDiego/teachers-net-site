@@ -850,23 +850,34 @@
       modal.className = "step3-summary-assist";
       modal.setAttribute("role", "dialog");
       modal.setAttribute("aria-modal", "true");
+      modal.setAttribute("aria-hidden", "true");
       modal.hidden = true;
       document.body.append(modal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) modal.__closeToListing?.();
+      });
+      modal.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          modal.__closeToListing?.();
+        }
+      });
     }
     if (!modal.hidden) return;
     const draft = buildStep3SummaryDraft();
     const summaryField = document.querySelector("#step3-summary");
     if (draft && !summaryField.value) { summaryField.value = draft; summaryField.dispatchEvent(new Event("input", { bubbles: true })); }
-    modal.innerHTML = `<div class="step3-summary-assist-card"><h3 id="step3-summary-assist-title">Review Your Listing Summary</h3><p>This is how your listing may appear in Teachers.Net search results, featured placements, and shared links.</p><label for="step3-summary-draft">Short Summary</label><textarea id="step3-summary-draft" maxlength="160">${step3Escape(summaryField.value || draft)}</textarea><p class="step3-summary-quality-message" role="status" aria-live="polite" hidden>Your summary is too short. Teachers.Net uses this summary in search results and featured placements. Continue editing here or return to your listing to refine it.</p><button type="button" class="button secondary step3-summary-restore" data-summary-action="restore">Restore suggested summary</button><div class="step3-summary-assist-actions"><button type="button" class="button primary" data-summary-action="use">Accept and Continue</button><button type="button" class="button secondary" data-summary-action="return">Return to Listing</button></div></div>`;
+    modal.innerHTML = `<div class="step3-summary-assist-card"><h3 id="step3-summary-assist-title">Review Your Listing Summary</h3><p>This is how your listing may appear in Teachers.Net search results, featured placements, and shared links.</p><label for="step3-summary-draft">Short Summary</label><textarea id="step3-summary-draft" maxlength="160">${step3Escape(summaryField.value || draft)}</textarea><p class="step3-summary-quality-message" role="status" aria-live="polite" hidden>Your summary is too short. Teachers.Net uses this summary in search results and featured placements. Continue editing here or return to your listing to refine it.</p><div class="step3-summary-assist-actions"><button type="button" class="button primary" data-summary-action="use">Accept and Continue</button><button type="button" class="button secondary" data-summary-action="return">Return to Listing</button></div></div>`;
     modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
     modal.setAttribute("aria-labelledby", "step3-summary-assist-title");
-    const draftField = modal.querySelector("#step3-summary-draft"), use = modal.querySelector('[data-summary-action="use"]'), returnButton = modal.querySelector('[data-summary-action="return"]'), qualityMessage = modal.querySelector(".step3-summary-quality-message"), restore = modal.querySelector('[data-summary-action="restore"]');
-    const sync = () => { summaryField.value = draftField.value.slice(0, 160); summaryField.dispatchEvent(new Event("input", { bubbles: true })); const valid = step3SummaryQuality(draftField.value); use.disabled = !valid; returnButton.classList.toggle("primary", !valid); returnButton.classList.toggle("secondary", valid); qualityMessage.hidden = valid; restore.hidden = valid; };
+    const draftField = modal.querySelector("#step3-summary-draft"), use = modal.querySelector('[data-summary-action="use"]'), returnButton = modal.querySelector('[data-summary-action="return"]'), qualityMessage = modal.querySelector(".step3-summary-quality-message");
+    const sync = () => { summaryField.value = draftField.value.slice(0, 160); summaryField.dispatchEvent(new Event("input", { bubbles: true })); const valid = step3SummaryQuality(draftField.value); use.disabled = !valid; returnButton.classList.toggle("primary", !valid); returnButton.classList.toggle("secondary", valid); qualityMessage.hidden = valid; };
+    const closeToListing = () => { sync(); modal.hidden = true; modal.setAttribute("aria-hidden", "true"); refreshNextAction(); summaryField.scrollIntoView({ block: "center" }); summaryField.focus({ preventScroll: true }); };
+    modal.__closeToListing = closeToListing;
     draftField.addEventListener("input", sync);
-    use.addEventListener("click", () => { sync(); if (!step3SummaryQuality(draftField.value)) return; modal.hidden = true; refreshNextAction(); setView("step-04-application-process"); });
-    returnButton.addEventListener("click", () => { sync(); modal.hidden = true; summaryField.scrollIntoView({ block: "center" }); summaryField.focus({ preventScroll: true }); });
-    restore.addEventListener("click", () => { draftField.value = buildStep3SummaryDraft(); sync(); draftField.focus({ preventScroll: true }); });
-    modal.addEventListener("keydown", (event) => { if (event.key === "Escape") { event.preventDefault(); sync(); modal.hidden=true; summaryField.scrollIntoView({ block: "center" }); summaryField.focus({ preventScroll: true }); } });
+    use.addEventListener("click", () => { sync(); if (!step3SummaryQuality(draftField.value)) return; modal.hidden = true; modal.setAttribute("aria-hidden", "true"); refreshNextAction(); setView("step-04-application-process"); });
+    returnButton.addEventListener("click", closeToListing);
     draftField.focus({ preventScroll: true });
     sync();
   };
