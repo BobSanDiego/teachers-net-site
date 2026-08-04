@@ -206,6 +206,7 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-012 | Run parallel migration and rollback verification | 4 | Complete; verified and pushed as `2f31a93` |
 | DV-013 | Certify Job Center consumer and close MVP | 5 | Complete; certification passed |
 | DV-014 | Refresh handoff and authorize next consumer | 5 | Complete; Community named as candidate, implementation not authorized |
+| DV-015 | Assess Community consumer seam | 5 | Complete; source ownership/compatibility prerequisite required |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.

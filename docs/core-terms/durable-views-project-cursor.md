@@ -57,6 +57,8 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 - DV-013 Job Center consumer certified; MVP closure evidence recorded.
 - DV-014 handoff refreshed; MVP closeout recorded and Community named as next
   candidate pending explicit authorization.
+- DV-015 Community consumer seam assessment completed read-only; source ownership
+  and compatibility boundary are required before implementation.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -78,7 +80,7 @@ Local implementation contract:
 
 ## Next Decision
 
-The MVP is certified and in Stabilization. Community is the next candidate
+The MVP is certified and in Stabilization. Community remains the next candidate
 consumer; implementation remains unauthorized until a separate seam assessment
 and approval. DV-013 certified the
 Job Center consumer and closed the MVP. DV-012 added parallel
@@ -93,8 +95,8 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Prepare a Community consumer seam assessment after explicit authorization.
-2. Plan Community adoption only after that assessment.
+1. Establish Community source ownership/access and a read-only legacy compatibility boundary.
+2. Reassess a Community-specific Durable View only after that prerequisite.
 3. Implement the minimum protected View administration workflow.
 4. Implement preview, clone, retire, and restore behavior.
 5. Bind the first Job Center consumer through the platform contract.

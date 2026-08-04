@@ -31,6 +31,9 @@ is `docs/core-terms/durable-views-dv013-job-center-certification.md`.
 DV-014 refreshed this handoff and recorded the MVP closeout in
 `docs/core-terms/durable-views-mvp-closeout.md`. Community is the next candidate
 consumer, pending explicit authorization and a separate seam assessment.
+DV-015 completed that read-only seam assessment. Community implementation is
+blocked until source ownership/access and a legacy compatibility boundary are
+established; see `docs/core-terms/durable-views-dv015-community-consumer-seam-assessment.md`.
 
 ## 3. Last Completed Milestone
 
@@ -100,7 +103,7 @@ Project Cursor before implementation proceeds.
 
 ## 9. Next Execution Ticket
 
-Prepare a Community consumer seam assessment only after explicit authorization.
+Establish Community source ownership/access and a read-only legacy compatibility boundary.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 
