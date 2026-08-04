@@ -34,6 +34,8 @@ consumer, pending explicit authorization and a separate seam assessment.
 DV-015 completed that read-only seam assessment. Community implementation is
 blocked until source ownership/access and a legacy compatibility boundary are
 established; see `docs/core-terms/durable-views-dv015-community-consumer-seam-assessment.md`.
+DV-016 confirmed the same external prerequisite from the available local
+evidence; see `docs/core-terms/durable-views-dv016-community-source-boundary.md`.
 
 ## 3. Last Completed Milestone
 
@@ -103,7 +105,7 @@ Project Cursor before implementation proceeds.
 
 ## 9. Next Execution Ticket
 
-Establish Community source ownership/access and a read-only legacy compatibility boundary.
+Obtain authorized read-only source access/ownership decision for Community.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

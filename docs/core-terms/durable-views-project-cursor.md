@@ -59,6 +59,8 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   candidate pending explicit authorization.
 - DV-015 Community consumer seam assessment completed read-only; source ownership
   and compatibility boundary are required before implementation.
+- DV-016 Community source ownership boundary confirmed; external authorized
+  source access is required before further work.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -95,7 +97,7 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Establish Community source ownership/access and a read-only legacy compatibility boundary.
+1. Obtain authorized read-only source access/ownership decision for Community.
 2. Reassess a Community-specific Durable View only after that prerequisite.
 3. Implement the minimum protected View administration workflow.
 4. Implement preview, clone, retire, and restore behavior.
