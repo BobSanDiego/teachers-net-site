@@ -61,6 +61,8 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   and compatibility boundary are required before implementation.
 - DV-016 Community source ownership boundary confirmed; external authorized
   source access is required before further work.
+- DV-018 Job Center sprint readiness and authoring gap audit completed; browser
+  authoring and live Jobs cutover remain incomplete.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -97,8 +99,8 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Obtain authorized read-only source access/ownership decision for Community.
-2. Reassess a Community-specific Durable View only after that prerequisite.
+1. Implement DV-019 protected draft composition workspace.
+2. Complete DV-020 groups, preview, and validation feedback.
 3. Implement the minimum protected View administration workflow.
 4. Implement preview, clone, retire, and restore behavior.
 5. Bind the first Job Center consumer through the platform contract.

@@ -36,6 +36,9 @@ blocked until source ownership/access and a legacy compatibility boundary are
 established; see `docs/core-terms/durable-views-dv015-community-consumer-seam-assessment.md`.
 DV-016 confirmed the same external prerequisite from the available local
 evidence; see `docs/core-terms/durable-views-dv016-community-source-boundary.md`.
+DV-018 completed the Job Center sprint readiness audit. The platform/service
+MVP remains certified but browser authoring and live Jobs cutover are not yet
+complete; see `docs/core-terms/durable-views-dv018-sprint-readiness-gap-audit.md`.
 
 ## 3. Last Completed Milestone
 
@@ -105,7 +108,7 @@ Project Cursor before implementation proceeds.
 
 ## 9. Next Execution Ticket
 
-Obtain authorized read-only source access/ownership decision for Community.
+Implement DV-019 protected draft composition workspace before Community adoption.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

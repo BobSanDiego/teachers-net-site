@@ -208,6 +208,12 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-014 | Refresh handoff and authorize next consumer | 5 | Complete; Community named as candidate, implementation not authorized |
 | DV-015 | Assess Community consumer seam | 5 | Complete; source ownership/compatibility prerequisite required |
 | DV-016 | Confirm Community source ownership boundary | 5 | Complete; external authorized access required |
+| DV-018 | Audit Job Center sprint readiness and authoring gaps | 5 | Complete; browser authoring/live cutover incomplete |
+| DV-019 | Build protected draft composition workspace | 5 | Next |
+| DV-020 | Add groups, preview, and validation feedback | 5 | Planned |
+| DV-021 | Add administrator Jobs binding controls | 5 | Planned |
+| DV-022 | Wire live Jobs adapter cutover with fallback | 4 | Planned |
+| DV-023 | Certify browser end-to-end Job Center workflow | 5 | Planned |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
