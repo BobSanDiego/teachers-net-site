@@ -9,6 +9,17 @@ Teachers.Net Jobs is the active job board plugin at `wordpress/wp-content/plugin
 Primary rule:
 Terms classify. Jobs authorizes. WordPress authenticates.
 
+## Engineering Runtime Standard
+
+ENGINEERING-GOV001 applies to all future tickets: maintain one objective,
+reuse proven diagnostics, implement before one structured verification sweep,
+and stop when the objective is proven. Use minimum necessary browser evidence;
+do not repeat unchanged diagnostics. At approximately eight minutes, provide a
+progress checkpoint; at approximately twelve minutes without convergence, stop
+and report the blocker. Never claim visual QA that was not performed. Prefer
+removing conflicting responsive owners over adding overrides, and keep reports
+concise with implementation, verification, and remaining risks separated.
+
 ## Persistence Model
 
 The global Engineering Director Playbook lives outside this repository and
@@ -36,6 +47,27 @@ and follows the repository read order before work.
 Google Drive is for ChatGPT operational recovery only. It is not a mirror of
 repository architecture, implementation detail, full roadmaps, contracts,
 design systems, visual manifests, or ticket history.
+
+## Canonical Review URL Discipline
+
+The Engineering Director review URL is the sole authority for UI verification.
+Do not substitute another port, server, worktree, launcher, or runtime. Every
+UI completion report starts with the exact canonical URL and
+`Verified against canonical URL: YES` or `NO`. Record PID, command line, cwd,
+docroot, loaded asset paths, and relevant SHA-256 values. Use a cache-bypassed
+hard reload and confirm expected assets. If the canonical runtime is stale,
+broken, unreachable, or different from the intended source, stop and repair it
+before verification; an alternate runtime cannot satisfy the ticket.
+
+## Google Drive Synchronization Cadence (PROCESS-GOV002)
+
+Local repository documentation is authoritative. Sync the operational Drive
+Handoff only for PREPARE HANDOFF, an explicit Engineering Director request, a
+major milestone or phase transition, or the tenth primary ticket-code
+transition since the last successful sync. Count leading primary codes, not
+suffixes. Maintain `Drive sync primary-code transitions: N / 10` in the active
+local Engineering Handoff and reset it only after Drive write and connector
+readback. Otherwise do not invoke Drive.
 
 Local repository docs remain the durable engineering source for architecture,
 roadmaps, specifications, implementation details, and verification instructions.

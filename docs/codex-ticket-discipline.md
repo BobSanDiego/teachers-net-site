@@ -47,6 +47,27 @@ Visually inspect before issuing another implementation ticket.
 
 Prefer smallest viable diff.
 
+## ENGINEERING-GOV001 Runtime Discipline
+
+These runtime controls apply to every future ticket unless the current ticket
+explicitly overrides them:
+
+- Keep one objective per ticket. If a newly discovered issue is not a direct
+  blocker, report it and stop rather than expanding scope.
+- Implement first, then run one structured verification sweep. Reuse proven
+  diagnostics and stop once the objective is proven; do not gather redundant
+  screenshots or repeat unchanged checks.
+- If execution passes approximately eight minutes, checkpoint what is proven,
+  what remains, the estimated remaining time, and why continuation is justified.
+  If it passes approximately twelve minutes without convergence, stop and report
+  the blocker.
+- Capture only the minimum browser evidence required by the ticket. Record
+  visual QA as `PENDING` when it was not actually performed.
+- Prefer removing conflicting CSS owners over layering overrides. Avoid
+  `!important` unless an external/shared contract requires it.
+- Keep completion reports concise and separate implementation, verification,
+  and remaining risks. Stop when further work has diminishing engineering value.
+
 When a ticket edits a local Markdown file and the post-ticket report references
 that file, first move every active hopper file into the hopper's `archive/`
 directory using a UTC timestamp-versioned filename. Then copy the new final
@@ -280,6 +301,13 @@ Before updating Drive, establish current repository facts, update local
 continuity documents first, compare the exact Drive Handoff, and reconcile
 legitimate newer Drive facts before writing. Verify the Drive write by connector
 readback. Do not claim synchronization without confirmation.
+
+PROCESS-GOV002 limits ordinary Drive Handoff synchronization. Sync only for
+PREPARE HANDOFF, an explicit Engineering Director request, a major milestone
+or phase transition, or ten primary-code transitions. Related suffix tickets
+remain one primary code. Keep the durable counter and last successful sync in
+the active local Engineering Handoff; reset the counter only after a successful
+Drive write and connector readback. Do not invoke Drive when no trigger exists.
 
 Update the execution plan only when the critical path, priority order, phase
 boundary, V1/V1.1/V2 classification, settled decision, major dependency, or
@@ -765,6 +793,21 @@ When aborting COMPONENT MATCH MODE:
 - do not commit
 - do not push
 - report reverted files and repo cleanliness
+
+## Canonical Review URL Discipline (PROCESS-GOV001)
+
+Every UI implementation, browser-QA, screenshot, DOM, console, accessibility,
+and human-acceptance report must begin with the exact Engineering Director
+review URL and `Verified against canonical URL: YES` or `NO`. The canonical
+review URL is the authority; another port, server, worktree, launcher, or
+runtime is not a substitute.
+
+Before verification, record PID, command line, cwd, docroot, loaded asset paths,
+and relevant SHA-256 hashes. Hard-reload with cache bypass and confirm the
+expected assets. If the canonical URL is stale, broken, unreachable, or serves
+different code, stop verification and repair the canonical runtime first. If
+canonical verification is `NO`, identify both URLs and stop without claiming
+completion.
 
 ## Browser Verification Environment
 
