@@ -17,8 +17,16 @@ and stop when the objective is proven. Use minimum necessary browser evidence;
 do not repeat unchanged diagnostics. At approximately eight minutes, provide a
 progress checkpoint; at approximately twelve minutes without convergence, stop
 and report the blocker. Never claim visual QA that was not performed. Prefer
-removing conflicting responsive owners over adding overrides, and keep reports
-concise with implementation, verification, and remaining risks separated.
+ removing conflicting responsive owners over adding overrides, and keep reports
+ concise with implementation, verification, and remaining risks separated.
+
+ENGINEERING-GOV002 adds three execution paths: FAST PATH for narrow known-owner
+UI corrections with a measured preflight, one coherent edit, and wide/
+intermediate/narrow smoke test; STANDARD PATH for ordinary implementation; and
+DIAGNOSTIC PATH for unknown, repeated-failure, cross-step, or broad defects.
+FAST PATH permits at most two implementation passes, delays full evidence until
+the smoke test passes, checkpoints at five minutes, stops at eight minutes
+unless only finalization remains, and mandates a stop at ten minutes.
 
 ENGINEERING-GOV001 v2 adoption: Community 3.0 tickets must name the active
 UX006–UX015 milestone before execution, advance only that milestone, treat

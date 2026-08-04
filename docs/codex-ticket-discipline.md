@@ -68,6 +68,42 @@ explicitly overrides them:
 - Keep completion reports concise and separate implementation, verification,
   and remaining risks. Stop when further work has diminishing engineering value.
 
+## ENGINEERING-GOV002 Fast Path
+
+Use FAST PATH for a narrow, known-owner UI correction confined to one component
+or responsive owner, with no architecture, state, data, validation, production,
+security, or accessibility-audit scope. Before editing, inspect only that
+component's complete wide, intermediate, and narrow owners, explicit child
+placements, relevant geometry, active `!important` declarations, source order,
+and winning selector. Measure rendered values rather than estimating them.
+
+FAST PATH then makes one coherent bounded edit, runs a three-state smoke test
+(wide, intermediate, narrow), and begins screenshots or broader evidence only
+after those states pass. It allows at most two implementation passes and two
+smoke-test sweeps. At five minutes, report proven and remaining work; at eight
+minutes, stop unless the implementation already passes and only final evidence
+or commit/push remains; at ten minutes, stop and report. Capture only the
+ticket-required evidence and keep one canonical browser page.
+
+STANDARD PATH remains the default for ordinary implementation work and uses the
+ticket's proportionate verification requirements. DIAGNOSTIC PATH is required
+for unknown root causes, repeated failures, cross-step state, broad responsive
+redesign, or any defect that cannot be resolved within the FAST PATH limits.
+ENGINEERING-GOV002 supplements ENGINEERING-GOV001; it does not weaken truth,
+verification, stop-boundary, or evidence requirements.
+
+Future narrow tickets should state:
+
+```text
+Execution mode: FAST PATH
+Required pre-edit inspection: complete local owner only
+Smoke-test states: wide, intermediate, narrow
+Maximum implementation passes: 2
+Full evidence begins only after smoke test passes.
+Stop at 8 minutes unless only final evidence or commit/push remains.
+Mandatory stop at 10 minutes.
+```
+
 When a ticket edits a local Markdown file and the post-ticket report references
 that file, first move every active hopper file into the hopper's `archive/`
 directory using a UTC timestamp-versioned filename. Then copy the new final
