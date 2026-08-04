@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 from datetime import datetime, timezone
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -53,8 +54,9 @@ def main() -> None:
                           f'branch={info["branch"]} · commit={info["commit"]} · asset={info["asset"]} · '
                           f'root={info["root"]} · built={info["built"]}</span>')
                 content = content.replace("<!-- JC053_BUILD_BANNER -->", banner)
-                content = content.replace("mockup.css?v=jc053-20260730-compact-01", f'mockup.css?v={info["asset"]}')
-                content = content.replace("mockup.js?v=jc053-20260730-navbar-01", f'mockup.js?v={info["asset"]}')
+                content = re.sub(r'BUILD JC053-[^< ]+', f'BUILD {info["asset"]}', content)
+                content = re.sub(r'mockup\.css\?v=[^"\']+', f'mockup.css?v={info["asset"]}', content)
+                content = re.sub(r'mockup\.js\?v=[^"\']+', f'mockup.js?v={info["asset"]}', content)
                 payload = content.encode()
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")
