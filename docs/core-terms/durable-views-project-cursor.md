@@ -76,6 +76,10 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   binding and falls back to the existing Jobs-owned compatibility path when no
   binding or resolution is available. Runtime option smoke test returned 22
   options without a binding; browser certification remains pending.
+- DV-023 partial browser certification completed: authenticated admin authoring,
+  validation, preview, publish, Jobs binding, and live adapter resolution pass.
+  Public employer-form verification remains pending because the QA account has
+  no active employer membership.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -112,7 +116,7 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Complete DV-023 authenticated browser end-to-end certification.
+1. Complete DV-023 employer-session browser certification after an active employer membership is available.
 4. Complete DV-023 authenticated browser end-to-end certification.
 5. Authorize and assess the next consumer only after Job Center release-candidate status.
 

@@ -121,13 +121,19 @@ to a currently published Durable View version and for removing that binding.
 The Jobs service remains the authority for matching/published checks and
 platform resolution. PHP/DDEV checks passed; authenticated browser evidence
 remains pending.
+DV-023 browser certification is partially complete. Authenticated admin
+evidence passed draft authoring, group creation, valid validation, preview,
+publish, and Jobs binding. The live adapter smoke test returned the bound
+canonical Grade Level option. Public employer-form verification is blocked by
+the current account's missing active employer membership; no certification
+claim is made for that final surface.
 DV-022 wired the live `configured_options_for_field()` path to prefer the
 published Durable Views adapter for valid bindings, while preserving the
 legacy Jobs-owned path as fallback. PHP/DDEV checks passed and an unbound
 runtime smoke test returned 22 legacy options; authenticated browser evidence
 remains pending.
 
-Implement DV-023 authenticated browser end-to-end certification before Community adoption.
+Complete DV-023 employer-session browser certification before Community adoption.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 
