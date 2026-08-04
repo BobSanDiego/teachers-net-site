@@ -20,6 +20,14 @@ and report the blocker. Never claim visual QA that was not performed. Prefer
 removing conflicting responsive owners over adding overrides, and keep reports
 concise with implementation, verification, and remaining risks separated.
 
+ENGINEERING-GOV001 v2 adoption: Community 3.0 tickets must name the active
+UX006–UX015 milestone before execution, advance only that milestone, treat
+runtime and tooling as support work, perform one structured verification sweep,
+and stop once the objective is proven. Completion reports begin with roadmap
+status and state the completed capability, remaining capability, and remaining
+risk. Later milestone work is not authorized by diagnostics or infrastructure
+work.
+
 ## Persistence Model
 
 The global Engineering Director Playbook lives outside this repository and

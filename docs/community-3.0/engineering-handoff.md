@@ -1,5 +1,15 @@
 # Community 3.0 Engineering Handoff
 
+## Product-First Execution Governance
+
+`ENGINEERING-GOV001 v2 — Product-First Execution Governance` is adopted for
+future Community 3.0 tickets. Each ticket names one active UX006–UX015
+milestone, advances only that milestone, reuses accepted diagnostics, performs
+one structured verification sweep, and stops when the objective is proven.
+Runtime, browser, DDEV, parser, and tooling work is support-only. Reports begin
+with roadmap status and state implementation, verification, remaining
+capability, and risk. No later milestone is authorized by infrastructure work.
+
 ## 1. Current Phase
 
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
