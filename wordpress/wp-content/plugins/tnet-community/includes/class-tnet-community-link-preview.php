@@ -20,4 +20,13 @@ final class TNet_Community_Link_Preview {
         if ($choice === 'raw') return ['status'=>'raw_only','url'=>$preview['url'] ?? '','metadata'=>[],'source'=>$preview['source'] ?? 'local-fixture'];
         return $preview;
     }
+    public static function render(array $preview): string {
+        if (($preview['status'] ?? '') === 'removed' || ($preview['status'] ?? '') !== 'preview') return '';
+        $m = is_array($preview['metadata'] ?? null) ? $preview['metadata'] : [];
+        $image = !empty($m['image_url']) ? '<img src="'.esc_url($m['image_url']).'" alt="" loading="lazy">' : '';
+        $title = esc_html($m['title'] ?? 'Link preview');
+        $description = esc_html($m['description'] ?? '');
+        $host = esc_html($m['site_name'] ?? (string)wp_parse_url((string)($preview['url'] ?? ''), PHP_URL_HOST));
+        return '<aside class="card-preview link-preview" aria-label="Link preview">'.$image.'<strong>'.$title.'</strong><p>'.$description.'</p><small>'.$host.'</small></aside>';
+    }
 }
