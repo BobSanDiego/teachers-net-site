@@ -1,5 +1,13 @@
 # Community 3.0 Engineering Handoff
 
+Screenshot evidence governance: Engineering Director screenshots are mandatory
+evidence when a ticket requires them. Codex must access and inspect the actual
+attachment through the supported attachment/conversation route, reconcile
+Windows/WSL and hopper locations, and record the accessible identifier/path.
+After one bounded repair attempt, unavailable evidence is a stop condition;
+Codex must not substitute its own screenshots, DOM output, source inspection,
+or automated assertions.
+
 ## Product-First Execution Governance
 
 `ENGINEERING-GOV001 v2 — Product-First Execution Governance` is adopted for

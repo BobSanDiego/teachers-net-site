@@ -36,6 +36,14 @@ status and state the completed capability, remaining capability, and remaining
 risk. Later milestone work is not authorized by diagnostics or infrastructure
 work.
 
+ENGINEERING-GOV002 adoption: When a Community ticket references Engineering
+Director screenshots or visual evidence, Codex must locate and open the actual
+attachment through the supported attachment/conversation mechanism, record its
+accessible identifier/path, and inspect it before implementation or acceptance.
+After one bounded access-repair attempt, Codex must stop if the evidence remains
+unavailable; it may not substitute its own screenshots, DOM output, source
+inspection, or automated assertions.
+
 ## Persistence Model
 
 The global Engineering Director Playbook lives outside this repository and

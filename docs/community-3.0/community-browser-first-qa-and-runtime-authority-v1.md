@@ -2,6 +2,23 @@
 
 Status: active local engineering guidance
 
+## Screenshot Evidence Stop Condition
+
+If a ticket requires Engineering Director screenshots or visual evidence and
+Codex cannot access and inspect those files, Codex must stop before
+implementation or acceptance. It must attempt one bounded access correction,
+report the unresolved deficit if that fails, and request the minimum next
+action. It may not substitute its own screenshots, DOM output, source
+inspection, or automated assertions for unavailable Engineering Director
+evidence.
+
+When screenshots are referenced, first use the supported conversation/MCP
+attachment mechanism, then reconcile Windows and WSL paths, then check the
+project and active hopper copies. Record the exact accessible identifier/path
+and inspect the image. If Engineering Director evidence contradicts Codex
+evidence, reconcile route, commit, runtime badge, viewport, authentication,
+cache, DOM state, and timestamps before any PASS claim.
+
 ## Scope
 
 This document governs browser-facing Community 3.0 recovery tickets. It is
