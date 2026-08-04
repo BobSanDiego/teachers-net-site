@@ -116,7 +116,13 @@ Project Cursor before implementation proceeds.
 
 ## 9. Next Execution Ticket
 
-Implement DV-021 minimum protected Jobs binding controls before Community adoption.
+DV-021 added protected Jobs administrator controls for binding one form field
+to a currently published Durable View version and for removing that binding.
+The Jobs service remains the authority for matching/published checks and
+platform resolution. PHP/DDEV checks passed; authenticated browser evidence
+remains pending.
+
+Implement DV-022 live Jobs adapter cutover with fallback before Community adoption.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

@@ -211,8 +211,8 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-018 | Audit Job Center sprint readiness and authoring gaps | 5 | Complete; browser authoring/live cutover incomplete |
 | DV-019 | Build protected draft composition workspace | 5 | Complete; committed and pushed; browser certification pending |
 | DV-020 | Add groups, preview, and validation feedback | 5 | Complete; committed and pushed; browser certification pending |
-| DV-021 | Add administrator Jobs binding controls | 5 | Next |
-| DV-022 | Wire live Jobs adapter cutover with fallback | 4 | Planned |
+| DV-021 | Add administrator Jobs binding controls | 5 | Complete; committed and pushed; browser certification pending |
+| DV-022 | Wire live Jobs adapter cutover with fallback | 4 | Next |
 | DV-023 | Certify browser end-to-end Job Center workflow | 5 | Planned |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
