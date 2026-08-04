@@ -14,3 +14,19 @@
 | M9 | Consider communications provider, campaign, analytics, AI, and post-view expansion. | Stop unless all prior controls are accepted. |
 
 This sequence is planning authority only. It does not authorize migrations, schema changes, plugin changes, routes, mail delivery, or production edits.
+
+## Recovery Gate
+
+`COMMUNITY-RESTART001` is a temporary, explicit browser-evidence gate over
+historical Community UX claims. It authorizes one local-only Modern Topic
+Composer v1 correction against the canonical Community DDEV URL. Acceptance
+requires authenticated before/after screenshots, a valid runtime badge, and a
+browser-gap matrix. It does not authorize roadmap expansion, production UI,
+schema, migration, delivery, or any additional UX slice.
+
+`COMMUNITY-RESTART003` is the completed recovery follow-up: one local
+browser-visible media-picker correction only. It does not advance M0-M9,
+authorize production changes, or reopen the planning stop conditions. Future
+Community tickets must begin from `tmp/hopper/tnet-3.0/current`, archive that
+directory first, and provide a validated current-cycle payload without copying
+screenshots into the hopper.

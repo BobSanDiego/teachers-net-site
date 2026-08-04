@@ -115,3 +115,39 @@ Continue documentation-first convergence. Do not issue implementation tickets,
 change schemas, import taxonomy, migrate records, redesign production UI, or
 start communication delivery until the first planning package and its stop
 conditions are approved.
+
+## Browser-First Recovery Gate — COMMUNITY-RESTART001
+
+Historical Community UX completion claims are informational only. For the
+browser-facing recovery sprint, the authenticated browser at
+`https://teachers-net-community3.ddev.site` is the acceptance authority.
+Source inspection, lint output, commit identity, HTTP checks, and completion
+reports do not establish UX acceptance without matching browser evidence and
+the runtime authority badge.
+
+The single authorized recovery slice is Modern Topic Composer v1: remove the
+visible Image Alt field, Representative Link selector, and Preview selector
+while preserving shared media architecture, uploads, validation, publication,
+routing, repository, and schema behavior. Stop after before/after screenshots,
+the browser-gap matrix, runtime badge evidence, and the hopper payload are
+captured. No subsequent UX ticket is authorized by this gate.
+
+## Handoff Update — COMMUNITY-RESTART003
+
+`COMMUNITY-RESTART003 — Modern Media Picker v1 + Hopper Governance Recovery`
+is complete for its single authorized local correction. The authenticated
+Community DDEV runtime at `https://teachers-net-community3.ddev.site` is the
+acceptance authority. The topic composer now exposes one visible `Add Photo`
+camera action while retaining chooser activation, paste, drag/drop, preview,
+remove, validation, upload, publication, routing, repository, schema, and
+shared-media behavior. Browser acceptance was recorded at 1440px with runtime
+status `ok`.
+
+The implementation is Community commit
+`80878116c05eac550b214079046b180c853415f4` on `COMMUNITY3-ui-working`.
+Evidence paths are recorded in
+`docs/community-3.0/community-restart003-recovery-report.md`; screenshots are
+not hopper artifacts. The authoritative recovery hopper is
+`tmp/hopper/tnet-3.0/current` in this site repository. Cycle `260804004439`
+archived the prior contents and passed validation. No further correction is
+authorized by this gate.

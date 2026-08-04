@@ -4,6 +4,56 @@
 
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
 
+## 1A. Active Browser-First Recovery Gate
+
+`COMMUNITY-RESTART001 — Browser-First Recovery Sprint` supersedes historical
+browser-facing UX acceptance for this bounded local recovery task only. Verify
+the exact canonical URL
+`https://teachers-net-community3.ddev.site` before implementation and record
+the runtime badge, branch, commit, plugin hash, controller, and authenticated
+before screenshots.
+
+The sole implementation objective is Modern Topic Composer v1: remove the
+visible Image Alt field, Representative Link selector, and Preview selector
+without changing shared media architecture, uploads, validation, publication,
+routing, repository, or schema behavior. Acceptance requires after screenshots
+showing all three controls absent while the runtime badge remains valid. Stop
+immediately after the validated before/after evidence and hopper payload; no
+additional UX work is authorized.
+
+## 1C. COMMUNITY-RESTART003 Handoff Result
+
+`COMMUNITY-RESTART003 — Modern Media Picker v1 + Hopper Governance Recovery`
+is complete for its single local browser-visible correction. At the
+authenticated canonical route
+`https://teachers-net-community3.ddev.site/community/new/`, the composer
+shows one `Add Photo` camera action and no visible native file input. Existing
+chooser, paste, drag/drop, preview, remove, validation, upload, publication,
+routing, repository, schema, and shared-media behavior remain in place.
+Acceptance was captured once at 1440px; runtime status was `ok`.
+
+The implementation is Community commit
+`80878116c05eac550b214079046b180c853415f4` on `COMMUNITY3-ui-working`, pushed
+to the remote branch. The completion report is
+`docs/community-3.0/community-restart003-recovery-report.md`.
+
+The authoritative handoff hopper is
+`/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current`, not a
+Community-repository hopper. Cycle `260804004439` archived all prior current
+contents and passed validation. Screenshots are referenced by canonical path
+and are not copied into the hopper. Stop here: no further correction is
+authorized by this ticket.
+
+## 1B. Recovery Result
+
+The single correction is complete and browser-verified at the canonical URL.
+The authenticated after-state omits all three target controls, and the runtime
+badge reports `status=ok` for the Community DDEV project, worktree, branch,
+commit, plugin hash, route, and controller. See the Community worktree reports
+`community-restart001-resolution-v1.md` and
+`community-restart001-browser-gap-matrix-v1.md`. Stop pending explicit
+acceptance; do not begin another UX slice.
+
 ## 2. Current Ticket
 
 C3-URL001 is complete as a documentation-only routing decision and

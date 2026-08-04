@@ -4,6 +4,29 @@
 
 Maintenance
 
+## Active Recovery Gate
+
+`COMMUNITY-RESTART001 — Browser-First Recovery Sprint` is the current explicit
+local-only execution boundary. Historical browser-facing UX completion claims
+are withdrawn from acceptance until re-proven by authenticated screenshots and
+the runtime authority badge at:
+`https://teachers-net-community3.ddev.site`.
+
+The only authorized implementation slice is Modern Topic Composer v1: remove
+the visible Image Alt field, Representative Link selector, and Preview
+selector, preserving shared media, upload, validation, publication, routing,
+repository, and schema behavior. Stop after before/after evidence and the
+validated hopper payload. Do not begin another UX ticket under this gate.
+
+## Recovery Result
+
+`COMMUNITY-RESTART001` is complete for its single authorized correction. The
+canonical authenticated browser now shows none of the three target controls and
+the runtime badge reports `status=ok`. Evidence and the gap matrix are recorded
+in the Community worktree as `community-restart001-resolution-v1.md` and
+`community-restart001-browser-gap-matrix-v1.md`. Stop here pending explicit
+acceptance; no subsequent UX ticket is authorized.
+
 ## Current Phase
 
 Bounded implementation preparation — C3-CORE001 complete; no delivery implementation begun.
@@ -124,6 +147,26 @@ C3-IMP005 is complete as a test-only in-memory bell repository at
 `tools/community3/notification_bell_repository.py`, with tests and interface
 documentation. It consumes only eligible validated candidates, preserves bell
 state separately from delivery and engagement, and adds no persistence or UI.
+
+## Handoff Update — COMMUNITY-RESTART003
+
+`COMMUNITY-RESTART003 — Modern Media Picker v1 + Hopper Governance Recovery`
+is complete. The authenticated browser accepted the single 1440px correction
+at `https://teachers-net-community3.ddev.site/community/new/`: the visible
+native chooser was replaced by `Add Photo`, while chooser activation,
+paste-first staging, drag/drop, preview, remove, validation, upload,
+publication, routing, repository, schema, and shared-media behavior were
+preserved. Runtime evidence reported `status=ok`.
+
+Implementation authority is `/home/bobreap/projects/teachers-net-community3`,
+branch `COMMUNITY3-ui-working`, commit
+`80878116c05eac550b214079046b180c853415f4`, pushed to the remote branch.
+The completion report is
+`docs/community-3.0/community-restart003-recovery-report.md`. The handoff
+hopper authority is explicitly
+`/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current`.
+Cycle `260804004439` archived the previous current contents and passed final
+validation. Preserve this archive-first ritual for the next ticket.
 
 OPS-CONT001 is complete as a process audit and validation correction. It
 documents the verified continuity drift cause and adds the semantic guard at

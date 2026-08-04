@@ -2,6 +2,26 @@
 
 These tickets are proposed only; none is executed by C3-RR001.
 
+## Browser-first recovery queue
+
+This is an operational recovery sequence separate from the strategic C3 queue
+below. Each item requires its own explicit ticket, one browser-visible
+objective, runtime-authority preflight, proportional evidence mode, and
+archive-first hopper cycle:
+
+1. `COMMUNITY-RESTART001` — Modern Topic Composer visible-control recovery —
+   complete and browser-verified.
+2. `COMMUNITY-RESTART003` — Modern Media Picker and hopper governance recovery
+   — complete and browser-verified.
+3. Integrated staged-image presentation — proposed; not authorized.
+4. Published image cleanup — proposed; not authorized.
+5. Feed-card navigation and text expansion — proposed; not authorized.
+6. Reply trigger/composer behavior and reply media parity — proposed; not
+   authorized.
+
+Historical UX005–UX009 completion claims remain informational until their
+intended outcomes are independently re-proven in the authenticated browser.
+
 1. **C3-PLAN002 — Engineering Director reconciliation review.** Accept or revise this package and choose M1 scope.
 2. **C3-TRUST001 — Subscriber policy contract.** Define consent, pause, unsubscribe, frequency, and history.
 3. **C3-TRUST002 — Suppression and abuse-control contract.** Define dedupe, throttles, audit, and kill switches.

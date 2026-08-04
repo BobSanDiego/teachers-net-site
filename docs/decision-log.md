@@ -37,6 +37,27 @@
   them.
 - Supported typed origins must resolve independently of current job inventory.
 - Google Places Autocomplete is not a V1 release blocker.
+
+## Community 3.0 Documentation Alignment Decisions — 2026-08-04
+
+- **Runtime authority gate:** Community browser work must align browser URL,
+  DDEV project, mounted plugin tree, authority worktree, branch, commit,
+  plugin hash, route, controller, and rendered runtime badge before acceptance.
+- **Browser-visible UX authority:** Repository state and runtime availability
+  are supporting evidence; authenticated rendered browser behavior is required
+  to claim a browser-facing product milestone.
+- **Evidence modes:** Normal, Responsive, and Diagnostic evidence are selected
+  by ticket risk. Normal work uses one relevant AFTER screenshot and may reuse
+  the prior accepted AFTER as BEFORE; full matrices are not the default.
+- **Archive-first Community handoff:** The Community project hopper is
+  `tmp/hopper/tnet-3.0/current` in the site repository. Every ticket archives
+  the current set before work and validates a current-ticket-only payload.
+- **Lightweight composer direction:** The Community composer uses a visible
+  Add Photo action with paste/drop, automatic representative-link behavior,
+  automatic baseline accessibility metadata, and no heavy editor by default.
+
+These decisions are project-specific and do not authorize production changes,
+schema migration, delivery, or broad UX implementation.
 - A controlled real-job pilot precedes bulk loading.
 - Employer claims require authority verification; recruiter identities are not
   auto-created from imported records.
