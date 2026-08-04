@@ -44,6 +44,9 @@ admin surface. It is draft-only and supports canonical framework/term
 selection, include/exclude, label/order, descendant intent, entry listing, and
 removal. PHP and DDEV runtime checks passed; authenticated browser evidence is
 still pending.
+DV-020 added draft group creation, group assignment during entry authoring,
+resolved draft preview, and visible validation state/messages. PHP and DDEV
+runtime checks passed; authenticated browser evidence remains pending.
 
 ## 3. Last Completed Milestone
 
@@ -113,7 +116,7 @@ Project Cursor before implementation proceeds.
 
 ## 9. Next Execution Ticket
 
-Implement DV-020 groups, preview, and validation feedback before Community adoption.
+Implement DV-021 minimum protected Jobs binding controls before Community adoption.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

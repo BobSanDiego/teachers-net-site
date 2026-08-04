@@ -67,6 +67,8 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   framework/term selection, include/exclude, label/order, descendant intent,
   draft entry listing, and draft-only removal are available. PHP and DDEV
   runtime checks passed; authenticated browser certification remains pending.
+- DV-020 groups, draft preview, and visible validation feedback implemented in
+  Profilaxes. Authenticated browser certification remains pending.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -103,8 +105,7 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Complete DV-020 groups, preview, and validation feedback.
-2. Implement DV-021 minimum protected Jobs binding controls.
+1. Implement DV-021 minimum protected Jobs binding controls.
 3. Implement DV-022 live Jobs adapter cutover with fallback.
 4. Complete DV-023 authenticated browser end-to-end certification.
 5. Authorize and assess the next consumer only after Job Center release-candidate status.
