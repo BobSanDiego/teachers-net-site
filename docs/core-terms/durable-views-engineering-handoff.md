@@ -121,8 +121,13 @@ to a currently published Durable View version and for removing that binding.
 The Jobs service remains the authority for matching/published checks and
 platform resolution. PHP/DDEV checks passed; authenticated browser evidence
 remains pending.
+DV-022 wired the live `configured_options_for_field()` path to prefer the
+published Durable Views adapter for valid bindings, while preserving the
+legacy Jobs-owned path as fallback. PHP/DDEV checks passed and an unbound
+runtime smoke test returned 22 legacy options; authenticated browser evidence
+remains pending.
 
-Implement DV-022 live Jobs adapter cutover with fallback before Community adoption.
+Implement DV-023 authenticated browser end-to-end certification before Community adoption.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

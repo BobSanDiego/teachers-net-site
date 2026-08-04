@@ -72,6 +72,10 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 - DV-021 protected Jobs administrator binding controls implemented in the Jobs
   plugin. The control offers only current published View versions and delegates
   binding validation/resolution to the existing Jobs service boundary.
+- DV-022 live Jobs option resolution now prefers a valid published Durable View
+  binding and falls back to the existing Jobs-owned compatibility path when no
+  binding or resolution is available. Runtime option smoke test returned 22
+  options without a binding; browser certification remains pending.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -108,7 +112,7 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Implement DV-022 live Jobs adapter cutover with fallback.
+1. Complete DV-023 authenticated browser end-to-end certification.
 4. Complete DV-023 authenticated browser end-to-end certification.
 5. Authorize and assess the next consumer only after Job Center release-candidate status.
 
