@@ -39,6 +39,11 @@ evidence; see `docs/core-terms/durable-views-dv016-community-source-boundary.md`
 DV-018 completed the Job Center sprint readiness audit. The platform/service
 MVP remains certified but browser authoring and live Jobs cutover are not yet
 complete; see `docs/core-terms/durable-views-dv018-sprint-readiness-gap-audit.md`.
+DV-019 implemented the protected draft composition workspace in the Profilaxes
+admin surface. It is draft-only and supports canonical framework/term
+selection, include/exclude, label/order, descendant intent, entry listing, and
+removal. PHP and DDEV runtime checks passed; authenticated browser evidence is
+still pending.
 
 ## 3. Last Completed Milestone
 
@@ -108,7 +113,7 @@ Project Cursor before implementation proceeds.
 
 ## 9. Next Execution Ticket
 
-Implement DV-019 protected draft composition workspace before Community adoption.
+Implement DV-020 groups, preview, and validation feedback before Community adoption.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

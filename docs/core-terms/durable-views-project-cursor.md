@@ -63,6 +63,10 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   source access is required before further work.
 - DV-018 Job Center sprint readiness and authoring gap audit completed; browser
   authoring and live Jobs cutover remain incomplete.
+- DV-019 protected draft composition workspace implemented in Profilaxes;
+  framework/term selection, include/exclude, label/order, descendant intent,
+  draft entry listing, and draft-only removal are available. PHP and DDEV
+  runtime checks passed; authenticated browser certification remains pending.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -99,11 +103,11 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Implement DV-019 protected draft composition workspace.
-2. Complete DV-020 groups, preview, and validation feedback.
-3. Implement the minimum protected View administration workflow.
-4. Implement preview, clone, retire, and restore behavior.
-5. Bind the first Job Center consumer through the platform contract.
+1. Complete DV-020 groups, preview, and validation feedback.
+2. Implement DV-021 minimum protected Jobs binding controls.
+3. Implement DV-022 live Jobs adapter cutover with fallback.
+4. Complete DV-023 authenticated browser end-to-end certification.
+5. Authorize and assess the next consumer only after Job Center release-candidate status.
 
 ## Current Risks
 
