@@ -94,7 +94,7 @@
   const compensationGuidance = document.createElement("p");
   compensationGuidance.className = "compensation-guidance";
   compensationGuidance.innerHTML =
-    "Listings with salary information receive more qualified views and applicants.<br><span><strong>Note:</strong> Some locations require salary information in job listings by law.</span>";
+    "<strong>Listings with salary attract more qualified applicants.</strong><br><span><em>Some locations require salary information by law.</em></span>";
   compensationGuidance.hidden = true;
   compensationSection
     .querySelector(".compensation-form")
