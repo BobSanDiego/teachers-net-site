@@ -1,0 +1,22 @@
+project=views
+cycle=260805193308
+commit=92852a9
+push=pushed
+
+{"path": "tmp/hopper/views/Report (Views)/ARCHITECT-REPORT.txt", "purpose": "workflow evidence", "sha256": "95b675a9a22ba2d58c977059cc9b2974460dcd0fdc068e7e360ed36c5d657580", "size": 2047}
+{"path": "tmp/hopper/views/Report (Views)/ARCHITECTURE-DELTA.md", "purpose": "workflow evidence", "sha256": "55c5c0f367619233d2552d38725c5aae241e62ff3f2fe41fba614d3d2477dd48", "size": 276}
+{"path": "tmp/hopper/views/Report (Views)/COMMAND-RESULT.txt", "purpose": "workflow evidence", "sha256": "61f61ca4fba9d653dc1ecaba36e6c07bb8d1cde575677f7cdfdc5a4f18f2a08b", "size": 344}
+{"path": "tmp/hopper/views/Report (Views)/EVIDENCE-INDEX.txt", "purpose": "workflow evidence", "sha256": "7ad19cc40cd5efcb765cf37feddcb36b6a778bc0cee9b30d403cc37bd72e61f6", "size": 305}
+{"path": "tmp/hopper/views/Report (Views)/NEXT-STEP.txt", "purpose": "workflow evidence", "sha256": "c57e208c50032229b2a29ea441746d9ea08aaad417f982ce9376e8a0e3fb7fe3", "size": 220}
+{"path": "tmp/hopper/views/Report (Views)/completion-report.txt", "purpose": "workflow evidence", "sha256": "8fb76378905d3a9082dd5a0a08a3ba86acbbc71bb81a870d6841841f78b1b3df", "size": 339}
+{"path": "tmp/hopper/views/Hopper (Views)/LIST-COMMANDS-output.txt", "purpose": "workflow evidence", "sha256": "5c55071b83eb50ffa1196d32c7ee4d8d90c50e0ae7318241995ebfbe01487cb8", "size": 2026}
+{"path": "tmp/hopper/views/Hopper (Views)/SHOW-HOPPER-INDEX-output.txt", "purpose": "workflow evidence", "sha256": "be0eafaf6ab9da4ad186ae3a42c214eb1419c04a49f086439784211e75e8254b", "size": 225}
+{"path": "tmp/hopper/views/Hopper (Views)/SHOW-QUEUE-output.txt", "purpose": "workflow evidence", "sha256": "ca7a1703cef028b1ba5668eed0fdd12459f0d1b9505cd373feb509285f081f52", "size": 205}
+{"path": "tmp/hopper/views/Hopper (Views)/SHOW-REPORT-output.txt", "purpose": "workflow evidence", "sha256": "9d90a854b3a65e4845b11ce3e91982e570b2125b8f6c8264f71b52e3fb578266", "size": 216}
+{"path": "tmp/hopper/views/Hopper (Views)/VALIDATE-WORKFLOW-output.txt", "purpose": "workflow evidence", "sha256": "d2338ee6c3f1e306dc36e6dfcd9e33e5ca48b6dbbf17a01d6da5a353fb079e64", "size": 123}
+{"path": "tmp/hopper/views/Hopper (Views)/WORKFLOW-ADOPTION001-source-ticket.txt", "purpose": "workflow evidence", "sha256": "28c52c083b29fd92c862cc8af056079924ad78629848d81cf237118e5e2eb71b", "size": 9327}
+{"path": "tmp/hopper/views/Hopper (Views)/WORKFLOW-STATUS-output.txt", "purpose": "workflow evidence", "sha256": "24c542f76d867490342e654eb2270450c9696dad9376d5aed15166b7df0c45e8", "size": 356}
+{"path": "tmp/hopper/views/Hopper (Views)/command-registry.json", "purpose": "workflow evidence", "sha256": "c5a690d31e7fadee75ffac302e698afd3f6e579efa25ba07e5c2ccd39d6b38bc", "size": 2989}
+{"path": "tmp/hopper/views/Hopper (Views)/views-workflow-adoption.md", "purpose": "workflow evidence", "sha256": "767eeaa8bea414998f1abc1a3efe3ac67cdb8fc14da6ff1f320b4f3ddbdf97e5", "size": 1774}
+{"path": "tmp/hopper/views/Hopper (Views)/workflow-ledger.json", "purpose": "workflow evidence", "sha256": "6435b6489ef740c04ba7e5200b69ae6e4a3b73786b595a9add19c81cd03e6b3f", "size": 332}
+{"path": "tmp/hopper/views/Hopper (Views)/workflow.py", "purpose": "workflow evidence", "sha256": "bb54ddf6d2f30d865ea418a4e17119622473529d23972595d22e017ec411e492", "size": 6031}
