@@ -11,8 +11,8 @@
   "artifacts": [
     {
       "path": "tmp/hopper/views/Report (Views)/ARCHITECT-REPORT.txt",
-      "size": 2047,
-      "sha256": "95b675a9a22ba2d58c977059cc9b2974460dcd0fdc068e7e360ed36c5d657580",
+      "size": 2272,
+      "sha256": "f46a01d4008cc077d780877dc352b333ac30eafeb8e1951913c001b7c823b5d2",
       "purpose": "workflow evidence"
     },
     {
@@ -46,9 +46,39 @@
       "purpose": "workflow evidence"
     },
     {
+      "path": "tmp/hopper/views/Hopper (Views)/ARCHITECT-REPORT.txt",
+      "size": 2272,
+      "sha256": "f46a01d4008cc077d780877dc352b333ac30eafeb8e1951913c001b7c823b5d2",
+      "purpose": "workflow evidence"
+    },
+    {
+      "path": "tmp/hopper/views/Hopper (Views)/ARCHITECTURE-DELTA.md",
+      "size": 276,
+      "sha256": "55c5c0f367619233d2552d38725c5aae241e62ff3f2fe41fba614d3d2477dd48",
+      "purpose": "workflow evidence"
+    },
+    {
+      "path": "tmp/hopper/views/Hopper (Views)/COMMAND-RESULT.txt",
+      "size": 344,
+      "sha256": "61f61ca4fba9d653dc1ecaba36e6c07bb8d1cde575677f7cdfdc5a4f18f2a08b",
+      "purpose": "workflow evidence"
+    },
+    {
+      "path": "tmp/hopper/views/Hopper (Views)/EVIDENCE-INDEX.txt",
+      "size": 305,
+      "sha256": "7ad19cc40cd5efcb765cf37feddcb36b6a778bc0cee9b30d403cc37bd72e61f6",
+      "purpose": "workflow evidence"
+    },
+    {
       "path": "tmp/hopper/views/Hopper (Views)/LIST-COMMANDS-output.txt",
       "size": 2026,
       "sha256": "5c55071b83eb50ffa1196d32c7ee4d8d90c50e0ae7318241995ebfbe01487cb8",
+      "purpose": "workflow evidence"
+    },
+    {
+      "path": "tmp/hopper/views/Hopper (Views)/NEXT-STEP.txt",
+      "size": 220,
+      "sha256": "c57e208c50032229b2a29ea441746d9ea08aaad417f982ce9376e8a0e3fb7fe3",
       "purpose": "workflow evidence"
     },
     {
@@ -71,8 +101,8 @@
     },
     {
       "path": "tmp/hopper/views/Hopper (Views)/VALIDATE-WORKFLOW-output.txt",
-      "size": 123,
-      "sha256": "d2338ee6c3f1e306dc36e6dfcd9e33e5ca48b6dbbf17a01d6da5a353fb079e64",
+      "size": 124,
+      "sha256": "7713a79d079ede9a3028652e5e5afab01bcab9458e53f870d456352f61d5efca",
       "purpose": "workflow evidence"
     },
     {
@@ -91,6 +121,12 @@
       "path": "tmp/hopper/views/Hopper (Views)/command-registry.json",
       "size": 2989,
       "sha256": "c5a690d31e7fadee75ffac302e698afd3f6e579efa25ba07e5c2ccd39d6b38bc",
+      "purpose": "workflow evidence"
+    },
+    {
+      "path": "tmp/hopper/views/Hopper (Views)/completion-report.txt",
+      "size": 339,
+      "sha256": "8fb76378905d3a9082dd5a0a08a3ba86acbbc71bb81a870d6841841f78b1b3df",
       "purpose": "workflow evidence"
     },
     {
