@@ -243,3 +243,15 @@ desktop columns with intentional stacked controls below 1200px. Screenshots
 were captured at 1440px, 1200px, and 1024px.
 
 Profilaxes commit: `210d96f`.
+
+## DV-UX007 Completion
+
+DV-UX007 rebuilt the authoring flow around the approved Library → Current View
+dual-tree composition model. The active UI now uses a Compose View workspace,
+an explicit shuttle action, parent/descendant selection scope, and a simplified
+draft tree while retaining the existing persistence, resolver, lifecycle,
+preview, validation, publication, and Jobs boundaries. No schema or repository
+redesign was introduced.
+
+Profilaxes branch `agent/durable-views-dv003-persistence`, commit `23c703a`,
+was pushed. Completion report: `docs/core-terms/durable-views-dv-ux007-completion-report.md`.
