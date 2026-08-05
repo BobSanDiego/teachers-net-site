@@ -250,3 +250,15 @@ These are preservation findings, not implementation authorization. No schema,
 repository, resolver, UI, Core Terms, or Jobs changes were made. The next
 ticket must be separately authorized after review of
 `docs/core-terms/durable-views-dv-arch002-future-expansion-preservation-audit.md`.
+
+## DV-UX006A Completion
+
+DV-UX006A corrected the visual owners diagnosed at the canonical URL: the
+editing context no longer uses sticky positioning, desktop source rows have
+stable label/status/action columns, and 1200px/1024px layouts intentionally
+stack representation and Add controls without horizontal overflow. The
+canonical browser passed at 1440px, 1200px, and 1024px; screenshots were saved
+for all three widths and the console had no errors.
+
+Profilaxes branch `agent/durable-views-dv003-persistence`, commit `210d96f`,
+was pushed. No Views behavior or architecture changed.

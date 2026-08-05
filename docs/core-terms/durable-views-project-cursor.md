@@ -233,3 +233,13 @@ actions. Existing draft persistence, validation, preview, publication, drag
 ordering, and Jobs integration were preserved.
 
 Profilaxes commit: `6cd6c48`.
+
+## DV-UX006A Completion
+
+DV-UX006A stabilized the rendered dual-tree workbench without changing
+behavior or architecture. The sticky editing context was returned to normal
+flow, the 35/65 pane ratio was preserved, and source rows now use compact
+desktop columns with intentional stacked controls below 1200px. Screenshots
+were captured at 1440px, 1200px, and 1024px.
+
+Profilaxes commit: `210d96f`.
