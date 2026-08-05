@@ -5,17 +5,18 @@
 For the active Teachers.Net project, the canonical slug is `jobcenter`. Every ticket
 must begin by running `python3 tools/hopper/clean_cycle.py begin
 --project jobcenter --cycle <YYMMDDHHMMSS>`. This archives the prior
-`tmp/hopper/jobcenter/current/` contents into the never-deleted
-`tmp/hopper/jobcenter/archive/<cycle-id>/` directory and leaves `current/`
-ready for one drag-and-drop handoff.
+`tmp/hopper/jobcenter/Report (Job Center)/` and
+`tmp/hopper/jobcenter/Hopper (Job Center)/` contents into the never-deleted
+`tmp/hopper/jobcenter/archive/<cycle-id>/Report (Job Center)/` and
+`tmp/hopper/jobcenter/archive/<cycle-id>/Hopper (Job Center)/` directories.
 
 During the cycle, collect every created or modified artifact with the helper's
-`collect` command. The helper copies files flat into `current/` using
+`collect` command. The helper copies forensic files flat into `Hopper (Job Center)/` using
 `<base>-jobcenter-<cycle-id>.<extension>`, refuses collisions, records original
 paths and hashes, and never touches the protected `output.txt`. Create the
 project report, manifest, valid JSON cycle record, and any required evidence
 bundle using the same cycle identifier. A ticket is not complete until
-`current/` contains the report, manifest, cycle record, every created or
+`Hopper (Job Center)/` contains the report, manifest, cycle record, every created or
 modified file, and required evidence and passes the helper's `validate`
 command.
 

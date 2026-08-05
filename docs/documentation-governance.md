@@ -39,15 +39,18 @@ should not hold one workstream's live ticket cursor or short-term handoff state.
 
 ### Project-Specific Clean-Cycle Hopper Procedure
 
-The canonical active Teachers.Net hopper is `tmp/hopper/jobcenter/current/` with
-historical cycles in `tmp/hopper/jobcenter/archive/`. The slug is permanently
-`jobcenter`; do not vary it. At the beginning of every ticket, archive all
-prior `current/` contents into a new cycle directory before work begins. Use
+The canonical active Teachers.Net hopper uses stable human-readable directories
+`tmp/hopper/jobcenter/Report (Job Center)/` and
+`tmp/hopper/jobcenter/Hopper (Job Center)/`, with historical cycles in
+`tmp/hopper/jobcenter/archive/<cycle-id>/Report (Job Center)/` and
+`.../Hopper (Job Center)/`. The slug is permanently `jobcenter`; do not vary it.
+At the beginning of every ticket, archive both stable directory contents into a
+new cycle directory before work begins. Use
 one UTC `YYMMDDHHMMSS` cycle identifier everywhere: archive directory,
 artifact names, report, manifest, JSON cycle record, and evidence bundle.
 
 Copy every file created or modified by the ticket, including uncommitted or
-blocked-cycle artifacts, flat into `current/` as
+blocked-cycle artifacts, flat into `Hopper (Job Center)/` as
 `<base>-jobcenter-<cycle-id>.<extension>`, preserving original repository
 paths in `MANIFEST-jobcenter-<cycle-id>.txt` with size, SHA-256, status, and
 commit inclusion. Create `cycle-jobcenter-<cycle-id>.json` and validate that
@@ -55,10 +58,10 @@ all entries resolve, hashes exist, files are nonzero, JSON parses, no collision
 occurred, and no unrelated dirty file was included. Bundle multiple evidence
 files as `evidence-jobcenter-<cycle-id>.zip` when needed.
 
-Every ticket must begin by archiving the prior project-specific `current/`
+Every ticket must begin by archiving both stable project-specific directories
 hopper contents and must end with a validated, self-contained current-cycle
 artifact set that the user can drag into ChatGPT in one operation. A ticket is
-not complete until the current project hopper contains the report, manifest,
+not complete until Report (Job Center) contains the review payload and Hopper (Job Center) contains the report, manifest,
 cycle record, every created or modified file, and all required evidence.
 
 The final report must list every current-cycle filename, WSL and Windows
@@ -186,6 +189,17 @@ Project Cursor, product contract, UX specification, design system, visual
 manifest, roadmap, and implementation documents are consulted only when the
 ticket requires them. Drive does not mirror repository architecture,
 implementation detail, full roadmaps, or ticket history.
+
+### PROCESS-GOV002 — Google Drive Synchronization Cadence
+
+Repository documentation is authoritative. Synchronize the operational Google
+Drive Handoff only for PREPARE HANDOFF, an explicit Engineering Director
+request, a major milestone or phase transition, or ten primary ticket-code
+transitions since the last successful sync. Count leading primary codes rather
+than suffixes; related JC053 sub-tickets remain JC053. Maintain the durable
+counter in the active local Engineering Handoff and reset it to `0 / 10` only
+after a successful Drive write and connector readback. When no trigger exists,
+do not invoke Drive.
 
 Codex should read local repository docs directly. ChatGPT should use Google
 Drive only to recover operational context at the start of a new session.

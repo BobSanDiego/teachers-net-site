@@ -10,6 +10,7 @@ import argparse
 import json
 import shutil
 import sys
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -19,7 +20,7 @@ REGISTRY = ROOT / "tools/workflow/command-registry.json"
 
 def paths(project: str):
     base = ROOT / "tmp/hopper" / project
-    label = "Views" if project == "views" else project.replace("-", " ").title()
+    label = "Views" if project == "views" else "Job Center" if project == "jobcenter" else project.replace("-", " ").title()
     return base, base / f"Report ({label})", base / f"Hopper ({label})", base / "archive", base / "workflow-ledger.json"
 
 
@@ -80,6 +81,8 @@ def show_status(project: str):
     print(f"report={report}")
     print(f"hopper={hopper}")
     print(f"archive={archive}")
+    latest = sorted(archive.iterdir())[-1] if archive.exists() and list(archive.iterdir()) else None
+    print(f"latest_archive={latest if latest else 'none'}")
     print(f"ledger={ledger_path} exists={ledger_path.exists()}")
     print(f"tickets={len(ledger.get('tickets', []))}")
 
@@ -116,6 +119,13 @@ def validate(project: str):
     for name in required:
         if not (report / name).is_file() or (report / name).stat().st_size == 0:
             errors.append(f"missing report artifact: {name}")
+    report_ids = set()
+    for name in required:
+        path = report / name
+        if path.is_file():
+            report_ids.update(re.findall(r'(?m)^Ticket:\s*\n?([A-Z0-9-]+)', path.read_text(errors='replace')))
+    if len(report_ids) != 1:
+        errors.append(f"report ticket consistency failure: {sorted(report_ids)}")
     if not ledger_path.is_file():
         errors.append("missing execution ledger")
     if not hopper.exists():
@@ -125,6 +135,8 @@ def validate(project: str):
         print("\n".join(f"- {error}" for error in errors))
         return 1
     print("VALIDATE WORKFLOW: PASS")
+    print(f"- Report (Job Center): {report}")
+    print(f"- Hopper (Job Center): {hopper}")
     print(f"- report artifacts: {len(list(report.iterdir()))}")
     print(f"- hopper artifacts: {len(list(hopper.iterdir()))}")
     print("- ledger: valid JSON")
