@@ -1,0 +1,19 @@
+project=durable-views
+ticket=DV-UX001
+cycle_id=260805130054
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=ae17a34
+push=pushed
+current_hopper=tmp/hopper/durable-views/current
+archive_path=tmp/hopper/durable-views/archive
+report_file=output-durable-views-260805130054.txt
+manifest_file=MANIFEST-durable-views-260805130054.txt
+cycle_record_file=cycle-durable-views-260805130054.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "class-cfm-views-admin-durable-views-260805130054.php", "original_path": "wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php", "purpose": "ticket artifact", "sha256": "36967933cea0b5c1f53288067daa6ec4fc5e9b4d7780a832bac30db1b7ace533", "size": 21799, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-project-cursor-durable-views-260805130054.md", "original_path": "docs/core-terms/durable-views-project-cursor.md", "purpose": "ticket artifact", "sha256": "bf2512dd4eceae1f2c3ba58f5c67cbb14bc48c7b67e41220dfe9ec8127ffc9f6", "size": 9225, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-engineering-handoff-durable-views-260805130054.md", "original_path": "docs/core-terms/durable-views-engineering-handoff.md", "purpose": "ticket artifact", "sha256": "37e6ddafeb9c56c5fa69f891d81f048adfa8d3007e025012246b33d9bdf29be1", "size": 9196, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-roadmap-durable-views-260805130054.md", "original_path": "docs/core-terms/durable-views-roadmap.md", "purpose": "ticket artifact", "sha256": "6b16a48c846f15b13f6d648f2b17049325aea798712fd4bd0961b52457f95719", "size": 8364, "status": "modified"}
+{"committed": true, "hopper_filename": "dv-ux001-completion-report-durable-views-260805130054.md", "original_path": "tmp/hopper/durable-views/current/dv-ux001-completion-report.md", "purpose": "ticket artifact", "sha256": "ab597304bcd1c9202bc4ea610c0ded921fd47d5eeb1e5727d377576d820a6c9f", "size": 3321, "status": "modified"}

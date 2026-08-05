@@ -88,6 +88,11 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   recommends an adapted split-pane, read-only canonical term browser plus
   View-owned composition canvas; broad shared asset extraction and nested
   presentation groups remain deferred.
+- DV-UX001 implemented and browser-verified the independently namespaced
+  split-pane Views workbench shell with read-only canonical discovery, search,
+  hierarchy expand/collapse, canonical context, and Add to Draft handoff into
+  the existing draft form. JobLister View 10 / Version 12 and Jobs binding 10:12
+  remained unchanged.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -124,8 +129,8 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. DV-UX001 — define the read-only canonical term discovery seam and
-   independently namespaced Views workbench shell, after explicit approval.
+1. DV-UX002 — build the split-pane draft authoring surface around the new
+   discovery seam, after explicit approval.
 2. Authorize and assess the next consumer only after separate direction.
 
 ## Current Risks
@@ -171,5 +176,6 @@ Stop and request direction if:
 - MVP Assessment: `docs/core-terms/durable-views-mvp-assessment.md`
 - Administrator Manual: `docs/core-terms/durable-views-user-manual.md`
 - UX Reuse Audit: `docs/core-terms/durable-views-uxaud001-reuse-audit.md`
+- UX-001 Workbench: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`

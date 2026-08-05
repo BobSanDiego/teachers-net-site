@@ -134,8 +134,9 @@ legacy Jobs-owned path as fallback. PHP/DDEV checks passed and an unbound
 runtime smoke test returned 22 legacy options; authenticated browser evidence
 remains pending.
 
-Maintain the Durable Views MVP release candidate and evidence set before any
-separate consumer authorization.
+Next authorized UX candidate: DV-UX002 — build the split-pane draft authoring
+surface around the discovery seam. Do not add drag/drop, bulk selection,
+nested groups, or broad shared asset extraction in that ticket.
 The current administrator baseline is documented in
 `docs/core-terms/durable-views-user-manual.md`. It deliberately distinguishes
 browser capabilities from service-level or planned UX capabilities.
@@ -143,6 +144,13 @@ DV-UXAUD001 is the current UX handoff: it recommends an adapted split-pane
 workbench with read-only canonical term discovery and View-owned composition.
 It is audit-only; no UI implementation or shared asset extraction is approved
 by that audit.
+DV-UX001 now implements that bounded shell in the Profilaxes Views admin. The
+canonical pane reads `CFM::get_terms()` data only, supports framework choice,
+client-side search, hierarchy expand/collapse, context, and Add to Draft; the
+existing draft composition forms remain the persistence path. No Core Terms
+mutation handler, shared editor state, Jobs behavior, or published View binding
+was changed. The local QA draft is version 13; JobLister remains published at
+View 10 / Version 12 with binding 10:12.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 
