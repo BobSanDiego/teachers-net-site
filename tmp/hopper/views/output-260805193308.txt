@@ -1,0 +1,25 @@
+WORKFLOW-ADOPTION001 — Views workflow adoption complete.
+
+Adopted project-aware ChatGPT ↔ Codex workflow tooling and governance.
+Created command registry, formal ticket marker handling, Views execution ledger,
+Report (Views), Hopper (Views), and dual-directory archive rotation.
+
+No Views architecture, schema, UI, services, business logic, or product data
+changed.
+
+Git: root branch COMMUNITY003-semantic-community-communications-working-draft;
+workflow implementation commit 92852a9; final evidence commit e44faad; pushed.
+Profilaxes nested repository unchanged. Milestone tag: none.
+
+Validated commands:
+LIST COMMANDS, WORKFLOW STATUS, SHOW QUEUE, SHOW REPORT, SHOW HOPPER INDEX,
+ARCHIVE CURRENT, VALIDATE WORKFLOW.
+
+Current report:
+tmp/hopper/views/Report (Views)/
+
+Current hopper:
+tmp/hopper/views/Hopper (Views)/
+
+Archive:
+tmp/hopper/views/archive/260805193308/
