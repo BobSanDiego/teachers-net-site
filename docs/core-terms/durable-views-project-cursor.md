@@ -93,6 +93,10 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   hierarchy expand/collapse, canonical context, and Add to Draft handoff into
   the existing draft form. JobLister View 10 / Version 12 and Jobs binding 10:12
   remained unchanged.
+- DV-UX002 implemented a composition-first draft canvas with visual group
+  containers, entry cards, empty-state guidance, inline presentation controls,
+  and explicit Up/Down draft ordering. Discovery, persistence, publication,
+  and Jobs behavior remained within their existing boundaries.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -129,8 +133,8 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. DV-UX002 — build the split-pane draft authoring surface around the new
-   discovery seam, after explicit approval.
+1. DV-UX003 — add View-owned ordering and hierarchy-aware source browsing
+   refinements, after explicit approval.
 2. Authorize and assess the next consumer only after separate direction.
 
 ## Current Risks
@@ -177,5 +181,6 @@ Stop and request direction if:
 - Administrator Manual: `docs/core-terms/durable-views-user-manual.md`
 - UX Reuse Audit: `docs/core-terms/durable-views-uxaud001-reuse-audit.md`
 - UX-001 Workbench: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
+- UX-002 Composition Canvas: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`

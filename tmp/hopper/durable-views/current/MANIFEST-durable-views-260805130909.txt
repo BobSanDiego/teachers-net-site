@@ -1,0 +1,20 @@
+project=durable-views
+ticket=DV-UX002
+cycle_id=260805130909
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=35c57eb
+push=pushed
+current_hopper=tmp/hopper/durable-views/current
+archive_path=tmp/hopper/durable-views/archive
+report_file=output-durable-views-260805130909.txt
+manifest_file=MANIFEST-durable-views-260805130909.txt
+cycle_record_file=cycle-durable-views-260805130909.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "class-cfm-views-admin-durable-views-260805130909.php", "original_path": "wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php", "purpose": "ticket artifact", "sha256": "3219111e1043614318d0e0f8d697cc2c2587fd3b22e4118f94a9f1abbeda9920", "size": 26871, "status": "modified"}
+{"committed": true, "hopper_filename": "class-cfm-views-repository-durable-views-260805130909.php", "original_path": "wordpress/wp-content/plugins/profilaxes/includes/class-cfm-views-repository.php", "purpose": "ticket artifact", "sha256": "5549f9e12367a688d3a08aa6e3679ec4de3084431dbf0d5be76071b9ea0a36be", "size": 27886, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-project-cursor-durable-views-260805130909.md", "original_path": "docs/core-terms/durable-views-project-cursor.md", "purpose": "ticket artifact", "sha256": "1901542f09692a0732b64895d0e667c923c89b6697bf21cf3980f60f13bb880e", "size": 9617, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-engineering-handoff-durable-views-260805130909.md", "original_path": "docs/core-terms/durable-views-engineering-handoff.md", "purpose": "ticket artifact", "sha256": "cd2ebc7ac2a0a32d992c1a0e69cfaa9a50accc1d67aefe469a954acd4b493239", "size": 9608, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-roadmap-durable-views-260805130909.md", "original_path": "docs/core-terms/durable-views-roadmap.md", "purpose": "ticket artifact", "sha256": "32d576bff843a777f55182d4987d6a8937070dbc900354b46e5074627d4fe82b", "size": 8539, "status": "modified"}
+{"committed": true, "hopper_filename": "dv-ux002-completion-report-durable-views-260805130909.md", "original_path": "tmp/hopper/durable-views/current/dv-ux002-completion-report.md", "purpose": "ticket artifact", "sha256": "ba4f9007e1137711c074b6ede11a04641ad6a71e1d9c2e1ecadc5cce2b7276fa", "size": 2806, "status": "modified"}

@@ -151,6 +151,12 @@ existing draft composition forms remain the persistence path. No Core Terms
 mutation handler, shared editor state, Jobs behavior, or published View binding
 was changed. The local QA draft is version 13; JobLister remains published at
 View 10 / Version 12 with binding 10:12.
+DV-UX002 now presents draft groups as visual containers and entries as
+composition cards with display-label, inclusion, descendant, save, remove,
+and explicit Up/Down controls. Empty drafts guide administrators through
+Browse → Add → Organize → Preview → Publish. The repository adds only a
+draft-scoped move operation; drag/drop, bulk selection, nested groups, and
+published semantics remain unchanged.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

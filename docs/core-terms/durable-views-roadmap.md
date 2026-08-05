@@ -216,6 +216,7 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-023 | Certify browser end-to-end Job Center workflow | 5 | Complete; bound Durable View and unbound legacy fallback verified in authenticated employer form; QA membership cleaned up |
 | DV-UXAUD001 | Audit Core Terms workbench reuse for Views Authoring UX | 5 | Complete; read-only split-pane target and safe reuse boundaries documented |
 | DV-UX001 | Build read-only canonical discovery seam and Views workbench shell | 5 | Complete; browser-verified with existing draft composition and JobLister regression check |
+| DV-UX002 | Build rich draft composition canvas | 5 | Complete; visual groups, entry cards, empty guidance, inline controls, and explicit Up/Down ordering browser-verified |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
