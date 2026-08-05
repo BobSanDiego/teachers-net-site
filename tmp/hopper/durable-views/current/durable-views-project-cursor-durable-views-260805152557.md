@@ -108,6 +108,10 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   Browse → Select → Add → Organize → Preview → Publish workflow, and a
   subordinate alternate manual-entry path. Persistence and runtime behavior
   were unchanged.
+- DV-UX005 added draft-only drag-and-drop ordering for entries within groups
+  and groups within the View, persisted through the existing repository order
+  model. Drag handles, drop indicators, hover feedback, a 35/65 workbench
+  balance, and retained keyboard ordering controls were browser-verified.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -194,5 +198,6 @@ Stop and request direction if:
 - UX-002 Composition Canvas: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
 - UX-003 Selection & Batch Composition: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` and `wordpress/wp-content/plugins/profilaxes/includes/class-cfm-views-repository.php`
 - UX-004 Authoring Information Architecture: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
+- UX-005 Composition Interaction Polish: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` and `wordpress/wp-content/plugins/profilaxes/includes/class-cfm-views-repository.php`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`

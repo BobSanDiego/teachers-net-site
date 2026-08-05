@@ -171,6 +171,12 @@ Entries; and the workflow reads Browse → Select → Add → Organize → Previ
 Publish. The lower manual entry form remains available only as an alternate
 compatibility path. Repository, validation, preview, publication, and Jobs
 behavior were not changed.
+DV-UX005 added draft-only drag-and-drop ordering for entries within their
+groups and groups within the View using new repository reorder operations.
+Drag handles, insertion/drop indicators, hover feedback, the 35/65 library-to-
+composition balance, and retained keyboard ordering controls are present. The
+visible Up/Down controls were removed; repository ordering, validation,
+preview, publication, and Jobs behavior remain unchanged.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 
