@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "project_default": "views",
+  "formal_ticket_marker": "TICKET READY FOR CODEX",
+  "commands": [
+    {"command": "EXECUTE NEXT", "syntax": "EXECUTE NEXT", "purpose": "Refresh the conversation, rebuild the formal queue, and select the oldest unexecuted ticket", "example": "EXECUTE NEXT"},
+    {"command": "EXECUTE <ticket>", "syntax": "EXECUTE <ticket-id>", "purpose": "Execute one named formal ticket after refresh and ledger checks", "example": "EXECUTE DV-ARCH002"},
+    {"command": "EXECUTE ALL PENDING", "syntax": "EXECUTE ALL PENDING", "purpose": "Execute pending formal tickets sequentially until a stop condition", "example": "EXECUTE ALL PENDING"},
+    {"command": "SHOW QUEUE", "syntax": "SHOW QUEUE", "purpose": "Refresh, rebuild, and display the formal ticket queue", "example": "SHOW QUEUE"},
+    {"command": "SHOW NEXT", "syntax": "SHOW NEXT", "purpose": "Refresh, rebuild, and show the next ledger-approved ticket", "example": "SHOW NEXT"},
+    {"command": "SHOW REPORT", "syntax": "SHOW REPORT", "purpose": "List the current human-review Report (Views) directory", "example": "SHOW REPORT"},
+    {"command": "SHOW HOPPER INDEX", "syntax": "SHOW HOPPER INDEX", "purpose": "List the current forensic Hopper (Views) directory", "example": "SHOW HOPPER INDEX"},
+    {"command": "RETRY BLOCKED <ticket>", "syntax": "RETRY BLOCKED <ticket-id>", "purpose": "Retry a blocked ticket only after its blocker is resolved", "example": "RETRY BLOCKED DV-ARCH002"},
+    {"command": "ARCHIVE CURRENT", "syntax": "ARCHIVE CURRENT", "purpose": "Archive both current Report and Hopper directories before a new cycle", "example": "ARCHIVE CURRENT"},
+    {"command": "WORKFLOW STATUS", "syntax": "WORKFLOW STATUS", "purpose": "Show project paths, ledger presence, and workflow health", "example": "WORKFLOW STATUS"},
+    {"command": "VALIDATE WORKFLOW", "syntax": "VALIDATE WORKFLOW", "purpose": "Validate registry, ledger, dual directories, and required report artifacts", "example": "VALIDATE WORKFLOW"},
+    {"command": "LIST COMMANDS", "syntax": "LIST COMMANDS", "purpose": "Display user commands, ticket markers, and internal Codex actions", "example": "LIST COMMANDS"}
+  ],
+  "internal_actions": [
+    {"name": "Conversation refresh", "purpose": "Refresh current conversation context before queue-related commands"},
+    {"name": "Queue rebuild", "purpose": "Extract formal TICKET READY FOR CODEX blocks and compare them with the ledger"},
+    {"name": "Ledger synchronization", "purpose": "Detect new, superseded, duplicate, completed, and pending tickets"},
+    {"name": "Ticket selection", "purpose": "Select only the oldest formal unexecuted ticket"},
+    {"name": "Archive rotation", "purpose": "Move both current Views directories into a timestamped archive"},
+    {"name": "Report generation", "purpose": "Build the six-file Report (Views) human-review payload"},
+    {"name": "Hopper packaging", "purpose": "Preserve the complete forensic cycle payload"}
+  ]
+}
