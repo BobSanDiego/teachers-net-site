@@ -157,6 +157,12 @@ and explicit Up/Down controls. Empty drafts guide administrators through
 Browse → Add → Organize → Preview → Publish. The repository adds only a
 draft-scoped move operation; drag/drop, bulk selection, nested groups, and
 published semantics remain unchanged.
+DV-UX003 adds browser-local multi-selection in the read-only canonical browser
+and an Add Selected to Draft action. The batch path delegates each selection to
+the existing repository, preserves canonical UUID references, defaults to
+include/blank presentation labels, reports duplicate skips, and clears the
+selection after a successful add. It does not mutate Core Terms or published
+Views and does not change Jobs behavior.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

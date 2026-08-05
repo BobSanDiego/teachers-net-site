@@ -97,6 +97,11 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   containers, entry cards, empty-state guidance, inline presentation controls,
   and explicit Up/Down draft ordering. Discovery, persistence, publication,
   and Jobs behavior remained within their existing boundaries.
+- DV-UX003 implemented client-side canonical term selection with visible-result
+  selection controls and repository-mediated Add Selected to Draft. Batch
+  insertion preserves UUID references, defaults to include/blank label, skips
+  duplicates, clears selection after success, and leaves published Views and
+  Jobs binding behavior unchanged.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -133,9 +138,8 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. DV-UX003 — add View-owned ordering and hierarchy-aware source browsing
-   refinements, after explicit approval.
-2. Authorize and assess the next consumer only after separate direction.
+1. Authorize and assess the next consumer only after separate direction.
+2. Future authoring refinements require explicit ticket scope.
 
 ## Current Risks
 
@@ -182,5 +186,6 @@ Stop and request direction if:
 - UX Reuse Audit: `docs/core-terms/durable-views-uxaud001-reuse-audit.md`
 - UX-001 Workbench: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
 - UX-002 Composition Canvas: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
+- UX-003 Selection & Batch Composition: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` and `wordpress/wp-content/plugins/profilaxes/includes/class-cfm-views-repository.php`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`
