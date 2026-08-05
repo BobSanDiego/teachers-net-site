@@ -1,0 +1,53 @@
+{
+  "project": "durable-views",
+  "ticket": "DV-DOC001",
+  "cycle_id": "260805003105",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "8997128",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/durable-views/current",
+  "archive_path": "tmp/hopper/durable-views/archive",
+  "report_file": "output-durable-views-260805003105.txt",
+  "manifest_file": "MANIFEST-durable-views-260805003105.txt",
+  "cycle_record_file": "cycle-durable-views-260805003105.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "durable-views-user-manual-durable-views-260805003105.md",
+      "original_path": "docs/core-terms/durable-views-user-manual.md",
+      "status": "modified",
+      "size": 11783,
+      "sha256": "8b5ff265d760449f5d461ac087bf34b2c5a2603503232a55b11f36dd4a97fca0",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-durable-views-260805003105.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "modified",
+      "size": 8418,
+      "sha256": "0fbc01067804176f63a12b330841bc6c621f97cd9c97ad0f7cb8923fecb5a375",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-durable-views-260805003105.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "modified",
+      "size": 8334,
+      "sha256": "8a8a0337d8d8206f9e7f63391a9caa267eb84ceeeedacf5e678759b3dd98f6a6",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "dv-doc001-completion-report-durable-views-260805003105.md",
+      "original_path": "tmp/hopper/durable-views/current/dv-doc001-completion-report.md",
+      "status": "modified",
+      "size": 1617,
+      "sha256": "2bc7119ada1c4200a52f9c2b0db6bbf75b5a095e741b02b438c14da021cec3fc",
+      "committed": true,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

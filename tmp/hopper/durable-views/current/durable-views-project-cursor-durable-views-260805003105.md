@@ -81,6 +81,9 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   an active local QA membership, and unbound legacy fallback all pass. The
   temporary QA membership was deactivated and its employer archived through
   the established Jobs services; the Durable View binding was restored.
+- DV-DOC001 updated the Durable Views Administrator Manual to describe the
+  current browser implementation, explicit limitations, and the certified
+  Job Center bind/unbind/fallback/restore workflow.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -161,5 +164,6 @@ Stop and request direction if:
 - Engineering Handoff: `docs/core-terms/durable-views-engineering-handoff.md`
 - Roadmap: `docs/core-terms/durable-views-roadmap.md`
 - MVP Assessment: `docs/core-terms/durable-views-mvp-assessment.md`
+- Administrator Manual: `docs/core-terms/durable-views-user-manual.md`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`

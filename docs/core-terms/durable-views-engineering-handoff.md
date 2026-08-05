@@ -136,6 +136,9 @@ remains pending.
 
 Maintain the Durable Views MVP release candidate and evidence set before any
 separate consumer authorization.
+The current administrator baseline is documented in
+`docs/core-terms/durable-views-user-manual.md`. It deliberately distinguishes
+browser capabilities from service-level or planned UX capabilities.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 
