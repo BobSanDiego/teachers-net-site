@@ -220,9 +220,11 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX003 | Add selection and batch composition | 5 | Complete; client-side visible-term selection, Add Selected repository workflow, duplicate feedback, and browser verification |
 | DV-UX004 | Clarify authoring information architecture | 3 | Complete; compact editing context, explicit source/destination panes, hierarchy/workflow orientation, and subordinate manual path browser-verified |
 | DV-UX005 | Polish composition interactions | 5 | Complete; draft-only drag/drop ordering, keyboard fallback, drop indicators, interaction feedback, and 35/65 workbench balance browser-verified |
+| DV-ARCH002 | Audit future expansion preservation | 5 | Complete; audit-only; no implementation changes; repeated placement and future node/projection constraints documented |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
+DV-ARCH002 artifact: `docs/core-terms/durable-views-dv-arch002-future-expansion-preservation-audit.md`.
 
 ## Governance Rule
 

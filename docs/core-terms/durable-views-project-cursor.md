@@ -176,6 +176,15 @@ discipline.
 - DV-013 full Job Center certification passed in DDEV; certification artifact is
   `docs/core-terms/durable-views-dv013-job-center-certification.md`.
 
+## DV-ARCH002 Completion
+
+DV-ARCH002 is complete as an audit-only ticket. The MVP authority boundary is
+preserved, with safe extension seams for bounded Save As/clone and metadata
+workflows. Repeated same-inclusion placement, virtual nodes, inheritance,
+placement-specific metadata, and consumer-specific projections require a
+separate authorized design/schema ticket before implementation. No product
+implementation changes were made.
+
 ## Stop Conditions
 
 Stop and request direction if:

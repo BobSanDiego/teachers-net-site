@@ -205,3 +205,18 @@ Every implementation ticket must verify:
   first published View?
 - What minimum administrator capability is required for the first View to be
   created without broad Core Terms admin redesign?
+
+## DV-ARCH002 Completion
+
+DV-ARCH002 — Future Expansion Preservation Audit is complete and audit-only.
+The reviewed schema, repository, resolver, lifecycle, and authoring assumptions
+preserve the MVP authority model. The principal future constraint is the
+unique `(version_id, term_uuid, inclusion)` entry scope, which prevents
+repeated same-inclusion placement. The flat resolved entries shape also does
+not yet represent virtual nodes, placement identity, inheritance overlays, or
+consumer-specific projections.
+
+These are preservation findings, not implementation authorization. No schema,
+repository, resolver, UI, Core Terms, or Jobs changes were made. The next
+ticket must be separately authorized after review of
+`docs/core-terms/durable-views-dv-arch002-future-expansion-preservation-audit.md`.
