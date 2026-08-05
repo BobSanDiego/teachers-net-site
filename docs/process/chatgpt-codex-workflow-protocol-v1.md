@@ -37,6 +37,16 @@ list-commands` renders it. `SHOW NEXT` is inspection-only; `EXECUTE` is the
 only command that authorizes ticket work, and it still obeys the ticket's stop
 boundary and repository instructions.
 
+Conversation refresh is an internal Codex lifecycle action. Before `EXECUTE
+NEXT`, `EXECUTE <ticket>`, `EXECUTE ALL PENDING`, `SHOW QUEUE`, or `SHOW NEXT`,
+Codex refreshes the current conversation, rebuilds formal tickets, compares
+them with the ledger, and reports new, superseded, duplicate, completed, and
+pending tickets. If refresh fails, Codex stops without executing.
+
+`SHOW REPORT` lists only the current human-review directory. `LIST COMMANDS`
+distinguishes user commands, ChatGPT ticket markers, and internal lifecycle
+actions, with examples.
+
 Duplicate execution is prevented by the local ledger at
 `tmp/hopper/<project>/workflow-ledger.json`, using ticket ID, cycle, commit,
 status, supersession, and conversation fingerprint when available.
