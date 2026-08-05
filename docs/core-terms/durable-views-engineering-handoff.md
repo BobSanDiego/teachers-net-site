@@ -221,6 +221,21 @@ implementation is DV-UX006, followed by selection/shuttle, Current View tree,
 and lifecycle manager tickets. See
 `docs/core-terms/durable-views-dv-uxaud002-authoring-model-specification.md`.
 
+## DV-UX006 Completion
+
+The first dual-tree shell is implemented in
+`wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`.
+The read-only canonical Library preserves hierarchy and representation state;
+the Current View now has tree semantics, collapsed Presentation Containers,
+container toggles, and visibly deferred advanced toolbar actions. No
+repository, schema, resolver, lifecycle, or Jobs behavior changed.
+
+Profilaxes branch `agent/durable-views-dv003-persistence`, commit `6cd6c48`,
+was pushed. Authenticated canonical browser inspection passed for the shell,
+collapsed state, represented-term count, and deferred controls. Screenshot
+capture remained unavailable after bounded attempts; accessibility snapshot and
+DOM assertions are recorded in the ticket report.
+
 ## DV-ARCH002 Completion
 
 DV-ARCH002 — Future Expansion Preservation Audit is complete and audit-only.

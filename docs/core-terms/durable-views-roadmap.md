@@ -221,12 +221,14 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX004 | Clarify authoring information architecture | 3 | Complete; compact editing context, explicit source/destination panes, hierarchy/workflow orientation, and subordinate manual path browser-verified |
 | DV-UX005 | Polish composition interactions | 5 | Complete; draft-only drag/drop ordering, keyboard fallback, drop indicators, interaction feedback, and 35/65 workbench balance browser-verified |
 | DV-UXAUD002 | Define next-generation Views authoring model | 5 | Complete; product-definition audit; no implementation changes; dual-tree and lifecycle specification documented |
+| DV-UX006 | Implement dual-tree workbench Phase 1 | 5 | Complete; shell, tree semantics, collapsed state, representation highlighting, and deferred controls browser-verified; screenshot capture pending |
 | DV-ARCH002 | Audit future expansion preservation | 5 | Complete; audit-only; no implementation changes; repeated placement and future node/projection constraints documented |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
 DV-ARCH002 artifact: `docs/core-terms/durable-views-dv-arch002-future-expansion-preservation-audit.md`.
 DV-UXAUD002 artifact: `docs/core-terms/durable-views-dv-uxaud002-authoring-model-specification.md`.
+DV-UX006 artifact: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` at Profilaxes commit `6cd6c48`.
 
 ## Governance Rule
 

@@ -222,3 +222,14 @@ repeated placement, inheritance, templates, and consumer-specific projection
 until a dedicated architecture ticket.
 
 Specification: `docs/core-terms/durable-views-dv-uxaud002-authoring-model-specification.md`.
+
+## DV-UX006 Completion
+
+DV-UX006 implemented the first dual-tree workbench shell in Profilaxes. The
+Core Terms Library remains read-only and now starts collapsed; the Current View
+surface exposes a tree semantics with collapsed Presentation Containers,
+representation highlighting, and a bounded toolbar showing deferred advanced
+actions. Existing draft persistence, validation, preview, publication, drag
+ordering, and Jobs integration were preserved.
+
+Profilaxes commit: `6cd6c48`.
