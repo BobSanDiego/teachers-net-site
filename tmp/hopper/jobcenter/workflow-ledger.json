@@ -4,9 +4,9 @@
   "tickets": [
     {
       "ticket": "WORKFLOW001",
-      "status": "active",
+      "status": "completed",
       "cycle": "260805112030",
-      "commit": null,
+      "commit": "760b062",
       "supersedes": null,
       "conversation_fingerprint": "Job Center (8/1/26):last-formal-ticket"
     }
