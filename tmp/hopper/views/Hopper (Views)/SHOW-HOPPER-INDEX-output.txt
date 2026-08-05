@@ -1,0 +1,6 @@
+Current Hopper directory: /home/bobreap/projects/teachers-net-site/tmp/hopper/views/Hopper (Views)
+LIST-COMMANDS-output.txt
+SHOW-HOPPER-INDEX-output.txt
+SHOW-QUEUE-output.txt
+SHOW-REPORT-output.txt
+WORKFLOW-STATUS-output.txt
