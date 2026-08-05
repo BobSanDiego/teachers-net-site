@@ -84,6 +84,10 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 - DV-DOC001 updated the Durable Views Administrator Manual to describe the
   current browser implementation, explicit limitations, and the certified
   Job Center bind/unbind/fallback/restore workflow.
+- DV-UXAUD001 completed a read-only Core Terms Workbench reuse audit. It
+  recommends an adapted split-pane, read-only canonical term browser plus
+  View-owned composition canvas; broad shared asset extraction and nested
+  presentation groups remain deferred.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -120,7 +124,8 @@ discipline.
 
 ## Next Five Planned Tickets
 
-1. Maintain the Durable Views MVP release candidate and its evidence set.
+1. DV-UX001 — define the read-only canonical term discovery seam and
+   independently namespaced Views workbench shell, after explicit approval.
 2. Authorize and assess the next consumer only after separate direction.
 
 ## Current Risks
@@ -165,5 +170,6 @@ Stop and request direction if:
 - Roadmap: `docs/core-terms/durable-views-roadmap.md`
 - MVP Assessment: `docs/core-terms/durable-views-mvp-assessment.md`
 - Administrator Manual: `docs/core-terms/durable-views-user-manual.md`
+- UX Reuse Audit: `docs/core-terms/durable-views-uxaud001-reuse-audit.md`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`

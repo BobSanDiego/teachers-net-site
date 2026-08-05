@@ -139,6 +139,10 @@ separate consumer authorization.
 The current administrator baseline is documented in
 `docs/core-terms/durable-views-user-manual.md`. It deliberately distinguishes
 browser capabilities from service-level or planned UX capabilities.
+DV-UXAUD001 is the current UX handoff: it recommends an adapted split-pane
+workbench with read-only canonical term discovery and View-owned composition.
+It is audit-only; no UI implementation or shared asset extraction is approved
+by that audit.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 
