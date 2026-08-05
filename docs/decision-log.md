@@ -59,6 +59,17 @@
 These decisions are project-specific and do not authorize production changes,
 schema migration, delivery, or broad UX implementation.
 - A controlled real-job pilot precedes bulk loading.
+
+## DATA001-REV1 — Approved School / Jobsite Architecture
+
+- School/Jobsite visibility is employer-private by default and reusable through employer relationships.
+- Trusted employer members manage resources; affiliation requests and organization recovery replace single-user ownership; administrators handle disputes and unsafe merges.
+- U.S. address validity is full name plus ZIP or city+state and country US; international validity is full name plus locality and country; street is optional.
+- Duplicate handling is Create / Reuse / Relate / Resolve with confidence scoring and no inline merges.
+- One primary image is owned by a Jobs media service with compression, limits, provenance, derivatives, and CDN-ready references.
+- Every Job uses exactly one Primary Resource as its organizational anchor, one Work Arrangement, optional additional locations, and optional job-specific overrides. Remote, Hybrid, District-wide, and Multi-site are arrangements, not resource types; they do not remove the Primary Resource requirement.
+- `full_name` is required identity; `display_name` is optional presentation metadata.
+- The adopted architecture is the staged hybrid documented in `docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`.
 - Employer claims require authority verification; recruiter identities are not
   auto-created from imported records.
 - Employer Operations is a hybrid authenticated workspace inside the standard

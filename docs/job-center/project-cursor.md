@@ -88,6 +88,27 @@ Save / Share action-group implementation in the Jobs plugin.
 
 ## Current Focus
 
+### DATA001-REV1 architecture adoption
+
+The School / Jobsite contract is now approved as the staged hybrid in
+`docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`.
+Employer-private visibility, trusted-member management, affiliation/recovery,
+the U.S./international minimum address rules, confidence-scored duplicate
+handling, Jobs-owned primary media, Work Arrangement semantics, and the
+full_name/display_name distinction are authoritative. The migration sequence
+is `docs/job-center/DATA002-migration-roadmap-v1.md`; begin with DATA002 and do
+not resume JC053 Step 1 UI migration directly.
+
+Every Job must have exactly one Primary Resource as its organizational anchor.
+The resource need not be the physical work location. Work Arrangement remains
+separate, and additional locations or job-specific overrides remain optional;
+legacy compatibility may be nullable only during migration.
+
+DATA002–DATA008 are the next executable backend/data-contract sequence and may
+proceed in parallel with JC052–JC056 UX authority convergence. They do not
+alter approved UX authority. JC057 remains the broader UX implementation
+capability audit and does not block this data sequence.
+
 The active objective is to complete the remaining UX authority work before the
 implementation capability audit. The governing sequence is design first, audit
 second, implement third. Visual convergence has materially clarified the

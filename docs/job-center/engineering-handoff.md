@@ -16,6 +16,21 @@ implementation.
 
 ## 2. Current Ticket
 
+DATA001-REV1 is complete as documentation-only architecture adoption. The
+approved School / Jobsite contract is the staged hybrid in
+`docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`. The next
+authorized data task is DATA002, followed by DATA003–DATA008 in
+`docs/job-center/DATA002-migration-roadmap-v1.md`. JC053-MIG003 is blocked until
+those contracts are implemented and certified. Do not resume Step 1 UI
+migration or begin Step 2 migration from the old sequence.
+
+DATA001-PATCH001 correction: every Job requires exactly one Primary Resource as
+its organizational anchor, including Remote, Hybrid, District-wide, and
+Multi-site jobs. Work Arrangement describes physical-work semantics; optional
+additional locations and job-specific overrides remain separate. Legacy
+compatibility may be nullable during backfill only and is not the target
+contract.
+
 JC-051A is complete: `jc-051a-employer-my-jobs-desktop-v1.0.png` is the approved
 canonical Employer My Jobs Desktop Authority v1.0, sourced from
 `jc-050-unicard-002.png` and superseding the prior JC-050 visual authorities. No

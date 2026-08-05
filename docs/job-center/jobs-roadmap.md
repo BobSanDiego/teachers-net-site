@@ -40,6 +40,25 @@ Launch Readiness → Explicit V1 Acceptance → Production Launch
 
 ## Current Authorized Workstream
 
+### DATA001-REV1 — Adopted data architecture gate
+
+The approved School / Jobsite architecture is the staged hybrid: employer
+private by default, relationship-based reuse, trusted-member management,
+confidence-scored Create / Reuse / Relate / Resolve duplicate handling, one
+Jobs-owned primary image, resource-plus-Work-Arrangement job locations, and
+required `full_name` with optional `display_name`. The data migration roadmap
+starts with DATA002 and is recorded in
+`docs/job-center/DATA002-migration-roadmap-v1.md`. JC053 Step 1 production
+integration is deferred until the data contract sequence is certified.
+Every Job must have exactly one Primary Resource as its organizational anchor;
+Work Arrangement never removes that requirement, and legacy nullable
+compatibility is temporary migration behavior only.
+
+DATA002–DATA008 are the next executable backend/data-contract sequence and may
+proceed in parallel with JC052–JC056 UX authority convergence. They do not
+alter approved UX authority. JC057 remains the broader UX implementation
+capability audit and does not block this data sequence.
+
 JC053 responsive shell refinement is a bounded active implementation-target
 workstream within the wizard workstream. It is not an approved production
 authority. Acceptance requires local Windows-visible PNG evidence, external
