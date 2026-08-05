@@ -42,7 +42,7 @@ recommended sequence, and verification record.
 
 - Profilaxes: no changes; existing commit inspected only.
 - Root branch: `COMMUNITY003-semantic-community-communications-working-draft`
-- Root audit commit: pending
-- Push: pending
+- Root audit commit: `fd4c391` (pushed)
+- Push: pushed
 - Milestone tag: none
 - Unrelated dirty work: preserved
