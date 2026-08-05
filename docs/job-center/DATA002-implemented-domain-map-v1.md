@@ -1,11 +1,11 @@
 # DATA002 Implemented Domain Map v1
 
 Status: Implemented schema reference
-Implemented schema version: `0.9.7`
-Nested implementation commit: `f23e5bb`
+Implemented schema version: `0.9.8`
+Nested implementation commit: `DATA003D-SCHEMA`
 Source: `wordpress/wp-content/plugins/tnet-jobs/includes/class-tnet-jobs-schema.php`
 
-This document records the seven additive tables actually implemented by DATA002.
+This document records the seven additive tables originally implemented by DATA002 and the additive pairwise resolution table implemented by DATA003D-SCHEMA.
 It is downstream of the approved DATA001 architecture and is the schema
 reference for DATA003 repositories, services, validation, authorization,
 duplicate handling, and hydration.
@@ -24,10 +24,13 @@ processing, or enforcement that every new Job has a resource.
 
 Purpose: employer-scoped School/Jobsite resource identity. Primary key:
 `school_jobsite_id`. Important columns: nullable `school_jobsite_uuid`, required
-`full_name`, nullable `display_name`, and `status`. Lifecycle: `created_at`,
+`full_name`, nullable `display_name`, `visibility` (default `private`), and `status`. Lifecycle: `created_at`,
 `updated_at`, nullable `archived_at`. Indexes: UUID unique, `status`, truncated
 `full_name`, and `archived_at`. No foreign keys. Future owner: resource
 repository/service; validation and authorization are DATA003.
+
+Visibility is independent of lifecycle. `private` is the implemented V1 default;
+shared/public exposure is not activated by this schema ticket.
 
 ### `tnet_jobs_employer_school_jobsites`
 
@@ -84,6 +87,18 @@ timestamps and nullable `archived_at`. Indexes: job, resource, address, role.
 Future owner: job-location repository/service and location validator. No
 rendering, search, geocoding, or override resolution is implemented.
 
+### `tnet_jobs_school_jobsite_resolutions`
+
+Purpose: globally scoped pairwise identity-resolution decision. Primary key:
+`resolution_id`. Canonical pair columns `resource_low_id` and
+`resource_high_id` store the lesser and greater SchoolJobsite IDs and have a
+unique constraint together; self-pairs are rejected by the repository. Evidence
+columns preserve confidence band/score and matched/conflicting signal JSON.
+Decision fields are `decision`, `reason_code`, `resolution_source`,
+`actor_user_id`, `resolved_at`, `identity_snapshot_hash`, and active/archive
+lifecycle fields. Indexes cover each resource, status, and snapshot hash. No
+employer scope and no merge behavior are represented.
+
 ## Relationship diagram
 
 ```mermaid
@@ -98,10 +113,12 @@ erDiagram
   JOB ||--o{ JOB_LOCATION : has
   SCHOOL_JOBSITE ||--o{ JOB_LOCATION : optional_resource
   ADDRESS ||--o{ JOB_LOCATION : optional_address
+  SCHOOL_JOBSITE ||--o{ SCHOOL_JOBSITE_RESOLUTION : resource_low
+  SCHOOL_JOBSITE ||--o{ SCHOOL_JOBSITE_RESOLUTION : resource_high
 ```
 
 Plain-text fallback: Employer → EmployerSchoolJobsiteRelationship →
-SchoolJobsite → ResourceAddress → Address; SchoolJobsite → ResourceMedia; Job →
+SchoolJobsite → ResourceAddress → Address; SchoolJobsite → ResourceMedia; SchoolJobsite ↔ SchoolJobsiteResolution; Job →
 JobResource → SchoolJobsite; Job → JobLocation → optional SchoolJobsite and/or
 address/override. These are logical relationships represented by IDs; the
 schema adds no foreign-key constraints.
@@ -131,6 +148,9 @@ schema adds no foreign-key constraints.
 - Employer relationship access requires authorization and trusted-member rules.
 - Duplicate Create / Reuse / Relate / Resolve requires confidence scoring and
   workflow services.
+- Pairwise resolution persistence is implemented, but confidence scoring,
+  candidate retrieval, outcome orchestration, snapshot hash generation, and
+  merge proposal workflow remain DATA003D service responsibilities.
 
 ## DATA003 ownership map
 
@@ -146,8 +166,9 @@ schema adds no foreign-key constraints.
    target, and override shape.
 6. Authorizer: employer membership, trusted-member management, affiliation,
    recovery, and dispute boundaries.
-7. Duplicate-resolution responsibility: confidence scoring and administrator
-   resolution; no inline merge.
+7. Duplicate-resolution responsibility: DATA003D owns normalization, scoring,
+   candidate retrieval, and Create / Reuse / Relate / Resolve orchestration;
+   this schema stores decisions only and never performs an inline merge.
 
 Recommended order: repositories → address/resource services → relationship
 authorization → validators → duplicate resolution → hydration/serialization →
