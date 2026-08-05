@@ -48,7 +48,7 @@ existing `display_order` fields.
 - Profilaxes branch: `agent/durable-views-dv003-persistence`
 - Profilaxes commit: `c6b3c0b` (pushed)
 - Root branch: `COMMUNITY003-semantic-community-communications-working-draft`
-- Root continuity commit: pending until continuity commit is created
-- Push: pending until continuity commit is created
+- Root continuity commit: `86418c1` (pushed)
+- Push: pushed
 - Milestone tag: none
 - Unrelated dirty work: preserved
