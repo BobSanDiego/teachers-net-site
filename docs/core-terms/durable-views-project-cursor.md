@@ -210,3 +210,15 @@ Stop and request direction if:
 - UX-005 Composition Interaction Polish: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` and `wordpress/wp-content/plugins/profilaxes/includes/class-cfm-views-repository.php`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`
+
+## DV-UXAUD002 Completion
+
+DV-UXAUD002 defines the next-generation Views authoring product model:
+read-only hierarchical Core Terms Library, editable Current View presentation
+tree, explicit shuttle/selection behavior, representation states, named
+lifecycle actions, and a View manager. The specification retains the current
+authority and immutable-publication boundaries and defers virtual nodes,
+repeated placement, inheritance, templates, and consumer-specific projection
+until a dedicated architecture ticket.
+
+Specification: `docs/core-terms/durable-views-dv-uxaud002-authoring-model-specification.md`.

@@ -206,6 +206,21 @@ Every implementation ticket must verify:
 - What minimum administrator capability is required for the first View to be
   created without broad Core Terms admin redesign?
 
+## DV-UXAUD002 Completion
+
+The product-definition audit is complete. The preferred future authoring model
+is a dual-tree source/destination workbench: a read-only, searchable,
+hierarchical Core Terms Library and an editable Current View presentation tree.
+The product specification defines branch-aware selection, explicit shuttle
+operations, representation states, presentation-container vocabulary, named
+Save/Preview/Validate/Publish/Save As/Clone/Revert/Archive concepts, and the
+View manager.
+
+No implementation is authorized by this audit. The recommended first
+implementation is DV-UX006, followed by selection/shuttle, Current View tree,
+and lifecycle manager tickets. See
+`docs/core-terms/durable-views-dv-uxaud002-authoring-model-specification.md`.
+
 ## DV-ARCH002 Completion
 
 DV-ARCH002 — Future Expansion Preservation Audit is complete and audit-only.
