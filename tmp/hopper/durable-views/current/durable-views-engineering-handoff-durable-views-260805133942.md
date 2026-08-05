@@ -163,6 +163,14 @@ the existing repository, preserves canonical UUID references, defaults to
 include/blank presentation labels, reports duplicate skips, and clears the
 selection after a successful add. It does not mutate Core Terms or published
 Views and does not change Jobs behavior.
+DV-UX004 clarified the browser information architecture without adding
+platform capability. Draft editing presents a compact View/version/status
+context with Back to Views; the panes are named Core Terms Library (Read-only)
+and Current View (Editable draft); the hierarchy is explicitly View → Groups →
+Entries; and the workflow reads Browse → Select → Add → Organize → Preview →
+Publish. The lower manual entry form remains available only as an alternate
+compatibility path. Repository, validation, preview, publication, and Jobs
+behavior were not changed.
 Use the existing Profilaxes repository and remote; do not create a separate
 Durable Views repository during the MVP.
 

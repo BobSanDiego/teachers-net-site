@@ -102,6 +102,12 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   insertion preserves UUID references, defaults to include/blank label, skips
   duplicates, clears selection after success, and leaves published Views and
   Jobs binding behavior unchanged.
+- DV-UX004 clarified the authoring information architecture: draft editing now
+  has a compact View/version context, explicit Core Terms Library and Current
+  View labels, a visible View → Groups → Entries hierarchy, the full
+  Browse → Select → Add → Organize → Preview → Publish workflow, and a
+  subordinate alternate manual-entry path. Persistence and runtime behavior
+  were unchanged.
 - DV-ARCH001 completed: Profilaxes is confirmed as the physical MVP host and
   code authority; dedicated repository creation is deferred.
 
@@ -187,5 +193,6 @@ Stop and request direction if:
 - UX-001 Workbench: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
 - UX-002 Composition Canvas: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
 - UX-003 Selection & Batch Composition: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` and `wordpress/wp-content/plugins/profilaxes/includes/class-cfm-views-repository.php`
+- UX-004 Authoring Information Architecture: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php`
 - Core Terms Cursor: `docs/core-terms/project-cursor.md`
 - Core Terms Handoff: `docs/core-terms/engineering-handoff.md`

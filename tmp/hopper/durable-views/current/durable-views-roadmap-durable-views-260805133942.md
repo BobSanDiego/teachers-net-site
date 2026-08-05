@@ -218,6 +218,7 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX001 | Build read-only canonical discovery seam and Views workbench shell | 5 | Complete; browser-verified with existing draft composition and JobLister regression check |
 | DV-UX002 | Build rich draft composition canvas | 5 | Complete; visual groups, entry cards, empty guidance, inline controls, and explicit Up/Down ordering browser-verified |
 | DV-UX003 | Add selection and batch composition | 5 | Complete; client-side visible-term selection, Add Selected repository workflow, duplicate feedback, and browser verification |
+| DV-UX004 | Clarify authoring information architecture | 3 | Complete; compact editing context, explicit source/destination panes, hierarchy/workflow orientation, and subordinate manual path browser-verified |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
