@@ -1,0 +1,10 @@
+Evidence categories:
+- formal source ticket
+- command registry output
+- queue selection output
+- internal conversation-refresh marker
+- execution ledger
+- report bundle
+- hopper forensic bundle
+- archive cycle
+- Git diff and commit evidence
