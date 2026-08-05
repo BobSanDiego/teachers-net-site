@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "project": "jobcenter",
+  "tickets": [
+    {
+      "ticket": "WORKFLOW001",
+      "status": "active",
+      "cycle": "260805112030",
+      "commit": null,
+      "supersedes": null,
+      "conversation_fingerprint": "Job Center (8/1/26):last-formal-ticket"
+    }
+  ]
+}
