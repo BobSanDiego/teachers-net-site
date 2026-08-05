@@ -1,0 +1,80 @@
+{
+  "project": "views",
+  "ticket": "DV-UX006",
+  "cycle_id": "260805203540",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "0cad3e2",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/current",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260805203540.txt",
+  "manifest_file": "MANIFEST-views-260805203540.txt",
+  "cycle_record_file": "cycle-views-260805203540.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "dv-ux006-completion-report-views-260805203540.md",
+      "original_path": "docs/core-terms/dv-ux006-completion-report.md",
+      "status": "created",
+      "size": 2619,
+      "sha256": "3b030e207894e4bf00aef3692d485163ab94716006b71ba5cda84f3f4eaae137",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260805203540.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "modified",
+      "size": 12666,
+      "sha256": "13d3ba3fa9f43709b6a1443e2646359b8287bc2679dd60a564b9131e38c56766",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260805203540.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "modified",
+      "size": 13402,
+      "sha256": "2175aa92b5662bdc321125a78d0a6fd56573a87d82c7ce2916e465f511f5219c",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260805203540.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "modified",
+      "size": 10021,
+      "sha256": "37378f059bfcc85994e7d2ff76505a2a0dc6ce4b8325cd55616e568048e01750",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "class-cfm-views-admin-views-260805203540.php",
+      "original_path": "wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php",
+      "status": "modified",
+      "size": 39112,
+      "sha256": "5bd89143d040bc9fdb0fda5cb111ad58959945460c67a5ede6f86bffd6d49bc5",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-UX006-completion-report-views-260805203540.md",
+      "original_path": "tmp/hopper/views/Report (views)/DV-UX006-completion-report.md",
+      "status": "created",
+      "size": 2619,
+      "sha256": "3b030e207894e4bf00aef3692d485163ab94716006b71ba5cda84f3f4eaae137",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "output-views-260805203540-views-260805203540.txt",
+      "original_path": "tmp/hopper/views/current/output-views-260805203540.txt",
+      "status": "created",
+      "size": 2108,
+      "sha256": "32b1744402ac9ef878b2f8d0d8b57d1e4ce17a71efd5818f37f50373126d66f3",
+      "committed": false,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

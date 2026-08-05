@@ -1,0 +1,41 @@
+DV-UX006 — Dual-Tree Workbench Phase 1
+Status: IMPLEMENTATION COMPLETE; SCREENSHOT CAPTURE PENDING
+
+Implementation:
+- Core Terms Library remains read-only and starts collapsed.
+- Current View now has accessible tree semantics with collapsed Presentation
+  Containers and container toggles.
+- Three represented draft terms are visibly marked in the Library.
+- Deferred advanced toolbar actions are present but disabled.
+- Existing draft, validation, preview, publish, drag ordering, lifecycle, and
+  Jobs integration paths were preserved.
+
+Verification:
+- Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=13
+- Authenticated Chrome QA inspection passed after cache-bypassed reload.
+- One Library tree; one Current View tree; 100 canonical terms; 97 descendant
+  rows collapsed; 3 represented terms; 1 collapsed container; 5 disabled
+  advanced toolbar controls; validation Valid with 3 entries.
+- DDEV PHP lint passed; WordPress plugin load passed; nested diff check passed.
+- Screenshot capture hung after two bounded attempts; no screenshot is claimed.
+
+Deliverables:
+- docs/core-terms/dv-ux006-completion-report.md
+- docs/core-terms/durable-views-project-cursor.md
+- docs/core-terms/durable-views-engineering-handoff.md
+- docs/core-terms/durable-views-roadmap.md
+- wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php
+- tmp/hopper/views/Report (views)/DV-UX006-completion-report.md
+
+Git:
+- Profilaxes branch: agent/durable-views-dv003-persistence
+- Profilaxes commit: 6cd6c48; pushed successfully
+- Root branch: COMMUNITY003-semantic-community-communications-working-draft
+- Root documentation commit: 8fd91dd; pushed successfully
+- Milestone tag: none created
+
+Hopper:
+- WSL current: /home/bobreap/projects/teachers-net-site/tmp/hopper/views/current/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/views/archive/
+- Windows current: \\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\views\current\
+- Windows archive: \\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\views\archive\
