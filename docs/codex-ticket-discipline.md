@@ -10,6 +10,15 @@ must begin by running `python3 tools/hopper/clean_cycle.py begin
 `tmp/hopper/jobcenter/archive/<cycle-id>/Report (Job Center)/` and
 `tmp/hopper/jobcenter/archive/<cycle-id>/Hopper (Job Center)/` directories.
 
+Views exception: when the active project is Views, the completion cycle must
+also publish the final human-readable report and generated cycle output into
+both `tmp/hopper/views/Report (Views)/` and
+`tmp/hopper/views/Report (views)/`. Confirm that the report is nonzero in both
+directories before reporting completion. Mirror the cycle record, manifest,
+and report artifact into `tmp/hopper/views/Hopper (views)/`; retain the
+validated canonical record in `Hopper (Views)`. The completion report must
+list both report directories and their WSL/Windows paths.
+
 During the cycle, collect every created or modified artifact with the helper's
 `collect` command. The helper copies forensic files flat into `Hopper (Job Center)/` using
 `<base>-jobcenter-<cycle-id>.<extension>`, refuses collisions, records original

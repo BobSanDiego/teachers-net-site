@@ -167,6 +167,21 @@ current-cycle artifact set that the user can drag into ChatGPT in one
 operation. A ticket is not complete until `current/` contains the report,
 manifest, cycle record, every created or modified file, and required evidence.
 
+Views report-publication requirement: at the end of every Views ticket cycle,
+copy the final human-readable report and the generated `output-<cycle>.txt`
+report into both formal report directories:
+
+- `tmp/hopper/views/Report (Views)/`
+- `tmp/hopper/views/Report (views)/`
+
+The report must be present and nonzero in both directories before completion
+is reported. The validated machine-readable cycle record, manifest, and copied
+ticket artifacts remain in `tmp/hopper/views/Hopper (Views)/`; mirror the
+cycle record, manifest, and report artifact into `Hopper (views)/` as well for
+the user's established Windows/ChatGPT handoff path. The final response must
+list both report directories, the Hopper directory, every current-cycle file,
+the WSL paths, and the copyable Windows Explorer command.
+
 Use `python3 tools/hopper/clean_cycle.py` for the deterministic initialization and
 collection workflow. Final responses must print the full current-cycle file
 list, WSL paths, and copyable Windows Explorer command:
