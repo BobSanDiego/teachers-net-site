@@ -263,3 +263,12 @@ implementation authority. The finalized V1 workflow is governed by the
 post-DV-UX007 product direction and the forthcoming DV-UX009 specification.
 The next implementation ticket is DV-UX009; do not begin it until the
 ChatGPT-supplied specification is available and read.
+
+## DV-SPEC001 Completion
+
+DV-SPEC001 created the canonical Views V1 Product Specification at
+`docs/core-terms/durable-views-v1-product-specification.md`. It consolidates
+the finalized lifecycle, manager, editor, Library, shuttle, Current View,
+removal, visual-state, dialog, deferred-capability, and acceptance rules.
+DV-UX009 is now authorized to implement against this specification. No code
+implementation was performed by DV-SPEC001.

@@ -228,6 +228,7 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX007A | Audit Views V1 interaction states | 8 | Complete; audit-only; findings recorded |
 | DV-UX008 | Current View tree and container interaction | 8 | Superseded; historical placeholder replaced by finalized V1 workflow |
 | DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | Next; specification supplied by ChatGPT required before implementation |
+| DV-SPEC001 | Capture canonical Views V1 Product Specification | 8 | Complete; documentation authority for DV-UX009 |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
@@ -237,6 +238,7 @@ DV-UX006 artifact: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-view
 DV-UX006A artifact: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` at Profilaxes commit `210d96f`.
 DV-UX007 artifact: `docs/core-terms/durable-views-dv-ux007-completion-report.md` and Profilaxes commit `23c703a`.
 DV-UX007A artifact: `docs/core-terms/durable-views-dv-ux007a-interaction-state-audit.md`.
+DV-SPEC001 artifact: `docs/core-terms/durable-views-v1-product-specification.md`.
 
 ## DV-UX008 Supersession
 

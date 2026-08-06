@@ -270,3 +270,10 @@ or partially implement its historical Current View tree placeholder. The
 next implementation ticket is DV-UX009 — Views V1 Authoring Workflow
 Implementation. Its ChatGPT-supplied specification is the implementation
 authority and must be ingested before coding begins.
+
+## DV-SPEC001 Completion
+
+The canonical Views V1 Product Specification is
+`docs/core-terms/durable-views-v1-product-specification.md`. It is now the
+implementation authority for DV-UX009. DV-SPEC001 was documentation-only;
+schema, repository, resolver, UI, and consumer behavior were not changed.

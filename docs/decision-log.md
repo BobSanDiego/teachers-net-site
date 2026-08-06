@@ -144,3 +144,16 @@ finalized Views V1 workflow is the active product direction. DV-UX009 is the
 next implementation ticket, and its ChatGPT-supplied specification is the
 required implementation authority. No implementation may begin from the
 historical DV-UX008 description.
+
+### DV-SPEC001 — Canonical Views V1 Product Specification
+
+**Status:** Accepted  
+**Date:** 2026-08-06
+
+`docs/core-terms/durable-views-v1-product-specification.md` is the canonical
+V1 product authority for DV-UX009. It freezes the approved workflow and
+interaction states: read-only Library, blue pending shuttle, muted represented
+terms, strike-through pending removal, draft/published lifecycle, dialogs,
+and explicitly deferred capabilities. Earlier conflicting or more expansive
+UX descriptions are subordinate to this specification; unresolved
+contradictions must be reported rather than invented away.
