@@ -262,3 +262,11 @@ for all three widths and the console had no errors.
 
 Profilaxes branch `agent/durable-views-dv003-persistence`, commit `210d96f`,
 was pushed. No Views behavior or architecture changed.
+
+## DV-UX008 Supersession / DV-UX009 Next Ticket
+
+DV-UX008 is superseded and is not an implementation target. Do not reconcile
+or partially implement its historical Current View tree placeholder. The
+next implementation ticket is DV-UX009 — Views V1 Authoring Workflow
+Implementation. Its ChatGPT-supplied specification is the implementation
+authority and must be ingested before coding begins.

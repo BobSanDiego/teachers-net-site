@@ -255,3 +255,11 @@ redesign was introduced.
 
 Profilaxes branch `agent/durable-views-dv003-persistence`, commit `23c703a`,
 was pushed. Completion report: `docs/core-terms/durable-views-dv-ux007-completion-report.md`.
+
+## DV-UX008 Supersession and DV-UX009 Transition
+
+DV-UX008 is superseded. Its historical placeholder must not be used as an
+implementation authority. The finalized V1 workflow is governed by the
+post-DV-UX007 product direction and the forthcoming DV-UX009 specification.
+The next implementation ticket is DV-UX009; do not begin it until the
+ChatGPT-supplied specification is available and read.

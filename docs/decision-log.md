@@ -132,3 +132,15 @@ composition work is sufficient.
 8. Historical roadmap and planning documents
 9. Conversation summaries
 10. Model memory
+
+### DV-UX008 / DV-UX009 — Finalized Views V1 Workflow Supersession
+
+**Status:** Accepted  
+**Date:** 2026-08-06
+
+The historical DV-UX008 roadmap placeholder is superseded. Following
+DV-ARCH002, DV-UXAUD002, DV-UX006, DV-UX006A, DV-UX007, and DV-UX007A, the
+finalized Views V1 workflow is the active product direction. DV-UX009 is the
+next implementation ticket, and its ChatGPT-supplied specification is the
+required implementation authority. No implementation may begin from the
+historical DV-UX008 description.

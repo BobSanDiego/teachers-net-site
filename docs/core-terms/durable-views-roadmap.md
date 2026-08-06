@@ -225,6 +225,9 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX006A | Stabilize dual-tree visual layout | 5 | Complete; diagnosed and corrected flow, row-grid, responsive wrapping, and control-placement defects; authenticated screenshots captured at 1440/1200/1024 |
 | DV-ARCH002 | Audit future expansion preservation | 5 | Complete; audit-only; no implementation changes; repeated placement and future node/projection constraints documented |
 | DV-UX007 | Rebuild Views authoring flow around dual-tree composition | 8 | Complete; Compose View workflow, Library-to-View shuttle, selection scope, and simplified authoring surface implemented; browser-verified |
+| DV-UX007A | Audit Views V1 interaction states | 8 | Complete; audit-only; findings recorded |
+| DV-UX008 | Current View tree and container interaction | 8 | Superseded; historical placeholder replaced by finalized V1 workflow |
+| DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | Next; specification supplied by ChatGPT required before implementation |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
@@ -233,6 +236,15 @@ DV-UXAUD002 artifact: `docs/core-terms/durable-views-dv-uxaud002-authoring-model
 DV-UX006 artifact: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` at Profilaxes commit `6cd6c48`.
 DV-UX006A artifact: `wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php` at Profilaxes commit `210d96f`.
 DV-UX007 artifact: `docs/core-terms/durable-views-dv-ux007-completion-report.md` and Profilaxes commit `23c703a`.
+DV-UX007A artifact: `docs/core-terms/durable-views-dv-ux007a-interaction-state-audit.md`.
+
+## DV-UX008 Supersession
+
+DV-UX008 is superseded and must not be implemented from its historical
+roadmap placeholder. The finalized V1 workflow that follows DV-ARCH002,
+DV-UXAUD002, DV-UX006, DV-UX006A, DV-UX007, and DV-UX007A is authoritative.
+The next implementation ticket is DV-UX009, subject to its ChatGPT-supplied
+specification.
 
 ## Governance Rule
 
