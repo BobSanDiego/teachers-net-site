@@ -272,3 +272,5 @@ No ticket may advance a later stage while the current stage exit gate is
 unproven. No diagnostic, infrastructure improvement, or product request
 authorizes expanding the MVP boundary without an explicit decision recorded in
 the Project Cursor and Engineering Handoff.
+
+| DV-UX009C | Restore Core Terms Library tree expansion | 8 | Complete; root cause corrected and all three branches browser-verified |

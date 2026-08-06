@@ -218,3 +218,14 @@ preserved. Commits `d5aa0b1` and `f13e2f5` are pushed. Browser certification is
 required before closing DV-UX009; Browser Verification Continuation Pass 2
 completed that acceptance. DV-UX009A and DV-UX009 are complete; DV-UX010
 remains unauthorized.
+
+### DV-UX009C — Restore Core Terms Tree Expansion
+
+**Status:** Complete
+**Date:** 2026-08-06
+
+An unguarded event binding for an omitted optional selection control prevented
+the Core Terms Library expand handler from initializing. Guarding that binding
+restored independent branch expansion without changing selection, persistence,
+resolver, Jobs, or lifecycle behavior. Browser verification passed for Grade
+Level, Location, and Subject Area.

@@ -321,3 +321,12 @@ controls, and zero console messages. Full mutation acceptance and Jobs
 regression passed for the authenticated employer workflow load. DV-UX009A is
 complete and DV-UX009 is fully satisfied and may close. DV-UX010 remains
 unauthorized.
+
+## DV-UX009C Completion
+
+The Core Terms Library expansion defect is fixed in Profilaxes commit
+`852a515`, pushed on `agent/durable-views-dv003-persistence`. The cause was an
+unguarded listener lookup for a non-rendered optional selection control.
+Authenticated `jobman` browser verification passed for all three top-level
+branches with no selection changes and no console messages. Human DV-UX009
+acceptance testing may resume. DV-UX010 remains unauthorized.

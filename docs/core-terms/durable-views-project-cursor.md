@@ -321,3 +321,12 @@ were completed in Browser Verification Continuation Pass 2. Temporary draft
 version 14 was deleted; QA draft version 13 published; Preview and Jobs
 employer workflow passed. DV-UX009A and DV-UX009 are complete and may close.
 DV-UX010 remains unauthorized.
+
+## DV-UX009C Completion
+
+DV-UX009C corrected the Core Terms Library expander defect. An unguarded
+listener lookup for a non-rendered optional selection control previously
+stopped workbench event initialization. The optional listener is now guarded.
+Authenticated browser verification passed for Grade Level, Location, and
+Subject Area with no selection changes or console messages. Human DV-UX009
+acceptance may resume. Profilaxes commit: `852a515`.
