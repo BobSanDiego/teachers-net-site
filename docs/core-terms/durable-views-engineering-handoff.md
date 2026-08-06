@@ -308,3 +308,13 @@ implementation ticket for atomic snapshot/revision persistence, optimistic
 concurrency, Revert, Delete Draft, and truthful failure handling. See
 `docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.
 DV-UX009 remains blocked; DV-UX010 is not authorized.
+
+## DV-UX009A Implementation Status
+
+The approved autosaved draft lifecycle, protected Delete Draft, and Current
+View removal toolbar are implemented and pushed in Profilaxes commits
+`d5aa0b1` and `f13e2f5` on `agent/durable-views-dv003-persistence`. DDEV PHP
+lint and WordPress bootstrap checks pass. Authenticated browser acceptance,
+screenshots, console check, and Jobs regression remain pending because browser
+control was unavailable in the execution session. DV-UX009A and DV-UX009 remain
+open; DV-UX010 remains unauthorized.

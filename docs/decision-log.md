@@ -205,3 +205,14 @@ snapshot/revision and concurrency contract; the current direct-write model is
 not sufficient. This decision authorizes a future implementation ticket only;
 it does not itself authorize schema, application, browser, or production
 changes. Full contract: `docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.
+
+### DV-UX009A — Autosaved Draft Lifecycle Implementation
+
+**Status:** Implemented; browser verification pending
+**Date:** 2026-08-06
+
+Profilaxes implements immediate draft persistence state, one-active-draft
+enforcement, protected Delete Draft, and the Current View removal toolbar.
+Published versions, Core Terms, Jobs integration, and resolver boundaries were
+preserved. Commits `d5aa0b1` and `f13e2f5` are pushed. Browser certification is
+required before closing DV-UX009; DV-UX010 remains unauthorized.

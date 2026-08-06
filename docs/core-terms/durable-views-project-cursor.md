@@ -308,3 +308,11 @@ repository/service seam are documented in
 `docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.
 This is a product decision only; no schema, repository, UI, database, or
 browser changes were made. DV-UX009 remains blocked pending implementation.
+
+## DV-UX009A Implementation Pass
+
+The approved autosaved lifecycle and remaining bounded removal controls were
+implemented in Profilaxes. Commits `d5aa0b1` and `f13e2f5` are pushed on
+`agent/durable-views-dv003-persistence`. DDEV PHP lint and WordPress bootstrap
+checks pass. Authenticated browser verification and screenshots are pending;
+DV-UX009A is not certified complete and DV-UX009 remains open.
