@@ -28,6 +28,12 @@ stop and report the contradiction. Repository authority order is: Authority
 Manifest, approved contracts, governance, execution plans/roadmaps, accepted
 implementation, then companion chat for unresolved context only.
 
+Project startup worktree preflight is mandatory before implementation. For Job
+Center, the intended worktree is `/home/bobreap/projects/teachers-net-jobcenter`.
+For Community, it is `/home/bobreap/projects/teachers-net-community3`. Verify
+the current working directory and worktree against the requested project first.
+If they do not match, stop and report the mismatch before implementation.
+
 Documentation governance:
 
 - Shared governance docs live in `docs/`.

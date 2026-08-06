@@ -87,6 +87,18 @@ inspection, or automated assertions.
 
 ## Persistence Model
 
+## Project Startup Worktree Preflight
+
+Every project startup must first verify that the current working directory and
+Git worktree match the requested project:
+
+- Job Center: `/home/bobreap/projects/teachers-net-jobcenter`
+- Community: `/home/bobreap/projects/teachers-net-community3`
+
+If the startup worktree does not match, stop and report the mismatch before
+performing implementation work. Do not switch branches or infer project
+identity from the current branch alone.
+
 The global Engineering Director Playbook lives outside this repository and
 should contain reusable methodology only. Teachers.Net-specific context belongs
 in local Teachers.Net docs.

@@ -3,6 +3,13 @@
 ```text
 Project: <Project Name>
 
+Before reading project state or performing implementation, verify the current
+working directory/worktree matches the requested project:
+- Job Center: `/home/bobreap/projects/teachers-net-jobcenter`
+- Community: `/home/bobreap/projects/teachers-net-community3`
+If it does not match, stop and report the mismatch. Do not switch branches or
+continue implementation from the wrong worktree.
+
 Retrieve and read these exact Google Drive documents in order:
 1. Engineering Director Playbook v2
    https://docs.google.com/document/d/1GMT6pOFlhxC3wo4pfx6sxbxjzanPZJduvetY2CD6mWQ

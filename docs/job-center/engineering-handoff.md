@@ -3,6 +3,14 @@
 Operational state only. Permanent product, design, architecture, and
 implementation detail remain in the referenced repository documents.
 
+## Startup Worktree Preflight
+
+Job Center implementation must start from
+`/home/bobreap/projects/teachers-net-jobcenter`. Verify the current working
+directory and Git worktree before inspecting implementation state. If the
+startup worktree does not match, stop and report the mismatch; do not switch
+branches or proceed with implementation.
+
 ## 1. Current Phase
 
 Active Development - Visual Convergence Sprint.

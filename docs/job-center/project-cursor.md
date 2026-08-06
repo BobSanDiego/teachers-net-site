@@ -4,6 +4,13 @@
 
 Active Development
 
+## Startup Worktree Preflight
+
+Before any Job Center implementation, verify the current working directory and
+Git worktree is `/home/bobreap/projects/teachers-net-jobcenter`. If it is not,
+stop and report the mismatch before implementation. Do not switch branches in
+place to bypass this preflight.
+
 ## Current Ticketing and Reporting Authority
 
 Codex Desktop tickets are delivered by ChatGPT as inline fenced code blocks in
