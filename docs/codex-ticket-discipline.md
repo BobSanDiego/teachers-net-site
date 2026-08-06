@@ -34,6 +34,17 @@ bundle using the same cycle identifier. A ticket is not complete until
 modified file, and required evidence and passes the helper's `validate`
 command.
 
+Every cycle's human-readable completion report must include a section titled
+`Representative URLs Affected`. List the canonical or representative URLs that
+the ticket changed, verified, or intentionally left unchanged, with one status
+per URL: `changed`, `verified`, `unchanged`, `blocked`, or `not applicable`.
+Include the route purpose and, when relevant, the runtime used. Do not invent
+URLs: if a ticket has no URL surface, state `None — documentation/backend-only
+ticket`. For UI or routing tickets, include at least the canonical review URL
+and the affected production route when both exist. Record the same URL list in
+the machine-readable cycle record so ChatGPT can recover URL scope without
+opening the report.
+
 The final screen report must print the full current-cycle filename list, WSL
 path, Windows path, archive path, commit, push result, and the command
 `explorer.exe "\\wsl$\\Ubuntu-24.04\\home\\bobreap\\projects\\teachers-net-site\\tmp\\hopper\\jobcenter\\current"`.
