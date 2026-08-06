@@ -1,5 +1,0 @@
-VALIDATE WORKFLOW: PASS
-- report artifacts: 6
-- hopper artifacts: 19
-- ledger: valid JSON
-- dual-directory structure: valid

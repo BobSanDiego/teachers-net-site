@@ -1,7 +1,0 @@
-Current Report directory: /home/bobreap/projects/teachers-net-site/tmp/hopper/views/Report (Views)
-ARCHITECT-REPORT.txt
-ARCHITECTURE-DELTA.md
-COMMAND-RESULT.txt
-EVIDENCE-INDEX.txt
-NEXT-STEP.txt
-completion-report.txt

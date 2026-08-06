@@ -1,0 +1,12 @@
+Previous cycle completed: DV-UX010 — Adopt Meta-Groups Tree Structure in Core Terms Library.
+
+Ticket: DV-UX010A — Correct Library Tree Structure and Ancestor Shuttle Contract
+Status: complete
+Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Authenticated browser: jobman
+Implementation commit: 406a670 on agent/durable-views-dv003-persistence; pushed successfully.
+Documentation commit: b36be02 on COMMUNITY003-semantic-community-communications-working-draft; pushed successfully.
+
+Verified: nested Library hierarchy, independent Grade Level disclosure, descendant selection, muted/disabled ancestor context, one canonical selected term, no console errors. Screenshot: DV-UX010A-library-ancestor-views-260806123000.png.
+
+DV-UX010A COMPLETE. Human DV-UX009 acceptance testing may resume. DV-UX010B and V2 work were not begun.

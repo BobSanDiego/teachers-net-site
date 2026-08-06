@@ -1,6 +1,0 @@
-project=views
-report=/home/bobreap/projects/teachers-net-site/tmp/hopper/views/Report (Views)
-hopper=/home/bobreap/projects/teachers-net-site/tmp/hopper/views/Hopper (Views)
-archive=/home/bobreap/projects/teachers-net-site/tmp/hopper/views/archive
-ledger=/home/bobreap/projects/teachers-net-site/tmp/hopper/views/workflow-ledger.json exists=True
-tickets=1
