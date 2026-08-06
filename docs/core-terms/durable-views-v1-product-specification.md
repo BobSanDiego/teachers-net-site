@@ -55,10 +55,11 @@ Published View → Create Draft → Save Draft → Preview / Validate → Publis
 
 ## 4. View Manager
 
-The manager lists Views with name, status, current published version, and
-available actions. V1 actions are Edit, Publish when a valid draft exists,
-Clone where the existing platform contract supports it, and Archive/Restore
-where authorized. A published View cannot be edited in place.
+The manager lists Views with name, status, and current published/draft state.
+It locates Views and opens the appropriate viewing context; it does not edit a
+View directly. The manager may expose Open/View Published, Create Draft/Edit
+Draft, Clone, and Archive actions according to state and authorization. Publish
+is available only inside the Draft Editor.
 
 If a user requests a new draft while one exists, show:
 
@@ -76,9 +77,8 @@ mutates a published version.
 4. Open the blank Draft Editor.
 
 The initial editor must prioritize composition. It must not expose framework
-selection when only one framework is available, manual UUID entry, ranking
-numbers, include-descendants switches, Add-to-Draft row actions, or
-presentation-container authoring.
+selection, manual UUID entry, ranking/order fields, include-descendants
+switches, Add-to-Draft row actions, or presentation-container authoring.
 
 ## 6. Draft Editor
 
@@ -116,16 +116,17 @@ Views.
 - **Already represented:** label muted and checkbox unavailable/muted. This
   means the term is already in the active draft View and cannot be shuttled
   again.
-- **Partial branch:** ancestor checkbox is indeterminate when only part of its
-  branch is selected.
+- **Required ancestor context:** ancestor checkboxes are muted/disabled; the
+  finalized V1 interaction does not use indeterminate parent selection as its
+  primary model.
 
-Top-level behavior is intentionally conservative: a top-level name click may
-request confirmation before selecting its branch; the checkbox is not used to
-imply an unbounded taxonomy mutation.
+Top-level terms have no checkbox. Clicking a top-level name (not its disclosure
+icon) prompts: “Select this entire tree?” with Yes and Cancel. Non-top-level
+name clicks expand or collapse only.
 
-The Library provides **Shuttle Selected** and, where the visible workflow
-supports it, **Shuttle All**. Shuttle All requires confirmation because it
-creates a broad draft selection.
+The Library toolbar defaults to **Shuttle All Terms**. When pending selections
+exist, contextual controls appear: **Shuttle Selected**, **Clear Selection**,
+and **Shuttle All Terms**. Shuttle All Terms requires confirmation.
 
 ## 8. Shuttle rules
 
@@ -147,11 +148,13 @@ Current View is the editable representation of the draft. It uses the same
 hierarchical visual language as the Library, but its entries are View-owned
 placements referencing canonical UUIDs.
 
-- Normal entries display normally and can be selected for removal.
-- A selected removal target is checked and struck through.
-- Descendants affected by removal inherit the strike-through state.
-- **Remove Selected** removes confirmed targets from the draft.
-- **Remove All** requires confirmation and removes all draft placements.
+- Normal entries display normally and can be checked as removal roots.
+- A checked removal target is struck through.
+- Descendants affected by removal inherit strike-through and muted checkbox
+  state; removal cascades downward.
+- The Current View toolbar defaults to **Remove All Terms**. When removal
+  selections exist, contextual controls appear: **Remove Selected**, **Clear
+  Selection**, and **Remove All Terms**.
 - Removal is draft-only and does not mutate Core Terms or published versions.
 - After removal, the Library refreshes represented and available states.
 

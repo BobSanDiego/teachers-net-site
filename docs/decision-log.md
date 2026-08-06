@@ -157,3 +157,14 @@ terms, strike-through pending removal, draft/published lifecycle, dialogs,
 and explicitly deferred capabilities. Earlier conflicting or more expansive
 UX descriptions are subordinate to this specification; unresolved
 contradictions must be reported rather than invented away.
+
+### DV-SPEC002 — Finalized V1 Interaction Rules
+
+**Status:** Accepted  
+**Date:** 2026-08-06
+
+DV-SPEC001 was finalized by DV-SPEC002. Explicit checkbox actions are distinct
+from inherited visual consequences: blue ancestor context on the left and
+strike-through descendant removal on the right. Contextual shuttle/removal
+toolbars, top-level confirmation, draft-only publication, and the deferred V1
+feature boundary are now authoritative for DV-UX009.

@@ -272,3 +272,11 @@ the finalized lifecycle, manager, editor, Library, shuttle, Current View,
 removal, visual-state, dialog, deferred-capability, and acceptance rules.
 DV-UX009 is now authorized to implement against this specification. No code
 implementation was performed by DV-SPEC001.
+
+## DV-SPEC002 Completion
+
+DV-SPEC002 finalized `docs/core-terms/durable-views-v1-product-specification.md`
+with the approved checkbox, blue-context, shuttle, strike-through removal,
+contextual-toolbar, View Manager, draft-lifecycle, and deferred-feature rules.
+It is the sole product authority for DV-UX009. No code implementation was
+performed.

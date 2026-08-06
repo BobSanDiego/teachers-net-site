@@ -277,3 +277,9 @@ The canonical Views V1 Product Specification is
 `docs/core-terms/durable-views-v1-product-specification.md`. It is now the
 implementation authority for DV-UX009. DV-SPEC001 was documentation-only;
 schema, repository, resolver, UI, and consumer behavior were not changed.
+
+## DV-SPEC002 Completion
+
+The V1 specification was aligned to the finalized ChatGPT interaction model.
+The finalized document remains the sole authority for DV-UX009. No application
+behavior or platform boundary changed.
