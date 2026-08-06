@@ -608,6 +608,20 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 }
 .form-control-with-icon{min-width:0;position:relative;width:100%}.form-control-with-icon>input,.form-control-with-icon>select{box-sizing:border-box;min-width:0;padding-right:38px;width:100%}.form-control-with-icon__icon{color:var(--muted);font-size:16px;line-height:1;pointer-events:none;position:absolute;right:12px;top:50%;transform:translateY(-50%)}
 .panel{container-type:inline-size}
+@container (max-width:360px){
+  .application-card[data-view="step-01-add-school-us"] .organization-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .application-card[data-view="step-01-add-school-us"] .form-field-full-name,
+  .application-card[data-view="step-01-add-school-us"] .form-field-display-name,
+  .application-card[data-view="step-01-add-school-us"] .form-field-address,
+  .application-card[data-view="step-01-add-school-us"] .form-field-suite{grid-column:1 / -1}
+  .application-card[data-view="step-01-add-school-us"] .form-field-zip{grid-column:1}
+  .application-card[data-view="step-01-add-school-us"] .form-field-city{grid-column:2}
+  .application-card[data-view="step-01-add-school-us"] .form-field-state{grid-column:1}
+}
+@container (max-width:280px){
+  .application-card[data-view="step-01-add-school-us"] .organization-form{grid-template-columns:minmax(0,1fr)}
+  .application-card[data-view="step-01-add-school-us"] .organization-form .form-field{grid-column:1 / -1}
+}
 .application-card .panel>section{container-type:inline-size}
 @container (max-width:720px){.panel .choice-grid{grid-template-columns:1fr}.panel .choice-grid .tnet-choice-separator{flex-direction:row;margin:14px 0}.panel .choice-grid .tnet-choice-separator:before,.panel .choice-grid .tnet-choice-separator:after{height:1px;width:auto}}
 .form-control-with-icon>input.initial-school-search,.form-control-with-icon>select#initial-school,.form-control-with-icon>select#selected-school-configured{background-image:none}
