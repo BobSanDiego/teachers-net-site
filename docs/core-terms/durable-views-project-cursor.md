@@ -337,6 +337,9 @@ DV-UX010 rebuilt only the left Core Terms Library using the existing
 DV-UX010A then corrected the Library shuttle contract: descendant selection is
 canonical-term-only, ancestors are context and muted/disabled, top-level names
 offer whole-tree selection, and nested branch disclosure remains independent.
+DV-UX010B added the explicit pending-selection visual state so the selected
+descendant and ancestor path are visibly blue while the shuttle remains
+canonical UUID-only.
 Meta-Groups/assignment tree pattern: parent buckets, recursive nodes, compact
 rows, aligned controls, and generation indentation. Views-specific selection
 and shuttle semantics remain isolated. Authenticated `jobman` verification

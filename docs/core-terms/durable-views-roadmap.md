@@ -276,3 +276,4 @@ the Project Cursor and Engineering Handoff.
 | DV-UX009C | Restore Core Terms Library tree expansion | 8 | Complete; root cause corrected and all three branches browser-verified |
 | DV-UX010 | Adopt Meta-Groups tree structure in Core Terms Library | 8 | Complete; compact recursive Library tree browser-verified; Current View tree unchanged |
 | DV-UX010A | Correct Library Tree Structure and Ancestor Shuttle Contract | 8 | Complete; nested disclosure, whole-tree selection prompt, and muted ancestor context browser-verified |
+| DV-UX010B | Enforce Canonical Tree Rendering and Ancestor Shuttle | 8 | Complete; pending descendant and ancestor path states match the approved selection contract |

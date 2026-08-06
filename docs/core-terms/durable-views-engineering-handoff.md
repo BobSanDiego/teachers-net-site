@@ -338,6 +338,12 @@ on `jobman`. Profilaxes commit `406a670` is pushed. The next work must preserve
 the canonical UUID-only shuttle payload and must not convert ancestor context
 into separate taxonomy selections.
 
+## DV-UX010B Completion
+
+Pending descendant and ancestor-context styling is now browser-verified. The
+selected-term count remains canonical-term-only and ancestor controls remain
+disabled context. Profilaxes commit `942d8c4` is pushed.
+
 ## DV-UX010 Completion
 
 The left Core Terms Library now uses an isolated recursive structure adapted
