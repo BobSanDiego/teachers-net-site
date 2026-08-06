@@ -33,9 +33,8 @@ acceptance of the implementation.
 - WordPress bootstrap check loaded `CFM_Views_Repository` successfully.
 - Git diff check passed before commit.
 - Authenticated browser verification: **PARTIAL**; canonical admin page loaded as `jobman`.
-- Screenshots: browser screenshots were captured during the authenticated
-  session; the tool did not expose them as WSL-local files for hopper
-  collection.
+- Screenshots: authenticated final screenshot collected from the alternate
+  Windows mount at `C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\DV-UX009A-authenticated-final.png` and copied into the Views hopper.
 - Console-error verification: passed; no console messages found after reload.
 - Jobs regression browser verification: **PENDING**.
 
