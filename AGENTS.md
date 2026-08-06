@@ -167,6 +167,12 @@ current-cycle artifact set that the user can drag into ChatGPT in one
 operation. A ticket is not complete until `current/` contains the report,
 manifest, cycle record, every created or modified file, and required evidence.
 
+Cycle flush rule: the beginning-of-cycle operation must flush every active
+Views Report and Hopper directory by archiving its contents into the new
+cycle's archive subdirectories before collecting new artifacts. Never merely
+append to a prior cycle, and never delete the archive. The protected
+`output.txt` exception remains in force.
+
 Views report-publication requirement: at the end of every Views ticket cycle,
 copy the final human-readable report and the generated `output-<cycle>.txt`
 report into both formal report directories:

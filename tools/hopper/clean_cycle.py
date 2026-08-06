@@ -29,6 +29,15 @@ def paths(project: str) -> tuple[Path, Path, Path]:
     return base / f"Report ({label})", base / f"Hopper ({label})", base / "archive"
 
 
+def cycle_directories(project: str) -> tuple[Path, ...]:
+    """Return every active directory that must be flushed at cycle start."""
+    report, hopper, _ = paths(project)
+    if project == "views":
+        base = HOPPER / project
+        return report, hopper, base / "Report (views)", base / "Hopper (views)"
+    return report, hopper
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -39,14 +48,14 @@ def sha256(path: Path) -> str:
 
 def begin(project: str, identifier: str) -> None:
     report, hopper, archive = paths(project)
-    report.mkdir(parents=True, exist_ok=True)
-    hopper.mkdir(parents=True, exist_ok=True)
+    for source in cycle_directories(project):
+        source.mkdir(parents=True, exist_ok=True)
     archive.mkdir(parents=True, exist_ok=True)
     destination = archive / identifier
     if destination.exists():
         raise RuntimeError(f"archive cycle already exists: {destination}")
     destination.mkdir()
-    for source in (report, hopper):
+    for source in cycle_directories(project):
         target = destination / source.name
         target.mkdir()
         for item in source.iterdir():

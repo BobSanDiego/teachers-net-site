@@ -19,6 +19,11 @@ and report artifact into `tmp/hopper/views/Hopper (views)/`; retain the
 validated canonical record in `Hopper (Views)`. The completion report must
 list both report directories and their WSL/Windows paths.
 
+Before collecting any new Views artifact, flush all four active directories
+(`Report (Views)`, `Report (views)`, `Hopper (Views)`, and `Hopper (views)`) by
+moving their prior contents into the new cycle archive. Do not append to a
+previous current cycle; preserve the archive and the protected `output.txt`.
+
 During the cycle, collect every created or modified artifact with the helper's
 `collect` command. The helper copies forensic files flat into `Hopper (Job Center)/` using
 `<base>-jobcenter-<cycle-id>.<extension>`, refuses collisions, records original
