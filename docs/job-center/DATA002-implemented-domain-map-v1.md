@@ -11,6 +11,8 @@ This document records the seven additive tables originally implemented by DATA00
 
 The additive `tnet_jobs_wizard_drafts` table is the durable persistence boundary for the later Wizard Session & Draft Contract. It is intentionally separate from `tnet_jobs`; existing Job drafts remain owned and readable by the existing Jobs service.
 
+The bounded DATA004 orchestration service is now implemented in the Jobs plugin as `TNet_Jobs_Wizard_Session_Service`. It owns session creation/resume, envelope hydration, Step 1 state persistence, validation-driven completion, transitions, stale-write handling, ownership checks, explicit identity-resolution invocation, and deterministic Step 1 domain-command preparation. It does not add UI, routes, publication, or production Step 1 integration.
+
 The table stores `wizard_draft_id`, unique UUID `session_id`, nullable `job_id`, `employer_id`, `actor_user_id`, `mode`, `current_step`, JSON `completed_steps_json` and `step_states_json`, `draft_status`, integer `state_version`, `wizard_contract_version`, `domain_contract_version`, and created/updated/last-saved/expiration/archive timestamps. JSON payloads are bounded at 65,535 bytes per field and PHP object serialization is not permitted.
 
 Indexes cover session uniqueness plus employer, actor, job, status, updated, and last-saved access. Repository updates require the expected `state_version`, increment it exactly once on success, and return a deterministic stale-write error without overwriting newer state. The repository is persistence-only; DATA004 orchestration remains future work.
