@@ -34,9 +34,11 @@ remain valid.
 
 Do not repeatedly rediscover or re-prove settled project facts. Do not perform
 broad repository archaeology, global searches, or unrelated comparisons merely
-to establish context already accepted by the project. Trust the established
-authority documents as the canonical source of settled state unless direct
-repository evidence proves them stale or incorrect.
+to establish context already accepted by the project. Use the established
+authority in this order: Authority Manifest; approved contracts; governance;
+execution plans and roadmaps; accepted implementation; then companion chat
+only for unresolved context. Do not reread or re-ingest companion chat merely
+to rediscover facts already established in repository authority.
 
 If direct evidence contradicts an accepted project fact, stop immediately and
 report the contradiction. Do not silently reinterpret project history or launch
@@ -57,8 +59,8 @@ still permits safe implementation and proportional verification.
 For routine `next ticket` directives, do not ingest the complete companion chat
 transcript. Read only the latest one to three turns and locate the newest
 complete `TICKET READY FOR CODEX` block. Read older turns only when the latest
-ticket is truncated, explicitly depends on earlier evidence, or conflicts with
-local authority documents.
+ticket is truncated, required context is missing or changed, repository
+authority cannot resolve the issue, or a contradiction is detected.
 
 ChatGPT handoffs should end with this optional pointer when practical:
 
@@ -79,6 +81,12 @@ Required local documents:
 
 Stop boundary:
 <summary>
+
+Current authority manifest:
+<path>
+
+Current authority commit:
+<commit>
 ```
 
 The local Project Cursor, Engineering Handoff, authority manifests, contracts,

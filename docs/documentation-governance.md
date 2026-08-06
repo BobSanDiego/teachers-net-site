@@ -168,6 +168,27 @@ Every Project Cursor must declare one project state:
 Use the state to orient a cold-start session quickly. Do not use it as a
 substitute for the current ticket or handoff.
 
+## Repository Continuity and Inspection Governance
+
+Local authority documents remain the source of settled project state. Unless a
+ticket explicitly requires an audit, rediscovery, architecture review,
+authority verification, repository-wide investigation, or diagnostic
+comparison, previously accepted governance, architecture, synchronization,
+design decisions, and engineering conclusions remain valid. Do not perform
+broad archaeology or reread/re-ingest companion chat to rediscover them.
+
+Inspect only materially necessary files and dependencies. Authority order is:
+Authority Manifest; approved contracts; governance; execution plans/roadmaps;
+accepted implementation; companion chat for unresolved context only. If direct
+repository evidence contradicts accepted authority, stop and report it. Broad
+audits are limited to explicit requests, ticket requirements, verified
+contradictions, or establishing new authority.
+
+For routine next-ticket handoffs, read only the latest companion-chat portion
+needed to locate the latest complete ticket. Read older turns only when the
+ticket is truncated, context is missing or changed, repository authority cannot
+resolve the issue, or a contradiction is detected.
+
 ## Google Drive Operational Docs
 
 Google Drive is the operational recovery layer for ChatGPT Engineering Director

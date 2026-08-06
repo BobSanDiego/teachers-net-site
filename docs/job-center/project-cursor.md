@@ -23,6 +23,20 @@ Current sequencing gate:
 Do not begin Add School/Jobsite integration until runtime asset migration is
 complete and verified.
 
+## Continuity and inspection rule
+
+Do not repeatedly rediscover settled Job Center facts. Unless the active ticket
+requires an audit or direct evidence contradicts accepted authority, rely on the
+Authority Manifest, approved contracts, governance, roadmaps/execution plans,
+and accepted implementation in that order. Inspect only the directly affected
+files and dependencies. Stop and report contradictions instead of silently
+reinterpreting project history.
+
+For routine `next ticket` requests, retrieve only the latest companion-chat
+turns needed to locate the latest complete `TICKET READY FOR CODEX`. Read older
+turns only when the handoff is truncated, missing context, materially changed,
+unresolved by repository authority, or contradictory.
+
 ## Current Phase
 
 Visual Convergence Sprint. Responsive Design governance is complete

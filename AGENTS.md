@@ -17,6 +17,17 @@ repo's local docs. The global Engineering Director Playbook contains reusable
 methodology only. Do not import workflow state, routes, branding, plugin
 decisions, or product assumptions from other projects.
 
+Repository continuity and inspection rule: accepted authority manifests,
+contracts, governance, roadmaps, execution plans, and verified implementation
+facts remain valid unless the current ticket requires re-audit or direct
+repository evidence contradicts them. Inspect only the directly affected
+files, routes, services, repositories, components, documents, and dependencies.
+Do not perform broad archaeology or reread/re-ingest companion chat merely to
+rediscover settled facts. If direct evidence contradicts accepted authority,
+stop and report the contradiction. Repository authority order is: Authority
+Manifest, approved contracts, governance, execution plans/roadmaps, accepted
+implementation, then companion chat for unresolved context only.
+
 Documentation governance:
 
 - Shared governance docs live in `docs/`.

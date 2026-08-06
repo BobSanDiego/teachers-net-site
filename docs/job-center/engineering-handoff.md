@@ -19,6 +19,34 @@ status-first completion report plus Report/Hopper artifacts.
 review/handoff post and are not required in Codex completion reports unless the
 active ticket explicitly requests them.
 
+### Continuity and handoff retrieval
+
+Previously accepted authority remains valid unless the active ticket requires
+re-audit or direct repository evidence contradicts it. Use the Authority
+Manifest, approved contracts, governance, roadmaps/execution plans, and
+accepted implementation before companion chat. Inspect only the implementation
+materially required by the ticket; stop and report contradictions.
+
+For routine next-ticket execution, tail-read the latest companion-chat portion
+only far enough to locate the latest complete `TICKET READY FOR CODEX`. Do not
+ingest the full transcript unless the ticket is truncated, required context is
+missing, project context changed, repository authority cannot resolve the issue,
+or a contradiction is detected.
+
+Recommended ChatGPT handoff pointer:
+
+```text
+CODEX HANDOFF POINTER
+
+Latest ticket: <ticket title>
+Complete ticket body: YES | NO
+Prior context required: YES | NO
+Required local documents: <paths>
+Stop boundary: <summary>
+Current authority manifest: <path>
+Current authority commit: <commit>
+```
+
 Responsive Design is complete only for the previously approved public and
 job-detail authority set. JC053 Employer Operations responsive convergence is
 an active implementation-target workstream. Remaining UX authority

@@ -35,6 +35,23 @@ For Job Center, the current post-parity gate is:
 Do not advance to Step 1 Add School/Jobsite integration until runtime asset
 migration is complete and verified.
 
+## Repository Continuity and Chat Handoff Optimization
+
+Treat the repository's Authority Manifest, approved contracts, governance,
+execution plans/roadmaps, and accepted implementation as the durable authority
+order. Companion chat is consulted only for unresolved context. Unless the
+ticket explicitly requires audit, rediscovery, architecture review, authority
+verification, repository-wide investigation, or diagnostic comparison, do not
+re-prove settled facts or perform broad repository archaeology. Inspect only
+the materially affected implementation and dependencies.
+
+For routine `next ticket` execution, tail-read only the latest companion-chat
+portion sufficient to locate the latest completed review and complete `TICKET
+READY FOR CODEX` block. Read older turns only when the ticket is truncated,
+context is missing or changed, repository authority cannot resolve the issue,
+or a contradiction is detected. Stop and report contradictions rather than
+silently reinterpreting project history.
+
 ENGINEERING-GOV001 applies to all future tickets: maintain one objective,
 reuse proven diagnostics, implement before one structured verification sweep,
 and stop when the objective is proven. Use minimum necessary browser evidence;
