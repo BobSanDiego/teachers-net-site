@@ -6,6 +6,14 @@ Nested implementation commit: `DATA003D-SCHEMA`
 Source: `wordpress/wp-content/plugins/tnet-jobs/includes/class-tnet-jobs-schema.php`
 
 This document records the seven additive tables originally implemented by DATA002 and the additive pairwise resolution table implemented by DATA003D-SCHEMA.
+
+## DATA004-SCHEMA wizard draft persistence
+
+The additive `tnet_jobs_wizard_drafts` table is the durable persistence boundary for the later Wizard Session & Draft Contract. It is intentionally separate from `tnet_jobs`; existing Job drafts remain owned and readable by the existing Jobs service.
+
+The table stores `wizard_draft_id`, unique UUID `session_id`, nullable `job_id`, `employer_id`, `actor_user_id`, `mode`, `current_step`, JSON `completed_steps_json` and `step_states_json`, `draft_status`, integer `state_version`, `wizard_contract_version`, `domain_contract_version`, and created/updated/last-saved/expiration/archive timestamps. JSON payloads are bounded at 65,535 bytes per field and PHP object serialization is not permitted.
+
+Indexes cover session uniqueness plus employer, actor, job, status, updated, and last-saved access. Repository updates require the expected `state_version`, increment it exactly once on success, and return a deterministic stale-write error without overwriting newer state. The repository is persistence-only; DATA004 orchestration remains future work.
 It is downstream of the approved DATA001 architecture and is the schema
 reference for DATA003 repositories, services, validation, authorization,
 duplicate handling, and hydration.
