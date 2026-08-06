@@ -666,3 +666,4 @@ html body{font-family:"Manrope","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-se
 }
 @media (max-width:1199px){.step3-preview-pane{display:none}.step3-authoring-layout{display:block}}
 @media (max-width:650px){.step3-authoring-layout{display:block}.step3-summary-assist-actions{justify-content:stretch}.step3-summary-assist-actions .button{flex:1 1 100%}}
+.workbench-bar[hidden],.workbench-utility[hidden]{display:none}
