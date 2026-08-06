@@ -330,3 +330,12 @@ unguarded listener lookup for a non-rendered optional selection control.
 Authenticated `jobman` browser verification passed for all three top-level
 branches with no selection changes and no console messages. Human DV-UX009
 acceptance testing may resume. DV-UX010 remains unauthorized.
+
+## DV-UX010 Completion
+
+The left Core Terms Library now uses an isolated recursive structure adapted
+from the existing Meta-Groups/assignment tree. Compact rows, aligned
+expander/checkbox/label controls, and nested child wrappers are browser
+verified as `jobman` at the canonical Views editor. Profilaxes commit
+`49b2921` is pushed. Current View structure and all platform/Jobs boundaries
+were preserved.

@@ -229,3 +229,14 @@ the Core Terms Library expand handler from initializing. Guarding that binding
 restored independent branch expansion without changing selection, persistence,
 resolver, Jobs, or lifecycle behavior. Browser verification passed for Grade
 Level, Location, and Subject Area.
+
+### DV-UX010 — Meta-Groups Structural Adoption
+
+**Status:** Complete
+**Date:** 2026-08-06
+
+The Views Core Terms Library adopts the existing Meta-Groups/assignment tree's
+recursive parent-bucket and compact row structure through an isolated Views
+renderer. Meta-Groups selection behavior is not copied; Views shuttle and
+represented-state semantics remain authoritative. The Current View tree was
+not changed.

@@ -330,3 +330,12 @@ stopped workbench event initialization. The optional listener is now guarded.
 Authenticated browser verification passed for Grade Level, Location, and
 Subject Area with no selection changes or console messages. Human DV-UX009
 acceptance may resume. Profilaxes commit: `852a515`.
+
+## DV-UX010 Completion
+
+DV-UX010 rebuilt only the left Core Terms Library using the existing
+Meta-Groups/assignment tree pattern: parent buckets, recursive nodes, compact
+rows, aligned controls, and generation indentation. Views-specific selection
+and shuttle semantics remain isolated. Authenticated `jobman` verification
+passed for the canonical editor with no console messages. Profilaxes commit:
+`49b2921`. The Current View tree was not changed.

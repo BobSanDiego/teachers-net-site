@@ -274,3 +274,4 @@ authorizes expanding the MVP boundary without an explicit decision recorded in
 the Project Cursor and Engineering Handoff.
 
 | DV-UX009C | Restore Core Terms Library tree expansion | 8 | Complete; root cause corrected and all three branches browser-verified |
+| DV-UX010 | Adopt Meta-Groups tree structure in Core Terms Library | 8 | Complete; compact recursive Library tree browser-verified; Current View tree unchanged |
