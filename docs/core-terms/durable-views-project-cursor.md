@@ -317,4 +317,7 @@ implemented in Profilaxes. Commits `d5aa0b1`, `f13e2f5`, and `2dfb60d` are pushe
 checks pass. Authenticated browser verification is partial: workbench, Saved
 state, removal toolbar, Preview, Publish Draft/Delete Draft controls, and zero
 console messages were verified; full mutation acceptance and Jobs regression
-remain pending. DV-UX009A is not certified complete and DV-UX009 remains open.
+were completed in Browser Verification Continuation Pass 2. Temporary draft
+version 14 was deleted; QA draft version 13 published; Preview and Jobs
+employer workflow passed. DV-UX009A and DV-UX009 are complete and may close.
+DV-UX010 remains unauthorized.

@@ -215,4 +215,6 @@ Profilaxes implements immediate draft persistence state, one-active-draft
 enforcement, protected Delete Draft, and the Current View removal toolbar.
 Published versions, Core Terms, Jobs integration, and resolver boundaries were
 preserved. Commits `d5aa0b1` and `f13e2f5` are pushed. Browser certification is
-required before closing DV-UX009; DV-UX010 remains unauthorized.
+required before closing DV-UX009; Browser Verification Continuation Pass 2
+completed that acceptance. DV-UX009A and DV-UX009 are complete; DV-UX010
+remains unauthorized.

@@ -318,5 +318,6 @@ View removal toolbar are implemented and pushed in Profilaxes commits
 checks pass. Authenticated browser verification partially passes for the
 workbench, Saved state, removal toolbar, Preview, Publish Draft/Delete Draft
 controls, and zero console messages. Full mutation acceptance and Jobs
-regression remain pending. DV-UX009A and DV-UX009 remain open; DV-UX010 remains
+regression passed for the authenticated employer workflow load. DV-UX009A is
+complete and DV-UX009 is fully satisfied and may close. DV-UX010 remains
 unauthorized.

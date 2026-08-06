@@ -234,7 +234,10 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-ARCH003 | Diagnose DV-UX009 renderer blocking architecture | 8 | Complete; renderer/controller seam blocks safe aggregate removal and draft lifecycle completion; DV-UX009 remains open |
 | DV-UX009-CONT2 | Resume authorized renderer/controller refactor | 8 | Blocked; new persistence/lifecycle snapshot and draft-deletion contract is required |
 | DV-DEC001 | Approve autosaved draft lifecycle for V1 | 8 | Complete; product decision recorded; implementation requires a separate ticket |
-| DV-UX009A | Implement autosaved draft lifecycle | 8 | Implementation committed and pushed; authenticated browser verification pending; DV-UX009 remains open |
+| DV-UX009A | Implement autosaved draft lifecycle | 8 | Complete; browser Pass 2 verified autosave, delete, publish, preview, removal controls, and Jobs regression |
+
+DV-UX009 is now fully satisfied and may be closed. DV-UX010 remains
+unauthorized.
 
 ## DV-DEC001 Decision
 

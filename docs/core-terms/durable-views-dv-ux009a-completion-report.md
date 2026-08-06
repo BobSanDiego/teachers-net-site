@@ -4,14 +4,12 @@ Previous cycle completed: DV-DEC001 approved the autosaved draft lifecycle.
 
 ## Outcome
 
-DV-UX009A implementation is committed and pushed. Authenticated browser
-verification is partially complete: the authenticated workbench, Saved state,
-contextual removal controls, Preview output, Publish Draft/Delete Draft
-controls, and zero-console-message state were verified. Full mutation
-acceptance of Delete Draft, Publish, and Jobs regression remains pending.
+DV-UX009A implementation is committed and pushed. Browser Pass 2 completed the
+authenticated workflow: Saved state, contextual removal controls, Preview,
+Delete Draft mutation, Publish Draft mutation, and Jobs employer workflow were
+verified.
 
-DV-UX009 is not yet fully satisfied and remains open pending browser
-acceptance of the implementation.
+DV-UX009 is fully satisfied by the approved V1 scope and may be closed.
 
 ## Implemented
 
@@ -32,11 +30,18 @@ acceptance of the implementation.
 - DDEV PHP lint passed for both modified PHP files.
 - WordPress bootstrap check loaded `CFM_Views_Repository` successfully.
 - Git diff check passed before commit.
-- Authenticated browser verification: **PARTIAL**; canonical admin page loaded as `jobman`.
-- Screenshots: authenticated final screenshot collected from the alternate
-  Windows mount at `C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\DV-UX009A-authenticated-final.png` and copied into the Views hopper.
-- Console-error verification: passed; no console messages found after reload.
-- Jobs regression browser verification: **PENDING**.
+- Authenticated browser verification: **PASS** as `jobman`.
+- Delete Draft: **PASS**; temporary version 14 disappeared from View Manager.
+- Publish Draft: **PASS**; QA draft published as immutable version 13.
+- Preview: **PASS**; three canonical entries resolved.
+- Removal toolbar: **PASS**; selection surfaced Remove Selected and Remove All.
+- Views console: **PASS**; no console messages on the Views page.
+- Jobs regression: **PASS for authenticated workflow load**; employer posting
+  page loaded unchanged. A pre-existing Jobs Quirks Mode issue was reported as
+  a browser warning and is outside Views scope.
+- Screenshots: `DV-UX009A-browser-pass2-views.png` and
+  `DV-UX009A-browser-pass2-jobs.png` collected from the alternate Windows
+  mount.
 
 ## Files changed
 
@@ -56,3 +61,11 @@ acceptance of the implementation.
 
 Expected review path: `https://teachers-net-site.ddev.site/wp-admin/admin.php?page=cfm-views`
 Authenticated browser access was available and the live URL loaded successfully.
+
+## Closure
+
+**DV-UX009A COMPLETE**
+
+**DV-UX009 COMPLETE — may be closed.**
+
+DV-UX010 remains unauthorized.
