@@ -1,0 +1,11 @@
+Previous cycle completed: DV-UX010A — Correct Library Tree Structure and Ancestor Shuttle Contract.
+
+Ticket: DV-UX010B — Enforce Canonical Tree Rendering and Ancestor Shuttle
+Status: complete
+Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Authenticated browser: jobman
+Profilaxes commit: 942d8c4 on agent/durable-views-dv003-persistence; pushed successfully.
+
+Verified: pending descendant and ancestor path styling, disabled ancestor checkbox, canonical selected count, independent tree expansion, and no console errors. Screenshot: DV-UX010B-library-selection-views-260806124500.png.
+
+DV-UX010B COMPLETE. Human DV-UX009 acceptance may continue. No V2 work was begun.
