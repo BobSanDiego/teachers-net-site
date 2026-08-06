@@ -273,6 +273,14 @@ removal, visual-state, dialog, deferred-capability, and acceptance rules.
 DV-UX009 is now authorized to implement against this specification. No code
 implementation was performed by DV-SPEC001.
 
+## DV-ARCH003 Blocker
+
+DV-UX009 is formally open and blocked by the renderer/controller seam. The
+diagnostic is recorded at
+`docs/core-terms/durable-views-dv-arch003-blocking-diagnostic.md`. The current
+form topology cannot safely support aggregate removal or the finalized draft
+lifecycle. DV-UX010 must not begin.
+
 ## DV-SPEC002 Completion
 
 DV-SPEC002 finalized `docs/core-terms/durable-views-v1-product-specification.md`

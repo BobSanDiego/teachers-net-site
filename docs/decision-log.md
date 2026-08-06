@@ -168,3 +168,14 @@ from inherited visual consequences: blue ancestor context on the left and
 strike-through descendant removal on the right. Contextual shuttle/removal
 toolbars, top-level confirmation, draft-only publication, and the deferred V1
 feature boundary are now authoritative for DV-UX009.
+
+### DV-ARCH003 — Renderer Blocking Diagnostic
+
+**Status:** Accepted  
+**Date:** 2026-08-06
+
+DV-UX009 is blocked by the current renderer/controller seam. Interleaved
+per-entry and group forms prevent safe aggregate removal, and the controller
+lacks bounded draft lifecycle actions. This is a renderer/service seam
+problem, not a schema, resolver, Core Terms, or Jobs authority problem.
+DV-UX009 remains open; DV-UX010 is not authorized.

@@ -278,6 +278,14 @@ The canonical Views V1 Product Specification is
 implementation authority for DV-UX009. DV-SPEC001 was documentation-only;
 schema, repository, resolver, UI, and consumer behavior were not changed.
 
+## DV-ARCH003 Blocker
+
+DV-UX009 remains open and blocked. The renderer diagnostic found interleaved
+entry/group forms, no aggregate removal contract, and no bounded draft
+lifecycle action seam. See
+`docs/core-terms/durable-views-dv-arch003-blocking-diagnostic.md`. Do not
+advance to DV-UX010.
+
 ## DV-SPEC002 Completion
 
 The V1 specification was aligned to the finalized ChatGPT interaction model.

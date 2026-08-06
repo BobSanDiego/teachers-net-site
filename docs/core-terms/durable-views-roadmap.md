@@ -231,6 +231,7 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-SPEC001 | Capture canonical Views V1 Product Specification | 8 | Complete; documentation authority for DV-UX009 |
 | DV-SPEC002 | Finalize Views V1 Product Specification | 8 | Complete; finalized interaction rules are now the sole DV-UX009 authority |
 | DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | In progress; legacy surface removed and Library foundation implemented; contextual removal/lifecycle states remain |
+| DV-ARCH003 | Diagnose DV-UX009 renderer blocking architecture | 8 | Complete; renderer/controller seam blocks safe aggregate removal and draft lifecycle completion; DV-UX009 remains open |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
