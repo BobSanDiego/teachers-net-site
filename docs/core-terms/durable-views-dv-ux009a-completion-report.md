@@ -33,7 +33,9 @@ acceptance of the implementation.
 - WordPress bootstrap check loaded `CFM_Views_Repository` successfully.
 - Git diff check passed before commit.
 - Authenticated browser verification: **PARTIAL**; canonical admin page loaded as `jobman`.
-- Screenshots: captured as `DV-UX009A-authenticated-workbench.png` and `DV-UX009A-authenticated-final.png` in the hopper.
+- Screenshots: browser screenshots were captured during the authenticated
+  session; the tool did not expose them as WSL-local files for hopper
+  collection.
 - Console-error verification: passed; no console messages found after reload.
 - Jobs regression browser verification: **PENDING**.
 
@@ -48,7 +50,7 @@ acceptance of the implementation.
 - Commits: `d5aa0b1`, `f13e2f5`, `2dfb60d`
 - Push: successful to `origin`
 - Profilaxes Git status: clean
-- Root documentation commit: pending with this refreshed report and continuity updates
+- Root documentation commit: `b3eb5cb` with this refreshed report and continuity updates
 - Milestone tag: none
 
 ## Canonical review URL
