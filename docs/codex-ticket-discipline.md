@@ -52,6 +52,40 @@ by the active ticket, necessary to diagnose a verified contradiction, or needed
 to establish new project authority. Use the smallest inspection scope that
 still permits safe implementation and proportional verification.
 
+### Companion Chat Handoff Retrieval
+
+For routine `next ticket` directives, do not ingest the complete companion chat
+transcript. Read only the latest one to three turns and locate the newest
+complete `TICKET READY FOR CODEX` block. Read older turns only when the latest
+ticket is truncated, explicitly depends on earlier evidence, or conflicts with
+local authority documents.
+
+ChatGPT handoffs should end with this optional pointer when practical:
+
+```text
+CODEX HANDOFF POINTER
+
+Latest ticket:
+<ticket title>
+
+Complete ticket body:
+YES
+
+Prior context required:
+NO
+
+Required local documents:
+<paths>
+
+Stop boundary:
+<summary>
+```
+
+The local Project Cursor, Engineering Handoff, authority manifests, contracts,
+and current Report/Hopper artifacts remain the source for settled project
+state. Companion-chat history is retrieved selectively for the active ticket,
+new decisions, and unresolved context.
+
 The current Job Center sequencing gate is:
 
 `JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` →
