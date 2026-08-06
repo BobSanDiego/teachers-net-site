@@ -233,6 +233,15 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | In progress; legacy surface removed and Library foundation implemented; contextual removal/lifecycle states remain |
 | DV-ARCH003 | Diagnose DV-UX009 renderer blocking architecture | 8 | Complete; renderer/controller seam blocks safe aggregate removal and draft lifecycle completion; DV-UX009 remains open |
 | DV-UX009-CONT2 | Resume authorized renderer/controller refactor | 8 | Blocked; new persistence/lifecycle snapshot and draft-deletion contract is required |
+| DV-DEC001 | Approve autosaved draft lifecycle for V1 | 8 | Complete; product decision recorded; implementation requires a separate ticket |
+
+## DV-DEC001 Decision
+
+Autosaved draft persistence is approved for V1 as a recovery mechanism for the
+single active draft. It never publishes, mutates published versions, or moves
+composition into Jobs. The decision and required service contract are recorded
+in `docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.
+DV-UX009 remains blocked pending separately authorized implementation.
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.

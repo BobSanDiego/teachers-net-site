@@ -297,3 +297,14 @@ with the approved checkbox, blue-context, shuttle, strike-through removal,
 contextual-toolbar, View Manager, draft-lifecycle, and deferred-feature rules.
 It is the sole product authority for DV-UX009. No code implementation was
 performed.
+
+## DV-DEC001 Completion
+
+DV-DEC001 approved autosaved draft persistence for V1 as a recovery mechanism
+for the one active mutable draft. Autosave must be atomic, durable, clearly
+distinguished from publication, and must never mutate published versions or
+consumer ownership. Revert and Delete Draft semantics and the required
+repository/service seam are documented in
+`docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.
+This is a product decision only; no schema, repository, UI, database, or
+browser changes were made. DV-UX009 remains blocked pending implementation.

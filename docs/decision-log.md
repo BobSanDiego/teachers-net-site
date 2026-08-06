@@ -190,3 +190,18 @@ Delete Draft cannot be implemented from the current contract. Entry mutations
 persist immediately, with no saved-draft snapshot or draft deletion seam.
 This is distinct from the DV-ARCH003 renderer blocker and requires a separate
 explicit persistence/lifecycle decision. DV-UX009 remains open.
+
+### DV-DEC001 — Approve Autosaved Draft Lifecycle (V1)
+
+**Status:** Accepted
+**Date:** 2026-08-06
+
+V1 approves durable autosave for the single active View draft as a recovery
+mechanism. Autosave must be atomic and must not publish, mutate published
+versions, duplicate Core Terms, or transfer composition authority to Jobs.
+Revert restores the latest durable autosave; Delete Draft removes only the
+active draft after confirmation. The repository must provide an explicit
+snapshot/revision and concurrency contract; the current direct-write model is
+not sufficient. This decision authorizes a future implementation ticket only;
+it does not itself authorize schema, application, browser, or production
+changes. Full contract: `docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.

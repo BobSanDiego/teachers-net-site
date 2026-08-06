@@ -298,3 +298,13 @@ blocked pending an explicitly authorized lifecycle persistence decision.
 The V1 specification was aligned to the finalized ChatGPT interaction model.
 The finalized document remains the sole authority for DV-UX009. No application
 behavior or platform boundary changed.
+
+## DV-DEC001 — Autosaved Draft Lifecycle
+
+DV-DEC001 is accepted as a V1 product decision. The active draft may be
+durably autosaved for recovery, while published versions remain immutable and
+consumer-visible behavior remains unchanged. The decision requires a separate
+implementation ticket for atomic snapshot/revision persistence, optimistic
+concurrency, Revert, Delete Draft, and truthful failure handling. See
+`docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.
+DV-UX009 remains blocked; DV-UX010 is not authorized.
