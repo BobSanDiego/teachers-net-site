@@ -71,9 +71,12 @@ and the affected production route when both exist. Record the same URL list in
 the machine-readable cycle record so ChatGPT can recover URL scope without
 opening the report.
 
-Every completion report must begin with `CURRENT CYCLE CHANGE`, include
-`CSS OWNERSHIP REPORT` and `OWNERSHIP MATRIX` when applicable, then document
-verification and remaining issues, and end with `EXPECTED NEXT FIVE TICKETS`.
+Codex completion reports should use the ticket's required status-first template
+and include `CSS OWNERSHIP REPORT` and `OWNERSHIP MATRIX` when applicable, then
+document verification and remaining issues. The conversational markers
+`CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE TICKETS` apply to ChatGPT's
+project posts and outgoing ticket handoffs, not to Codex completion reports or
+hopper filenames unless a specific ticket explicitly requires them.
 
 The final screen report must print the full current-cycle filename list, WSL
 path, Windows path, archive path, commit, push result, and the command
