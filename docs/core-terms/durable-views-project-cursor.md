@@ -312,7 +312,9 @@ browser changes were made. DV-UX009 remains blocked pending implementation.
 ## DV-UX009A Implementation Pass
 
 The approved autosaved lifecycle and remaining bounded removal controls were
-implemented in Profilaxes. Commits `d5aa0b1` and `f13e2f5` are pushed on
+implemented in Profilaxes. Commits `d5aa0b1`, `f13e2f5`, and `2dfb60d` are pushed on
 `agent/durable-views-dv003-persistence`. DDEV PHP lint and WordPress bootstrap
-checks pass. Authenticated browser verification and screenshots are pending;
-DV-UX009A is not certified complete and DV-UX009 remains open.
+checks pass. Authenticated browser verification is partial: workbench, Saved
+state, removal toolbar, Preview, Publish Draft/Delete Draft controls, and zero
+console messages were verified; full mutation acceptance and Jobs regression
+remain pending. DV-UX009A is not certified complete and DV-UX009 remains open.

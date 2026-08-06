@@ -5,8 +5,10 @@ Previous cycle completed: DV-DEC001 approved the autosaved draft lifecycle.
 ## Outcome
 
 DV-UX009A implementation is committed and pushed. Authenticated browser
-verification is pending because no authenticated browser-control tool was
-available in this session; therefore DV-UX009A is not certified complete.
+verification is partially complete: the authenticated workbench, Saved state,
+contextual removal controls, Preview output, Publish Draft/Delete Draft
+controls, and zero-console-message state were verified. Full mutation
+acceptance of Delete Draft, Publish, and Jobs regression remains pending.
 
 DV-UX009 is not yet fully satisfied and remains open pending browser
 acceptance of the implementation.
@@ -30,9 +32,9 @@ acceptance of the implementation.
 - DDEV PHP lint passed for both modified PHP files.
 - WordPress bootstrap check loaded `CFM_Views_Repository` successfully.
 - Git diff check passed before commit.
-- Authenticated browser verification: **PENDING**.
-- Screenshots: **NOT CAPTURED**.
-- Console-error verification: **PENDING**.
+- Authenticated browser verification: **PARTIAL**; canonical admin page loaded as `jobman`.
+- Screenshots: captured as `DV-UX009A-authenticated-workbench.png` and `DV-UX009A-authenticated-final.png` in the hopper.
+- Console-error verification: passed; no console messages found after reload.
 - Jobs regression browser verification: **PENDING**.
 
 ## Files changed
@@ -43,13 +45,13 @@ acceptance of the implementation.
 ## Git
 
 - Profilaxes branch: `agent/durable-views-dv003-persistence`
-- Commits: `d5aa0b1`, `f13e2f5`
+- Commits: `d5aa0b1`, `f13e2f5`, `2dfb60d`
 - Push: successful to `origin`
 - Profilaxes Git status: clean
-- Root documentation commit: pending with this report and continuity updates
+- Root documentation commit: pending with this refreshed report and continuity updates
 - Milestone tag: none
 
 ## Canonical review URL
 
 Expected review path: `https://teachers-net-site.ddev.site/wp-admin/admin.php?page=cfm-views`
-Authenticated browser access was not available to verify the live URL.
+Authenticated browser access was available and the live URL loaded successfully.

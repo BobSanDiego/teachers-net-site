@@ -313,8 +313,10 @@ DV-UX009 remains blocked; DV-UX010 is not authorized.
 
 The approved autosaved draft lifecycle, protected Delete Draft, and Current
 View removal toolbar are implemented and pushed in Profilaxes commits
-`d5aa0b1` and `f13e2f5` on `agent/durable-views-dv003-persistence`. DDEV PHP
-lint and WordPress bootstrap checks pass. Authenticated browser acceptance,
-screenshots, console check, and Jobs regression remain pending because browser
-control was unavailable in the execution session. DV-UX009A and DV-UX009 remain
-open; DV-UX010 remains unauthorized.
+`d5aa0b1`, `f13e2f5`, and `2dfb60d` on
+`agent/durable-views-dv003-persistence`. DDEV PHP lint and WordPress bootstrap
+checks pass. Authenticated browser verification partially passes for the
+workbench, Saved state, removal toolbar, Preview, Publish Draft/Delete Draft
+controls, and zero console messages. Full mutation acceptance and Jobs
+regression remain pending. DV-UX009A and DV-UX009 remain open; DV-UX010 remains
+unauthorized.
