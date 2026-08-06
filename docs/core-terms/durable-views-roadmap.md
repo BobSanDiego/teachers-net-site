@@ -230,6 +230,7 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | Next; specification supplied by ChatGPT required before implementation |
 | DV-SPEC001 | Capture canonical Views V1 Product Specification | 8 | Complete; documentation authority for DV-UX009 |
 | DV-SPEC002 | Finalize Views V1 Product Specification | 8 | Complete; finalized interaction rules are now the sole DV-UX009 authority |
+| DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | In progress; legacy surface removed and Library foundation implemented; contextual removal/lifecycle states remain |
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
