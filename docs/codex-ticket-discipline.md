@@ -10,6 +10,32 @@ must begin by running `python3 tools/hopper/clean_cycle.py begin
 `tmp/hopper/jobcenter/archive/<cycle-id>/Report (Job Center)/` and
 `tmp/hopper/jobcenter/archive/<cycle-id>/Hopper (Job Center)/` directories.
 
+### Report Directory versus Hopper
+
+These are intentionally different deliverables. The Report Directory is the
+optimized ChatGPT review package; the Hopper is the complete permanent archive.
+
+The Report Directory must contain, when applicable:
+
+- completion report, manifest, cycle record, Architect Report, Command Result,
+  Evidence Index, and NEXT-STEP;
+- every modified source file, including PHP, CSS, JS, HTML/templates, SQL,
+  migrations, and documentation;
+- representative screenshots.
+
+Large evidence bundles, ZIP archives, browser traces, generated caches, and
+historical archives are excluded from the Report Directory by default unless
+ChatGPT requests them. Every source file modified in the cycle is copied into
+the Report Directory automatically.
+
+The Hopper remains the complete long-term engineering archive and continues to
+preserve reports, manifests, cycle records, tickets, modified source,
+screenshots, evidence, ZIP bundles, diagnostics, logs, and supporting files.
+No preservation or archive behavior is reduced by the Report Directory split.
+
+ChatGPT should normally review the Report Directory first and retrieve Hopper
+artifacts only for historical recovery, audit, or explicitly requested detail.
+
 Views exception: when the active project is Views, the completion cycle must
 also publish the final human-readable report and generated cycle output into
 both `tmp/hopper/views/Report (Views)/` and
@@ -44,6 +70,10 @@ ticket`. For UI or routing tickets, include at least the canonical review URL
 and the affected production route when both exist. Record the same URL list in
 the machine-readable cycle record so ChatGPT can recover URL scope without
 opening the report.
+
+Every completion report must begin with `CURRENT CYCLE CHANGE`, include
+`CSS OWNERSHIP REPORT` and `OWNERSHIP MATRIX` when applicable, then document
+verification and remaining issues, and end with `EXPECTED NEXT FIVE TICKETS`.
 
 The final screen report must print the full current-cycle filename list, WSL
 path, Windows path, archive path, commit, push result, and the command

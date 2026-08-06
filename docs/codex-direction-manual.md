@@ -72,6 +72,13 @@ Google Drive is for ChatGPT operational recovery only. It is not a mirror of
 repository architecture, implementation detail, full roadmaps, contracts,
 design systems, visual manifests, or ticket history.
 
+For Job Center cycle review, ChatGPT should read the optimized Report Directory
+first. The Report Directory contains the completion package and every modified
+source file needed for ordinary review. The Hopper remains the complete
+long-term archive, including large evidence bundles, traces, logs, diagnostics,
+and historical material; retrieve it when recovery, audit, or deeper evidence
+is required.
+
 ## Canonical Review URL Discipline
 
 The Engineering Director review URL is the sole authority for UI verification.
