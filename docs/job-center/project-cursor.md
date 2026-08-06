@@ -4,6 +4,25 @@
 
 Active Development
 
+## Current Ticketing and Reporting Authority
+
+Codex Desktop tickets are delivered by ChatGPT as inline fenced code blocks in
+the active conversation. Downloadable `.txt` files are supporting artifacts
+only. ChatGPT owns product direction, review commentary, and sequencing; Codex
+owns implementation, verification, Git, and the status-first completion report
+and Report/Hopper payload. `CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE
+TICKETS` are ChatGPT post markers, not required Codex report headings unless a
+ticket explicitly requires them.
+
+Current sequencing gate:
+
+`JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` →
+`JC053-STEP1-RUNTIME-ASSET-MIGRATION` →
+`JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`.
+
+Do not begin Add School/Jobsite integration until runtime asset migration is
+complete and verified.
+
 ## Current Phase
 
 Visual Convergence Sprint. Responsive Design governance is complete
@@ -88,6 +107,15 @@ Save / Share action-group implementation in the Jobs plugin.
 
 ## Current Focus
 
+### Runtime parity and asset authority gate
+
+`JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` is complete. The production route
+and standalone workbench were compared directly; production had been serving
+the root stylesheet without the authority-scoped final-step suppression rule.
+The correction was committed as root `b1b8cbe` and pushed. The next required
+ticket is `JC053-STEP1-RUNTIME-ASSET-MIGRATION`, followed only afterward by
+`JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`.
+
 ### DATA001-REV1 architecture adoption
 
 The School / Jobsite contract is now approved as the staged hybrid in
@@ -96,8 +124,10 @@ Employer-private visibility, trusted-member management, affiliation/recovery,
 the U.S./international minimum address rules, confidence-scored duplicate
 handling, Jobs-owned primary media, Work Arrangement semantics, and the
 full_name/display_name distinction are authoritative. The migration sequence
-is `docs/job-center/DATA002-migration-roadmap-v1.md`; begin with DATA002 and do
-not resume JC053 Step 1 UI migration directly.
+is `docs/job-center/DATA002-migration-roadmap-v1.md`; begin with DATA002. The
+completed JC053-MIG004 ticket was intentionally backend-only and its temporary
+draft/state seam is expected. The approved Step 1 UI migration is separately
+identified as `JC053-MIG004B` and is not yet scheduled or authorized.
 
 Every Job must have exactly one Primary Resource as its organizational anchor.
 The resource need not be the physical work location. Work Arrangement remains
@@ -125,6 +155,11 @@ The bounded convergence workstreams are:
 - JC053 Job Posting Wizard Re-Convergence: finalized shell and controls,
   spacing, progressive disclosure, School / Jobsite selection, organization
   defaults, listing overrides, image behavior, and validation.
+  Field contract: `docs/job-center/job-posting-wizard-field-contract-v1.md`.
+  Current Step 3 direction is paste-first rich authoring, required Short Summary,
+  grouped Optional Fields, compact Benefits selection with inline empty-state
+  teaching, and incremental populated-content preview. Authority is recorded in
+  `docs/job-center/jc053-wizard-design-system-v1.md` and the field contract.
 - JC054 Teacher Discovery Final Pass: search, filters, sort, browse, listing
   cards, detail, employer/location presentation, imagery, and promoted listings.
 - JC055 Teacher Account Modules: Saved Jobs, Job Alerts, alert management,
@@ -180,14 +215,20 @@ and privacy footer. Exact Expired-to-Closed timing, archive semantics,
 retention policy, Duplicate versus Repost wording, notification
 implementation, and deeper analytics remain unresolved and must not be inferred
 from the approved mockups.
-Responsive/mobile presentation is now recorded as two provisional candidate
+Employer Operations / JC053 responsive presentation is an active
+implementation-target workstream, not an approved authority. The latest
+rollback retains full navigation through 1025px and enters compact Resources
+at 1024px; final browser and human acceptance remain open. Responsive/mobile
+presentation is also recorded as two provisional candidate
 rasters (contracted and expanded selector) under
 `docs/job-center/design/draft/`. They are Implementation Targets pending
 Browser Verification, not Approved authorities. Team Members, bottom
 navigation, list/grid switching, and other explicit exclusions remain
 unapproved or deferred to V1.1.
 
-The approved responsive visual authority set is complete. JC-030 Narrow Tablet
+The approved responsive visual authority set for the established public and
+job-detail surfaces is complete. JC053 Employer Operations responsive
+convergence remains provisional and active. JC-030 Narrow Tablet
 v1.0, JC-030 Mobile v1.0, JC-015 Mobile v1.0, JC-015 Tablet v1.0, JC-014 Mobile v1.0, JC-014 Tablet
 v1.0, JC-011 Mobile v1.0, JC-011 Tablet v1.0, JC-010 Tablet v1.0, and JC-010
 Mobile v1.0 are in Patch Mode. Desktop JC-010 v1.1, JC-011 v1.0, JC-014 v1.0,
@@ -219,6 +260,11 @@ lifecycle, presentation, and application behavior.
   `127.0.0.1:9222`, authenticate as `jobman`, use 1440 × 1000, and verify
   route, screenshot, DOM, console/page errors, overflow, selector state, and
   the relevant filter/rows-per-page state.
+- Canonical Engineering Director review URL for the active JC053 Step 3
+  review: `http://127.0.0.1:8768/?#step-03-job-description`. All browser QA,
+  screenshots, DOM, console, accessibility, and human acceptance must use
+  this exact URL. Confirm runtime ownership before verification; an alternate
+  port, server, worktree, launcher, or runtime does not satisfy the ticket.
 - Current shell architecture: a 1200px app canvas with a white shared navbar,
   approved Teachers.Net PNG logo, Job Center label, notification/account
   controls, a 250px gray Employer Operations rail, and a flexible workspace
@@ -263,6 +309,12 @@ desktop visual acceptance is explicit, and do not declare JC-030 converged until
 its separate verification gate passes.
 
 ## Required Google Drive Context
+
+Drive sync primary-code transitions: `0 / 10`. Last successful Drive sync:
+unknown; baseline established under PROCESS-GOV002 on cycle `260802014510`.
+Do not synchronize the operational Handoff after ordinary tickets. Sync only
+for PREPARE HANDOFF, explicit Engineering Director request, major milestone or
+phase transition, or the tenth primary-code transition.
 
 A new ChatGPT session reads only these by default:
 

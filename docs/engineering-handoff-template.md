@@ -3,6 +3,17 @@
 Operational state only. Do not add history, settled architecture, product-contract
 content, design-system rules, or implementation detail preserved elsewhere.
 
+## Handoff Workflow Authority
+
+- The active engineering ticket is issued inline in a fenced code block in the
+  ChatGPT conversation. Downloadable ticket files are supporting artifacts only.
+- ChatGPT owns review commentary and next-ticket sequencing; Codex owns the
+  status-first completion report, verification, Git, and Report/Hopper payload.
+- `CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE TICKETS` are ChatGPT post
+  markers, not mandatory Codex report headings unless the ticket says otherwise.
+- Record newly discovered prerequisites explicitly before listing the next five
+  tickets; do not carry forward a stale sequence.
+
 ## 1. Current Phase
 
 <Current project phase and project-state lifecycle value.>
@@ -55,3 +66,16 @@ Draft candidates are not approved visual references.
 1. <Highest-priority bounded outcome.>
 2. <Next outcome.>
 3. <Next outcome.>
+
+## Canonical Review URL (PROCESS-GOV001)
+
+- Canonical Engineering Director review URL: <exact URL, or “Not established.”>
+- Verified against canonical URL: <YES/NO>
+- Runtime ownership: <PID, command line, cwd, docroot, loaded asset paths, and relevant hashes.>
+- If NO: <identify canonical and alternate URLs, explain the blocker, and stop without completion.>
+
+## Google Drive Synchronization State (PROCESS-GOV002)
+
+- Drive sync primary-code transitions: <N / 10>
+- Last successful Drive sync: <date/cycle/commit, or “Unknown — baseline not yet recorded.”>
+- Next sync trigger: <PREPARE HANDOFF, explicit request, milestone/phase transition, or tenth primary-code transition.>

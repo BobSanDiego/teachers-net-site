@@ -7,6 +7,18 @@ implementation detail remain in the referenced repository documents.
 
 Active Development - Visual Convergence Sprint.
 
+## Handoff and Ticketing Authority
+
+The active Codex Desktop ticket is delivered inline in a fenced code block by
+ChatGPT. Downloadable ticket files are optional supporting artifacts and do not
+override the active inline ticket. ChatGPT owns review commentary and the
+next-ticket sequence. Codex owns implementation, verification, Git, and the
+status-first completion report plus Report/Hopper artifacts.
+
+`CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE TICKETS` belong to ChatGPT's
+review/handoff post and are not required in Codex completion reports unless the
+active ticket explicitly requests them.
+
 Responsive Design is complete only for the previously approved public and
 job-detail authority set. JC053 Employer Operations responsive convergence is
 an active implementation-target workstream. Remaining UX authority
@@ -16,13 +28,18 @@ implementation.
 
 ## 2. Current Ticket
 
-DATA001-REV1 is complete as documentation-only architecture adoption. The
-approved School / Jobsite contract is the staged hybrid in
-`docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`. The next
-authorized data task is DATA002, followed by DATA003–DATA008 in
-`docs/job-center/DATA002-migration-roadmap-v1.md`. JC053-MIG003 is blocked until
-those contracts are implemented and certified. Do not resume Step 1 UI
-migration or begin Step 2 migration from the old sequence.
+`JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` is complete. The production
+integration route now uses the authority-scoped final-step connector rule and
+was verified against the standalone workbench at the required responsive
+widths. The next active ticket is
+`JC053-STEP1-RUNTIME-ASSET-MIGRATION`; it is a prerequisite before any Add
+School/Jobsite integration or Step 2 migration proceeds.
+
+The approved School / Jobsite contract remains the staged hybrid in
+`docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`, and the
+data sequence in `docs/job-center/DATA002-migration-roadmap-v1.md` remains
+authoritative for backend/data work. Do not use that older data sequence to
+bypass the current runtime asset gate.
 
 DATA001-PATCH001 correction: every Job requires exactly one Primary Resource as
 its organizational anchor, including Remote, Hybrid, District-wide, and
@@ -30,6 +47,11 @@ Multi-site jobs. Work Arrangement describes physical-work semantics; optional
 additional locations and job-specific overrides remain separate. Legacy
 compatibility may be nullable during backfill only and is not the target
 contract.
+
+DATA002–DATA008 are the next executable backend/data-contract sequence and may
+proceed in parallel with JC052–JC056 UX authority convergence. They do not
+alter approved UX authority. JC057 remains the broader UX implementation
+capability audit and does not block this data sequence.
 
 JC-051A is complete: `jc-051a-employer-my-jobs-desktop-v1.0.png` is the approved
 canonical Employer My Jobs Desktop Authority v1.0, sourced from
@@ -39,13 +61,24 @@ implementation or acceptance.
 
 Current stop boundary: complete the remaining UX authority work before the
 JC057 implementation capability audit. Do not begin implementation sequencing
-from the audit until the design-first convergence gate is complete. Do not begin
+from the audit until the design-first convergence gate is complete. JC053-MIG004
+was intentionally backend-only; its temporary draft/state seam is expected.
+The approved Step 1 UI replacement is a separate, currently unscheduled
+`JC053-MIG004B` ticket. Do not begin
 Employer Operations mobile implementation until desktop acceptance is explicit.
 
 Active bounded workstreams are JC052 Employer Workspace Completion, JC053 Job
 Posting Wizard Re-Convergence, JC054 Teacher Discovery Final Pass, JC055
 Teacher Account Modules, and JC056 Identity & Onboarding. JC057 is the later
 implementation capability audit; JC058+ is generated from its findings.
+Canonical Engineering Director review URL for JC053 Step 3:
+`http://127.0.0.1:8768/?#step-03-job-description`.
+All UI verification must use this exact URL and report
+`Verified against canonical URL: YES` or `NO`, plus PID, command line, cwd,
+docroot, loaded asset paths, and relevant hashes. If the canonical runtime is
+stale, broken, unreachable, or serves different code, stop and repair the
+canonical runtime before verification; an alternate runtime is not acceptable.
+
 The JC053 V1 field inventory and admission contract is recorded at
 `docs/job-center/job-posting-wizard-field-contract-v1.md`.
 
@@ -79,17 +112,20 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 ## 4. Next Five Planned Tickets
 
-1. JC052 Employer Workspace Completion authority convergence.
-2. JC053 Job Posting Wizard Re-Convergence.
-3. JC054 Teacher Discovery Final Pass.
-4. JC055 Teacher Account Modules.
-5. JC056 Identity & Onboarding, followed by the JC057 implementation capability audit.
+1. JC053-STEP1-RUNTIME-ASSET-MIGRATION.
+2. JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION, after the runtime asset gate.
+3. JC053-STEP1-ADD-SCHOOL-JOBSITE-BROWSER-CERTIFICATION.
+4. JC053-STEP2-INTEGRATION.
+5. JC053-STEP2-BROWSER-CERTIFICATION.
+4. JC053-STEP1-BROWSER-CERTIFICATION.
+5. JC054 Teacher Discovery Final Pass, followed by JC055, JC056, and the JC057 implementation capability audit.
 
 JC053 shared UI authority is now durable at
 `docs/job-center/jc053-wizard-design-system-v1.md`. Future wizard work must
 reuse the Wizard Responsive Form Grid, Form Control with Trailing Icon,
-Stepper, Bottom Navigation, and Choice Card primitives defined there rather
-than restating or forking shared patterns.
+Stepper, Bottom Navigation, Choice Card, Step 3 authoring, Benefits selector,
+and incremental preview primitives defined there rather than restating or
+forking shared patterns.
 
 ## 5. Current Blockers
 
@@ -107,7 +143,15 @@ than restating or forking shared patterns.
   remain unresolved and must not be invented during implementation.
 - No production deployment is established by the verified history.
 
+Drive sync primary-code transitions: `0 / 10`
+Last successful Drive sync: `Unknown — baseline established under PROCESS-GOV002 on cycle 260802014510.`
+Ordinary ticket completion does not trigger a Drive Handoff update. The next
+sync requires PREPARE HANDOFF, an explicit Engineering Director request, a
+major milestone/phase transition, or the tenth primary-code transition.
+
 ## 6. Recently Adopted Governance Documents
+
+- PROCESS-GOV002 — Google Drive Synchronization Cadence.
 
 - JC053 Wizard Design System v1:
   `docs/job-center/jc053-wizard-design-system-v1.md` — canonical shared wizard
@@ -157,6 +201,7 @@ responsive evidence; otherwise an older CSS build can remain visible.
 - Job Finder Search Contract v1.
 - Employer Workspace Flow Authority v1.
 - Codex Fast Operations and verification-proportionality protocol.
+- PROCESS-GOV001 — Canonical Review URL Discipline.
 
 ## 7. Recently Approved Product Decisions
 

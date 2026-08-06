@@ -40,6 +40,30 @@ Launch Readiness → Explicit V1 Acceptance → Production Launch
 
 ## Current Authorized Workstream
 
+### Current ticketing and reporting gate
+
+Codex Desktop engineering tickets are issued inline in a fenced code block by
+ChatGPT. Downloadable `.txt` tickets are optional supporting artifacts and do
+not supersede the active inline ticket. ChatGPT owns review posts and
+sequencing; Codex owns implementation, verification, Git, and the status-first
+completion report with Report/Hopper evidence. The conversational markers
+`CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE TICKETS` belong to ChatGPT's
+review/handoff post unless a ticket explicitly requires them.
+
+The current Job Center sequence is explicitly:
+
+1. `JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` — compare and reconcile the
+   production integration route with the workbench runtime.
+2. `JC053-STEP1-RUNTIME-ASSET-MIGRATION` — make the canonical production asset
+   source/version/runtime seam explicit and verify it.
+3. `JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION` — only after the runtime asset
+   migration gate passes.
+4. `JC053-STEP1-ADD-SCHOOL-JOBSITE-BROWSER-CERTIFICATION`.
+5. `JC053-STEP2-INTEGRATION`.
+
+This sequence supersedes older roadmap entries that place Add School/Jobsite
+integration immediately after the first hydration or parity ticket.
+
 ### DATA001-REV1 — Adopted data architecture gate
 
 The approved School / Jobsite architecture is the staged hybrid: employer
@@ -75,6 +99,15 @@ third**. Visual convergence has materially clarified the architecture, so the
 architecture audit is intentionally deferred until the remaining UX work is
 complete.
 
+The current JC053 Step 3 direction is paste-first, progressive, and
+preview-truthful: Job Description, Requirements / Qualifications, and Short
+Summary are required narrative inputs; Responsibilities, Preferred
+Qualifications, About Our School, and Benefits are grouped as optional
+enrichment; and Listing Preview renders only populated sections. Benefits uses
+the compact inline selector and empty-state teaching pattern recorded in the
+JC053 Wizard Design System and field contract. This is design authority for
+future convergence, not implementation authorization by itself.
+
 The explicit bounded workstreams are:
 
 ### JC052 — Employer Workspace Completion
@@ -95,7 +128,8 @@ at `docs/job-center/job-posting-wizard-field-contract-v1.md`. Shared JC053 UI
 authority is defined in
 `docs/job-center/jc053-wizard-design-system-v1.md`; future tickets must reuse
 its Wizard Responsive Form Grid, trailing-icon control, stepper, bottom
-navigation, and Choice Card primitives.
+navigation, Choice Card, Step 3 authoring, Benefits selector, and incremental
+preview primitives.
 
 ### JC054 — Teacher Discovery Final Pass
 
@@ -161,6 +195,13 @@ This sequence preserves existing employer workflows and does not authorize a
 broad redesign or responsive implementation before desktop acceptance.
 
 ## Completed Employer Operations Convergence Milestones
+
+### Process governance
+
+PROCESS-GOV001 establishes canonical review URL discipline for all future UI
+work. The active Project Cursor and Engineering Handoff record the exact
+Engineering Director review URL; completion reports must state whether that URL
+was verified and must not promote alternate runtimes.
 
 - **Employer Workspace shell convergence — Implemented and browser-verified:**
   1200px canvas, white navbar, approved Teachers.Net logo, Job Center label,

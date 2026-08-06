@@ -88,6 +88,20 @@ implementation, verification, Git operations, and documentation updates.
 Default workflow:
 Inspect → plan → approve → implement → verify → commit → push.
 
+Ticket delivery/reporting authority:
+
+- For Codex Desktop, ChatGPT issues executable engineering tickets as inline
+  fenced code blocks in the active conversation. Downloadable `.txt` tickets
+  are supporting artifacts, not the default delivery format.
+- ChatGPT owns product direction, review commentary, and next-ticket sequence.
+  Codex owns implementation, verification, Git, and the status-first
+  completion report plus Report/Hopper artifacts.
+- `CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE TICKETS` belong to ChatGPT's
+  review/handoff post and are not required in Codex reports unless explicitly
+  required by the active ticket.
+- Job Center runtime asset migration is a prerequisite after runtime-parity
+  diagnostics and before `JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`.
+
 `docs/codex-ticket-discipline.md` defines temporary VISUAL TUNE MODE for
 Engineering Director/site-owner guided CSS/token tuning. Use it only when
 explicitly entered with `Enter VISUAL TUNE MODE`, and follow its finalize or

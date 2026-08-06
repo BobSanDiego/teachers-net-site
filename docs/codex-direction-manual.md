@@ -11,6 +11,30 @@ Terms classify. Jobs authorizes. WordPress authenticates.
 
 ## Engineering Runtime Standard
 
+## Ticket Delivery and Report Ownership
+
+The authoritative Codex Desktop ticket format is an inline fenced code block
+in the active ChatGPT conversation. Older downloadable `.txt` ticket guidance
+is historical and must not override the current inline ticket. Attachments and
+hopper artifacts provide context and evidence; they do not silently replace the
+active inline instruction.
+
+ChatGPT is responsible for product/architecture direction, ticket sequencing,
+review commentary, and the next-ticket handoff. Codex is responsible for
+inspection, implementation, verification, Git, and the status-first completion
+report and cycle artifacts. `CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE
+TICKETS` belong to ChatGPT's review/handoff post, not Codex's completion report,
+unless a ticket explicitly requires those headings.
+
+For Job Center, the current post-parity gate is:
+
+1. `JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC`
+2. `JC053-STEP1-RUNTIME-ASSET-MIGRATION`
+3. `JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`
+
+Do not advance to Step 1 Add School/Jobsite integration until runtime asset
+migration is complete and verified.
+
 ENGINEERING-GOV001 applies to all future tickets: maintain one objective,
 reuse proven diagnostics, implement before one structured verification sweep,
 and stop when the objective is proven. Use minimum necessary browser evidence;

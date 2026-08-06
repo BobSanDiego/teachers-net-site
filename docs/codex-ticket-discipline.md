@@ -1,5 +1,38 @@
 # Codex Ticket Discipline
 
+## Current Ticket Delivery and Reporting Authority
+
+For Codex Desktop, ChatGPT delivers executable engineering tickets in the
+conversation as one inline fenced code block. A downloadable `.txt` ticket is
+not required and is not authoritative merely because it exists in an older
+handoff or archive. A local or Drive ticket artifact may be attached as
+supporting evidence, but the current inline ticket and the active project's
+continuity documents control.
+
+Responsibilities are deliberately separated:
+
+- ChatGPT owns product direction, architecture, prioritization, ticket
+  sequencing, and the conversational review post.
+- Codex owns repository inspection, implementation, verification, Git, and the
+  status-first completion report plus Report/Hopper payload.
+- `CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE TICKETS` are ChatGPT review
+  and handoff markers. They are not required in Codex reports or filenames
+  unless the active ticket explicitly requires them.
+
+After Codex publishes a completed cycle, ChatGPT reviews the Report Directory,
+records the result in its project post, reconciles the next-ticket sequence,
+and issues the next inline fenced ticket. Codex must not invent the next ticket
+from a stale roadmap when the current handoff establishes a newer prerequisite.
+
+The current Job Center sequencing gate is:
+
+`JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` →
+`JC053-STEP1-RUNTIME-ASSET-MIGRATION` →
+`JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`.
+
+Runtime asset migration must be completed and verified before further Step 1
+integration work proceeds.
+
 ## Project-Specific Clean-Cycle Hopper Procedure
 
 For the active Teachers.Net project, the canonical slug is `jobcenter`. Every ticket
