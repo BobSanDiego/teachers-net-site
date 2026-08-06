@@ -24,6 +24,34 @@ records the result in its project post, reconciles the next-ticket sequence,
 and issues the next inline fenced ticket. Codex must not invent the next ticket
 from a stale roadmap when the current handoff establishes a newer prerequisite.
 
+## Repository Continuity and Inspection Governance
+
+Unless the active ticket explicitly requires an audit, rediscovery,
+architecture review, authority verification, or repository-wide investigation,
+previously accepted project governance, architecture, authority manifests,
+synchronization state, approved design decisions, and engineering conclusions
+remain valid.
+
+Do not repeatedly rediscover or re-prove settled project facts. Do not perform
+broad repository archaeology, global searches, or unrelated comparisons merely
+to establish context already accepted by the project. Trust the established
+authority documents as the canonical source of settled state unless direct
+repository evidence proves them stale or incorrect.
+
+If direct evidence contradicts an accepted project fact, stop immediately and
+report the contradiction. Do not silently reinterpret project history or launch
+a broad re-audit.
+
+When beginning implementation, read only the governing documents required for
+the current work and inspect only the directly affected implementation, routes,
+services, repositories, components, documentation, and dependencies. Reuse
+previously established architecture, decisions, and verified conclusions.
+
+Repository-wide audits are permitted only when explicitly requested, required
+by the active ticket, necessary to diagnose a verified contradiction, or needed
+to establish new project authority. Use the smallest inspection scope that
+still permits safe implementation and proportional verification.
+
 The current Job Center sequencing gate is:
 
 `JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` →
