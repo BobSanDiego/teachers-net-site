@@ -179,3 +179,14 @@ per-entry and group forms prevent safe aggregate removal, and the controller
 lacks bounded draft lifecycle actions. This is a renderer/service seam
 problem, not a schema, resolver, Core Terms, or Jobs authority problem.
 DV-UX009 remains open; DV-UX010 is not authorized.
+
+### DV-UX009 Resume 2 — New Persistence Blocker
+
+**Status:** Blocking  
+**Date:** 2026-08-06
+
+The authorized renderer continuation confirmed that Revert to Saved Draft and
+Delete Draft cannot be implemented from the current contract. Entry mutations
+persist immediately, with no saved-draft snapshot or draft deletion seam.
+This is distinct from the DV-ARCH003 renderer blocker and requires a separate
+explicit persistence/lifecycle decision. DV-UX009 remains open.

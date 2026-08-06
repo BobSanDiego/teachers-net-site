@@ -281,6 +281,15 @@ diagnostic is recorded at
 form topology cannot safely support aggregate removal or the finalized draft
 lifecycle. DV-UX010 must not begin.
 
+## DV-UX009 Continuation Pass 2 Blocker
+
+The authorized renderer refactor surfaced a new blocker: the current
+persistence model has no saved-draft snapshot or Delete Draft contract.
+Revert to Saved Draft cannot be implemented deterministically, and Delete
+Draft has no safe repository seam. See
+`docs/core-terms/durable-views-dv-ux009-resume2-blocker-report.md`. DV-UX009
+remains open; DV-UX010 is prohibited.
+
 ## DV-SPEC002 Completion
 
 DV-SPEC002 finalized `docs/core-terms/durable-views-v1-product-specification.md`

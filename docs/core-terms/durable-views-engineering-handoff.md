@@ -286,6 +286,13 @@ lifecycle action seam. See
 `docs/core-terms/durable-views-dv-arch003-blocking-diagnostic.md`. Do not
 advance to DV-UX010.
 
+## DV-UX009 Resume 2 Blocker
+
+The renderer continuation revealed a new persistence/lifecycle blocker outside
+DV-ARCH003: no saved-draft snapshot exists for Revert to Saved Draft, and no
+Delete Draft repository/controller contract exists. DV-UX009 remains open and
+blocked pending an explicitly authorized lifecycle persistence decision.
+
 ## DV-SPEC002 Completion
 
 The V1 specification was aligned to the finalized ChatGPT interaction model.
