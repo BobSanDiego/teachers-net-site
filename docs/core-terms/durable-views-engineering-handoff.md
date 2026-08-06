@@ -331,6 +331,13 @@ Authenticated `jobman` browser verification passed for all three top-level
 branches with no selection changes and no console messages. Human DV-UX009
 acceptance testing may resume. DV-UX010 remains unauthorized.
 
+## DV-UX010A Completion
+
+The Library tree and ancestor shuttle contract are complete and browser-verified
+on `jobman`. Profilaxes commit `406a670` is pushed. The next work must preserve
+the canonical UUID-only shuttle payload and must not convert ancestor context
+into separate taxonomy selections.
+
 ## DV-UX010 Completion
 
 The left Core Terms Library now uses an isolated recursive structure adapted

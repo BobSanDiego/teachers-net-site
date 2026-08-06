@@ -334,6 +334,9 @@ acceptance may resume. Profilaxes commit: `852a515`.
 ## DV-UX010 Completion
 
 DV-UX010 rebuilt only the left Core Terms Library using the existing
+DV-UX010A then corrected the Library shuttle contract: descendant selection is
+canonical-term-only, ancestors are context and muted/disabled, top-level names
+offer whole-tree selection, and nested branch disclosure remains independent.
 Meta-Groups/assignment tree pattern: parent buckets, recursive nodes, compact
 rows, aligned controls, and generation indentation. Views-specific selection
 and shuttle semantics remain isolated. Authenticated `jobman` verification
