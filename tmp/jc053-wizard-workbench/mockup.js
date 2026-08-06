@@ -1,23 +1,45 @@
 (() => {
   const workbenchBuild = document.documentElement.dataset.workbenchBuild || "1";
-  const schoolJobsiteFixture = {
-    full_name: "Los Angeles Unified School District",
-    display_name: "LAUSD",
-  };
+  const schoolJobsiteResources = Array.isArray(window.tnetJobsStep1Resources) ? window.tnetJobsStep1Resources : [];
+  const selectedSchoolJobsite = () => schoolJobsiteResources.find((resource) => String(resource.id) === String(document.querySelector("#initial-school")?.value || document.querySelector("#selected-school-configured")?.value || document.querySelector("#selected-school")?.value)) || null;
   const applySchoolJobsiteDisplayNameRule = () => {
     const initial = document.querySelector("#initial-school");
-    if (initial && !initial.querySelector("option[data-full-name]")) {
+    if (!initial) return;
+    initial.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+    schoolJobsiteResources.forEach((resource) => {
       const option = document.createElement("option");
-      option.value = "lausd";
-      option.textContent = schoolJobsiteFixture.display_name;
-      option.dataset.fullName = schoolJobsiteFixture.full_name;
+      option.value = String(resource.id);
+      option.textContent = resource.display_name || resource.full_name;
+      option.dataset.fullName = resource.full_name || option.textContent;
       initial.append(option);
-    }
+    });
     ["#selected-school-configured", "#selected-school"].forEach((selector) => {
-      const option = document.querySelector(`${selector} option`);
-      if (!option) return;
-      option.textContent = schoolJobsiteFixture.display_name;
-      option.dataset.fullName = schoolJobsiteFixture.full_name;
+      const select = document.querySelector(selector);
+      if (!select) return;
+      select.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+      schoolJobsiteResources.forEach((resource) => {
+        const option = document.createElement("option");
+        option.value = String(resource.id);
+        option.textContent = resource.display_name || resource.full_name;
+        select.append(option);
+      });
+      select.disabled = schoolJobsiteResources.length === 0;
+    });
+    const search = document.querySelector(".initial-school-search");
+    if (search) search.disabled = schoolJobsiteResources.length === 0;
+    initial.disabled = schoolJobsiteResources.length === 0;
+    if (!schoolJobsiteResources.length && !initial.parentElement.querySelector("[data-resource-empty-state]")) {
+      const message = document.createElement("p");
+      message.dataset.resourceEmptyState = "true";
+      message.className = "form-field-help";
+      message.textContent = "No schools or jobsites yet.";
+      initial.parentElement.append(message);
+    }
+    search?.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+      initial.querySelectorAll("option:not(:first-child)").forEach((option) => {
+        option.hidden = Boolean(query) && !option.textContent.toLowerCase().includes(query);
+      });
     });
   };
   applySchoolJobsiteDisplayNameRule();
@@ -722,7 +744,8 @@
     }
   };
   const stateIsReady = (id) => {
-    if (["step-01-school-selected", "step-01-return"].includes(id)) return true;
+    if (["step-01-school-selected", "step-01-return"].includes(id)) return Boolean(selectedSchoolJobsite());
+    if (id === "step-01-initial") return Boolean(selectedSchoolJobsite());
     if (id === "step-02-job-basics") {
       const visibility =
           document.querySelector("#salary-visibility-step2")?.value ||
@@ -1203,23 +1226,52 @@
     return node;
   };
   const step3Sanitized = (html) => {
-    const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","UL","OL","LI","A","H3"]);
+    const node = step3PlainText(html), allowed = new Set(["P","BR","STRONG","B","EM","I","UL","OL","LI","A","H1","H2","H3","H4","H5","H6"]);
+    node.querySelectorAll("DIV").forEach((item) => {
+      const hasBlockChild = [...item.children].some((child) => ["P","DIV","H1","H2","H3","H4","H5","H6","UL","OL"].includes(child.tagName));
+      if (hasBlockChild) {
+        item.replaceWith(...item.childNodes);
+        return;
+      }
+      const paragraph = document.createElement("p");
+      paragraph.innerHTML = item.innerHTML;
+      item.replaceWith(paragraph);
+    });
     node.querySelectorAll("*").forEach((item) => { if (!allowed.has(item.tagName)) { item.replaceWith(...item.childNodes); } });
     return node.innerHTML;
   };
+  const step3Escape = (value) => String(value).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[character]));
+  const step3PlainPasteHtml = (text) => String(text || "")
+    .replace(/\r\n?/g, "\n")
+    .split("\n")
+    .map((line) => line === "" ? "<p><br></p>" : `<p>${step3Escape(line)}</p>`)
+    .join("");
   const step3Text = (html) => step3PlainText(html).textContent.replace(/\\s+/g, " ").trim();
   const step3State = { previewTimer: null };
   const renderStep3Preview = () => {
     const preview = document.querySelector("#step3-preview");
     if (!preview) return;
     const description = document.querySelector("#step3-description-editor"), requirements = document.querySelector("#step3-requirements-editor"), summary = document.querySelector("#step3-summary");
-    preview.innerHTML = `<div class="step3-preview-school"><strong>${schoolJobsiteFixture.display_name}</strong><span>Los Angeles, CA · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${summary.value.trim()}</p>` : ""}<h5>Job Description</h5><div>${step3Sanitized(description?.innerHTML)}</div><h5>Requirements / Qualifications</h5><div>${step3Sanitized(requirements?.innerHTML)}</div>${[0,1,2,3].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return el && step3Text(el.innerHTML) ? `<h5>${["Responsibilities","Preferred Qualifications","Benefits","About Our School"][i]}</h5><div>${step3Sanitized(el.innerHTML)}</div>` : "";}).join("")}`;
+    const resource = selectedSchoolJobsite() || {};
+    preview.innerHTML = `<div class="step3-preview-school"><strong>${resource.display_name || resource.full_name || "School / Jobsite"}</strong><span>School / Jobsite location · Full-time</span></div><h4>${document.querySelector("#job-title-step2")?.value.trim() || "Teacher position"}</h4>${summary?.value.trim() ? `<p class="step3-preview-summary">${summary.value.trim()}</p>` : ""}<h5>Job Description</h5><div>${step3Sanitized(description?.innerHTML)}</div><h5>Requirements / Qualifications</h5><div>${step3Sanitized(requirements?.innerHTML)}</div>${[0,1,2,3].map((i)=>{const el=document.querySelector(`#step3-optional-${i}`);return el && step3Text(el.innerHTML) ? `<h5>${["Responsibilities","Preferred Qualifications","Benefits","About Our School"][i]}</h5><div>${step3Sanitized(el.innerHTML)}</div>` : "";}).join("")}`;
   };
   const scheduleStep3Preview = () => { clearTimeout(step3State.previewTimer); step3State.previewTimer = setTimeout(renderStep3Preview, 120); };
   const updateStep3Counters = () => document.querySelectorAll("[data-counter-for]").forEach((counter) => { const field=document.querySelector(`#${counter.dataset.counterFor}`); counter.textContent=field?.isContentEditable ? step3Text(field.innerHTML).length : (field?.value || "").length; });
   step3Content.querySelectorAll("[data-format-command]").forEach((control) => control.addEventListener("click", () => { const command=control.dataset.formatCommand; if(command === "createLink"){const url=window.prompt("Link URL");if(url) document.execCommand(command,false,url);}else document.execCommand(command,false,control.tagName === "SELECT" ? control.value : null); updateStep3Counters(); scheduleStep3Preview(); }));
   step3Content.addEventListener("input", (event) => { if(event.target.matches("[contenteditable], textarea")){updateStep3Counters();scheduleStep3Preview();refreshNextAction();} });
-  step3Content.querySelectorAll("[contenteditable]").forEach((editor) => editor.addEventListener("paste", (event) => { event.preventDefault(); const text=(event.clipboardData || window.clipboardData).getData("text/plain"); document.execCommand("insertText",false,text); updateStep3Counters(); scheduleStep3Preview(); refreshNextAction(); }));
+  step3Content.querySelectorAll("[contenteditable]").forEach((editor) => editor.addEventListener("paste", (event) => {
+    event.preventDefault();
+    const clipboard = event.clipboardData || window.clipboardData;
+    const html = clipboard?.getData("text/html");
+    const text = clipboard?.getData("text/plain") || "";
+    const sanitized = html ? step3Sanitized(html) : step3PlainPasteHtml(text);
+    document.execCommand("insertHTML", false, sanitized);
+    updateStep3Counters();
+    scheduleStep3Preview();
+    refreshNextAction();
+  }));
   renderStep3Preview();
   const wizardShellConfigs = {
     "step-02-job-basics": {
