@@ -1,0 +1,16 @@
+DV-UX019R1 COMPLETE
+
+Corrected shared Library/Current View presentation, fixed Library selection
+grid slots, implemented direct-branch disclosure state, synchronized global
+controls, and removed mouse focus box while preserving focus-visible access.
+
+Canonical review URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+
+Browser QA passed: 28px rows; columns at 27/45/63, 52/70/88, and 77/95/113px;
+direct disclosure behavior passed; Expand All/Collapse All passed; console
+clean. Screenshot was returned only at a Windows-reported path and is not a
+WSL-local evidence artifact.
+
+Profilaxes commit 548a604 pushed. Root documentation is committed in the
+Views cycle after publication.

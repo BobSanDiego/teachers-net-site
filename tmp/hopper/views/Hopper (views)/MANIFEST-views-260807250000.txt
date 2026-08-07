@@ -1,0 +1,16 @@
+project=views
+ticket=DV-UX019R1
+cycle_id=260807250000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=ab47b4c
+push=successful
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260807250000.txt
+manifest_file=MANIFEST-views-260807250000.txt
+cycle_record_file=cycle-views-260807250000.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "DV-UX019R1-output-260807250000-views-260807250000.txt", "original_path": "tmp/DV-UX019R1-output-260807250000.txt", "purpose": "ticket artifact", "sha256": "96db336b999e4cc5e31bbca8757b832d081772028cba5df9545805f86c3693c0", "size": 716, "status": "complete"}
+{"committed": true, "hopper_filename": "durable-views-dv-ux019r1-completion-report-views-260807250000.md", "original_path": "docs/core-terms/durable-views-dv-ux019r1-completion-report.md", "purpose": "ticket artifact", "sha256": "5c1c95132a6f1b3b1da6430d9299f9732efb0f1ffa363f6ab2d25ec939158ccd", "size": 2305, "status": "complete"}
