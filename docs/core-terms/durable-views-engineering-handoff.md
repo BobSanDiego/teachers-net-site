@@ -407,3 +407,12 @@ increment; Current View retains its removal semantics. Profilaxes commit
 `2f8f8aa` is pushed. Browser geometry, disclosure behavior, focus treatment,
 and console state passed on the preserved version-17 fixture. Screenshot
 capture timed out in Chrome MCP, so no screenshot is claimed as local evidence.
+
+## 2026-08-07 — DV-UX016
+
+DV-UX016 closed the remaining DV-UX015 acceptance defects. Current View now
+recursively renders canonical parentage and emits the same structural row
+contract as Library. Version 17 verified Kindergarten beneath Early Childhood,
+shared geometry, independent disclosure behavior, and no console errors.
+Profilaxes commit `5f1b9ad` is pushed. Screenshot capture timed out in Chrome
+MCP; DOM/computed-style evidence is recorded instead.

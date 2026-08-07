@@ -401,3 +401,9 @@ now uses the Library’s reserved disclosure/selection/label grid with 18px
 depth increments while retaining distinct removal semantics. Profilaxes commit
 `2f8f8aa` is pushed. Browser verification passed on the preserved version-17
 fixture; screenshot transport timed out.
+
+DV-UX016 completed canonical recursive Current View rendering and the shared
+`.cfm-views-term-row` presentation contract. Kindergarten now renders beneath
+Early Childhood, and both panels share structural slots and depth increments.
+Profilaxes commit `5f1b9ad` is pushed. Browser verification passed; screenshot
+transport timed out.

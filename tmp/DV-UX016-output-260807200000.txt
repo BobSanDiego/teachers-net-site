@@ -1,0 +1,10 @@
+DV-UX016 — Unify Recursive Tree Rendering and Enforce Canonical Parentage
+Status: COMPLETE — BROWSER VERIFIED
+Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Canonical hierarchy verified: Grade Level → Early Childhood → Early Learners/Kindergarten; Grade Level → Elementary → Grade 1/Grade 3/Grade 4.
+Current View now recursively renders by Core Terms parent_uuid and shares the Library .cfm-views-term-row structural slots.
+Shared geometry: 18px disclosure, 18px selection/action, minmax label, 7px gap, 18px depth increment.
+Collapse/re-expand, independent disclosure, focus behavior, and console checks passed.
+No schema, data, resolver, Jobs, lifecycle, or interaction-semantics changes.
+Screenshot capture timed out in Chrome MCP; no local screenshot claimed.
+Profilaxes commit: 5f1b9ad, pushed.
