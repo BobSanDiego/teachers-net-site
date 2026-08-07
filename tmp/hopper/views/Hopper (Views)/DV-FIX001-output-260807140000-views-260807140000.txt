@@ -1,0 +1,14 @@
+DV-FIX001 — Enforce Current View Descendant Selection for Removal
+Status: COMPLETE — CLIENT INTERACTION ONLY
+
+Canonical URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+
+Parent entry 18 selection now recursively checks and disables descendant entry
+19, and FormData contains both IDs through inherited hidden mirrors. Clearing
+the root restores descendant availability and clears payload. Overlap and Clear
+Selection verified. No destructive submit performed; DV-FIX002 remains required
+for repository persistence safety.
+
+Profilaxes: agent/durable-views-dv003-persistence, commit c10b28f, pushed.
+Root documentation/cycle commit pending final publication.
