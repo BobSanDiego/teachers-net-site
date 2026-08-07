@@ -35,6 +35,11 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 
 ## Current Status
 
+- DV-UX014 completed on 2026-08-07. Library fresh-load state is collapsed,
+  Expand all and Collapse all operate across the complete tree, generation
+  alignment is fixed, and top-level bulk controls have stronger action weight
+  without mouse-focus artifacts. Browser QA passed with selection preservation.
+
 - DV-UX013 completed on 2026-08-07. Top-level Library checkboxes were replaced
   with stable `+ / −` bulk descendant controllers. Controllers exclude
   represented descendants, never submit top-level UUIDs, synchronize on

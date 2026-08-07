@@ -2,6 +2,10 @@
 
 ## 1. Current Phase
 
+DV-UX014 is complete. Library disclosure, alignment, and bulk-control
+presentation are browser-verified at
+`https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17`.
+
 DV-UX013 is complete. Top-level Library bulk descendant controllers are
 browser-verified at
 `https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17`.
