@@ -2,6 +2,12 @@
 
 ## 1. Current Phase
 
+DV-DIAG001 completed as a read-only diagnostic. The Current View removal
+invariant is not enforced: selecting parent entry 18 produces a request payload
+containing only entry 18 while descendant entry 19 remains unselected. The
+smallest correction requires client-side descendant closure plus repository
+closure enforcement. No code or data was changed by the diagnostic.
+
 DV-UX014 is complete. Library disclosure, alignment, and bulk-control
 presentation are browser-verified at
 `https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17`.
