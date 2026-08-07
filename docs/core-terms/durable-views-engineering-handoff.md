@@ -2,6 +2,10 @@
 
 ## 1. Current Phase
 
+DV-UX012 is complete. The left Library represented-state and top-level branch
+selection semantics are browser-verified; the current review URL is
+`https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17`.
+
 DV-UX011 is complete and is the current Views V1 authoring baseline. The
 canonical Library and Current View use dual compact recursive checkbox trees;
 manager links and draft deletion access are present; legacy per-entry editing

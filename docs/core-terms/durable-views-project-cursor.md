@@ -35,6 +35,12 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 
 ## Current Status
 
+- DV-UX012 completed on 2026-08-07. The Library now uses fixed-generation
+  alignment, represented terms have unavailable checkbox space with blue name
+  treatment and subtle tint, and every top-level branch has a controller
+  checkbox whose descendant selections exclude the top-level UUID. Authenticated
+  browser checks passed at the canonical editor URL.
+
 - DV-UX011 completed on 2026-08-07. The editor now presents the canonical
   Library and Current View as compact recursive checkbox trees; manager names
   are lifecycle links; draft deletion is available from the manager; legacy
