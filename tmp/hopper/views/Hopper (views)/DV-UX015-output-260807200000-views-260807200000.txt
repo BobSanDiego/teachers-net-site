@@ -1,0 +1,10 @@
+DV-UX015 — Unify Library and Current View Tree Layout Mechanisms
+Status: COMPLETE — BROWSER VERIFIED
+Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Implementation: Current View now uses grid columns 18px/18px/minmax(0,1fr), 7px gap, and 18px depth increments, matching Library geometry.
+Current View positions: depth 0 disclosure/check/label 27/51/77px; depth 1 45/69/95px; depth 2 63/87/113px.
+Browser: five-row nested fixture preserved; collapse/re-expand passed; Library expansion remained independent.
+Focus: mouse click did not leave persistent focus; :focus and :focus-visible false; no outline/border/box-shadow artifact.
+Console: no errors or warnings.
+Screenshot: Chrome MCP capture timed out; no local screenshot claimed.
+Profilaxes commit: 2f8f8aa, pushed.
