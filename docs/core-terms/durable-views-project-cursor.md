@@ -35,6 +35,14 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 
 ## Current Status
 
+- DV-UX011 completed on 2026-08-07. The editor now presents the canonical
+  Library and Current View as compact recursive checkbox trees; manager names
+  are lifecycle links; draft deletion is available from the manager; legacy
+  per-entry presentation editors and active drag affordances are omitted for
+  canonical Current View entries. Browser verification passed at the canonical
+  editor URL with version 17, including disclosure behavior, indentation,
+  removal controls, and no console errors observed.
+
 - Authority package and supporting transcripts ingested.
 - Existing Core Terms governance and continuity documents inspected.
 - Existing Core Terms capability and integration contracts inspected.

@@ -2,6 +2,12 @@
 
 ## 1. Current Phase
 
+DV-UX011 is complete and is the current Views V1 authoring baseline. The
+canonical Library and Current View use dual compact recursive checkbox trees;
+manager links and draft deletion access are present; legacy per-entry editing
+controls are omitted for canonical entries. Browser evidence was captured at
+`https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17`.
+
 Stabilization — Job Center MVP certified; next consumer pending authorization.
 
 ## 2. Current Ticket
