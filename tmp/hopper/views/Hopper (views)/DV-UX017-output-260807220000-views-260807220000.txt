@@ -1,0 +1,10 @@
+DV-UX017 — Restore Shuttle Actions and Prevent Shuttle Viewport Jump
+Status: COMPLETE — BROWSER VERIFIED
+Root cause: visible shuttle buttons had no event listeners; the existing batch form/controller was valid.
+Fix: bound both controls to the canonical batch form, filtered represented/disabled terms, and restored scroll across batch_added redirects.
+Selected QA: Pre-K at scroll 600; batch_added=1; Current View showed Pre-K under Early Childhood; scroll about 592.
+All QA: scroll 650; batch_added=94, batch_skipped=159; 100 unique Current View entries; scroll about 642.
+Console: no errors or warnings.
+Fixture: version 17 restored and preserved in valid all-terms-represented state.
+Screenshot: browser captured DV-UX017-after.png but MCP did not expose it to WSL.
+Profilaxes commit: 8b29692, pushed.
