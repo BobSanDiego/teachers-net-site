@@ -22,7 +22,7 @@ Canonical review URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm
 - Removing the final descendant left no Current View rows after reload; the final normalization pass removed the remaining ancestor-only rows.
 - Direct database inspection confirmed version 17 ended empty.
 - Browser console reported no errors or warnings during the final reload.
-- Screenshot: `tmp/DV-FIX003-after.png`.
+- Screenshot capture succeeded in the browser tool, which reported `C:\\home\\bobreap\\projects\\teachers-net-site\\tmp\\DV-FIX003-after.png`; the tool did not expose that file to the WSL filesystem, so it is not included in the hopper bundle.
 
 The browser verification used the authenticated canonical Views editor. The shuttle button remained hidden by an existing UI state, so the normal batch form submission was invoked directly after selecting the descendant; this exercised the same server-side request path.
 
