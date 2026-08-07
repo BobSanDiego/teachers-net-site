@@ -5,11 +5,12 @@ implementation detail remain in the referenced repository documents.
 
 ## Startup Worktree Preflight
 
-Job Center implementation must start from
-`/home/bobreap/projects/teachers-net-jobcenter`. Verify the current working
-directory and Git worktree before inspecting implementation state. If the
-startup worktree does not match, stop and report the mismatch; do not switch
-branches or proceed with implementation.
+JC053 production UI implementation must use the repository/worktree containing
+the production `tnet-jobs` source at `/home/bobreap/projects/teachers-net-site`.
+Verify the current working directory and Git worktree before inspecting
+implementation state. The former `/home/bobreap/projects/teachers-net-jobcenter`
+workbench is archived reference only. If the production startup worktree does
+not match, stop and report the mismatch; do not switch branches or proceed.
 
 ## 1. Current Phase
 
@@ -64,12 +65,10 @@ implementation.
 
 ## 2. Current Ticket
 
-`JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` is complete. The production
-integration route now uses the authority-scoped final-step connector rule and
-was verified against the standalone workbench at the required responsive
-widths. The next active ticket is
-`JC053-STEP1-RUNTIME-ASSET-MIGRATION`; it is a prerequisite before any Add
-School/Jobsite integration or Step 2 migration proceeds.
+`JC053-CANONICAL-UI-TRANSITION-001` establishes production `tnet-jobs` as the
+canonical JC053 UI source. The standalone workbench is frozen historical
+reference only. Future JC053 UI work occurs directly in production-owned
+runtime sources; synchronization back to the workbench is not required.
 
 The approved School / Jobsite contract remains the staged hybrid in
 `docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`, and the

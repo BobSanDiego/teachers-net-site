@@ -28,11 +28,14 @@ stop and report the contradiction. Repository authority order is: Authority
 Manifest, approved contracts, governance, execution plans/roadmaps, accepted
 implementation, then companion chat for unresolved context only.
 
-Project startup worktree preflight is mandatory before implementation. For Job
-Center, the intended worktree is `/home/bobreap/projects/teachers-net-jobcenter`.
-For Community, it is `/home/bobreap/projects/teachers-net-community3`. Verify
-the current working directory and worktree against the requested project first.
-If they do not match, stop and report the mismatch before implementation.
+Project startup worktree preflight is mandatory before implementation. For
+Community, the intended worktree is `/home/bobreap/projects/teachers-net-community3`.
+For JC053 production UI work, use the repository containing the production
+`tnet-jobs` source at `/home/bobreap/projects/teachers-net-site`. The former
+standalone Job Center workbench at `/home/bobreap/projects/teachers-net-jobcenter`
+is archived reference only. Verify the current working directory/worktree
+against the requested project first. If it does not match, stop and report the
+mismatch.
 
 Documentation governance:
 

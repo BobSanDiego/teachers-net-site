@@ -26,14 +26,20 @@ report and cycle artifacts. `CURRENT CYCLE CHANGE` and `EXPECTED NEXT FIVE
 TICKETS` belong to ChatGPT's review/handoff post, not Codex's completion report,
 unless a ticket explicitly requires those headings.
 
+JC053 production UI work uses the repository containing the production
+`tnet-jobs` source at `/home/bobreap/projects/teachers-net-site`. The former
+standalone workbench at `/home/bobreap/projects/teachers-net-jobcenter` is an
+archived reference only.
+
 For Job Center, the current post-parity gate is:
 
 1. `JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC`
 2. `JC053-STEP1-RUNTIME-ASSET-MIGRATION`
 3. `JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`
 
-Do not advance to Step 1 Add School/Jobsite integration until runtime asset
-migration is complete and verified.
+JC053 runtime UI changes now occur directly in the canonical production
+`tnet-jobs` source. No synchronization back to the archived workbench is
+required.
 
 ## Repository Continuity and Chat Handoff Optimization
 

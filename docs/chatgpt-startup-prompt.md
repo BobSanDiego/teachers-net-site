@@ -5,10 +5,14 @@ Project: <Project Name>
 
 Before reading project state or performing implementation, verify the current
 working directory/worktree matches the requested project:
-- Job Center: `/home/bobreap/projects/teachers-net-jobcenter`
+- JC053 production UI: `/home/bobreap/projects/teachers-net-site` with
+  `wordpress/wp-content/plugins/tnet-jobs`
 - Community: `/home/bobreap/projects/teachers-net-community3`
+- Archived JC053 workbench reference:
+  `/home/bobreap/projects/teachers-net-jobcenter`
 If it does not match, stop and report the mismatch. Do not switch branches or
-continue implementation from the wrong worktree.
+continue implementation from the wrong worktree. Use the archived workbench
+only when a ticket explicitly requests historical reference.
 
 Retrieve and read these exact Google Drive documents in order:
 1. Engineering Director Playbook v2

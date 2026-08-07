@@ -27,8 +27,9 @@ Current sequencing gate:
 `JC053-STEP1-RUNTIME-ASSET-MIGRATION` →
 `JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`.
 
-Do not begin Add School/Jobsite integration until runtime asset migration is
-complete and verified.
+JC053 production UI authority is now the `tnet-jobs` runtime source recorded in
+the authority manifest. The standalone workbench is archived historical
+reference only; no runtime-to-workbench synchronization is required.
 
 ## Continuity and inspection rule
 
@@ -130,12 +131,11 @@ Save / Share action-group implementation in the Jobs plugin.
 
 ### Runtime parity and asset authority gate
 
-`JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` is complete. The production route
-and standalone workbench were compared directly; production had been serving
-the root stylesheet without the authority-scoped final-step suppression rule.
-The correction was committed as root `b1b8cbe` and pushed. The next required
-ticket is `JC053-STEP1-RUNTIME-ASSET-MIGRATION`, followed only afterward by
-`JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`.
+`JC053-CANONICAL-UI-TRANSITION-001` retires the dual living workbench/runtime
+model. The production `tnet-jobs` source is canonical for JC053 HTML, CSS,
+JavaScript, and the PHP integration/rendering boundary. The standalone
+workbench remains a frozen historical reference and is not a synchronization
+source.
 
 ### DATA001-REV1 architecture adoption
 
