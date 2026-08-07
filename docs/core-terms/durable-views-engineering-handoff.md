@@ -385,3 +385,6 @@ expander/checkbox/label controls, and nested child wrappers are browser
 verified as `jobman` at the canonical Views editor. Profilaxes commit
 `49b2921` is pushed. Current View structure and all platform/Jobs boundaries
 were preserved.
+## 2026-08-07 — DV-FIX003 handoff
+
+DV-FIX003 completed the top-level structural ancestor invariant. The repository now prunes ancestor-only non-leaf rows within the draft version/framework, and the editor normalizes stale draft state on load. Browser and direct database checks passed for version 17. Do not resume DV-DIAG002 until the right-panel fixture and same-session/runtime parity are restored and proven.

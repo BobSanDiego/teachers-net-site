@@ -385,3 +385,6 @@ rows, aligned controls, and generation indentation. Views-specific selection
 and shuttle semantics remain isolated. Authenticated `jobman` verification
 passed for the canonical editor with no console messages. Profilaxes commit:
 `49b2921`. The Current View tree was not changed.
+## 2026-08-07 — DV-FIX003
+
+DV-FIX003 is complete. Structural non-leaf ancestors are now presence-driven and are normalized on draft editor load and after entry deletion. Version 17 was browser-verified empty after final descendant removal; the implementation is pushed as Profilaxes commit `e02e7e6`. DV-DIAG002 remains paused pending runtime/session parity and restoration of its right-panel fixture.
