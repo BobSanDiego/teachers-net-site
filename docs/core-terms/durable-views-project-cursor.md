@@ -419,3 +419,9 @@ controls to the existing canonical batch form and added scroll preservation
 across successful redirects. The local version-17 disposable fixture was
 restored and preserved with all terms represented. Profilaxes commit `8b29692`
 is pushed; both shuttle actions and viewport stability passed browser QA.
+DV-UX019 completed true left/right tree visual parity. Shared final CSS now
+uses matching container origins, row height, depth increments, structural
+slots, typography, and borders while preserving transient and removal states.
+Profilaxes commit `fbc9920` is pushed. Browser geometry and disclosure behavior
+passed with no console warnings or errors; screenshot transport returned a
+Windows-only path and was not claimed as local evidence.

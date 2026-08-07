@@ -433,3 +433,12 @@ position is restored after successful redirects. The disposable version-17 QA
 fixture was restored and preserved with all terms represented. Profilaxes commit
 `8b29692` is pushed. Both shuttle actions and viewport stability are accepted
 for V1.
+## 2026-08-07 — DV-UX019
+
+DV-UX019 is complete. The final parity stylesheet makes Library and Current
+View share container origin, row geometry, structural columns, typography, and
+depth spacing. Existing transient selection/context and Current View removal
+semantics are preserved. Profilaxes commit `fbc9920` is pushed. Canonical
+browser verification passed with independent expand/collapse behavior and no
+console warnings or errors. No local screenshot is claimed because Chrome MCP
+returned a Windows-only save path.
