@@ -395,3 +395,9 @@ engineer approval for the fixture data itself. Reports must record fixture
 identity, version, mutations, and cleanup/preservation. Production,
 published/editorial Views, other active fixtures, and Core Terms remain
 protected.
+
+DV-UX015 completed the bounded cross-panel geometry convergence. Current View
+now uses the Library’s reserved disclosure/selection/label grid with 18px
+depth increments while retaining distinct removal semantics. Profilaxes commit
+`2f8f8aa` is pushed. Browser verification passed on the preserved version-17
+fixture; screenshot transport timed out.

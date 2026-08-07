@@ -398,3 +398,12 @@ ID and intended state, and cleaned up or explicitly preserved for the next
 ticket. Missing disposable QA data alone is no longer an engineer-input gate;
 human-only prerequisites remain gated. Production, published/editorial Views,
 other active fixtures, and Core Terms remain protected.
+
+## 2026-08-07 — DV-UX015
+
+DV-UX015 resolved the proven cross-panel alignment divergence. Both Library and
+Current View now use the same three structural columns and 18px depth
+increment; Current View retains its removal semantics. Profilaxes commit
+`2f8f8aa` is pushed. Browser geometry, disclosure behavior, focus treatment,
+and console state passed on the preserved version-17 fixture. Screenshot
+capture timed out in Chrome MCP, so no screenshot is claimed as local evidence.
