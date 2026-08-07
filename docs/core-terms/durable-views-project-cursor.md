@@ -432,3 +432,9 @@ indicators, and mouse focus no longer leaves the heavy box while keyboard
 focus remains visible. Profilaxes commit `548a604` is pushed. Browser QA
 passed with matching 28px rows and 27/45/63, 52/70/88, 77/95/113px columns;
 console was clean. Screenshot transport again returned a Windows-only path.
+DV-DIAG004 diagnosed Library checkbox drift without implementation. Leaf
+disclosure spacers remain absolute and do not occupy grid column 1, causing
+checkboxes to auto-place in column 1 rather than selection column 2. WordPress
+core `input[type="checkbox"]:focus` supplies the heavy blue mouse ring. Next
+correction: static disclosure grid slots, explicit checkbox column 2, and
+scoped mouse-focus suppression with keyboard focus-visible preserved.

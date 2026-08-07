@@ -450,3 +450,14 @@ synchronized indicators, and restrained focus treatment. Profilaxes commit
 `548a604` is pushed. Authenticated browser verification passed at version 17;
 the console was clean. Screenshot capture returned a Windows-only path and was
 not claimed as local evidence. DV-UX020 remains unopened.
+## 2026-08-07 — DV-DIAG004
+
+DV-DIAG004 diagnosed the remaining Library checkbox defects without changing
+code. Leaf disclosure spacers remain outside grid flow, causing checkboxes to
+auto-place in column 1 (L1 71px, L2 64px) instead of the reserved selection
+column. The heavy mouse focus ring is WordPress core's checkbox `:focus` rule:
+`0 0 0 2px #fff, 0 0 0 4px var(--wp-admin-theme-color)`. The next correction
+should make disclosure spacers static grid items, assign checkboxes to column 2,
+and scope mouse-focus suppression with keyboard `:focus-visible` preserved.
+No disclosure, +/−, Current View, shuttle, lifecycle, schema, repository,
+resolver, or Jobs behavior was changed.
