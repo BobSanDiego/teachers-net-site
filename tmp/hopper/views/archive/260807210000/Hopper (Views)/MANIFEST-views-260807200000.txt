@@ -1,0 +1,18 @@
+project=views
+ticket=DV-UX016
+cycle_id=260807200000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=3942ce9
+push=successful
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260807200000.txt
+manifest_file=MANIFEST-views-260807200000.txt
+cycle_record_file=cycle-views-260807200000.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "DV-UX015-output-260807200000-views-260807200000.txt", "original_path": "tmp/output-260807200000.txt", "purpose": "ticket artifact", "sha256": "ac75ef1d004aee047f4d213cf9d5a20d3d4c86370ccec350c8b200d13f3f5d24", "size": 819, "status": "complete"}
+{"committed": true, "hopper_filename": "DV-UX016-output-260807200000-views-260807200000.txt", "original_path": "tmp/DV-UX016-output-260807200000.txt", "purpose": "ticket artifact", "sha256": "8cb37e05d636a3ea2c48b9655e5b636b3fedd085716980208454784770925a46", "size": 859, "status": "complete"}
+{"committed": true, "hopper_filename": "durable-views-dv-ux015-completion-report-views-260807200000.md", "original_path": "docs/core-terms/durable-views-dv-ux016-completion-report.md", "purpose": "ticket artifact", "sha256": "2f482846230ff6d7309fdef5c0d80d55993bd14c4003c8cedca86c1df12c41de", "size": 2865, "status": "complete"}
+{"committed": true, "hopper_filename": "durable-views-dv-ux016-completion-report-views-260807200000.md", "original_path": "docs/core-terms/durable-views-dv-ux016-completion-report.md", "purpose": "ticket artifact", "sha256": "1fca9b39eb7f9c9d5cfe103bba2e92f2440e5831da1948aed3cf40eeaccef5be", "size": 3251, "status": "complete"}
