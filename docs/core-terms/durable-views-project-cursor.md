@@ -396,6 +396,12 @@ identity, version, mutations, and cleanup/preservation. Production,
 published/editorial Views, other active fixtures, and Core Terms remain
 protected.
 
+DV-UX018 stabilized Current View contextual controls and redirect viewport
+behavior. Empty-state controls are hidden, selection controls synchronize,
+Remove Selected has no confirmation, Remove All remains protected, and scroll
+is restored for Collapse All and removals. Profilaxes commit `3aea480` is
+pushed; the disposable version-17 fixture was cleaned to empty after QA.
+
 DV-UX015 completed the bounded cross-panel geometry convergence. Current View
 now uses the Library’s reserved disclosure/selection/label grid with 18px
 depth increments while retaining distinct removal semantics. Profilaxes commit

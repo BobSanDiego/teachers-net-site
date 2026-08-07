@@ -399,6 +399,14 @@ ticket. Missing disposable QA data alone is no longer an engineer-input gate;
 human-only prerequisites remain gated. Production, published/editorial Views,
 other active fixtures, and Core Terms remain protected.
 
+## 2026-08-07 — DV-UX018
+
+DV-UX018 completed contextual-control and viewport stabilization. Empty and
+selection states now synchronize, Remove Selected no longer prompts, Remove
+All remains confirmed, and Collapse All/removal redirects preserve practical
+scroll. Profilaxes commit `3aea480` is pushed. The disposable version-17
+fixture was cleaned to empty after verification. DV-UX019 remains unopened.
+
 ## 2026-08-07 — DV-UX015
 
 DV-UX015 resolved the proven cross-panel alignment divergence. Both Library and
