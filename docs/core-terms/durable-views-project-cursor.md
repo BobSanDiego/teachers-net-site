@@ -438,3 +438,9 @@ checkboxes to auto-place in column 1 rather than selection column 2. WordPress
 core `input[type="checkbox"]:focus` supplies the heavy blue mouse ring. Next
 correction: static disclosure grid slots, explicit checkbox column 2, and
 scoped mouse-focus suppression with keyboard focus-visible preserved.
+DV-UX019R2 corrected Library checkbox grid placement and focus treatment.
+Disclosure/spacers occupy column 1, checkboxes/selection spacers occupy column
+2, and labels occupy column 3 at 18px depth increments. WordPress checkbox
+focus shadow is suppressed in the Library while restrained focus-visible is
+preserved. Profilaxes commit `62a4055` is pushed; browser QA passed with no
+console warnings/errors. DV-UX020 remains unopened.

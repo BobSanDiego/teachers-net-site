@@ -461,3 +461,11 @@ should make disclosure spacers static grid items, assign checkboxes to column 2,
 and scope mouse-focus suppression with keyboard `:focus-visible` preserved.
 No disclosure, +/−, Current View, shuttle, lifecycle, schema, repository,
 resolver, or Jobs behavior was changed.
+## 2026-08-07 — DV-UX019R2
+
+DV-UX019R2 is complete and DV-UX019 human acceptance may resume. Library
+checkboxes now use explicit column 2 placement and disclosure spacers use
+static column 1 grid participation. The WordPress checkbox focus ring is
+suppressed within the Library while keyboard focus-visible remains visible.
+Profilaxes commit `62a4055` is pushed. Browser QA passed with clean console;
+the screenshot returned a Windows-only path and was not claimed locally.
