@@ -1,0 +1,25 @@
+DV-UX011 — Converge Views Editor on Dual Checkbox Trees
+Status: COMPLETE
+
+Previous cycle completed: DV-UX010B established canonical recursive tree
+rendering and ancestor shuttle persistence.
+
+Canonical review URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+
+Implemented and verified:
+- clickable manager View names and draft-only Delete Draft access;
+- compact left canonical and right Current View checkbox trees;
+- Expand all / Collapse all controls;
+- direct-child disclosure with canonical indentation and no triangle underline;
+- visible Current View top-level terms;
+- aggregate removal controls;
+- omission of legacy canonical per-entry editors and drag affordances;
+- preservation of autosave, preview, publish, represented state, and Jobs seam.
+
+Browser evidence: authenticated version 17 editor and manager reviewed; no
+console errors observed. PHP lint and git diff check passed.
+
+Profilaxes: branch agent/durable-views-dv003-persistence, commit 16ef0a1,
+pushed successfully.
+Root: documentation and cycle artifacts pending final cycle commit.
