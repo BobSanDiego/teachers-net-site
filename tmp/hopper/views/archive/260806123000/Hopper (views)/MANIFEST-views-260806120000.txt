@@ -1,0 +1,21 @@
+project=views
+ticket=DV-UX010
+cycle_id=260806120000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=6bc8877
+push=pushed
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260806120000.txt
+manifest_file=MANIFEST-views-260806120000.txt
+cycle_record_file=cycle-views-260806120000.json
+evidence_bundle=
+
+artifacts:
+{"committed": false, "hopper_filename": "DV-UX010-views-library-after-views-260806120000.png", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "fb69b147b2c484f4a2a36dae7567dd75b46e3b3f50375e2dd645a983d0bad96e", "size": 118919, "status": "complete"}
+{"committed": false, "hopper_filename": "decision-log-views-260806120000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "70a20869f8ceab82df7a30738583a98586526b1ca2002fadf804a745acee1f29", "size": 13035, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-dv-ux010-completion-report-views-260806120000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "a584a2ecc921996fc68f88a5d579ea670ab75c4db7ddb064ad27daf0a907c612", "size": 2017, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-engineering-handoff-views-260806120000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "92970ac72ddf3f9cd847e136356ce411232247c7877074b9fdcfa457e85bcba3", "size": 17637, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-project-cursor-views-260806120000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "ebf963734c1a1333dde62757e721e59c0bd2b7b53f1347aa32e9c9dc7b87673e", "size": 17849, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-roadmap-views-260806120000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "fc89a8e716e15f3e92e93e03007ff95e1be34ac49b2a42f32c3ab633910018dc", "size": 13542, "status": "complete"}
+{"committed": false, "hopper_filename": "meta-groups-views-260806120000.png", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "ad1511e9636ff4842b8ef56c04e80c3ee939fbb95facc6f5fe6d9f70d124800b", "size": 16011, "status": "complete"}

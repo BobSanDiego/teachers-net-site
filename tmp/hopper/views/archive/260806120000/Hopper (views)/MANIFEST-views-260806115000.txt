@@ -1,0 +1,20 @@
+project=views
+ticket=DV-UX009C
+cycle_id=260806115000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=b15c98f
+push=pushed
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260806115000.txt
+manifest_file=MANIFEST-views-260806115000.txt
+cycle_record_file=cycle-views-260806115000.json
+evidence_bundle=
+
+artifacts:
+{"committed": false, "hopper_filename": "DV-UX009C-tree-expanded-views-260806115000.png", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "72da85b58494b953085eb51c60df3673be3b33844a55ecb5b0d78cd03e331931", "size": 110651, "status": "complete"}
+{"committed": false, "hopper_filename": "decision-log-views-260806115000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "6d5a836a323acda618167a8116c023b092b3b48b1dec59de5ed969adfc5c2878", "size": 12623, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-dv-ux009c-completion-report-views-260806115000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "eef80db6f33985b805bc599506eb4709b5c7d1fdfa581392dca447ef9ab16d0a", "size": 1415, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-engineering-handoff-views-260806115000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "7729eceadbb682dc205b2e9f9ee301565ba266d253d56b4f891a0a2e0d191407", "size": 17231, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-project-cursor-views-260806115000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "bcf3aae771aaf70f9a7c8f9e1d789d94f88b88245dc7331da7aee7bfe1c117b7", "size": 17398, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-roadmap-views-260806115000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "38354a156691ce9ec6cc732cd92e14fe5fd541db54a2bfceaea67cfe4094fbcb", "size": 13379, "status": "complete"}

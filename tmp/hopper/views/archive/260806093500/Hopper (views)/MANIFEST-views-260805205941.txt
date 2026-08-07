@@ -1,0 +1,24 @@
+project=views
+ticket=DV-UX006A
+cycle_id=260805205941
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=ecaa6f2
+push=pushed
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260805205941.txt
+manifest_file=MANIFEST-views-260805205941.txt
+cycle_record_file=cycle-views-260805205941.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "dv-ux006a-completion-report-views-260805205941.md", "original_path": "docs/core-terms/dv-ux006a-completion-report.md", "purpose": "ticket artifact", "sha256": "265f3a29ad1fb148b2d56ce9beef44dc7c08040831144cdacd03343a3e5f83ac", "size": 3286, "status": "created"}
+{"committed": true, "hopper_filename": "durable-views-project-cursor-views-260805205941.md", "original_path": "docs/core-terms/durable-views-project-cursor.md", "purpose": "ticket artifact", "sha256": "1c8354b708f7f5b2e93526dde571a8409181bb60e12ae036d916794a7dcba8a9", "size": 13065, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-engineering-handoff-views-260805205941.md", "original_path": "docs/core-terms/durable-views-engineering-handoff.md", "purpose": "ticket artifact", "sha256": "9af4f4bcacf1868678bd701a9f718877098afd2e4489e739db61389932e1d2bc", "size": 13989, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-roadmap-views-260805205941.md", "original_path": "docs/core-terms/durable-views-roadmap.md", "purpose": "ticket artifact", "sha256": "7bff81b9caeb03c905afc9eac2b19db0757b6b2f9e72a7a4f31b0011069d10f7", "size": 10358, "status": "modified"}
+{"committed": false, "hopper_filename": "class-cfm-views-admin-views-260805205941.php", "original_path": "wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php", "purpose": "ticket artifact", "sha256": "d8997647670bfbfa3b81768da1ccbe34e346799d508ae89eec73419418ec78fe", "size": 39647, "status": "modified"}
+{"committed": true, "hopper_filename": "DV-UX006A-completion-report-views-260805205941.md", "original_path": "tmp/hopper/views/Report (Views)/DV-UX006A-completion-report.md", "purpose": "ticket artifact", "sha256": "265f3a29ad1fb148b2d56ce9beef44dc7c08040831144cdacd03343a3e5f83ac", "size": 3286, "status": "created"}
+{"committed": true, "hopper_filename": "dv-ux006a-1440-views-260805205941.png", "original_path": "tmp/hopper/views/Report (Views)/dv-ux006a-1440.png", "purpose": "ticket artifact", "sha256": "388b71e875a3b55ed0a65c7a53e4bb9c4c0a9b4ba0154808da6ab9fa7d96ec8a", "size": 148421, "status": "evidence"}
+{"committed": true, "hopper_filename": "dv-ux006a-1200-views-260805205941.png", "original_path": "tmp/hopper/views/Report (Views)/dv-ux006a-1200.png", "purpose": "ticket artifact", "sha256": "a265a3603c3f97df5cd2da8f3f4507db21b321a16b537d6fe2dcc35dc0c4388a", "size": 130852, "status": "evidence"}
+{"committed": true, "hopper_filename": "dv-ux006a-1024-views-260805205941.png", "original_path": "tmp/hopper/views/Report (Views)/dv-ux006a-1024.png", "purpose": "ticket artifact", "sha256": "d978ec79eb8bc0302a250db4b07cfa66f442f670d0badf66ea82fbb502ef2c74", "size": 126476, "status": "evidence"}
+{"committed": false, "hopper_filename": "output-views-260805205941-views-260805205941.txt", "original_path": "tmp/hopper/views/current/output-views-260805205941.txt", "purpose": "ticket artifact", "sha256": "3f1067ac24e688a9ffc2fb677bfb7528766c0136ea01942398ff4dbc11c1a00b", "size": 2600, "status": "created"}

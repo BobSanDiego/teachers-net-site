@@ -1,0 +1,19 @@
+project=views
+ticket=DV-UX009A
+cycle_id=260806111500
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=549c68f
+push=pushed
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260806111500.txt
+manifest_file=MANIFEST-views-260806111500.txt
+cycle_record_file=cycle-views-260806111500.json
+evidence_bundle=
+
+artifacts:
+{"committed": false, "hopper_filename": "decision-log-views-260806111500.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "ac5846eaf556da2b7d6ecc6bbc12e72aed134c37e2b76277199954b022d4089e", "size": 12072, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-dv-ux009a-completion-report-views-260806111500.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "7151ca342b133ba043d79617e81f91636e99c97585721f4c96d31721c831ecd3", "size": 2156, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-engineering-handoff-views-260806111500.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "29c2fbfae35625cd03f63f3bda2cd8fba8437789d8fed841261ec10e70984580", "size": 16617, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-project-cursor-views-260806111500.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "f177cf8b37c79763907a4fa8461a57bef180193aba1e551932ffb1b6e2628236", "size": 16586, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-roadmap-views-260806111500.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "d5d0d785432bdab56db0741ae4e7995d59f59d920497f76382c58df536bad2ff", "size": 13155, "status": "complete"}

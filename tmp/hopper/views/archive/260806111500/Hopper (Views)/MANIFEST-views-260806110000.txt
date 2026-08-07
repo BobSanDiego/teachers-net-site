@@ -1,0 +1,20 @@
+project=views
+ticket=DV-DEC001
+cycle_id=260806110000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=c211a08
+push=pushed
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260806110000.txt
+manifest_file=MANIFEST-views-260806110000.txt
+cycle_record_file=cycle-views-260806110000.json
+evidence_bundle=
+
+artifacts:
+{"committed": false, "hopper_filename": "decision-log-views-260806110000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "f357e90d39a9fcf4eb59172385b53d6133c52b82454ed97915621f3aea9777d5", "size": 11562, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-dv-dec001-autosaved-draft-lifecycle-v1-views-260806110000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "0238af3be2bf9d64175c8206286efd780ee499de0ed51f6cdc7acbdd4c89c1f5", "size": 4487, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-dv-dec001-completion-report-views-260806110000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "7c05deb96b0bfc3394e0c1999bde071956f6846a9950e947440deecff2b14241", "size": 1860, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-engineering-handoff-views-260806110000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "d83596d18dcb6c329cec4600785dd9ded857d4442d928cd2708932d6baf1b45b", "size": 16085, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-project-cursor-views-260806110000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "3b3e3a38c07020723a2cbc6d0f5be06af129c8231b09dbd819eb615607dcb8dc", "size": 16182, "status": "complete"}
+{"committed": false, "hopper_filename": "durable-views-roadmap-views-260806110000.md", "original_path": "(collected artifact)", "purpose": "ticket artifact", "sha256": "6df1645ded515ed108b9e9dba6ec1513d2cd73a78f008051693aef4f22efa64e", "size": 12994, "status": "complete"}

@@ -1,0 +1,62 @@
+{
+  "project": "views",
+  "ticket": "DV-SPEC001",
+  "cycle_id": "260806093000",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "95b3607",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260806093000.txt",
+  "manifest_file": "MANIFEST-views-260806093000.txt",
+  "cycle_record_file": "cycle-views-260806093000.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "decision-log-views-260806093000.md",
+      "original_path": "docs/decision-log.md",
+      "status": "complete",
+      "size": 9395,
+      "sha256": "312bae79ceecf5a7ec412fbcb4af2a20d0d415fbf6b448cc29061098f926306a",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260806093000.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "complete",
+      "size": 14684,
+      "sha256": "453f767640eac32e60cb20245b62e0d8042331925ea70d448ed1b82b5f69a047",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260806093000.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "complete",
+      "size": 14514,
+      "sha256": "658fcc284d0f28f2cd8a3d660ad7204539fea13799c02f4eaa53285d912bc2aa",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260806093000.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "complete",
+      "size": 11687,
+      "sha256": "6cf5877ea488d15c1134eed2b58bce29effaae38cd4fd4ee38b7723f1b14a53c",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-v1-product-specification-views-260806093000.md",
+      "original_path": "docs/core-terms/durable-views-v1-product-specification.md",
+      "status": "complete",
+      "size": 10443,
+      "sha256": "55248b4f8d4d2ffbf981b4d1b699fb6ede2bf6591643004b037eea5171e0454e",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    }
+  ]
+}

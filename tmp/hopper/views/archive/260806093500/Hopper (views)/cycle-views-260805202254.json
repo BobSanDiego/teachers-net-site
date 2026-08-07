@@ -1,0 +1,80 @@
+{
+  "project": "views",
+  "ticket": "DV-ARCH002",
+  "cycle_id": "260805202254",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "2485b0b",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/current",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260805202254.txt",
+  "manifest_file": "MANIFEST-views-260805202254.txt",
+  "cycle_record_file": "cycle-views-260805202254.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "durable-views-dv-arch002-future-expansion-preservation-audit-views-260805202254.md",
+      "original_path": "docs/core-terms/durable-views-dv-arch002-future-expansion-preservation-audit.md",
+      "status": "modified",
+      "size": 14823,
+      "sha256": "5b0dfe0b608845d3e12deba2aba2f41a553be58972af0cd07c4c513a277c04bd",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "dv-arch002-completion-report-views-260805202254.md",
+      "original_path": "docs/core-terms/dv-arch002-completion-report.md",
+      "status": "created",
+      "size": 2794,
+      "sha256": "0050415fd184a3cd6581e1f2bb5708a37cf5fb3b138015f41847839bdf566920",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260805202254.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "modified",
+      "size": 11572,
+      "sha256": "c3c4c9a98527ff41180fc3b5c159f46108313f787b0b00222edac6921e01bfe1",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260805202254.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "modified",
+      "size": 11848,
+      "sha256": "2f03f8266708488450653aa5b11b75694e7baa7b54e2f823caed397251d12e78",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260805202254.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "modified",
+      "size": 9410,
+      "sha256": "33cc6b6cc99cc54c0d9c1a3e7274d66a9b57d8f4502b752a944561afe3fd5980",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-ARCH002-completion-report-views-260805202254.md",
+      "original_path": "tmp/hopper/views/Report (views)/DV-ARCH002-completion-report.md",
+      "status": "created",
+      "size": 2794,
+      "sha256": "0050415fd184a3cd6581e1f2bb5708a37cf5fb3b138015f41847839bdf566920",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "output-views-260805202254.txt",
+      "original_path": "tmp/hopper/views/current/output-views-260805202254.txt",
+      "status": "created",
+      "size": 2059,
+      "sha256": "4690e2491e9221418244669fc343554bc5d42757ecf2fdd71e7b93165d473037",
+      "committed": false,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

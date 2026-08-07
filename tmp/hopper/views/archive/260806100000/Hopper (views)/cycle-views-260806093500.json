@@ -1,0 +1,71 @@
+{
+  "project": "views",
+  "ticket": "DV-SPEC002",
+  "cycle_id": "260806093500",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "e6dee70",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260806093500.txt",
+  "manifest_file": "MANIFEST-views-260806093500.txt",
+  "cycle_record_file": "cycle-views-260806093500.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "decision-log-views-260806093500.md",
+      "original_path": "docs/decision-log.md",
+      "status": "complete",
+      "size": 9851,
+      "sha256": "d259cd90f9dc3fa60e438d7db24364fab3790588bfccd859ba9a568b0183d75b",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-dv-spec002-completion-report-views-260806093500.md",
+      "original_path": "docs/core-terms/durable-views-dv-spec002-completion-report.md",
+      "status": "complete",
+      "size": 1864,
+      "sha256": "4d51c0602aee7e81d8926d5f51c8d815aaaa3db8d08f4a7ad89dec02f597ce66",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260806093500.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "complete",
+      "size": 14906,
+      "sha256": "6b83297c7672dd39096f31a0cae98c47f1d9a4d7d798a11534c8a90c7738f32f",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260806093500.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "complete",
+      "size": 14861,
+      "sha256": "1fcd2c5fb1dd08c721ac44a7ccaa2155bc2655046f7d5eeae4d3db93a56df283",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260806093500.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "complete",
+      "size": 11910,
+      "sha256": "f5055b6f078c9090081e9f5898f5e0f50e8d3bfd74499c8d433c57dd6a11141a",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    },
+    {
+      "hopper_filename": "durable-views-v1-product-specification-views-260806093500.md",
+      "original_path": "docs/core-terms/durable-views-v1-product-specification.md",
+      "status": "complete",
+      "size": 10690,
+      "sha256": "2d3949582c0e5271333ac9bd89e5581e841dfaa41cd165bfc6ae7ab2674325e7",
+      "committed": true,
+      "purpose": "specification authority artifact"
+    }
+  ]
+}

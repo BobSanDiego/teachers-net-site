@@ -1,0 +1,18 @@
+project=views
+ticket=DV-UX007
+cycle_id=260805234500
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=9f2a356
+push=pushed
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260805234500.txt
+manifest_file=MANIFEST-views-260805234500.txt
+cycle_record_file=cycle-views-260805234500.json
+evidence_bundle=
+
+artifacts:
+{"committed": false, "hopper_filename": "class-cfm-views-admin-views-260805234500.php", "original_path": "wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php", "purpose": "ticket artifact", "sha256": "3a753dc0cc85e2d97030b3b2923174378ef60c4825cca81fd32e9f6c5a46d805", "size": 41412, "status": "complete"}
+{"committed": true, "hopper_filename": "durable-views-dv-ux007-completion-report-views-260805234500.md", "original_path": "docs/core-terms/durable-views-dv-ux007-completion-report.md", "purpose": "ticket artifact", "sha256": "b42cb42a681322a856365f78d21d7b66da8aa36a2b081e5086d13f6829cba533", "size": 2131, "status": "complete"}
+{"committed": true, "hopper_filename": "durable-views-project-cursor-views-260805234500.md", "original_path": "docs/core-terms/durable-views-project-cursor.md", "purpose": "ticket artifact", "sha256": "87a15de1ae5ea85caa05783d74c017b1234b58f7f18225745dd2c2df2b7eb6f4", "size": 13679, "status": "complete"}
+{"committed": true, "hopper_filename": "durable-views-roadmap-views-260805234500.md", "original_path": "docs/core-terms/durable-views-roadmap.md", "purpose": "ticket artifact", "sha256": "20e001fd925145e00ceb7069cfb39982a480cf6ffc33fc8e2782e049cf9f6567", "size": 10689, "status": "complete"}

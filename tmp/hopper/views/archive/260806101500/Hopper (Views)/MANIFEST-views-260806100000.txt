@@ -1,0 +1,17 @@
+project=views
+ticket=DV-UX009
+cycle_id=260806100000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=97ac8db
+push=pushed
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260806100000.txt
+manifest_file=MANIFEST-views-260806100000.txt
+cycle_record_file=cycle-views-260806100000.json
+evidence_bundle=
+
+artifacts:
+{"committed": false, "hopper_filename": "class-cfm-views-admin-views-260806100000.php", "original_path": "wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php", "purpose": "DV-UX009 artifact", "sha256": "49bee69ab0162d9353debd5fd18d96ace307a6a0c3fd05d409efe75b0fc1ef54", "size": 40851, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-dv-ux009-completion-report-views-260806100000.md", "original_path": "docs/core-terms/durable-views-dv-ux009-completion-report.md", "purpose": "DV-UX009 artifact", "sha256": "315b094adb4d13885d043e0a18a9ade4a070d45726083893b42f8f8e3ab73b66", "size": 2104, "status": "modified"}
+{"committed": true, "hopper_filename": "durable-views-roadmap-views-260806100000.md", "original_path": "docs/core-terms/durable-views-roadmap.md", "purpose": "DV-UX009 artifact", "sha256": "631baffb0a54fc3cce883bdb7d33557b45b9a15a4b2c19871501bebe946526c3", "size": 12094, "status": "modified"}

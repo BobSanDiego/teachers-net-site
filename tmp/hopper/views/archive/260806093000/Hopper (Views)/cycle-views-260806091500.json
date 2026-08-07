@@ -1,0 +1,53 @@
+{
+  "project": "views",
+  "ticket": "DV-UX008-SUPERSESSION",
+  "cycle_id": "260806091500",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "7d33e53",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260806091500.txt",
+  "manifest_file": "MANIFEST-views-260806091500.txt",
+  "cycle_record_file": "cycle-views-260806091500.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "decision-log-views-260806091500.md",
+      "original_path": "docs/decision-log.md",
+      "status": "complete",
+      "size": 8784,
+      "sha256": "23a840d3249533aece4adfbf7d4742e8767ad25279f0ea99b36462a5504df771",
+      "committed": true,
+      "purpose": "governance transition artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260806091500.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "complete",
+      "size": 14386,
+      "sha256": "aa54888292784ca555e7cd59969be52a0a2897853eca5b740ab88ead90180b74",
+      "committed": true,
+      "purpose": "governance transition artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260806091500.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "complete",
+      "size": 14075,
+      "sha256": "96ee0814ab602f1795310ab425753ea6960ad6e8375d18a8994780ab430e336e",
+      "committed": true,
+      "purpose": "governance transition artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260806091500.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "complete",
+      "size": 11486,
+      "sha256": "3c2d5bf37e00049b329771dfa1ad643e32a50f76a4a6047d7e7fb65ec7c10ee6",
+      "committed": true,
+      "purpose": "governance transition artifact"
+    }
+  ]
+}

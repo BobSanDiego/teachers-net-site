@@ -1,0 +1,10 @@
+DV-DIAG002 Resume — Cross-Panel Tree Alignment and Control-Column Drift
+Status: BLOCKED — RIGHT-PANEL FIXTURE STILL ABSENT
+
+Canonical URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Authenticated identity: jobman
+
+Version 17 still contains only Grade Level on the right. Restore the required
+Early Childhood → Early Learners and Elementary → Grade 1 branches, then resume
+immediately. No code or data was changed.

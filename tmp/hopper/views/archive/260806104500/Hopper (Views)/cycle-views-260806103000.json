@@ -1,0 +1,62 @@
+{
+  "project": "views",
+  "ticket": "DV-UX009-CONT2",
+  "cycle_id": "260806103000",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "01f845e",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260806103000.txt",
+  "manifest_file": "MANIFEST-views-260806103000.txt",
+  "cycle_record_file": "cycle-views-260806103000.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "decision-log-views-260806103000.md",
+      "original_path": "docs/decision-log.md",
+      "status": "blocked",
+      "size": 10759,
+      "sha256": "025d7e6db0c050451731902c11b9b04690fd359ba4d2530df3b22c5225e81f69",
+      "committed": true,
+      "purpose": "DV-UX009 continuation blocker"
+    },
+    {
+      "hopper_filename": "durable-views-dv-ux009-resume2-blocker-report-views-260806103000.md",
+      "original_path": "docs/core-terms/durable-views-dv-ux009-resume2-blocker-report.md",
+      "status": "blocked",
+      "size": 2164,
+      "sha256": "462e5156a8399c94b2f95830b2b60474121676f89a25534f8d5e40839f9f0a38",
+      "committed": true,
+      "purpose": "DV-UX009 continuation blocker"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260806103000.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "blocked",
+      "size": 15538,
+      "sha256": "c61649aff228cf3f0003c23147680d64527c2189b0a63080d52ab4fc7d21cb78",
+      "committed": true,
+      "purpose": "DV-UX009 continuation blocker"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260806103000.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "blocked",
+      "size": 15589,
+      "sha256": "58ccb4d24b300ab139006d1b1b11cad0f0f4fdcdbeec7712427e1b171400aa16",
+      "committed": true,
+      "purpose": "DV-UX009 continuation blocker"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260806103000.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "blocked",
+      "size": 12443,
+      "sha256": "f233e68ca86ddc54f88c5762312eff6ff7995c1b546bf84425513709e00aae43",
+      "committed": true,
+      "purpose": "DV-UX009 continuation blocker"
+    }
+  ]
+}

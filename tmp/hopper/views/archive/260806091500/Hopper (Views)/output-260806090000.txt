@@ -1,0 +1,21 @@
+DV-UX007A — Views V1 Interaction State Audit
+
+Status: complete; audit-only; no implementation changes.
+Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=13
+Verified against canonical URL: YES
+
+Findings: core branch selection, parent-only reduction, clearing, and
+indeterminate partial state pass. Deprecated manual-entry, Add to Draft,
+group-form, and include-descendants markup remains server-rendered and is
+CSS-hidden; record as a follow-up implementation item. Single-framework
+selector remains a low-risk polish item.
+
+Verification: PHP lint passed; authenticated browser checks passed; no
+console errors or warnings observed. No schema, repository, resolver, Core
+Terms, Jobs, or UI changes were made.
+
+Root branch: COMMUNITY003-semantic-community-communications-working-draft
+Root commit: a8d7465
+Push: pushed
+Profilaxes inspected commit: 23c703a
+Hopper cycle: 260806090000

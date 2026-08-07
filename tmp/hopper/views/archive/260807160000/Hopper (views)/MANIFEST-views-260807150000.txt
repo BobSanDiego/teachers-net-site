@@ -1,0 +1,19 @@
+project=views
+ticket=DV-FIX002
+cycle_id=260807150000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=026e106
+push=successful
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260807150000.txt
+manifest_file=MANIFEST-views-260807150000.txt
+cycle_record_file=cycle-views-260807150000.json
+evidence_bundle=DV-FIX002-evidence-260807150000-views-260807150000.zip
+
+artifacts:
+{"committed": false, "hopper_filename": "DV-FIX002-output-260807150000-views-260807150000.txt", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "088dd5caca5dd18ac3ac37acd89cfa60acfb1cfb4eafd79c72cebb28335d47b8", "size": 793, "status": "modified"}
+{"committed": false, "hopper_filename": "durable-views-dv-fix002-completion-report-views-260807150000.md", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "3336a9c52a776149546585f35f047356a348afcb8c512bc3cd5f3f2e3030b253", "size": 2503, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-FIX002-before-views-260807150000.png", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "3776463d96e67cfb0af79331275bf9a1c4809785de1cd1fdc8efa71b81421eeb", "size": 104841, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-FIX002-evidence-260807150000-views-260807150000.zip", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "d797c226b1e06f570a3870146780d94b99de84f7bc8b89e7c3556e8ace19bcda", "size": 199857, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-FIX002-after-views-260807150000.png", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "42a3a406a5a4a94033c15e57d5da9eaf46502be600566aca55957cacadbc5c83", "size": 101650, "status": "modified"}

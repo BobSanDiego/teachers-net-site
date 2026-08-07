@@ -1,0 +1,21 @@
+project=views
+ticket=DV-UX014
+cycle_id=260807120000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=0230c78
+push=successful
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260807120000.txt
+manifest_file=MANIFEST-views-260807120000.txt
+cycle_record_file=cycle-views-260807120000.json
+evidence_bundle=DV-UX014-evidence-260807120000-views-260807120000.zip
+
+artifacts:
+{"committed": false, "hopper_filename": "DV-UX014-fresh-collapsed-views-260807120000.png", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "979d2e85df35c210ba2ceb41c9a655a568175bd3c5d5c3f9989239bb43411d7b", "size": 101914, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-UX014-output-260807120000-views-260807120000.txt", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "390c1d557d036c3815462041ee624b53d4f8a0a3d877bba0ea6b7b88c15523d0", "size": 726, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-UX014-minus-views-260807120000.png", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "d18e7cbd87c574b27875d49fe138f7c71edbf840e116c1fa0d94abc820edfffb", "size": 121471, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-UX014-evidence-260807120000-views-260807120000.zip", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "066eb0a796dfcc04372eb8c0eb856ab9c2b5e04caec1a5ae2c3585e4e818c771", "size": 428627, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-UX014-expanded-l3-views-260807120000.png", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "817a1d1e54ff01af719f46a5b3a8bee4650c3748441f3922c2c60b2f2656ce0b", "size": 119582, "status": "modified"}
+{"committed": false, "hopper_filename": "durable-views-dv-ux014-completion-report-views-260807120000.md", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "c19e170e2863427cfe12a5a9e8f4fc3aa03e77c2490d27f02517c05296d7b233", "size": 1995, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-UX014-collapsed-after-control-views-260807120000.png", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "bcac0102e61cc198709e5ac707201ac679f14609b16eef33c36b14b13e88026f", "size": 101969, "status": "modified"}

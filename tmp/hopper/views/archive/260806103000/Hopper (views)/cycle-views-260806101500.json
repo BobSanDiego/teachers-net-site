@@ -1,0 +1,62 @@
+{
+  "project": "views",
+  "ticket": "DV-ARCH003",
+  "cycle_id": "260806101500",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "ee5c15d",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260806101500.txt",
+  "manifest_file": "MANIFEST-views-260806101500.txt",
+  "cycle_record_file": "cycle-views-260806101500.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "decision-log-views-260806101500.md",
+      "original_path": "docs/decision-log.md",
+      "status": "complete",
+      "size": 10290,
+      "sha256": "0e4ba6ec9af93b73e1f709005963fbb3651755c774381299e62c42cb062cb986",
+      "committed": true,
+      "purpose": "DV-ARCH003 diagnostic artifact"
+    },
+    {
+      "hopper_filename": "durable-views-dv-arch003-blocking-diagnostic-views-260806101500.md",
+      "original_path": "docs/core-terms/durable-views-dv-arch003-blocking-diagnostic.md",
+      "status": "complete",
+      "size": 2527,
+      "sha256": "b80f3f240e3f396b324eb7bb72c6caf804ca09770fc680bfca4a1cbd661a5537",
+      "committed": true,
+      "purpose": "DV-ARCH003 diagnostic artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260806101500.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "complete",
+      "size": 15200,
+      "sha256": "5fa6ab4479cb8b8f79ca9107484ea1d485978e499e264228173722e397dc5b2e",
+      "committed": true,
+      "purpose": "DV-ARCH003 diagnostic artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260806101500.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "complete",
+      "size": 15178,
+      "sha256": "a9ed082c528d230585d2a84be450050bb59dbbd579b6fcfe0fca552bbfdf0bd4",
+      "committed": true,
+      "purpose": "DV-ARCH003 diagnostic artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260806101500.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "complete",
+      "size": 12285,
+      "sha256": "2251f37ef494fa694a1e5e90122f77585c011aaedee24644b7f4220644efded0",
+      "committed": true,
+      "purpose": "DV-ARCH003 diagnostic artifact"
+    }
+  ]
+}

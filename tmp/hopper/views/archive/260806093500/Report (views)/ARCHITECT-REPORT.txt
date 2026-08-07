@@ -1,0 +1,69 @@
+Project: Views
+Ticket: WORKFLOW-ADOPTION001
+Mode: DOCUMENT
+Cycle: 260805193308
+
+Completed
+
+- Adopted the standardized ChatGPT ↔ Codex workflow for the Views project.
+- Added a project-aware command registry and workflow helper.
+- Created separate Report (Views) and Hopper (Views) directories.
+- Created the Views execution ledger with duplicate-prevention fields.
+- Demonstrated LIST COMMANDS output and dual-directory archive rotation.
+
+Verified
+
+- Formal ticket marker is `TICKET READY FOR CODEX`.
+- Queue-related commands report internal conversation refresh and queue rebuild.
+- Ledger records ticket ID, status, cycle, commit, timestamp, and supersession.
+- Archive rotation created `tmp/hopper/views/archive/260805193308/`.
+- No Views architecture, schema, UI, services, business logic, or product data changed.
+
+What ChatGPT Should Know
+
+- Views now has a dedicated workflow surface independent of Job Center paths.
+- Use `python3 tools/workflow/workflow.py --project views LIST COMMANDS` to
+  render the supported command registry.
+- Formal ticket execution remains controlled by Codex after the ticket marker,
+  queue refresh, ledger comparison, and ticket stop boundary are satisfied.
+
+Architecture Impact
+
+- No architectural changes this cycle.
+- This is workflow/governance tooling only.
+
+Authority Documents Updated
+
+- `tools/workflow/workflow.py`
+- `tools/workflow/command-registry.json`
+- `docs/process/views-workflow-adoption.md`
+- Views workflow ledger and Report/Hopper artifacts.
+
+Available Supporting Evidence
+
+- LIST-COMMANDS-output.txt
+- WORKFLOW-STATUS-output.txt
+- SHOW-QUEUE-output.txt
+- ARCHIVE-CURRENT-output.txt
+- VALIDATE-WORKFLOW-output.txt
+- command registry
+- execution ledger
+
+Risks
+
+- Conversation refresh and formal-ticket extraction remain internal Codex
+  lifecycle responsibilities; the helper records and reports them but cannot
+  inspect an external ChatGPT conversation directly.
+
+Recommended Next Ticket
+
+- Issue the next formal Views ticket only after ChatGPT review of this Report
+  (Views) payload.
+
+Git
+
+- Branch: COMMUNITY003-semantic-community-communications-working-draft
+- Commit: 92852a9 (workflow adoption); final evidence commit follows
+- Push: pushed
+- Profilaxes nested repository: unchanged
+- Milestone tag: none

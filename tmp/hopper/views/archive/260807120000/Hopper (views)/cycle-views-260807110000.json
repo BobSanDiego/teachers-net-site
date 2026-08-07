@@ -1,0 +1,71 @@
+{
+  "project": "views",
+  "ticket": "DV-UX013",
+  "cycle_id": "260807110000",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "8bc3d83",
+  "push": "successful",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260807110000.txt",
+  "manifest_file": "MANIFEST-views-260807110000.txt",
+  "cycle_record_file": "cycle-views-260807110000.json",
+  "evidence_bundle": "DV-UX013-evidence-260807110000-views-260807110000.zip",
+  "artifacts": [
+    {
+      "hopper_filename": "durable-views-dv-ux013-completion-report-views-260807110000.md",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 1996,
+      "sha256": "3133cf1f225ddd0624c6e1732a96d0ddc898f896b379b9d8926d0674f793e2c2",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-UX013-minus-views-260807110000.png",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 121409,
+      "sha256": "8c449f93c311c6bebb20e42a36138b51d33b9927c73744b2812ce10ae935944a",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-UX013-evidence-260807110000-views-260807110000.zip",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 348507,
+      "sha256": "ccd9238dc4e07b187bee927b693f5fe229383ec2f00d0ac079b74f26aa3dc715",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-UX013-output-260807110000-views-260807110000.txt",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 775,
+      "sha256": "e53a440fa8a21c89fe2f22fc4be11a5ab84e01ca46421ba09820922226792f7a",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-UX013-no-controller-render-state-views-260807110000.png",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 119463,
+      "sha256": "b8f6f1b66a6bfd726f7174fb612e3098b5a8b6598c3880d0f24a5a483fff5cc3",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-UX013-mixed-plus-views-260807110000.png",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 121201,
+      "sha256": "277a4cded2e653a777b58ba74f85c26b2131f4eeb633d6f55791de1bcb74fc77",
+      "committed": false,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

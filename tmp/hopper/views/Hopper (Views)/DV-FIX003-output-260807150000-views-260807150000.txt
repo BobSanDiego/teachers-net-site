@@ -1,0 +1,9 @@
+DV-FIX003 — Enforce Top-Level Structural Ancestor Invariant
+Status: COMPLETE
+Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Profilaxes commit: e02e7e6 (pushed)
+Browser: version 17 reloaded with zero Current View rows after final descendant removal and normalization.
+Database: version 17 ended with zero cfm_view_entries rows.
+Console: no errors or warnings on final reload.
+Evidence: tmp/DV-FIX003-after.png
+DV-DIAG002: remains paused pending proven runtime/session parity and restored right-panel fixture.

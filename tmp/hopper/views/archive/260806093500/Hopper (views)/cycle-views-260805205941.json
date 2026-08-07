@@ -1,0 +1,107 @@
+{
+  "project": "views",
+  "ticket": "DV-UX006A",
+  "cycle_id": "260805205941",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "ecaa6f2",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260805205941.txt",
+  "manifest_file": "MANIFEST-views-260805205941.txt",
+  "cycle_record_file": "cycle-views-260805205941.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "dv-ux006a-completion-report-views-260805205941.md",
+      "original_path": "docs/core-terms/dv-ux006a-completion-report.md",
+      "status": "created",
+      "size": 3286,
+      "sha256": "265f3a29ad1fb148b2d56ce9beef44dc7c08040831144cdacd03343a3e5f83ac",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260805205941.md",
+      "original_path": "docs/core-terms/durable-views-project-cursor.md",
+      "status": "modified",
+      "size": 13065,
+      "sha256": "1c8354b708f7f5b2e93526dde571a8409181bb60e12ae036d916794a7dcba8a9",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260805205941.md",
+      "original_path": "docs/core-terms/durable-views-engineering-handoff.md",
+      "status": "modified",
+      "size": 13989,
+      "sha256": "9af4f4bcacf1868678bd701a9f718877098afd2e4489e739db61389932e1d2bc",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260805205941.md",
+      "original_path": "docs/core-terms/durable-views-roadmap.md",
+      "status": "modified",
+      "size": 10358,
+      "sha256": "7bff81b9caeb03c905afc9eac2b19db0757b6b2f9e72a7a4f31b0011069d10f7",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "class-cfm-views-admin-views-260805205941.php",
+      "original_path": "wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php",
+      "status": "modified",
+      "size": 39647,
+      "sha256": "d8997647670bfbfa3b81768da1ccbe34e346799d508ae89eec73419418ec78fe",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-UX006A-completion-report-views-260805205941.md",
+      "original_path": "tmp/hopper/views/Report (Views)/DV-UX006A-completion-report.md",
+      "status": "created",
+      "size": 3286,
+      "sha256": "265f3a29ad1fb148b2d56ce9beef44dc7c08040831144cdacd03343a3e5f83ac",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "dv-ux006a-1440-views-260805205941.png",
+      "original_path": "tmp/hopper/views/Report (Views)/dv-ux006a-1440.png",
+      "status": "evidence",
+      "size": 148421,
+      "sha256": "388b71e875a3b55ed0a65c7a53e4bb9c4c0a9b4ba0154808da6ab9fa7d96ec8a",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "dv-ux006a-1200-views-260805205941.png",
+      "original_path": "tmp/hopper/views/Report (Views)/dv-ux006a-1200.png",
+      "status": "evidence",
+      "size": 130852,
+      "sha256": "a265a3603c3f97df5cd2da8f3f4507db21b321a16b537d6fe2dcc35dc0c4388a",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "dv-ux006a-1024-views-260805205941.png",
+      "original_path": "tmp/hopper/views/Report (Views)/dv-ux006a-1024.png",
+      "status": "evidence",
+      "size": 126476,
+      "sha256": "d978ec79eb8bc0302a250db4b07cfa66f442f670d0badf66ea82fbb502ef2c74",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "output-views-260805205941-views-260805205941.txt",
+      "original_path": "tmp/hopper/views/current/output-views-260805205941.txt",
+      "status": "created",
+      "size": 2600,
+      "sha256": "3f1067ac24e688a9ffc2fb677bfb7528766c0136ea01942398ff4dbc11c1a00b",
+      "committed": false,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

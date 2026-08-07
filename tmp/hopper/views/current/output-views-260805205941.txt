@@ -1,0 +1,54 @@
+DV-UX006A — Dual-Tree Visual Stabilization
+Status: COMPLETE
+
+Diagnosed causes:
+- Sticky editing context detached content and disrupted full-page capture.
+- Source rows declared five grid columns for six visible children, causing Add
+  controls to wrap and collapse.
+- Narrow source panes could not fit label, status, context, and action controls.
+- Representation text was too verbose for compact rows.
+- Container affordance needed stronger visual treatment.
+
+Corrections:
+- Returned editing context to normal document flow.
+- Preserved 35/65 pane ratio.
+- Added six-column desktop row layout with readable minimum label width.
+- Added intentional stacked representation/Add controls at <=1200px.
+- Shortened representation label and retained full meaning in title text.
+- Added bordered Presentation Container toggle affordance.
+
+Verification at canonical URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=13
+
+- 1440px: 400px / 799px panes, no horizontal overflow, compact aligned row.
+- 1200px: 320px / 639px panes, no horizontal overflow, predictable stacked row.
+- 1024px: 261px / 522px panes, no horizontal overflow, predictable stacked row.
+- Normal-flow header confirmed.
+- Add Selected, preview, validation, three draggable entries, and published
+  immutability behavior remained present.
+- Browser console contained no errors.
+- Authenticated screenshots captured at all three widths.
+
+Deliverables:
+- docs/core-terms/dv-ux006a-completion-report.md
+- docs/core-terms/durable-views-project-cursor.md
+- docs/core-terms/durable-views-engineering-handoff.md
+- docs/core-terms/durable-views-roadmap.md
+- wordpress/wp-content/plugins/profilaxes/admin/class-cfm-views-admin.php
+- tmp/hopper/views/Report (views)/DV-UX006A-completion-report.md
+- tmp/hopper/views/Report (views)/dv-ux006a-1440.png
+- tmp/hopper/views/Report (views)/dv-ux006a-1200.png
+- tmp/hopper/views/Report (views)/dv-ux006a-1024.png
+
+Git:
+- Profilaxes branch: agent/durable-views-dv003-persistence
+- Profilaxes commit: 210d96f; pushed successfully
+- Root branch: COMMUNITY003-semantic-community-communications-working-draft
+- Root documentation commit: da80be9; pushed successfully
+- Milestone tag: none created
+
+Hopper:
+- WSL current: /home/bobreap/projects/teachers-net-site/tmp/hopper/views/current/
+- WSL archive: /home/bobreap/projects/teachers-net-site/tmp/hopper/views/archive/
+- Windows current: \\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\views\current\
+- Windows archive: \\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\views\archive\

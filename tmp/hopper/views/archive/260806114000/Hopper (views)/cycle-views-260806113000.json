@@ -1,0 +1,62 @@
+{
+  "project": "views",
+  "ticket": "DV-UX009A",
+  "cycle_id": "260806113000",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "d136df0",
+  "push": "pushed",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260806113000.txt",
+  "manifest_file": "MANIFEST-views-260806113000.txt",
+  "cycle_record_file": "cycle-views-260806113000.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "decision-log-views-260806113000.md",
+      "original_path": "(collected artifact)",
+      "status": "complete",
+      "size": 12072,
+      "sha256": "ac5846eaf556da2b7d6ecc6bbc12e72aed134c37e2b76277199954b022d4089e",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-dv-ux009a-completion-report-views-260806113000.md",
+      "original_path": "(collected artifact)",
+      "status": "complete",
+      "size": 2536,
+      "sha256": "07da31725a6dc52dec1f2670f3b1078f1725102bb4b1e859fb9e6214e61346e3",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-engineering-handoff-views-260806113000.md",
+      "original_path": "(collected artifact)",
+      "status": "complete",
+      "size": 16701,
+      "sha256": "fcb112ce38e592ad17193b954d15bcef080d952b6530002b6787ef9aa72dde3a",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-project-cursor-views-260806113000.md",
+      "original_path": "(collected artifact)",
+      "status": "complete",
+      "size": 16770,
+      "sha256": "d3c77d965568adf96b7235daf582251f72a5463f5c636bebf69586baff0729da",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-roadmap-views-260806113000.md",
+      "original_path": "(collected artifact)",
+      "status": "complete",
+      "size": 13155,
+      "sha256": "d5d0d785432bdab56db0741ae4e7995d59f59d920497f76382c58df536bad2ff",
+      "committed": false,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

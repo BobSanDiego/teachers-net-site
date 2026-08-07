@@ -1,0 +1,35 @@
+{
+  "project": "views",
+  "ticket": "DV-DIAG002",
+  "cycle_id": "260807160000",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "516fd44",
+  "push": "successful",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260807160000.txt",
+  "manifest_file": "MANIFEST-views-260807160000.txt",
+  "cycle_record_file": "cycle-views-260807160000.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "durable-views-dv-diag002-diagnostic-report-views-260807160000.md",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 4157,
+      "sha256": "d1b85c458654c44b0c8ba669b3e838323dccb651d10c1e64902dbffa5c1cec90",
+      "committed": false,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "DV-DIAG002-output-260807160000-views-260807160000.txt",
+      "original_path": "cycle artifact source",
+      "status": "modified",
+      "size": 773,
+      "sha256": "5176186e255a7da5498de770774980414f3dc7cf430d36790cacf7dbdf2c77d0",
+      "committed": false,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

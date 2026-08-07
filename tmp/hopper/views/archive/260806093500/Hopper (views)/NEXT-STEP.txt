@@ -1,0 +1,4 @@
+Recommended next action: ChatGPT reviews the Report (Views) payload and issues
+the next formal `TICKET READY FOR CODEX` ticket when ready.
+
+No Views product implementation is authorized by this workflow-adoption ticket.
