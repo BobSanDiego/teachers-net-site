@@ -1,0 +1,10 @@
+DV-DIAG002 — Cross-Panel Tree Alignment and Control-Column Drift Diagnostic
+Status: COMPLETE — DIAGNOSTIC ONLY
+Canonical URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Fixture: five version-17 rows, Grade Level through Early Learners and Grade 1.
+Root cause: Current View uses flex plus inline depth margin; Library uses reserved disclosure/selection grid columns plus depth padding.
+Current View depth-1 checkbox/label left: 81px. Depth-2 checkbox/label left: 81px. Library labels: depth 0=89px, depth 1=107px, depth 2=125px.
+Focus: persistent artifact not reproduced; activeElement BODY; :focus and :focus-visible false; border 0; box-shadow none.
+Console: no errors or warnings. Runtime/source identity matched Profilaxes e02e7e6.
+Recommendation: align Current View to the Library reserved structural-column model while retaining removal semantics.
+No code, CSS, JavaScript, or data was changed.
