@@ -1,0 +1,16 @@
+project=views
+ticket=DV-DIAG003
+cycle_id=260807180000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=5ea6753
+push=successful
+current_hopper=tmp/hopper/views/Hopper (Views)
+archive_path=tmp/hopper/views/archive
+report_file=output-views-260807180000.txt
+manifest_file=MANIFEST-views-260807180000.txt
+cycle_record_file=cycle-views-260807180000.json
+evidence_bundle=
+
+artifacts:
+{"committed": false, "hopper_filename": "durable-views-dv-diag003-diagnostic-report-views-260807180000.md", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "42ae0e59041641098bc5ce7d1696a1ba2536b4805a91111e78f7ea294acbc78f", "size": 4063, "status": "modified"}
+{"committed": false, "hopper_filename": "DV-DIAG003-output-260807180000-views-260807180000.txt", "original_path": "cycle artifact source", "purpose": "ticket artifact", "sha256": "4560821ca00e8625a9a49efc8d04aedec75f4e64320a0a1b81f66653a9015843", "size": 902, "status": "modified"}

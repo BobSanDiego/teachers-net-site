@@ -1,0 +1,18 @@
+DV-DIAG003 — Diagnose Same-URL Views State Divergence
+Status: COMPLETE — CANONICAL STATE IDENTIFIED
+
+Canonical runtime: teachers-net.ddev.site / DDEV project teachers-net
+WordPress: /var/www/html/wordpress
+Plugin: /var/www/html/wordpress/wp-content/plugins/profilaxes
+Database: db on db
+User: jobman (316)
+URL: https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+
+Authoritative version 17 state contains exactly one row: entry 17,
+teachers-net, Grade Level UUID 2c09a868-532a-4e67-a99d-4a8aa44c084c.
+Fresh Codex browser renders the same one row. Engineer-reported five-row state
+is therefore external to the current canonical runtime/session path.
+
+Required action: compare engineer hostname/database/session context or fresh
+navigate the engineer browser. Do not resume DV-DIAG002 until parity is proven.
+No code or data changed. Browser screenshot transport timed out.
