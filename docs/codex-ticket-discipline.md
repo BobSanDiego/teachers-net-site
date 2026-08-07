@@ -1026,3 +1026,18 @@ The default browser verification is non-screenshot smoke coverage. It should
 confirm route health, console/page errors, horizontal overflow, and canonical
 container measurements where relevant. Screenshots remain opt-in under the
 Visual Verification Policy.
+
+### Chrome MCP is mandatory for canonical UI QA
+
+Canonical authenticated browser verification must use the connected Chrome
+DevTools MCP bridge. Begin with `list_pages`, navigate/reload the exact
+canonical URL through MCP, and use MCP snapshots/evaluation, console messages,
+viewport emulation, and screenshots as required by the ticket. `curl`, HTTP
+status, lint, source inspection, or Playwright assertions alone do not satisfy
+the browser-QA gate.
+
+If MCP cannot inspect the canonical authenticated runtime, invoke the
+repository's canonical Chrome CDP launcher and retry MCP once. If recovery
+fails, stop and report the exact blocker, set canonical verification to `NO`,
+and do not claim completion or silently substitute unauthenticated/source-only
+evidence.

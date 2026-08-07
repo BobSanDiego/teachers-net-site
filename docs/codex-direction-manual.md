@@ -379,6 +379,22 @@ For Membership Taxonomy, see `docs/membership-taxonomy/project-cursor.md` and
 
 DDEV is the canonical browser verification environment.
 
+For canonical runtime QA, always use the connected Chrome DevTools MCP bridge
+(`mcp__chrome_devtools__list_pages`, navigation, snapshots/evaluation,
+console inspection, and screenshots as required). A shell `curl`, source
+inspection, HTTP 200, or automated assertion is not a substitute for
+authenticated browser QA.
+
+If the MCP bridge has no usable page or cannot inspect the canonical runtime,
+run the canonical Chrome CDP launcher and retry the bridge once using the
+recovery procedure in the active Engineering Handoff. If MCP inspection still
+fails, stop and report the exact browser blocker. Do not downgrade the ticket
+to source-only or unauthenticated verification and do not claim completion.
+
+Every UI completion report must state `Verified against canonical URL: YES` or
+`NO`, identify the authenticated browser/runtime state, and list any console,
+viewport, overflow, and visual results actually observed through MCP.
+
 Root-level commands:
 
 - `ddev exec npm run browser:verify`

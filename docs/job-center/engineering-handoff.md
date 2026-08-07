@@ -223,6 +223,20 @@ timeout against Windows loopback as conclusive if MCP can inspect the browser.
 Once MCP is connected, reload the workbench with cache bypass before taking
 responsive evidence; otherwise an older CSS build can remain visible.
 
+### Mandatory MCP verification rule
+
+All authenticated Job Center browser QA must use the Chrome DevTools MCP bridge
+on the canonical runtime. Always begin with MCP page discovery and navigate or
+reload the exact canonical review URL through MCP. Use MCP snapshots or script
+evaluation for state, MCP console inspection for load errors, and MCP viewport
+emulation/screenshots when the ticket requires visual or responsive evidence.
+
+HTTP `200`, shell `curl`, PHP/JS lint, source inspection, or automated tests may
+support the result but cannot replace authenticated browser evidence. If MCP
+cannot access a usable authenticated page, invoke the canonical launcher above
+and retry MCP once. If the bridge still fails, stop and report the exact
+failure; mark canonical verification `NO` and do not claim the ticket complete.
+
 - Canonical V1 Contract.
 - Employer UX V1.
 - Job Center Design System v1.
