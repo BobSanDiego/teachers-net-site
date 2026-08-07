@@ -2,6 +2,10 @@
 
 ## 1. Current Phase
 
+DV-UX013 is complete. Top-level Library bulk descendant controllers are
+browser-verified at
+`https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17`.
+
 DV-UX012 is complete. The left Library represented-state and top-level branch
 selection semantics are browser-verified; the current review URL is
 `https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17`.

@@ -35,6 +35,12 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 
 ## Current Status
 
+- DV-UX013 completed on 2026-08-07. Top-level Library checkboxes were replaced
+  with stable `+ / −` bulk descendant controllers. Controllers exclude
+  represented descendants, never submit top-level UUIDs, synchronize on
+  descendant changes, and reserve alignment space. Authenticated browser QA
+  passed for plus, mixed plus, minus, and the no-controller render state.
+
 - DV-UX012 completed on 2026-08-07. The Library now uses fixed-generation
   alignment, represented terms have unavailable checkbox space with blue name
   treatment and subtle tint, and every top-level branch has a controller
