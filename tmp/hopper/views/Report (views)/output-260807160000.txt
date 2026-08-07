@@ -1,0 +1,15 @@
+DV-DIAG002 — Diagnose Cross-Panel Tree Alignment and Control-Column Drift
+Status: BLOCKED — RIGHT-PANEL QA FIXTURE REQUIRED
+
+Authenticated identity: jobman
+Canonical URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+
+Version 17 currently contains only the Grade Level ancestor on the right,
+because DV-FIX002 intentionally removed its tested child branch. Left Library
+measurements are available and show 18px generation increments. Proven
+renderer divergence: Library uses a three-column grid and depth padding;
+Current View uses flex, conditional controls, and inline margin-left.
+
+Restore an authorized QA draft with representative right-panel L1/L2/L3 rows,
+then resume immediately. No code or data was changed in this diagnostic.
