@@ -1,0 +1,16 @@
+DV-DIAG004 COMPLETE — DIAGNOSTIC ONLY
+
+Root cause A: leaf Library disclosure spacers remain absolute, so checkboxes
+auto-place in grid column 1. L1 checkbox elements measured 71px; L2 measured
+64px; labels remained correctly aligned at 95px and 113px.
+
+Root cause B: WordPress admin core checkbox :focus supplies the heavy blue ring:
+0 0 0 2px #fff, 0 0 0 4px var(--wp-admin-theme-color).
+
+Canonical URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+
+No implementation performed. Next correction: static disclosure grid slots,
+explicit checkbox column 2, scoped mouse-focus suppression, and preserved
+keyboard focus-visible styling. Browser console clean. Screenshot transport
+returned a Windows-only path.
