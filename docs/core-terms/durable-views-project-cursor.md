@@ -407,3 +407,9 @@ DV-UX016 completed canonical recursive Current View rendering and the shared
 Early Childhood, and both panels share structural slots and depth increments.
 Profilaxes commit `5f1b9ad` is pushed. Browser verification passed; screenshot
 transport timed out.
+
+DV-UX017 restored Shuttle Selected and Shuttle All Terms by binding the visible
+controls to the existing canonical batch form and added scroll preservation
+across successful redirects. The local version-17 disposable fixture was
+restored and preserved with all terms represented. Profilaxes commit `8b29692`
+is pushed; both shuttle actions and viewport stability passed browser QA.

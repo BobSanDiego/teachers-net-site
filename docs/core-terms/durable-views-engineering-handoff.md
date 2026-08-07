@@ -416,3 +416,12 @@ contract as Library. Version 17 verified Kindergarten beneath Early Childhood,
 shared geometry, independent disclosure behavior, and no console errors.
 Profilaxes commit `5f1b9ad` is pushed. Screenshot capture timed out in Chrome
 MCP; DOM/computed-style evidence is recorded instead.
+
+## 2026-08-07 — DV-UX017
+
+DV-UX017 restored both shuttle actions and prevented shuttle-triggered viewport
+jumps. The controls submit the existing canonical batch form, and scroll
+position is restored after successful redirects. The disposable version-17 QA
+fixture was restored and preserved with all terms represented. Profilaxes commit
+`8b29692` is pushed. Both shuttle actions and viewport stability are accepted
+for V1.
