@@ -340,9 +340,9 @@ into separate taxonomy selections.
 
 ## DV-UX010B Completion
 
-Pending descendant and ancestor-context styling is now browser-verified. The
-selected-term count remains canonical-term-only and ancestor controls remain
-disabled context. Profilaxes commit `942d8c4` is pushed.
+The full defect correction is now browser-verified: Meta-Groups triangle
+controls, canonical sort order, depth-only indentation, and persistence of the
+complete ancestor path. Profilaxes commit `7ea15fb` is pushed.
 
 ## DV-UX010 Completion
 

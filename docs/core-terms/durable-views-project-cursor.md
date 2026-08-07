@@ -340,6 +340,9 @@ offer whole-tree selection, and nested branch disclosure remains independent.
 DV-UX010B added the explicit pending-selection visual state so the selected
 descendant and ancestor path are visibly blue while the shuttle remains
 canonical UUID-only.
+DV-UX010B full defect correction is complete: triangle expanders match
+Meta-Groups, sibling order uses Core Terms sort_order, depth rendering is
+structural, and shuttle persistence inserts missing canonical ancestors.
 Meta-Groups/assignment tree pattern: parent buckets, recursive nodes, compact
 rows, aligned controls, and generation indentation. Views-specific selection
 and shuttle semantics remain isolated. Authenticated `jobman` verification
