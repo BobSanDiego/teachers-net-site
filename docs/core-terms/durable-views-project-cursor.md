@@ -425,3 +425,10 @@ slots, typography, and borders while preserving transient and removal states.
 Profilaxes commit `fbc9920` is pushed. Browser geometry and disclosure behavior
 passed with no console warnings or errors; screenshot transport returned a
 Windows-only path and was not claimed as local evidence.
+DV-UX019R1 corrected the shared tree presentation and disclosure-state
+contract. Library selection spacers now occupy the reserved grid column,
+direct-branch disclosure is synchronized, global controls update all
+indicators, and mouse focus no longer leaves the heavy box while keyboard
+focus remains visible. Profilaxes commit `548a604` is pushed. Browser QA
+passed with matching 28px rows and 27/45/63, 52/70/88, 77/95/113px columns;
+console was clean. Screenshot transport again returned a Windows-only path.

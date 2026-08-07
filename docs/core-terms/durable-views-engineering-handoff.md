@@ -442,3 +442,11 @@ semantics are preserved. Profilaxes commit `fbc9920` is pushed. Canonical
 browser verification passed with independent expand/collapse behavior and no
 console warnings or errors. No local screenshot is claimed because Chrome MCP
 returned a Windows-only save path.
+## 2026-08-07 — DV-UX019R1
+
+DV-UX019R1 is complete and DV-UX019 human acceptance may resume. The shared
+tree now has fixed selection slots, direct-branch disclosure semantics,
+synchronized indicators, and restrained focus treatment. Profilaxes commit
+`548a604` is pushed. Authenticated browser verification passed at version 17;
+the console was clean. Screenshot capture returned a Windows-only path and was
+not claimed as local evidence. DV-UX020 remains unopened.
