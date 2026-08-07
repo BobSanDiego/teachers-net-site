@@ -68,3 +68,47 @@ the staged file list. Stage only authorized files, commit only the repository
 that changed, push the required branch, and report repository, branch, commit,
 upstream, push result, and unrelated remaining status. Never claim a commit or
 push until the command succeeds.
+
+## Completion report
+
+Every cycle produces a status-first plain-text report containing the ticket and
+status, objective result, changed files, source/ownership decision, affected
+URLs, verification results, browser/runtime identity, screenshots/evidence,
+`!important` disclosure when applicable, commit and push state, preserved
+unrelated work, blockers or limitations, and the exact next implementation
+boundary. A blocked report states what is missing, what was not changed, why
+continuing would violate the stop boundary, and the smallest required
+resolution.
+
+## Required cycle artifacts
+
+The active cycle payload contains a final human report, evidence index or
+evidence text, manifest, machine-readable cycle record, and an evidence ZIP when
+multiple evidence files exist. The manifest records original path, hopper name,
+status, purpose, size, SHA-256, committed state, and repository commit/push
+state. The cycle record records project, ticket, cycle, status, branch, commit,
+push, current hopper, archive, report/manifest/record/evidence filenames, and
+artifact inventory. Validate before completion:
+
+```bash
+python3 tools/hopper/clean_cycle.py validate \
+  --project views \
+  --cycle YYMMDDHHMMSS
+```
+
+## ChatGPT handoff
+
+After completion, ChatGPT reviews the Report Directory, reconciles sequencing,
+and issues the next inline ticket. A handoff pointer may identify the latest
+ticket, whether its complete body is present, prior-context need, required local
+documents, stop boundary, authority manifest, and authority commit. Do not
+require full companion-transcript rereading when the pointer and repository
+authority resolve the next ticket.
+
+## Final response
+
+Lead with completed, blocked, or diagnostic-only status. State the key result,
+commit/push status, verification limitations, full current-cycle file list,
+WSL paths for Report, Hopper, and current, and the copyable Windows Explorer
+command required by local handoff governance. Never hide blockers only in an
+evidence ZIP or claim work that was not performed.
