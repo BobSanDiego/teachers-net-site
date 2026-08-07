@@ -1,0 +1,9 @@
+DV-UX018 — Stabilize Contextual Controls and Viewport Behavior
+Status: COMPLETE — BROWSER VERIFIED
+Fixes: contextual empty/selection/expanded/collapsed state, no Remove Selected confirmation, scroll restoration for Collapse All/Remove Selected/Remove All.
+Verified: empty controls hidden; selection activates Clear Selection and Remove Selected; clearing hides them; Remove Selected no dialog; Remove All confirmation preserved.
+Scroll: Collapse All 500→500; Remove Selected 450→442; Remove All 500→492.
+Console: no errors or warnings.
+Fixture: disposable version 17 restored for QA and cleaned to empty after removal verification.
+Screenshot: DV-UX018-empty.png captured by browser, not exposed to WSL.
+Profilaxes commit: 3aea480, pushed.
