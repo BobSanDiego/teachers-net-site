@@ -165,6 +165,19 @@ must be carried into the later capability audit and implementation sequence:
 - **Display Name:** use Display Name instead of Short Name for compact
   listings, cards, search, and header presentation. Provide an informational
   tooltip; do not introduce unsupported response-rate claims.
+- **Resource identity boundary:** Display Name is the intended compact
+  School / Jobsite identity; Full Name remains the canonical institution name
+  and may be substantially longer. Current Step 1 work is not blocked by
+  long-name handling. Before final Step 1 certification, schedule
+  JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE for bounded multiline
+  display-name/full-name presentation, pathological-value wrapping,
+  graceful truncation, complete accessible exposure, and hostile-fixture
+  verification. This is deferred, non-blocking work, not a frozen authoring
+  maximum.
+- **Display Name authoring contract:** before School / Jobsite employer
+  authoring is launch-ready, inspect persistence, validation, legacy-data, and
+  consumer contracts and then establish the final Display Name maximum. The
+  approximate 40-character direction is not implementation authority.
 - **Jobsite imagery:** Jobsite image is optional. Teachers.Net supplies a
   default when one is omitted; imagery may be recommended but is not required.
 - **Progressive disclosure:** keep the base form rapid and place advanced
@@ -179,12 +192,13 @@ before JC058+ implementation work is generated.
 
 1. JC052 Employer Workspace Completion authority convergence.
 2. JC053 Job Posting Wizard Re-Convergence.
-3. JC054 Teacher Discovery Final Pass.
-4. JC055 Teacher Account Modules.
-5. JC056 Identity & Onboarding.
-6. JC057 Implementation Capability Audit.
-7. Generate JC058+ implementation sequence from the audit.
-8. Execute bounded implementation, browser/accessibility verification, release-
+3. Before final JC053 Step 1 certification: JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE.
+4. JC054 Teacher Discovery Final Pass.
+5. JC055 Teacher Account Modules.
+6. JC056 Identity & Onboarding.
+7. JC057 Implementation Capability Audit.
+8. Generate JC058+ implementation sequence from the audit.
+9. Execute bounded implementation, browser/accessibility verification, release-
    candidate audits, pilot, and explicit V1 acceptance.
 
 The approved JC-051A desktop implementation and its browser/human acceptance

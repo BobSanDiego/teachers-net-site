@@ -31,6 +31,13 @@ JC053 production UI authority is now the `tnet-jobs` runtime source recorded in
 the authority manifest. The standalone workbench is archived historical
 reference only; no runtime-to-workbench synchronization is required.
 
+Deferred, non-blocking identity-boundary decision: Display Name is the compact
+resource identity and Full Name remains the canonical institution name.
+JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE is required before final Step 1
+certification, while the final Display Name authoring maximum remains
+undecided pending persistence, validation, legacy-data, and consumer inspection.
+The approximate 40-character direction is not implementation authority.
+
 ## Continuity and inspection rule
 
 Do not repeatedly rediscover settled Job Center facts. Unless the active ticket
