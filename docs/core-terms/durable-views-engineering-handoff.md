@@ -2,6 +2,11 @@
 
 ## 1. Current Phase
 
+DV-FIX002 is complete. Repository descendant-removal closure is now enforced
+  for draft entry deletion, scoped by version and framework. The Current View
+  orphan-removal defect is closed; no schema, resolver, or Jobs changes were
+  made.
+
 DV-FIX001 is complete and browser-verified. The client removal model now
   closes selected parent roots over included descendants. DV-FIX002 remains
   required for repository-side persisted orphan prevention.

@@ -35,6 +35,12 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 
 ## Current Status
 
+- DV-FIX002 completed on 2026-08-07. `CFM_Views_Repository::delete_entries()`
+  now computes canonical included-descendant closure within the requested draft
+  version and framework before mutation. Parent-only and browser end-to-end
+  removal passed; the Current View orphan-removal defect is closed at the
+  repository boundary.
+
 - DV-FIX001 completed on 2026-08-07. Current View parent removal selection now
   computes recursive included descendants, marks them inherited/muted and
   disabled, mirrors their IDs into the removal payload, and restores state when
