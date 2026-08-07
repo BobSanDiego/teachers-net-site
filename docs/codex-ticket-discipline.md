@@ -194,6 +194,14 @@ bundle using the same cycle identifier. A ticket is not complete until
 modified file, and required evidence and passes the helper's `validate`
 command.
 
+Fail-closed completion rule: never report a ticket complete, and never hand off
+to ChatGPT, until the current cycle has been published to both the formal
+Report (Job Center) and Hopper (Job Center) directories and validated
+successfully. If implementation, verification, commit, or push finishes before
+packaging, treat the ticket as incomplete, create the missing cycle from the
+existing evidence, and report the packaging repair explicitly. A Git commit
+does not substitute for the required Report/Hopper cycle.
+
 Every cycle's human-readable completion report must include a section titled
 `Representative URLs Affected`. List the canonical or representative URLs that
 the ticket changed, verified, or intentionally left unchanged, with one status
