@@ -1,0 +1,21 @@
+DV-DIAG001 — Diagnose Tree Alignment and Invalid Current View Descendant State
+Status: DIAGNOSTIC COMPLETE — NO IMPLEMENTATION
+
+Canonical URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+Authenticated identity: jobman
+
+Alignment: current DV-UX014 runtime measures fixed Library label starts at
+89px (L0), 107px (L1), and 125px (L2) with reserved 18px disclosure/bulk
+columns. No current alignment defect reproduced. Historical cascade risk is
+documented.
+
+Removal root cause proven: selecting parent Early Childhood entry 18 leaves
+Grade 1 entry 19 unchecked and submits only entry_ids[]=18. The client removal
+synchronizer has no descendant closure, the controller passes IDs through, and
+CFM_Views_Repository::delete_entries() deletes only supplied IDs.
+
+Recommended next tickets: DV-FIX001 client descendant-selection closure, then
+DV-FIX002 repository descendant-removal invariant.
+
+No code, data, or destructive request changed.
