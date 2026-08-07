@@ -388,3 +388,13 @@ were preserved.
 ## 2026-08-07 — DV-FIX003 handoff
 
 DV-FIX003 completed the top-level structural ancestor invariant. The repository now prunes ancestor-only non-leaf rows within the draft version/framework, and the editor normalizes stale draft state on load. Browser and direct database checks passed for version 17. Do not resume DV-DIAG002 until the right-panel fixture and same-session/runtime parity are restored and proven.
+
+## 2026-08-07 — GOV-VIEWS001
+
+Governance now authorizes Codex to create, reset, use, and clean up explicitly
+disposable local DDEV Views QA fixtures, including for diagnostic setup. The
+fixture must be clearly named, draft/local only, recorded with its View/version
+ID and intended state, and cleaned up or explicitly preserved for the next
+ticket. Missing disposable QA data alone is no longer an engineer-input gate;
+human-only prerequisites remain gated. Production, published/editorial Views,
+other active fixtures, and Core Terms remain protected.

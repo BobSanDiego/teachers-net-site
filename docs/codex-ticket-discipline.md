@@ -105,6 +105,37 @@ integration work proceeds.
 
 ## Project-Specific Clean-Cycle Hopper Procedure
 
+### Disposable local Views QA fixtures
+
+For local DDEV verification, Codex may create, reset, mutate, and remove an
+explicitly disposable Views QA fixture when deterministic test state is
+required by the authorized ticket. Separate engineer approval is not required
+for this fixture work. Use an unambiguous name such as `DV-QA-*`, `TEST-*`, or
+the ticket identifier followed by `-QA`; do not use an editorial or production
+View as a fixture.
+
+This authority applies only to local development data needed by the ticket. It
+may include creating a draft, shuttling canonical terms, removing terms,
+resetting the draft, autosave and draft-lifecycle checks, destructive
+draft-only verification, persistence inspection, and deterministic recreation.
+Core Terms remain read-only canonical references.
+
+Production data, published Views unless expressly authorized, user-created or
+editorial Views, another active test's fixture, and Core Terms themselves
+remain protected. A diagnostic ticket may create or reset a disposable fixture
+as test setup; this is not application implementation.
+
+Before mutation, record the fixture name, View/version ID, and intended state.
+After verification, clean it up unless the next ticket needs it. If preserved,
+record its exact state and location in the Views handoff. Every report must
+distinguish application/source changes from disposable QA-data mutations and
+state cleanup or preservation status.
+
+Missing disposable QA data alone is not an `ENGINEERING INPUT REQUIRED` gate.
+That gate is reserved for genuinely human-only prerequisites such as login,
+MFA, operator-only permissions, CAPTCHA, subjective visual acceptance,
+external credentials, or inaccessible runtime/browser state.
+
 For the active Teachers.Net project, the canonical slug is `jobcenter`. Every ticket
 must begin by running `python3 tools/hopper/clean_cycle.py begin
 --project jobcenter --cycle <YYMMDDHHMMSS>`. This archives the prior

@@ -35,6 +35,24 @@ Inspect narrowly and make the smallest coherent change. Preserve unrelated dirty
 files, branches, runtime state, repository boundaries, and approved contracts.
 Diagnostics do not authorize fixes unless the ticket says so.
 
+## Disposable local QA fixture authority
+
+For local DDEV verification, Codex may create, reset, use, and remove an
+explicitly disposable Views QA draft when deterministic test state is required.
+Use a clear name such as `DV-QA-*`, `TEST-*`, or `<ticket-id>-QA`. The default
+tree fixture may include Grade Level → Early Childhood → Early Learners and
+Grade Level → Elementary → Grade 1.
+
+This permits draft-only term shuttling, removal, reset, autosave, lifecycle
+checks, persistence inspection, and recreation. It does not permit mutation of
+production data, published or editorial Views, another active test's fixture,
+or Core Terms. A diagnostic may create/reset this fixture as test setup without
+implementing the diagnosed correction.
+
+Record the fixture name, View/version ID, intended state, operations, and final
+cleanup/preservation state in the report. Missing disposable QA data alone is
+not an engineer-input blocker; reserve that flag for human-only prerequisites.
+
 ## Views clean-cycle hopper
 
 Every Views ticket starts a fresh cycle and archives all active report and hopper
