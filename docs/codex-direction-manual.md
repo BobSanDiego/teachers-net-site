@@ -13,6 +13,12 @@ Terms classify. Jobs authorizes. WordPress authenticates.
 
 ## Ticket Delivery and Report Ownership
 
+Views-specific execution follows the durable procedure in
+`docs/core-terms/views-ticket-handoff-and-execution-procedure.md`, including
+startup worktree preflight, narrow authority loading, inline-ticket precedence,
+clean-cycle hopper flushing, canonical browser verification, and status-first
+Git reporting.
+
 The authoritative Codex Desktop ticket format is an inline fenced code block
 in the active ChatGPT conversation. Older downloadable `.txt` ticket guidance
 is historical and must not override the current inline ticket. Attachments and
