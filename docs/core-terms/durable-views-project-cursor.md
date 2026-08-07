@@ -35,6 +35,12 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 
 ## Current Status
 
+- DV-FIX001 completed on 2026-08-07. Current View parent removal selection now
+  computes recursive included descendants, marks them inherited/muted and
+  disabled, mirrors their IDs into the removal payload, and restores state when
+  the root is cleared. Repository persistence closure remains the explicit next
+  objective: DV-FIX002.
+
 - DV-UX014 completed on 2026-08-07. Library fresh-load state is collapsed,
   Expand all and Collapse all operate across the complete tree, generation
   alignment is fixed, and top-level bulk controls have stronger action weight

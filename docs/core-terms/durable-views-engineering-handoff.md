@@ -2,6 +2,10 @@
 
 ## 1. Current Phase
 
+DV-FIX001 is complete and browser-verified. The client removal model now
+  closes selected parent roots over included descendants. DV-FIX002 remains
+  required for repository-side persisted orphan prevention.
+
 DV-DIAG001 completed as a read-only diagnostic. The Current View removal
 invariant is not enforced: selecting parent entry 18 produces a request payload
 containing only entry 18 while descendant entry 19 remains unselected. The
