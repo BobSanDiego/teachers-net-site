@@ -101,9 +101,14 @@ ENGINEERING-GOV002 adoption: When a Community ticket references Engineering
 Director screenshots or visual evidence, Codex must locate and open the actual
 attachment through the supported attachment/conversation mechanism, record its
 accessible identifier/path, and inspect it before implementation or acceptance.
-After one bounded access-repair attempt, Codex must stop if the evidence remains
-unavailable; it may not substitute its own screenshots, DOM output, source
-inspection, or automated assertions.
+After one bounded access-repair attempt, classify the browser evidence as
+`PASS`, `PARTIAL`, or `UNAVAILABLE`. Do not substitute screenshots, DOM output,
+source inspection, or automated assertions for required authenticated browser
+acceptance. An unavailable browser surface does not by itself stop engineering
+diagnosis: continue through bounded, trustworthy evidence tied to the same
+canonical session or request, and stop only when the objective requires the
+missing observation, no relevant fallback remains, a distinct defect is
+proven, or scope would expand.
 
 ## Persistence Model
 
