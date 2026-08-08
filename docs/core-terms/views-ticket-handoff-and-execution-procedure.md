@@ -130,3 +130,24 @@ commit/push status, verification limitations, full current-cycle file list,
 WSL paths for Report, Hopper, and current, and the copyable Windows Explorer
 command required by local handoff governance. Never hide blockers only in an
 evidence ZIP or claim work that was not performed.
+## Authenticated browser-QA bootstrap (GOV-VIEWS002)
+
+Authenticated Views browser verification is mandatory when a ticket requires
+it. Start the isolated Windows Chrome profile and establish the local-only CDP
+bridge with:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\bootstrap-views-browser-qa.ps1' -ConfigureBridge
+```
+
+The script verifies Windows CDP at `127.0.0.1:9222`, configures or reuses the
+local Windows port proxy at bridge port `9223`, and verifies the authenticated
+Views page. From WSL, use
+`tools/qa/verify-views-browser-qa.sh`, which checks the host gateway address.
+MCP is preferred when available; when MCP is absent, direct CDP-capable local
+automation may attach to the verified bridge. If bootstrap, bridge, page
+discovery, authentication, or screenshot persistence fails after the bounded
+retry, stop with `🚩 ENGINEERING INPUT REQUIRED 🚩` and report the failed layer.
+Screenshots must be written directly to a WSL path, confirmed nonzero, and
+then collected into the validated Views hopper; a Windows-reported path alone
+is not evidence.

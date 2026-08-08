@@ -377,6 +377,22 @@ For Membership Taxonomy, see `docs/membership-taxonomy/project-cursor.md` and
 
 ## Browser Verification
 
+### Views browser-QA self-healing (GOV-VIEWS002)
+
+For Views tickets requiring authenticated browser evidence, invoke
+`tools/qa/verify-views-browser-qa.sh` before QA. It launches or reuses the
+isolated profile through `tools/qa/launch-chrome-cdp-9222.ps1`, verifies
+Windows CDP, establishes the local-only port-proxy bridge on `9223`, verifies
+WSL reachability, and discovers the canonical authenticated Views page. MCP
+remains the preferred control surface; if MCP is unavailable, direct CDP
+automation may use the verified bridge. Missing MCP alone is not a reason to
+skip browser QA. If any layer remains unavailable after automatic recovery,
+stop and report `🚩 ENGINEERING INPUT REQUIRED 🚩` with Chrome, Windows CDP,
+WSL bridge, authenticated-page, and screenshot-persistence status. Do not
+substitute curl, PHP lint, source inspection, or DOM inference for required
+authenticated browser evidence. Capture screenshots directly to WSL and
+verify their nonzero file before hopper collection.
+
 DDEV is the canonical browser verification environment.
 
 For canonical runtime QA, always use the connected Chrome DevTools MCP bridge
