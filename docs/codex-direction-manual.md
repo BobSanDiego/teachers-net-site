@@ -19,6 +19,14 @@ startup worktree preflight, narrow authority loading, inline-ticket precedence,
 clean-cycle hopper flushing, canonical browser verification, and status-first
 Git reporting.
 
+For companion ChatGPT ticket retrieval, use the Companion Chat Tail-Read
+Procedure: locate the exact chat title, read only the newest 6–10 turns in
+newest-first order, and execute only the latest complete fenced block whose
+first non-empty line is exactly `TICKET READY FOR CODEX`. Use the returned cursor
+for one older page only when the ticket is truncated or required context is
+missing. Prefer durable repository authority over companion-chat history and
+stop rather than guessing if the complete ticket cannot be recovered.
+
 The authoritative Codex Desktop ticket format is an inline fenced code block
 in the active ChatGPT conversation. Older downloadable `.txt` ticket guidance
 is historical and must not override the current inline ticket. Attachments and

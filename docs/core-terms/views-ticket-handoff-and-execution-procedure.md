@@ -24,6 +24,27 @@ context. Load only documents required by the active ticket. For routine handoff,
 use the latest complete inline fenced `TICKET READY FOR CODEX` block; downloaded
 text files are supporting artifacts unless explicitly made authoritative.
 
+## Companion chat tail-read procedure
+
+Locate the companion ChatGPT session by exact title and read only its newest
+6–10 turns in newest-first order. Search that tail for the latest qualifying
+fenced block whose first non-empty line is exactly `TICKET READY FOR CODEX`.
+Only that block is executable authority; ignore surrounding commentary,
+analysis, prior tickets, and `EXPECTED NEXT FIVE TICKETS`.
+
+If the ticket is truncated or required context is missing, use the returned
+cursor to read one older page at a time, stopping once the complete ticket,
+required local documents, and explicitly required prior context are recovered.
+Do not reread the full transcript unless the ticket remains incomplete, durable
+authority cannot resolve required context, the user says project context
+changed, a contradiction is found, or the ticket explicitly requires historical
+reconstruction. If the complete ticket cannot be recovered, stop and report the
+missing portion rather than guessing.
+
+Record in the completion report the companion chat title, that tail-read was
+performed, the number of turns/pages read, whether older context was required,
+and any contradiction or missing context.
+
 ## Ticket execution
 
 Extract the identifier, objective, scope, authority, runtime, route,
