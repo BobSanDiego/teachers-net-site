@@ -56,10 +56,17 @@ The current Job Center sequence is explicitly:
    production integration route with the workbench runtime.
 2. `JC053-STEP1-RUNTIME-ASSET-MIGRATION` — make the canonical production asset
    source/version/runtime seam explicit and verify it.
-3. `JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION` — only after the runtime asset
-   migration gate passes.
-4. `JC053-STEP1-ADD-SCHOOL-JOBSITE-BROWSER-CERTIFICATION`.
-5. `JC053-STEP2-INTEGRATION`.
+3. `JC053-MIG004B` — promote JC053 Step 1 into the authenticated production
+   employer-create seam. **Completed.**
+4. `JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION`.
+5. `JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE`.
+6. `JC052-MANAGE-SCHOOLS-JOBSITES-INTEGRATION`.
+7. `JC052-MANAGE-SCHOOLS-JOBSITES-BROWSER-CERTIFICATION`.
+8. `JC053-STEP2-INTEGRATION`.
+
+Manage Schools / Jobsites is now a prerequisite before Step 2 for operational
+correctness and employer self-service. This documentation change authorizes no
+implementation and preserves the existing Employer Operations authority.
 
 This sequence supersedes older roadmap entries that place Add School/Jobsite
 integration immediately after the first hydration or parity ticket.
@@ -190,9 +197,11 @@ before JC058+ implementation work is generated.
 
 ## Forward Sequence
 
-1. JC052 Employer Workspace Completion authority convergence.
-2. JC053 Job Posting Wizard Re-Convergence.
-3. Before final JC053 Step 1 certification: JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE.
+1. JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION.
+2. JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE.
+3. JC052-MANAGE-SCHOOLS-JOBSITES-INTEGRATION.
+4. JC052-MANAGE-SCHOOLS-JOBSITES-BROWSER-CERTIFICATION.
+5. JC053-STEP2-INTEGRATION.
 4. JC054 Teacher Discovery Final Pass.
 5. JC055 Teacher Account Modules.
 6. JC056 Identity & Onboarding.

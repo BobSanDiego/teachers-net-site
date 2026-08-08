@@ -39,7 +39,10 @@ reference only; no runtime-to-workbench synchronization is required.
 Deferred, non-blocking identity-boundary decision: Display Name is the compact
 resource identity and Full Name remains the canonical institution name.
 JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE is required before final Step 1
-certification, while the final Display Name authoring maximum remains
+certification, followed by Manage Schools / Jobsites implementation and browser
+certification before JC053 Step 2 integration. This ordering is required for
+operational correctness and employer self-service; it authorizes no
+implementation. The final Display Name authoring maximum remains
 undecided pending persistence, validation, legacy-data, and consumer inspection.
 The approximate 40-character direction is not implementation authority.
 
@@ -341,9 +344,10 @@ acceptance.
 
 ## Next Executable Ticket
 
-Bounded UX-authority work under JC052–JC056, beginning with Employer Workspace
-Completion, followed by the remaining wizard, discovery, account, and identity
-convergence workstreams as explicitly scoped. Do not begin the implementation
+The next bounded sequence is JC053 Step 1 image browser certification, Step 1
+resource-identity overflow defense, then the approved JC052 Manage Schools /
+Jobsites implementation and browser certification. JC053 Step 2 integration
+must wait until that management gate clears. Do not begin the implementation
 capability audit until the remaining UX authority is complete.
 Do not reopen Employer Operations product architecture or reintroduce a
 separate Dashboard operating destination during this gate.
