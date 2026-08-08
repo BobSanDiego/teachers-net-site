@@ -121,6 +121,11 @@ resolution.
 
 ## Required cycle artifacts
 
+Every formal Views ticket produces a human-readable report and the validated
+cycle artifact set unless the ticket explicitly waives reporting. A chat-only
+completion message is not a substitute for publication into the formal Report
+and Hopper directories.
+
 The active cycle payload contains a final human report, evidence index or
 evidence text, manifest, machine-readable cycle record, and an evidence ZIP when
 multiple evidence files exist. The manifest records original path, hopper name,
