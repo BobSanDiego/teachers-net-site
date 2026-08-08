@@ -158,6 +158,25 @@ command required by local handoff governance. Never hide blockers only in an
 evidence ZIP or claim work that was not performed.
 ## Authenticated browser-QA bootstrap (GOV-VIEWS002)
 
+### GOV-VIEWS003 self-healing recovery
+
+Missing or closed QA tabs/windows are automatic-recovery conditions, not
+engineer-action conditions. Before requesting intervention, perform one
+bounded recovery sequence: verify DDEV and the isolated profile, inspect
+profile-scoped Chrome state, terminate only stale processes belonging to
+`C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\chrome-qa-profile` when
+safe, relaunch the established profile, rebuild the local bridge, navigate the
+canonical Views URL, and rerun the verifier once. Continue the ticket when the
+page is authenticated and discoverable.
+
+Request `ENGINEER ACTION REQUIRED` only for genuinely human-only prerequisites
+such as credentials, MFA, CAPTCHA, browser permission, or physical desktop
+interaction unavailable to automation. If bounded recovery fails for a
+non-human tooling layer, report that exact tooling blocker rather than labeling
+it an authentication requirement. Record `BROWSER SELF-HEALING: NOT NEEDED |
+SUCCESS | FAILED`, recovered layers, human-authentication requirement, and
+whether intervention was requested.
+
 Authenticated Views browser verification is mandatory when a ticket requires
 it. Start the isolated Windows Chrome profile and establish the local-only CDP
 bridge with:
@@ -171,15 +190,17 @@ local Windows port proxy at bridge port `9223`, and verifies the authenticated
 Views page. From WSL, use
 `tools/qa/verify-views-browser-qa.sh`, which checks the host gateway address.
 MCP is preferred when available; when MCP is absent, direct CDP-capable local
-automation may attach to the verified bridge. If bootstrap, bridge, page
-discovery, authentication, or screenshot persistence fails after the bounded
-retry, stop with `🚩 ENGINEERING INPUT REQUIRED 🚩` and report the failed layer.
+automation may attach to the verified bridge. If bootstrap, bridge, or page
+discovery fails after the bounded self-healing sequence, report the exact
+tooling layer. Use `🚩 ENGINEER ACTION REQUIRED 🚩` only for genuinely
+human-only authentication or desktop interaction.
 Screenshots must be written directly to a WSL path, confirmed nonzero, and
 then collected into the validated Views hopper; a Windows-reported path alone
 is not evidence.
 
-If the bridge cannot be repaired automatically, stop with
-`🚩 ENGINEERING INPUT REQUIRED 🚩`. Give the engineer the exact failed layer,
+If the bridge cannot be repaired automatically, report the exact tooling
+blocker. Use `🚩 ENGINEER ACTION REQUIRED 🚩` only when the remaining step is
+human-only. Give the engineer the exact failed layer,
 the exact elevated PowerShell command, the canonical URL, the expected ready
 state, and a clear statement that work resumes immediately after success. Do
 not request this action preemptively: the proxy is normally persistent.

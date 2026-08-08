@@ -392,6 +392,14 @@ For Membership Taxonomy, see `docs/membership-taxonomy/project-cursor.md` and
 
 ### Views browser-QA self-healing (GOV-VIEWS002)
 
+GOV-VIEWS003 extends this procedure: a missing canonical tab/window is a
+recoverable state. Perform one coherent profile-scoped Chrome/CDP/bridge/page
+self-healing sequence before requesting engineer action. Reserve engineer
+action for credentials, MFA, CAPTCHA, browser permissions, or other physical
+desktop prerequisites that automation cannot perform. Report self-healing as
+`NOT NEEDED | SUCCESS | FAILED` and distinguish a tooling failure from a
+human-only authentication blocker.
+
 For Views tickets requiring authenticated browser evidence, invoke
 `tools/qa/verify-views-browser-qa.sh` before QA. It launches or reuses the
 isolated profile through `tools/qa/launch-chrome-cdp-9222.ps1`, verifies
@@ -399,9 +407,9 @@ Windows CDP, establishes the local-only port-proxy bridge on `9223`, verifies
 WSL reachability, and discovers the canonical authenticated Views page. MCP
 remains the preferred control surface; if MCP is unavailable, direct CDP
 automation may use the verified bridge. Missing MCP alone is not a reason to
-skip browser QA. If any layer remains unavailable after automatic recovery,
-stop and report `🚩 ENGINEERING INPUT REQUIRED 🚩` with Chrome, Windows CDP,
-WSL bridge, authenticated-page, and screenshot-persistence status. Do not
+skip browser QA. If any layer remains unavailable after one coherent automatic
+recovery sequence, report the exact tooling layer and distinguish it from a
+human-only authentication blocker. Do not
 substitute curl, PHP lint, source inspection, or DOM inference for required
 authenticated browser evidence. Capture screenshots directly to WSL and
 verify their nonzero file before hopper collection.
