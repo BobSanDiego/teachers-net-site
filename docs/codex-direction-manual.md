@@ -406,6 +406,18 @@ The port proxy normally persists. Verify it at every browser-QA cycle and
 request this engineer action only when verification shows it is missing or
 unusable.
 
+When MCP is unavailable and the verifier reports `READY`, invoke the direct
+fallback from WSL:
+
+```bash
+/mnt/c/Users/bobre/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe tools/qa/run-views-browser-qa.mjs http://127.0.0.1:9223
+```
+
+The helper attaches to the authenticated session, discovers the canonical
+Views tab, reads DOM/computed CSS, performs a reversible disclosure click,
+collects console/page errors, and writes a real WSL screenshot. A non-empty
+PNG is required before hopper collection.
+
 DDEV is the canonical browser verification environment.
 
 For canonical runtime QA, always use the connected Chrome DevTools MCP bridge

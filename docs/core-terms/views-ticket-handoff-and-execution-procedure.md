@@ -157,3 +157,9 @@ If the bridge cannot be repaired automatically, stop with
 the exact elevated PowerShell command, the canonical URL, the expected ready
 state, and a clear statement that work resumes immediately after success. Do
 not request this action preemptively: the proxy is normally persistent.
+
+With a verified bridge and no MCP, the authoritative direct fallback is
+`tools/qa/run-views-browser-qa.mjs`, invoked from WSL through the bundled
+Windows Node runtime. It must be used before declaring browser verification
+blocked. Its output is evidence only when it reports page-control results,
+console/page errors, and a nonzero WSL-local PNG.
