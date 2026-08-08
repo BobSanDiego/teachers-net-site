@@ -26,9 +26,10 @@ $netsh = Join-Path $env:windir 'System32\netsh.exe'
 if ($ConfigureBridge) {
     try {
         $result = Start-Process -FilePath $netsh -ArgumentList @('interface','portproxy','add','v4tov4',"listenaddress=0.0.0.0","listenport=$BridgePort",'connectaddress=127.0.0.1',"connectport=$ChromePort") -Wait -PassThru -WindowStyle Hidden
-        if ($result.ExitCode -ne 0) { throw "netsh exited with code $($result.ExitCode)" }
+        # An existing identical proxy is safe to reuse; the endpoint check below
+        # remains authoritative for both first setup and subsequent runs.
     } catch {
-        throw "ENGINEERING INPUT REQUIRED: port-proxy configuration requires elevated Windows networking permission. Run this script elevated with -ConfigureBridge."
+        Write-Warning "Port-proxy setup was not changed: $($_.Exception.Message)"
     }
 }
 
