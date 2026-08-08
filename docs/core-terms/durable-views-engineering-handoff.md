@@ -477,3 +477,11 @@ hidden until every expandable descendant branch is open and synchronizes its
 `+`/`−` state across selection changes. Existing semantics and all consumer
 boundaries are preserved. Profilaxes commit `92d0439` is pushed; browser QA
 passed with a clean console.
+## 2026-08-08 — DV-UX022
+
+DV-UX022 is complete and ready for engineer acceptance. The editor now uses a
+compact identity/lifecycle header, paired panel structures, inline state-aware
+toolbars, and responsive Terms counters. Redundant instructional presentation
+was removed while lifecycle, autosave, tree, shuttle, and removal contracts
+were preserved. Profilaxes commit `79aa39d` is pushed; browser QA passed with
+no console errors. Screenshot transport returned a Windows-only path.

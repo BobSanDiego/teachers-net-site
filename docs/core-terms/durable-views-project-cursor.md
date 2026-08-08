@@ -449,3 +449,8 @@ now precedes disclosure, remains reserved when hidden, and appears only when
 the full descendant tree is expanded. `+` selects available descendants and
 `−` clears them; represented terms remain excluded. Profilaxes commit
 `92d0439` is pushed and browser QA passed with no console warnings/errors.
+DV-UX022 compacted the Views editor into a lifecycle header and coordinated
+dual-pane toolbars. Redundant prose/callouts were removed, counters use Terms
+formatting, inactive actions are muted, and selection state synchronizes the
+bottom Shuttle Selected CTA. Profilaxes commit `79aa39d` is pushed; browser QA
+passed without console errors.
