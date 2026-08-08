@@ -444,3 +444,8 @@ Disclosure/spacers occupy column 1, checkboxes/selection spacers occupy column
 focus shadow is suppressed in the Library while restrained focus-visible is
 preserved. Profilaxes commit `62a4055` is pushed; browser QA passed with no
 console warnings/errors. DV-UX020 remains unopened.
+DV-UX020 completed top-level Library bulk-control presentation. The bulk slot
+now precedes disclosure, remains reserved when hidden, and appears only when
+the full descendant tree is expanded. `+` selects available descendants and
+`−` clears them; represented terms remain excluded. Profilaxes commit
+`92d0439` is pushed and browser QA passed with no console warnings/errors.

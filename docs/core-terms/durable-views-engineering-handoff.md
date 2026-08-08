@@ -469,3 +469,11 @@ static column 1 grid participation. The WordPress checkbox focus ring is
 suppressed within the Library while keyboard focus-visible remains visible.
 Profilaxes commit `62a4055` is pushed. Browser QA passed with clean console;
 the screenshot returned a Windows-only path and was not claimed locally.
+## 2026-08-07 — DV-UX020
+
+DV-UX020 is complete and ready for engineer acceptance. Top-level Library rows
+now render `bulk | disclosure | selection | label`; the bulk controller is
+hidden until every expandable descendant branch is open and synchronizes its
+`+`/`−` state across selection changes. Existing semantics and all consumer
+boundaries are preserved. Profilaxes commit `92d0439` is pushed; browser QA
+passed with a clean console.
