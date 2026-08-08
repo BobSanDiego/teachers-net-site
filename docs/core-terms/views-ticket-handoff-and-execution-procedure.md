@@ -151,3 +151,9 @@ retry, stop with `🚩 ENGINEERING INPUT REQUIRED 🚩` and report the failed la
 Screenshots must be written directly to a WSL path, confirmed nonzero, and
 then collected into the validated Views hopper; a Windows-reported path alone
 is not evidence.
+
+If the bridge cannot be repaired automatically, stop with
+`🚩 ENGINEERING INPUT REQUIRED 🚩`. Give the engineer the exact failed layer,
+the exact elevated PowerShell command, the canonical URL, the expected ready
+state, and a clear statement that work resumes immediately after success. Do
+not request this action preemptively: the proxy is normally persistent.

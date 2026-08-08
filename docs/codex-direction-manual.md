@@ -393,6 +393,19 @@ substitute curl, PHP lint, source inspection, or DOM inference for required
 authenticated browser evidence. Capture screenshots directly to WSL and
 verify their nonzero file before hopper collection.
 
+If engineer action is required, the report must give the exact failed layer,
+the exact command, the canonical review URL, the expected ready state, and
+whether execution resumes immediately. The standard action is to run the
+bootstrap from elevated Windows PowerShell:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\bootstrap-views-browser-qa.ps1" -ConfigureBridge
+```
+
+The port proxy normally persists. Verify it at every browser-QA cycle and
+request this engineer action only when verification shows it is missing or
+unusable.
+
 DDEV is the canonical browser verification environment.
 
 For canonical runtime QA, always use the connected Chrome DevTools MCP bridge
