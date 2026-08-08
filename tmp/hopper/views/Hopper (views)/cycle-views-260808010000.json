@@ -1,0 +1,35 @@
+{
+  "project": "views",
+  "ticket": "DV-UX022R1",
+  "cycle_id": "260808010000",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "d6aab67",
+  "push": "successful",
+  "current_hopper": "tmp/hopper/views/Hopper (Views)",
+  "archive_path": "tmp/hopper/views/archive",
+  "report_file": "output-views-260808010000.txt",
+  "manifest_file": "MANIFEST-views-260808010000.txt",
+  "cycle_record_file": "cycle-views-260808010000.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "DV-UX022R1-output-260808010000-views-260808010000.txt",
+      "original_path": "tmp/DV-UX022R1-output-260808010000.txt",
+      "status": "complete",
+      "size": 672,
+      "sha256": "ffe31931708f6ca506cfe58aa16114ac30d4325cadfdbdc068d60c522b3ef598",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-dv-ux022r1-completion-report-views-260808010000.md",
+      "original_path": "docs/core-terms/durable-views-dv-ux022r1-completion-report.md",
+      "status": "complete",
+      "size": 2108,
+      "sha256": "36c0dda9ce9a1cc8efc1888d2328484ede5d4431c365468b40ca55988396a91f",
+      "committed": true,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

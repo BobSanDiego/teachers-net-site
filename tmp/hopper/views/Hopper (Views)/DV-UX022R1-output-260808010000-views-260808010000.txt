@@ -1,0 +1,15 @@
+DV-UX022R1 COMPLETE
+
+Corrected Current View Expand/Collapse state initialization and synchronization,
+inherited-removal closure counts, bottom Shuttle Selected visibility, neutral
+Library dividers, and represented-term de-emphasis.
+
+Initial Current View: Expand active, Collapse muted. Fully expanded: Expand
+muted, Collapse active. Parent removal closure: 3 checked terms and count
+`3 Terms (1 selected)`. Library divider: 1px neutral, no shadow. Represented
+text: blue, weight 400. Console clean.
+
+Canonical URL:
+https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
+
+Profilaxes commit 9e24add pushed. DV-UX022 ready for engineer re-acceptance.
