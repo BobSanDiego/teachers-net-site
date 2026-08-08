@@ -58,6 +58,15 @@ geometry where relevant, and comparison with the approved design/state. DOM
 attributes, state variables, and selector existence cannot override a contrary
 rendered result; disagreement leaves the ticket FAIL/BLOCKED until explained.
 
+Authentication and physical-desktop gate: if browser work requires login,
+MFA, permission approval, popup handling, file selection, drag/drop,
+clipboard interaction, or another action that automation cannot complete,
+Codex must stop and flag the engineer through the clearest available
+Windows/Desktop notification plus explicit Codex commentary. Codex must not
+assume the action occurred or claim authenticated verification until MCP
+observes the resulting authenticated page/state. If it cannot be observed,
+report canonical verification as `NO` and name the blocker.
+
 Recommended ChatGPT handoff pointer:
 
 ```text

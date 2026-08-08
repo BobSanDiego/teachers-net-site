@@ -373,6 +373,20 @@ When project documents conflict, use this precedence:
 
 Every ticket should improve one screen, one workflow, or one defect—not all three.
 
+### Engineer intervention for authentication and physical desktop actions
+
+Codex must stop and visibly flag the engineer whenever progress requires a
+login, MFA/credential entry, browser permission, popup response, file picker,
+drag/drop, clipboard action, or any other physical desktop response that the
+available automation cannot complete and verify. Use the clearest available
+Windows/Desktop notification mechanism when one is available, and also state
+the required action plainly in Codex commentary/report. Never infer that a
+login or popup was completed merely because a window appeared, and never claim
+authenticated browser verification until the authenticated page and required
+state are visibly confirmed. Resume only after the engineer's action is
+observable through MCP or equivalent browser evidence; otherwise report
+canonical verification as `NO` and the exact blocker.
+
 ### Repeated Human-QA Failure Escalation
 
 If the same visual or behavioral defect survives two or more implementation
