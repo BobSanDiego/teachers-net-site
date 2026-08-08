@@ -12,6 +12,9 @@ database:
 use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
+hooks:
+    post-start:
+        - exec: bash /mnt/ddev_config/web-entrypoint.d/10-jc053-migration-flag.sh
 corepack_enable: false
 webimage_extra_packages:
     - libnspr4
