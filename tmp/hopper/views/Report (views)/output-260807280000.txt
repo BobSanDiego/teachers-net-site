@@ -1,12 +1,12 @@
-DV-UX020 COMPLETE
+DV-UX022 COMPLETE
 
-Top-level Library bulk control now renders left of disclosure with stable
-slots: bulk 27px, disclosure 52px, selection 77px, label 102px. It appears
-only after full expansion, shows + for available unchecked/mixed descendants,
-and − when all are checked. Browser QA selected and cleared 20 descendants;
-top-level UUID was absent from payloads. Console clean.
+Compact lifecycle header, paired panel toolbars, Terms counters, muted inactive
+actions, and redundant-prose removal implemented. Search placeholder is Search
+terms. Selection state activated Shuttle Selected and updated counters; zero
+selection hid the bottom CTA. Browser console clean.
 
 Canonical URL:
 https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17
 
-Profilaxes commit 92d0439 pushed. DV-UX020 is ready for engineer acceptance.
+Profilaxes commit 79aa39d pushed. Screenshot transport returned a Windows-only
+path and no WSL-local screenshot is claimed.

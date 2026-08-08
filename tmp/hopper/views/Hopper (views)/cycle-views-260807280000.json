@@ -1,10 +1,10 @@
 {
   "project": "views",
-  "ticket": "DV-UX020",
+  "ticket": "DV-UX022",
   "cycle_id": "260807280000",
   "status": "complete",
   "branch": "COMMUNITY003-semantic-community-communications-working-draft",
-  "commit": "95b29c5d4e76ad284f8387314a9d8ac4cfbbde53",
+  "commit": "371a153",
   "push": "successful",
   "current_hopper": "tmp/hopper/views/Hopper (Views)",
   "archive_path": "tmp/hopper/views/archive",
@@ -15,7 +15,7 @@
   "artifacts": [
     {
       "hopper_filename": "DV-UX020-output-260807280000-views-260807280000.txt",
-      "original_path": "tmp/DV-UX020-output-260807280000.txt",
+      "original_path": "tmp/DV-UX022-output-260807280000.txt",
       "status": "complete",
       "size": 553,
       "sha256": "8bbe64d3e46cffbb87d292ea005416caa9d3f7576f69ce050934df02d42d6f88",
@@ -23,11 +23,47 @@
       "purpose": "ticket artifact"
     },
     {
+      "hopper_filename": "DV-UX022-output-260807280000-views-260807280000.txt",
+      "original_path": "tmp/DV-UX022-output-260807280000.txt",
+      "status": "complete",
+      "size": 528,
+      "sha256": "11741b77add7f3e22b36b14c4df43eeaaf67b71573c821093811af0681f261cf",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "MANIFEST-views-260807280000.txt",
+      "original_path": "tmp/DV-UX022-output-260807280000.txt",
+      "status": "complete",
+      "size": 1057,
+      "sha256": "6e4cdcb22006427803711a3b4581ad29d4e7ab7afcf1264cb374a32173abad12",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "cycle-views-260807280000.json",
+      "original_path": "tmp/DV-UX022-output-260807280000.txt",
+      "status": "complete",
+      "size": 1297,
+      "sha256": "667ddad353c00f15c48ca195d29c38b1a4e68ca1c1bcbfc0a33218e380a9db69",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
       "hopper_filename": "durable-views-dv-ux020-completion-report-views-260807280000.md",
-      "original_path": "docs/core-terms/durable-views-dv-ux020-completion-report.md",
+      "original_path": "docs/core-terms/durable-views-dv-ux022-completion-report.md",
       "status": "complete",
       "size": 1780,
       "sha256": "1ce89c3a2b7846c30e5a9403a1df580a6f28fefe0ce0635efa7372f3c5b5da23",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "durable-views-dv-ux022-completion-report-views-260807280000.md",
+      "original_path": "docs/core-terms/durable-views-dv-ux022-completion-report.md",
+      "status": "complete",
+      "size": 2250,
+      "sha256": "7d1582158a8b001ac7808eeb824aefc16042d83280e5407309ef0198bcf63f7a",
       "committed": true,
       "purpose": "ticket artifact"
     }
