@@ -256,6 +256,16 @@ timeout against Windows loopback as conclusive if MCP can inspect the browser.
 Once MCP is connected, reload the workbench with cache bypass before taking
 responsive evidence; otherwise an older CSS build can remain visible.
 
+Before any authenticated mutation or browser acceptance, reconcile MCP with the
+live Windows CDP target universe. Capture Windows `/json/list`, run MCP
+`list_pages`, and confirm that the intended canonical target URL/session is
+represented in both. Numeric MCP page labels do not need to equal CDP target
+IDs; the URL/session correspondence must match. If MCP reports targets absent
+from live `/json/list`, preflight fails: discard/reconnect only the stale MCP
+attachment, reconnect it to `http://127.0.0.1:9222`, and repeat the bounded
+reconciliation. Do not mutate application data until a harmless MCP snapshot
+and evaluation succeed against the reconciled target.
+
 ### Mandatory MCP verification rule
 
 All authenticated Job Center browser QA must use the Chrome DevTools MCP bridge

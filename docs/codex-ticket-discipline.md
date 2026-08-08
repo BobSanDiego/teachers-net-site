@@ -1111,6 +1111,14 @@ viewport emulation, and screenshots as required by the ticket. `curl`, HTTP
 status, lint, source inspection, or Playwright assertions alone do not satisfy
 the browser-QA gate.
 
+Before authenticated mutation or acceptance, reconcile MCP target enumeration
+with the live Windows CDP `/json/list` for `http://127.0.0.1:9222`. The
+intended canonical URL/session must be present in both; MCP numeric page labels
+need not equal CDP target IDs. If MCP reports targets absent from live CDP,
+preflight fails. Reconnect only the stale MCP attachment to the existing QA
+Chrome endpoint and repeat the bounded reconciliation. Require a harmless MCP
+snapshot and evaluation on the reconciled target before mutation.
+
 If MCP cannot inspect the canonical authenticated runtime, invoke the
 repository's canonical Chrome CDP launcher and retry MCP once. If recovery
 still fails, classify browser verification as `UNAVAILABLE` and use the
