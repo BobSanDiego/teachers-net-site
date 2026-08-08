@@ -58,6 +58,27 @@ geometry where relevant, and comparison with the approved design/state. DOM
 attributes, state variables, and selector existence cannot override a contrary
 rendered result; disagreement leaves the ticket FAIL/BLOCKED until explained.
 
+### JC053 disposable QA fixture discipline
+
+Every authenticated JC053 verification ticket that creates School / Jobsite
+data must use a uniquely named, explicitly disposable fixture and record its
+resource ID, employer relationship ID, media binding ID, and attachment ID when
+media is involved. Before testing, verify the actual employer/resource state;
+never assume a zero-resource state from the ticket description or chooser UI.
+
+At ticket completion, remove the fixture and its test-only relationship/media
+and attachment data when it is not explicitly required by the immediately
+following ticket. Preserve legitimate or uncertain resources and any resource
+referenced by a real job. The completion report must state which fixtures were
+removed, which were intentionally preserved, the resulting chooser state, and
+whether the next test begins from `ZERO-RESOURCE START` or
+`CONTROLLED-NONZERO START`.
+
+Fixture cleanup is a narrow reconciliation operation, not a broad employer-ID
+reset. Classify each relationship from repository/runtime evidence before
+mutation and verify that no dangling relationships, media bindings, or
+test-only attachments remain afterward.
+
 Authentication and physical-desktop gate: if browser work requires login,
 MFA, permission approval, popup handling, file selection, drag/drop,
 clipboard interaction, or another action that automation cannot complete,
