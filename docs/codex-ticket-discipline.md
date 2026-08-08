@@ -373,6 +373,24 @@ When project documents conflict, use this precedence:
 
 Every ticket should improve one screen, one workflow, or one defect—not all three.
 
+### Repeated Human-QA Failure Escalation
+
+If the same visual or behavioral defect survives two or more implementation
+passes, Codex reports completion, and human QA still reproduces it, stop
+speculative patching and issue a diagnostic ticket. Audit conflicting CSS
+authorities (cascade order, specificity, duplicate/later rules, `!important`,
+media/container queries, native `[hidden]`, state selectors, and stale or
+workbench-derived rules), JavaScript state/handler ownership and post-load
+mutation, and DOM/rendering duplicates, wrong instances, collapsed/offscreen
+nodes, computed styles, and bounding geometry.
+
+For meaningful visual defects, capture and inspect a final rendered-browser
+screenshot, verify relevant computed styles and actual geometry, and compare
+the visible result with the approved design/state. DOM attributes, state
+variables, selector existence, and automated assertions are supporting
+evidence only. If semantic assertions disagree with the rendered result, the
+ticket remains FAIL/BLOCKED until the discrepancy is explained.
+
 ## Local Persistence Model
 
 Teachers.Net-specific facts, decisions, implementation state, and Project

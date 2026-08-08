@@ -42,6 +42,22 @@ ingest the full transcript unless the ticket is truncated, required context is
 missing, project context changed, repository authority cannot resolve the issue,
 or a contradiction is detected.
 
+### Repeated Human-QA Failure Escalation
+
+If human QA reproduces the same visual or behavioral defect after two or more
+implementation passes reported complete by Codex, stop issuing speculative
+fixes. The next ticket must be diagnostic and inspect conflicting CSS
+authorities, cascade/specificity/order, media or container queries,
+`!important`, native `[hidden]`, state selectors, stale rules, duplicate
+JavaScript handlers or state owners, initialization/post-load overwrites,
+cloning/reparenting, duplicate DOM controls, and final rendered geometry.
+
+Visual acceptance requires a screenshot captured and inspected from the
+canonical browser, computed-style evidence where relevant, actual element
+geometry where relevant, and comparison with the approved design/state. DOM
+attributes, state variables, and selector existence cannot override a contrary
+rendered result; disagreement leaves the ticket FAIL/BLOCKED until explained.
+
 Recommended ChatGPT handoff pointer:
 
 ```text
@@ -101,6 +117,12 @@ was intentionally backend-only; its temporary draft/state seam is expected.
 The approved Step 1 UI replacement is a separate, currently unscheduled
 `JC053-MIG004B` ticket. Do not begin
 Employer Operations mobile implementation until desktop acceptance is explicit.
+
+JC053-MIG004B is now implemented in the authenticated production
+employer-create seam. It reuses the existing wizard-session, School / Jobsite
+identity, authorization, repository, media, and job services. The legacy
+Guided Job Posting renderer remains the flag-off rollback; image-format QA is a
+separate follow-up.
 
 Active bounded workstreams are JC052 Employer Workspace Completion, JC053 Job
 Posting Wizard Re-Convergence, JC054 Teacher Discovery Final Pass, JC055

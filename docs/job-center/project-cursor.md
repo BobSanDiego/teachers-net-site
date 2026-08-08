@@ -27,6 +27,11 @@ Current sequencing gate:
 `JC053-STEP1-RUNTIME-ASSET-MIGRATION` →
 `JC053-STEP1-ADD-SCHOOL-JOBSITE-INTEGRATION`.
 
+JC053-MIG004B is now implemented: the canonical employer-create route serves
+the authenticated JC053 Step 1 production seam using existing wizard,
+resource, authorization, media, and job services. The legacy renderer remains
+the controlled flag-off rollback. Image-format QA is the next bounded gate.
+
 JC053 production UI authority is now the `tnet-jobs` runtime source recorded in
 the authority manifest. The standalone workbench is archived historical
 reference only; no runtime-to-workbench synchronization is required.
@@ -51,6 +56,21 @@ For routine `next ticket` requests, retrieve only the latest companion-chat
 turns needed to locate the latest complete `TICKET READY FOR CODEX`. Read older
 turns only when the handoff is truncated, missing context, materially changed,
 unresolved by repository authority, or contradictory.
+
+### Repeated Human-QA Failure Escalation
+
+When the same Job Center visual or behavioral defect remains after two or more
+implementation passes and human QA still reproduces it, stop speculative
+patches and issue a diagnostic ticket. Audit CSS cascade and authority
+conflicts, JavaScript state/handler/render ordering and reparenting, and
+DOM/rendered geometry, including hidden elements with nonzero rectangles,
+duplicate controls, collapsed/offscreen/covered nodes, and stale owners.
+
+The diagnostic must require screenshot capture and visual inspection at the
+canonical runtime, relevant computed-style checks, actual bounding rectangles,
+and comparison with the approved state. Semantic DOM attributes and automated
+assertions alone never establish visual PASS. Any disagreement leaves the
+ticket FAIL/BLOCKED until explained.
 
 ## Current Phase
 
