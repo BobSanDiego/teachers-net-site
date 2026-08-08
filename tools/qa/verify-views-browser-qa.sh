@@ -9,7 +9,11 @@ if ! powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$ps_path" -Configu
   exit 2
 fi
 
-host_ip="$(awk '/^nameserver/{print $2; exit}' /etc/resolv.conf)"
+host_ip="$(ip route | awk '/^default via/{print $3; exit}')"
+if [[ -z "$host_ip" ]]; then
+  echo 'ENGINEERING INPUT REQUIRED: WSL default gateway could not be determined.' >&2
+  exit 3
+fi
 bridge="http://${host_ip}:9223/json/version"
 payload="$(curl -fsS --max-time 5 "$bridge")" || {
   echo "ENGINEERING INPUT REQUIRED: WSL could not reach the verified bridge at $bridge." >&2
