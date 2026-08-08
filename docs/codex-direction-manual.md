@@ -437,8 +437,20 @@ authenticated browser QA.
 If the MCP bridge has no usable page or cannot inspect the canonical runtime,
 run the canonical Chrome CDP launcher and retry the bridge once using the
 recovery procedure in the active Engineering Handoff. If MCP inspection still
-fails, stop and report the exact browser blocker. Do not downgrade the ticket
-to source-only or unauthenticated verification and do not claim completion.
+fails, classify browser verification as `UNAVAILABLE`, report the exact layer,
+and continue bounded engineering diagnosis through approved evidence tied to
+the same canonical session when possible: direct CDP, network/console
+evidence, server logs/traces, authoritative DB/service readback, repository
+tests, derivative/media inspection, or persisted canonical screenshots. This
+must never be reported as browser PASS or used to satisfy human visual QA.
+Stop only when the ticket objective requires the unavailable browser
+observation, no relevant fallback remains, a distinct application defect is
+proven, or scope would expand. Do not substitute an alternate runtime,
+profile, route, worktree, or unauthenticated state.
+
+Reports must separate browser verification, engineering diagnosis, and human
+visual acceptance using the values `PASS | PARTIAL | UNAVAILABLE`,
+`PASS | FAIL | BLOCKED`, and `PASS | PENDING | NOT REQUIRED`, respectively.
 
 Every UI completion report must state `Verified against canonical URL: YES` or
 `NO`, identify the authenticated browser/runtime state, and list any console,

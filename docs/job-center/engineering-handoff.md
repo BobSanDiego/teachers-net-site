@@ -65,7 +65,9 @@ Codex must stop and flag the engineer through the clearest available
 Windows/Desktop notification plus explicit Codex commentary. Codex must not
 assume the action occurred or claim authenticated verification until MCP
 observes the resulting authenticated page/state. If it cannot be observed,
-report canonical verification as `NO` and name the blocker.
+report browser verification as `UNAVAILABLE` or `PARTIAL` and name the
+blocker; continue only with trustworthy same-runtime fallback diagnosis when
+the ticket objective permits it.
 
 Recommended ChatGPT handoff pointer:
 
@@ -265,8 +267,25 @@ emulation/screenshots when the ticket requires visual or responsive evidence.
 HTTP `200`, shell `curl`, PHP/JS lint, source inspection, or automated tests may
 support the result but cannot replace authenticated browser evidence. If MCP
 cannot access a usable authenticated page, invoke the canonical launcher above
-and retry MCP once. If the bridge still fails, stop and report the exact
-failure; mark canonical verification `NO` and do not claim the ticket complete.
+and retry MCP once. If the bridge still fails, classify browser verification as
+`UNAVAILABLE`, preserve the exact blocker, and continue only with the approved
+fallback evidence ladder when it can safely establish the remaining engineering
+objective. Never claim browser PASS from fallback evidence. Stop only when the
+objective inherently requires rendered/authenticated observation, all relevant
+fallbacks are unavailable, a distinct application defect is proven, or scope
+would expand.
+
+Job Center browser-QA status vocabulary is mandatory in reports:
+
+- `Browser verification: PASS | PARTIAL | UNAVAILABLE`
+- `Engineering diagnosis: PASS | FAIL | BLOCKED`
+- `Human visual acceptance: PASS | PENDING | NOT REQUIRED`
+
+Approved fallback evidence may include direct CDP against the same QA session,
+browser network/console evidence, server logs or traces, authoritative DB or
+service readback, repository tests, derivative/media persistence inspection,
+and screenshots already produced by that canonical session. Do not substitute
+another runtime, browser profile, route, worktree, or unauthenticated session.
 
 - Canonical V1 Contract.
 - Employer UX V1.

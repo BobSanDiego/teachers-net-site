@@ -384,8 +384,10 @@ the required action plainly in Codex commentary/report. Never infer that a
 login or popup was completed merely because a window appeared, and never claim
 authenticated browser verification until the authenticated page and required
 state are visibly confirmed. Resume only after the engineer's action is
-observable through MCP or equivalent browser evidence; otherwise report
-canonical verification as `NO` and the exact blocker.
+observable through MCP or equivalent browser evidence. If it cannot be
+observed, do not claim authenticated browser PASS; report browser verification
+as `UNAVAILABLE` or `PARTIAL` and name the blocker. Continue only with
+trustworthy same-runtime fallback diagnosis when the ticket objective permits.
 
 ### Repeated Human-QA Failure Escalation
 
@@ -1074,9 +1076,11 @@ runtime is not a substitute.
 Before verification, record PID, command line, cwd, docroot, loaded asset paths,
 and relevant SHA-256 hashes. Hard-reload with cache bypass and confirm the
 expected assets. If the canonical URL is stale, broken, unreachable, or serves
-different code, stop verification and repair the canonical runtime first. If
-canonical verification is `NO`, identify both URLs and stop without claiming
-completion.
+different code, stop browser acceptance and repair the canonical runtime first.
+If browser verification is unavailable, identify both URLs, label it
+`UNAVAILABLE`, and continue only with the approved canonical-session fallback
+ladder when it can establish the remaining engineering objective. Never claim
+browser completion from fallback evidence.
 
 ## Browser Verification Environment
 
@@ -1109,6 +1113,18 @@ the browser-QA gate.
 
 If MCP cannot inspect the canonical authenticated runtime, invoke the
 repository's canonical Chrome CDP launcher and retry MCP once. If recovery
-fails, stop and report the exact blocker, set canonical verification to `NO`,
-and do not claim completion or silently substitute unauthenticated/source-only
-evidence.
+still fails, classify browser verification as `UNAVAILABLE` and use the
+approved fallback ladder when the remaining engineering objective can be
+established safely: direct CDP against the same session, browser
+network/console evidence, server logs or traces, authoritative DB/service
+readback, repository tests, derivative/media inspection, or persisted
+canonical-session screenshots. Do not claim browser PASS from fallback
+evidence, and do not substitute another runtime, profile, route, worktree, or
+unauthenticated session. Stop only when the objective inherently requires
+rendered/authenticated observation, all relevant fallback paths are
+unavailable, a distinct application defect is proven, or scope would expand.
+
+Every browser-facing report must separately state:
+`Browser verification: PASS | PARTIAL | UNAVAILABLE`;
+`Engineering diagnosis: PASS | FAIL | BLOCKED`; and
+`Human visual acceptance: PASS | PENDING | NOT REQUIRED`.
