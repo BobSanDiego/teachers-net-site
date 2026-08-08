@@ -485,3 +485,10 @@ toolbars, and responsive Terms counters. Redundant instructional presentation
 was removed while lifecycle, autosave, tree, shuttle, and removal contracts
 were preserved. Profilaxes commit `79aa39d` is pushed; browser QA passed with
 no console errors. Screenshot transport returned a Windows-only path.
+## 2026-08-08 — DV-UX022R1
+
+DV-UX022R1 is complete and DV-UX022 is ready for engineer re-acceptance.
+Compact toolbar states, inherited removal counts, bottom Shuttle Selected
+visibility, neutral Library dividers, and represented-term de-emphasis are
+corrected. Profilaxes commit `9e24add` is pushed; browser QA passed with no
+console warnings or errors.

@@ -454,3 +454,9 @@ dual-pane toolbars. Redundant prose/callouts were removed, counters use Terms
 formatting, inactive actions are muted, and selection state synchronizes the
 bottom Shuttle Selected CTA. Profilaxes commit `79aa39d` is pushed; browser QA
 passed without console errors.
+DV-UX022R1 corrected compact-editor state defects. Current View disclosure
+toolbar state now derives from actual initial/mixed/expanded branches; removal
+counts include the deduplicated inherited closure; Shuttle Selected disappears
+with zero eligible selection; neutral Library dividers are single 1px rules;
+represented terms use blue weight 400. Profilaxes commit `9e24add` is pushed;
+browser QA passed with no console warnings/errors.
