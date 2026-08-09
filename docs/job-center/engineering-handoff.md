@@ -58,6 +58,28 @@ geometry where relevant, and comparison with the approved design/state. DOM
 attributes, state variables, and selector existence cannot override a contrary
 rendered result; disagreement leaves the ticket FAIL/BLOCKED until explained.
 
+### Evidence classification and budget
+
+Every ticket must classify browser evidence as exactly one of:
+
+- `FUNCTIONAL` — runtime assertions on one canonical viewport; one screenshot
+  only when materially useful.
+- `STATE` — DOM/runtime assertions plus one screenshot of the decisive state.
+- `RESPONSIVE` — screenshots only at the explicitly affected breakpoints.
+- `VISUAL` — reference-specific screenshots for the required human comparison.
+- `DIAGNOSTIC` — targeted evidence only; no acceptance matrix unless responsive
+  behavior is itself the diagnostic subject.
+
+Do not capture desktop/tablet/mobile/narrow screenshot matrices by default.
+Responsive matrices are prohibited unless the ticket explicitly concerns
+responsive layout, breakpoint behavior, visual convergence, or human visual
+comparison. Do not inspect or attach screenshots unless visual acceptance or a
+diagnostic requires them. The browser preflight readiness screenshot is
+infrastructure evidence, not product evidence. During convergence, use runtime
+assertions and the smallest discriminating smoke test, then run the full
+acceptance suite once after the narrow invariant passes. Never repeat unchanged
+screenshots or diagnostics after a passing result.
+
 ### JC053 disposable QA fixture discipline
 
 Every authenticated JC053 verification ticket that creates School / Jobsite

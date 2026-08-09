@@ -649,6 +649,37 @@ Human visual QA is performed by the Engineering Director after implementation.
 
 Codex should optimize for minimum compute while maintaining engineering confidence.
 
+### Evidence budget by ticket type
+
+Classify the ticket before collecting browser evidence:
+
+- `FUNCTIONAL` tickets use targeted runtime assertions on one canonical
+  viewport; one screenshot is optional and only warranted when it materially
+  improves human-readable proof.
+- `STATE` or `COUNT` tickets prefer DOM/runtime assertions plus one screenshot
+  of the decisive state.
+- `RESPONSIVE` tickets capture only the breakpoints explicitly affected by the
+  ticket. A wide/intermediate/narrow matrix is not a default requirement.
+- `VISUAL` tickets capture the reference-specific state and viewport needed for
+  human comparison.
+- `DIAGNOSTIC` tickets capture only evidence needed to distinguish the active
+  hypotheses; do not create an acceptance matrix unless the diagnostic itself
+  concerns responsive behavior.
+
+Responsive screenshot matrices are prohibited unless the ticket explicitly
+concerns responsive layout, breakpoint behavior, visual convergence, or human
+visual comparison. Do not inspect, attach, or repeat screenshots merely because
+a browser cycle is available. The canonical browser preflight may still create
+its one command-level readiness screenshot; that is infrastructure evidence,
+not product visual evidence and need not be repeated as a product screenshot.
+
+During convergence, use runtime assertions and the smallest discriminating
+smoke test. After the narrow invariant passes, run the full acceptance suite
+once and capture only the ticket-required evidence. Do not repeat unchanged
+screenshots or diagnostics. This evidence budget reduces browser operations,
+artifact volume, image processing, and quota consumption without weakening
+acceptance.
+
 ## Responsive Convergence Procedure
 
 Apply this procedure only to existing responsive or visual components where
