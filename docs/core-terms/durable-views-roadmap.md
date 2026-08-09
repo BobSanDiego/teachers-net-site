@@ -3,6 +3,23 @@
 Status: Active roadmap — Job Center MVP certified; stabilization and next-consumer authorization
 Date: 2026-08-04
 
+## DV-GOV004 — Product model memorialized (complete)
+
+The accepted V1 producer and Job Center consumer state now has durable product
+authority. A View is a stable administrative identity with at most one mutable
+draft and many immutable published versions. Consumer bindings pin a specific
+published View/version; publishing preserves those bindings and history rather
+than silently migrating or hiding them. Editing an older release seeds the
+single active draft only with explicit replacement confirmation.
+
+The next manager objective is presentation-only organization: group versions
+under stable Views and show current draft, latest published, and subscribed
+versions by default, with other history available on demand. Subscriber and
+dependency significance should be explainable without destructive lifecycle
+operations. Core Terms remains live canonical UUID authority. Snapshots,
+semantic diffs, migration, dependency tooling, record migration, and hard
+delete remain deferred to separate decisions and tickets.
+
 ## Roadmap Objective
 
 Deliver a platform-owned Durable Views service that immediately supports the

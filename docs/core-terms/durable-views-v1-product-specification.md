@@ -33,6 +33,9 @@ Core Terms  →  Views  →  Consumer  →  Rendering
 - **Remove:** Explicit transfer of a Current View selection out of the draft.
 - **Preview:** Platform resolution of a draft without publication.
 - **Validation:** Report of whether the draft can be safely published.
+- **Subscriber:** A consumer binding pinned to a specific published View/version.
+- **Release nickname:** Optional human-readable administrative metadata; never a
+  substitute for durable machine identity.
 
 V1 does not expose presentation containers, floating terms, editorial
 collections, or meta-groups as product concepts.
@@ -53,7 +56,32 @@ Published View → Create Draft → Save Draft → Preview / Validate → Publis
   working state according to the implemented confirmation flow.
 - Existing published Views remain available while a draft is incomplete.
 
+Publishing finalizes the current draft as an immutable, subscriber-eligible
+published version. It preserves existing subscriber bindings and historical
+versions; it does not automatically migrate subscribers, mutate older versions,
+or hide/delete history. Consumers remain pinned until an explicit future
+migration operation changes their binding.
+
+When an older published version is used for editing, it is copied as the
+starting composition for the single active draft. The published version is
+never edited in place. If a draft already exists, replacing its contents
+requires explicit confirmation; the immediate V1/V1.1 choice may be Replace
+Current Draft or Cancel. Parallel drafts and snapshot preservation remain
+deferred.
+
 ## 4. View Manager
+
+The manager groups versions beneath stable View identities. Its intended
+operational default is to show the current draft, the latest published version,
+and every published version with active subscribers (showing a version once if
+it is both latest and subscribed). Other history remains available through
+See all versions or equivalent expansion. This is presentation filtering only;
+it must not archive, retire, delete, or alter runtime resolution.
+
+The manager should eventually summarize View-level state such as draft/latest
+published versions and subscriber counts, and expose subscriber identities and
+pinned View/version identity when expanded. Exact visual design is separate
+implementation work.
 
 The manager lists Views with name, status, and current published/draft state.
 It locates Views and opens the appropriate viewing context; it does not edit a
@@ -217,6 +245,40 @@ Views V1 is complete when an administrator can:
 Any contradiction between this specification and earlier UX artifacts must be
 reported for product direction; it must not be resolved by implementation
 assumption.
+
+## 14. Subscriber and Core Terms governance decisions
+
+Views owns View/version lifecycle; consumers own their bindings. A published
+version remains identified by durable View and version identity even if future
+release nicknames are added or changed. Publishing alone never rewrites a
+consumer binding.
+
+Core Terms remains the live canonical taxonomy authority referenced by UUID.
+Views does not freeze or copy taxonomy data into a second authority. Canonical
+add, rename, restructure, archive, and autosave operations remain permitted.
+The accepted tradeoff is that canonical changes may affect the resolved meaning
+or presentation of published Views and subscribers; Core Terms publication or
+version governance is not introduced to prevent that.
+
+Routine Core Term retirement should eventually prefer archive over hard delete.
+Future tooling may flag affected Views, summarize dependencies, and preserve
+UUID/history without silently migrating View versions, subscriber bindings, or
+downstream records. Any record migration from an archived/deleted UUID is a
+separate future administrator-controlled operation.
+
+## 15. Deferred product directions and next boundary
+
+Deferred capabilities include multiple drafts, saved draft snapshots, release
+lineage, semantic version diffs, automatic or bulk subscriber migration,
+resolution snapshots, generalized dependency graphs, hard-delete automation,
+Core Terms record migration, and destructive archive/retire operations used only
+for manager housekeeping. These remain possible later and are not implemented
+by this specification update.
+
+The next implementation boundary is an operationally understandable View
+Manager: group versions under stable Views, surface draft/latest/subscribed
+versions by default, and make subscriber/dependency significance explainable.
+The exact UI and any dependency or migration tooling require separate tickets.
 
 ## 14. Authority and unresolved contradictions
 

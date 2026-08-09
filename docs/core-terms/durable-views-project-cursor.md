@@ -35,6 +35,15 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
 
 ## Current Status
 
+- DV-GOV004 completed on 2026-08-09. The canonical product specification now
+  records the stable View/immutable version/one active draft model, pinned
+  subscriber semantics, publishing and older-version editing behavior, the
+  intended View Manager information hierarchy, live Core Terms authority, and
+  deferred dependency, snapshot, diff, and migration directions. No application
+  or schema changes were made.
+- The next implementation boundary is View Manager organization and subscriber
+  visibility. Do not implement that UI as part of DV-GOV004.
+
 - DV-FIX002 completed on 2026-08-07. `CFM_Views_Repository::delete_entries()`
   now computes canonical included-descendant closure within the requested draft
   version and framework before mutation. Parent-only and browser end-to-end

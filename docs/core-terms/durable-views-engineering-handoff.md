@@ -2,6 +2,21 @@
 
 ## 1. Current Phase
 
+DV-GOV004 is complete as a documentation/governance milestone. Following
+DV-ACCEPT001 and DV-JC-PILOT001, the product model is now durable: a stable
+View may have one mutable draft and many immutable published versions;
+subscribers pin a published View/version; publishing does not migrate them;
+and older published versions are copied into the one active draft only after
+explicit replacement confirmation. The View Manager should group versions and
+surface draft/latest/subscribed operational state without destructive history
+filtering. Core Terms remains live UUID-based authority.
+
+No application, schema, resolver, or consumer changes were made. Snapshot
+preservation, semantic diffs, subscriber migration, dependency graphs, record
+migration, and hard-delete automation remain explicitly deferred. The next
+separate implementation objective is View Manager organization and
+subscriber/dependency visibility.
+
 DV-FIX002 is complete. Repository descendant-removal closure is now enforced
   for draft entry deletion, scoped by version and framework. The Current View
   orphan-removal defect is closed; no schema, resolver, or Jobs changes were
