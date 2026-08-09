@@ -38,8 +38,8 @@ reference only; no runtime-to-workbench synchronization is required.
 
 Deferred, non-blocking identity-boundary decision: Display Name is the compact
 resource identity and Full Name remains the canonical institution name.
-JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE is complete for the current
-Step 1 identity surfaces; its responsive follow-up remains in human QA before
+JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE and its selected-resource
+responsive convergence are engineering-complete; human visual QA remains before
 Manage Schools / Jobsites implementation and browser
 certification before JC053 Step 2 integration. This ordering is required for
 operational correctness and employer self-service; it authorizes no
