@@ -2,7 +2,8 @@
 param(
     [string]$Url = 'http://127.0.0.1:8768/#wizard-authority-v1',
     [int]$Port = 9222,
-    [int]$TimeoutSeconds = 20
+    [int]$TimeoutSeconds = 20,
+    [switch]$Restart
 )
 
 $ErrorActionPreference = 'Stop'
@@ -27,7 +28,40 @@ function Get-ChromeEndpoint {
     return $null
 }
 
+function Get-QaChromeBrowserProcesses {
+    return @(
+        Get-CimInstance Win32_Process |
+            Where-Object {
+                $_.Name -eq 'chrome.exe' -and
+                $_.CommandLine -like "*$profilePath*" -and
+                $_.CommandLine -notmatch '--type='
+            }
+    )
+}
+
 $healthy = Get-ChromeEndpoint
+$qaBrowserProcesses = Get-QaChromeBrowserProcesses
+if ($healthy -and $qaBrowserProcesses.Count -eq 0) {
+    throw "Port $Port is serving Chrome, but not from the dedicated QA profile. Refusing to attach or terminate it."
+}
+
+if ($Restart -or (-not $healthy -and $qaBrowserProcesses.Count -gt 0)) {
+    foreach ($process in $qaBrowserProcesses) {
+        Stop-Process -Id $process.ProcessId -Force -ErrorAction Stop
+    }
+
+    $stopDeadline = (Get-Date).AddSeconds($TimeoutSeconds)
+    do {
+        Start-Sleep -Milliseconds 250
+        $healthy = Get-ChromeEndpoint
+        $qaBrowserProcesses = Get-QaChromeBrowserProcesses
+    } while (($healthy -or $qaBrowserProcesses.Count -gt 0) -and (Get-Date) -lt $stopDeadline)
+
+    if ($healthy -or $qaBrowserProcesses.Count -gt 0) {
+        throw "The dedicated QA Chrome process did not stop within $TimeoutSeconds seconds."
+    }
+}
+
 if (-not $healthy) {
     if (-not $chromePath) {
         throw 'Google Chrome executable was not found in the standard Windows installation paths.'
@@ -52,6 +86,11 @@ if (-not $healthy) {
 
     if (-not $healthy) {
         throw "Chrome did not expose a valid DevTools endpoint at $endpoint within $TimeoutSeconds seconds."
+    }
+
+    $qaBrowserProcesses = Get-QaChromeBrowserProcesses
+    if ($qaBrowserProcesses.Count -eq 0) {
+        throw 'Chrome launched, but the dedicated QA browser process could not be verified.'
     }
 }
 

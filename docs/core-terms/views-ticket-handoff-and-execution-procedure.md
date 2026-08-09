@@ -165,9 +165,9 @@ engineer-action conditions. Before requesting intervention, perform one
 bounded recovery sequence: verify DDEV and the isolated profile, inspect
 profile-scoped Chrome state, terminate only stale processes belonging to
 `C:\\Main\\Active\\Projects\\Teachers.Net\\tmp\\chrome-qa-profile` when
-safe, relaunch the established profile, rebuild the local bridge, navigate the
-canonical Views URL, and rerun the verifier once. Continue the ticket when the
-page is authenticated and discoverable.
+safe, relaunch the established profile, navigate the canonical Views URL, and
+rerun the verifier once. Continue the ticket when the page is authenticated
+and discoverable.
 
 Request `ENGINEER ACTION REQUIRED` only for genuinely human-only prerequisites
 such as credentials, MFA, CAPTCHA, browser permission, or physical desktop
@@ -178,35 +178,53 @@ SUCCESS | FAILED`, recovered layers, human-authentication requirement, and
 whether intervention was requested.
 
 Authenticated Views browser verification is mandatory when a ticket requires
-it. Start the isolated Windows Chrome profile and establish the local-only CDP
-bridge with:
+it. From the repository root, run the canonical preflight:
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File '\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\bootstrap-views-browser-qa.ps1' -ConfigureBridge
+```bash
+bash tools/qa/verify-views-browser-qa.sh
 ```
 
-The script verifies Windows CDP at `127.0.0.1:9222`, configures or reuses the
-local Windows port proxy at bridge port `9223`, and verifies the authenticated
-Views page. From WSL, use
-`tools/qa/verify-views-browser-qa.sh`, which checks the host gateway address.
-MCP is preferred when available; when MCP is absent, direct CDP-capable local
-automation may attach to the verified bridge. If bootstrap, bridge, or page
-discovery fails after the bounded self-healing sequence, report the exact
-tooling layer. Use `🚩 ENGINEER ACTION REQUIRED 🚩` only for genuinely
-human-only authentication or desktop interaction.
-Screenshots must be written directly to a WSL path, confirmed nonzero, and
-then collected into the validated Views hopper; a Windows-reported path alone
-is not evidence.
+The preflight starts or reuses the isolated Windows Chrome profile at
+`127.0.0.1:9222`, destroys any stale Views target, creates a fresh authenticated
+canonical Views target, and runs real browser, target, runtime, DOM, and
+screenshot commands from Windows-local Node. It returns `READY` only after the
+document is complete, the Views editor is present, and a nonzero screenshot
+has been written directly to WSL. `/json/version`, target discovery, or a
+working WSL port proxy alone never establish readiness.
 
-If the bridge cannot be repaired automatically, report the exact tooling
-blocker. Use `🚩 ENGINEER ACTION REQUIRED 🚩` only when the remaining step is
-human-only. Give the engineer the exact failed layer,
-the exact elevated PowerShell command, the canonical URL, the expected ready
-state, and a clear statement that work resumes immediately after success. Do
-not request this action preemptively: the proxy is normally persistent.
+If the fresh-target command probe fails, the preflight verifies process
+identity, force-restarts only the browser process rooted in the dedicated QA
+profile, and retries the probe once. It refuses to attach to or terminate a
+Chrome endpoint on port `9222` that cannot be matched to that profile. Normal
+Chrome processes remain outside the recovery boundary.
 
-With a verified bridge and no MCP, the authoritative direct fallback is
-`tools/qa/run-views-browser-qa.mjs`, invoked from WSL through the bundled
-Windows Node runtime. It must be used before declaring browser verification
-blocked. Its output is evidence only when it reports page-control results,
-console/page errors, and a nonzero WSL-local PNG.
+The primary command path must remain Windows-local. Do not route canonical
+readiness or direct-CDP acceptance through the WSL gateway or bridge port
+`9223`. A bridge may remain available for compatibility with an external tool,
+but bridge health is not a prerequisite and is not browser-QA evidence.
+
+After preflight, reconcile the fresh target through the connected Chrome
+DevTools MCP when MCP acceptance is required. Preflight `READY` proves browser
+control and authenticated target health; it does not replace the
+ticket-specific interaction assertions. If MCP is unavailable after its one
+bounded reconnect, retain the required `UNAVAILABLE` classification and use
+the direct fallback only for bounded engineering diagnosis.
+
+The authoritative direct fallback is `tools/qa/run-views-browser-qa.mjs`,
+invoked through Windows Node against Windows localhost:
+
+```bash
+node.exe "$(wslpath -w "$PWD/tools/qa/run-views-browser-qa.mjs")" http://127.0.0.1:9222
+```
+
+The helper closes its CDP session and socket deterministically and writes its
+PNG through the repository's WSL UNC working directory. Its output is evidence
+only when it reports page-control results, console/page errors, and a nonzero
+WSL-local PNG. Screenshots must be confirmed nonzero and then collected into
+the validated Views hopper; a Windows-reported path alone is not evidence.
+
+If recovery or the command probe fails, report the exact failed layer. Use
+`🚩 ENGINEER ACTION REQUIRED 🚩` only when the remaining step is genuinely
+human-only, such as authentication, MFA, CAPTCHA, or physical desktop
+interaction. Give the engineer the canonical URL, expected `READY` state, and
+a clear immediate-resume condition.

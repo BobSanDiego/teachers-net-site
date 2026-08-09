@@ -2,26 +2,60 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-ps_path='\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tools\qa\bootstrap-views-browser-qa.ps1'
+views_url='https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17'
+endpoint='http://127.0.0.1:9222'
+launcher_win="$(wslpath -w "$repo_root/tools/qa/launch-chrome-cdp-9222.ps1")"
+probe_win="$(wslpath -w "$repo_root/tools/qa/probe-windows-chrome-cdp.mjs")"
+screenshot_wsl="$repo_root/tmp/qa/windows-local-probe/canonical-ready.png"
+screenshot_win="$(wslpath -w "$screenshot_wsl")"
+node_bin="${CODEX_WINDOWS_NODE_EXE:-$(command -v node.exe || true)}"
 
-if ! powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$ps_path" -ConfigureBridge; then
-  echo 'ENGINEERING INPUT REQUIRED: Windows browser bootstrap or local-only bridge failed.' >&2
+if [[ -z "$node_bin" ]]; then
+  echo 'ENGINEERING INPUT REQUIRED: Windows node.exe is unavailable for the command-level CDP probe.' >&2
   exit 2
 fi
 
-host_ip="$(ip route | awk '/^default via/{print $3; exit}')"
-if [[ -z "$host_ip" ]]; then
-  echo 'ENGINEERING INPUT REQUIRED: WSL default gateway could not be determined.' >&2
+if ! powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$launcher_win" -Url "$views_url"; then
+  echo 'ENGINEERING INPUT REQUIRED: the isolated Windows Chrome launcher failed.' >&2
   exit 3
 fi
-bridge="http://${host_ip}:9223/json/version"
-payload="$(curl -fsS --max-time 5 "$bridge")" || {
-  echo "ENGINEERING INPUT REQUIRED: WSL could not reach the verified bridge at $bridge." >&2
-  exit 3
+
+mkdir -p "$(dirname "$screenshot_wsl")"
+run_probe() {
+  "$node_bin" "$probe_win" \
+    --endpoint="$endpoint" \
+    --mode=views \
+    --url="$views_url" \
+    --replace-views-targets=true \
+    --keep-target=true \
+    --timeout=12000 \
+    --screenshot="$screenshot_win"
 }
 
-grep -q 'Chrome/' <<<"$payload" || {
-  echo 'ENGINEERING INPUT REQUIRED: bridged endpoint did not identify Chrome.' >&2
-  exit 4
-}
-printf 'READY WSL_BRIDGE=%s\n' "$bridge"
+if probe_output="$(run_probe)"; then
+  echo 'BROWSER SELF-HEALING: NOT NEEDED'
+else
+  echo 'Windows-local command probe failed; restarting only the dedicated QA Chrome profile.' >&2
+  if ! powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$launcher_win" -Url "$views_url" -Restart; then
+    echo 'ENGINEERING INPUT REQUIRED: dedicated QA Chrome restart failed.' >&2
+    exit 4
+  fi
+  if ! probe_output="$(run_probe)"; then
+    echo 'ENGINEERING INPUT REQUIRED: Windows-local Chrome failed after one dedicated-profile restart.' >&2
+    exit 5
+  fi
+  echo 'BROWSER SELF-HEALING: SUCCESS (dedicated QA Chrome restarted)'
+fi
+
+if ! grep -q '"status":"READY"' <<<"$probe_output"; then
+  printf '%s\n' "$probe_output" >&2
+  echo 'ENGINEERING INPUT REQUIRED: the CDP probe did not return READY.' >&2
+  exit 6
+fi
+
+if [[ ! -s "$screenshot_wsl" ]]; then
+  echo "ENGINEERING INPUT REQUIRED: the browser screenshot was not written to $screenshot_wsl." >&2
+  exit 7
+fi
+
+printf '%s\n' "$probe_output"
