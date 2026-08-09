@@ -344,8 +344,8 @@ acceptance.
 
 ## Next Executable Ticket
 
-The next bounded sequence is JC053 Step 1 image browser certification, Step 1
-resource-identity overflow defense, then the approved JC052 Manage Schools /
+The next bounded sequence is JC053 Step 1 resource-identity overflow defense,
+then the approved JC052 Manage Schools /
 Jobsites implementation and browser certification. JC053 Step 2 integration
 must wait until that management gate clears. Do not begin the implementation
 capability audit until the remaining UX authority is complete.

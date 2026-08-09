@@ -58,7 +58,8 @@ The current Job Center sequence is explicitly:
    source/version/runtime seam explicit and verify it.
 3. `JC053-MIG004B` — promote JC053 Step 1 into the authenticated production
    employer-create seam. **Completed.**
-4. `JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION`.
+4. `JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION` — **Completed; human
+   visual acceptance PASS.**
 5. `JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE`.
 6. `JC052-MANAGE-SCHOOLS-JOBSITES-INTEGRATION`.
 7. `JC052-MANAGE-SCHOOLS-JOBSITES-BROWSER-CERTIFICATION`.
@@ -197,7 +198,8 @@ before JC058+ implementation work is generated.
 
 ## Forward Sequence
 
-1. JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION.
+1. JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION — **Complete; human visual
+   acceptance PASS.**
 2. JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE.
 3. JC052-MANAGE-SCHOOLS-JOBSITES-INTEGRATION.
 4. JC052-MANAGE-SCHOOLS-JOBSITES-BROWSER-CERTIFICATION.
