@@ -60,8 +60,9 @@ The current Job Center sequence is explicitly:
    employer-create seam. **Completed.**
 4. `JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION` — **Completed; human
    visual acceptance PASS.**
-5. `JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE` — **Engineering and
-   responsive convergence complete; human visual QA pending.**
+5. `JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE` — **Engineering correction
+   complete; selected-resource responsive convergence active; human visual QA
+   pending.**
 6. `JC052-MANAGE-SCHOOLS-JOBSITES-INTEGRATION`.
 7. `JC052-MANAGE-SCHOOLS-JOBSITES-BROWSER-CERTIFICATION`.
 8. `JC053-STEP2-INTEGRATION`.
@@ -201,8 +202,9 @@ before JC058+ implementation work is generated.
 
 1. JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION — **Complete; human visual
    acceptance PASS.**
-2. JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE — **Engineering and
-   responsive convergence complete; human visual QA pending.**
+2. JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE — **Engineering correction
+   complete; selected-resource responsive convergence active; human visual QA
+   pending.**
 3. JC052-MANAGE-SCHOOLS-JOBSITES-INTEGRATION.
 4. JC052-MANAGE-SCHOOLS-JOBSITES-BROWSER-CERTIFICATION.
 5. JC053-STEP2-INTEGRATION.

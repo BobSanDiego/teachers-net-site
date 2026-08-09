@@ -203,8 +203,9 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 1. JC053-STEP1-JOBSITE-IMAGE-BROWSER-CERTIFICATION — **Complete; human visual
    acceptance PASS.**
-2. JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE — **Engineering and
-   responsive convergence complete; human visual QA pending.**
+2. JC053-STEP1-RESOURCE-IDENTITY-OVERFLOW-DEFENSE — **Engineering correction
+   complete; selected-resource responsive convergence active; human visual QA
+   pending.**
 3. JC052-MANAGE-SCHOOLS-JOBSITES-INTEGRATION.
 4. JC052-MANAGE-SCHOOLS-JOBSITES-BROWSER-CERTIFICATION.
 5. JC053-STEP2-INTEGRATION.
