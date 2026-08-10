@@ -1,5 +1,26 @@
 # Durable Views Engineering Handoff
 
+## Standalone MVP Closeout — 2026-08-10
+
+**STANDALONE DURABLE VIEWS MVP: READY FOR CONSUMER INTEGRATION.**
+
+DV-ACCEPT002 is complete. The disposable View 35 acceptance fixture completed
+create → compose → reload → publish v1 (version 47) → inspect → edit-from →
+modify/reload → publish v2 (version 48). v1 remained immutable and resolver
+output matched the persisted compositions. The fixture was retired after
+acceptance; its published history was intentionally retained by lifecycle
+semantics.
+
+The Job Center adapter exists and the existing subscriber remains deliberately
+pinned to JobLister stable View 10 / published version 12. Corrected JobLister
+v2 and its current draft remain independent. The final real-world Job Center
+wizard exercise and any subscriber migration are deferred until that
+project's wizard reaches its authorized integration stage. Publishing or
+editing another version must not silently migrate subscribers.
+
+Closeout evidence is recorded in the DV-ACCEPT002 report and current Views
+Report/Hopper cycle for 2026-08-10.
+
 ## 1. Current Phase
 
 DV-GOV004 is complete as a documentation/governance milestone. Following
@@ -110,8 +131,9 @@ Durable Views implementation.
 - Core Terms has a functioning administrative taxonomy workbench.
 - Core Terms Meta-Groups support audience/user resolution and are not Views.
 - Jobs already references Core Terms UUIDs for Jobs-owned classification.
-- No Durable Views persistence, resolver, lifecycle, admin workflow, consumer
-  contract, or Job Center View binding is currently documented as implemented.
+- Durable Views persistence, resolver, lifecycle, protected administration,
+  consumer contract, and Job Center View binding are implemented and accepted
+  by DV-ACCEPT002; this supersedes the historical baseline wording.
 - Existing Jobs per-job term assignments remain outside the Views boundary.
 
 ## 5. Current Deliverables
@@ -120,6 +142,7 @@ Durable Views implementation.
 - `docs/core-terms/durable-views-project-cursor.md`
 - `docs/core-terms/durable-views-engineering-handoff.md`
 - `docs/core-terms/durable-views-roadmap.md`
+- DV-ACCEPT002 standalone MVP acceptance report and Views Report/Hopper cycle
 
 ## 6. Proposed MVP
 

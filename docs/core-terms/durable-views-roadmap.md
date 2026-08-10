@@ -1,7 +1,23 @@
 # Teachers.Net Durable Views Roadmap
 
-Status: Active roadmap — Job Center MVP certified; stabilization and next-consumer authorization
-Date: 2026-08-04
+Status: Standalone MVP ready for consumer integration; next-consumer authorization pending
+Date: 2026-08-10
+
+## DV-ACCEPT002 — Standalone MVP acceptance and sprint closeout (complete)
+
+The Durable Views standalone MVP passed disposable end-to-end acceptance on
+2026-08-10. The lifecycle proof covered creation, hierarchical composition,
+reload persistence, immutable published v1 inspection, edit-from, draft
+isolation, second publication, deterministic resolution, manager state, and
+subscriber pinning. The Job Center adapter exists, but the Job Center wizard
+was not migrated and the existing binding remains pinned to View 10 / version
+12. Community or another consumer requires separate authorization and seam
+assessment.
+
+Deferred directions remain post-MVP: release nicknames, version comparison,
+subscriber impact review and explicit migration, Core Terms dependency-impact
+warnings, term replacement/migration, archival/disturbance indicators, and
+semantic snapshots. These are not current MVP behavior.
 
 ## DV-GOV004 — Product model memorialized (complete)
 

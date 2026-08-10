@@ -4,6 +4,28 @@
 
 Stabilization
 
+## Standalone MVP Closeout — 2026-08-10
+
+**STANDALONE DURABLE VIEWS MVP: READY FOR CONSUMER INTEGRATION.**
+
+DV-ACCEPT002 completed the disposable end-to-end lifecycle acceptance and
+closed the current Views sprint. The accepted implementation is ready for a
+separately authorized consumer integration. Core Terms remains the canonical
+UUID authority; Views stores references and presentation composition only.
+
+Acceptance evidence covered create, hierarchical compose, reload fidelity,
+publish, immutable published inspection, edit-from, draft modification,
+second publication, deterministic resolution, manager lifecycle state, and
+the existing Job Center subscriber binding. The disposable fixture was View
+35, published versions 47 and 48; it was retired after acceptance because
+published history prevents supported hard deletion.
+
+The Job Center adapter exists, but its real-world wizard migration is not part
+of this closeout. The current Job Center Grade Level binding remains
+intentionally pinned to View 10 / published version 12; corrected JobLister
+version 2 and the current draft remain independent. Subscriber migration is
+deferred to an explicit future workflow.
+
 ## Workstream
 
 Teachers.Net Durable Views System — shared presentation platform for Core Terms
@@ -41,8 +63,9 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   intended View Manager information hierarchy, live Core Terms authority, and
   deferred dependency, snapshot, diff, and migration directions. No application
   or schema changes were made.
-- The next implementation boundary is View Manager organization and subscriber
-  visibility. Do not implement that UI as part of DV-GOV004.
+- The next implementation boundary is a separately authorized consumer seam.
+  View Manager organization and subscriber visibility are implemented enough
+  for current MVP administration; further refinements require explicit scope.
 
 - DV-FIX002 completed on 2026-08-07. `CFM_Views_Repository::delete_entries()`
   now computes canonical included-descendant closure within the requested draft

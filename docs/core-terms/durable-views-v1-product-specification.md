@@ -1,5 +1,20 @@
 # Views V1 Product Specification
 
+## Standalone MVP certification — 2026-08-10
+
+The standalone Durable Views MVP is accepted for separately authorized
+consumer integration. DV-ACCEPT002 proved the supported create, compose,
+persist/reload, publish, immutable inspection, edit-from, draft isolation,
+second-publication, resolver, manager, and subscriber-pinning lifecycle.
+
+The Job Center adapter exists, but this certification does not migrate the Job
+Center wizard. Its existing Grade Level subscriber remains explicitly pinned
+to stable View 10 / published version 12; corrected JobLister v2 and the
+current draft are independent. Subscriber migration, version nicknames,
+semantic diffs, dependency warnings, snapshots, archival disturbance
+indicators, and explicit Core Terms term migration remain deferred product
+directions and require separate authorization.
+
 **Ticket:** DV-SPEC001  
 **Status:** Canonical product authority  
 **Date:** 2026-08-06  
