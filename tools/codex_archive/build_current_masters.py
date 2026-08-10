@@ -10,9 +10,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
-import hashlib
 import json
-import shutil
 import time
 from pathlib import Path
 
@@ -30,6 +28,7 @@ def main() -> int:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--chatgpt-baseline", type=Path, required=True)
     parser.add_argument("--codex-fossil", type=Path, required=True)
+    parser.add_argument("--chatgpt-live-continuation", type=Path, required=True)
     parser.add_argument("--active-source", type=Path, default=ACTIVE_SOURCE)
     args = parser.parse_args()
     generated = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
@@ -37,6 +36,8 @@ def main() -> int:
 
     baseline_sha = sha256_file(args.chatgpt_baseline)
     baseline_bytes = args.chatgpt_baseline.stat().st_size
+    baseline_text = args.chatgpt_baseline.read_text(encoding="utf-8")
+    live_text = args.chatgpt_live_continuation.read_text(encoding="utf-8")
     direct_proof = {
         "method": "DIRECT LIVE CHATGPT CONVERSATION",
         "title": CHATGPT_TITLE,
@@ -58,9 +59,13 @@ def main() -> int:
         "- Retrieval result: `PASS`\n"
         "- Coverage boundary: latest bounded direct-read page available at generation time; no claim is made that the live conversation is closed.\n"
         "- Known limitation: the Codex app reader exposes bounded pages, so the existing safe exported baseline is retained as a reference rather than silently rewritten or deduplicated.\n\n"
-        "## Safe baseline reference\n\n"
+        "## Embedded historical baseline\n\n"
         f"- Source: `{args.chatgpt_baseline}`\n- SHA-256: `{baseline_sha}`\n- Bytes: `{baseline_bytes}`\n"
-        "- Publication: `SAFE_REFERENCE — DIRECT_LIVE_OVERLAP_REQUIRES_FUTURE_INCREMENTAL_MERGE`\n\n"
+        "- Publication: `EMBEDDED_SAFE_BASELINE`\n\n"
+        "```text\n" + baseline_text + "\n```\n\n"
+        "## Embedded live current continuation\n\n"
+        "The following is the exact bounded live continuation captured from the direct app read. It is kept separate because overlap with the historical baseline is not fully proven.\n\n"
+        "```text\n" + live_text + "\n```\n\n"
         "## Provenance\n\n"
         f"```json\n{json.dumps(direct_proof, indent=2)}\n```\n",
         encoding="utf-8",
@@ -75,8 +80,9 @@ def main() -> int:
         f"Generated: `{generated}`\n\n"
         "## Evidence status\n\n"
         "This is a handoff record, not product authority. Conversation history may contain brainstorming, rejected ideas, incorrect statements, superseded decisions, and unresolved matters.\n\n"
-        "## Closed canonical base\n\n"
+        "## Embedded closed canonical base\n\n"
         f"- Fossil: `{args.codex_fossil}`\n- Historical source conflicts remain quarantined and disclosed by the canonical manifest.\n\n"
+        "```text\n" + args.codex_fossil.read_text(encoding="utf-8") + "\n```\n\n"
         "## ACTIVE HANDOFF SNAPSHOT — NOT CLOSED ARCHIVAL SOURCE\n\n"
         f"- Session ID: `{rendered.session_id}`\n- Raw source: `{rendered.raw_source_path}`\n"
         f"- Source bytes: `{rendered.raw_bytes}`\n- Source lines consumed: `{rendered.raw_lines}`\n"
@@ -86,15 +92,17 @@ def main() -> int:
         f"- Credential/publication: `{rendered.publication_status}` / `{rendered.credential_status}`\n"
         f"- Extraction seconds: `{snapshot_elapsed:.6f}`\n"
         "- Classification: `ACTIVE HANDOFF SNAPSHOT — NOT CLOSED ARCHIVAL SOURCE`\n\n"
-        "The raw active source was not modified, frozen, or added to the closed-session manifest.\n",
+        "The raw active source was not modified, frozen, or added to the closed-session manifest.\n\n"
+        "## Embedded active snapshot body\n\n"
+        "```text\n" + (rendered.redacted_text or rendered.transcript_text) + "\n```\n",
         encoding="utf-8",
     )
     manifest = {
         "schema_version": "1.0",
         "project": "jobcenter",
         "generated_at": generated,
-        "chatgpt": {"canonical_master_path": str(chatgpt_path), "live_conversation_title": CHATGPT_TITLE, "live_conversation_id": CHATGPT_ID, "retrieval_method": "exact-id bounded direct app read", "direct_live_retrieval": True, "baseline_sha256": baseline_sha, "baseline_bytes": baseline_bytes, "publication_status": "SAFE_REFERENCE_WITH_LIVE_BOUNDARY"},
-        "codex": {"canonical_master_path": str(codex_path), "closed_fossil_path": str(args.codex_fossil), "active_snapshot_session_id": rendered.session_id, "active_snapshot_source": rendered.raw_source_path, "active_snapshot_boundary_bytes": rendered.raw_bytes, "active_snapshot_boundary_line": rendered.raw_lines, "active_snapshot_last_timestamp": rendered.last_timestamp, "active_snapshot_user_messages": rendered.user_message_count, "active_snapshot_assistant_messages": rendered.assistant_message_count, "sha256": rendered.transcript_sha256, "bytes": rendered.transcript_bytes, "publication_status": rendered.publication_status, "historical_source_conflicts": ["019f5133-2e24-72c2-9f5a-725c2fba64de", "019f605b-5be2-7802-8857-4d545657645a"]},
+        "chatgpt": {"canonical_master_path": str(chatgpt_path), "live_conversation_title": CHATGPT_TITLE, "live_conversation_id": CHATGPT_ID, "retrieval_method": "exact-id bounded direct app read", "direct_live_retrieval": True, "baseline_sha256": baseline_sha, "baseline_bytes": baseline_bytes, "embedded_transcript_content": True, "external_transcript_dependency": False, "publication_status": "EMBEDDED_SAFE_BASELINE_PLUS_LIVE_BOUNDARY"},
+        "codex": {"canonical_master_path": str(codex_path), "closed_fossil_path": str(args.codex_fossil), "active_snapshot_session_id": rendered.session_id, "active_snapshot_source": rendered.raw_source_path, "active_snapshot_boundary_bytes": rendered.raw_bytes, "active_snapshot_boundary_line": rendered.raw_lines, "active_snapshot_last_timestamp": rendered.last_timestamp, "active_snapshot_user_messages": rendered.user_message_count, "active_snapshot_assistant_messages": rendered.assistant_message_count, "sha256": rendered.transcript_sha256, "bytes": rendered.transcript_bytes, "embedded_transcript_content": True, "external_transcript_dependency": False, "publication_status": rendered.publication_status, "credential_status": rendered.credential_status, "historical_source_conflicts": ["019f5133-2e24-72c2-9f5a-725c2fba64de", "019f605b-5be2-7802-8857-4d545657645a"]},
     }
     (args.out / "conversation-master-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return 0

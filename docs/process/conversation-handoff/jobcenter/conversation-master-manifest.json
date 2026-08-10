@@ -4,30 +4,35 @@
     "baseline_sha256": "abf309ab5ab8e420e491c2f51d7fd9de9684f8e2511c79f59966664379ea5d39",
     "canonical_master_path": "docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md",
     "direct_live_retrieval": true,
+    "embedded_transcript_content": true,
+    "external_transcript_dependency": false,
     "live_conversation_id": "6a79d7ea-da44-83e8-91eb-460b99ab593b",
     "live_conversation_title": "Job Center (8/10/26)",
-    "publication_status": "SAFE_REFERENCE_WITH_LIVE_BOUNDARY",
+    "publication_status": "EMBEDDED_SAFE_BASELINE_PLUS_LIVE_BOUNDARY",
     "retrieval_method": "exact-id bounded direct app read"
   },
   "codex": {
-    "active_snapshot_assistant_messages": 1615,
-    "active_snapshot_boundary_bytes": 116932082,
-    "active_snapshot_boundary_line": 40410,
-    "active_snapshot_last_timestamp": "2026-08-10T23:49:23.955Z",
+    "active_snapshot_assistant_messages": 1619,
+    "active_snapshot_boundary_bytes": 117128322,
+    "active_snapshot_boundary_line": 40496,
+    "active_snapshot_last_timestamp": "2026-08-10T23:55:07.994Z",
     "active_snapshot_session_id": "019fbfe6-e2d0-73e3-98a1-d10b384cdf7d",
     "active_snapshot_source": "/mnt/c/Users/bobre/.codex/sessions/2026/08/01/rollout-2026-08-01T17-36-47-019fbfe6-e2d0-73e3-98a1-d10b384cdf7d.jsonl",
-    "active_snapshot_user_messages": 450,
-    "bytes": 1229684,
+    "active_snapshot_user_messages": 451,
+    "bytes": 1233163,
     "canonical_master_path": "docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md",
     "closed_fossil_path": "docs/process/codex-conversation-archive/codex-conversation-fossil.md",
+    "credential_status": "POTENTIAL_CREDENTIAL_MATCHES",
+    "embedded_transcript_content": true,
+    "external_transcript_dependency": false,
     "historical_source_conflicts": [
       "019f5133-2e24-72c2-9f5a-725c2fba64de",
       "019f605b-5be2-7802-8857-4d545657645a"
     ],
     "publication_status": "REDACTED_PUBLICATION_DERIVATIVE",
-    "sha256": "57913d4d6f4012308f0d63d51682136e864d2d5b09f5b9e627ab470f84335c7e"
+    "sha256": "5d83248e8a47824fc61095a307c197d7ae17ab99814e0a819079c98295dbc702"
   },
-  "generated_at": "2026-08-10T23:49:24+00:00",
+  "generated_at": "2026-08-10T23:55:08+00:00",
   "project": "jobcenter",
   "schema_version": "1.0"
 }
