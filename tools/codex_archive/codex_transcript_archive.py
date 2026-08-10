@@ -58,6 +58,9 @@ SECRET_PATTERNS = {
     "private_key_block": re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
     "common_token_prefix": re.compile(r"\b(?:sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9_]{20,}|xox[baprs]-[A-Za-z0-9-]{20,})\b"),
 }
+TICKET_READY_LINE = "TICKET READY FOR CODEX"
+TICKET_END_RE = re.compile(r"^END TICKET — (?P<ticket_id>\S+)\s*$")
+TICKET_ID_RE = re.compile(r"^\s*Ticket:\s*(?P<ticket_id>\S+)\s*$", re.MULTILINE)
 
 
 @dataclasses.dataclass
@@ -92,6 +95,44 @@ class RenderResult:
     safety_elapsed_seconds: float
     event_counts: dict[str, int]
     excluded_counts: dict[str, int]
+
+
+@dataclasses.dataclass(frozen=True)
+class SessionSource:
+    path: Path
+    session_id: str
+    location: str
+    raw_bytes: int
+    raw_sha256: str
+    cwd: str
+    title: str
+    preview: str
+    source_mtime: float
+
+    def as_inventory(self) -> dict[str, Any]:
+        return {
+            "path": str(self.path),
+            "session_id": self.session_id,
+            "source_location": self.location,
+            "bytes": self.raw_bytes,
+            "sha256": self.raw_sha256,
+            "cwd": self.cwd,
+            "title": self.title,
+            "preview": self.preview,
+            "source_mtime": self.source_mtime,
+        }
+
+
+@dataclasses.dataclass
+class SourceFamily:
+    session_id: str
+    relationship_status: str
+    selected_source: SessionSource | None
+    include: bool
+    active_deferred: list[SessionSource]
+    ambiguous: bool
+    reason: str
+    sources: list[SessionSource]
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -261,23 +302,140 @@ def classify_candidate(meta: dict[str, Any], already_seen_ids: set[str]) -> str:
     return "AMBIGUOUS"
 
 
-def discover(source_dirs: Iterable[Path]) -> dict[str, list[dict[str, Any]]]:
-    grouped: dict[str, list[dict[str, Any]]] = {"include": [], "active_deferred": [], "ambiguous": [], "out_of_scope": []}
-    seen: set[str] = set()
+def source_location(path: Path) -> str:
+    resolved = path.resolve()
+    for root in DEFAULT_SOURCE_DIRS:
+        try:
+            resolved.relative_to(root.resolve())
+        except ValueError:
+            continue
+        if root.name == "sessions":
+            return "ACTIVE"
+        if root.name == "archived_sessions":
+            return "ARCHIVED"
+    return "UNKNOWN"
+
+
+def iter_jsonl_sources(source_dirs: Iterable[Path]) -> list[Path]:
+    paths: list[Path] = []
     for source_dir in source_dirs:
         if not source_dir.exists():
             continue
-        for path in sorted(source_dir.glob("*.jsonl")):
-            meta = read_session_meta(path)
-            classification = classify_candidate(meta, seen)
-            session_id = str(meta.get("session_id") or "")
-            if classification == "INCLUDE" and session_id:
-                seen.add(session_id)
-                grouped["include"].append(meta)
-            elif classification == "OUT_OF_SCOPE":
-                grouped["out_of_scope"].append(meta)
-            else:
-                grouped["ambiguous"].append(meta)
+        paths.extend(path for path in source_dir.rglob("*.jsonl") if path.is_file())
+    return sorted(set(paths), key=lambda p: str(p))
+
+
+def read_session_source(path: Path) -> SessionSource:
+    meta = read_session_meta(path)
+    return SessionSource(
+        path=path,
+        session_id=str(meta.get("session_id") or ""),
+        location=source_location(path),
+        raw_bytes=int(meta.get("bytes") or path.stat().st_size),
+        raw_sha256=sha256_file(path),
+        cwd=str(meta.get("cwd") or ""),
+        title=str(meta.get("title") or ""),
+        preview=str(meta.get("preview") or ""),
+        source_mtime=path.stat().st_mtime,
+    )
+
+
+def file_startswith(larger: Path, smaller: Path) -> bool:
+    with larger.open("rb") as big, smaller.open("rb") as small:
+        for chunk in iter(lambda: small.read(1024 * 1024), b""):
+            if big.read(len(chunk)) != chunk:
+                return False
+    return True
+
+
+def relevant_classification_for_source(source: SessionSource) -> str:
+    meta = source.as_inventory()
+    return classify_candidate(meta, set())
+
+
+def reconcile_source_family(session_id: str, sources: list[SessionSource]) -> SourceFamily:
+    ordered = sorted(sources, key=lambda s: (s.location != "ARCHIVED", -s.raw_bytes, str(s.path)))
+    active = [s for s in ordered if s.location == "ACTIVE"]
+    archived = [s for s in ordered if s.location == "ARCHIVED"]
+    selectable_closed = [s for s in ordered if s.location != "ACTIVE"]
+    relevant = any(relevant_classification_for_source(s) == "INCLUDE" for s in ordered)
+    out_of_scope = all(relevant_classification_for_source(s) == "OUT_OF_SCOPE" for s in ordered)
+
+    if out_of_scope:
+        return SourceFamily(session_id, "SINGLE_SOURCE" if len(ordered) == 1 else "UNKNOWN_RELATIONSHIP", None, False, [], False, "out of scope", ordered)
+    if not relevant:
+        return SourceFamily(session_id, "SINGLE_SOURCE" if len(ordered) == 1 else "UNKNOWN_RELATIONSHIP", None, False, active, True, "ambiguous relevance", ordered)
+    if active and not archived:
+        return SourceFamily(session_id, "SINGLE_SOURCE" if len(ordered) == 1 else "UNKNOWN_RELATIONSHIP", None, False, active, False, "active source deferred", ordered)
+
+    selectable = selectable_closed
+    if len(ordered) == 1:
+        selected = selectable[0] if selectable else None
+        return SourceFamily(session_id, "SINGLE_SOURCE", selected, selected is not None, active, False, "single archived source" if selected else "single active source deferred", ordered)
+
+    unique_hashes = {s.raw_sha256 for s in ordered}
+    if len(unique_hashes) == 1:
+        selected = selectable[0] if selectable else None
+        return SourceFamily(session_id, "IDENTICAL_DUPLICATES", selected, selected is not None, active, False, "byte-identical duplicate sources", ordered)
+
+    relationship = "ACTIVE_AND_ARCHIVED_PAIR" if active and archived else "UNKNOWN_RELATIONSHIP"
+    biggest = max(ordered, key=lambda s: (s.raw_bytes, str(s.path)))
+    if all(biggest.path == s.path or file_startswith(biggest.path, s.path) for s in ordered):
+        relationship = "PROVEN_SUPERSET" if not active else "ACTIVE_AND_ARCHIVED_PAIR"
+        selected = biggest if biggest.location != "ACTIVE" else (max(archived, key=lambda s: (s.raw_bytes, str(s.path))) if archived else None)
+        reason = "largest source is a byte-prefix superset" if biggest.location != "ACTIVE" else "active source is superset; archived source deferred for closed-canonical safety"
+        return SourceFamily(session_id, relationship, selected, selected is not None, active, False, reason, ordered)
+
+    if active and archived:
+        selected = max(archived, key=lambda s: (s.raw_bytes, str(s.path)))
+        return SourceFamily(session_id, relationship, selected, True, active, False, "active and archived source differ; closed archived source selected and active source deferred", ordered)
+
+    return SourceFamily(session_id, "SOURCE_CONFLICT", None, False, active, True, "same session id has conflicting archived sources", ordered)
+
+
+def source_family_inventory(family: SourceFamily) -> dict[str, Any]:
+    return {
+        "session_id": family.session_id,
+        "relationship_status": family.relationship_status,
+        "selected_source": str(family.selected_source.path) if family.selected_source else "",
+        "include": family.include,
+        "ambiguous": family.ambiguous,
+        "reason": family.reason,
+        "sources": [source.as_inventory() for source in family.sources],
+    }
+
+
+def discover(source_dirs: Iterable[Path]) -> dict[str, list[dict[str, Any]]]:
+    grouped: dict[str, list[dict[str, Any]]] = {
+        "include": [],
+        "active_deferred": [],
+        "ambiguous": [],
+        "out_of_scope": [],
+        "source_families": [],
+    }
+    families: dict[str, list[SessionSource]] = collections.defaultdict(list)
+    for path in iter_jsonl_sources(source_dirs):
+        source = read_session_source(path)
+        sid = source.session_id or safe_slug(path.stem)
+        families[sid].append(source)
+    for session_id in sorted(families):
+        family = reconcile_source_family(session_id, families[session_id])
+        grouped["source_families"].append(source_family_inventory(family))
+        if family.include and family.selected_source:
+            grouped["include"].append(family.selected_source.as_inventory() | {
+                "relationship_status": family.relationship_status,
+                "family_reason": family.reason,
+            })
+        for active in family.active_deferred:
+            grouped["active_deferred"].append(active.as_inventory() | {
+                "classification": "ACTIVE / DEFERRED",
+                "relationship_status": family.relationship_status,
+                "family_reason": family.reason,
+            })
+        if family.ambiguous:
+            grouped["ambiguous"].append(source_family_inventory(family))
+        if family.reason == "out of scope":
+            grouped["out_of_scope"].extend(source.as_inventory() for source in family.sources)
     return grouped
 
 
@@ -292,6 +450,40 @@ def scan_and_redact(text: str) -> tuple[str, dict[str, int], str | None]:
     if counts:
         return "POTENTIAL_CREDENTIAL_MATCHES", counts, redacted
     return "NO_OBVIOUS_CREDENTIAL_PATTERNS", {}, None
+
+
+def extract_ticket_id(text: str) -> str:
+    match = TICKET_ID_RE.search(text)
+    if not match:
+        raise ValueError("ticket authority missing Ticket: identifier")
+    return match.group("ticket_id").strip()
+
+
+def validate_ticket_payload(text: str, require_terminator: bool = True) -> dict[str, Any]:
+    lines = [line.rstrip() for line in text.splitlines()]
+    first = next((line.strip() for line in lines if line.strip()), "")
+    if first != TICKET_READY_LINE:
+        raise ValueError(f"ticket authority must begin with {TICKET_READY_LINE!r}")
+    ticket_id = extract_ticket_id(text)
+    nonempty = [line.strip() for line in lines if line.strip()]
+    terminator = nonempty[-1] if nonempty else ""
+    expected = f"END TICKET — {ticket_id}"
+    if require_terminator and terminator != expected:
+        raise ValueError(f"ticket authority terminator mismatch: expected {expected!r}, got {terminator!r}")
+    return {
+        "ticket_id": ticket_id,
+        "terminator": terminator,
+        "terminator_valid": terminator == expected,
+    }
+
+
+def compose_ticket_authority(parts: list[str]) -> str:
+    """Preserve original ticket plus ordered continuations/amendments."""
+    cleaned = [part.strip() for part in parts if part and part.strip()]
+    if not cleaned:
+        raise ValueError("no ticket authority parts supplied")
+    validate_ticket_payload(cleaned[0])
+    return "\n\n--- CONTINUATION / AMENDMENT ---\n\n".join(cleaned) + "\n"
 
 
 def render_session(path: Path, verify_stats: bool = False) -> RenderResult:
@@ -478,6 +670,8 @@ def incorporate(path: Path, archive_dir: Path, mode: str) -> dict[str, Any]:
 
     existing = already_incorporated(manifest, session_id)
     if existing:
+        if Path(str(existing.get("raw_source_path") or "")).resolve() != path.resolve():
+            raise RuntimeError(f"session {session_id} already incorporated from {existing.get('raw_source_path')}; refusing alternate source {path.resolve()}")
         current_size = path.stat().st_size
         current_mtime = path.stat().st_mtime
         if existing.get("raw_bytes") != current_size:
@@ -493,6 +687,27 @@ def incorporate(path: Path, archive_dir: Path, mode: str) -> dict[str, Any]:
             "rerendered": False,
             "source_mtime": current_mtime,
         }
+
+    family_search_dirs = [path.parent]
+    resolved_path = path.resolve()
+    for default_root in DEFAULT_SOURCE_DIRS:
+        try:
+            resolved_path.relative_to(default_root.resolve())
+        except ValueError:
+            continue
+        family_search_dirs = DEFAULT_SOURCE_DIRS
+        break
+    family_sources: list[SessionSource] = []
+    for candidate in iter_jsonl_sources(family_search_dirs):
+        candidate_meta = read_session_meta(candidate)
+        if (candidate_meta.get("session_id") or safe_slug(candidate.stem)) == session_id:
+            family_sources.append(read_session_source(candidate))
+    family = reconcile_source_family(str(session_id), family_sources or [read_session_source(path)])
+    selected_path = family.selected_source.path.resolve() if family.selected_source else None
+    if family.ambiguous or selected_path is None:
+        raise RuntimeError(f"source family for {session_id} is not safe to incorporate: {family.relationship_status} ({family.reason})")
+    if selected_path != path.resolve():
+        raise RuntimeError(f"source family for {session_id} selected {selected_path}; refusing non-canonical source {path.resolve()}")
 
     render_start = time.perf_counter()
     rendered = render_session(path, verify_stats=(mode == "verify"))
@@ -545,6 +760,8 @@ def incorporate(path: Path, archive_dir: Path, mode: str) -> dict[str, Any]:
         "archive_status": "INCORPORATED",
         "chronological_order": None,
         "source_mtime": path.stat().st_mtime,
+        "source_family_relationship_status": family.relationship_status,
+        "source_family_reason": family.reason,
     }
     manifest.setdefault("sessions", []).append(record)
     manifest["sessions"] = sorted(manifest["sessions"], key=lambda s: (s.get("first_timestamp") or "", s.get("session_id") or ""))
@@ -591,6 +808,12 @@ def command_verify(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_validate_ticket(args: argparse.Namespace) -> int:
+    payload = Path(args.ticket).read_text(encoding="utf-8")
+    print(json.dumps(validate_ticket_payload(payload), indent=2, sort_keys=True))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -608,6 +831,10 @@ def main(argv: list[str] | None = None) -> int:
     p_verify = sub.add_parser("verify")
     p_verify.add_argument("--source", required=True)
     p_verify.set_defaults(func=command_verify)
+
+    p_validate = sub.add_parser("validate-ticket")
+    p_validate.add_argument("--ticket", required=True)
+    p_validate.set_defaults(func=command_validate_ticket)
 
     args = parser.parse_args(argv)
     return args.func(args)

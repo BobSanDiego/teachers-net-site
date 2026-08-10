@@ -107,6 +107,110 @@ class CodexTranscriptArchiveTests(unittest.TestCase):
             verify = archive.render_session(source, verify_stats=True)
             self.assertEqual(fast.transcript_sha256, verify.transcript_sha256)
 
+    def test_recursive_discovery_groups_duplicate_superset_sources(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            session_id = "019f605b-5be2-7802-8857-4d545657645a"
+            shorter = base / "archived_sessions" / "a.jsonl"
+            longer = base / "archived_sessions" / "nested" / "b.jsonl"
+            shorter.parent.mkdir(parents=True)
+            longer.parent.mkdir(parents=True)
+            short_records = session_records(session_id)
+            write_jsonl(shorter, short_records)
+            write_jsonl(longer, short_records + [
+                {"type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"text": "Later visible message"}]}}
+            ])
+
+            found = archive.discover([base / "archived_sessions"])
+            self.assertEqual(len(found["include"]), 1)
+            self.assertEqual(found["include"][0]["relationship_status"], "PROVEN_SUPERSET")
+            self.assertEqual(Path(found["include"][0]["path"]), longer)
+            self.assertEqual(len(found["ambiguous"]), 0)
+
+            reverse = archive.discover([base / "archived_sessions" / "nested", base / "archived_sessions"])
+            self.assertEqual(reverse["include"][0]["path"], found["include"][0]["path"])
+
+    def test_identical_duplicate_sources_are_deduplicated(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            session_id = "019fdupe0-aaaa-bbbb-cccc-ddddeeeeeeee"
+            one = base / "one.jsonl"
+            two = base / "nested" / "two.jsonl"
+            two.parent.mkdir()
+            records = session_records(session_id)
+            write_jsonl(one, records)
+            write_jsonl(two, records)
+
+            found = archive.discover([base])
+            self.assertEqual(len(found["include"]), 1)
+            self.assertEqual(found["include"][0]["relationship_status"], "IDENTICAL_DUPLICATES")
+
+    def test_conflicting_duplicate_sources_are_not_included(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            session_id = "019fconf0-aaaa-bbbb-cccc-ddddeeeeeeee"
+            one = base / "one.jsonl"
+            two = base / "two.jsonl"
+            records = session_records(session_id)
+            write_jsonl(one, records + [
+                {"type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"text": "Branch A"}]}}
+            ])
+            write_jsonl(two, records + [
+                {"type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"text": "Branch B"}]}}
+            ])
+
+            found = archive.discover([base])
+            self.assertEqual(len(found["include"]), 0)
+            self.assertEqual(found["ambiguous"][0]["relationship_status"], "SOURCE_CONFLICT")
+
+    def test_active_recursive_source_is_deferred_not_included(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            active = base / "sessions" / "2026" / "08" / "10" / "active.jsonl"
+            active.parent.mkdir(parents=True)
+            write_jsonl(active, session_records("019factive-aaaa-bbbb-cccc-ddddeeeeeeee"))
+
+            previous_roots = archive.DEFAULT_SOURCE_DIRS
+            try:
+                archive.DEFAULT_SOURCE_DIRS = [base / "sessions"]
+                found = archive.discover([base / "sessions"])
+            finally:
+                archive.DEFAULT_SOURCE_DIRS = previous_roots
+
+            self.assertEqual(len(found["include"]), 0)
+            self.assertEqual(len(found["active_deferred"]), 1)
+            self.assertEqual(found["active_deferred"][0]["classification"], "ACTIVE / DEFERRED")
+
+    def test_ticket_terminator_contract_rejects_truncation(self) -> None:
+        valid = """TICKET READY FOR CODEX
+Ticket: JC999-TEST
+
+Objective
+Do the bounded thing.
+
+END TICKET — JC999-TEST
+"""
+        self.assertTrue(archive.validate_ticket_payload(valid)["terminator_valid"])
+        with self.assertRaisesRegex(ValueError, "terminator mismatch"):
+            archive.validate_ticket_payload(valid.replace("END TICKET — JC999-TEST", ""))
+        with self.assertRaisesRegex(ValueError, "terminator mismatch"):
+            archive.validate_ticket_payload(valid.replace("JC999-TEST\n", "JC999-OTHER\n", 1))
+
+    def test_ticket_authority_preserves_continuation_payload(self) -> None:
+        ticket = """TICKET READY FOR CODEX
+Ticket: JC999-TEST
+
+Objective
+Original.
+
+END TICKET — JC999-TEST
+"""
+        continuation = "TICKET CONTINUATION — JC999-TEST\nAdditional bounded authority."
+        composed = archive.compose_ticket_authority([ticket, continuation])
+        self.assertIn("Original.", composed)
+        self.assertIn("Additional bounded authority.", composed)
+        self.assertIn("--- CONTINUATION / AMENDMENT ---", composed)
+
 
 if __name__ == "__main__":
     unittest.main()

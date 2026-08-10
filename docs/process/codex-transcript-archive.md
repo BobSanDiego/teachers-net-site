@@ -65,6 +65,12 @@ unchanged.
 If an incorporated source's size or mtime changes, FAST stops rather than
 silently replacing history.
 
+If a session is already incorporated from the recorded source and that source's
+size/mtime are unchanged, FAST reports `NO_NEW_CLOSED_SESSIONS`; it does not
+rerender unchanged incorporated sessions. If another source claims the same
+session ID, the alternate source is refused unless a future explicit
+reconciliation ticket approves replacement.
+
 ## VERIFY mode
 
 VERIFY mode is explicit and exceptional.
@@ -145,6 +151,29 @@ python3 tools/codex_archive/codex_transcript_archive.py discover
 Do not blindly archive every Codex session on the machine. Ambiguous sessions
 must not be incorporated automatically.
 
+Discovery recurses the known Codex session roots because active sessions are
+stored under dated subdirectories. The source location is part of the
+classification:
+
+- `ARCHIVED`: closed source under `.codex/archived_sessions`;
+- `ACTIVE`: live source under `.codex/sessions`;
+- `UNKNOWN`: explicitly supplied source outside the known roots.
+
+Same-session sources are grouped before selection. Selection must be
+deterministic and must record one of these source-family relationships:
+
+- `SINGLE_SOURCE`;
+- `IDENTICAL_DUPLICATES`;
+- `PROVEN_SUPERSET`;
+- `SOURCE_CONFLICT`;
+- `ACTIVE_AND_ARCHIVED_PAIR`;
+- `UNKNOWN_RELATIONSHIP`.
+
+Active sources are never incorporated as closed canonical transcripts. They are
+listed as `ACTIVE / DEFERRED` until the session is closed or archived.
+Conflicting archived same-session sources stop incorporation; the archive must
+not silently choose a different fossil history.
+
 ## Incremental update procedure
 
 1. Discover candidate sessions.
@@ -154,6 +183,24 @@ must not be incorporated automatically.
 5. Run tests before committing renderer or manifest changes.
 6. Use VERIFY mode only when stronger archival proof is required.
 7. Keep the ChatGPT transcript archive untouched.
+
+## Formal ticket authority terminator
+
+New formal Codex tickets that are issued for transcript/archive or workflow
+cycle execution must be complete, self-delimiting authority blocks. The durable
+terminator is:
+
+```text
+END TICKET — <TICKET-ID>
+```
+
+The `<TICKET-ID>` must exactly match the `Ticket:` identifier in the same
+`TICKET READY FOR CODEX` block. Missing or mismatched terminators are treated as
+truncated or malformed ticket authority and must stop execution until corrected.
+
+Continuation and amendment authority remains valid when supplied by the
+Engineering Director, but it must be preserved alongside the original ticket in
+the cycle package so the executed authority is auditable.
 
 ## Active-session limitation
 
