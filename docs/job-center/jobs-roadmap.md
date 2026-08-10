@@ -284,6 +284,95 @@ changes only the minimum interface needed to document one interaction.
 11. Controlled bulk import.
 12. V1 release-candidate review, launch checklist, monitoring, and rollback plan.
 
+## Post-V1 Recruiter Growth, Distribution, and Monetization Strategy
+
+This section records the approved post-V1 product strategy without changing the
+current V1.0 execution sequence. It is roadmap authority, not authorization to
+implement analytics, ranking, promotion, pricing, billing, or commercial
+permissions.
+
+### V1.0 — Marketplace liquidity, traffic, SEO, and advertising
+
+V1.0 is intended to get substantial job inventory live, rebuild recruiter
+participation, rebuild teacher/jobseeker traffic, create indexable job content,
+generate job-page/listing traffic, and begin or expand advertising revenue from
+teacher-job traffic. TNET-sourced jobs may provide inventory depth while direct
+employer supply develops, but sourced and employer-posted jobs are not
+strategically equivalent.
+
+Employer-posted jobs should receive systematic organic distribution preference
+over TNET-sourced jobs, subject to teacher relevance and search-quality
+guardrails. Future applicable surfaces may include search ranking, Latest Jobs,
+related-job modules, homepage/editorial placements, and other Teachers.Net
+distribution surfaces. This is a distribution principle, not a current hard
+ordering rule.
+
+Sourced inventory primarily contributes marketplace depth, SEO coverage, teacher
+utility, traffic, and advertising inventory. Employer-posted inventory adds
+recruiter relationships, retention, measurable recruiter ROI, future promotion
+demand, and possible future paid-listing demand.
+
+V1.0 should preserve durable performance provenance where practical so history
+begins accumulating before a polished recruiter dashboard ships. At roadmap
+level, provenance should eventually distinguish employer-posted versus
+TNET-sourced jobs, distribution surface, placement type, later promotional
+attribution, and downstream engagement/conversion events. Candidate event
+families include impression/reach, detail view, employer/profile/outbound visit,
+save, share, and application or application-intent where reliably measurable.
+This section does not define an analytics schema.
+
+### V1.1 — Recruiter analytics and premium promotional inventory
+
+V1.1 may provide recruiter-facing analytics oriented toward recruiting
+economics, including Teacher Reach, Job Detail Views, Employer Visits, Jobs
+Saved, Shares, and defensible Applications or application-intent measures, with
+derived conversion/economic metrics. Do not label a metric a lead unless its
+conversion event is authoritative.
+
+The contemplated Standard Job Listing reference value is approximately $99
+while currently included free. This is a reference value, not a charging
+decision. Any hypothetical reference-value cost per view, visit, or measurable
+high-intent action must be clearly distinguished from actual current listing
+cost or recruiter spend: REFERENCE VALUE != ACTUAL SPEND.
+
+Optional premium promotional inventory may later span search/results, job pages,
+the homepage, and other appropriate high-value surfaces. Ordinary
+employer-posted jobs may first be rotated experimentally through promotional
+inventory to establish real baselines. Normal organic employer distribution
+and explicit promotional distribution must remain separately attributable so
+incremental performance can be measured. Teachers.Net need not normalize away
+its organic employer-posting preference; comparisons must use actual observed
+data and must not manufacture uplift claims.
+
+### V1.2 — Evidence-driven consideration of paid standard listings
+
+Paid standard listings are not assumed to be necessary. Consider broader
+standard-listing monetization only if recruiter adoption, job supply, teacher
+traffic, performance history, marketplace liquidity, and demonstrated recruiter
+economics support it. A future direction could move some or all job types toward
+a paid reference-value range, but free standard listings remain a valid option
+indefinitely if advertising revenue, premium promotion, traffic, or recruiter
+supply economics make free listings the stronger model. Use performance data to
+discover pricing rather than imposing pricing assumptions.
+
+### Commercial authority constraint and marketplace flywheel
+
+JOB MANAGEMENT AUTHORITY != COMMERCIAL/PURCHASE AUTHORITY. Employer Admin and
+Recruiter authority governs job authoring and management. Future promotion or
+paid products may require explicit individual confirmation, Employer Admin
+approval, a separate commercial capability, or another future authorization
+layer. Suspending or revoking employer authority must not erase or invalidate
+historical paid transactions or purchased placements; commercial lifecycle
+remains separate from current membership authority. Billing, packages, refunds,
+and purchase permissions are deferred.
+
+The strategic flywheel is: TNET-sourced jobs build inventory; inventory attracts
+teachers; traffic creates SEO and advertising value; employer-posted jobs
+receive strategic organic preference; recruiters receive measurable value and
+return; direct inventory increases; dependence on sourced inventory decreases;
+premium promotion becomes valuable; and eventual listing monetization can be
+tested from real data. These are strategic hypotheses, not guarantees.
+
 ## V1 Blockers
 
 - ingestion readiness audit and approved real-job contract
@@ -323,7 +412,10 @@ exploration and implementation.
 - cached selected locations
 - expanded employer conversion automation
 - deeper personalization
-- analytics wrapper and event coverage
+- recruiter analytics and the minimum provenance/event coverage dependency
+  described in the Post-V1 strategy above; final analytics schema remains a
+  later contract
+- premium promotional inventory with separate organic/promotional attribution
 - shared AdSense/house-ad helper and design-system capture
 - SEO/indexing strategy and reusable taxonomy hubs
 
