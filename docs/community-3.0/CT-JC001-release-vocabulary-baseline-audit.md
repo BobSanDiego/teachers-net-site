@@ -141,8 +141,8 @@ Repository sources:
 - `wordpress/wp-content/plugins/tnet-jobs/docs/bulk-import-spec.md`
 - `docs/core-terms/project-cursor.md`
 - `docs/core-terms/engineering-handoff.md`
-- `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md`
-- `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/canonical-v1-contract.md`
+- `docs/job-center/project-cursor.md`
+- `docs/job-center/canonical-v1-contract.md`
 
 Read-only runtime sources and checks:
 
