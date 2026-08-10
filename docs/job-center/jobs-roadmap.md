@@ -164,6 +164,12 @@ permissions.
 JC057 is the later Implementation Capability Audit. JC058 and later tickets
 are generated from that audit and are not current implementation work.
 
+JC056 authority is now controlled by
+`docs/job-center/employer-authority-contract-v2.md`. The contract revision
+supersedes the prior multi-employer capability strategy and must be followed by
+membership inventory/schema planning and a canonical Admin/Recruiter capability
+boundary before employer-management implementation continues.
+
 ## Authoritative Convergence Decisions
 
 The following decisions govern the remaining design-first convergence sprint and

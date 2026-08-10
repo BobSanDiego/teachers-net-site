@@ -1,5 +1,11 @@
 # Employer Access and Authority Contract v1
 
+> **Superseded authority notice:** Employer membership count, founding Admin,
+> trust, affiliation, and role scope are governed by
+> [`employer-authority-contract-v2.md`](employer-authority-contract-v2.md).
+> This visual contract remains subordinate and must not reintroduce
+> multi-employer active affiliation or imply access before approved membership.
+
 Status: Contract for visual-authority work
 Ticket: EMP-AUTH002
 Scope: Employer access, organization authority, and employer context only
@@ -18,7 +24,7 @@ lifecycle, metrics, moderation, or administration screens.
 | Returned / not approved | More Information Needed; Not Approved; returned request | Shared resolution treatment with next-step guidance and no active access |
 | Approved membership | Authority approved; active employer membership; first entry to selected employer | Shared approved-context treatment leading to Dashboard; approval and membership are explicit |
 | Revoked access | Access Revoked; previously available employer context no longer authorized | Shared blocked-context treatment; employer/job identity and history remain intact |
-| Employer context | Single active employer; multiple active employers; selected-employer confirmation | One reusable context pattern carried into Dashboard, My Jobs, and authoring |
+| Employer context | One active employer; selected-employer confirmation | One reusable context pattern carried into Dashboard, My Jobs, and authoring; re-affiliation requires explicit departure/revocation |
 | Switching | Multi-employer selector containing only active authorized memberships; selection confirmation | State variant of the context pattern, not a separate product composition |
 
 ## 2. Shared versus distinct compositions

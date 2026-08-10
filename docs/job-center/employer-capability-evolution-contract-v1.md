@@ -1,5 +1,11 @@
 # EMP-STRAT003 — Employer Capability Evolution and Adaptive Operations Contract
 
+> **SUPERSEDED for current employer authority.** Use
+> [`employer-authority-contract-v2.md`](employer-authority-contract-v2.md) as
+> the controlling contract. This document is retained as historical strategy
+> context only; its multi-employer and cross-employer capability statements do
+> not authorize current implementation.
+
 Status: Contract for capability and presentation governance
 Scope: Employer Operations adaptation as a poster gains authorized employers or capabilities
 
@@ -39,17 +45,18 @@ grants employer membership or public-employer identity.
   no selector is required to choose the only employer.
 - A user with multiple active employers receives employer selection when a route
   needs context; only active authorized memberships appear.
-- Employer context persists through Dashboard, My Jobs, Post, Edit, Review,
+- Employer context persists through My Jobs, selected School / Job Site views,
+  Post, Edit, Review,
   Preview, confirmation, and return paths.
 - Capability changes do not rewrite employer identity, job identity, source
   provenance, lifecycle, or historical metrics.
 
 ## Single-employer presentation
 
-Dashboard and My Jobs show the selected employer as a visible, read-only
-context label or card. The context confirms the employer but does not need an
-interactive selector. Available actions remain the ordinary employer-member
-actions defined by EMP-AUTH003–005.
+My Jobs shows the selected employer as a visible, read-only context label or
+card. The context confirms the employer but does not need an interactive
+selector. Available actions remain the ordinary employer-member actions defined
+by EMP-AUTH003–005.
 
 The simplified presentation must not expose:
 
@@ -89,7 +96,7 @@ need a separate authority and capability decision.
 Supported in V1 through existing membership and route behavior:
 
 - one or multiple employer memberships;
-- employer-scoped Dashboard and My Jobs;
+- employer-scoped My Jobs and selected School / Job Site views;
 - Post/Edit, Review, Preview, submit/review, and authorized direct publish;
 - lifecycle actions valid for the selected employer and job status.
 
@@ -111,9 +118,9 @@ feed, or importer cannot substitute for the public employer.
 - **Employer selector:** conditional. The single-employer view uses a static
   selected-employer context; the selector appears only when multiple active
   memberships require a choice.
-- **Selected-employer context:** retained in both Dashboard and My Jobs, with
-  the same visual treatment and clear employer name.
-- **Dashboard summaries:** always employer-scoped; they must never aggregate
+- **Selected-employer context:** retained in My Jobs and selected School / Job
+  Site views, with the same visual treatment and clear employer name.
+- **Workspace summaries:** always employer-scoped; they must never aggregate
   unrelated employers in the V1 default view.
 - **My Jobs all-employers view:** not part of V1; no new aggregate view is
   authorized.
@@ -124,10 +131,11 @@ feed, or importer cannot substitute for the public employer.
 
 **Approve EMP-DESIGN003 candidate unchanged.**
 
-The candidate already presents a shared selected-employer context and separate
-Dashboard/My Jobs route views. Conditional selector behavior is a bounded state
-and permission rule, not a required visual redesign. The candidate does not
-introduce onboarding, claim, pooled inventory, or unsupported high-volume tools.
+The approved Employer Operations direction now treats My Jobs as the operating
+workspace, with All My Jobs and selected School / Job Site views. Conditional
+selector behavior is a bounded state and permission rule, not a separate
+Dashboard requirement. The authority must not introduce onboarding, claim,
+pooled inventory, or unsupported high-volume tools.
 
 ## Verification
 

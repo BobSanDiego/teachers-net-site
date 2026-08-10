@@ -171,6 +171,17 @@ source.
 
 ### DATA001-REV1 architecture adoption
 
+### JC056 employer authority contract v2
+
+`docs/job-center/employer-authority-contract-v2.md` is now the controlling
+authority for the current employer model. It supersedes the prior adaptive
+multi-employer capability strategy and freezes one active employer affiliation
+per user, founding Admin/provisional authoring, the first-publication platform
+trust gate, Admin-all/Recruiter-own My Jobs scope, shared employer School /
+Jobsite ownership, and the separation of management from commercial authority.
+No schema or implementation work should proceed until the inventory and
+capability-boundary sequence derived from this contract is accepted.
+
 The School / Jobsite contract is now approved as the staged hybrid in
 `docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`.
 Employer-private visibility, trusted-member management, affiliation/recovery,
