@@ -17,7 +17,7 @@ directions and require separate authorization.
 
 **Ticket:** DV-SPEC001  
 **Status:** Canonical product authority  
-**Date:** 2026-08-06  
+**Date:** 2026-08-10
 **Implementation target:** DV-UX009
 
 ## 1. Product purpose

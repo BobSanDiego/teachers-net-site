@@ -23,6 +23,8 @@ Report/Hopper cycle for 2026-08-10.
 
 ## 1. Current Phase
 
+**Current phase: Stabilization — standalone MVP certified; next consumer authorization pending.**
+
 DV-GOV004 is complete as a documentation/governance milestone. Following
 DV-ACCEPT001 and DV-JC-PILOT001, the product model is now durable: a stable
 View may have one mutable draft and many immutable published versions;
@@ -32,11 +34,10 @@ explicit replacement confirmation. The View Manager should group versions and
 surface draft/latest/subscribed operational state without destructive history
 filtering. Core Terms remains live UUID-based authority.
 
-No application, schema, resolver, or consumer changes were made. Snapshot
-preservation, semantic diffs, subscriber migration, dependency graphs, record
-migration, and hard-delete automation remain explicitly deferred. The next
-separate implementation objective is View Manager organization and
-subscriber/dependency visibility.
+Snapshot preservation, semantic diffs, subscriber migration, dependency
+graphs, record migration, and hard-delete automation remain explicitly
+deferred. The next implementation requires a separately authorized consumer
+seam; no consumer migration is currently authorized.
 
 DV-FIX002 is complete. Repository descendant-removal closure is now enforced
   for draft entry deletion, scoped by version and framework. The Current View
@@ -73,7 +74,11 @@ controls are omitted for canonical entries. Browser evidence was captured at
 
 Stabilization — Job Center MVP certified; next consumer pending authorization.
 
-## 2. Current Ticket
+## 2. Completed Milestone Ledger
+
+The historical ticket ledger below is retained for traceability. The current
+active state is DV-ACCEPT002 standalone MVP closeout above; there is no active
+implementation ticket.
 
 DV-003 persistence foundation verified in DDEV PHP and pushed as commit
 `71ce3fb` on `agent/durable-views-dv003-persistence`.
@@ -105,9 +110,9 @@ blocked until source ownership/access and a legacy compatibility boundary are
 established; see `docs/core-terms/durable-views-dv015-community-consumer-seam-assessment.md`.
 DV-016 confirmed the same external prerequisite from the available local
 evidence; see `docs/core-terms/durable-views-dv016-community-source-boundary.md`.
-DV-018 completed the Job Center sprint readiness audit. The platform/service
-MVP remains certified but browser authoring and live Jobs cutover are not yet
-complete; see `docs/core-terms/durable-views-dv018-sprint-readiness-gap-audit.md`.
+DV-018 completed the Job Center sprint readiness audit. Its earlier gap
+assessment is historical; later browser certification and DV-ACCEPT002 closeout
+established standalone readiness without migrating the Job Center wizard.
 DV-019 implemented the protected draft composition workspace in the Profilaxes
 admin surface. It is draft-only and supports canonical framework/term
 selection, include/exclude, label/order, descendant intent, entry listing, and
@@ -119,10 +124,10 @@ runtime checks passed; authenticated browser evidence remains pending.
 
 ## 3. Last Completed Milestone
 
-DV-001 confirmed that the first consumer seam is the Job Categories admin and
-form-field option path. Jobs currently maps Core Terms sources and synchronizes
-child terms into Jobs-owned option tables; this is a compatibility path, not a
-Durable Views implementation.
+DV-ACCEPT002 confirmed the complete standalone lifecycle using disposable View
+35, published versions 47 and 48, and the unchanged Job Center binding View 10
+/ version 12. The Job Categories seam remains a consumer boundary; Jobs owns
+only its binding and consumer behavior.
 
 ## 4. What Is Objectively Known
 
@@ -144,7 +149,7 @@ Durable Views implementation.
 - `docs/core-terms/durable-views-roadmap.md`
 - DV-ACCEPT002 standalone MVP acceptance report and Views Report/Hopper cycle
 
-## 6. Proposed MVP
+## 6. Accepted MVP Boundary
 
 The MVP must provide:
 
@@ -157,8 +162,10 @@ The MVP must provide:
 - a platform consumer contract;
 - one controlled Job Center binding with rollback.
 
-Inheritance, composition, personalization, subscriptions, analytics, AI, and
-multi-product migration are deferred but must remain architecturally possible.
+Inheritance, personalization, analytics, AI, multi-product migration,
+subscriber migration, semantic diff, dependency warnings, snapshots, and
+Core Terms term migration are deferred but must remain architecturally
+possible.
 
 ## 7. Completed DV-001 Findings
 
@@ -185,7 +192,11 @@ boundary, first Job Center consumer seam, and ticket sequence are now the
 working basis for DV-002. Any change must be recorded in this handoff and the
 Project Cursor before implementation proceeds.
 
-## 9. Next Execution Ticket
+## 9. Historical Execution Ticket Ledger
+
+The following entries document completed historical work and are not current
+next-ticket instructions. The next ticket must be separately authorized after
+consumer seam assessment.
 
 DV-021 added protected Jobs administrator controls for binding one form field
 to a currently published Durable View version and for removing that binding.
