@@ -18,7 +18,8 @@ directions and require separate authorization.
 **Ticket:** DV-SPEC001  
 **Status:** Canonical product authority  
 **Date:** 2026-08-10
-**Implementation target:** DV-UX009
+**Historical implementation target:** DV-UX009 — subsequently completed; this
+label is retained for specification chronology, not current sequencing.
 
 ## 1. Product purpose
 
@@ -290,10 +291,16 @@ Core Terms record migration, and destructive archive/retire operations used only
 for manager housekeeping. These remain possible later and are not implemented
 by this specification update.
 
-The next implementation boundary is an operationally understandable View
-Manager: group versions under stable Views, surface draft/latest/subscribed
-versions by default, and make subscriber/dependency significance explainable.
-The exact UI and any dependency or migration tooling require separate tickets.
+The operationally understandable View Manager objective is implemented and
+accepted through DV-MGR001 V4. The current manager groups versions under stable
+Views, surfaces draft/latest/subscribed versions by default, exposes term and
+subscriber information, and keeps older history available on demand. Further
+subscriber migration, dependency tooling, semantic diffs, and related
+capabilities require separate authorization.
+
+The current implementation boundary is stabilization and separately authorized
+consumer integration; historical manager and DV-UX next-ticket language is not
+current execution authority.
 
 ## 14. Authority and unresolved contradictions
 
@@ -307,4 +314,6 @@ current repository also uses flat group persistence, but V1 does not expose
 groups or containers as authoring concepts. These are implementation gaps to
 address against this specification, not changes to this product authority.
 
-**Next ticket:** DV-UX009 — Views V1 Authoring Workflow Implementation.
+**Historical next ticket:** DV-UX009 — Views V1 Authoring Workflow
+Implementation. This was subsequently implemented and must not be issued as a
+current ticket.

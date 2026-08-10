@@ -21,23 +21,38 @@ editing another version must not silently migrate subscribers.
 Closeout evidence is recorded in the DV-ACCEPT002 report and current Views
 Report/Hopper cycle for 2026-08-10.
 
+## Immediate Sequencing Horizon — Planning Only
+
+No executable product ticket is currently authorized by this handoff. The next
+coherent boundary is an explicit selection and assessment of the next consumer
+seam (DV-CONSUMER001). If authorized and if that consumer is ready, the
+follow-on is its narrow adapter (DV-CONSUMER002), followed conditionally by a
+consumer-specific dependency/impact assessment (DV-DEP001). No fourth or fifth
+ticket is promoted because semantic diffs, snapshots, subscriber migration,
+record migration, release nicknames, and hard-delete automation remain
+deferred. Historical DV-UX and DV-MGR ledger entries below are chronology only.
+
 ## 1. Current Phase
 
-**Current phase: Stabilization — standalone MVP certified; next consumer authorization pending.**
+**Current phase: Stabilization — standalone MVP and manager organization
+certified; next consumer authorization pending.**
 
 DV-GOV004 is complete as a documentation/governance milestone. Following
 DV-ACCEPT001 and DV-JC-PILOT001, the product model is now durable: a stable
 View may have one mutable draft and many immutable published versions;
 subscribers pin a published View/version; publishing does not migrate them;
 and older published versions are copied into the one active draft only after
-explicit replacement confirmation. The View Manager should group versions and
-surface draft/latest/subscribed operational state without destructive history
-filtering. Core Terms remains live UUID-based authority.
+explicit replacement confirmation. The View Manager now groups versions beneath
+stable Views, exposes draft/latest/subscribed operational state, term counts,
+subscriber counts/identity, lifecycle actions, and on-demand older history
+without destructive history filtering. This is accepted DV-MGR001 work, not a
+current next-ticket objective. Core Terms remains live UUID-based authority.
 
 Snapshot preservation, semantic diffs, subscriber migration, dependency
 graphs, record migration, and hard-delete automation remain explicitly
 deferred. The next implementation requires a separately authorized consumer
-seam; no consumer migration is currently authorized.
+seam or another explicitly authorized post-MVP objective; no consumer
+migration is currently authorized.
 
 DV-FIX002 is complete. Repository descendant-removal closure is now enforced
   for draft entry deletion, scoped by version and framework. The Current View
@@ -192,11 +207,12 @@ boundary, first Job Center consumer seam, and ticket sequence are now the
 working basis for DV-002. Any change must be recorded in this handoff and the
 Project Cursor before implementation proceeds.
 
-## 9. Historical Execution Ticket Ledger
+## 9. Historical Execution Ticket Ledger — Not Current Sequencing Authority
 
 The following entries document completed historical work and are not current
-next-ticket instructions. The next ticket must be separately authorized after
-consumer seam assessment.
+next-ticket instructions. Current sequencing is governed by the reconciled
+state above and the Project Cursor. The next ticket must be separately
+authorized after consumer seam assessment.
 
 DV-021 added protected Jobs administrator controls for binding one form field
 to a currently published Durable View version and for removing that binding.
@@ -345,13 +361,13 @@ for all three widths and the console had no errors.
 Profilaxes branch `agent/durable-views-dv003-persistence`, commit `210d96f`,
 was pushed. No Views behavior or architecture changed.
 
-## DV-UX008 Supersession / DV-UX009 Next Ticket
+## Historical DV-UX008 Supersession / DV-UX009 Ticket
 
 DV-UX008 is superseded and is not an implementation target. Do not reconcile
-or partially implement its historical Current View tree placeholder. The
-next implementation ticket is DV-UX009 — Views V1 Authoring Workflow
-Implementation. Its ChatGPT-supplied specification is the implementation
-authority and must be ingested before coding begins.
+or partially implement its historical Current View tree placeholder. At that
+historical point, DV-UX009 — Views V1 Authoring Workflow
+Implementation — was the next ticket. It was subsequently completed; this
+section is chronology only and must not be used to issue a current ticket.
 
 ## DV-SPEC001 Completion
 

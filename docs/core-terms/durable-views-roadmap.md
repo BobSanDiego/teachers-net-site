@@ -19,7 +19,7 @@ subscriber impact review and explicit migration, Core Terms dependency-impact
 warnings, term replacement/migration, archival/disturbance indicators, and
 semantic snapshots. These are not current MVP behavior.
 
-## DV-GOV004 — Product model memorialized (complete)
+## DV-GOV004 — Product model memorialized (complete; historical)
 
 The accepted V1 producer and Job Center consumer state now has durable product
 authority. A View is a stable administrative identity with at most one mutable
@@ -28,13 +28,25 @@ published View/version; publishing preserves those bindings and history rather
 than silently migrating or hiding them. Editing an older release seeds the
 single active draft only with explicit replacement confirmation.
 
-The next manager objective is presentation-only organization: group versions
-under stable Views and show current draft, latest published, and subscribed
-versions by default, with other history available on demand. Subscriber and
-dependency significance should be explainable without destructive lifecycle
-operations. Core Terms remains live canonical UUID authority. Snapshots,
-semantic diffs, migration, dependency tooling, record migration, and hard
-delete remain deferred to separate decisions and tickets.
+The manager-organization sentence above was the pre-implementation objective.
+It is retained for chronology only. DV-MGR001 and its V2–V4 completion evidence
+implemented and accepted that objective: stable View grouping, operational
+Subscribed/Published/Draft sections, draft/latest/subscribed visibility, term
+counts, subscriber counts/identity, on-demand history, and safe empty-shell
+handling. It is not the current next ticket.
+
+Core Terms remains live canonical UUID authority. Snapshots, semantic diffs,
+migration, dependency tooling, record migration, and hard delete remain
+deferred to separate decisions and tickets.
+
+## DV-GOV005 — Post-MVP state and sequencing reconciliation (complete)
+
+The current Durable Views phase is stabilization after standalone MVP and
+manager-organization acceptance. The existing Job Center binding remains
+pinned to View 10 / published version 12. The next implementation boundary is
+a separately authorized consumer seam or another independently justified
+post-MVP objective. Historical DV-UX and DV-MGR ledger entries are not current
+execution authority.
 
 ## Roadmap Objective
 
@@ -260,17 +272,18 @@ These capabilities extend the MVP contracts; they do not replace them.
 | DV-UX007 | Rebuild Views authoring flow around dual-tree composition | 8 | Complete; Compose View workflow, Library-to-View shuttle, selection scope, and simplified authoring surface implemented; browser-verified |
 | DV-UX007A | Audit Views V1 interaction states | 8 | Complete; audit-only; findings recorded |
 | DV-UX008 | Current View tree and container interaction | 8 | Superseded; historical placeholder replaced by finalized V1 workflow |
-| DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | Next; specification supplied by ChatGPT required before implementation |
+| DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | Historical next placeholder; subsequently completed |
 | DV-SPEC001 | Capture canonical Views V1 Product Specification | 8 | Complete; documentation authority for DV-UX009 |
 | DV-SPEC002 | Finalize Views V1 Product Specification | 8 | Complete; finalized interaction rules are now the sole DV-UX009 authority |
-| DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | In progress; legacy surface removed and Library foundation implemented; contextual removal/lifecycle states remain |
+| DV-UX009 | Implement finalized Views V1 authoring workflow | 8 | Historical ledger entry; later completion recorded below |
 | DV-ARCH003 | Diagnose DV-UX009 renderer blocking architecture | 8 | Complete; renderer/controller seam blocks safe aggregate removal and draft lifecycle completion; DV-UX009 remains open |
 | DV-UX009-CONT2 | Resume authorized renderer/controller refactor | 8 | Blocked; new persistence/lifecycle snapshot and draft-deletion contract is required |
 | DV-DEC001 | Approve autosaved draft lifecycle for V1 | 8 | Complete; product decision recorded; implementation requires a separate ticket |
 | DV-UX009A | Implement autosaved draft lifecycle | 8 | Complete; browser Pass 2 verified autosave, delete, publish, preview, removal controls, and Jobs regression |
 
-DV-UX009 is now fully satisfied and may be closed. DV-UX010 remains
-unauthorized.
+DV-UX009 is now fully satisfied and closed. DV-UX010 remains unauthorized;
+these ledger statements are historical and do not define the current next
+ticket.
 
 ## DV-DEC001 Decision
 
@@ -278,7 +291,8 @@ Autosaved draft persistence is approved for V1 as a recovery mechanism for the
 single active draft. It never publishes, mutates published versions, or moves
 composition into Jobs. The decision and required service contract are recorded
 in `docs/core-terms/durable-views-dv-dec001-autosaved-draft-lifecycle-v1.md`.
-DV-UX009 remains blocked pending separately authorized implementation.
+At the time of this historical decision, DV-UX009 remained blocked pending
+separately authorized implementation; it was subsequently completed.
 
 DV-002 artifact: `docs/core-terms/durable-views-dv002-schema-contract.md`.
 DV-003 artifact: `docs/core-terms/durable-views-dv003-persistence-strategy.md`.
@@ -296,8 +310,9 @@ DV-SPEC002 artifact: `docs/core-terms/durable-views-dv-spec002-completion-report
 DV-UX008 is superseded and must not be implemented from its historical
 roadmap placeholder. The finalized V1 workflow that follows DV-ARCH002,
 DV-UXAUD002, DV-UX006, DV-UX006A, DV-UX007, and DV-UX007A is authoritative.
-The next implementation ticket is DV-UX009, subject to its ChatGPT-supplied
-specification.
+The historical next-ticket placeholder `DV-UX009` is superseded by the
+accepted V1 authoring implementation and is retained only as chronology. Do not
+issue it as a current ticket.
 
 ## Governance Rule
 

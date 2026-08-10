@@ -53,7 +53,43 @@ Analytics, AI, and future Teachers.Net consumers.
 
 ## Current Phase
 
-Phase 5 — MVP certification complete; next-consumer authorization pending.
+Phase 5 — MVP certification complete; post-MVP stabilization and governance
+reconciliation complete; next-consumer authorization pending.
+
+## Reconciled Current-State Authority — 2026-08-10
+
+DV-GOV005 reconciled the accepted implementation and durable sequencing. The
+standalone MVP is complete. The View Manager organization objective previously
+tracked as DV-MGR001 is also implemented and accepted through its V4
+presentation pass: stable Views are grouped into operational Subscribed,
+Published, and Draft sections; version rows expose draft/latest/subscribed
+state, term counts, subscriber counts/identity, and existing lifecycle actions;
+older history is available through See all versions; and empty-shell safety is
+repository-enforced. Historical DV-MGR001/DV-MGR001-V2/V3/V4 ledger entries are
+not current next-ticket instructions.
+
+Still deferred: subscriber migration/rebinding, generalized dependency-impact
+graphs, semantic diffs, snapshots, record migration, release nicknames, and
+hard-delete automation beyond the existing safe empty-shell operation. The
+existing Job Center binding remains pinned to View 10 / published version 12.
+
+The next implementation boundary is a separately authorized consumer seam or
+another independently justified post-MVP objective. No new View Manager work
+is authorized by historical roadmap language alone.
+
+### Expected next five — planning horizon only
+
+1. **DV-CONSUMER001 — Select and assess the next consumer seam.** Requires
+   explicit product direction; this is the only near-term candidate supported
+   by current evidence.
+2. **DV-CONSUMER002 — Implement the separately authorized consumer adapter.**
+   Depends on DV-CONSUMER001 and the consumer's readiness.
+3. **DV-DEP001 — Assess dependency/impact visibility for that consumer.** Only
+   if the selected seam requires it; no generalized dependency graph is implied.
+
+No fourth or fifth implementation ticket is promoted. Semantic diffs,
+subscriber migration, snapshots, record migration, release nicknames, and
+hard-delete automation remain deferred and require new product decisions.
 
 ## Current Status
 
@@ -63,9 +99,11 @@ Phase 5 — MVP certification complete; next-consumer authorization pending.
   intended View Manager information hierarchy, live Core Terms authority, and
   deferred dependency, snapshot, diff, and migration directions. No application
   or schema changes were made.
-- The next implementation boundary is a separately authorized consumer seam.
-  View Manager organization and subscriber visibility are implemented enough
-  for current MVP administration; further refinements require explicit scope.
+- The next implementation boundary is a separately authorized consumer seam or
+  another explicitly authorized post-MVP objective. View Manager organization
+  and subscriber visibility are already implemented and accepted at the MVP
+  administration tier; historical manager ticket entries are ledger evidence,
+  not current sequencing authority.
 
 - DV-FIX002 completed on 2026-08-07. `CFM_Views_Repository::delete_entries()`
   now computes canonical included-descendant closure within the requested draft
@@ -325,13 +363,13 @@ redesign was introduced.
 Profilaxes branch `agent/durable-views-dv003-persistence`, commit `23c703a`,
 was pushed. Completion report: `docs/core-terms/durable-views-dv-ux007-completion-report.md`.
 
-## DV-UX008 Supersession and DV-UX009 Transition
+## Historical DV-UX008 Supersession and DV-UX009 Transition
 
 DV-UX008 is superseded. Its historical placeholder must not be used as an
 implementation authority. The finalized V1 workflow is governed by the
 post-DV-UX007 product direction and the forthcoming DV-UX009 specification.
-The next implementation ticket is DV-UX009; do not begin it until the
-ChatGPT-supplied specification is available and read.
+At the time, DV-UX009 was the next implementation ticket. That historical
+transition was subsequently completed and is not current sequencing authority.
 
 ## DV-SPEC001 Completion
 
