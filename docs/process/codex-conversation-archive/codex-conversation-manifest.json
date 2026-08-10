@@ -1,0 +1,361 @@
+{
+  "active_deferred_sessions": [],
+  "ambiguous_sessions": [
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "C:\\Temp\\codex-test",
+      "preview": "<environment_context>   <cwd>C:\\Temp\\codex-test</cwd>   <shell>powershell</shell>   <current_date>2026-06-18</current_date>   <timezone>America/Los_Angeles</tim | run Get-Location  | run Get-Location  | `Get-Location` returned:  `C:\\Temp\\co",
+      "raw_bytes": 75341,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-06-18T16-06-46-019edcfc-a856-74d1-bf56-b79269626457.jsonl",
+      "session_id": "019edcfc-a856-74d1-bf56-b79269626457",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": "Read AGENTS.md and every file under /docs.\r \r Do not code.\r \r Treat those documents as authoritative.\r \r Produce:\r \r 1. Environment summary\r 2. Project boundari | Read AGENTS.md and every file under /docs.\r \r Do not code.\r \r Treat those doc",
+      "raw_bytes": 242382917,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-06-22T03-45-26-019eeeef-64a1-7980-9d74-ccd1763bd82b.jsonl",
+      "session_id": "019eeeef-64a1-7980-9d74-ccd1763bd82b",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": "is this working?  | is this working?  | I\u2019ll do a light check from the WSL project path: confirm I can see the workspace and the handoff docs named in your instructions, without changing anything. | I\u2019ll do a light check from the WSL projec",
+      "raw_bytes": 201155,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-01T21-31-40-019f2118-cb06-7c63-a44b-206acb212343.jsonl",
+      "session_id": "019f2118-cb06-7c63-a44b-206acb212343",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": "project title: Membership Taxonomy Migration  | project title: Membership Taxonomy Migration  | I\u2019ll update the thread title so this workspace is easier to recognize later. | I\u2019ll update the thread title so this workspace is easier to recog",
+      "raw_bytes": 574536,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-07T03-53-59-019f3c36-9ce9-7c61-a32c-eefc0e5c718b.jsonl",
+      "session_id": "019f3c36-9ce9-7c61-a32c-eefc0e5c718b",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": " # Files mentioned by the user:  ## DESIGN006 \u2014 Job Finder State 2: Locked Page Shell + Canonical \u201cB\u201d Listing Forma\u2026: /mnt/c/Users/bobre/.codex/attachments/5fbe |  # Files mentioned by the user:  ## DESIGN006 \u2014 Job Finder State 2: Locked Pa",
+      "raw_bytes": 264001581,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-14T04-20-17-019f605b-350d-7be0-9027-a14c8d1b2549.jsonl",
+      "session_id": "019f5133-2e24-72c2-9f5a-725c2fba64de",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": "How do I maintain context in this new window?  | How do I maintain context in this new window?  | I\u2019ll anchor this to the Teachers.Net continuity workflow you just supplied, so the new window starts from project-local state rather than conv",
+      "raw_bytes": 299810648,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-15T12-02-42-019f6728-eae7-7400-a160-cc3902280f55.jsonl",
+      "session_id": "019f605b-5be2-7802-8857-4d545657645a",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": "are you able to ingest the content of this chatgpt discussion I just had?  https://chatgpt.com/g/g-p-68e44725803881918fe3c18f39bf4847-teachers-net-tnet/c/6a5d1d | are you able to ingest the content of this chatgpt discussion I just had?  ht",
+      "raw_bytes": 1619818,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-19T19-30-04-019f7d5b-e9cf-7182-b1c7-f99e21fe9e42.jsonl",
+      "session_id": "019f7d5b-e9cf-7182-b1c7-f99e21fe9e42",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": "signal when loaded  | signal when loaded  | Loaded and ready. | Loaded and ready.",
+      "raw_bytes": 24501868,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-28T05-43-58-019fa8c0-d693-7923-8bcc-c8d201092e7c.jsonl",
+      "session_id": "019fa8c0-d693-7923-8bcc-c8d201092e7c",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/home/bobreap/projects/teachers-net-site",
+      "preview": "where did my session go I just started?  | where did my session go I just started?  | I\u2019ll check the recent Codex tasks and identify the one you just started. | I\u2019ll check the recent Codex tasks and identify the one you just started.",
+      "raw_bytes": 224762,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-03T13-50-49-019fc964-b83e-74f2-9951-b3b6e7bce781.jsonl",
+      "session_id": "019fc964-b83e-74f2-9951-b3b6e7bce781",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "C:\\Users\\bobre",
+      "preview": "<environment_context>   <cwd>C:\\Users\\bobre</cwd>   <shell>powershell</shell>   <current_date>2026-08-04</current_date>   <timezone>America/Los_Angeles</timezon | sessions | sessions | What would you like to do with sessions\u2014view active ses",
+      "raw_bytes": 75758,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-04T03-12-33-019fcc42-bdc9-7952-b7e2-a5e67680b70d.jsonl",
+      "session_id": "019fcc42-bdc9-7952-b7e2-a5e67680b70d",
+      "title": ""
+    },
+    {
+      "classification": "AMBIGUOUS",
+      "cwd": "/mnt/c/Users/bobre/.codex/.chatgpt-projects/g-p-68e44725803881918fe3c18f39bf4847",
+      "preview": "Are you a chatgpt session, or a codex session?  | Are you a chatgpt session, or a codex session?  | I\u2019m a Codex session running inside the ChatGPT desktop app. | I\u2019m a Codex session running inside the ChatGPT desktop app.",
+      "raw_bytes": 129912,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-06T07-43-05-019fd787-2139-7fd2-a589-fca8c4f97dad.jsonl",
+      "session_id": "019fd787-2139-7fd2-a589-fca8c4f97dad",
+      "title": ""
+    }
+  ],
+  "canonical_fossil_path": "docs/process/codex-conversation-archive/codex-conversation-fossil.md",
+  "discovery_inventory": {
+    "active_deferred_count": 0,
+    "ambiguous_count": 11,
+    "include_count": 5,
+    "include_sessions": [
+      {
+        "classification": "INCLUDE",
+        "cwd": "/home/bobreap/projects/teachers-net-site",
+        "preview": " # Files mentioned by the user:  ## DESIGN006 \u2014 Job Finder State 2: Locked Page Shell + Canonical \u201cB\u201d Listing Forma\u2026: /mnt/c/Users/bobre/.codex/attachments/5fbe |  # Files mentioned by the user:  ## DESIGN006 \u2014 Job Finder State 2: Locked Pa",
+        "raw_bytes": 263955707,
+        "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-11T05-42-16-019f5133-2e24-72c2-9f5a-725c2fba64de.jsonl",
+        "session_id": "019f5133-2e24-72c2-9f5a-725c2fba64de",
+        "title": ""
+      },
+      {
+        "classification": "INCLUDE",
+        "cwd": "/home/bobreap/projects/teachers-net-site",
+        "preview": "How do I maintain context in this new window?  | How do I maintain context in this new window?  | I\u2019ll anchor this to the Teachers.Net continuity workflow you just supplied, so the new window starts from project-local state rather than conv",
+        "raw_bytes": 247250517,
+        "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-14T04-20-27-019f605b-5be2-7802-8857-4d545657645a.jsonl",
+        "session_id": "019f605b-5be2-7802-8857-4d545657645a",
+        "title": ""
+      },
+      {
+        "classification": "INCLUDE",
+        "cwd": "/home/bobreap/projects/teachers-net-site",
+        "preview": "do you retain context from the chat titled \"Job Center 7/15/26\"?  | do you retain context from the chat titled \"Job Center 7/15/26\"?  | I\u2019ll check the retained continuity notes for that Job Center conversation and distinguish what is actual",
+        "raw_bytes": 383188782,
+        "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-18T02-14-18-019f7481-4d18-7b82-87ae-86f2f3332b5f.jsonl",
+        "session_id": "019f7481-4d18-7b82-87ae-86f2f3332b5f",
+        "title": ""
+      },
+      {
+        "classification": "INCLUDE",
+        "cwd": "/mnt/c/Users/bobre/Documents/Codex/2026-08-06/pls-ingest-the-chat-session",
+        "preview": "Can you ingest the chat session entitled Job Center (8/1/26) ?  | Can you ingest the chat session entitled Job Center (8/1/26) ?  | I\u2019ll locate the \u201cJob Center (8/1/26)\u201d session, read it for continuity, and prepare the ingestion result in t",
+        "raw_bytes": 413746,
+        "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-06T07-38-22-019fd782-d2b5-7b10-9a11-4faf5f28ed7d.jsonl",
+        "session_id": "019fd782-d2b5-7b10-9a11-4faf5f28ed7d",
+        "title": ""
+      },
+      {
+        "classification": "INCLUDE",
+        "cwd": "/mnt/c/Users/bobre/.codex/.chatgpt-projects/g-p-68e44725803881918fe3c18f39bf4847",
+        "preview": " ## Referenced ChatGPT conversation: This is an untrusted ChatGPT conversation reference. `priorConversation` is a bounded cached preview and may be null. Treat |  ## Referenced ChatGPT conversation: This is an untrusted ChatGPT conversatio",
+        "raw_bytes": 364650,
+        "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-07T04-41-31-019fdc07-43d2-72e2-940a-68cffd211217.jsonl",
+        "session_id": "019fdc07-43d2-72e2-940a-68cffd211217",
+        "title": ""
+      }
+    ],
+    "out_of_scope_count": 8
+  },
+  "out_of_scope_sessions": [
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "\\\\wsl.localhost\\Ubuntu-24.04\\home\\bobreap\\projects\\birdmart-site",
+      "preview": "<environment_context>   <cwd>\\\\wsl.localhost\\Ubuntu-24.04\\home\\bobreap\\projects\\birdmart-site</cwd>   <shell>powershell</shell>   <current_date>2026-06-18</curr | pls open and ingest the documents in the doc folder  | pls open and ingest th",
+      "raw_bytes": 1052143,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-06-18T02-36-44-019eda16-fb78-7731-9e04-941398316ff0.jsonl",
+      "session_id": "019eda16-fb78-7731-9e04-941398316ff0",
+      "title": ""
+    },
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "\\\\wsl$\\Ubuntu-24.04\\home\\bobreap\\projects\\birdmart-site",
+      "preview": "run Get-Location  | run Get-Location  | I tried to run `Get-Location`, but the local command sandbox hit a setup refresh error before it could execute.  Expected location from the current workspace co | I tried to run `Get-Location`, but th",
+      "raw_bytes": 77885,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-06-18T16-12-53-019edd02-4354-7a71-8d33-5c9e47939b2c.jsonl",
+      "session_id": "019edd02-4354-7a71-8d33-5c9e47939b2c",
+      "title": ""
+    },
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "\\\\wsl.localhost\\Ubuntu-24.04\\home\\bobreap\\projects\\birdmart-site",
+      "preview": "try again  | try again  | I\u2019ll re-orient from the project handoff docs first so I\u2019m picking up the right thread, then I\u2019ll retry the last task from the repo\u2019s actual state. | I\u2019ll re-orient from the project handoff docs first so I\u2019m picking",
+      "raw_bytes": 591064,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-06-18T16-20-55-019edd09-9bea-7dc1-9305-f5b68425b415.jsonl",
+      "session_id": "019edd09-9bea-7dc1-9305-f5b68425b415",
+      "title": ""
+    },
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "\\\\wsl.localhost\\Ubuntu-24.04\\home\\bobreap\\projects\\birdmart-site",
+      "preview": "Please test:\r WSL project access\r DDEV/Docker access\r read access to C:\\Main\\Active\\birdmart\r write access to C:\\Main\\Active\\birdmart\r  | Please test:\r WSL project access\r DDEV/Docker access\r read access to C:\\Main\\Active\\birdmart\r write ac",
+      "raw_bytes": 11496923,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-06-18T17-31-11-019edd49-f278-7020-b79c-e8df19d41dca.jsonl",
+      "session_id": "019edd49-f278-7020-b79c-e8df19d41dca",
+      "title": ""
+    },
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "\\\\wsl.localhost\\Ubuntu-24.04\\home\\bobreap\\projects\\birdmart-site",
+      "preview": "Let's revise the existing homepage, to closely approximate the provided target. You may use placeholders for the image, this will enable us to see the size and  | Let's revise the existing homepage, to closely approximate the provided targe",
+      "raw_bytes": 18900235,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-06-19T03-49-57-019edf80-5e4a-7ed0-a3ac-0a546eb3acf2.jsonl",
+      "session_id": "019edf80-5e4a-7ed0-a3ac-0a546eb3acf2",
+      "title": ""
+    },
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "/home/bobreap/projects/lessonbank-2.1",
+      "preview": "<environment_context>   <cwd>/home/bobreap/projects/lessonbank-2.1</cwd>   <shell>bash</shell>   <current_date>2026-07-03</current_date>   <timezone>America/Los | You should have access to my Google Drive - confirm you have access to Engine",
+      "raw_bytes": 26789021,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-03T07-47-09-019f2872-a44f-79f1-9938-86b80dbfa19a.jsonl",
+      "session_id": "019f2872-a44f-79f1-9938-86b80dbfa19a",
+      "title": ""
+    },
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "/home/bobreap/projects/lessonbank-2.1",
+      "preview": "<environment_context>   <cwd>/home/bobreap/projects/lessonbank-2.1</cwd>   <shell>bash</shell>   <current_date>2026-07-03</current_date>   <timezone>America/Los | You should have access to my Google Drive - confirm you have access to Engine",
+      "raw_bytes": 30540936,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-15T14-33-39-019f67b3-1cb7-7f42-bf17-095ad384a370.jsonl",
+      "session_id": "019f2872-a44f-79f1-9938-86b80dbfa19a",
+      "title": ""
+    },
+    {
+      "classification": "OUT_OF_SCOPE",
+      "cwd": "/home/bobreap/projects/lessonbank-2.1",
+      "preview": "Please read and integrate the context from the session labeled \"Lesson Bank 7/15/26\"  | Please read and integrate the context from the session labeled \"Lesson Bank 7/15/26\"  | I\u2019ll locate the \u201cLesson Bank 7/15/26\u201d session context, read the ",
+      "raw_bytes": 36291940,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-15T20-21-59-019f68f2-0708-7dd0-aa1d-0747103ab494.jsonl",
+      "session_id": "019f68f2-0708-7dd0-aa1d-0747103ab494",
+      "title": ""
+    }
+  ],
+  "renderer_version": "codex-transcript-archive-v1",
+  "schema_version": "1.0",
+  "sessions": [
+    {
+      "archive_status": "INCORPORATED",
+      "assistant_message_count": 265,
+      "chronological_order": 1,
+      "completeness_classification": "HIGH-CONFIDENCE VISIBLE CONVERSATION",
+      "credential_match_classes": {},
+      "credential_publication_status": "NO_OBVIOUS_CREDENTIAL_PATTERNS",
+      "derived_bytes": 268148,
+      "derived_transcript_path": "sessions/019f5133-2e24-72c2-9f5a-725c2fba64de.txt",
+      "derived_transcript_sha256": "ef44190705142967c0a079c99e656cbcbbbabaec9bf5623188db146f0ebe3f8f",
+      "first_timestamp": "2026-07-11T12:42:30.950Z",
+      "last_timestamp": "2026-07-14T11:31:45.926Z",
+      "publication_status": "SAFE_VERBATIM",
+      "raw_bytes": 263955707,
+      "raw_lines": 4399,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-11T05-42-16-019f5133-2e24-72c2-9f5a-725c2fba64de.jsonl",
+      "raw_source_sha256": "76935e9dab77d44a27823f3865f71633913f87c4d1e0c1e2d156e54c78dc4607",
+      "renderer_version": "codex-transcript-archive-v1",
+      "safe_bytes": 268148,
+      "safe_transcript_path": "sessions/019f5133-2e24-72c2-9f5a-725c2fba64de.txt",
+      "safe_transcript_sha256": "ef44190705142967c0a079c99e656cbcbbbabaec9bf5623188db146f0ebe3f8f",
+      "session_id": "019f5133-2e24-72c2-9f5a-725c2fba64de",
+      "source_mtime": 1784028705.940427,
+      "user_message_count": 71
+    },
+    {
+      "archive_status": "INCORPORATED",
+      "assistant_message_count": 378,
+      "chronological_order": 2,
+      "completeness_classification": "HIGH-CONFIDENCE VISIBLE CONVERSATION",
+      "credential_match_classes": {},
+      "credential_publication_status": "NO_OBVIOUS_CREDENTIAL_PATTERNS",
+      "derived_bytes": 368732,
+      "derived_transcript_path": "sessions/019f605b-5be2-7802-8857-4d545657645a.txt",
+      "derived_transcript_sha256": "c42cc2c81f6eb726526097c51c44da38f618d4193b2859b551dcdc82cfad1e45",
+      "first_timestamp": "2026-07-14T11:20:34.688Z",
+      "last_timestamp": "2026-07-15T18:56:11.960Z",
+      "publication_status": "SAFE_VERBATIM",
+      "raw_bytes": 247250517,
+      "raw_lines": 4182,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-14T04-20-27-019f605b-5be2-7802-8857-4d545657645a.jsonl",
+      "raw_source_sha256": "87ada9ec22e04116f110b723ca6857976a1e095b9c2685c6feb7b3d68655fe84",
+      "renderer_version": "codex-transcript-archive-v1",
+      "safe_bytes": 368732,
+      "safe_transcript_path": "sessions/019f605b-5be2-7802-8857-4d545657645a.txt",
+      "safe_transcript_sha256": "c42cc2c81f6eb726526097c51c44da38f618d4193b2859b551dcdc82cfad1e45",
+      "session_id": "019f605b-5be2-7802-8857-4d545657645a",
+      "source_mtime": 1784141771.4820807,
+      "user_message_count": 78
+    },
+    {
+      "archive_status": "INCORPORATED",
+      "assistant_message_count": 2083,
+      "chronological_order": 3,
+      "completeness_classification": "HIGH-CONFIDENCE VISIBLE CONVERSATION",
+      "credential_match_classes": {},
+      "credential_publication_status": "NO_OBVIOUS_CREDENTIAL_PATTERNS",
+      "derived_bytes": 1670326,
+      "derived_transcript_path": "sessions/019f7481-4d18-7b82-87ae-86f2f3332b5f.txt",
+      "derived_transcript_sha256": "7fe9fff46e461ebad80b96750fcd8b0bcd64491e1e80153b341d32240c3f605e",
+      "first_timestamp": "2026-07-18T09:14:25.321Z",
+      "last_timestamp": "2026-08-02T00:33:15.075Z",
+      "publication_status": "SAFE_VERBATIM",
+      "raw_bytes": 383188782,
+      "raw_lines": 44233,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-07-18T02-14-18-019f7481-4d18-7b82-87ae-86f2f3332b5f.jsonl",
+      "raw_source_sha256": "e59897f257b9a4962fee4735aa78426065abc1aca3a82e9960687a142318739e",
+      "renderer_version": "codex-transcript-archive-v1",
+      "safe_bytes": 1670326,
+      "safe_transcript_path": "sessions/019f7481-4d18-7b82-87ae-86f2f3332b5f.txt",
+      "safe_transcript_sha256": "7fe9fff46e461ebad80b96750fcd8b0bcd64491e1e80153b341d32240c3f605e",
+      "session_id": "019f7481-4d18-7b82-87ae-86f2f3332b5f",
+      "source_mtime": 1785630781.2866457,
+      "user_message_count": 605
+    },
+    {
+      "archive_status": "INCORPORATED",
+      "assistant_message_count": 6,
+      "chronological_order": 4,
+      "completeness_classification": "HIGH-CONFIDENCE VISIBLE CONVERSATION",
+      "credential_match_classes": {},
+      "credential_publication_status": "NO_OBVIOUS_CREDENTIAL_PATTERNS",
+      "derived_bytes": 3921,
+      "derived_transcript_path": "sessions/019fd782-d2b5-7b10-9a11-4faf5f28ed7d.txt",
+      "derived_transcript_sha256": "d43a5fbdc9eca43b181d2b26e226cbd42d196b3db4994bdc971f30541e00c22f",
+      "first_timestamp": "2026-08-06T14:38:42.423Z",
+      "last_timestamp": "2026-08-06T14:41:05.076Z",
+      "publication_status": "SAFE_VERBATIM",
+      "raw_bytes": 413746,
+      "raw_lines": 84,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-06T07-38-22-019fd782-d2b5-7b10-9a11-4faf5f28ed7d.jsonl",
+      "raw_source_sha256": "cbde55fb8969b46ae63c78934c4d8bf04ca44fedc991a387fca72eea9b2fc439",
+      "renderer_version": "codex-transcript-archive-v1",
+      "safe_bytes": 3921,
+      "safe_transcript_path": "sessions/019fd782-d2b5-7b10-9a11-4faf5f28ed7d.txt",
+      "safe_transcript_sha256": "d43a5fbdc9eca43b181d2b26e226cbd42d196b3db4994bdc971f30541e00c22f",
+      "session_id": "019fd782-d2b5-7b10-9a11-4faf5f28ed7d",
+      "source_mtime": 1786027264.9671755,
+      "user_message_count": 3
+    },
+    {
+      "archive_status": "INCORPORATED",
+      "assistant_message_count": 13,
+      "chronological_order": 5,
+      "completeness_classification": "HIGH-CONFIDENCE VISIBLE CONVERSATION",
+      "credential_match_classes": {},
+      "credential_publication_status": "NO_OBVIOUS_CREDENTIAL_PATTERNS",
+      "derived_bytes": 22061,
+      "derived_transcript_path": "sessions/019fdc07-43d2-72e2-940a-68cffd211217.txt",
+      "derived_transcript_sha256": "691a374d780cfcb833242a4d156c4333213931aff1dfcfc0db89a8c001ebbf71",
+      "first_timestamp": "2026-08-07T11:41:41.502Z",
+      "last_timestamp": "2026-08-07T12:33:04.117Z",
+      "publication_status": "SAFE_VERBATIM",
+      "raw_bytes": 364650,
+      "raw_lines": 131,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-07T04-41-31-019fdc07-43d2-72e2-940a-68cffd211217.jsonl",
+      "raw_source_sha256": "e47b3d5f8742a8ae1dcebf9b7f22ac5970b4c60a6c463edd7c9f2a32572bbc5b",
+      "renderer_version": "codex-transcript-archive-v1",
+      "safe_bytes": 22061,
+      "safe_transcript_path": "sessions/019fdc07-43d2-72e2-940a-68cffd211217.txt",
+      "safe_transcript_sha256": "691a374d780cfcb833242a4d156c4333213931aff1dfcfc0db89a8c001ebbf71",
+      "session_id": "019fdc07-43d2-72e2-940a-68cffd211217",
+      "source_mtime": 1786105984.1382031,
+      "user_message_count": 8
+    }
+  ]
+}

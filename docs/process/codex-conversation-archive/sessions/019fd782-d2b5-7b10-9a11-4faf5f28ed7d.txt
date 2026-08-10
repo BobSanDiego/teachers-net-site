@@ -1,0 +1,118 @@
+===============================================================================
+GENERATED CODEX CONVERSATION TRANSCRIPT
+DERIVED ARTIFACT — RAW SOURCE REMAINS AUTHORITATIVE
+
+Session ID:
+  019fd782-d2b5-7b10-9a11-4faf5f28ed7d
+Raw source:
+  /mnt/c/Users/bobre/.codex/archived_sessions/rollout-2026-08-06T07-38-22-019fd782-d2b5-7b10-9a11-4faf5f28ed7d.jsonl
+Raw source SHA-256:
+  cbde55fb8969b46ae63c78934c4d8bf04ca44fedc991a387fca72eea9b2fc439
+Raw source bytes:
+  413746
+Raw source event/line count:
+  84
+First source timestamp:
+  2026-08-06T14:38:42.423Z
+Last source timestamp:
+  2026-08-06T14:41:05.076Z
+Renderer/version:
+  codex-transcript-archive-v1
+Completeness classification:
+  HIGH-CONFIDENCE VISIBLE CONVERSATION
+===============================================================================
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-U0001
+Role: USER
+Source line: 7
+Timestamp: 2026-08-06T14:38:48.272Z
+
+Text:
+Can you ingest the chat session entitled Job Center (8/1/26) ?
+
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-A0001
+Role: ASSISTANT
+Source line: 11
+Timestamp: 2026-08-06T14:38:50.731Z
+
+Text:
+I’ll locate the “Job Center (8/1/26)” session, read it for continuity, and prepare the ingestion result in this task.
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-A0002
+Role: ASSISTANT
+Source line: 32
+Timestamp: 2026-08-06T14:39:14.590Z
+
+Text:
+I found the exact ChatGPT session and have begun reading it. It contains the recent JC053/MIG004 boundary discussion and the DATA002–DATA008 sequencing decision; I’m continuing through the older turns so the handoff is complete rather than based only on the preview.
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-A0003
+Role: ASSISTANT
+Source line: 46
+Timestamp: 2026-08-06T14:39:26.152Z
+
+Text:
+Yes. I located and ingested **“Job Center (8/1/26)”**.
+
+The current authoritative position is:
+
+- DATA001 architecture approved and committed.
+- Primary Resource is required for every new Job.
+- Next implementation sequence: **DATA002 → DATA008**.
+- The current production page is a temporary JC053 draft/state seam, not the refined wizard.
+- Real UI migration is deferred until the data foundation is complete.
+- The established automatic-handoff ticket ritual must be restored before issuing DATA002.
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-U0002
+Role: USER
+Source line: 52
+Timestamp: 2026-08-06T14:40:20.318Z
+
+Text:
+Pls move this current chat into the Teachers.Net (TNET) project and entitle it "Job Center 8/6/26)"
+
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-A0004
+Role: ASSISTANT
+Source line: 56
+Timestamp: 2026-08-06T14:40:22.443Z
+
+Text:
+I’ll move this task into the Teachers.Net project and rename it exactly as requested.
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-A0005
+Role: ASSISTANT
+Source line: 73
+Timestamp: 2026-08-06T14:40:32.790Z
+
+Text:
+Renamed this task to **“Job Center 8/6/26)”**.
+
+I found the **Teachers.Net (TNET)** project, but the available task controls don’t support moving an existing Codex task into a ChatGPT project.
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-U0003
+Role: USER
+Source line: 79
+Timestamp: 2026-08-06T14:41:00.966Z
+
+Text:
+is this a codex session? It says "ChatGPT" on the side
+
+
+-------------------------------------------------------------------------------
+CODEX-019fd782-A0006
+Role: ASSISTANT
+Source line: 82
+Timestamp: 2026-08-06T14:41:02.801Z
+
+Text:
+Yes—this is a Codex task running inside the ChatGPT app. The “ChatGPT” label refers to the app surface, not the session type.
