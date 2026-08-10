@@ -41,7 +41,7 @@ Documentation governance:
 
 - Shared governance docs live in `docs/`.
 - Project-specific docs live in project directories such as:
-  - `docs/job-center/`
+  - `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/`
   - `docs/core-terms/`
   - `docs/membership-taxonomy/`
 - Every active workstream should have its own Project Cursor and Engineering
@@ -93,11 +93,11 @@ Before coding:
 7. Read the active project's Engineering Handoff.
 8. For Jobs tickets, also read the ticket-requested Jobs docs such as:
    - `wordpress/wp-content/plugins/tnet-jobs/docs/development-constitution.md`
-   - `docs/job-center/project-cursor.md`
-   - `docs/job-center/engineering-handoff.md`
-   - `docs/job-center/jobs-roadmap.md`
-   - `docs/job-center/product-definition-v1.md`
-   - `docs/job-center/jc053-wizard-design-system-v1.md`
+   - `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md`
+   - `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md`
+   - `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jobs-roadmap.md`
+   - `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/product-definition-v1.md`
+   - `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jc053-wizard-design-system-v1.md`
    - `docs/design-system-v1.md`
    - `docs/codex-ticket-discipline.md`
 
@@ -164,7 +164,7 @@ Taxonomy, or future workstreams.
 
 JC053 wizard authority:
 Future wizard tickets must reuse the canonical primitives defined in
-`docs/job-center/jc053-wizard-design-system-v1.md`, including the Wizard
+`wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jc053-wizard-design-system-v1.md`, including the Wizard
 Responsive Form Grid, Form Control with Trailing Icon, shared stepper, bottom
 navigation, and Choice Card patterns. The Job Center roadmap and Engineering
 Handoff must point to this authority; do not re-explain or fork those patterns

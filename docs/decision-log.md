@@ -69,7 +69,7 @@ schema migration, delivery, or broad UX implementation.
 - One primary image is owned by a Jobs media service with compression, limits, provenance, derivatives, and CDN-ready references.
 - Every Job uses exactly one Primary Resource as its organizational anchor, one Work Arrangement, optional additional locations, and optional job-specific overrides. Remote, Hybrid, District-wide, and Multi-site are arrangements, not resource types; they do not remove the Primary Resource requirement.
 - `full_name` is required identity; `display_name` is optional presentation metadata.
-- The adopted architecture is the staged hybrid documented in `docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`.
+- The adopted architecture is the staged hybrid documented in `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/DATA001-school-jobsite-architecture-decision-v1.md`.
 - Employer claims require authority verification; recruiter identities are not
   auto-created from imported records.
 - Employer Operations is a hybrid authenticated workspace inside the standard
@@ -86,7 +86,7 @@ schema migration, delivery, or broad UX implementation.
   excludes remote jobs without assigning synthetic distance, visibly discloses
   the exclusion, and offers a one-click remote-only alternative. Basic Search
   remains low-friction; expanded search exposes Work Location. The full
-  contract is canonical in `docs/job-center/job-finder-search-contract-v1.md`.
+  contract is canonical in `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/job-finder-search-contract-v1.md`.
 - **JC052-DESIGN001 — Employer Workspace flow authority:** My Jobs, School /
   Job Site management, Add, Edit, and Manage share one employer-authorized
   shell; Organization Location, Job Work Location, and public Search behavior
@@ -94,7 +94,7 @@ schema migration, delivery, or broad UX implementation.
   imagery is optional with a Teachers.Net default; and progressive disclosure
   governs lower-frequency fields. The full flow and unresolved approval
   questions are canonical in
-  `docs/job-center/employer-workspace-flow-authority-v1.md`.
+  `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/employer-workspace-flow-authority-v1.md`.
 
 ## Architectural Decisions
 

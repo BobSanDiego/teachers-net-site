@@ -138,7 +138,8 @@ protected `output.txt` file and must never replace or modify it.
 
 Project documents belong under their project directory:
 
-- `docs/job-center/`
+- `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/` (canonical nested
+  Job Center project authority; the root path is only a pointer)
 - `docs/core-terms/`
 - `docs/membership-taxonomy/`
 
@@ -246,13 +247,13 @@ Job Center, Core Terms, or Membership Taxonomy state.
 
 ### Job Center
 
-Path: `docs/job-center/`
+Path: `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/`
 
 Primary local operational docs:
 
-- `docs/job-center/project-cursor.md`
-- `docs/job-center/engineering-handoff.md`
-- `docs/job-center/v1-execution-plan.md`
+- `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md`
+- `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md`
+- `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/v1-execution-plan.md`
 
 ### Core Terms
 

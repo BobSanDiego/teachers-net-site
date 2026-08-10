@@ -183,7 +183,7 @@ roadmaps, specifications, implementation details, and verification instructions.
 
 Current project directories:
 
-- Job Center: `docs/job-center/`
+- Job Center: `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/`
 - Core Terms: `docs/core-terms/`
 - Membership Taxonomy: `docs/membership-taxonomy/`
 
@@ -372,15 +372,17 @@ continuity updates, or infrastructure creation.
 
 - Plugin path: `wordpress/wp-content/plugins/tnet-jobs`
 - Remote: `git@github.com:BobSanDiego/tnet-jobs.git`
-- Current Job Center status belongs in `docs/job-center/project-cursor.md` and
-  `docs/job-center/engineering-handoff.md`.
+- Current Job Center status belongs in
+  `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md`
+  and `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md`.
 
 ## Project Cursor
 
 Each active workstream owns its Project Cursor in its project directory.
 
-For Job Center, see `docs/job-center/project-cursor.md` and
-`docs/job-center/engineering-handoff.md`.
+For Job Center, see
+`wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md` and
+`wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md`.
 
 For Core Terms, see `docs/core-terms/project-cursor.md` and
 `docs/core-terms/engineering-handoff.md`.

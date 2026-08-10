@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="872" height="1802" viewBox="0 0 872 1802">
+  <title>JC-010 logged-out right rail final-polish candidate 01d</title>
+  <desc>Editable final-polish derivative of job-finder-state-1-right-rail-01c-candidate.png, changing only the right rail within x 637 to 839 and y 70 to 1230.</desc>
+  <image href="../../../../wordpress/wp-content/plugins/tnet-jobs/docs/job-center/design/approved/job-finder-state-1-01b-design-target.png" width="872" height="1802"/>
+
+  <!-- Permitted right-rail editing region: x=637..839, y=70..1260. -->
+  <rect x="637" y="70" width="202" height="1190" fill="#ffffff"/>
+
+  <defs>
+    <style>
+      .panel { fill:#fff; stroke:#e3e8ef; stroke-width:1; }
+      .heading { font-family:Arial,'Liberation Sans',sans-serif; font-size:12px; font-weight:700; fill:#0a1f4a; }
+      .subheading { font-family:Arial,'Liberation Sans',sans-serif; font-size:10.5px; font-weight:700; fill:#17294b; }
+      .body { font-family:Arial,'Liberation Sans',sans-serif; font-size:9px; font-weight:400; fill:#263d63; }
+      .link { font-family:Arial,'Liberation Sans',sans-serif; font-size:9px; font-weight:400; fill:#075cff; }
+      .linked-heading { font-family:Arial,'Liberation Sans',sans-serif; font-size:12px; font-weight:700; fill:#075cff; }
+      .icon { fill:none; stroke:#173d78; stroke-width:1.35; stroke-linecap:round; stroke-linejoin:round; }
+      .list-icon { stroke-width:1.05; transform-box:fill-box; transform-origin:center; transform:scale(.8); }
+      .divider { stroke:#e8edf3; stroke-width:1; }
+    </style>
+  </defs>
+
+  <!-- 1. Account panel reproduced from the corrected right-rail authority. -->
+  <rect class="panel" x="638" y="70" width="200" height="170" rx="4"/>
+  <rect x="651" y="82" width="174" height="78" fill="#f8fafc"/>
+  <text x="659" y="103" class="heading" style="font-size:12px">Start your job search</text>
+  <text x="659" y="128" class="body">Sign in to save jobs, create alerts,</text>
+  <text x="659" y="143" class="body">and receive personalized matches.</text>
+  <rect x="656" y="168" width="164" height="32" rx="3" fill="#fff" stroke="#075cff" stroke-width="1"/>
+  <text x="738" y="188" text-anchor="middle" class="link" style="font-weight:600">Create Free Account</text>
+  <text x="738" y="221" text-anchor="middle" class="body">Already a member? <tspan class="link">Sign in</tspan></text>
+
+  <!-- 2. Search and browse panel -->
+  <rect class="panel" x="638" y="254" width="200" height="350" rx="4"/>
+  <text x="652" y="280" class="heading">Browse jobs by...</text>
+
+  <path class="icon list-icon" d="M652 305l6-3 6 3-6 3zM654 307v4M662 307v4"/>
+  <text x="677" y="309" class="link">Grade Level</text>
+  <path class="icon list-icon" d="M652 326c3-1 5-1 7 1v8c-2-2-4-2-7-1zM659 327c2-2 4-2 7-1v8c-3-1-5-1-7 1z"/>
+  <text x="677" y="333" class="link">Subject</text>
+  <path class="icon list-icon" d="M657 350c-5 0-7 5-4 9l4 5 4-5c3-4 1-9-4-9zM657 355h.01"/>
+  <text x="677" y="357" class="link">Location</text>
+  <rect class="icon list-icon" x="652" y="374" width="11" height="8" rx="1"/>
+  <path class="icon list-icon" d="M655 374v-2h5v2M652 378h11"/>
+  <text x="677" y="381" class="link">Employment Type</text>
+
+  <line class="divider" x1="652" y1="406" x2="824" y2="406"/>
+  <text x="652" y="433" class="heading">Popular Searches</text>
+
+  <g class="icon list-icon">
+    <circle cx="656" cy="459" r="4"/><path d="M659 462l4 4"/>
+    <circle cx="656" cy="485" r="4"/><path d="M659 488l4 4"/>
+    <circle cx="656" cy="511" r="4"/><path d="M659 514l4 4"/>
+    <circle cx="656" cy="537" r="4"/><path d="M659 540l4 4"/>
+  </g>
+  <text x="677" y="463" class="link">Science Teacher</text>
+  <text x="677" y="489" class="link">STEM Teacher</text>
+  <text x="677" y="515" class="link">Elementary Teacher</text>
+  <text x="677" y="541" class="link">Special Education</text>
+
+  <!-- 3. Employer panel -->
+  <rect class="panel" x="638" y="618" width="200" height="145" rx="4"/>
+  <text x="652" y="643" class="heading">Hiring a teacher?</text>
+  <text x="652" y="669" class="body">Reach thousands of educators</text>
+  <text x="652" y="685" class="body">already using Teachers.Net.</text>
+  <rect x="656" y="710" width="164" height="32" rx="3" fill="#fff" stroke="#075cff" stroke-width="1"/>
+  <text x="738" y="730" text-anchor="middle" class="link" style="font-weight:600">Post a Job - Free!</text>
+
+  <!-- 4. Governed 300 x 250 reservation, copied without restyling from the approved base. -->
+  <svg x="638" y="777" width="200" height="200" viewBox="638 908 200 200" preserveAspectRatio="none">
+    <image href="../../../../wordpress/wp-content/plugins/tnet-jobs/docs/job-center/design/approved/job-finder-state-1-01b-design-target.png" width="872" height="1802"/>
+  </svg>
+
+  <!-- 5. Career Chatboards panel -->
+  <rect class="panel" x="638" y="991" width="200" height="206" rx="4"/>
+  <text x="652" y="1016" class="heading">Career Chatboards</text>
+  <text x="652" y="1046" class="link">Job Seekers</text>
+  <text x="652" y="1072" class="link">Recruiters</text>
+  <text x="652" y="1098" class="link">Continuing Education</text>
+  <text x="652" y="1124" class="link">National Boards / NBPTS</text>
+  <text x="652" y="1150" class="link">Tutors</text>
+</svg>

@@ -442,7 +442,7 @@ Project documents:
 
 Current project directories:
 
-- `docs/job-center/`
+- `wordpress/wp-content/plugins/tnet-jobs/docs/job-center/`
 - `docs/core-terms/`
 - `docs/membership-taxonomy/`
 

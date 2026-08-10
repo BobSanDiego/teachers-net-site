@@ -1,14 +1,14 @@
-# Job Center Documentation
+# Job Center Documentation Pointer
 
-This directory contains Teachers.Net Job Center-specific project documents.
+Job Center-specific authority now lives in the nested `tnet-jobs` repository:
 
-Startup docs:
+`wordpress/wp-content/plugins/tnet-jobs/docs/job-center/`
 
-- `project-cursor.md`
-- `engineering-handoff.md`
+The nested repository is the canonical Git owner for Job Center authority,
+architecture, contracts, roadmap, cursor, handoff, UX, responsive decisions,
+data contracts, and planning. Do not create active duplicate Job Center copies
+under the shared root `docs/` tree.
 
-Supporting documents include the Job Center roadmap, V1 product definition,
-schema planning, classification planning, repository planning, and discovery
-artifacts.
-
-Shared governance remains in the parent `docs/` directory.
+Genuinely platform/shared governance remains in the parent `docs/` directory.
+A Job Center ticket that needs to change shared root authority must explicitly
+state that cross-project scope.
