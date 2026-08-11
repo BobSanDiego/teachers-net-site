@@ -2,6 +2,7 @@
 
 Conversation transcripts are intentionally excluded from this ZIP; they are supplied separately as the two self-contained conversation masters.
 
+{"authority_role": "shared Codex bootstrap front door", "bytes": 2866, "filename": "START-CODEX.md", "original_path": "docs/process/conversation-handoff/shared/START-CODEX.md", "sha256": "9df25d6a54ea720e953ca631f610056b48ab460cacdcbf3cfa65f0dbb6b25062", "status": "CURRENT_SOURCE"}
 {"authority_role": "shared ChatGPT engineering operating contract", "bytes": 5204, "filename": "chatgpt-engineering-operating-contract.md", "original_path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "sha256": "8ba8e03748b70350b943f7658819917f8b5f716f6ad375fe84ce5dffd8154f1a", "status": "CURRENT_SOURCE"}
 {"authority_role": "shared handoff lifecycle", "bytes": 2087, "filename": "HANDOFF-LIFECYCLE.md", "original_path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "sha256": "2b7baca5c21bd5e77dbed7a6f0a632dece3f31462994a2c7094e21c23579a12f", "status": "CURRENT_SOURCE"}
 {"authority_role": "shared project record specification", "bytes": 383, "filename": "PROJECT-RECORD-SPEC.md", "original_path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "sha256": "810229cdca9cdd55009e359b58932b236ef96b925ac3a5dfb26f3e06c02ca734", "status": "CURRENT_SOURCE"}

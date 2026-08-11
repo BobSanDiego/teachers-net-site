@@ -10,7 +10,7 @@
       "filename": "00-START-HERE.txt",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "f92d293b01476888e88966a68639c15011a9ac77310e1d1b2905289f83e86a80"
+      "sha256": "06220d02b9aeb2e1d62e2b24eb125c0c6db8fe93477cac3c99071228db34d673"
     },
     {
       "bytes": 5204,
@@ -22,13 +22,13 @@
       "sha256": "8ba8e03748b70350b943f7658819917f8b5f716f6ad375fe84ce5dffd8154f1a"
     },
     {
-      "bytes": 126472,
+      "bytes": 128068,
       "classification": "REPORT_REQUIRED",
       "external_dependency": false,
       "filename": "02-authoritative-guidance.zip",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "426bc159e6bd74743d4adb14e3529086bc29ffaf672c063cb19398cf85e9b08c"
+      "sha256": "464dd71c6929885d6961c557d5a61e6a970cf1ba5ee64658be652a0044ccdeaa"
     },
     {
       "bytes": 723041,
@@ -59,16 +59,16 @@
     }
   ],
   "full_codex_fossil_packaged": false,
-  "generated_at": "2026-08-11T02:21:47+00:00",
-  "guidance_index_sha256": "0426d2ea4dd0ab117f4c21dd945006690aed755a1b6f34fd9904d60641cefde5",
-  "guidance_member_count": 23,
+  "generated_at": "2026-08-11T02:32:00+00:00",
+  "guidance_index_sha256": "885df76530ca9621292161d8a7ec1bce0936a8943b2d9f18098a3ca59305b385",
+  "guidance_member_count": 24,
   "known_limitations": [
     "Live ChatGPT continuation is bounded and explicitly disclosed in the self-contained master."
   ],
   "project": "jobcenter",
   "project_record": "docs/process/conversation-handoff/projects/jobcenter.json",
   "raw_codex_jsonl_included": false,
-  "root_repository_head": "d68f7a5c5520ba63348e7da14f63e42b81349a3e",
+  "root_repository_head": "50235c0ac068aae7ed9f1917c383cc5e30884790",
   "schema_version": "1.0",
   "source_branch": "COMMUNITY003-semantic-community-communications-working-draft"
 }
