@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "project": "community",
+  "renderer_version": "codex-visible-thread-derivative-v1",
+  "raw_jsonl_included": false,
+  "sessions": [
+    {"session_id": "019f7d5b-e9cf-7182-b1c7-f99e21fe9e42", "title": "tnet 3.0", "provenance": "CODEX_VISIBLE_THREAD_DERIVATIVE", "pages": 2, "visible_message_count": 44, "derived_path": "sessions/019f7d5b-e9cf-7182-b1c7-f99e21fe9e42.md", "sha256": "f5ae4f824f8a132cc0898680707d375f6770807b33fa84307791961400bd7367", "bytes": 54202, "raw_source_available": false, "completeness": "VISIBLE SESSION RECOVERY COMPLETE"},
+    {"session_id": "019fa8c0-d693-7923-8bcc-c8d201092e7c", "title": "tnet 3.0 7/30/26", "provenance": "CODEX_VISIBLE_THREAD_DERIVATIVE", "pages": 18, "visible_message_count": 769, "derived_path": "sessions/019fa8c0-d693-7923-8bcc-c8d201092e7c.md", "sha256": "290f44cc77584326dcd8e8021cb06388df2a82fe3592b8a88befabd64311cdbb", "bytes": 418205, "raw_source_available": false, "completeness": "VISIBLE SESSION RECOVERY COMPLETE"}
+  ]
+}

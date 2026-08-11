@@ -34,6 +34,30 @@ def session_records(session_id: str = "019ftest0-aaaa-bbbb-cccc-ddddeeeeeeee") -
 
 
 class CodexTranscriptArchiveTests(unittest.TestCase):
+
+    def test_visible_thread_derivative_exhausts_pages_and_preserves_content(self):
+        pages = [
+            {"thread": {"id": "exact", "title": "Example"}, "page": {"hasMore": True},
+             "turns": [{"id": "t2", "items": [{"type": "agentMessage", "id": "a2", "text": "second"}, {"type": "reasoning", "id": "r2", "summary": ["omit"]}]}]},
+            {"thread": {"id": "exact", "title": "Example"}, "page": {"hasMore": False},
+             "turns": [{"id": "t1", "items": [{"type": "userMessage", "id": "u1", "content": [{"type": "text", "text": "first"}]}, {"type": "fileChange", "id": "f1"}]}]},
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "derivative.txt"
+            result = archive.render_visible_thread_derivative(pages, out)
+            text = out.read_text(encoding="utf-8")
+        self.assertEqual(result["provenance"], "CODEX_VISIBLE_THREAD_DERIVATIVE")
+        self.assertEqual(result["visible_message_count"], 2)
+        self.assertIn("first", text)
+        self.assertIn("second", text)
+        self.assertNotIn("omit", text)
+        self.assertNotIn("fileChange", text)
+
+    def test_visible_thread_derivative_fails_closed(self):
+        page = {"thread": {"id": "exact"}, "page": {"hasMore": True}, "turns": []}
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(ValueError):
+                archive.render_visible_thread_derivative([page], Path(tmp) / "x")
     def test_schema_allowlist_order_ids_and_exclusions(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / "session.jsonl"

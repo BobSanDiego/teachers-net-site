@@ -28,6 +28,7 @@ from typing import Any, Iterable
 
 
 RENDERER_VERSION = "codex-transcript-archive-v1"
+VISIBLE_THREAD_DERIVATIVE_VERSION = "codex-visible-thread-derivative-v1"
 DEFAULT_ARCHIVE_DIR = Path("docs/process/codex-conversation-archive")
 DEFAULT_SOURCE_DIRS = [
     Path("/mnt/c/Users/bobre/.codex/archived_sessions"),
@@ -39,6 +40,10 @@ KNOWN_JOB_CENTER_SESSION_IDS = {
 KNOWN_VIEWS_SESSION_IDS = {
     "019fce24-5428-7230-9464-05c4506821cf",
     "019fe1c8-3cb3-7610-ad3f-36bd12545839",
+}
+KNOWN_COMMUNITY_SESSION_IDS = {
+    "019f7d5b-e9cf-7182-b1c7-f99e21fe9e42",
+    "019fa8c0-d693-7923-8bcc-c8d201092e7c",
 }
 
 INTERNAL_PREFIXES = (
@@ -157,6 +162,105 @@ def session_short(session_id: str) -> str:
 
 def safe_slug(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]+", "-", value).strip("-") or "unknown"
+
+
+def visible_thread_messages(thread: dict[str, Any]) -> list[dict[str, Any]]:
+    """Extract visible user/assistant messages from a Codex app page.
+
+    The app reader returns pages newest-first.  Only userMessage and
+    agentMessage items are eligible; reasoning, tool calls, and file changes
+    are deliberately excluded.  No semantic filtering or summarization occurs.
+    """
+    messages: list[dict[str, Any]] = []
+    for turn in reversed(thread.get("turns") or []):
+        for item in turn.get("items") or []:
+            item_type = item.get("type")
+            if item_type not in {"userMessage", "agentMessage"}:
+                continue
+            if item_type == "userMessage":
+                content = item.get("content") or []
+                text = extract_text(content)
+                role = "user"
+            else:
+                text = item.get("text") or ""
+                role = "assistant"
+            if not text:
+                continue
+            messages.append({
+                "role": role,
+                "text": text,
+                "message_id": str(item.get("id") or ""),
+                "turn_id": str(turn.get("id") or ""),
+                "started_at": turn.get("startedAt"),
+                "completed_at": turn.get("completedAt"),
+            })
+    return messages
+
+
+def render_visible_thread_derivative(pages: list[dict[str, Any]], output: Path) -> dict[str, Any]:
+    """Render a complete, paginated Codex visible-thread recovery.
+
+    ``pages`` must be ordered oldest-to-newest or newest-to-oldest; page
+    ordering is normalized from the reader's declared newest-first contract.
+    Completeness is fail-closed unless the final page reports hasMore=false.
+    """
+    if not pages:
+        raise ValueError("visible thread recovery has no pages")
+    first = pages[0]
+    thread = first.get("thread") or {}
+    expected_id = thread.get("id")
+    if not expected_id:
+        raise ValueError("visible thread recovery has no exact session id")
+    for page in pages:
+        if (page.get("thread") or {}).get("id") != expected_id:
+            raise ValueError("visible thread pages contain conflicting session ids")
+    if pages[-1].get("page", {}).get("hasMore") is not False:
+        raise ValueError("visible thread recovery is incomplete; export required")
+    turns: list[dict[str, Any]] = []
+    for page in pages:
+        turns.extend(page.get("turns") or [])
+    merged = dict(first)
+    merged["turns"] = turns
+    messages = visible_thread_messages(merged)
+    if not messages:
+        raise ValueError("visible thread recovery contains no visible messages")
+    lines = [
+        "CODEX VISIBLE THREAD DERIVATIVE",
+        f"Derivative version: {VISIBLE_THREAD_DERIVATIVE_VERSION}",
+        f"Session ID: {expected_id}",
+        f"Title: {thread.get('title', '')}",
+        "Provenance: CODEX_VISIBLE_THREAD_DERIVATIVE",
+        "Completeness: VISIBLE SESSION RECOVERY COMPLETE",
+        "Raw-source equivalence: NOT CLAIMED",
+        "Extraction: Codex app exact-session reader, bounded pagination exhausted",
+        f"Pages recovered: {len(pages)}",
+        f"Visible messages recovered: {len(messages)}",
+        f"First visible boundary: {messages[0]['message_id']}",
+        f"Last visible boundary: {messages[-1]['message_id']}",
+        "",
+    ]
+    for message in messages:
+        lines.extend([
+            f"[{message['role'].upper()}] {message['message_id']} turn={message['turn_id']}",
+            message["text"],
+            "",
+        ])
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\n".join(lines), encoding="utf-8")
+    return {
+        "session_id": expected_id,
+        "title": thread.get("title", ""),
+        "provenance": "CODEX_VISIBLE_THREAD_DERIVATIVE",
+        "completeness": "VISIBLE SESSION RECOVERY COMPLETE",
+        "raw_source_available": False,
+        "raw_equivalence_claimed": False,
+        "pages": len(pages),
+        "visible_message_count": len(messages),
+        "derived_bytes": output.stat().st_size,
+        "derived_sha256": sha256_file(output),
+        "first_message_id": messages[0]["message_id"],
+        "last_message_id": messages[-1]["message_id"],
+    }
 
 
 def event_timestamp(obj: dict[str, Any]) -> str | None:
@@ -820,6 +924,14 @@ def command_validate_ticket(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_visible_thread(args: argparse.Namespace) -> int:
+    payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    pages = payload.get("pages") if isinstance(payload, dict) else payload
+    result = render_visible_thread_derivative(pages, Path(args.output))
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -841,6 +953,11 @@ def main(argv: list[str] | None = None) -> int:
     p_validate = sub.add_parser("validate-ticket")
     p_validate.add_argument("--ticket", required=True)
     p_validate.set_defaults(func=command_validate_ticket)
+
+    p_visible = sub.add_parser("visible-thread")
+    p_visible.add_argument("--input", required=True, help="JSON envelope containing paginated exact-session reader pages")
+    p_visible.add_argument("--output", required=True)
+    p_visible.set_defaults(func=command_visible_thread)
 
     args = parser.parse_args(argv)
     return args.func(args)

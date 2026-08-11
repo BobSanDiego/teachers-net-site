@@ -1,0 +1,20 @@
+{
+  "project_id": "community",
+  "display_name": "Teachers.Net Community",
+  "state": "REGISTERED / LIFECYCLE READY",
+  "repositories": {"root": "/home/bobreap/projects/teachers-net-community3", "continuity_root": "/home/bobreap/projects/teachers-net-site"},
+  "conversation": {
+    "source_directory": "docs/process/conversation-handoff/community/chatgpt-sources",
+    "master": "docs/process/conversation-handoff/community/chatgpt-complete-current-record.md",
+    "supplied_sources": 6
+  },
+  "codex": {
+    "archive_directory": "docs/process/codex-conversation-archive/community",
+    "fossil": "docs/process/codex-conversation-archive/community/codex-conversation-fossil.md",
+    "manifest": "docs/process/codex-conversation-archive/community/codex-conversation-manifest.json",
+    "portable_record": "docs/process/conversation-handoff/community/codex-complete-current-record.md",
+    "identified_sessions": ["019f7d5b-e9cf-7182-b1c7-f99e21fe9e42", "019fa8c0-d693-7923-8bcc-c8d201092e7c"]
+  },
+  "handoff": {"report_hopper": "tmp/hopper/community", "handoffs": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS", "checkpoint_prefix": "Community"},
+  "scope": {"include": ["Community authorities", "historical TNet 3.0 materials", "identified Community Codex sessions", "shared continuity procedure"], "exclude": ["Job Center authority", "Views authority", "raw Codex JSONL", "Community product implementation"]}
+}
