@@ -21,6 +21,7 @@ CHATGPT_ID = "6a79d7ea-da44-83e8-91eb-460b99ab593b"
 CHATGPT_TITLE = "Job Center (8/10/26)"
 ACTIVE_ID = "019fbfe6-e2d0-73e3-98a1-d10b384cdf7d"
 ACTIVE_SOURCE = Path("/mnt/c/Users/bobre/.codex/sessions/2026/08/01/rollout-2026-08-01T17-36-47-019fbfe6-e2d0-73e3-98a1-d10b384cdf7d.jsonl")
+PROJECT_RECORD = Path("docs/process/conversation-handoff/projects/jobcenter.json")
 
 
 def main() -> int:
@@ -30,9 +31,11 @@ def main() -> int:
     parser.add_argument("--codex-fossil", type=Path, required=True)
     parser.add_argument("--chatgpt-live-continuation", type=Path, required=True)
     parser.add_argument("--active-source", type=Path, default=ACTIVE_SOURCE)
+    parser.add_argument("--project-record", type=Path, default=PROJECT_RECORD)
     args = parser.parse_args()
     generated = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
     args.out.mkdir(parents=True, exist_ok=True)
+    project_record = json.loads(args.project_record.read_text(encoding="utf-8"))
 
     baseline_sha = sha256_file(args.chatgpt_baseline)
     baseline_bytes = args.chatgpt_baseline.stat().st_size
@@ -80,9 +83,10 @@ def main() -> int:
         f"Generated: `{generated}`\n\n"
         "## Evidence status\n\n"
         "This is a handoff record, not product authority. Conversation history may contain brainstorming, rejected ideas, incorrect statements, superseded decisions, and unresolved matters.\n\n"
-        "## Embedded closed canonical base\n\n"
-        f"- Fossil: `{args.codex_fossil}`\n- Historical source conflicts remain quarantined and disclosed by the canonical manifest.\n\n"
-        "```text\n" + args.codex_fossil.read_text(encoding="utf-8") + "\n```\n\n"
+        "## Closed canonical fossil (external forensic evidence)\n\n"
+        f"- Fossil: `{args.codex_fossil}`\n- The full fossil remains preserved and unchanged in the repository.\n"
+        "- It is intentionally not embedded in this routine portable handoff record.\n"
+        "- Historical source conflicts remain quarantined and disclosed by the canonical manifest.\n\n"
         "## ACTIVE HANDOFF SNAPSHOT — NOT CLOSED ARCHIVAL SOURCE\n\n"
         f"- Session ID: `{rendered.session_id}`\n- Raw source: `{rendered.raw_source_path}`\n"
         f"- Source bytes: `{rendered.raw_bytes}`\n- Source lines consumed: `{rendered.raw_lines}`\n"
@@ -102,7 +106,8 @@ def main() -> int:
         "project": "jobcenter",
         "generated_at": generated,
         "chatgpt": {"canonical_master_path": str(chatgpt_path), "live_conversation_title": CHATGPT_TITLE, "live_conversation_id": CHATGPT_ID, "retrieval_method": "exact-id bounded direct app read", "direct_live_retrieval": True, "baseline_sha256": baseline_sha, "baseline_bytes": baseline_bytes, "embedded_transcript_content": True, "external_transcript_dependency": False, "publication_status": "EMBEDDED_SAFE_BASELINE_PLUS_LIVE_BOUNDARY"},
-        "codex": {"canonical_master_path": str(codex_path), "closed_fossil_path": str(args.codex_fossil), "active_snapshot_session_id": rendered.session_id, "active_snapshot_source": rendered.raw_source_path, "active_snapshot_boundary_bytes": rendered.raw_bytes, "active_snapshot_boundary_line": rendered.raw_lines, "active_snapshot_last_timestamp": rendered.last_timestamp, "active_snapshot_user_messages": rendered.user_message_count, "active_snapshot_assistant_messages": rendered.assistant_message_count, "sha256": rendered.transcript_sha256, "bytes": rendered.transcript_bytes, "embedded_transcript_content": True, "external_transcript_dependency": False, "publication_status": rendered.publication_status, "credential_status": rendered.credential_status, "historical_source_conflicts": ["019f5133-2e24-72c2-9f5a-725c2fba64de", "019f605b-5be2-7802-8857-4d545657645a"]},
+        "codex": {"canonical_master_path": str(codex_path), "closed_fossil_path": str(args.codex_fossil), "closed_fossil_embedded": False, "closed_fossil_sha256": sha256_file(args.codex_fossil), "active_snapshot_session_id": rendered.session_id, "active_snapshot_source": rendered.raw_source_path, "active_snapshot_boundary_bytes": rendered.raw_bytes, "active_snapshot_boundary_line": rendered.raw_lines, "active_snapshot_last_timestamp": rendered.last_timestamp, "active_snapshot_user_messages": rendered.user_message_count, "active_snapshot_assistant_messages": rendered.assistant_message_count, "sha256": rendered.transcript_sha256, "bytes": rendered.transcript_bytes, "embedded_transcript_content": True, "external_transcript_dependency": False, "publication_status": rendered.publication_status, "credential_status": rendered.credential_status, "historical_source_conflicts": ["019f5133-2e24-72c2-9f5a-725c2fba64de", "019f605b-5be2-7802-8857-4d545657645a"]},
+        "project_record": project_record,
     }
     (args.out / "conversation-master-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return 0

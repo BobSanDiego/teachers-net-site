@@ -1,0 +1,32 @@
+JOB CENTER ONE-DROP HANDOFF
+Generated: 2026-08-11T00:44:16+00:00
+
+You are receiving one portable Job Center handoff directory. It contains:
+1. 01-CHATGPT-ENGINEERING-OPERATING-CONTRACT.txt — shared engineering operating authority.
+2. 02-authoritative-guidance.zip — current project authority.
+3. 03-chatgpt-complete-current-record.md — conversation evidence.
+4. 04-codex-current-handoff-record.md — compact current Codex evidence.
+5. handoff-manifest.json — provenance and integrity manifest.
+
+READ AND ADOPT THE SHARED CHATGPT ENGINEERING OPERATING CONTRACT FIRST.
+
+CONVERSATION EVIDENCE IS NOT AUTOMATIC PROJECT AUTHORITY. Transcripts may contain brainstorming, rejected or superseded decisions, mistakes, and stale implementation state. Resolve current truth through the authority package.
+
+Authority order:
+1. shared operating contract;
+2. authority manifest/canonical project authority;
+3. product and behavioral contracts;
+4. governance and workflow authority;
+5. Project Cursor and Engineering Handoff;
+6. roadmap/plan;
+7. accepted implementation and verification evidence;
+8. conversation records only for unresolved history/context.
+
+Startup procedure:
+1. read 01-CHATGPT-ENGINEERING-OPERATING-CONTRACT.txt;
+2. inspect handoff-manifest.json and the Job Center project record;
+3. inspect 02-authoritative-guidance.zip and its index;
+4. resolve current authority and operational state;
+5. consult conversation records only as evidence where needed. Do not read all transcript history before current authority.
+
+Respond concisely with: project identified; current phase/workstream; last accepted completed objective; current gate/blocker; preferred next bounded objective; material authority contradiction; and whether this package is sufficient to continue without requesting more context. Then stop for Engineering Director instruction.

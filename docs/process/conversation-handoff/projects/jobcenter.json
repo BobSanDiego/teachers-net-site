@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "project_id": "jobcenter",
+  "display_name": "Job Center",
+  "root_repository": "/home/bobreap/projects/teachers-net-site",
+  "nested_repositories": [
+    "/home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-jobs"
+  ],
+  "companion_chat": {
+    "kind": "chatgpt",
+    "title": "Job Center (8/10/26)",
+    "conversation_id": "6a79d7ea-da44-83e8-91eb-460b99ab593b"
+  },
+  "report_hopper": "tmp/hopper/jobcenter/",
+  "chatgpt_master": "docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md",
+  "codex_portable_handoff": "docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md",
+  "codex_fossil": "docs/process/codex-conversation-archive/codex-conversation-fossil.md",
+  "authority_manifest": "wordpress/wp-content/plugins/tnet-jobs/docs/jc053-authority-manifest-v1.json",
+  "project_cursor": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md",
+  "engineering_handoff": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md",
+  "roadmap": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jobs-roadmap.md",
+  "canonical_runtime": "https://teachers-net.ddev.site/",
+  "guidance_inclusion": "Job Center authority documents plus shared process contract",
+  "guidance_exclusion": ["raw Codex JSONL", "unsafe credentials", "full Codex fossil body"]
+}
