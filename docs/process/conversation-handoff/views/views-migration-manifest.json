@@ -1,0 +1,30 @@
+{
+  "project_record": "docs/process/conversation-handoff/projects/views.json",
+  "chatgpt_sources": [
+    {
+      "filename": "teachers_net_tnet_job_center_8_8_26__2026-08-11.md",
+      "bytes": 52410,
+      "sha256": "2df7cc0d523ebf268a38d649547a703b6a280ebb1396b5f80731fd90441d580e",
+      "boundary": "supplied source file preserved verbatim"
+    },
+    {
+      "filename": "teachers_net_tnet_views_8_10_26__2026-08-11.md",
+      "bytes": 31165,
+      "sha256": "7fe5f6e22568597789f5b6f735bdb53a235025d9724647c1564f11df5d1dc55d",
+      "boundary": "supplied source file preserved verbatim"
+    },
+    {
+      "filename": "teachers_net_tnet_views_8_4_26__2026-08-11.md",
+      "bytes": 88286,
+      "sha256": "b4d7b429c788a9187a7a7fd73831e8222f360424730c1129088a702bf459722e",
+      "boundary": "supplied source file preserved verbatim"
+    }
+  ],
+  "chatgpt_master": "docs/process/conversation-handoff/views/chatgpt-complete-current-record.md",
+  "codex_manifest": "docs/process/codex-conversation-archive/views/codex-conversation-manifest.json",
+  "codex_fossil": "docs/process/codex-conversation-archive/views/codex-conversation-fossil.md",
+  "portable_codex_record": "docs/process/conversation-handoff/views/codex-complete-current-record.md",
+  "source_duplicates": [],
+  "uncertain_overlap": "Preserved by source-separated master sections; no semantic deduplication performed.",
+  "raw_jsonl_included": false
+}

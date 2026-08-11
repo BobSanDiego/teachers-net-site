@@ -36,6 +36,10 @@ DEFAULT_SOURCE_DIRS = [
 KNOWN_JOB_CENTER_SESSION_IDS = {
     "019f605b-5be2-7802-8857-4d545657645a",
 }
+KNOWN_VIEWS_SESSION_IDS = {
+    "019fce24-5428-7230-9464-05c4506821cf",
+    "019fe1c8-3cb3-7610-ad3f-36bd12545839",
+}
 
 INTERNAL_PREFIXES = (
     "<recommended_plugins>",
@@ -295,6 +299,8 @@ def classify_candidate(meta: dict[str, Any], already_seen_ids: set[str]) -> str:
     if "lessonbank" in text or "birdmart" in text or "community3" in text:
         return "OUT_OF_SCOPE"
     if session_id in KNOWN_JOB_CENTER_SESSION_IDS:
+        return "INCLUDE"
+    if session_id in KNOWN_VIEWS_SESSION_IDS:
         return "INCLUDE"
     job_signals = ("job center", "jobcenter", "jc0", "tnet-jobs", "job finder", "job wizard", "job board")
     if any(signal in text for signal in job_signals):

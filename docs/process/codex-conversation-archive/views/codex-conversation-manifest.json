@@ -1,0 +1,59 @@
+{
+  "codex_sessions": [
+    {
+      "assistant_message_count": 423,
+      "classification": "EXPLICIT_ENGINEER_IDENTIFIED_ACTIVE_SNAPSHOT",
+      "completeness": "HIGH-CONFIDENCE VISIBLE CONVERSATION",
+      "credential_status": "NO_OBVIOUS_CREDENTIAL_PATTERNS",
+      "derived_bytes": 400611,
+      "derived_transcript_path": "docs/process/codex-conversation-archive/views/sessions/019fce24-5428-7230-9464-05c4506821cf.md",
+      "derived_transcript_sha256": "fff630715989203175508a5d95b564639c76b7c01c1d159540c0956028109887",
+      "publication_status": "SAFE_VERBATIM",
+      "raw_bytes": 24035576,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/sessions/2026/08/04/rollout-2026-08-04T11-58-35-019fce24-5428-7230-9464-05c4506821cf.jsonl",
+      "raw_source_sha256": "6c95a23fe30fcb6e6f3956f28a3d34f81f719357dd7e33c678ab0ad0f84eb917",
+      "session_id": "019fce24-5428-7230-9464-05c4506821cf",
+      "user_message_count": 172
+    },
+    {
+      "assistant_message_count": 294,
+      "classification": "EXPLICIT_ENGINEER_IDENTIFIED_ACTIVE_SNAPSHOT",
+      "completeness": "HIGH-CONFIDENCE VISIBLE CONVERSATION",
+      "credential_status": "NO_OBVIOUS_CREDENTIAL_PATTERNS",
+      "derived_bytes": 243407,
+      "derived_transcript_path": "docs/process/codex-conversation-archive/views/sessions/019fe1c8-3cb3-7610-ad3f-36bd12545839.md",
+      "derived_transcript_sha256": "77dc9b276e9940782c31981ba824fcab8e9bc8292dce06c345d5e4e2d14d5134",
+      "publication_status": "SAFE_VERBATIM",
+      "raw_bytes": 17894779,
+      "raw_source_path": "/mnt/c/Users/bobre/.codex/sessions/2026/08/08/rollout-2026-08-08T07-30-24-019fe1c8-3cb3-7610-ad3f-36bd12545839.jsonl",
+      "raw_source_sha256": "0a09f8372ee8b55a3511f46b5e56257dc6a7c48cf33c4532b9518855e4a8c329",
+      "session_id": "019fe1c8-3cb3-7610-ad3f-36bd12545839",
+      "user_message_count": 95
+    }
+  ],
+  "full_fossil_packaged": false,
+  "note": "Explicitly identified sessions were active filesystem sources at migration time; preserved as derived snapshots and not falsely classified as closed sessions.",
+  "project": "views",
+  "raw_jsonl_packaged": false,
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "boundary": "supplied source file preserved verbatim",
+      "bytes": 52410,
+      "filename": "teachers_net_tnet_job_center_8_8_26__2026-08-11.md",
+      "sha256": "2df7cc0d523ebf268a38d649547a703b6a280ebb1396b5f80731fd90441d580e"
+    },
+    {
+      "boundary": "supplied source file preserved verbatim",
+      "bytes": 31165,
+      "filename": "teachers_net_tnet_views_8_10_26__2026-08-11.md",
+      "sha256": "7fe5f6e22568597789f5b6f735bdb53a235025d9724647c1564f11df5d1dc55d"
+    },
+    {
+      "boundary": "supplied source file preserved verbatim",
+      "bytes": 88286,
+      "filename": "teachers_net_tnet_views_8_4_26__2026-08-11.md",
+      "sha256": "b4d7b429c788a9187a7a7fd73831e8222f360424730c1129088a702bf459722e"
+    }
+  ]
+}

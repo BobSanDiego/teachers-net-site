@@ -1,0 +1,40 @@
+{
+  "handoff_id": "Views-20260811-012415",
+  "manifest": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/Views-20260811-012415/handoff-manifest.json",
+  "members": [
+    {
+      "bytes": 557,
+      "filename": "00-START-HERE.txt",
+      "sha256": "20705af625fcfe617c4d01e7e5ac665895815511040fa19d4a1f71484950ab1a"
+    },
+    {
+      "bytes": 6162,
+      "filename": "01-CHATGPT-ENGINEERING-OPERATING-CONTRACT.txt",
+      "sha256": "8a948787bb2b7e29786803a43f37d25d2d0cac38958d23713310045403916ea8"
+    },
+    {
+      "bytes": 38101,
+      "filename": "02-authoritative-guidance.zip",
+      "sha256": "6c6912cbe7a075f2f48acad7a57377910318ff8d5e5229e5ffa17c9a9d8e95ee"
+    },
+    {
+      "bytes": 172282,
+      "filename": "03-chatgpt-complete-current-record.md",
+      "sha256": "760dbb46a1e92a4304f09c42fd374708fc273ea14db108fd66951e999de9f250"
+    },
+    {
+      "bytes": 1103,
+      "filename": "04-codex-current-handoff-record.md",
+      "sha256": "3274fa7bafb2ed040a080cc644ba97032e48004d2665af4618765db1877692dc"
+    },
+    {
+      "bytes": 1992,
+      "filename": "project-record.json",
+      "sha256": "487ae7444cd65831420441c0845e36e56f313a104bb8c0563c857af137accddf"
+    }
+  ],
+  "project": "views",
+  "publication_status": "VALIDATED_IMMUTABLE_CHECKPOINT",
+  "windows_path": "C:\\Main\\Active\\Projects\\Teachers.Net\\HANDOFFS\\Views-20260811-012415",
+  "wsl_path": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/Views-20260811-012415"
+}

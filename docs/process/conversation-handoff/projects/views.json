@@ -1,0 +1,44 @@
+{
+  "project_id": "views",
+  "display_name": "Teachers.Net Durable Views",
+  "state": "REGISTERED / LIFECYCLE READY",
+  "repositories": {
+    "root": "/home/bobreap/projects/teachers-net-site",
+    "core_terms": "/home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/profilaxes"
+  },
+  "authorities": {
+    "project_cursor": "docs/core-terms/durable-views-project-cursor.md",
+    "engineering_handoff": "docs/core-terms/durable-views-engineering-handoff.md",
+    "roadmap": "docs/core-terms/durable-views-roadmap.md",
+    "workflow_procedure": "docs/core-terms/views-ticket-handoff-and-execution-procedure.md"
+  },
+  "conversation": {
+    "source_directory": "docs/process/conversation-handoff/views/chatgpt-sources",
+    "master": "docs/process/conversation-handoff/views/chatgpt-complete-current-record.md",
+    "supplied_sources": 3
+  },
+  "codex": {
+    "archive_directory": "docs/process/codex-conversation-archive/views",
+    "fossil": "docs/process/codex-conversation-archive/views/codex-conversation-fossil.md",
+    "manifest": "docs/process/codex-conversation-archive/views/codex-conversation-manifest.json",
+    "portable_record": "docs/process/conversation-handoff/views/codex-complete-current-record.md",
+    "identified_sessions": [
+      "019fce24-5428-7230-9464-05c4506821cf",
+      "019fe1c8-3cb3-7610-ad3f-36bd12545839"
+    ]
+  },
+  "handoff": {
+    "report_hopper": "tmp/hopper/views",
+    "handoffs": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS",
+    "checkpoint_prefix": "Views"
+  },
+  "runtime": {
+    "review_url": "https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views",
+    "qa_profile": "C:/Main/Active/Projects/Teachers.Net/tmp/chrome-qa-profile",
+    "cdp_port": 9222
+  },
+  "scope": {
+    "include": ["Views authorities", "Views transcripts", "identified Views Codex sessions", "shared continuity procedure"],
+    "exclude": ["Job Center authority", "Community authority", "raw Codex JSONL", "Views product implementation"]
+  }
+}
