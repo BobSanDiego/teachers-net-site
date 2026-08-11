@@ -99,3 +99,18 @@ preserve evidence/history and do not become authority merely because they are
 newer. Successor ChatGPT sessions read this contract, resolve project authority,
 then consult conversation records selectively. Handoffs should not require the
 Engineering Director to reconstruct project state manually.
+
+## Direct-upload transport and ZIP packaging
+
+Codex's direct upload transport permits at most 20 directly uploaded files in
+one upload operation. A ZIP counts as one directly uploaded file for that
+transport limit, regardless of its internal member count.
+
+This is a transport rule, not a limit on project authority, handoff contents,
+Report/Hopper artifacts, transcript sources, or archive members. Do not use an
+18-, 19-, or 20-file heuristic as a general packaging threshold. Bundle a
+related set when ZIP transport improves reviewability or transfer, while
+preserving each source's filename, identity, boundary, and required hashes.
+
+Historical reports and fossil evidence are not rewritten merely to conform to
+the current transport rule.
