@@ -7,6 +7,10 @@ published to the active project's registered Report cache, resolved from its
 project record and clean-cycle routing. Do not leave the authoritative report
 only in a repository `tmp/` staging location or another project's cache.
 
+Cycle ownership follows the workstream/objective owner, not an acceptance
+fixture. A Profile, Views, or other project used to exercise shared tooling
+does not own the shared tooling report unless it is itself the objective owner.
+
 An alternate report location is permitted only when the Engineer explicitly
 specifies it. Record that exception in the cycle manifest and terminal report.
 

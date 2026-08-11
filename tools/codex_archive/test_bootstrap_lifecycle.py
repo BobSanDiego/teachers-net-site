@@ -3,13 +3,19 @@ import unittest
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from bootstrap_lifecycle import assert_lifecycle_ready, is_bounded_bootstrap_authorization
+from bootstrap_lifecycle import assert_lifecycle_ready, is_bounded_bootstrap_authorization, resolve_report_owner
 
 
 class BootstrapLifecycleTests(unittest.TestCase):
     def test_explicit_command_is_single_bounded_authorization(self):
         self.assertTrue(is_bounded_bootstrap_authorization("bootstrap this project as directed", "Profile"))
         self.assertFalse(is_bounded_bootstrap_authorization("authorize product implementation", "Profile"))
+
+    def test_report_owner_is_not_replaced_by_acceptance_fixture(self):
+        self.assertEqual(resolve_report_owner("shared-workflow", "profile"), "shared-workflow")
+        self.assertEqual(resolve_report_owner("profile", "profile"), "profile")
+        with self.assertRaises(ValueError):
+            resolve_report_owner("", "profile")
 
     def test_readiness_requires_report_hopper_cycle_and_checkpoint(self):
         with tempfile.TemporaryDirectory() as tmp:

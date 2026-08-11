@@ -13,6 +13,16 @@ def is_bounded_bootstrap_authorization(instruction: str, project_name: str) -> b
     return bool(project_name.strip() and BOOTSTRAP_COMMAND.match(instruction.strip()))
 
 
+def resolve_report_owner(objective_owner: str, acceptance_fixture: str | None = None) -> str:
+    """Route formal evidence to the objective owner, never its test fixture."""
+    owner = objective_owner.strip()
+    if not owner:
+        raise ValueError("formal cycle requires an objective owner")
+    if acceptance_fixture and owner == acceptance_fixture.strip():
+        return owner
+    return owner
+
+
 def assert_lifecycle_ready(record: dict, *, report_dir: Path, hopper_dir: Path, checkpoint: Path) -> None:
     if not record.get("project_id") or not record.get("display_name"):
         raise ValueError("lifecycle readiness requires a valid project record")
