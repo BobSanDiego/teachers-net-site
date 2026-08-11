@@ -57,6 +57,13 @@ new-project onboarding boundary. After authorization, follow
 - Use `PREPARE HANDOFF` for the normal closing lifecycle.
 - Preserve unrelated dirty work and stage selectively.
 
+## Upload transport
+
+The direct Codex upload ceiling is 20 files per upload operation. A ZIP counts
+as one uploaded file and is not limited to 20 internal members. This transport
+constraint must not be applied as a general Report/Hopper, handoff, transcript,
+or archive-content ceiling; preserve provenance when bundling related files.
+
 ## First response for a new project
 
 Return a bounded bootstrap proposal containing: identified repository/project,

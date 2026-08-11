@@ -1,7 +1,7 @@
 {
   "chatgpt": {
-    "baseline_bytes": 719810,
-    "baseline_sha256": "6ec0855db1bb232a4f58c1bae86b04dcf0278da03eb846b2a6197c9628a2818c",
+    "baseline_bytes": 783286,
+    "baseline_sha256": "9a8717ec7e466a634abd4ad54b7e8a61e4ca8681e84f68772c04117656c3261d",
     "canonical_master_path": "/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md",
     "direct_live_retrieval": true,
     "embedded_transcript_content": true,
@@ -12,14 +12,14 @@
     "retrieval_method": "exact-id bounded direct app read"
   },
   "codex": {
-    "active_snapshot_assistant_messages": 1647,
-    "active_snapshot_boundary_bytes": 118904969,
-    "active_snapshot_boundary_line": 41185,
-    "active_snapshot_last_timestamp": "2026-08-11T02:21:35.618Z",
+    "active_snapshot_assistant_messages": 1682,
+    "active_snapshot_boundary_bytes": 122303048,
+    "active_snapshot_boundary_line": 42171,
+    "active_snapshot_last_timestamp": "2026-08-11T09:21:17.557Z",
     "active_snapshot_session_id": "019fbfe6-e2d0-73e3-98a1-d10b384cdf7d",
     "active_snapshot_source": "/mnt/c/Users/bobre/.codex/sessions/2026/08/01/rollout-2026-08-01T17-36-47-019fbfe6-e2d0-73e3-98a1-d10b384cdf7d.jsonl",
-    "active_snapshot_user_messages": 459,
-    "bytes": 1252818,
+    "active_snapshot_user_messages": 471,
+    "bytes": 1280848,
     "canonical_master_path": "/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md",
     "closed_fossil_embedded": false,
     "closed_fossil_path": "docs/process/codex-conversation-archive/codex-conversation-fossil.md",
@@ -32,9 +32,9 @@
       "019f605b-5be2-7802-8857-4d545657645a"
     ],
     "publication_status": "REDACTED_PUBLICATION_DERIVATIVE",
-    "sha256": "2ab78b2bd90746860a59b1a676fd263252db9fa0933c1253189749cd04c61ef5"
+    "sha256": "4a12a48f6143519b4985dbb6abff3cfd6f2173603006c6e9a239f9e2e1a54501"
   },
-  "generated_at": "2026-08-11T02:21:35+00:00",
+  "generated_at": "2026-08-11T09:21:17+00:00",
   "project": "jobcenter",
   "project_record": {
     "authority_manifest": "wordpress/wp-content/plugins/tnet-jobs/docs/jc053-authority-manifest-v1.json",
