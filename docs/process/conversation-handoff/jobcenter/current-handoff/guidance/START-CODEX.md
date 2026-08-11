@@ -36,7 +36,8 @@ assumptions. First inspect the repository identity, local governance, current
 state, and available project documentation. Report the minimum facts needed to
 propose a project record. Do not create a project record, modify code, publish
 an authority, or write a handoff until the Engineering Director authorizes the
-new-project onboarding boundary.
+new-project onboarding boundary. After authorization, follow
+`PROJECT-BOOTSTRAP-SPEC.md`; do not invent a parallel initialization process.
 
 ## Non-negotiable safeguards
 
@@ -46,7 +47,9 @@ new-project onboarding boundary.
   before changing product code.
 - Formal tickets require `TICKET READY FOR CODEX`, one terminal objective,
   complete acceptance/scope/stop boundary, and a matching `END TICKET`.
-- Target live ticket payloads at <=15,000 characters.
+- A complete formal Codex ticket MUST NOT exceed 15,000 characters. This is a
+  hard validity constraint for every transport, not a target. Reject an
+  oversized ticket; ChatGPT must compact it by referencing canonical guidance.
 - Report is the terminal human-review result; Hopper adds supporting evidence.
 - Durable handoff payloads live in the shared HANDOFFS archive and are reported
   through validated receipts, not duplicated into Report/Hopper.

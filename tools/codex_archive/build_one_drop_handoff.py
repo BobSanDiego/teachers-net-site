@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 GUIDANCE = [
     ("docs/process/conversation-handoff/shared/START-CODEX.md", "shared Codex bootstrap front door"),
+    ("docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md", "shared project bootstrap specification"),
     ("docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "shared ChatGPT engineering operating contract"),
     ("docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "shared handoff lifecycle"),
     ("docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "shared project record specification"),

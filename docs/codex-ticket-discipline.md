@@ -2,6 +2,16 @@
 
 ## Current Ticket Delivery and Reporting Authority
 
+### Hard formal-ticket validity ceiling
+
+A complete formal Codex ticket MUST NOT exceed 15,000 characters. This is a
+hard validity constraint, not a target or recommendation, and applies to every
+delivery transport. ChatGPT must compact an oversized ticket before issuing it
+by moving durable procedure into canonical referenced guidance. Codex must
+reject a live-retrieved formal ticket whose complete payload exceeds 15,000
+characters or lacks its matching terminator; it must not infer omitted tails or
+split authority fragments.
+
 For Codex Desktop, ChatGPT delivers executable engineering tickets in the
 conversation as one inline fenced code block. A downloadable `.txt` ticket is
 not required and is not authoritative merely because it exists in an older

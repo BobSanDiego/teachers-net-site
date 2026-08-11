@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 TARGET = Path("/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW")
 SOURCES = {
     "START-CODEX.md": "docs/process/conversation-handoff/shared/START-CODEX.md",
+    "PROJECT-BOOTSTRAP-SPEC.md": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md",
     "CHATGPT-ENGINEERING-OPERATING-CONTRACT.txt": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md",
     "HANDOFF-LIFECYCLE.md": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md",
     "PROJECT-RECORD-SPEC.md": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md",
