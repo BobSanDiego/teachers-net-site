@@ -47,9 +47,10 @@ new-project onboarding boundary. After authorization, follow
   before changing product code.
 - Formal tickets require `TICKET READY FOR CODEX`, one terminal objective,
   complete acceptance/scope/stop boundary, and a matching `END TICKET`.
-- A complete formal Codex ticket MUST NOT exceed 15,000 characters. This is a
-  hard validity constraint for every transport, not a target. Reject an
-  oversized ticket; ChatGPT must compact it by referencing canonical guidance.
+- ChatGPT should keep complete formal tickets below 15,000 characters as a
+  hard authoring/transport constraint for safe copying. This is a ChatGPT
+  delivery rule only, not a Codex implementation limit; Codex must not reject
+  an otherwise complete ticket solely because of character count.
 - Report is the terminal human-review result; Hopper adds supporting evidence.
 - Durable handoff payloads live in the shared HANDOFFS archive and are reported
   through validated receipts, not duplicated into Report/Hopper.

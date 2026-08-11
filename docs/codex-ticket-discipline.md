@@ -4,13 +4,12 @@
 
 ### Hard formal-ticket validity ceiling
 
-A complete formal Codex ticket MUST NOT exceed 15,000 characters. This is a
-hard validity constraint, not a target or recommendation, and applies to every
-delivery transport. ChatGPT must compact an oversized ticket before issuing it
-by moving durable procedure into canonical referenced guidance. Codex must
-reject a live-retrieved formal ticket whose complete payload exceeds 15,000
-characters or lacks its matching terminator; it must not infer omitted tails or
-split authority fragments.
+ChatGPT must keep each complete formal ticket below 15,000 characters as a hard
+authoring/transport constraint for safe copying. ChatGPT must compact oversized
+tickets by moving durable procedure into canonical referenced guidance. This is
+not a Codex implementation limit; Codex must not reject an otherwise complete
+ticket solely because of character count. Codex still rejects incomplete or
+mismatched ticket terminators and must not infer omitted tails.
 
 For Codex Desktop, ChatGPT delivers executable engineering tickets in the
 conversation as one inline fenced code block. A downloadable `.txt` ticket is

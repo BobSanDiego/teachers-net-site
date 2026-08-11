@@ -39,8 +39,9 @@ class StartCodexTests(unittest.TestCase):
         sources = [CANONICAL, ROOT / "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", ROOT / "docs/codex-ticket-discipline.md"]
         for source in sources:
             text = source.read_text(encoding="utf-8")
-            self.assertIn("MUST NOT exceed 15,000 characters", text)
-            self.assertIn("hard validity", text.lower())
+            self.assertIn("15,000 characters", text)
+            self.assertIn("ChatGPT", text)
+            self.assertIn("not a Codex", text)
 
 
 if __name__ == "__main__":

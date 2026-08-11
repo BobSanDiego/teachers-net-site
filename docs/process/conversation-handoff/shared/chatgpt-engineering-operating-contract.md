@@ -35,11 +35,12 @@ objective; DIAGNOSTIC for cause/evidence investigation; CONVERGENCE for two
 failed passes, uncertain causes, entangled tooling/application symptoms, or
 accumulated experiments.
 
-A complete formal Codex ticket MUST NOT exceed 15,000 characters. This is a
-hard validity constraint regardless of live retrieval, paste, file, or other
-transport. ChatGPT must compact an oversized proposal by referencing canonical
-guidance before issuing it. Codex rejects an oversized or incomplete formal
-ticket; it must not split one ticket into inferred fragments or tails.
+ChatGPT must keep each complete formal ticket below 15,000 characters as a hard
+authoring/transport constraint so it can be copied safely into Codex. ChatGPT
+must compact oversized proposals by referencing canonical guidance before
+delivery. This limit governs ChatGPT ticket authoring and transport only; it is
+not a Codex implementation limit and Codex must not reject an otherwise
+complete ticket solely because of its character count.
 
 ## Engineering and convergence
 

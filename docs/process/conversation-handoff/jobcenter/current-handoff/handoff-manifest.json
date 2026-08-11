@@ -10,25 +10,25 @@
       "filename": "00-START-HERE.txt",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "0991d08586994aae395b46e6195ba95533496ae049dbc7b93b077aa447abaa74"
+      "sha256": "9ab0090fa6e49c26009f7afa407112e85c59c562184a348f74ec91d24b6dff3d"
     },
     {
-      "bytes": 5357,
+      "bytes": 5417,
       "classification": "REPORT_REQUIRED",
       "external_dependency": false,
       "filename": "01-CHATGPT-ENGINEERING-OPERATING-CONTRACT.txt",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "ded466101402e022f215ecc364ba7cc3efda506f4f11ded4bcf9e75d612f0538"
+      "sha256": "0e643262c1cdc11cd53b7e6fbe3a4c0260a03cc7690a1aeccd0272c20ecc253e"
     },
     {
-      "bytes": 129953,
+      "bytes": 129989,
       "classification": "REPORT_REQUIRED",
       "external_dependency": false,
       "filename": "02-authoritative-guidance.zip",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "58ed69095cb408f9c696d525a0124011820b7afd080296877b5134af8ea472d5"
+      "sha256": "38195baaf759120e099399d17d3ea99cf29f210fe1d92ed5ccf6531efdcdc990"
     },
     {
       "bytes": 723041,
@@ -59,8 +59,8 @@
     }
   ],
   "full_codex_fossil_packaged": false,
-  "generated_at": "2026-08-11T07:51:42+00:00",
-  "guidance_index_sha256": "c0ee75dcc2fdd8661c6173acfaec3812f2849ec5c0a239ade5a3380205379f1b",
+  "generated_at": "2026-08-11T07:52:15+00:00",
+  "guidance_index_sha256": "4f134ca8c77bd11e8f8a251130332eef55e3218515c36427c4a24f45d0c1aa00",
   "guidance_member_count": 25,
   "known_limitations": [
     "Live ChatGPT continuation is bounded and explicitly disclosed in the self-contained master."
@@ -68,7 +68,7 @@
   "project": "jobcenter",
   "project_record": "docs/process/conversation-handoff/projects/jobcenter.json",
   "raw_codex_jsonl_included": false,
-  "root_repository_head": "410e3c6cf6dd227baeeb56b092a39f8341e96c43",
+  "root_repository_head": "ffa70cc9d366fccbdf86550a82eb7117c66c191d",
   "schema_version": "1.0",
   "source_branch": "COMMUNITY003-semantic-community-communications-working-draft"
 }
