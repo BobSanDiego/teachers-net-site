@@ -39,7 +39,20 @@ manifest. It excludes the full Codex fossil body, raw JSONL, credentials,
 Report/Hopper logs, screenshots, and temporary diagnostics. No AI
 summarization or semantic transcript filtering is used.
 
-The canonical tracked process is `tools/codex_archive/prepare_handoff.py`.
+The canonical tracked publication owner is
+`tools/codex_archive/project_handoff_builder.py`:
+
+```text
+python3 tools/codex_archive/project_handoff_builder.py \
+  --project <registered-project-id> \
+  --source <validated-project-handoff-source> \
+  --archive-root /mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/
+```
+
+`prepare_handoff.py` remains a backward-compatible Job Center master-building
+entry point; it must not be copied into project-specific Views or Community
+builders. The shared builder owns validation, manifest enrichment, hashing,
+collision refusal, and atomic publication for every registered project.
 The Windows-accessible operational projection is
 `/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/`; projected files
 identify their canonical tracked source.

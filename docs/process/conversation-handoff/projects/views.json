@@ -40,5 +40,18 @@
   "scope": {
     "include": ["Views authorities", "Views transcripts", "identified Views Codex sessions", "shared continuity procedure"],
     "exclude": ["Job Center authority", "Community authority", "raw Codex JSONL", "Views product implementation"]
-  }
+  },
+  "handoff_source": "docs/process/conversation-handoff/views",
+  "handoff_build_directory": "docs/process/conversation-handoff/views/current-handoff",
+  "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md", "views-migration-manifest.json"],
+  "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
+    {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
+    {"path": "docs/core-terms/views-ticket-handoff-and-execution-procedure.md", "role": "Views workflow"},
+    {"path": "docs/core-terms/durable-views-project-cursor.md", "role": "Views state"},
+    {"path": "docs/core-terms/durable-views-engineering-handoff.md", "role": "Views handoff"},
+    {"path": "docs/core-terms/durable-views-roadmap.md", "role": "Views roadmap"},
+    {"path": "docs/core-terms/durable-views-engineering-handoff.md", "role": "Views handoff"}
+  ]
 }

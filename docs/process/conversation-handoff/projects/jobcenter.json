@@ -25,5 +25,23 @@
   "roadmap": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jobs-roadmap.md",
   "canonical_runtime": "https://teachers-net.ddev.site/",
   "guidance_inclusion": "Job Center authority documents plus shared process contract",
-  "guidance_exclusion": ["raw Codex JSONL", "unsafe credentials", "full Codex fossil body"]
+  "guidance_exclusion": ["raw Codex JSONL", "unsafe credentials", "full Codex fossil body"],
+  "handoff_source": "docs/process/conversation-handoff/jobcenter/current-handoff",
+  "handoff_build_directory": "docs/process/conversation-handoff/jobcenter/current-handoff",
+  "handoff_payload_members": ["03-chatgpt-complete-current-record.md", "04-codex-current-handoff-record.md", "conversation-master-manifest.json"],
+  "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md", "role": "shared project bootstrap"},
+    {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},
+    {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
+    {"path": "docs/process/conversation-handoff/shared/TRANSCRIPT-ARCHIVE-SPEC.md", "role": "shared transcript policy"},
+    {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "shared Report/Hopper policy"},
+    {"path": "docs/process/chatgpt-codex-workflow-protocol-v1.md", "role": "shared workflow"},
+    {"path": "docs/documentation-governance.md", "role": "documentation governance"},
+    {"path": "docs/decision-log.md", "role": "shared decisions"},
+    {"path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md", "role": "Job Center state"},
+    {"path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md", "role": "Job Center handoff"},
+    {"path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jobs-roadmap.md", "role": "Job Center roadmap"}
+  ]
 }

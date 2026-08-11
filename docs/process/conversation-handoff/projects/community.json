@@ -16,5 +16,16 @@
     "identified_sessions": ["019f7d5b-e9cf-7182-b1c7-f99e21fe9e42", "019fa8c0-d693-7923-8bcc-c8d201092e7c"]
   },
   "handoff": {"report_hopper": "tmp/hopper/community", "handoffs": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS", "checkpoint_prefix": "Community"},
-  "scope": {"include": ["Community authorities", "historical TNet 3.0 materials", "identified Community Codex sessions", "shared continuity procedure"], "exclude": ["Job Center authority", "Views authority", "raw Codex JSONL", "Community product implementation"]}
+  "scope": {"include": ["Community authorities", "historical TNet 3.0 materials", "identified Community Codex sessions", "shared continuity procedure"], "exclude": ["Job Center authority", "Views authority", "raw Codex JSONL", "Community product implementation"]},
+  "handoff_source": "docs/process/conversation-handoff/community",
+  "handoff_build_directory": "docs/process/conversation-handoff/community/current-handoff",
+  "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md"],
+  "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
+    {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
+    {"path": "docs/documentation-governance.md", "role": "documentation governance"},
+    {"path": "docs/core-terms/project-cursor.md", "role": "Community state"},
+    {"path": "docs/core-terms/engineering-handoff.md", "role": "Community handoff"}
+  ]
 }
