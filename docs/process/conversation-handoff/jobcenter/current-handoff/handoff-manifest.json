@@ -10,7 +10,7 @@
       "filename": "00-START-HERE.txt",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "57deda9477b1edd9e2583b1d95bf88105be836313cadeee627cc12f9173d0f91"
+      "sha256": "f92d293b01476888e88966a68639c15011a9ac77310e1d1b2905289f83e86a80"
     },
     {
       "bytes": 5204,
@@ -22,53 +22,53 @@
       "sha256": "8ba8e03748b70350b943f7658819917f8b5f716f6ad375fe84ce5dffd8154f1a"
     },
     {
-      "bytes": 123677,
+      "bytes": 126472,
       "classification": "REPORT_REQUIRED",
       "external_dependency": false,
       "filename": "02-authoritative-guidance.zip",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "a5653419a3b0f1bb429d61a2557dcc35936e4ca4825f4238e2266880e076ca2a"
+      "sha256": "426bc159e6bd74743d4adb14e3529086bc29ffaf672c063cb19398cf85e9b08c"
     },
     {
-      "bytes": 713348,
+      "bytes": 723041,
       "classification": "REPORT_REQUIRED",
       "external_dependency": false,
       "filename": "03-chatgpt-complete-current-record.md",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "a8844c698025c0f55a62fd8b158b1470f7acc61493867e3cfc7cf59fcb9f3a54"
+      "sha256": "835fc25178d0b72a33c1a6739b577cf0ecf63eb686456994d2ac506da8c497ab"
     },
     {
-      "bytes": 1248873,
+      "bytes": 1254417,
       "classification": "REPORT_REQUIRED",
       "external_dependency": false,
       "filename": "04-codex-current-handoff-record.md",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "2ecd200ee2713ea6dd70e75f605c68c36b4ab98797a1b80126b1c4193db12126"
+      "sha256": "aac2b07aaca3f9eb9786e404a4aaad83d4e530a41746d9ee81f6339b28c223c4"
     },
     {
-      "bytes": 3493,
+      "bytes": 3906,
       "classification": "REPORT_REQUIRED",
       "external_dependency": false,
       "filename": "conversation-master-manifest.json",
       "publication_status": "SAFE_HANDOFF_ARTIFACT",
       "purpose": "one-drop handoff terminal component",
-      "sha256": "c18094857e74b81df7fa3db558019302e8932931584a36b1b553156e14fdfde2"
+      "sha256": "9400ee66bf65540b78cec071274affbaa5b87b9bbc6503f8803b9d72b4f83f9e"
     }
   ],
   "full_codex_fossil_packaged": false,
-  "generated_at": "2026-08-11T00:44:16+00:00",
-  "guidance_index_sha256": "58bed1fe6ec024874a6ddb17e284db7cddf8f9b66bdcedd579f3f09573c6a392",
-  "guidance_member_count": 19,
+  "generated_at": "2026-08-11T02:21:47+00:00",
+  "guidance_index_sha256": "0426d2ea4dd0ab117f4c21dd945006690aed755a1b6f34fd9904d60641cefde5",
+  "guidance_member_count": 23,
   "known_limitations": [
     "Live ChatGPT continuation is bounded and explicitly disclosed in the self-contained master."
   ],
   "project": "jobcenter",
   "project_record": "docs/process/conversation-handoff/projects/jobcenter.json",
   "raw_codex_jsonl_included": false,
-  "root_repository_head": "d0501a9ac03072fa5701b4a631e35fcdc3025d3e",
+  "root_repository_head": "d68f7a5c5520ba63348e7da14f63e42b81349a3e",
   "schema_version": "1.0",
   "source_branch": "COMMUNITY003-semantic-community-communications-working-draft"
 }

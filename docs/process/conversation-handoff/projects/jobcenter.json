@@ -12,6 +12,10 @@
     "conversation_id": "6a79d7ea-da44-83e8-91eb-460b99ab593b"
   },
   "report_hopper": "tmp/hopper/jobcenter/",
+  "handoff_archive_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/",
+  "handoff_archive_windows": "C:\\Main\\Active\\Projects\\Teachers.Net\\HANDOFFS\\",
+  "shared_workflow_projection_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/",
+  "handoff_output_policy": "DURABLE_HANDOFF_ARCHIVE_RECEIPT",
   "chatgpt_master": "docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md",
   "codex_portable_handoff": "docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md",
   "codex_fossil": "docs/process/codex-conversation-archive/codex-conversation-fossil.md",

@@ -14,6 +14,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 GUIDANCE = [
     ("docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "shared ChatGPT engineering operating contract"),
+    ("docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "shared handoff lifecycle"),
+    ("docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "shared project record specification"),
+    ("docs/process/conversation-handoff/shared/TRANSCRIPT-ARCHIVE-SPEC.md", "shared transcript archive specification"),
+    ("docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "durable handoff Report/Hopper specification"),
     ("docs/process/conversation-handoff/projects/jobcenter.json", "Job Center project sub-record"),
     ("docs/process/chatgpt-codex-workflow-protocol-v1.md", "shared workflow authority"),
     ("docs/documentation-governance.md", "documentation governance"),

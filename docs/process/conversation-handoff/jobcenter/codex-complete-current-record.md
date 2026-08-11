@@ -1,6 +1,6 @@
 # JOB CENTER — CODEX COMPLETE CURRENT RECORD
 
-Generated: `2026-08-11T00:43:20+00:00`
+Generated: `2026-08-11T02:21:35+00:00`
 
 ## Evidence status
 
@@ -17,15 +17,15 @@ This is a handoff record, not product authority. Conversation history may contai
 
 - Session ID: `019fbfe6-e2d0-73e3-98a1-d10b384cdf7d`
 - Raw source: `/mnt/c/Users/bobre/.codex/sessions/2026/08/01/rollout-2026-08-01T17-36-47-019fbfe6-e2d0-73e3-98a1-d10b384cdf7d.jsonl`
-- Source bytes: `118509641`
-- Source lines consumed: `40948`
-- Last included timestamp: `2026-08-11T00:43:20.593Z`
-- Derived SHA-256: `45072eb961da74ec66bd0e5c9f24e199a48cfde7c7235aa31e1e108fa3e44231`
-- Derived bytes: `1247274`
-- User messages: `456`
-- Assistant messages: `1639`
+- Source bytes: `118904969`
+- Source lines consumed: `41185`
+- Last included timestamp: `2026-08-11T02:21:35.618Z`
+- Derived SHA-256: `2ab78b2bd90746860a59b1a676fd263252db9fa0933c1253189749cd04c61ef5`
+- Derived bytes: `1252818`
+- User messages: `459`
+- Assistant messages: `1647`
 - Credential/publication: `REDACTED_PUBLICATION_DERIVATIVE` / `POTENTIAL_CREDENTIAL_MATCHES`
-- Extraction seconds: `10.267227`
+- Extraction seconds: `11.327434`
 - Classification: `ACTIVE HANDOFF SNAPSHOT — NOT CLOSED ARCHIVAL SOURCE`
 
 The raw active source was not modified, frozen, or added to the closed-session manifest.
@@ -42,15 +42,15 @@ Session ID:
 Raw source:
   /mnt/c/Users/bobre/.codex/sessions/2026/08/01/rollout-2026-08-01T17-36-47-019fbfe6-e2d0-73e3-98a1-d10b384cdf7d.jsonl
 Raw source SHA-256:
-  0408b4d4416d89c3f403f452e37cafface137d485a33106bbd289b684a0b5745
+  66f50258e7c1e763e74e72906773a7d5cb3a5670e192d49b3a148eb6f82de0b9
 Raw source bytes:
-  118509641
+  118904969
 Raw source event/line count:
-  40948
+  41185
 First source timestamp:
   2026-08-02T00:37:52.508Z
 Last source timestamp:
-  2026-08-11T00:43:20.593Z
+  2026-08-11T02:21:35.618Z
 Renderer/version:
   codex-transcript-archive-v1
 Completeness classification:
@@ -32295,5 +32295,159 @@ Timestamp: 2026-08-11T00:43:17.694Z
 
 Text:
 The revised ticket is now complete and valid. I’ve confirmed the exact scope: shared contract, declarative Job Center record, portable Codex handoff compaction, regenerated handoff package, and no product changes. I’m applying that bounded foundation now.
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1640
+Role: ASSISTANT
+Source line: 40987
+Timestamp: 2026-08-11T00:44:22.274Z
+
+Text:
+The shared foundation is implemented and pushed as `d68f7a5`. The regenerated portable Codex record is 1,248,873 bytes versus the 2,319,140-byte fossil (46.28% smaller), while the full fossil remains unchanged and unbundled. I’m completing the formal cycle packaging and validation now.
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1641
+Role: ASSISTANT
+Source line: 41044
+Timestamp: 2026-08-11T00:46:09.104Z
+
+Text:
+The first packaging pass exposed a lifecycle detail: two retry collects created duplicate temporary-cycle artifacts in the active directory before the explicit cycle was finalized. I’m flushing that active directory into the archive and rebuilding one clean terminal cycle so Report/Hopper contains only the authoritative cycle set.
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1642
+Role: ASSISTANT
+Source line: 41075
+Timestamp: 2026-08-11T00:46:54.920Z
+
+Text:
+TNET-SHARED-HANDOFF-FOUNDATION001-R1 completed successfully.
+
+Implemented and pushed commit `d68f7a5`:
+
+- Shared ChatGPT Engineering Operating Contract
+- Declarative Job Center project record
+- Portable Codex handoff without embedded historical fossil
+- Regenerated one-drop handoff package
+- Updated START-HERE ordering and transport-budget guidance
+
+Validation:
+
+- 11 Codex archive tests passed
+- 7 Hopper lifecycle tests passed
+- Report/Hopper cycle `260811004610` validated
+- Codex record reduced 46.28%: 2,319,140 → 1,248,873 bytes
+- Full Codex fossil preserved unchanged and excluded from routine handoff
+- No application code changed
+- Push succeeded
+- Unrelated dirty work preserved
+
+Report directory:
+
+`/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/Report (Job Center)/`
+
+Hopper directory:
+
+`/home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/Hopper (Job Center)/`
+
+One-drop handoff:
+
+`/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/jobcenter/current-handoff/`
+
+Next safe boundary: perform the genuine fresh-ChatGPT semantic handoff test.
+
+::git-commit{cwd="/home/bobreap/projects/teachers-net-site"}
+::git-push{cwd="/home/bobreap/projects/teachers-net-site" branch="COMMUNITY003-semantic-community-communications-working-draft"}
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-U0457
+Role: USER
+Source line: 41081
+Timestamp: 2026-08-11T02:18:07.704Z
+
+Text:
+next ticket
+
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1643
+Role: ASSISTANT
+Source line: 41085
+Timestamp: 2026-08-11T02:18:16.362Z
+
+Text:
+I’ll retrieve the next complete ticket from the exact `Job Center (8/10/26)` thread using a bounded newest-turn read, checking the terminator before execution.
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1644
+Role: ASSISTANT
+Source line: 41100
+Timestamp: 2026-08-11T02:18:33.896Z
+
+Text:
+The next ticket is:
+
+```yaml
+Ticket: TNET-SHARED-HANDOFF-LIFECYCLE001
+```
+
+But the live reader truncates its payload at 20,000 characters, before the Git, report, acceptance, and terminator sections. No complete `END TICKET` is available.
+
+I did not execute it. Please have ChatGPT issue the compact revised version under the established ≤15,000-character transport target.
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-U0458
+Role: USER
+Source line: 41106
+Timestamp: 2026-08-11T02:19:03.060Z
+
+Text:
+did this full ticket survive?
+
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1645
+Role: ASSISTANT
+Source line: 41110
+Timestamp: 2026-08-11T02:19:06.146Z
+
+Text:
+I’ll check the exact thread once more for a complete replacement or a valid terminator, without loading the whole history.
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-U0459
+Role: USER
+Source line: 41114
+Timestamp: 2026-08-11T02:19:09.635Z
+
+Text:
+
+# Files mentioned by the user:
+
+## TICKET READY FOR CODEX Ticket: TNET-SHARED-HANDOFF-LIFECYCLE001 Mode: STANDARD …: /mnt/c/Users/bobre/.codex/attachments/71a18947-480b-434f-97a0-b70a2d497d60/pasted-text.txt
+
+The attached pasted text file(s) contain the user's request. Read and act on that content.
+
+## My request:
+
+
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1646
+Role: ASSISTANT
+Source line: 41131
+Timestamp: 2026-08-11T02:19:29.275Z
+
+Text:
+Yes—the full ticket survived in the attachment. It contains the complete acceptance, Git, Report/Hopper, stop-boundary, and terminator sections, so I’m proceeding with `TNET-SHARED-HANDOFF-LIFECYCLE001` now. This ticket builds the lifecycle only; it does not claim the real shutdown test has occurred.
+
+-------------------------------------------------------------------------------
+CODEX-019fbfe6-A1647
+Role: ASSISTANT
+Source line: 41157
+Timestamp: 2026-08-11T02:20:28.287Z
+
+Text:
+The lifecycle owner and shared specification files are in place. I’m running the mechanical proving path now: project the canonical shared library, build one timestamped Job Center checkpoint atomically, and verify its member hashes and exclusion rules. No closing ChatGPT transcript is being claimed as part of this test.
 
 ```
