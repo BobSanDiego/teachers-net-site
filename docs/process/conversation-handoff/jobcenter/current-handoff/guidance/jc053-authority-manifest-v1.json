@@ -1,0 +1,81 @@
+{
+  "manifest": "JC053 authority contract v1",
+  "ticket": "JC053-CANONICAL-UI-TRANSITION-001",
+  "canonical_ui_authority": {
+    "repository": "/home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-jobs",
+    "branch": "main",
+    "commit": "63a32a6baada0439e6c1fb009496992fa2c80045",
+    "directory": "public/jc053-step1/",
+    "files": {
+      "html": {
+        "path": "public/jc053-step1/index.html",
+        "sha256": "61da25d4a115e6d1556b9cad8cae77aef668a3551ff2471a2e389b7ece65e175"
+      },
+      "css": {
+        "path": "public/jc053-step1/mockup.css",
+        "sha256": "ff5f2796cccc10d9e20a20af030be6470dd0431fe88f61767980ff855ee8cae1"
+      },
+      "js": {
+        "path": "public/jc053-step1/mockup.js",
+        "sha256": "d88be8354a40dc10d67a1561b39d03a50f1d59457b38b0e4b4e9def3d9e2ca1b"
+      },
+      "php_renderer": {
+        "path": "public/class-tnet-jobs-public.php",
+        "sha256": "66c762edfbebb3e668ae841f4ab6c168e8c10e1be588e8efabdec04c2e0b61db"
+      }
+    },
+    "design_asset_directory": "public/jc053-step1/assets/"
+  },
+  "archived_workbench_reference": {
+    "repository": "/home/bobreap/projects/teachers-net-jobcenter",
+    "branch": "JOB-CENTER-JC053-wizard-workbench",
+    "commit": "487e506d502048c7612c710d311b4fc5f409eda8",
+    "directory": "/home/bobreap/projects/teachers-net-jobcenter/tmp/jc053-wizard-workbench/",
+    "status": "archived reference only; not canonical; no active development; no synchronization requirement",
+    "purpose": "historical design reference and recovery of prior ideas/components only when explicitly requested"
+  },
+  "ownership_contract": {
+    "canonical_ui_authority": [
+      "workbench HTML",
+      "workbench CSS",
+      "workbench JS",
+      "workbench design assets"
+    ],
+    "runtime_only_adapter_authority": [
+      "PHP authentication",
+      "membership/authorization",
+      "session creation/resume",
+      "persisted wizard state",
+      "bootstrap payloads",
+      "resource data",
+      "production form/session wrappers",
+      "persistence handlers",
+      "admin-only/runtime-only controls"
+    ]
+  },
+  "governance_rules": {
+    "no_independent_runtime_ui_redesign": false,
+    "runtime_ui_change_authority": "production tnet-jobs source",
+    "archived_workbench_sync_required": false,
+    "required_pre_edit_checks": [
+      "read this authority manifest",
+      "verify the pinned authority commit and hashes",
+      "compare the affected workbench source against the runtime source",
+      "classify the change as canonical UI authority or runtime adapter authority",
+      "FLAG FOR ENGINEER when authority is ambiguous"
+    ],
+    "required_completion_checks": [
+      "check affected workbench/runtime parity",
+      "document every intentional divergence",
+      "complete canonical runtime browser verification",
+      "retain human visual QA as the final visual acceptance gate"
+    ]
+  },
+  "known_state": {
+    "runtime_html_css_js_are_canonical": true,
+    "runtime_source_equivalent": "canonical production source; workbench comparison is historical only",
+    "controlled_synchronization_required": false,
+    "prior_local_fixes_do_not_establish_parity": true,
+    "authority_transition": "JC053-CANONICAL-UI-TRANSITION-001; active workbench synchronization retired"
+  }
+}
