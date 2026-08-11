@@ -32,12 +32,14 @@ unrelated dirty work.
 ### New project
 
 Do not clone another project's facts, routes, branding, architecture, or
-assumptions. First inspect the repository identity, local governance, current
-state, and available project documentation. Report the minimum facts needed to
-propose a project record. Do not create a project record, modify code, publish
-an authority, or write a handoff until the Engineering Director authorizes the
-new-project onboarding boundary. After authorization, follow
-`PROJECT-BOOTSTRAP-SPEC.md`; do not invent a parallel initialization process.
+assumptions. For the explicit Engineering Director instruction
+`bootstrap this project as directed` with a named project, run the shared
+bounded onboarding path in `PROJECT-BOOTSTRAP-SPEC.md`. This authorizes only
+registration, continuity scaffolding, transcript provenance, Report/Hopper
+publication/validation, and immutable checkpoint publication. It does not
+authorize product code, schema, destructive, or production work. Stop only at
+a genuine authority, ownership, destructive/production, or missing-evidence
+boundary.
 
 ## Non-negotiable safeguards
 

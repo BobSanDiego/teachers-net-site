@@ -11,8 +11,10 @@ Lifecycle authorities rather than duplicating them.
 permitted; initialization must not be assumed.
 
 **ONBOARDING AUTHORIZED** — the Engineering Director has explicitly authorized
-bounded initialization. Codex may create only the minimum truthful project
-infrastructure.
+bounded initialization. The explicit instruction `bootstrap this project as
+directed` for a named project is sufficient authorization for the bounded,
+non-product actions in this specification; no second boilerplate phrase is
+required. Codex may create only the minimum truthful project infrastructure.
 
 **REGISTERED / LIFECYCLE READY** — the initialization gate has passed. Normal
 tickets and PREPARE HANDOFF may proceed. State transitions are never inferred.
@@ -56,13 +58,16 @@ Codex should enter through START-CODEX only after registration.
 
 REGISTERED / LIFECYCLE READY requires, where applicable: unambiguous identity;
 repository ownership; valid project record; minimum continuity authority;
-initialized ChatGPT and Codex state; isolated Report/Hopper; HANDOFFS;
+initialized ChatGPT and Codex state; isolated Report/Hopper with a validated
+formal cycle; HANDOFFS;
 reachable shared authorities; runtime/QA facts; no borrowed assumptions;
 contradictions surfaced; verification reported; and required Engineering
 Director authorization.
 
 ## New-project flow
 
-START-CODEX routes: inspect → bounded onboarding proposal → Engineering Director
-authorization → this specification → readiness gate → normal workflow. This
-specification does not onboard any project by itself.
+START-CODEX routes: inspect → named-project bootstrap instruction → this
+specification → registration/scaffolding → master/evidence generation →
+validated Report/Hopper cycle → immutable checkpoint → checkpoint validation →
+readiness gate → normal workflow. This path has one shared owner and must not
+require project-specific bootstrap instructions.

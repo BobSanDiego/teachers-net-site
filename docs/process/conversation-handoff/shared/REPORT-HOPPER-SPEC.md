@@ -17,3 +17,11 @@ Use ZIP packaging when it materially simplifies transport of a related set,
 but preserve source filenames, provenance, boundaries, and required hashes.
 Do not apply an 18-, 19-, or 20-file general packaging threshold, and do not
 rewrite historical reports or fossil evidence to satisfy a transport limit.
+# Core cycle fields
+
+The machine-readable cycle record's `artifacts` array is an optional list of
+additional collected evidence. It may be empty when the required terminal
+files are represented by the record's first-class `report_file`,
+`manifest_file`, `cycle_record_file`, and generated output fields. An empty
+`artifacts` array never waives those required files: `tools/hopper/clean_cycle.py`
+must still publish and validate them in both Report and Hopper.

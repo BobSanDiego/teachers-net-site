@@ -204,6 +204,8 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         "archive_path": str((hopper.parent / "archive").relative_to(ROOT)),
         "report_file": report, "manifest_file": manifest,
         "cycle_record_file": record, "evidence_bundle": evidence,
+        # Core cycle files are first-class fields below; this list is only for
+        # additional collected evidence and may intentionally be empty.
         "artifacts": artifacts,
         "excluded_artifacts": excluded_artifacts or [],
     }
