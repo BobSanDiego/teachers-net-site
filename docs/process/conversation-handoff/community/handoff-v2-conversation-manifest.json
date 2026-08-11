@@ -1,0 +1,229 @@
+{
+  "chatgpt": {
+    "latest_boundary": "8/11/2026, 12:51:18 PM",
+    "latest_session": "teachers-net-tnet-community-8-3-26",
+    "latest_status": "OPEN/INCOMPLETE",
+    "master_path": "/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/community/chatgpt-complete-current-record.md",
+    "rendered_master_bytes": 221136,
+    "rendered_master_sha256": "af60e547b7f8d6ec84267817d37219e1c6172efd0ca9392aebe82833a17d7a28",
+    "sessions": {
+      "teachers-net-tnet-community-8-3-26": {
+        "attachment_reference_count": 1,
+        "attachment_warning": "Transcript attachment labels are references only unless the attachment payload is separately included.",
+        "declared_message_count": 34,
+        "first_message_id": "CHATGPT-28438c4720-000001-U",
+        "freshness_warning": "Source is open/incomplete; newer messages may exist after the stated boundary.",
+        "incorporated_through": "8/11/2026, 12:51:18 PM",
+        "last_message_id": "CHATGPT-28438c4720-000034-A",
+        "messages": [
+          {
+            "content_sha256": "6af8519c4ef2bc56d582d2e2a231e124f83339f19ce5719c746fa62c06a10b50",
+            "id": "CHATGPT-28438c4720-000001-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "7befd231febeaf7ed4ef25f622890c24d5c42c01ad55f0ab72792fb2db13bb3a",
+            "id": "CHATGPT-28438c4720-000002-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "62fb93cfa67038108964a81cc8aefccfefe5bab73fed6b628dcf9454aba00f2b",
+            "id": "CHATGPT-28438c4720-000003-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "8f48d0d63318eae738e275288be82c93b5890093e8c62e2b7ff31affa73ea661",
+            "id": "CHATGPT-28438c4720-000004-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+            "id": "CHATGPT-28438c4720-000005-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "61f9fac0201e579736e3d70275b54d3db683e5245d52909e22d067e82533ae82",
+            "id": "CHATGPT-28438c4720-000006-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "7ff6794184c211dad79b060b15032a68274c91828b5a5cce3c11502b49b659ea",
+            "id": "CHATGPT-28438c4720-000007-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "f114d25290621f98b1e9de4046b949f2c6b8b0ec6e1ded9e3286751da3d1477d",
+            "id": "CHATGPT-28438c4720-000008-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "6e0003eee03232ae37b1b502e5b8c92c09e40164f4c0e97f367b45e2b4d21b2f",
+            "id": "CHATGPT-28438c4720-000009-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "ac583417befb63de77bbcb6a646cbeb68659d61b3779d64355b8424a768abede",
+            "id": "CHATGPT-28438c4720-000010-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "663548c8d1b607a4eff89c5b168fefd0d800368cc7e39cf77c8d88d8f3be0937",
+            "id": "CHATGPT-28438c4720-000011-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "9a8f00d38ca8cd231bdf23bedb11a66f1a6c546d5c3f8b1f03f285bae1bb9a6b",
+            "id": "CHATGPT-28438c4720-000012-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "eddace50b70bd5240593466219e0f39f7ceb8f8e07ed7ff7b7a00194f205d8ce",
+            "id": "CHATGPT-28438c4720-000013-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "91af00a1f227adf6d61884bb487bbea846acc5f59407163ab9c0452ee69343aa",
+            "id": "CHATGPT-28438c4720-000014-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "f486a36c578e459e89f3961adecbe351963ec960004132c3f93e1012cbc0395b",
+            "id": "CHATGPT-28438c4720-000015-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "7bcfd96e43b9ed2348b36e9971e5ae2b1a5e1e6db11c702804604706f7e7399f",
+            "id": "CHATGPT-28438c4720-000016-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "a00e8c25b41534a40db430b333c94c11c0a11810afb9f7cee611ffe2e0cb0ee6",
+            "id": "CHATGPT-28438c4720-000017-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "0ac364274340694dc179a8f4076261a59f34edf2745ab1d7511a81e60b58f6fe",
+            "id": "CHATGPT-28438c4720-000018-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "aee8585853e364916b1811317024c8948b92aedf282fc97f6444693e5d108074",
+            "id": "CHATGPT-28438c4720-000019-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "28f1962bc32d37e906ba2aa0f18984240020f6c60730feb2c286e3eaf0d9f621",
+            "id": "CHATGPT-28438c4720-000020-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "a50a584a144131cc5e45b3acf58c35e26273c3b147f3099a597d4b8fda563ae1",
+            "id": "CHATGPT-28438c4720-000021-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "6bd0d2b122c0bff5073d072682515777a8c278f003be397db8ffe15fa898f749",
+            "id": "CHATGPT-28438c4720-000022-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "9c6d2c762520e8028ad190d1a69a40ce9a16609ac9c5c3f64c2ee0ebb43d38e6",
+            "id": "CHATGPT-28438c4720-000023-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "ed0705010f07c037846816dcd408a2fdfbe03eb766f8a53eba3b6563dc1acc43",
+            "id": "CHATGPT-28438c4720-000024-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "36105961890e869a491275d51f257996c346396c6ba036cd219ae6a65232063f",
+            "id": "CHATGPT-28438c4720-000025-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "663dacd37c8a86e54d0d9da99b986e05fe20b1177bab80458d368f02aab41ffa",
+            "id": "CHATGPT-28438c4720-000026-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "747cd4b501e33571d16fb70bacd74177c26d126f4089dfd149e335b5aebe97ed",
+            "id": "CHATGPT-28438c4720-000027-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "5d7111e6574d6a2904a22be255366ab23c11fb6b4ec107787a073993afd5ca7e",
+            "id": "CHATGPT-28438c4720-000028-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "288b9a7d764676aebcfebbf927e9118332b848d3d6d7dca0042cbcd785c209f4",
+            "id": "CHATGPT-28438c4720-000029-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "767426bcb0601dc1a774e35d424900bd1daa976e6d0e15d7cd27d4966477e965",
+            "id": "CHATGPT-28438c4720-000030-A",
+            "role": "assistant"
+          },
+          {
+            "content_sha256": "549958732939d7f7241ae923f55d6911bcc21c9149f6a513e57443a2c340475a",
+            "id": "CHATGPT-28438c4720-000031-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "8f6964c29057f79cbbfa74776972fb69dbf040342c7abcf6fc42684735722b00",
+            "id": "CHATGPT-28438c4720-000032-A",
+            "role": "assistant"
+          },
+          {
+            "content_sha256": "80e046bc2acdcbf097a05a1463030c3f3db1abe072bde4ee79a9ee49fe74d0fa",
+            "id": "CHATGPT-28438c4720-000033-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "db68d4176087cd985c461b97d08e275c8acaae9fab351e2e2c6160053366664c",
+            "id": "CHATGPT-28438c4720-000034-A",
+            "role": "assistant"
+          }
+        ],
+        "parsed_message_count": 34,
+        "redaction_count": 0,
+        "snapshots": [
+          {
+            "generated_at": "2026-08-11T20:48:17+00:00",
+            "incorporated_through": "8/11/2026, 12:51:18 PM",
+            "message_count": 34,
+            "source_bytes": 11812,
+            "source_path": "/mnt/c/Users/bobre/Downloads/teachers_net_tnet_community_8_3_26__2026-08-11.md",
+            "source_sha256": "e6cf94234e178261917ca5c851de9a8dc72cd879b8615fbe44cc9680dab8848c",
+            "status": "OPEN/INCOMPLETE"
+          }
+        ],
+        "status": "OPEN/INCOMPLETE",
+        "title": "Teachers.Net (TNET) - Community (8/3/26)"
+      }
+    },
+    "source_unchanged": true
+  },
+  "codex": {
+    "portable_master_path": "/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/community/codex-complete-current-record.md",
+    "rendered_master_bytes": 1070,
+    "rendered_master_sha256": "ef2b3da1d1547de7331a5b7d2c79a9ed13d5172a9db0b2f799856c79ead62f61",
+    "sources": [],
+    "status": "EXISTING PORTABLE RECORD / CURRENT SESSION NOT PROVEN",
+    "warnings": []
+  },
+  "generated_at": "2026-08-11T20:56:07+00:00",
+  "house_context": {
+    "classification": "NOT INCLUDED",
+    "included": false,
+    "supervisory_project": "jobcenter"
+  },
+  "project": {
+    "id": "community",
+    "name": "Teachers.Net Community"
+  },
+  "renderer_version": "handoff-v2.1",
+  "schema_version": "2.0"
+}

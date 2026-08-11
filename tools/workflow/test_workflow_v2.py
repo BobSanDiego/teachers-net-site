@@ -56,7 +56,10 @@ class WorkflowV2Tests(unittest.TestCase):
         self.assertEqual(manifest["workflow_version"], "V2")
         self.assertEqual(manifest["owners"]["ticket_validation"], "tools/workflow/workflow_v2.py")
         self.assertEqual(manifest["owners"]["bootstrap_entry"], "tools/workflow/workflow.py")
+        self.assertEqual(manifest["owners"]["portable_handoff"], "tools/codex_archive/prepare_chatgpt_handoff.py")
         self.assertEqual(manifest["owners"]["report_hopper_finalization"], "tools/hopper/clean_cycle.py")
+        self.assertEqual(manifest["portable_handoff"]["prepare_command"], "PREPARE HANDOFF")
+        self.assertEqual(manifest["portable_handoff"]["startup_command"], "LOAD STARTUP")
 
     def test_valid_compact_ticket(self) -> None:
         result = validate_ticket_payload(ticket())
@@ -135,6 +138,8 @@ class WorkflowV2Tests(unittest.TestCase):
         )
         self.assertIn("BOOTSTRAP COMPLETE", completed.stdout)
         self.assertIn("Project ID: jobcenter", completed.stdout)
+        self.assertIn("Handoff command: PREPARE HANDOFF", completed.stdout)
+        self.assertIn("Fresh ChatGPT command: LOAD STARTUP", completed.stdout)
         ambiguous = subprocess.run(
             [sys.executable, str(entry), "BOOTSTRAP"],
             check=False,

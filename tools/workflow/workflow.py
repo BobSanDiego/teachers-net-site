@@ -27,6 +27,7 @@ from tools.workflow.workflow_v2 import (
 )
 
 from tools.hopper.clean_cycle import validate as validate_cycle
+from tools.codex_archive.prepare_chatgpt_handoff import HandoffError, prepare as prepare_chatgpt_handoff
 
 REGISTRY = ROOT / "tools/workflow/command-registry.json"
 
@@ -130,6 +131,11 @@ def main(argv=None):
     parser.add_argument("--project")
     parser.add_argument("--ticket")
     parser.add_argument("--signal", action="append", default=[])
+    parser.add_argument("--transcript")
+    parser.add_argument("--source-status", default="OPEN/INCOMPLETE", choices=("OPEN/INCOMPLETE", "CLOSED"))
+    parser.add_argument("--codex-source")
+    parser.add_argument("--output-root")
+    parser.add_argument("--include-house-context", action="store_true")
     args = parser.parse_args(argv)
     command = " ".join(args.command).upper()
     project_independent = {"LIST COMMANDS", "LIST-COMMANDS", "VALIDATE TICKET", "RECOMMEND REASONING"}
@@ -153,6 +159,8 @@ def main(argv=None):
             print(f"Project ID: {result['project']}")
             print(f"Repository: {result['repository']}")
             print(f"Report/Hopper: {result['report_hopper']}")
+            print("Handoff command: PREPARE HANDOFF")
+            print("Fresh ChatGPT command: LOAD STARTUP")
             print("Product implementation authorized: NO")
         else:
             print("BOOTSTRAP NEW PROJECT")
@@ -162,6 +170,44 @@ def main(argv=None):
             print(f"Onboarding authority: {result['bootstrap_authorization']}")
             print(f"Bootstrap specification: {result['bootstrap_spec']}")
             print("Product implementation authorized: NO")
+        return 0
+    if command == "PREPARE HANDOFF":
+        if not args.transcript:
+            parser.error("PREPARE HANDOFF requires Codex to resolve the attached transcript and pass --transcript <path>")
+        try:
+            record_path, record = load_project_record(args.project, ROOT)
+            repository_value = record.get("root_repository") or (record.get("repositories") or {}).get("root")
+            if not repository_value:
+                raise HandoffError(f"project {args.project} has no registered repository root")
+            repository = Path(repository_value).resolve()
+            current = Path.cwd().resolve()
+            if not (current == repository or repository in current.parents):
+                raise HandoffError(
+                    f"project worktree mismatch: current={current} expected={repository}"
+                )
+            output_root = Path(args.output_root) if args.output_root else Path((record.get("handoff") or {}).get("handoffs", "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS"))
+            result = prepare_chatgpt_handoff(
+                root=ROOT,
+                project_record=record_path,
+                transcript=Path(args.transcript),
+                output_root=output_root,
+                source_status=args.source_status,
+                codex_source=Path(args.codex_source) if args.codex_source else None,
+                include_house_context=args.include_house_context,
+            )
+        except (OSError, ValueError, HandoffError) as exc:
+            print(f"PREPARE HANDOFF: BLOCKED\nBoundary: {exc}", file=sys.stderr)
+            return 1
+        print("HANDOFF READY")
+        print(f"Project: {result['display_name']} ({result['project']})")
+        print(f"Workflow: {result['workflow']}")
+        print(f"ChatGPT master: {result['chatgpt']['status']} through {result['chatgpt']['boundary']}")
+        print(f"Codex master: {result['codex']['status']}")
+        print(f"Startup payload: {result['startup_payload']}")
+        print(f"Package directory: {result['package_directory']}")
+        print(f"Optional ZIP transport candidate: {result['package_zip_candidate']}")
+        for warning in result["warnings"]:
+            print(f"Warning: {warning}")
         return 0
     if command == "VALIDATE TICKET":
         if not args.ticket:

@@ -18404,3 +18404,862 @@ The supplied closing ChatGPT transcript was reconciled into the canonical ChatGP
   "baseline_relation": "Existing exported baseline retained as a safe coverage reference; live overlap is not silently deduplicated."
 }
 ```
+
+
+## HANDOFF V2 OPEN/INCOMPLETE SNAPSHOT — Teachers.Net (TNET) - Job Center (8/11/26)
+
+- Session identity: `teachers-net-tnet-job-center-8-11-26`
+- Incorporated through: `8/11/2026, 12:49:55 PM`
+- Generated: `2026-08-11T20:48:17+00:00`
+- Freshness warning: newer messages may exist after this boundary.
+- Classification: conversation evidence, not project authority.
+
+### CHATGPT-688c0e6cb7-000001-U — USER
+
+03-chatgpt-complete-current-record.mdFile04-codex-current-handoff-record.mdFileconversation-master-manifest.jsonFilehandoff-manifest.jsonFileproject-record.jsonFile00-START-HERE.txtDocument01-CHATGPT-ENGINEERING-OPERATING-CONTRACT.txtDocument02-authoritative-guidance.zipZip Archiveload 00-START-HERE.txt for instructions
+
+### CHATGPT-688c0e6cb7-000002-U — USER
+
+MANIFEST-jobcenter-260811093855.txtDocumentoutput-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-report-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-ticket-jobcenter-260811093855.txtDocumentcycle-jobcenter-260811093855.jsonFile
+
+### CHATGPT-688c0e6cb7-000003-U — USER
+
+cycle-jobcenter-260811093855.jsonFileMANIFEST-jobcenter-260811093855.txtDocumentoutput-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-report-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-ticket-jobcenter-260811093855.txtDocument
+
+### CHATGPT-688c0e6cb7-000004-U — USER
+
+cycle-jobcenter-260811093855.jsonFileMANIFEST-jobcenter-260811093855.txtDocumentoutput-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-report-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-ticket-jobcenter-260811093855.txtDocument
+
+### CHATGPT-688c0e6cb7-000005-U — USER
+
+shared-workflow-bootstrap-convergence001-report-profile-260811095649.txtDocumentcycle-profile-260811095649.jsonFileMANIFEST-profile-260811095649.txtDocumentoutput-profile-260811095649.txtDocumentshared-workflow-bootstrap-convergence001-report-profile-260811095649.txtDocumentshared-workflow-bootstrap-convergence001-ticket-profile-260811095649.txtDocumentit seems to be putting the report in the *profile* report dir.  That's not right
+
+### CHATGPT-688c0e6cb7-000006-U — USER
+
+cycle-jobcenter-260811093855.jsonFileMANIFEST-jobcenter-260811093855.txtDocumentoutput-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-report-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-ticket-jobcenter-260811093855.txtDocumenthere is the resulting reports in thisdir
+
+### CHATGPT-688c0e6cb7-000007-U — USER
+
+shared-workflow-bootstrap-convergence001-owner-correction-report-jobcenter-review-260811101546.txtDocumentcycle-jobcenter-260811093855.jsonFileMANIFEST-jobcenter-260811093855.txtDocumentoutput-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-report-jobcenter-260811093855.txtDocumentshared-workflow-handoff001-ticket-jobcenter-260811093855.txtDocumentCorrected. A review copy is now in the established Job Center Report directory:
+
+[Report copy](</home/bobreap/projects/teachers-net-site/tmp/hopper/jobcenter/Report (Job Center)/shared-workflow-bootstrap-convergence001-owner-correction-report-jobcenter-review-260811101546.txt>)
+
+Canonical ownership remains:
+
+tmp/hopper/shared-workflow/Report (Shared Workflow)/
+
+Both files have identical SHA-256 hashes.Show moreShow less
+
+### CHATGPT-688c0e6cb7-000008-U — USER
+
+cycle-jobcenter-260811102517.jsonFileMANIFEST-jobcenter-260811102517.txtDocumentoutput-jobcenter-260811102517.txtDocumentjc053-step2-integration-report-jobcenter-260811102517.txtDocument
+
+### CHATGPT-688c0e6cb7-000009-U — USER
+
+output-jobcenter-260811104502.txtDocumentoutput-jobcenter-260811104502-jobcenter-260811104502.txtDocumentcycle-jobcenter-260811104502.jsonFileMANIFEST-jobcenter-260811104502.txtDocumentjc053-step2-fix001-report-jobcenter-260811104502.txtDocumentwow, 8 minutes to fix one button.  That's plodding...
+
+### CHATGPT-688c0e6cb7-000010-U — USER
+
+cycle-jobcenter-260811104900.jsonFileMANIFEST-jobcenter-260811104900.txtDocumentoutput-jobcenter-260811104900.txtDocumentoutput-jobcenter-260811104900-jobcenter-260811104900.txtDocumentjc053-step2-fix002-report-jobcenter-260811104900.txtDocumentok it finished - can we correct those process defects, and still control integrity?
+
+### CHATGPT-688c0e6cb7-000011-U — USER
+
+cycle-jobcenter-260811111500.jsonFileMANIFEST-jobcenter-260811111500.txtDocumentoutput-jobcenter-260811111500.txtDocumentoutput-jobcenter-260811111500-jobcenter-260811111500.txtDocumentjc053-step2-convergence001-report-jobcenter-260811111500.txtDocument
+
+### CHATGPT-688c0e6cb7-000012-U — USER
+
+cycle-jobcenter-260811112300.jsonFileMANIFEST-jobcenter-260811112300.txtDocumentoutput-jobcenter-260811112300.txtDocumentoutput-jobcenter-260811112300-jobcenter-260811112300.txtDocumentjc053-step2-diag002-report-jobcenter-260811112300.txtDocumentwell that figured it out anyway
+
+### CHATGPT-688c0e6cb7-000013-U — USER
+
+cycle-jobcenter-260811113000.jsonFileMANIFEST-jobcenter-260811113000.txtDocumentoutput-jobcenter-260811113000.txtDocumentoutput-jobcenter-260811113000-jobcenter-260811113000.txtDocumentjc053-step2-fix003-report-jobcenter-260811113000.txtDocument
+
+### CHATGPT-688c0e6cb7-000014-U — USER
+
+output-jobcenter-260811113800.txtDocumentcycle-jobcenter-260811113800.jsonFileMANIFEST-jobcenter-260811113800.txtDocumentjc053-step2-convergence001-report-jobcenter-260811113800.txtDocumentoutput-jobcenter-260811113800-jobcenter-260811113800.txtDocument
+
+### CHATGPT-688c0e6cb7-000015-U — USER
+
+output-jobcenter-260811113900.txtDocumentcycle-jobcenter-260811113900.jsonFileMANIFEST-jobcenter-260811113900.txtDocumentjc053-step2-convergence002-report-jobcenter-260811113900.txtDocumentoutput-jobcenter-260811113900-jobcenter-260811113900.txtDocument
+
+### CHATGPT-688c0e6cb7-000016-U — USER
+
+jc053-draft-lifecycle001-report-jobcenter-260811114000.txtDocumentoutput-jobcenter-260811114000.txtDocumentcycle-jobcenter-260811114000.jsonFileMANIFEST-jobcenter-260811114000.txtDocument
+
+### CHATGPT-688c0e6cb7-000017-U — USER
+
+output-jobcenter-260811114500.txtDocumentcycle-jobcenter-260811114500.jsonFileMANIFEST-jobcenter-260811114500.txtDocumentjc053-draft-lifecycle-fix001-report-jobcenter-260811114500.txtDocument
+
+### CHATGPT-688c0e6cb7-000018-U — USER
+
+still executing, but - it chose the actual ugliest pop-up imaginable
+
+### CHATGPT-688c0e6cb7-000019-U — USER
+
+output-jobcenter-260811115000.txtDocumentcycle-jobcenter-260811115000.jsonFileMANIFEST-jobcenter-260811115000.txtDocumentjc053-draft-lifecycle-fix002-report-jobcenter-260811115000.txtDocument
+
+### CHATGPT-688c0e6cb7-000020-U — USER
+
+output-jobcenter-260811115500.txtDocumentpasted-text-jobcenter-260811115500.txtDocumentcycle-jobcenter-260811115500.jsonFileMANIFEST-jobcenter-260811115500.txtDocumentjc053-draft-dialog-style001-report-jobcenter-260811115500.txtDocument
+
+### CHATGPT-688c0e6cb7-000021-U — USER
+
+output-jobcenter-260811120000.txtDocumentcycle-jobcenter-260811120000.jsonFileMANIFEST-jobcenter-260811120000.txtDocumentjc053-draft-lifecycle-fix003-report-jobcenter-260811120000.txtDocument
+
+### CHATGPT-688c0e6cb7-000022-U — USER
+
+output-jobcenter-260811120500.txtDocumentcycle-jobcenter-260811120500.jsonFileMANIFEST-jobcenter-260811120500.txtDocumentjc053-draft-routing001-report-jobcenter-260811120500.txtDocumentthat ticket is now being executed under highest settings - stand by for that. Meanwhile, here is the latest report.
+
+### CHATGPT-688c0e6cb7-000023-U — USER
+
+output-jobcenter-260811120500.txtDocumentcycle-jobcenter-260811120500.jsonFileMANIFEST-jobcenter-260811120500.txtDocumentjc053-draft-routing001-report-jobcenter-260811120500.txtDocument
+
+### CHATGPT-688c0e6cb7-000024-U — USER
+
+MANIFEST-shared-workflow-260811121500.txtDocumentoutput-shared-workflow-260811121500.txtDocumentshared-workflow-audit001-report-shared-workflow-260811121500.mdFilecycle-shared-workflow-260811121500.jsonFile
+
+### CHATGPT-688c0e6cb7-000025-U — USER
+
+output.txtDocumentmy quota is down to 89%, was 100 this morning
+
+### CHATGPT-688c0e6cb7-000026-U — USER
+
+cycle-shared-workflow-260811183914.jsonFileMANIFEST-shared-workflow-260811183914.txtDocumentoutput-shared-workflow-260811183914.txtDocumentshared-workflow-v2-001-completion-report-shared-workflow-260811183914.txtDocumentacceptance-ledger-shared-workflow-260811183914.jsonFilecycle-shared-workflow-260811183914.jsonFileMANIFEST-shared-workflow-260811183914.txtDocumentoutput-shared-workflow-260811183914.txtDocumentpasted-text-shared-workflow-260811183914.txtDocumentshared-workflow-v2-001-completion-report-shared-workflow-260811183914.txtDocumentticket-preflight-shared-workflow-260811183914.jsonFileworkflow-v2-test-evidence-shared-workflow-260811183914.txtDocumenthow'd we do?
+
+### CHATGPT-688c0e6cb7-000027-U — USER
+
+output.txtDocumentok, stand by for that project, we'll task codex in a moment to reflect on it. Here is the last report - we don't even have to drag anything in to codex, we can just give it these paths. I wonder if codex can also grab the existing custom instruction...
+
+### CHATGPT-688c0e6cb7-000028-U — USER
+
+output.txtDocumentwe are not just looking for previously culled transcripts, we want codex to consider the live current session as well - that is fresher than the master transcripts.
+
+### CHATGPT-688c0e6cb7-000029-U — USER
+
+custom-instructions.txtDocument
+
+### CHATGPT-688c0e6cb7-000030-A — ASSISTANT
+
+Good. This gives us the missing literal source: the current ChatGPT custom instructions, rather than asking Codex to infer them from behavior. 
+They are already fairly sophisticated, but several provisions now visibly lag Workflow V2. For example, they still say CONVERGENCE comes after two failed passes and describe tickets with a long mandatory content list; V2 now calls for first-contradiction escalation in several circumstances and substantially more compact tickets.  So an evidence-based rewrite is warranted.
+Evidence package is now sufficient
+The MAXIMUM audit can use:
+
+
+Literal current custom instructions: the file you just supplied. 
+
+
+Live current sessions: freshest ChatGPT/Codex evidence.
+
+
+Other directly accessible sessions: especially anything newer than the masters.
+
+
+Portable masters: broad historical and cross-session evidence.
+
+
+Workflow V2: current intended ChatGPT↔Codex operating contract.
+
+
+Report/Hopper/Git evidence: objective evidence of what actually happened.
+
+
+The Workflow V2 audit: useful prior analysis, but not a substitute for independently examining ChatGPT behavior.
+
+
+It should deduplicate overlapping transcript evidence.
+Combined audit scope
+I recommend one MAXIMUM audit with two separate outputs:
+A. ChatGPT Instructions V2
+Codex should classify every existing instruction as:
+PRESERVE / REVISE / CONSOLIDATE / REMOVE
+and identify missing instructions as ADD.
+For every proposed change it should provide actual historical evidence showing why it matters. Then produce a complete proposed replacement suitable for pasting into ChatGPT Custom Instructions.
+The rewritten instructions should align ChatGPT with V2 particularly around terminal-objective envelopes, ticket economy, first-contradiction escalation, Codex autonomy, acceptance ledgers, decisive evidence, reasoning/quota notices, and not issuing another ticket when the current objective should remain alive.
+B. Context/Handoff V2
+This should examine the whole continuity system—not with an assumption that master transcripts are obsolete.
+Portable masters are a required capability because they can be dragged into arbitrary ChatGPT/Codex sessions. The audit should determine their optimal generation/refresh policy given that live session records may simultaneously provide fresher evidence.
+It should explicitly distinguish:
+normal continuity → live/direct records + authority
+portable transport/recovery → master transcripts
+immutable provenance → checkpoint/handoff artifacts
+and determine where duplication can safely disappear.
+One important instruction for this audit
+I would explicitly tell Codex:
+
+Do not optimize merely for smaller context. Optimize for the minimum context that preserves reliable recovery of product intent, decisions, accepted evidence, historical reasoning when needed, and portability across ChatGPT/Codex sessions.
+
+That's important because otherwise a technically elegant audit could over-optimize toward pointers and lose the very reason you've found the master transcripts useful.
+We're now ready to issue this audit. Because it is cross-project behavioral analysis, instruction architecture, and handoff architecture over a large historical record, it qualifies for:
+
+**FOR NEXT TICKET BOOST AI TO *** MAXIMUM ******
+
+I would switch to MAXIMUM only for this audit, let Codex produce proposals without implementing them, then immediately reassess the reasoning posture before any adoption work.
+
+### CHATGPT-688c0e6cb7-000031-U — USER
+
+I probably need to grab the latest chatgpt transcripts for this too, huh? (you'll supply the saved file names/paths for master transcripts, yes?)
+
+### CHATGPT-688c0e6cb7-000032-A — ASSISTANT
+
+Yes. For this particular audit, I would refresh the current ChatGPT transcripts first. The live sessions contain the freshest evidence—including today's Workflow V2 discussion—and the existing portable masters lag some of them.
+But you do not need to manually combine them with the historical masters. Give Codex the fresh transcript files plus the canonical master paths, and let it reconcile/deduplicate them.
+Canonical master transcript paths
+From Codex's inventory: 
+Job Center
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md
+Views
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/views/chatgpt-complete-current-record.md
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/views/codex-complete-current-record.md
+Community
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/community/chatgpt-complete-current-record.md
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/community/codex-complete-current-record.md
+Profile
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/profile/chatgpt-complete-current-record.md
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/profile/codex-complete-current-record.md
+But note the known freshness limitations: Views and Community Codex masters may lag newer sessions; Profile's Codex record is only a bootstrap baseline; Shared Workflow currently has no transcript master. 
+What I would export now
+For the instruction audit, I'd grab the latest/current ChatGPT transcript from:
+
+
+this Job Center session;
+
+
+current Views session;
+
+
+current Community session;
+
+
+current Profile session.
+
+
+And, if ChatGPT treats today's shared-workflow discussion as living within this Job Center conversation rather than a separate project conversation, that's already captured by this transcript. We don't need to manufacture another transcript.
+Then give Codex the filesystem paths to those freshly downloaded files. Don't paste their contents into the audit ticket.
+Codex should be instructed:
+
+Treat the freshly exported current ChatGPT transcripts as the freshest evidence. Use the canonical master transcripts for historical coverage. Use directly accessible ChatGPT/Codex session records to fill freshness/coverage gaps. Deduplicate overlapping records by session/message identity or provenance rather than treating repeated material as independent evidence.
+
+Codex transcripts
+I would not manually export fresh Codex transcripts yet.
+Codex has substantially better direct access to its own current and historical session records, and one of the questions we're explicitly asking this audit to answer is whether manual transcript harvesting is still necessary. Making you harvest them all before that audit would prejudge the answer and recreate the labor we're trying to eliminate.
+So the minimal engineer work should be:
+Export four current ChatGPT transcripts + supply their paths + supply custom-instructions.txt.
+Everything else Codex should retrieve itself from the canonical masters, archive/session records, V2 authority, reports and Git.
+That gives the MAXIMUM audit both freshness and historical depth without making you rebuild the entire archive manually.
+
+### CHATGPT-688c0e6cb7-000033-U — USER
+
+OK, prepare the ticket, and I will download the current transcripts
+
+### CHATGPT-688c0e6cb7-000034-A — ASSISTANT
+
+This should be an audit only: no instruction replacement and no handoff changes yet. It should use the fresh transcripts you download as freshest evidence, then fill backward through live/session records and portable masters.
+Because this is behavioral analysis across multiple projects plus instruction and continuity architecture:
+**FOR NEXT TICKET BOOST AI TO *** MAXIMUM ******
+Once you've downloaded the current ChatGPT transcripts, replace the four <CURRENT_..._PATH> placeholders below with their actual paths before sending it.
+TICKET READY FOR CODEX
+SHARED-WORKFLOW-CHATGPT-HANDOFF-AUDIT001 — Audit ChatGPT Instructions and Context/Handoff Architecture
+
+MODE: DIAGNOSTIC
+OWNER: shared-workflow
+
+OUTCOME
+
+Perform one evidence-based high-reasoning audit of:
+
+A. the Teachers.Net ChatGPT custom instructions; and
+B. the Teachers.Net context/handoff/transcript architecture.
+
+Produce two independent PROPOSED / NOT YET ADOPTED recommendations:
+
+1. CHATGPT INSTRUCTIONS V2
+2. CONTEXT / HANDOFF V2
+
+Do not implement either proposal.
+
+WHY NOW
+
+Workflow V2 is now CANONICAL / ADOPTED at commit ad1b085.
+
+Codex execution behavior has been substantially improved, but ChatGPT remains
+the product/engineering supervisory layer that:
+
+- interprets Engineering Director intent;
+- maintains project continuity;
+- decides whether a new objective is warranted;
+- formulates Codex tickets;
+- reviews Codex evidence;
+- distinguishes implementation from acceptance;
+- sequences subsequent work.
+
+Historical work shows recurring ChatGPT-side opportunities involving objective
+fragmentation, ticket drift, over-prescription, evidence interpretation,
+premature new tickets, context economy, and handoff design.
+
+The current ChatGPT instructions predate final Workflow V2 and should now be
+audited against actual behavior.
+
+The context/handoff system should likewise be evaluated now that V2 provides
+BOOTSTRAP, project records, acceptance ledgers, direct session/archive access,
+mode-tiered reports, and stronger project isolation.
+
+EVIDENCE — CURRENT CHATGPT INSTRUCTIONS
+
+Exact current instruction text supplied by Engineering Director:
+
+/mnt/data/custom-instructions.txt
+
+If that path is unavailable in this Codex environment, stop and request only
+the exact accessible path. Do not reconstruct the instructions from behavior.
+
+EVIDENCE — FRESHEST CURRENT CHATGPT TRANSCRIPTS
+
+Treat these newly downloaded current transcripts as the freshest ChatGPT
+conversation evidence:
+
+Job Center:
+<CURRENT_JOBCENTER_CHATGPT_PATH>
+
+Views:
+<CURRENT_VIEWS_CHATGPT_PATH>
+
+Community:
+<CURRENT_COMMUNITY_CHATGPT_PATH>
+
+Profile:
+<CURRENT_PROFILE_CHATGPT_PATH>
+
+These current transcripts take freshness precedence over older portable masters
+for overlapping conversation periods.
+
+EVIDENCE — PORTABLE MASTER RECORDS
+
+Use these for historical breadth, portability evidence, and older context.
+
+Job Center ChatGPT:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md
+
+Job Center Codex:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md
+
+Views ChatGPT:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/views/chatgpt-complete-current-record.md
+
+Views Codex:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/views/codex-complete-current-record.md
+
+Community ChatGPT:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/community/chatgpt-complete-current-record.md
+
+Community Codex:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/community/codex-complete-current-record.md
+
+Profile ChatGPT:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/profile/chatgpt-complete-current-record.md
+
+Profile Codex:
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/profile/codex-complete-current-record.md
+
+Known limitations:
+
+- Views portable Codex master may lag newer sessions.
+- Community portable Codex master may lag newer sessions.
+- Profile Codex portable record is bootstrap-baseline quality rather than a
+  complete current transcript.
+- Shared Workflow currently has no portable ChatGPT/Codex transcript master.
+
+EVIDENCE — DIRECT SESSION / ARCHIVE ACCESS
+
+Use directly accessible current and historical ChatGPT/Codex session records to:
+
+- include evidence newer than portable masters;
+- cover Shared Workflow discussions/work where masters do not exist;
+- fill known Views/Community/Profile freshness gaps;
+- inspect relevant current Codex sessions;
+- reconstruct specific ticket/report sequences when needed.
+
+Do not assume portable masters are the freshest evidence.
+
+Do not assume direct session access makes portable masters unnecessary.
+
+DEDUPLICATION
+
+The same conversation may exist in:
+
+- a live/current session;
+- a downloaded current transcript;
+- a portable master;
+- a fossil/archive;
+- a Report/Hopper quotation.
+
+Do not treat these as independent corroborating examples.
+
+Deduplicate by session/message/provenance and use the freshest/fullest version
+for behavioral analysis.
+
+OTHER AUTHORITY / EVIDENCE
+
+Use current Workflow V2 and its machine authority:
+
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/shared/WORKFLOW-V2.md
+
+/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/shared/workflow-v2.json
+
+Also use as needed:
+
+- current ChatGPT Engineering Operating Contract;
+- project records;
+- Cursor/Handoff;
+- Report/Hopper terminal reports;
+- acceptance ledgers;
+- targeted Git history;
+- SHARED-WORKFLOW-AUDIT001.
+
+Do not indiscriminately reread all repository material.
+
+PART A — CHATGPT INSTRUCTIONS V2 AUDIT
+
+PRIMARY QUESTION
+
+Given the actual historical behavior of Teachers.Net ChatGPT supervision, what
+instructions would most reliably produce:
+
+- fewer safe cycles to the real product outcome;
+- less ticket drift;
+- stronger terminal-objective continuity;
+- better use of Codex autonomy;
+- earlier decisive evidence;
+- better distinction between implementation and acceptance;
+- less redundant context/ticket prose;
+- better roadmap/project continuity;
+- lower reasoning/quota waste;
+- fewer unnecessary engineer interventions;
+- better preservation of Engineering Director product authority?
+
+AUDIT THE CURRENT INSTRUCTIONS
+
+For every material current instruction or coherent instruction group classify:
+
+PRESERVE
+REVISE
+CONSOLIDATE
+REMOVE
+
+Identify missing requirements as:
+
+ADD
+
+For every REVISE / REMOVE / ADD recommendation provide:
+
+- existing instruction or missing behavior;
+- historical evidence/examples;
+- failure or inefficiency produced;
+- proposed behavioral rule;
+- relationship to Workflow V2;
+- risk of overcorrection;
+- priority P0 / P1 / P2.
+
+CHATGPT BEHAVIORAL AREAS
+
+Evaluate at minimum:
+
+1. terminal product outcome versus latest symptom;
+2. one objective versus one defect/hypothesis;
+3. continuing an existing objective versus issuing a new ticket;
+4. ticket drift from roadmap/product intent;
+5. ticket length and duplicated durable procedure;
+6. ChatGPT over-prescribing Codex implementation sequence;
+7. Codex autonomy inside accepted objective envelopes;
+8. FAST/STANDARD/DIAGNOSTIC/CONVERGENCE selection;
+9. first-contradiction escalation;
+10. reasoning-posture recommendations and quota awareness;
+11. decisive-seam planning;
+12. synthetic versus native evidence;
+13. human QA timing;
+14. implementation-complete versus terminal acceptance;
+15. acceptance-ledger use and avoiding redundant re-verification;
+16. reviewing Codex reports before issuing subsequent work;
+17. distinguishing architecture/function/presentation/tooling/process;
+18. avoiding architecture change for narrow defects;
+19. handling newly discovered adjacent blockers;
+20. product decisions that require Engineering Director input;
+21. stopping for real authority/risk boundaries without unnecessary relay;
+22. project isolation and cross-project information;
+23. authority ordering and contradiction handling;
+24. context-loading economy;
+25. workflow/tooling work displacing product work;
+26. communication economy and decision clarity;
+27. reasoning escalation/de-escalation reminders;
+28. human visual/product-semantic authority;
+29. preserving unrelated work/Git safety without bloating every ticket;
+30. any recurring pattern discovered from evidence that is not represented here.
+
+SUCCESSFUL BEHAVIOR
+
+Do not audit only failures.
+
+Identify historical cases where ChatGPT behavior clearly:
+
+- prevented unsafe work;
+- caught an authority contradiction;
+- selected the right architecture boundary;
+- used convergence effectively;
+- preserved product intent;
+- minimized engineer relay;
+- correctly challenged an assumption;
+- produced an efficient ticket.
+
+Preserve those behaviors in the replacement instructions.
+
+CHATGPT ↔ CODEX CONTRACT
+
+Ensure the proposed instructions align with Workflow V2:
+
+ChatGPT primarily owns:
+
+- terminal product outcome;
+- product/architecture decisions;
+- project/roadmap sequencing;
+- authority pointers;
+- acceptance invariant;
+- decisive evidence class;
+- material exclusions;
+- human decisions;
+- objective owner/fixture distinction;
+- review of terminal evidence.
+
+Codex primarily owns:
+
+- investigation sequence;
+- exact implementation details;
+- reversible instrumentation;
+- adjacent same-objective blockers;
+- focused verification;
+- bounded QA-tool repair;
+- retries;
+- fixture cleanup;
+- consolidation;
+- selective staging/commit construction.
+
+Do not make ChatGPT merely a ticket relay.
+Do not make Codex the product authority.
+
+DELIVERABLE A
+
+Produce:
+
+A1. Evidence-based diagnosis of current ChatGPT instruction performance.
+
+A2. PRESERVE / REVISE / CONSOLIDATE / REMOVE / ADD matrix.
+
+A3. Prioritized changes.
+
+A4. A COMPLETE proposed replacement instruction set suitable for pasting into
+the ChatGPT custom-instruction field.
+
+The replacement must:
+
+- preserve durable user preferences;
+- avoid project-specific volatile paths/state;
+- reference shared/project authority instead of duplicating procedure;
+- be concise enough for practical Custom Instructions use;
+- align with Workflow V2;
+- explicitly resist ticket drift and objective fragmentation;
+- explicitly support reasoning/quota reminders;
+- preserve Engineering Director authority.
+
+Mark it:
+
+PROPOSED — NOT YET ADOPTED.
+
+Do not modify the actual instruction source.
+
+PART B — CONTEXT / HANDOFF V2 AUDIT
+
+PRIMARY QUESTION
+
+What is the optimal Teachers.Net context-continuity and handoff architecture
+given that:
+
+- Codex can access many live/current and historical session records directly;
+- current sessions can be fresher than portable masters;
+- portable master transcripts remain highly valuable because the Engineering
+  Director can drag them into arbitrary ChatGPT and Codex sessions;
+- project authority must remain compact, current, and non-duplicative;
+- recovery from drift/session loss must remain robust;
+- cross-project investigation sometimes requires portable context;
+- immutable historical provenance remains valuable?
+
+SETTLED PRODUCT REQUIREMENT
+
+Portable master transcripts MUST remain a supported capability.
+
+Do not recommend eliminating them merely because direct session/archive access
+exists.
+
+Their portability is an explicit product/process value:
+
+- drag into another ChatGPT session;
+- drag into another Codex session;
+- seed a fresh/recovery context;
+- investigate drift;
+- cross a project boundary deliberately;
+- preserve history independently of live-session availability.
+
+The audit may recommend changing WHEN/HOW they are generated, refreshed,
+indexed, packaged, or transported.
+
+HANDOFF USE CASES
+
+Distinguish at minimum:
+
+1. routine continuation in the same ChatGPT session;
+2. routine continuation in the same Codex session;
+3. fresh Codex BOOTSTRAP;
+4. fresh ChatGPT project/session;
+5. ChatGPT → Codex execution;
+6. Codex → ChatGPT terminal review;
+7. ChatGPT → new ChatGPT session;
+8. Codex → new Codex session;
+9. cross-project consultation;
+10. suspected context drift;
+11. authority contradiction/history reconstruction;
+12. disaster/recovery;
+13. portable/offline/other-environment context transfer;
+14. long-term immutable provenance.
+
+For each, identify the minimum sufficient context source.
+
+CONTEXT LAYERS
+
+Evaluate the proper roles of:
+
+- live current sessions;
+- directly accessible historical session/archive records;
+- portable ChatGPT master transcript;
+- portable Codex master transcript;
+- conversation fossil/archive;
+- project record;
+- Manifest;
+- Workflow V2;
+- Project Cursor;
+- Engineering Handoff;
+- contracts/governance;
+- roadmap/plan;
+- acceptance ledger;
+- terminal Report/Hopper;
+- Git history;
+- immutable checkpoint/HANDOFFS package.
+
+Identify duplication and unique value.
+
+Do not collapse historically recoverable evidence into current authority.
+
+MASTER TRANSCRIPT POLICY
+
+Recommend whether portable masters should be:
+
+- continuously regenerated;
+- generated at every handoff;
+- generated at meaningful checkpoints;
+- refreshed before deliberate transport;
+- generated on demand;
+- some hybrid.
+
+Evaluate:
+
+- freshness;
+- completeness;
+- engineer labor;
+- generation cost;
+- portability;
+- independence from live archive access;
+- provenance;
+- deduplication;
+- cross-project utility;
+- recovery quality.
+
+Consider whether a master should carry:
+
+- source/session manifest;
+- timestamps;
+- session IDs;
+- hashes;
+- freshness boundary;
+- project identity;
+- attachment references;
+- missing-session warnings;
+- machine-readable index.
+
+LIVE SESSION ACCESS
+
+Determine what direct session access can safely replace.
+
+Do not assume access is universal or permanent.
+
+Identify fallback behavior when:
+
+- a live session is inaccessible;
+- another ChatGPT/Codex cannot see the same archive;
+- a session is deleted/closed;
+- project boundaries prevent retrieval;
+- portability outside the current environment is required.
+
+CHATGPT HANDOFF VERSUS CODEX BOOTSTRAP
+
+Evaluate whether these should remain distinct products.
+
+Codex now has one-word BOOTSTRAP.
+
+Determine whether ChatGPT needs an analogous compact refresh/handoff mechanism
+and what its source package should be.
+
+Do not invent implementation unless justified by evidence.
+
+IMMUTABLE CHECKPOINT
+
+Evaluate what the immutable HANDOFFS checkpoint should contain under V2.
+
+Consider whether Git-addressable/current authority can be represented by
+identity/hash/pointer while portable transcripts and non-recoverable evidence
+remain copied.
+
+Preserve independent recovery capability.
+
+20-FILE / MANUAL TRANSPORT PROBLEM
+
+Assess whether the engineer should still routinely move large multi-file
+handoff packages.
+
+Prefer fewer engineer relay operations where equivalent integrity can be
+preserved.
+
+But do not optimize file count at the cost of portability or recoverability.
+
+DELIVERABLE B
+
+Produce:
+
+B1. Current handoff/context architecture map.
+
+B2. Unique value and duplication analysis.
+
+B3. Recommended Context/Handoff V2 architecture.
+
+B4. Recommended portable-master generation/refresh policy.
+
+B5. Recommended fresh ChatGPT-session bootstrap/refresh process.
+
+B6. Recommended Codex-session process relative to existing BOOTSTRAP.
+
+B7. Recommended immutable checkpoint contents.
+
+B8. Migration path from current handoff without losing provenance.
+
+B9. Quantified or directional expected savings in engineer labor, context size,
+and repeated retrieval where evidence permits.
+
+B10. Risks/failure modes and safeguards.
+
+Mark all recommendations:
+
+PROPOSED — NOT YET ADOPTED.
+
+CROSS-CUTTING REQUIREMENTS
+
+Do not optimize merely for smaller context.
+
+Optimize for:
+
+- correctness;
+- terminal product continuity;
+- freshness;
+- historical recoverability;
+- portability;
+- project isolation;
+- minimal engineer relay;
+- minimal redundant AI work;
+- time/quota economy;
+- transparent authority;
+- ability to diagnose drift.
+
+Do not assume the current architecture is optimal because it is authoritative.
+
+Do not assume newer architecture is better merely because it is smaller.
+
+Separate:
+
+- current authority;
+- accepted evidence;
+- historical conversation evidence;
+- portable recovery evidence.
+
+REASONING / EVIDENCE
+
+This is a high-reasoning cross-project behavioral and process audit.
+
+The Engineering Director intends to run it at MAXIMUM.
+
+Use targeted retrieval over the evidence corpus rather than blindly reading
+every transcript linearly.
+
+However, sample enough across Job Center, Views, Community, Profile, and Shared
+Workflow to detect recurring behavior rather than overfitting to one project.
+
+Use current/live evidence where fresher.
+
+Use historical masters/archive evidence where broader.
+
+Report meaningful uncertainty rather than inventing completeness.
+
+GIT / IMPLEMENTATION
+
+AUDIT ONLY.
+
+Do not modify:
+
+- ChatGPT custom instructions;
+- Workflow V2;
+- project records;
+- handoff architecture;
+- transcript generation;
+- bootstrap tooling;
+- Report/Hopper tooling;
+- application/product code.
+
+No implementation commit is expected.
+
+REPORT
+
+Objective owner: shared-workflow.
+
+Return one status-first audit report containing:
+
+- evidence sources and freshness;
+- sampling/deduplication method;
+- Part A findings and complete proposed ChatGPT Instructions V2;
+- Part B findings and proposed Context/Handoff V2;
+- conflicts or unresolved decisions requiring Engineering Director judgment;
+- prioritized adoption roadmap;
+- expected benefits;
+- risks;
+- limitations;
+- recommended reasoning posture for implementation/review work after this audit.
+
+STOP BOUNDARY
+
+Stop for:
+
+- inability to access the literal current custom instructions;
+- inability to access the supplied fresh ChatGPT transcripts;
+- evidence so incomplete that a proposed replacement would be speculative;
+- a genuine product decision that must be resolved before recommendations can
+  be meaningfully formulated.
+
+Do not implement recommendations.
+
+END TICKET — SHARED-WORKFLOW-CHATGPT-HANDOFF-AUDIT001
+One practical point: the literal custom-instruction file Codex needs is currently available to this environment as /mnt/data/custom-instructions.txt. If the Codex session cannot see that path, put the file somewhere it can access and replace that path too. The text itself is confirmed as the current instruction set. 
+After you download the four transcripts, give me their filenames/paths if you want me to sanity-check the completed ticket before you launch it at MAXIMUM.

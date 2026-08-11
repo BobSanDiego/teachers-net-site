@@ -147,6 +147,43 @@ It does not authorize product implementation. Genuine identity, ownership,
 authority, destructive/production, or required-evidence contradictions stop
 the flow with the actual boundary.
 
+## Portable ChatGPT handoff
+
+`PREPARE HANDOFF` is the canonical routine handoff command for every
+BOOTSTRAP-ready registered product project. Codex resolves the attached/current
+ChatGPT export and project record, then the central owner
+`tools/codex_archive/prepare_chatgpt_handoff.py` must:
+
+- fail before mutation when transcript and project identities conflict;
+- classify current exports as `OPEN/INCOMPLETE` through an explicit boundary;
+- reconcile stable session/message identities incrementally and refuse changed
+  historical message hashes;
+- preserve portable ChatGPT and Codex records while stating unavailable Codex
+  coverage honestly;
+- assemble a self-contained visible-file startup payload containing
+  `00-LOAD-STARTUP.md`, project identity, current authority, terminal state,
+  portable masters, provenance, freshness, and a format-independent manifest;
+- validate every required payload member before returning `HANDOFF READY`.
+
+Repeated preparation from an unchanged source must not duplicate conversation
+content. A later export from the same open session may add only safely proven
+new messages. The fresh ChatGPT command is exactly `LOAD STARTUP`; its semantics
+come from the supplied `00-LOAD-STARTUP.md`, never hidden project configuration
+or assumed filesystem access.
+
+Job Center ChatGPT is the Teachers.Net house/shared-workflow supervisory
+conversation. That convention does not transfer engineering ownership or
+Report/Hopper routing. Another project may receive Job Center house history
+only by explicit request, classified as contextual evidence and never target
+project authority. Shared Workflow has no separate ChatGPT project.
+
+Routine startup preparation and full immutable recovery checkpoints are
+separate operations. `PREPARE HANDOFF` does not force a heavyweight checkpoint.
+The physical archive-versus-visible-files delivery decision remains deferred;
+the logical package manifest is authoritative across representations. The
+current preparer may offer both a visible directory and optional ZIP wrapper as
+transport candidates without declaring either the permanent standard.
+
 ## Mode operation
 
 ### FAST

@@ -33122,3 +33122,381 @@ Text:
 The closing export is 33,974 bytes and contains 480 lines. Comparison against the canonical Job Center master found a 129-line exact preserved block plus smaller repeated boundary blocks; the remaining content is the closing delta. I’ll publish the transcript once as a source artifact and append only the non-overlapping/changed delta to the canonical master, with the overlap metrics recorded.
 
 ```
+
+
+## HANDOFF V2 CODEX SNAPSHOT — 019ff033-1eb8-7092-a7e9-3c77e91ec0ad
+
+- Generated: `2026-08-11T20:48:17+00:00`
+- Incorporated through: `2026-08-11T19:22:19.583Z`
+- Source SHA-256: `22018a2cfd1bd9aa61e6eaedf188baab9fae036c5c476fd4fa1c741c1c4c6850`
+- Publication: `SAFE_VERBATIM`
+
+===============================================================================
+GENERATED CODEX CONVERSATION TRANSCRIPT
+DERIVED ARTIFACT — RAW SOURCE REMAINS AUTHORITATIVE
+
+Session ID:
+  019ff033-1eb8-7092-a7e9-3c77e91ec0ad
+Raw source:
+  /mnt/c/Users/bobre/.codex/sessions/2026/08/11/rollout-2026-08-11T02-41-49-019ff033-1eb8-7092-a7e9-3c77e91ec0ad.jsonl
+Raw source SHA-256:
+  22018a2cfd1bd9aa61e6eaedf188baab9fae036c5c476fd4fa1c741c1c4c6850
+Raw source bytes:
+  723139
+Raw source event/line count:
+  279
+First source timestamp:
+  2026-08-11T09:42:46.459Z
+Last source timestamp:
+  2026-08-11T19:22:19.583Z
+Renderer/version:
+  codex-transcript-archive-v1
+Completeness classification:
+  HIGH-CONFIDENCE VISIBLE CONVERSATION
+===============================================================================
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-U0001
+Role: USER
+Source line: 7
+Timestamp: 2026-08-11T09:42:47.605Z
+
+Text:
+
+# Files mentioned by the user:
+
+## chatgpt_teachers_net_tnet__2026-08-11.md: C:/Users/bobre/Downloads/chatgpt_teachers_net_tnet__2026-08-11.md
+
+## My request:
+Read
+C:\Main\Active\Projects\Teachers.Net\SHARED-WORKFLOW\START-CODEX.md
+and bootstrap this project as directed. The project is Profile.
+
+The attached file is the complete current Profile ChatGPT transcript. Treat it as conversation evidence for bootstrap, not automatic project authority.
+
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0001
+Role: ASSISTANT
+Source line: 11
+Timestamp: 2026-08-11T09:42:50.002Z
+
+Text:
+I’ll bootstrap the Profile project from the shared workflow and the repository’s local authority documents, using the attached transcript only as evidence. I’ll first inspect the startup instructions, current worktree, and relevant Profile continuity files before making any changes.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0002
+Role: ASSISTANT
+Source line: 33
+Timestamp: 2026-08-11T09:43:14.347Z
+
+Text:
+Bootstrap is currently blocked at the required onboarding authorization boundary.
+
+Observed state:
+
+- Repository: `/home/bobreap/projects/teachers-net-site`
+- Git remote: `git@github.com:BobSanDiego/teachers-net-site.git`
+- Current branch: `COMMUNITY003-semantic-community-communications-working-draft`
+- Worktree: extensively dirty with existing Community, Job Center, and other artifacts; no unrelated changes were touched.
+- Registered shared projects: Community, Job Center, and Views.
+- Profile has no registered project record, Project Cursor, Engineering Handoff, authority manifest, or isolated Report/Hopper configuration.
+- The supplied transcript is available at `/mnt/c/Users/bobre/Downloads/chatgpt_teachers_net_tnet__2026-08-11.md` and will remain conversation evidence, not authority.
+
+The transcript provides preliminary Profile direction—member identity, onboarding, privacy, communications preferences, and relationship policy—but it does not authorize architecture, implementation, or project registration.
+
+Per `START-CODEX.md` and `PROJECT-BOOTSTRAP-SPEC.md`, I can proceed only after the Engineering Director explicitly authorizes bounded Profile onboarding. The minimum proposed record would identify:
+
+- Project ID/name: `profile` / Teachers.Net Profile
+- Repository and owned paths
+- Transcript source and hash
+- Authority, Cursor, Handoff, runtime/QA, HANDOFFS, and Report/Hopper locations
+- Any predecessor relationships or unresolved ownership boundaries
+
+Please authorize: “Authorize bounded Profile project onboarding.”
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-U0002
+Role: USER
+Source line: 39
+Timestamp: 2026-08-11T09:45:39.826Z
+
+Text:
+Authorize bounded Profile project onboarding.
+
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0003
+Role: ASSISTANT
+Source line: 43
+Timestamp: 2026-08-11T09:45:42.571Z
+
+Text:
+Authorization received. I’ll now perform the bounded onboarding: verify the repository and local governance, create only the minimum Profile project record and continuity scaffolding supported by evidence, preserve the transcript with its hash and provenance, and validate the resulting lifecycle-readiness boundary.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0004
+Role: ASSISTANT
+Source line: 58
+Timestamp: 2026-08-11T09:46:13.206Z
+
+Text:
+The authorized minimum scaffolding is now in place: a Profile project record, Project Cursor, and Engineering Handoff. I’m preserving the supplied transcript verbatim with provenance and creating the portable evidence record; implementation authority remains explicitly false.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0005
+Role: ASSISTANT
+Source line: 72
+Timestamp: 2026-08-11T09:46:34.271Z
+
+Text:
+Validation passed for the new JSON records and preserved transcript. I’m completing the lifecycle baseline by publishing one immutable, record-driven Profile handoff checkpoint to the configured HANDOFFS archive, then I’ll verify its manifest and confirm no unrelated dirty files were included.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0006
+Role: ASSISTANT
+Source line: 86
+Timestamp: 2026-08-11T09:46:53.093Z
+
+Text:
+Profile onboarding is complete and lifecycle-ready.
+
+Created:
+
+- [Profile project record](/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/projects/profile.json)
+- [Project Cursor](/home/bobreap/projects/teachers-net-site/docs/profile/project-cursor.md)
+- [Engineering Handoff](/home/bobreap/projects/teachers-net-site/docs/profile/engineering-handoff.md)
+- Preserved transcript evidence with SHA-256:
+  `3c994d32d7cfc6d9a4c4e07e7a5eadf8ae86caaee302eacea15d356f9cd3a1f1`
+- Codex archival baseline and portable records
+- Validated immutable handoff checkpoint:
+  `/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/Teachers.Net-Profile-20260811-094647`
+
+Validation passed:
+
+- JSON records parse successfully.
+- Handoff manifest contains 15 nonzero members.
+- Publication status: `VALIDATED_IMMUTABLE_CHECKPOINT`.
+- Profile implementation remains unauthorized; next step requires a bounded discovery/audit ticket.
+- Existing unrelated worktree changes were preserved and not staged or committed.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-U0003
+Role: USER
+Source line: 92
+Timestamp: 2026-08-11T10:19:54.111Z
+
+Text:
+Re-ingest the current shared Teachers.Net bootstrap/workflow authority and reconcile
+this Profile project against it.
+
+Do not repeat onboarding and do not begin product work.
+
+Verify that Profile is fully lifecycle-ready under the current shared process,
+supply the current Profile Report/Hopper artifacts required for Engineering Director
+review, and report the next authorized boundary.
+
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0007
+Role: ASSISTANT
+Source line: 96
+Timestamp: 2026-08-11T10:19:57.510Z
+
+Text:
+I’ll re-ingest the current tracked shared workflow authority, compare it with the existing Profile record and continuity set, and then produce only the required review artifacts. I will not alter Profile product scope or repeat onboarding.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0008
+Role: ASSISTANT
+Source line: 111
+Timestamp: 2026-08-11T10:20:11.995Z
+
+Text:
+The reconciliation found one shared-process drift: Profile’s registered guidance index did not explicitly include the current operating contract, transcript-archive, and Report/Hopper authorities, even though the checkpoint guidance bundle contained related material. I’ll correct that declarative record, regenerate the current handoff payload, and publish a fresh Profile lifecycle review cycle.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0009
+Role: ASSISTANT
+Source line: 154
+Timestamp: 2026-08-11T10:21:10.142Z
+
+Text:
+Profile has been reconciled against the current shared workflow and remains fully lifecycle-ready.
+
+Reconciled:
+
+- Added explicit authority index to the Profile project record.
+- Registered the current Operating Contract, Transcript Archive, and Report/Hopper authorities.
+- Regenerated and republished the immutable Profile handoff checkpoint:
+  `/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/Teachers.Net-Profile-20260811-102039`
+- Checkpoint validation: `VALIDATED_IMMUTABLE_CHECKPOINT`, 18 members.
+- No onboarding repeated.
+- No product, schema, runtime, migration, or UI work started.
+
+Current review artifacts:
+
+- [Profile Report](/home/bobreap/projects/teachers-net-site/tmp/hopper/profile/Report%20(Profile)/profile-reconciliation-report-profile-260811102048.txt)
+- [Cycle record](/home/bobreap/projects/teachers-net-site/tmp/hopper/profile/Report%20(Profile)/cycle-profile-260811102048.json)
+- [Manifest](/home/bobreap/projects/teachers-net-site/tmp/hopper/profile/Report%20(Profile)/MANIFEST-profile-260811102048.txt)
+- [Hopper evidence](/home/bobreap/projects/teachers-net-site/tmp/hopper/profile/Hopper%20(Profile)/)
+
+Cycle `260811102048` validated successfully in both Report and Hopper directories. Existing unrelated worktree changes were preserved.
+
+Next authorized boundary: Engineering Director may issue one bounded Profile discovery/audit ticket with explicit objective, scope, acceptance evidence, and stop condition. Until then, Profile remains in Planning and product work is not authorized.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-U0004
+Role: USER
+Source line: 160
+Timestamp: 2026-08-11T19:18:59.495Z
+
+Text:
+BOOTSTRAP
+
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0010
+Role: ASSISTANT
+Source line: 164
+Timestamp: 2026-08-11T19:19:02.892Z
+
+Text:
+Profile bootstrap is already complete and reconciled.
+
+Status: `REGISTERED / LIFECYCLE READY`
+
+Current checkpoint:
+
+`C:\Main\Active\Projects\Teachers.Net\HANDOFFS\Teachers.Net-Profile-20260811-102039`
+
+No product work has begun. The next authorized boundary is a bounded Profile discovery/audit ticket.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-U0005
+Role: USER
+Source line: 170
+Timestamp: 2026-08-11T19:19:43.734Z
+
+Text:
+how long ago did you bootstrap? those documents were just updated in the last 20 minutes
+
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0011
+Role: ASSISTANT
+Source line: 174
+Timestamp: 2026-08-11T19:19:46.547Z
+
+Text:
+You’re right to question that. I’ll check the current canonical and projected authority timestamps now; my prior “already complete” response relied on the 10:20 UTC reconciliation checkpoint and may be stale relative to the updates you just made.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0012
+Role: ASSISTANT
+Source line: 180
+Timestamp: 2026-08-11T19:19:55.154Z
+
+Text:
+You’re correct. My last reconciliation was at approximately 10:20 UTC, about 9 hours ago—not within the last 20 minutes.
+
+The current shared authority was updated afterward:
+
+- Canonical `PROJECT-RECORD-SPEC.md`: 11:45 PDT
+- Canonical `START-CODEX.md` / `PROJECT-BOOTSTRAP-SPEC.md`: 11:47 PDT
+- Canonical `WORKFLOW-V2.md`: 11:57 PDT
+- Windows-projected workflow files: 12:02 PDT
+
+So my “already complete” response was stale. Profile needs a fresh reconciliation against the newly updated shared workflow before I can truthfully call it current.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-U0006
+Role: USER
+Source line: 186
+Timestamp: 2026-08-11T19:20:10.221Z
+
+Text:
+pls BOOTSTRAP
+
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0013
+Role: ASSISTANT
+Source line: 190
+Timestamp: 2026-08-11T19:20:11.362Z
+
+Text:
+I’m re-running the bounded Profile bootstrap/reconciliation against the newly updated workflow authority now. I’ll inspect the new `WORKFLOW-V2` and updated shared specs, update only Profile’s lifecycle metadata/artifacts as required, and leave product work untouched.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0014
+Role: ASSISTANT
+Source line: 204
+Timestamp: 2026-08-11T19:20:24.056Z
+
+Text:
+The canonical entry point now passes exactly as required:
+
+`BOOTSTRAP COMPLETE`  
+Project: Teachers.Net Profile  
+Workflow: V2  
+Lifecycle: READY  
+Product implementation authorized: NO
+
+I’m finishing the required V2 lifecycle cycle now, including the V2 source-ticket artifact and refreshed immutable checkpoint evidence.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0015
+Role: ASSISTANT
+Source line: 227
+Timestamp: 2026-08-11T19:20:58.896Z
+
+Text:
+The V2 helper correctly rejected my first artifact because `BOOTSTRAP` is a stable workflow command, not a formal ticket payload. That is a workflow-artifact issue, not a Profile readiness failure. I’m correcting the source-ticket artifact to the required V2 envelope, rotating the incomplete attempt into archive, and rerunning one validated cycle.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0016
+Role: ASSISTANT
+Source line: 245
+Timestamp: 2026-08-11T19:21:26.501Z
+
+Text:
+The formal ticket preflight now passes. The remaining failure is a helper invocation defaulting the terminal status to `modified`; I’m correcting that to the required terminal `complete` state and performing the final validation.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0017
+Role: ASSISTANT
+Source line: 267
+Timestamp: 2026-08-11T19:21:57.220Z
+
+Text:
+The V2 cycle finalized, but validation caught stale artifact metadata from the earlier failed attempt (old `192300` filenames). I’m rotating that incomplete cycle into archive, correcting the descriptors to the active cycle, and doing the final clean validation.
+
+-------------------------------------------------------------------------------
+CODEX-019ff033-A0018
+Role: ASSISTANT
+Source line: 277
+Timestamp: 2026-08-11T19:22:19.273Z
+
+Text:
+BOOTSTRAP COMPLETE
+
+Project: Teachers.Net Profile  
+Workflow: V2  
+Lifecycle: READY  
+Product implementation authorized: NO
+
+Validated:
+
+- Workflow V2 T+0 ticket preflight: PASS
+- Profile lifecycle cycle: `260811192900`
+- Report/Hopper validation: PASS
+- Workflow validation: `PASS workflow=V2`
+- Immutable checkpoint: `/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/Teachers.Net-Profile-20260811-192025`
+
+Current Report:
+
+[Profile Bootstrap V2 Report](/home/bobreap/projects/teachers-net-site/tmp/hopper/profile/Report%20(Profile)/profile-bootstrap-v2-report-profile-260811192900.txt)
+
+No product work was started. Next boundary: a bounded Profile discovery/audit ticket.
+

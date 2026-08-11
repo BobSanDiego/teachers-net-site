@@ -4524,3 +4524,82 @@ The most important adaptation from the Job Center version is that Views has its 
 
 ```
 
+
+
+## HANDOFF V2 OPEN/INCOMPLETE SNAPSHOT — Teachers.Net (TNET) - Views (8/10/26)
+
+- Session identity: `teachers-net-tnet-views-8-10-26`
+- Incorporated through: `8/11/2026, 12:50:54 PM`
+- Generated: `2026-08-11T20:48:17+00:00`
+- Freshness warning: newer messages may exist after this boundary.
+- Classification: conversation evidence, not project authority.
+
+### CHATGPT-0d36070b8f-000013-A — ASSISTANT
+
+Correct. This is the Teachers.Net Durable Views project/session, specifically “Views (8/10/26)”.
+The Community material is related concurrent-project context that was ingested to help with cross-project boundaries; it does not make Community the active workstream here. I will continue treating Views authority, Cursor/Handoff, roadmap, repository boundaries, and ticket flow as controlling in this chat.
+
+### CHATGPT-0d36070b8f-000014-U — USER
+
+ok, where were we last?
+
+### CHATGPT-0d36070b8f-000015-A — ASSISTANT
+
+We had just finished reconciling the Views project and then started discussing a new Teachers.Net Profile + Onboarder platform system as a potentially useful workstream while Views waits for its next consumer.
+Immediately before that:
+
+
+DV-FIX004 was completed and you visually accepted it. The stray Job Categories / Certification test group was removed from the JobLister draft while preserving all 23 canonical entries and leaving the Job Center subscriber pinned to View 10/version 12. 
+
+
+DV-GOV005 then reconciled the Views roadmap and actual implementation. It established that the standalone MVP and View Manager are already complete, corrected stale roadmap/handoff language, and pushed documentation commit e4d4438. 
+
+
+The resulting Views state is Stabilization — standalone MVP and manager organization certified; next consumer authorization pending. There is no currently authorized Views implementation ticket. 
+
+
+The next consumer path was left intentionally open rather than manufacturing more Views features. The planning boundary was essentially select/assess the next consumer seam, while Job Center's real wizard integration waits for that project to catch up. 
+
+
+You then proposed using this opening to think through the Profile and Onboarder system. We discussed the preferred architecture: one platform plugin initially, with Profile and Onboarding as hard-separated modules, rather than immediately creating two plugins.
+
+
+The conceptual ownership we landed on was:
+
+
+WordPress → account/authentication identity
+
+
+Profile → durable member information, privacy/visibility, canonical term references
+
+
+Onboarder → workflow that collects/validates/writes Profile information
+
+
+Core Terms → canonical taxonomy
+
+
+Views → potentially supplies curated term choices to onboarding
+
+
+Community / Jobs / Lesson Bank / Directories → consumers of Profile rather than owners of the canonical profile
+
+
+
+
+I recommended not implementing that architecture from assumption. The appropriate first engineering step would be an architecture/repository seam audit of existing Teachers.Net user/profile/account/community code to discover what already exists and what authority must be preserved.
+
+
+So the live decision point is:
+Do we formally open the Profile/Onboarder workstream with that architecture/seam audit, or leave Views parked and handle Profile/Onboarder in a dedicated project/session?
+Given our project discipline, I favor the latter: the design discussion here was useful because Views may become an input to onboarding, but Profile/Onboarder is a distinct platform workstream and should get its own authority/roadmap rather than becoming a Views subproject.
+
+### CHATGPT-0d36070b8f-000016-U — USER
+
+excellent - update: I have now launched a new project in Codex and chatgpt called "Profile" so we'll feed updates from that and other Views subscriber projects back here as appropriate.
+
+### CHATGPT-0d36070b8f-000017-A — ASSISTANT
+
+Understood. I’ll treat Profile as an independent Teachers.Net platform workstream and keep this session focused on Durable Views.
+Profile, Job Center, Community, or other consumers should feed back here only when they create a concrete Views concern—for example a new consumer seam, View contract requirement, integration gate, dependency, or sequencing change. I won’t import their implementation work into Views merely because the projects interact.
+That leaves Views correctly in Stabilization, available for subscriber integration when one of those parallel projects reaches the appropriate seam.

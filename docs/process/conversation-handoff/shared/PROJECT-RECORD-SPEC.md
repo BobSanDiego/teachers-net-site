@@ -29,3 +29,17 @@ and publishes a validated immutable checkpoint from the record's
 `handoff_build_directory` fields. Unknown, duplicate, or invalid records fail
 closed. The builder never infers project identity from the current directory,
 conversation title, or stale hopper contents.
+
+## Routine ChatGPT startup fields
+
+`handoff_v2.chatgpt_title_patterns` declares the governed project-identity
+patterns accepted for a supplied ChatGPT export.
+`handoff_v2.conversation_manifest` declares the additive portable-master
+manifest. Conversation and Codex master paths remain in the existing
+`conversation.master` / `codex.portable_record` fields (or their legacy
+top-level equivalents). These are project facts consumed by the single central
+`PREPARE HANDOFF` owner; records must not copy its algorithm.
+
+Shared Workflow declares that it has no independent ChatGPT project and points
+to Job Center only for explicit supervisory house context. That relationship
+does not alter objective ownership or Report/Hopper routing.

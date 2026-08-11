@@ -13,6 +13,7 @@
     "workflow_version": "docs/process/conversation-handoff/shared/workflow-v2.json",
     "ticket_validation": "tools/workflow/workflow_v2.py",
     "bootstrap_entry": "tools/workflow/workflow.py",
+    "portable_handoff": "tools/codex_archive/prepare_chatgpt_handoff.py",
     "project_routing": "tools/workflow/workflow_v2.py",
     "report_hopper_finalization": "tools/hopper/clean_cycle.py"
   },
@@ -21,6 +22,15 @@
     "front_door": "docs/process/conversation-handoff/shared/START-CODEX.md",
     "new_project_spec": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md",
     "authorizes_product_implementation": false
+  },
+  "portable_handoff": {
+    "prepare_command": "PREPARE HANDOFF",
+    "startup_command": "LOAD STARTUP",
+    "startup_file": "00-LOAD-STARTUP.md",
+    "routine_checkpoint_policy": "SEPARATE_FROM_IMMUTABLE_RECOVERY_CHECKPOINT",
+    "delivery_format_decision": "DEFERRED",
+    "shared_workflow_chatgpt_project": false,
+    "house_supervisory_chatgpt_project": "jobcenter"
   },
   "ticket": {
     "first_line": "TICKET READY FOR CODEX",

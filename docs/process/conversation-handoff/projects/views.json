@@ -46,6 +46,10 @@
   "handoff_source": "docs/process/conversation-handoff/views",
   "handoff_build_directory": "docs/process/conversation-handoff/views/current-handoff",
   "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md", "views-migration-manifest.json"],
+  "handoff_v2": {
+    "chatgpt_title_patterns": ["(?:^|[-–—])\\s*Views(?:\\s|\\(|$)", "Durable Views"],
+    "conversation_manifest": "docs/process/conversation-handoff/views/handoff-v2-conversation-manifest.json"
+  },
   "guidance_sources": [
     {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
     {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},

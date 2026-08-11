@@ -113,6 +113,18 @@ newer. Successor ChatGPT sessions read this contract, resolve project authority,
 then consult conversation records selectively. Handoffs should not require the
 Engineering Director to reconstruct project state manually.
 
+The engineer-facing lifecycle is: attach/export the latest project ChatGPT
+transcript, issue exactly `PREPARE HANDOFF`, move the validated self-contained
+payload to a fresh ChatGPT, and issue exactly `LOAD STARTUP`. ChatGPT must obey
+the supplied `00-LOAD-STARTUP.md`, verify project identity and freshness, keep
+authority distinct from conversation evidence, and surface missing or
+contradictory sources. It must not assume access to repository filesystem paths.
+An open transcript is current only through its recorded boundary.
+
+Job Center ChatGPT supplies broad Teachers.Net house context only when that
+context is deliberately included. It never silently overrides another
+project's authority or owns a shared-workflow engineering report.
+
 ## Direct-upload transport and ZIP packaging
 
 Codex's direct upload transport permits at most 20 directly uploaded files in

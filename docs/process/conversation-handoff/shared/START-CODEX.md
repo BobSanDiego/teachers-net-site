@@ -15,6 +15,13 @@ authorizes only the bounded onboarding path in `PROJECT-BOOTSTRAP-SPEC.md`; no
 second authorization phrase is required. BOOTSTRAP never authorizes product
 implementation.
 
+After successful BOOTSTRAP, `PREPARE HANDOFF` is centrally available for a
+supplied current project ChatGPT transcript. Codex resolves project-specific
+paths from the project record; the engineer does not provide master, Cursor,
+Handoff, Report/Hopper, or package paths. The resulting self-contained package
+is moved into a fresh ChatGPT session, where the engineer types exactly
+`LOAD STARTUP` and the supplied `00-LOAD-STARTUP.md` controls ingestion.
+
 ## Read first
 
 Read these canonical shared authorities:
@@ -70,9 +77,12 @@ boundary.
   delivery rule only, not a Codex implementation limit; Codex must not reject
   an otherwise complete ticket solely because of character count.
 - Report is the terminal human-review result; Hopper adds supporting evidence.
-- Durable handoff payloads live in the shared HANDOFFS archive and are reported
-  through validated receipts, not duplicated into Report/Hopper.
-- Use `PREPARE HANDOFF` for the normal closing lifecycle.
+- Routine self-contained ChatGPT startup payloads live in the shared HANDOFFS
+  location and are referenced, not duplicated, in Report/Hopper.
+- Use exactly `PREPARE HANDOFF` for routine startup preparation and exactly
+  `LOAD STARTUP` in the fresh ChatGPT session.
+- Treat current transcript exports as `OPEN/INCOMPLETE` unless closure is
+  proven; always state the incorporated-through boundary.
 - Preserve unrelated dirty work and stage selectively.
 
 ## Upload transport

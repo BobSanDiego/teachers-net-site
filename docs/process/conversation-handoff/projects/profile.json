@@ -37,6 +37,10 @@
   "handoff_source": "docs/process/conversation-handoff/profile",
   "handoff_build_directory": "docs/process/conversation-handoff/profile/current-handoff",
   "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md", "profile-project-record.json"],
+  "handoff_v2": {
+    "chatgpt_title_patterns": ["(?:^|[-–—])\\s*Profile(?:\\s|\\(|$)"],
+    "conversation_manifest": "docs/process/conversation-handoff/profile/handoff-v2-conversation-manifest.json"
+  },
   "guidance_sources": [
     {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
     {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},

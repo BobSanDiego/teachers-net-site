@@ -3,33 +3,35 @@
 This is the canonical shared shutdown/startup procedure. Project facts come
 from the active project record; this document owns the process.
 
-## Shutdown
+## Routine portable ChatGPT startup handoff
 
-1. Export the closing ChatGPT transcript.
-2. Supply it to Codex and issue:
+1. Export/attach the latest project ChatGPT transcript. It may be open.
+2. Supply it to a BOOTSTRAP-ready project Codex and issue exactly:
 
-   `PREPARE HANDOFF — incorporate the attached closing ChatGPT transcript and execute the complete handoff lifecycle for this project.`
+   `PREPARE HANDOFF`
 
-3. The workflow resolves the project record, validates and hashes the closing
-   transcript, refreshes the ChatGPT master and Codex portable record, builds
-   guidance and START-HERE, validates every member, and publishes a new
-   immutable timestamped checkpoint under
-   `/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/`.
-4. The workflow returns a durable handoff receipt. Report/Hopper contains the
-   receipt and supporting evidence, not duplicate multi-megabyte payloads.
+3. The central workflow resolves the project record, rejects contradictory
+   transcript identity, records the open/closed freshness boundary, reconciles
+   portable masters without duplicate history, and validates one self-contained
+   startup payload under the registered HANDOFFS root.
+4. Move the payload into a fresh ChatGPT and issue exactly:
+
+   `LOAD STARTUP`
+
+5. ChatGPT follows `00-LOAD-STARTUP.md` and returns its prescribed concise
+   `STARTUP LOADED` identity/freshness/objective status.
+
+The routine payload contains visible logical components plus
+`99-PACKAGE-MANIFEST.json`; no essential startup instruction depends on local
+repository access. Physical ZIP versus visible-file delivery remains deferred.
+The preparer may expose both the validated visible directory and an optional
+ZIP transport candidate for empirical testing; neither changes logical roles.
+
+## Full immutable recovery checkpoint
 
 Every successful checkpoint is named `<Project-Name>-YYYYMMDD-HHMMSS` and is
 published through a temporary build followed by validation and atomic rename.
 Existing checkpoints are never overwritten.
-
-## Startup
-
-Upload the contents of the latest intended checkpoint to a fresh ChatGPT
-conversation and say `Execute the attached handoff.` The successor reads
-`00-START-HERE.txt`, adopts the shared Operating Contract, resolves the
-project record and authority package, and consults transcripts only as needed.
-It returns the prescribed concise startup-state report before engineering
-resumes.
 
 ## Payload and safety
 
@@ -49,10 +51,11 @@ python3 tools/codex_archive/project_handoff_builder.py \
   --archive-root /mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/
 ```
 
-`prepare_handoff.py` remains a backward-compatible Job Center master-building
-entry point; it must not be copied into project-specific Views or Community
-builders. The shared builder owns validation, manifest enrichment, hashing,
-collision refusal, and atomic publication for every registered project.
+`prepare_handoff.py` remains the backward-compatible immutable Job Center
+checkpoint entry point. Routine self-contained ChatGPT startup preparation is
+owned centrally by `prepare_chatgpt_handoff.py`; neither owner may be copied
+into project-local builders. The shared builders own validation, manifest
+enrichment, hashing, collision refusal, and publication.
 The Windows-accessible operational projection is
 `/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/`; projected files
 identify their canonical tracked source.

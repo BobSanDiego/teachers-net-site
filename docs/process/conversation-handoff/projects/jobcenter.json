@@ -33,6 +33,12 @@
   "handoff_source": "docs/process/conversation-handoff/jobcenter/current-handoff",
   "handoff_build_directory": "docs/process/conversation-handoff/jobcenter/current-handoff",
   "handoff_payload_members": ["03-chatgpt-complete-current-record.md", "04-codex-current-handoff-record.md", "conversation-master-manifest.json"],
+  "handoff_v2": {
+    "chatgpt_title_patterns": ["(?:^|[-–—])\\s*Job Center(?:\\s|\\(|$)"],
+    "conversation_manifest": "docs/process/conversation-handoff/jobcenter/handoff-v2-conversation-manifest.json",
+    "house_supervisory_context": true,
+    "house_role": "Teachers.Net shared-workflow historical/supervisory context; engineering and Report/Hopper ownership remain with the objective owner"
+  },
   "guidance_sources": [
     {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
     {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},

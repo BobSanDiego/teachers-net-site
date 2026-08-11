@@ -21,6 +21,10 @@
   "handoff_source": "docs/process/conversation-handoff/community",
   "handoff_build_directory": "docs/process/conversation-handoff/community/current-handoff",
   "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md"],
+  "handoff_v2": {
+    "chatgpt_title_patterns": ["(?:^|[-–—])\\s*Community(?:\\s|\\(|$)", "TNet 3\\.0"],
+    "conversation_manifest": "docs/process/conversation-handoff/community/handoff-v2-conversation-manifest.json"
+  },
   "guidance_sources": [
     {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
     {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},

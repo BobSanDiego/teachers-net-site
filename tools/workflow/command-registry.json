@@ -1,10 +1,11 @@
 {
-  "version": 3,
+  "version": 4,
   "workflow_version": "V2",
   "project_default": null,
   "formal_ticket_marker": "TICKET READY FOR CODEX",
   "commands": [
     {"command": "BOOTSTRAP", "syntax": "BOOTSTRAP", "purpose": "Resolve Workflow V2 and reconcile a registered project or enter bounded new-project onboarding", "example": "BOOTSTRAP"},
+    {"command": "PREPARE HANDOFF", "syntax": "PREPARE HANDOFF", "purpose": "Validate the supplied current ChatGPT transcript and build a self-contained Workflow V2 startup payload", "example": "PREPARE HANDOFF"},
     {"command": "VALIDATE TICKET", "syntax": "VALIDATE TICKET --ticket <path>", "purpose": "Run Workflow V2 mechanical preflight before cycle initialization", "example": "VALIDATE TICKET --ticket /path/to/ticket.txt"},
     {"command": "EXECUTE NEXT", "syntax": "EXECUTE NEXT", "purpose": "Refresh the conversation, rebuild the formal queue, and select the oldest unexecuted ticket", "example": "EXECUTE NEXT"},
     {"command": "EXECUTE <ticket>", "syntax": "EXECUTE <ticket-id>", "purpose": "Execute one named formal ticket after refresh and ledger checks", "example": "EXECUTE DV-ARCH002"},

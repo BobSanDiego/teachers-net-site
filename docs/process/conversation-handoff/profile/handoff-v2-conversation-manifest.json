@@ -1,0 +1,99 @@
+{
+  "chatgpt": {
+    "latest_boundary": "8/11/2026, 12:51:43 PM",
+    "latest_session": "teachers-net-tnet-profile-8-10-26",
+    "latest_status": "OPEN/INCOMPLETE",
+    "master_path": "/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/profile/chatgpt-complete-current-record.md",
+    "rendered_master_bytes": 16203,
+    "rendered_master_sha256": "93716eb9029a912b7cdfb67c377bfcd884f9ca41006e5ebc80861cecb80399a5",
+    "sessions": {
+      "teachers-net-tnet-profile-8-10-26": {
+        "attachment_reference_count": 0,
+        "attachment_warning": "Transcript attachment labels are references only unless the attachment payload is separately included.",
+        "declared_message_count": 8,
+        "first_message_id": "CHATGPT-bb02667b8c-000001-U",
+        "freshness_warning": "Source is open/incomplete; newer messages may exist after the stated boundary.",
+        "incorporated_through": "8/11/2026, 12:51:43 PM",
+        "last_message_id": "CHATGPT-bb02667b8c-000008-A",
+        "messages": [
+          {
+            "content_sha256": "3be8d1e0239c748b5275f9e97e129ee0b9624e022a663f69553ed706edbd698a",
+            "id": "CHATGPT-bb02667b8c-000001-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "a8948a72567fe343a153c05e970a7341126a3e90651869f5b57a26fcc19d4e2d",
+            "id": "CHATGPT-bb02667b8c-000002-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "7d10f53f8b0b8c4aa561f593df44811fdef91d81474249cfbb4b33ace8a9848e",
+            "id": "CHATGPT-bb02667b8c-000003-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "36daba996b35d1b7e11387cffb0080dc62b1cc109c03592ffaa7bdcdecfb59e0",
+            "id": "CHATGPT-bb02667b8c-000004-A",
+            "role": "assistant"
+          },
+          {
+            "content_sha256": "f638c15f67814c8d581b9bfda1daeb73e9b553f3fa84d7dd3f6d473e3952f185",
+            "id": "CHATGPT-bb02667b8c-000005-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "b39aa512bdba2c381096142d63f4a1f20496b3c78d1a69980b16da7fb94410eb",
+            "id": "CHATGPT-bb02667b8c-000006-A",
+            "role": "assistant"
+          },
+          {
+            "content_sha256": "87c35d6dfc755d7ad933c985da2d7bd3715862619ce124afbee21cb487decb21",
+            "id": "CHATGPT-bb02667b8c-000007-U",
+            "role": "user"
+          },
+          {
+            "content_sha256": "f17e9d9d1a3c38f28149c9655f2d8fd2b8e8c4b5ca4edbc12dfb7933ec72fada",
+            "id": "CHATGPT-bb02667b8c-000008-A",
+            "role": "assistant"
+          }
+        ],
+        "parsed_message_count": 8,
+        "redaction_count": 0,
+        "snapshots": [
+          {
+            "generated_at": "2026-08-11T20:48:17+00:00",
+            "incorporated_through": "8/11/2026, 12:51:43 PM",
+            "message_count": 8,
+            "source_bytes": 15312,
+            "source_path": "/mnt/c/Users/bobre/Downloads/teachers_net_tnet_profile_8_10_26__2026-08-11.md",
+            "source_sha256": "dd10e8ea09a9c506288fc4daacb4d051b7d100fc007c40d2b6958ff813adf1dd",
+            "status": "OPEN/INCOMPLETE"
+          }
+        ],
+        "status": "OPEN/INCOMPLETE",
+        "title": "Teachers.Net (TNET) - Profile (8/10/26)"
+      }
+    },
+    "source_unchanged": true
+  },
+  "codex": {
+    "portable_master_path": "/home/bobreap/projects/teachers-net-site/docs/process/conversation-handoff/profile/codex-complete-current-record.md",
+    "rendered_master_bytes": 471,
+    "rendered_master_sha256": "62e9aeb3b400b059623c5596516e96bc82b304da3ca96ca4f5a8a27399a51f7a",
+    "sources": [],
+    "status": "EXISTING PORTABLE RECORD / CURRENT SESSION NOT PROVEN",
+    "warnings": []
+  },
+  "generated_at": "2026-08-11T20:56:07+00:00",
+  "house_context": {
+    "classification": "NOT INCLUDED",
+    "included": false,
+    "supervisory_project": "jobcenter"
+  },
+  "project": {
+    "id": "profile",
+    "name": "Teachers.Net Profile"
+  },
+  "renderer_version": "handoff-v2.1",
+  "schema_version": "2.0"
+}

@@ -1,4 +1,5 @@
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -7,9 +8,16 @@ ROOT = Path(__file__).resolve().parents[2]
 CHECKPOINT_ROOT = Path("/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS")
 
 
+def immutable_job_center_checkpoints():
+    return sorted(
+        path for path in CHECKPOINT_ROOT.iterdir()
+        if path.is_dir() and re.fullmatch(r"Job-Center-\d{8}-\d{6}", path.name)
+    )
+
+
 class HandoffLifecycleTests(unittest.TestCase):
     def test_checkpoint_has_immutable_timestamped_job_center_shape(self):
-        checkpoints = sorted(CHECKPOINT_ROOT.glob("Job-Center-*") )
+        checkpoints = immutable_job_center_checkpoints()
         self.assertTrue(checkpoints)
         checkpoint = checkpoints[-1]
         self.assertRegex(checkpoint.name, r"^Job-Center-\d{8}-\d{6}$")
@@ -18,7 +26,7 @@ class HandoffLifecycleTests(unittest.TestCase):
         self.assertEqual(manifest["publication_status"], "VALIDATED_IMMUTABLE_CHECKPOINT")
 
     def test_checkpoint_is_safe_and_hashes_match(self):
-        checkpoint = sorted(CHECKPOINT_ROOT.glob("Job-Center-*"))[-1]
+        checkpoint = immutable_job_center_checkpoints()[-1]
         names = {p.name for p in checkpoint.rglob("*") if p.is_file()}
         self.assertNotIn("codex-conversation-fossil.md", names)
         self.assertFalse(any(p.suffix == ".jsonl" for p in checkpoint.rglob("*")))
