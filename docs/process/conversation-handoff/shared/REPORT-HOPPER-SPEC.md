@@ -1,5 +1,15 @@
 # Durable Handoff Report/Hopper Specification
 
+## Report-cache routing default
+
+Every generated completion, bootstrap, diagnostic, or lifecycle report must be
+published to the active project's registered Report cache, resolved from its
+project record and clean-cycle routing. Do not leave the authoritative report
+only in a repository `tmp/` staging location or another project's cache.
+
+An alternate report location is permitted only when the Engineer explicitly
+specifies it. Record that exception in the cycle manifest and terminal report.
+
 The durable handoff payload lives in the Windows-accessible HANDOFFS archive.
 Report contains a REPORT_REQUIRED durable-handoff receipt with checkpoint path,
 member hashes, validation, and publication status. Hopper contains that receipt

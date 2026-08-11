@@ -71,6 +71,12 @@ delete historical cycles, never silently overwrite a file, preserve blocked or
 incomplete cycles, and exclude unrelated dirty files. `tmp/hopper/output.txt`
 is protected and must never be touched or included.
 
+All generated reports belong in the active project's registered `Report (...)`
+cache by default. Do not publish a terminal report only to a repository `tmp/`
+staging path or another project's cache. Use an alternate location only when
+the Engineer explicitly specifies it, and record that exception in the cycle
+manifest and report.
+
 When a ticket edits a local Markdown file and that file is referenced in the
 post-ticket report, first move every currently active hopper file into the
 hopper's `archive/` directory with a UTC timestamp-versioned filename. Then
@@ -189,6 +195,14 @@ For routine next-ticket handoffs, read only the latest companion-chat portion
 needed to locate the latest complete ticket. Read older turns only when the
 ticket is truncated, context is missing or changed, repository authority cannot
 resolve the issue, or a contradiction is detected.
+
+If companion-chat retrieval fails, Codex must troubleshoot and report the
+connection state before requesting pasted ticket text. Verify whether the
+requested title is visible as a ChatGPT-backed chat, distinguish it from local
+Codex transcripts, and record whether the chat source is unavailable, missing,
+or readable but malformed. Paste fallback is appropriate only after that
+bounded diagnosis, and the fallback request must preserve the executable ticket
+format requirement.
 
 ## Google Drive Operational Docs
 
