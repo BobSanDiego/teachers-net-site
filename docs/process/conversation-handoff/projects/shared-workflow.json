@@ -1,0 +1,31 @@
+{
+  "project_id": "shared-workflow",
+  "display_name": "Teachers.Net Shared Workflow",
+  "state": "REGISTERED / LIFECYCLE READY",
+  "report_label": "Shared Workflow",
+  "repositories": {
+    "root": "/home/bobreap/projects/teachers-net-site",
+    "continuity_root": "/home/bobreap/projects/teachers-net-site"
+  },
+  "handoff": {
+    "report_hopper": "tmp/hopper/shared-workflow",
+    "handoffs": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS",
+    "checkpoint_prefix": "Shared-Workflow"
+  },
+  "authority_index": [
+    "docs/process/conversation-handoff/shared/workflow-v2.json",
+    "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
+    "docs/process/conversation-handoff/shared/START-CODEX.md",
+    "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md"
+  ],
+  "scope": {
+    "include": ["shared engineering workflow", "bootstrap", "ticket preflight", "Report/Hopper mechanics"],
+    "exclude": ["Job Center product authority", "Views product authority", "Community product authority", "Profile product implementation"]
+  },
+  "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
+    {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
+    {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},
+    {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "shared Report/Hopper policy"}
+  ]
+}

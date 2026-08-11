@@ -3,24 +3,23 @@
 from __future__ import annotations
 
 import json
-import re
+import sys
 from pathlib import Path
 
-BOOTSTRAP_COMMAND = re.compile(r"^bootstrap this project as directed\s*$", re.I)
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.workflow.workflow_v2 import resolve_report_owner as v2_report_owner
 
 
 def is_bounded_bootstrap_authorization(instruction: str, project_name: str) -> bool:
-    return bool(project_name.strip() and BOOTSTRAP_COMMAND.match(instruction.strip()))
+    return bool(project_name.strip() and instruction.strip() == "BOOTSTRAP")
 
 
 def resolve_report_owner(objective_owner: str, acceptance_fixture: str | None = None) -> str:
     """Route formal evidence to the objective owner, never its test fixture."""
-    owner = objective_owner.strip()
-    if not owner:
-        raise ValueError("formal cycle requires an objective owner")
-    if acceptance_fixture and owner == acceptance_fixture.strip():
-        return owner
-    return owner
+    return v2_report_owner(objective_owner, acceptance_fixture)
 
 
 def assert_lifecycle_ready(record: dict, *, report_dir: Path, hopper_dir: Path, checkpoint: Path) -> None:

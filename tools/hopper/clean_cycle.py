@@ -17,6 +17,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 HOPPER = ROOT / "tmp" / "hopper"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.workflow.workflow_v2 import (  # noqa: E402
+    VALID_EVIDENCE,
+    VALID_REASONING,
+    WorkflowV2Error,
+    load_project_record,
+    project_report_route,
+    report_tier,
+    resolve_report_owner,
+    validate_ticket_payload,
+    workflow_version,
+)
 SUCCESSFUL_PUSH_STATES = {"pushed", "success", "successful"}
 TERMINAL_STATUSES = {"complete", "partial", "blocked"}
 GIT_DISPOSITIONS = {
@@ -32,18 +46,17 @@ def cycle_id() -> str:
 
 
 def paths(project: str) -> tuple[Path, Path, Path]:
-    base = HOPPER / project
-    label = "Views" if project == "views" else "Job Center" if project == "jobcenter" else project.replace("-", " ").title()
-    return base / f"Report ({label})", base / f"Hopper ({label})", base / "archive"
+    _, record = load_project_record(project, ROOT)
+    route = project_report_route(record, ROOT)
+    return route["report"], route["hopper"], route["archive"]
 
 
 def cycle_directories(project: str) -> tuple[Path, ...]:
     """Return every active directory that must be flushed at cycle start."""
     report, hopper, _ = paths(project)
-    if project == "views":
-        base = HOPPER / project
-        return report, hopper, base / "Report (views)", base / "Hopper (views)"
-    return report, hopper
+    _, record = load_project_record(project, ROOT)
+    aliases = project_report_route(record, ROOT)["aliases"]
+    return tuple([report, hopper, *aliases])
 
 
 def sha256(path: Path) -> str:
@@ -54,7 +67,13 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def begin(project: str, identifier: str) -> None:
+def begin(project: str, identifier: str, ticket_source: Path) -> dict:
+    if not ticket_source.is_file():
+        raise RuntimeError(f"ticket source does not exist: {ticket_source}")
+    try:
+        preflight = validate_ticket_payload(ticket_source.read_text(encoding="utf-8"))
+    except WorkflowV2Error as exc:
+        raise RuntimeError(f"ticket preflight failed before cycle initialization: {exc}") from exc
     report, hopper, archive = paths(project)
     for source in cycle_directories(project):
         source.mkdir(parents=True, exist_ok=True)
@@ -69,6 +88,7 @@ def begin(project: str, identifier: str) -> None:
         for item in source.iterdir():
             if item.name != "output.txt":
                 shutil.move(str(item), str(target / item.name))
+    return preflight
 
 
 def safe_name(source: Path, project: str, identifier: str) -> str:
@@ -177,18 +197,122 @@ def publish_report_cycle(project: str, payload: dict) -> None:
                 shutil.copy2(source, report_dir / filename)
 
 
+def manifest_lines(payload: dict) -> list[str]:
+    lines = [
+        f"project={payload['project']}", f"ticket={payload['ticket']}",
+        f"cycle_id={payload['cycle_id']}", f"workflow_version={payload['workflow_version']}",
+        f"objective_owner={payload['objective_owner']}",
+        f"acceptance_fixtures={json.dumps(payload['acceptance_fixtures'])}",
+        f"mode={payload['mode']}", f"evidence_class={payload['evidence_class']}",
+        f"objective_state={payload['objective_state']}",
+        f"branch={payload['branch']}",
+        f"commit={format_optional(payload['commit'])}",
+        f"push={format_optional(payload['push'])}",
+        f"git_disposition={payload['git_disposition']}",
+        f"reasoning_posture_recommended={payload['reasoning_posture_recommended']}",
+        f"reasoning_posture_used={payload['reasoning_posture_used'] or 'null'}",
+        f"reasoning_posture_recommended_next={payload['reasoning_posture_recommended_next']}",
+        f"reasoning_escalation_reason={payload['reasoning_escalation_reason'] or 'null'}",
+        f"current_hopper={payload['current_hopper']}",
+        f"archive_path={payload['archive_path']}",
+        f"report_file={payload['report_file']}",
+        f"manifest_file={payload['manifest_file']}",
+        f"cycle_record_file={payload['cycle_record_file']}",
+        f"evidence_bundle={payload.get('evidence_bundle') or ''}",
+        f"report_hopper_bytes={json.dumps(payload['report_hopper_bytes'], sort_keys=True)}",
+        "", "artifacts:",
+    ]
+    lines.extend(json.dumps(item, sort_keys=True) for item in payload["artifacts"])
+    if payload.get("excluded_artifacts"):
+        lines.extend(["", "excluded_artifacts:"])
+        lines.extend(json.dumps(item, sort_keys=True) for item in payload["excluded_artifacts"])
+    return lines
+
+
+def directory_bytes(path: Path) -> int:
+    return sum(item.stat().st_size for item in path.iterdir() if item.is_file())
+
+
+def persist_records(project: str, payload: dict) -> None:
+    report, hopper, _ = paths(project)
+    record_path = hopper / payload["cycle_record_file"]
+    manifest_path = hopper / payload["manifest_file"]
+    for _ in range(4):
+        record_path.write_text(json.dumps(payload, indent=2) + "\n")
+        manifest_path.write_text("\n".join(manifest_lines(payload)) + "\n")
+        publish_report_cycle(project, payload)
+        sizes = {
+            "report": sum(directory_bytes(path) for path in report_directories(project)),
+            "hopper": directory_bytes(hopper),
+        }
+        if sizes == payload["report_hopper_bytes"]:
+            break
+        payload["report_hopper_bytes"] = sizes
+    record_path.write_text(json.dumps(payload, indent=2) + "\n")
+    manifest_path.write_text("\n".join(manifest_lines(payload)) + "\n")
+    publish_report_cycle(project, payload)
+
+
 def write_records(project: str, ticket: str, identifier: str, branch: str,
                   status: str, commit: str | None, push: str,
                   artifacts: list[dict], evidence: str | None = None,
                   git_disposition: str | None = None,
                   excluded_artifacts: list[dict] | None = None,
-                  report_source: Path | None = None) -> None:
+                  report_source: Path | None = None,
+                  *, mode: str = "STANDARD",
+                  evidence_class: str = "FUNCTIONAL",
+                  objective_owner: str | None = None,
+                  acceptance_fixtures: list[str] | None = None,
+                  objective_state: str | None = None,
+                  acceptance_ledger: dict | None = None,
+                  ticket_preflight: dict | None = None,
+                  reasoning_posture_recommended: str = "NORMAL",
+                  reasoning_posture_used: str | None = None,
+                  reasoning_posture_recommended_next: str = "NORMAL",
+                  reasoning_escalation_reason: str | None = None,
+                  implementation_attempts: int = 1,
+                  internal_checkpoints: int = 0,
+                  human_checkpoints: int = 0,
+                  rework_cause: str | None = None,
+                  execution_seconds: float | None = None,
+                  human_wait_seconds: float | None = None) -> None:
     _, hopper, _ = paths(project)
     status = status.lower()
     commit = normalize_optional(commit)
     push = normalize_optional(push)
     disposition = infer_git_disposition(status, commit, push, git_disposition)
     validate_git_state(status, commit, push, disposition)
+    mode = mode.upper()
+    tier = report_tier(mode)
+    evidence_class = evidence_class.upper()
+    if evidence_class not in VALID_EVIDENCE:
+        raise RuntimeError(f"invalid Workflow V2 evidence class: {evidence_class!r}")
+    if ticket_preflight is None or not ticket_preflight.get("valid"):
+        raise RuntimeError("Workflow V2 finalization requires the successful T+0 ticket preflight")
+    if ticket_preflight.get("ticket_id") != ticket:
+        raise RuntimeError("ticket preflight identity does not match finalized ticket")
+    if ticket_preflight.get("mode") != mode:
+        raise RuntimeError("ticket preflight mode does not match finalized mode")
+    if ticket_preflight.get("objective_owner") != (objective_owner or project):
+        raise RuntimeError("ticket preflight owner does not match finalized objective owner")
+    reasoning_values = {
+        reasoning_posture_recommended.upper(),
+        reasoning_posture_recommended_next.upper(),
+    }
+    if reasoning_posture_used:
+        reasoning_values.add(reasoning_posture_used.upper())
+    if not reasoning_values <= VALID_REASONING:
+        raise RuntimeError(f"invalid Workflow V2 reasoning posture: {sorted(reasoning_values - VALID_REASONING)}")
+    owner = resolve_report_owner(objective_owner or project,
+                                 (acceptance_fixtures or [None])[0])
+    if owner != project:
+        raise RuntimeError(
+            f"cycle project {project!r} does not match objective owner {owner!r}; route by objective owner"
+        )
+    if not any("ticket" in item.get("hopper_filename", "").lower() or
+               "pasted-text" in item.get("hopper_filename", "").lower()
+               for item in artifacts):
+        raise RuntimeError("Workflow V2 cycle requires a packaged source ticket")
     report = f"output-{project}-{identifier}.txt"
     manifest = f"MANIFEST-{project}-{identifier}.txt"
     record = f"cycle-{project}-{identifier}.json"
@@ -198,6 +322,27 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         shutil.copy2(report_source, hopper / report)
     payload = {
         "project": project, "ticket": ticket, "cycle_id": identifier,
+        "workflow_version": workflow_version(ROOT),
+        "objective_id": ticket,
+        "objective_owner": owner,
+        "acceptance_fixtures": acceptance_fixtures or [],
+        "mode": mode,
+        "report_tier": tier,
+        "evidence_class": evidence_class,
+        "objective_state": objective_state or ("complete" if status == "complete" else status),
+        "acceptance_ledger": acceptance_ledger or {"objective_id": ticket, "seams": [], "checkpoints": []},
+        "ticket_preflight": ticket_preflight,
+        "reasoning_posture_recommended": reasoning_posture_recommended.upper(),
+        "reasoning_posture_used": reasoning_posture_used.upper() if reasoning_posture_used else None,
+        "reasoning_posture_recommended_next": reasoning_posture_recommended_next.upper(),
+        "reasoning_escalation_reason": reasoning_escalation_reason,
+        "implementation_attempts": implementation_attempts,
+        "internal_checkpoints": internal_checkpoints,
+        "human_checkpoints": human_checkpoints,
+        "rework_cause": rework_cause,
+        "execution_seconds": execution_seconds,
+        "human_wait_seconds": human_wait_seconds,
+        "report_hopper_bytes": {"report": 0, "hopper": 0},
         "status": status, "branch": branch, "commit": commit,
         "push": push, "git_disposition": disposition,
         "current_hopper": str(hopper.relative_to(ROOT)),
@@ -209,26 +354,7 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         "artifacts": artifacts,
         "excluded_artifacts": excluded_artifacts or [],
     }
-    (hopper / record).write_text(json.dumps(payload, indent=2) + "\n")
-    lines = [
-        f"project={project}", f"ticket={ticket}", f"cycle_id={identifier}",
-        f"branch={branch}", f"commit={format_optional(commit)}",
-        f"push={format_optional(push)}",
-        f"git_disposition={disposition}",
-        f"current_hopper={hopper.relative_to(ROOT)}",
-        f"archive_path={(hopper.parent / 'archive').relative_to(ROOT)}",
-        f"report_file={report}", f"manifest_file={manifest}",
-        f"cycle_record_file={record}", f"evidence_bundle={evidence or ''}",
-        "", "artifacts:",
-    ]
-    for item in artifacts:
-        lines.append(json.dumps(item, sort_keys=True))
-    if excluded_artifacts:
-        lines.extend(["", "excluded_artifacts:"])
-        for item in excluded_artifacts:
-            lines.append(json.dumps(item, sort_keys=True))
-    (hopper / manifest).write_text("\n".join(lines) + "\n")
-    publish_report_cycle(project, payload)
+    persist_records(project, payload)
 
 
 def refresh_records(project: str, identifier: str, commit: str,
@@ -252,29 +378,8 @@ def refresh_records(project: str, identifier: str, commit: str,
     payload["git_disposition"] = disposition
     if payload.get("status") not in TERMINAL_STATUSES:
         payload["status"] = "complete"
-    record_path.write_text(json.dumps(payload, indent=2) + "\n")
-    lines = [
-        f"project={payload['project']}", f"ticket={payload['ticket']}",
-        f"cycle_id={payload['cycle_id']}", f"branch={payload['branch']}",
-        f"commit={format_optional(payload['commit'])}",
-        f"push={format_optional(payload['push'])}",
-        f"git_disposition={payload['git_disposition']}",
-        f"current_hopper={payload['current_hopper']}",
-        f"archive_path={payload['archive_path']}",
-        f"report_file={payload['report_file']}",
-        f"manifest_file={payload['manifest_file']}",
-        f"cycle_record_file={payload['cycle_record_file']}",
-        f"evidence_bundle={payload.get('evidence_bundle') or ''}", "",
-        "artifacts:",
-    ]
-    for artifact in payload["artifacts"]:
-        lines.append(json.dumps(artifact, sort_keys=True))
-    if payload.get("excluded_artifacts"):
-        lines.extend(["", "excluded_artifacts:"])
-        for artifact in payload["excluded_artifacts"]:
-            lines.append(json.dumps(artifact, sort_keys=True))
-    (hopper / payload["manifest_file"]).write_text("\n".join(lines) + "\n")
-    publish_report_cycle(project, payload)
+    payload.setdefault("report_hopper_bytes", {"report": 0, "hopper": 0})
+    persist_records(project, payload)
 
 
 def validate(project: str, identifier: str) -> None:
@@ -285,6 +390,29 @@ def validate(project: str, identifier: str) -> None:
         raise RuntimeError("zero-byte artifact in current Hopper directory")
     record = hopper / f"cycle-{project}-{identifier}.json"
     payload = json.loads(record.read_text())
+    if payload.get("workflow_version") != workflow_version(ROOT):
+        raise RuntimeError("cycle does not record canonical Workflow V2")
+    if payload.get("objective_owner") != project:
+        raise RuntimeError("cycle objective owner does not match Report/Hopper route")
+    if payload.get("mode") not in {"FAST", "STANDARD", "DIAGNOSTIC", "CONVERGENCE"}:
+        raise RuntimeError("cycle mode is missing or invalid")
+    if payload.get("evidence_class") not in VALID_EVIDENCE:
+        raise RuntimeError("cycle evidence class is missing")
+    if payload.get("reasoning_posture_used") not in {None, *VALID_REASONING}:
+        raise RuntimeError("cycle reasoning posture used is invalid")
+    preflight = payload.get("ticket_preflight") or {}
+    if not preflight.get("valid"):
+        raise RuntimeError("cycle successful T+0 ticket preflight is missing")
+    if preflight.get("ticket_id") != payload.get("ticket"):
+        raise RuntimeError("cycle ticket preflight identity mismatch")
+    if preflight.get("mode") != payload.get("mode"):
+        raise RuntimeError("cycle ticket preflight mode mismatch")
+    if preflight.get("objective_owner") != payload.get("objective_owner"):
+        raise RuntimeError("cycle ticket preflight objective-owner mismatch")
+    if not any("ticket" in item.get("hopper_filename", "").lower() or
+               "pasted-text" in item.get("hopper_filename", "").lower()
+               for item in payload.get("artifacts", [])):
+        raise RuntimeError("Workflow V2 cycle source ticket is missing")
     disposition = payload.get("git_disposition") or infer_git_disposition(
         payload.get("status"), payload.get("commit"), payload.get("push")
     )
@@ -325,6 +453,14 @@ def validate(project: str, identifier: str) -> None:
     for item in hopper.iterdir():
         if item.name == "output.txt":
             continue
+    actual_sizes = {
+        "report": sum(directory_bytes(path) for path in report_directories(project)),
+        "hopper": directory_bytes(hopper),
+    }
+    if payload.get("report_hopper_bytes") != actual_sizes:
+        raise RuntimeError(
+            f"Report/Hopper byte telemetry mismatch: recorded={payload.get('report_hopper_bytes')} actual={actual_sizes}"
+        )
     print(f"validated report={report} hopper={hopper}")
 
 
@@ -341,6 +477,7 @@ def main() -> int:
     parser.add_argument("--classification", choices=("REPORT_REQUIRED", "HOPPER_SUPPORTING", "LOCAL_ONLY", "SENSITIVE_DO_NOT_PACKAGE", "OVERSIZED_EXTERNAL_REFERENCE"), default="HOPPER_SUPPORTING")
     parser.add_argument("--status", default="modified")
     parser.add_argument("--ticket")
+    parser.add_argument("--ticket-source")
     parser.add_argument("--branch", default="")
     parser.add_argument("--commit")
     parser.add_argument("--push")
@@ -350,11 +487,43 @@ def main() -> int:
     parser.add_argument("--report-source")
     parser.add_argument("--evidence")
     parser.add_argument("--committed-source", action="append", default=[])
+    parser.add_argument("--mode", choices=("FAST", "STANDARD", "DIAGNOSTIC", "CONVERGENCE"), default="STANDARD")
+    parser.add_argument("--evidence-class", default="FUNCTIONAL")
+    parser.add_argument("--objective-owner")
+    parser.add_argument("--acceptance-fixture", action="append", default=[])
+    parser.add_argument("--objective-state")
+    parser.add_argument("--acceptance-ledger-json")
+    parser.add_argument("--ticket-preflight-json")
+    parser.add_argument("--reasoning-posture-recommended", choices=("NORMAL", "MEDIUM", "MAXIMUM"), default="NORMAL")
+    parser.add_argument("--reasoning-posture-used", choices=("NORMAL", "MEDIUM", "MAXIMUM"))
+    parser.add_argument("--reasoning-posture-recommended-next", choices=("NORMAL", "MEDIUM", "MAXIMUM"), default="NORMAL")
+    parser.add_argument("--reasoning-escalation-reason")
+    parser.add_argument("--implementation-attempts", type=int, default=1)
+    parser.add_argument("--internal-checkpoints", type=int, default=0)
+    parser.add_argument("--human-checkpoints", type=int, default=0)
+    parser.add_argument("--rework-cause")
+    parser.add_argument("--execution-seconds", type=float)
+    parser.add_argument("--human-wait-seconds", type=float)
     args = parser.parse_args()
     identifier = args.cycle or cycle_id()
     if args.command == "begin":
-        begin(args.project, identifier)
-        print(identifier)
+        if not args.ticket or not args.ticket_source:
+            parser.error("Workflow V2 begin requires --ticket and --ticket-source")
+        ticket_path = Path(args.ticket_source).resolve()
+        try:
+            preflight = validate_ticket_payload(ticket_path.read_text(encoding="utf-8"))
+        except (OSError, WorkflowV2Error) as exc:
+            raise RuntimeError(f"ticket preflight failed before cycle initialization: {exc}") from exc
+        if preflight["ticket_id"] != args.ticket:
+            raise RuntimeError(
+                f"ticket argument mismatch: --ticket={args.ticket!r} payload={preflight['ticket_id']!r}"
+            )
+        if resolve_report_owner(preflight["objective_owner"]) != args.project:
+            raise RuntimeError(
+                f"ticket objective owner {preflight['objective_owner']!r} must route cycle to that project, not {args.project!r}"
+            )
+        begin(args.project, identifier, ticket_path)
+        print(json.dumps({"cycle_id": identifier, "ticket_preflight": preflight}, indent=2))
     elif args.command == "collect":
         if not args.source:
             parser.error("--source is required for collect")
@@ -367,7 +536,25 @@ def main() -> int:
         write_records(args.project, args.ticket, identifier, args.branch,
                       args.status, args.commit, args.push, artifacts,
                       args.evidence, args.git_disposition, excluded,
-                      Path(args.report_source).resolve() if args.report_source else None)
+                      Path(args.report_source).resolve() if args.report_source else None,
+                      mode=args.mode, evidence_class=args.evidence_class,
+                      objective_owner=args.objective_owner or args.project,
+                      acceptance_fixtures=args.acceptance_fixture,
+                      objective_state=args.objective_state,
+                      acceptance_ledger=(load_json(args.acceptance_ledger_json)
+                                         if args.acceptance_ledger_json else None),
+                      ticket_preflight=(load_json(args.ticket_preflight_json)
+                                        if args.ticket_preflight_json else None),
+                      reasoning_posture_recommended=args.reasoning_posture_recommended,
+                      reasoning_posture_used=args.reasoning_posture_used,
+                      reasoning_posture_recommended_next=args.reasoning_posture_recommended_next,
+                      reasoning_escalation_reason=args.reasoning_escalation_reason,
+                      implementation_attempts=args.implementation_attempts,
+                      internal_checkpoints=args.internal_checkpoints,
+                      human_checkpoints=args.human_checkpoints,
+                      rework_cause=args.rework_cause,
+                      execution_seconds=args.execution_seconds,
+                      human_wait_seconds=args.human_wait_seconds)
         print(f"finalized {args.project}/{identifier}")
     elif args.command == "refresh":
         refresh_records(args.project, identifier, args.commit, args.push,

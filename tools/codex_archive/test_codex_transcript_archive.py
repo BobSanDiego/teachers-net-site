@@ -215,7 +215,7 @@ Do the bounded thing.
 END TICKET — JC999-TEST
 """
         self.assertTrue(archive.validate_ticket_payload(valid)["terminator_valid"])
-        with self.assertRaisesRegex(ValueError, "terminator mismatch"):
+        with self.assertRaisesRegex(ValueError, "truncated or missing terminator"):
             archive.validate_ticket_payload(valid.replace("END TICKET — JC999-TEST", ""))
         with self.assertRaisesRegex(ValueError, "terminator mismatch"):
             archive.validate_ticket_payload(valid.replace("JC999-TEST\n", "JC999-OTHER\n", 1))

@@ -1,5 +1,9 @@
 # Durable Handoff Report/Hopper Specification
 
+Workflow version: V2. `tools/hopper/clean_cycle.py` is the single terminal
+publication/finalization owner and resolves project paths from registered
+project records.
+
 ## Report-cache routing default
 
 Every generated completion, bootstrap, diagnostic, or lifecycle report must be
@@ -39,3 +43,22 @@ files are represented by the record's first-class `report_file`,
 `manifest_file`, `cycle_record_file`, and generated output fields. An empty
 `artifacts` array never waives those required files: `tools/hopper/clean_cycle.py`
 must still publish and validate them in both Report and Hopper.
+
+## Workflow V2 report tiers
+
+Every formal cycle contains the terminal report, manifest, cycle JSON, and
+source ticket. FAST adds only decisive evidence when needed. STANDARD adds
+focused changed-hunk/test evidence as needed. DIAGNOSTIC contains targeted
+causal observations. CONVERGENCE contains the terminal consolidated evidence,
+acceptance ledger/checkpoints as useful, and final diff/commit identity; it
+does not package each internal experiment as a separate formal cycle.
+
+Committed Git-addressable source files are not copied automatically. Record
+commit/blob identity unless the full source is uncommitted, generated/external,
+not Git-addressable, or explicitly required for review/provenance.
+
+Cycle JSON records Workflow V2, objective owner, acceptance fixture(s), mode,
+evidence class, objective state, acceptance ledger, known reasoning posture,
+recommended next posture, attempt/checkpoint counts, rework cause, Report/Hopper
+bytes, and reliable execution/human-wait timing when available. Unknown values
+remain null; never infer timing or reasoning posture.

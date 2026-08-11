@@ -1,0 +1,61 @@
+{
+  "schema_version": "2.0",
+  "workflow_id": "teachers-net-engineering-workflow",
+  "workflow_version": "V2",
+  "status": "CANONICAL / ADOPTED",
+  "authority": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
+  "adopted_from": {
+    "ticket": "SHARED-WORKFLOW-V2-001",
+    "proposal": "SHARED-WORKFLOW-AUDIT001",
+    "proposal_cycle": "260811121500"
+  },
+  "owners": {
+    "workflow_version": "docs/process/conversation-handoff/shared/workflow-v2.json",
+    "ticket_validation": "tools/workflow/workflow_v2.py",
+    "bootstrap_entry": "tools/workflow/workflow.py",
+    "project_routing": "tools/workflow/workflow_v2.py",
+    "report_hopper_finalization": "tools/hopper/clean_cycle.py"
+  },
+  "bootstrap": {
+    "command": "BOOTSTRAP",
+    "front_door": "docs/process/conversation-handoff/shared/START-CODEX.md",
+    "new_project_spec": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md",
+    "authorizes_product_implementation": false
+  },
+  "ticket": {
+    "first_line": "TICKET READY FOR CODEX",
+    "terminator": "END TICKET — <TICKET-ID>",
+    "chatgpt_authoring_limit_characters": 15000,
+    "oversized_complete_received_ticket_policy": "WARN_AND_EXECUTE"
+  },
+  "modes": ["FAST", "STANDARD", "DIAGNOSTIC", "CONVERGENCE"],
+  "evidence_classes": ["FUNCTIONAL", "RESPONSIVE", "VISUAL", "DIAGNOSTIC", "NATIVE", "STATE/DATA"],
+  "reasoning_postures": ["NORMAL", "MEDIUM", "MAXIMUM"],
+  "report_tiers": {
+    "FAST": {
+      "required": ["terminal_report", "manifest", "cycle_json", "source_ticket"],
+      "additional": ["decisive_evidence_when_needed"],
+      "copy_committed_source_by_default": false
+    },
+    "STANDARD": {
+      "required": ["terminal_report", "manifest", "cycle_json", "source_ticket"],
+      "additional": ["focused_changed_hunk_or_test_evidence_when_needed"],
+      "copy_committed_source_by_default": false
+    },
+    "DIAGNOSTIC": {
+      "required": ["terminal_report", "manifest", "cycle_json", "source_ticket"],
+      "additional": ["targeted_causal_evidence"],
+      "copy_committed_source_by_default": false
+    },
+    "CONVERGENCE": {
+      "required": ["terminal_report", "manifest", "cycle_json", "source_ticket"],
+      "additional": ["acceptance_ledger", "terminal_consolidated_evidence", "final_diff_identity"],
+      "copy_committed_source_by_default": false
+    }
+  },
+  "workflow_cost_guardrail": {
+    "ratio_signal": 0.25,
+    "consecutive_cycle_signal": 2,
+    "active_quantified_blocker_exception": true
+  }
+}

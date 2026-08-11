@@ -2,6 +2,7 @@
   "project_id": "community",
   "display_name": "Teachers.Net Community",
   "state": "REGISTERED / LIFECYCLE READY",
+  "report_label": "Community",
   "repositories": {"root": "/home/bobreap/projects/teachers-net-community3", "continuity_root": "/home/bobreap/projects/teachers-net-site"},
   "conversation": {
     "source_directory": "docs/process/conversation-handoff/community/chatgpt-sources",
@@ -21,11 +22,13 @@
   "handoff_build_directory": "docs/process/conversation-handoff/community/current-handoff",
   "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md"],
   "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
+    {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},
     {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
     {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
     {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
     {"path": "docs/documentation-governance.md", "role": "documentation governance"},
-    {"path": "docs/core-terms/project-cursor.md", "role": "Community state"},
-    {"path": "docs/core-terms/engineering-handoff.md", "role": "Community handoff"}
+    {"path": "docs/community-3.0/project-cursor.md", "role": "Community state"},
+    {"path": "docs/community-3.0/engineering-handoff.md", "role": "Community handoff"}
   ]
 }

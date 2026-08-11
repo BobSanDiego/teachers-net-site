@@ -32,7 +32,11 @@ class HandoffLifecycleTests(unittest.TestCase):
         projection = Path("/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW")
         self.assertTrue(projection.is_dir())
         for path in projection.iterdir():
-            self.assertIn("CANONICAL SOURCE:", path.read_text(encoding="utf-8"))
+            text = path.read_text(encoding="utf-8")
+            if path.suffix == ".json":
+                self.assertIn("_canonical_source", json.loads(text))
+            else:
+                self.assertIn("CANONICAL SOURCE:", text)
 
 
 if __name__ == "__main__":

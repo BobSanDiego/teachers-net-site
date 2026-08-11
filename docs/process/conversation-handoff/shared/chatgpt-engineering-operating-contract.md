@@ -1,5 +1,9 @@
 # CHATGPT ENGINEERING OPERATING CONTRACT
 
+Canonical execution authority: Teachers.Net Engineering Workflow V2 in
+`WORKFLOW-V2.md`, machine identifier `workflow-v2.json`. This contract defines
+roles and review behavior and must not fork V2 execution procedure.
+
 This contract governs shared ChatGPT engineering behavior across Teachers.Net
 projects. Project sub-records and project authorities provide project-specific
 facts. Project guidance must not silently redefine this operating discipline
@@ -24,16 +28,17 @@ roadmap/plan, accepted implementation/evidence, and conversation history only
 for unresolved context, in that order. Conversation history is evidence, not
 automatic authority; do not infer approval or phase transitions.
 
-Every formal ticket has one terminal objective, complete scope and acceptance,
+Every formal ticket has one terminal objective envelope, complete scope and acceptance,
 runtime evidence requirements where relevant, Git/report requirements, a stop
 boundary, and the exact first line `TICKET READY FOR CODEX`. Its final line is
 `END TICKET — <TICKET-ID>`. A missing or mismatched terminator means
 `STOP — TICKET PAYLOAD INCOMPLETE`.
 
 FAST is for a narrow known-owner correction; STANDARD for an ordinary coherent
-objective; DIAGNOSTIC for cause/evidence investigation; CONVERGENCE for two
-failed passes, uncertain causes, entangled tooling/application symptoms, or
-accumulated experiments.
+objective; DIAGNOSTIC for cause/evidence investigation; CONVERGENCE is one
+persistent formal cycle through bounded experiments. First contradictory
+native/runtime/state evidence promotes posture inside the same objective;
+ordinary deterministic known-owner defects retain the two-pass threshold.
 
 ChatGPT must keep each complete formal ticket below 15,000 characters as a hard
 authoring/transport constraint so it can be copied safely into Codex. ChatGPT
@@ -46,17 +51,21 @@ complete ticket solely because of its character count.
 
 Inspect before redesigning. Prefer the smallest coherent reversible change,
 reuse established owners, preserve unrelated work, and keep one canonical
-owner per production responsibility. After two failed passes, stop ordinary
-patching and enter DIAGNOSTIC or CONVERGENCE mode. Consolidate superseded
+owner per production responsibility. After the first contradictory native,
+runtime, or state pass—or two ordinary deterministic failed passes—promote
+inside the same objective to DIAGNOSTIC or CONVERGENCE mode. Do not open a new
+formal objective for a causally related same-invariant blocker. Consolidate superseded
 experiments and rerun final acceptance once the narrow invariant passes.
 
 ## Evidence
 
-Classify evidence as FUNCTIONAL, RESPONSIVE, VISUAL, or DIAGNOSTIC. Use runtime
+Classify evidence as FUNCTIONAL, RESPONSIVE, VISUAL, DIAGNOSTIC, NATIVE, or
+STATE/DATA. Use runtime
 assertions and the smallest discriminating evidence; do not create responsive
 matrices unless responsive or visual behavior is the objective. Static review,
 lint, HTTP status, runtime evidence, and human visual acceptance are distinct.
 Browser preflight screenshots are infrastructure evidence, not product proof.
+Synthetic evidence is never represented as native/physical acceptance.
 
 ## Tooling and path failure protocol
 
@@ -77,6 +86,10 @@ contradictory authority, or unrelated infrastructure redesign.
 
 Reports distinguish infrastructure, application, verification, and human
 acceptance status.
+
+When a known cycle used MEDIUM or MAXIMUM reasoning, ChatGPT's review must make
+the elevated setting conspicuous and recommend NORMAL, MEDIUM, or one more
+elevated cycle using the exact reminder strings owned by Workflow V2.
 
 ## Report, review, and economy
 

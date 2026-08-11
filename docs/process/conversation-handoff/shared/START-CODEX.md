@@ -3,15 +3,29 @@
 You are entering the shared Teachers.Net engineering workflow. This file is a
 router, not a replacement for project authority.
 
+Canonical workflow: `WORKFLOW-V2.md` / machine version `workflow-v2.json`.
+
+## Stable one-word command
+
+When the Engineering Director enters exactly `BOOTSTRAP`, resolve the intended
+project and consume the canonical entry through `tools/workflow/workflow.py`.
+For a registered project, reconcile Workflow V2 and project continuity without
+repeating onboarding. For an unregistered named project, the same command
+authorizes only the bounded onboarding path in `PROJECT-BOOTSTRAP-SPEC.md`; no
+second authorization phrase is required. BOOTSTRAP never authorizes product
+implementation.
+
 ## Read first
 
 Read these canonical shared authorities:
 
-1. `CHATGPT-ENGINEERING-OPERATING-CONTRACT.md`
-2. `HANDOFF-LIFECYCLE.md`
-3. `PROJECT-RECORD-SPEC.md`
-4. `TRANSCRIPT-ARCHIVE-SPEC.md`
-5. `REPORT-HOPPER-SPEC.md`
+1. `workflow-v2.json`
+2. `WORKFLOW-V2.md`
+3. `CHATGPT-ENGINEERING-OPERATING-CONTRACT.md`
+4. `HANDOFF-LIFECYCLE.md`
+5. `PROJECT-RECORD-SPEC.md`
+6. `TRANSCRIPT-ARCHIVE-SPEC.md`
+7. `REPORT-HOPPER-SPEC.md`
 
 Then inspect the active repository's documentation governance, ticket
 discipline, Project Cursor, Engineering Handoff, roadmap, and authority
@@ -32,9 +46,9 @@ unrelated dirty work.
 ### New project
 
 Do not clone another project's facts, routes, branding, architecture, or
-assumptions. For the explicit Engineering Director instruction
-`bootstrap this project as directed` with a named project, run the shared
-bounded onboarding path in `PROJECT-BOOTSTRAP-SPEC.md`. This authorizes only
+assumptions. For the exact Engineering Director command `BOOTSTRAP` with a
+named project, run the shared bounded onboarding path in
+`PROJECT-BOOTSTRAP-SPEC.md`. This authorizes only
 registration, continuity scaffolding, transcript provenance, Report/Hopper
 publication/validation, and immutable checkpoint publication. It does not
 authorize product code, schema, destructive, or production work. Stop only at
@@ -49,6 +63,8 @@ boundary.
   before changing product code.
 - Formal tickets require `TICKET READY FOR CODEX`, one terminal objective,
   complete acceptance/scope/stop boundary, and a matching `END TICKET`.
+- Run the Workflow V2 T+0 mechanical preflight before cycle initialization,
+  archive rotation, repository/browser inspection, or implementation.
 - ChatGPT should keep complete formal tickets below 15,000 characters as a
   hard authoring/transport constraint for safe copying. This is a ChatGPT
   delivery rule only, not a Codex implementation limit; Codex must not reject

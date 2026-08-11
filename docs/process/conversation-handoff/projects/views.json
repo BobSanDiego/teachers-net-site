@@ -2,6 +2,8 @@
   "project_id": "views",
   "display_name": "Teachers.Net Durable Views",
   "state": "REGISTERED / LIFECYCLE READY",
+  "report_label": "Views",
+  "report_hopper_aliases": ["Report (views)", "Hopper (views)"],
   "repositories": {
     "root": "/home/bobreap/projects/teachers-net-site",
     "core_terms": "/home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/profilaxes"
@@ -10,7 +12,7 @@
     "project_cursor": "docs/core-terms/durable-views-project-cursor.md",
     "engineering_handoff": "docs/core-terms/durable-views-engineering-handoff.md",
     "roadmap": "docs/core-terms/durable-views-roadmap.md",
-    "workflow_procedure": "docs/core-terms/views-ticket-handoff-and-execution-procedure.md"
+    "project_workflow_supplement": "docs/core-terms/views-ticket-handoff-and-execution-procedure.md"
   },
   "conversation": {
     "source_directory": "docs/process/conversation-handoff/views/chatgpt-sources",
@@ -45,13 +47,13 @@
   "handoff_build_directory": "docs/process/conversation-handoff/views/current-handoff",
   "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md", "views-migration-manifest.json"],
   "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
     {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
     {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
     {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
-    {"path": "docs/core-terms/views-ticket-handoff-and-execution-procedure.md", "role": "Views workflow"},
+    {"path": "docs/core-terms/views-ticket-handoff-and-execution-procedure.md", "role": "Views project-specific supplement; shared Workflow V2 controls"},
     {"path": "docs/core-terms/durable-views-project-cursor.md", "role": "Views state"},
     {"path": "docs/core-terms/durable-views-engineering-handoff.md", "role": "Views handoff"},
-    {"path": "docs/core-terms/durable-views-roadmap.md", "role": "Views roadmap"},
-    {"path": "docs/core-terms/durable-views-engineering-handoff.md", "role": "Views handoff"}
+    {"path": "docs/core-terms/durable-views-roadmap.md", "role": "Views roadmap"}
   ]
 }

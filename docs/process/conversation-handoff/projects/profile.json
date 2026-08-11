@@ -1,0 +1,62 @@
+{
+  "project_id": "profile",
+  "display_name": "Teachers.Net Profile",
+  "state": "REGISTERED / LIFECYCLE READY",
+  "report_label": "Profile",
+  "repositories": {
+    "root": "/home/bobreap/projects/teachers-net-site",
+    "continuity_root": "/home/bobreap/projects/teachers-net-site",
+    "ownership_status": "Repository established; Profile implementation ownership is not yet assigned."
+  },
+  "conversation": {
+    "source_directory": "docs/process/conversation-handoff/profile/chatgpt-sources",
+    "master": "docs/process/conversation-handoff/profile/chatgpt-complete-current-record.md",
+    "supplied_sources": 1
+  },
+  "codex": {
+    "archive_directory": "docs/process/codex-conversation-archive/profile",
+    "fossil": "docs/process/codex-conversation-archive/profile/codex-conversation-fossil.md",
+    "manifest": "docs/process/codex-conversation-archive/profile/codex-conversation-manifest.json",
+    "portable_record": "docs/process/conversation-handoff/profile/codex-complete-current-record.md",
+    "identified_sessions": []
+  },
+  "handoff": {
+    "report_hopper": "tmp/hopper/profile",
+    "handoffs": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS",
+    "checkpoint_prefix": "Profile"
+  },
+  "authority_index": [
+    "docs/profile/project-cursor.md",
+    "docs/profile/engineering-handoff.md",
+    "docs/process/conversation-handoff/profile/profile-project-record.json"
+  ],
+  "scope": {
+    "include": ["Profile conversation evidence", "Profile continuity authorities", "shared continuity procedure"],
+    "exclude": ["Community authority", "Job Center authority", "Views authority", "Core Terms implementation", "unapproved Profile implementation"]
+  },
+  "handoff_source": "docs/process/conversation-handoff/profile",
+  "handoff_build_directory": "docs/process/conversation-handoff/profile/current-handoff",
+  "handoff_payload_members": ["chatgpt-complete-current-record.md", "codex-complete-current-record.md", "profile-project-record.json"],
+  "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
+    {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},
+    {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md", "role": "project onboarding"},
+    {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
+    {"path": "docs/process/conversation-handoff/shared/TRANSCRIPT-ARCHIVE-SPEC.md", "role": "transcript provenance"},
+    {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "Report/Hopper publication"},
+    {"path": "docs/documentation-governance.md", "role": "documentation governance"},
+    {"path": "docs/profile/project-cursor.md", "role": "Profile state"},
+    {"path": "docs/profile/engineering-handoff.md", "role": "Profile handoff"}
+  ],
+  "runtime": {
+    "review_url": "Not established — Profile is pre-implementation.",
+    "qa": "Not established — Profile is pre-implementation."
+  },
+  "bootstrap": {
+    "authorization": "Bounded Profile project onboarding authorized by Engineering Director in active Codex conversation on 2026-08-11.",
+    "implementation_authorized": false,
+    "transcript_is_evidence_not_authority": true
+  }
+}

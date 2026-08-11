@@ -11,8 +11,8 @@ Lifecycle authorities rather than duplicating them.
 permitted; initialization must not be assumed.
 
 **ONBOARDING AUTHORIZED** — the Engineering Director has explicitly authorized
-bounded initialization. The explicit instruction `bootstrap this project as
-directed` for a named project is sufficient authorization for the bounded,
+bounded initialization. The exact command `BOOTSTRAP` for a named project is
+sufficient authorization for the bounded,
 non-product actions in this specification; no second boilerplate phrase is
 required. Codex may create only the minimum truthful project infrastructure.
 
@@ -66,8 +66,14 @@ Director authorization.
 
 ## New-project flow
 
-START-CODEX routes: inspect → named-project bootstrap instruction → this
+START-CODEX routes: `BOOTSTRAP` → project-record lookup → this
 specification → registration/scaffolding → master/evidence generation →
 validated Report/Hopper cycle → immutable checkpoint → checkpoint validation →
 readiness gate → normal workflow. This path has one shared owner and must not
 require project-specific bootstrap instructions.
+
+Registered projects do not repeat onboarding. BOOTSTRAP resolves the current
+machine Workflow V2 version, project record, lifecycle state, repository,
+project-specific continuity, and Report/Hopper route. Successful reconciliation
+reports BOOTSTRAP COMPLETE, Project, Workflow V2, and Lifecycle READY. A new
+project enters the bounded onboarding state without authorizing product work.

@@ -1,5 +1,11 @@
 # Teachers.Net Documentation Governance
 
+Shared execution precedence: the canonical Teachers.Net Engineering Workflow
+V2 is `docs/process/conversation-handoff/shared/WORKFLOW-V2.md` with machine
+manifest `workflow-v2.json`. Older ticket, hopper, or project-specific workflow
+details below are supplemental or historical and apply only when they do not
+conflict with V2 or a registered project record.
+
 Status: Canonical workflow structure
 Scope: Multi-project Teachers.Net engineering documentation
 

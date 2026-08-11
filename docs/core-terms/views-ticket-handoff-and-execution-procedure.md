@@ -1,5 +1,10 @@
 # Views Codex Ticket Handoff and Execution Procedure
 
+Shared execution authority is Teachers.Net Engineering Workflow V2 in
+`docs/process/conversation-handoff/shared/WORKFLOW-V2.md`. This file is a Views
+product/runtime supplement only; conflicting intake, convergence, bootstrap,
+or Report/Hopper mechanics are superseded by shared V2.
+
 This durable Views procedure supplements the shared Codex direction and ticket-
 discipline documents.
 
@@ -80,13 +85,15 @@ Every Views ticket starts a fresh cycle and archives all active report and hoppe
 contents without deleting historical archives:
 
 ```bash
-python3 tools/hopper/clean_cycle.py begin --project views --cycle YYMMDDHHMMSS
+python3 tools/hopper/clean_cycle.py begin --project views --cycle YYMMDDHHMMSS \
+  --ticket TICKET-ID --ticket-source /path/to/complete-ticket.txt
 ```
 
-Collect every created or modified artifact and required evidence with collision-
-safe `<base>-views-<cycle>.<extension>` names. End with a nonzero human report,
-manifest, machine-readable cycle record, required evidence, and validated
-self-contained current-cycle payload.
+Collect the source ticket and mode-proportional decisive evidence with
+collision-safe `<base>-views-<cycle>.<extension>` names. End with a nonzero
+human report, manifest, machine-readable cycle record, and validated
+self-contained current-cycle payload. Committed source is represented by Git
+identity unless Workflow V2 requires the full file.
 
 Publish the final human report and `output-<cycle>.txt` to both
 `tmp/hopper/views/Report (Views)/` and `tmp/hopper/views/Report (views)/`.

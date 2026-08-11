@@ -1,5 +1,11 @@
 # ChatGPT ↔ Codex Workflow Protocol v1
 
+Status: HISTORICAL / SUPERSEDED
+
+Canonical replacement: `docs/process/conversation-handoff/shared/WORKFLOW-V2.md`
+and machine manifest `workflow-v2.json`. This file remains only as historical
+context and is not an active execution owner.
+
 ## Purpose
 
 ChatGPT owns architecture, product direction, prioritization, and acceptance

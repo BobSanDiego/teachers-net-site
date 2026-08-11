@@ -8,7 +8,8 @@ from bootstrap_lifecycle import assert_lifecycle_ready, is_bounded_bootstrap_aut
 
 class BootstrapLifecycleTests(unittest.TestCase):
     def test_explicit_command_is_single_bounded_authorization(self):
-        self.assertTrue(is_bounded_bootstrap_authorization("bootstrap this project as directed", "Profile"))
+        self.assertTrue(is_bounded_bootstrap_authorization("BOOTSTRAP", "Profile"))
+        self.assertFalse(is_bounded_bootstrap_authorization("bootstrap this project as directed", "Profile"))
         self.assertFalse(is_bounded_bootstrap_authorization("authorize product implementation", "Profile"))
 
     def test_report_owner_is_not_replaced_by_acceptance_fixture(self):

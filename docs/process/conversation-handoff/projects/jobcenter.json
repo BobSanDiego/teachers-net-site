@@ -2,6 +2,8 @@
   "schema_version": "1.0",
   "project_id": "jobcenter",
   "display_name": "Job Center",
+  "state": "REGISTERED / LIFECYCLE READY",
+  "report_label": "Job Center",
   "root_repository": "/home/bobreap/projects/teachers-net-site",
   "nested_repositories": [
     "/home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-jobs"
@@ -32,6 +34,7 @@
   "handoff_build_directory": "docs/process/conversation-handoff/jobcenter/current-handoff",
   "handoff_payload_members": ["03-chatgpt-complete-current-record.md", "04-codex-current-handoff-record.md", "conversation-master-manifest.json"],
   "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
     {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
     {"path": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md", "role": "shared project bootstrap"},
     {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},
@@ -39,7 +42,7 @@
     {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
     {"path": "docs/process/conversation-handoff/shared/TRANSCRIPT-ARCHIVE-SPEC.md", "role": "shared transcript policy"},
     {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "shared Report/Hopper policy"},
-    {"path": "docs/process/chatgpt-codex-workflow-protocol-v1.md", "role": "shared workflow"},
+    {"path": "docs/process/chatgpt-codex-workflow-protocol-v1.md", "role": "historical V1 workflow; superseded by shared Workflow V2"},
     {"path": "docs/documentation-governance.md", "role": "documentation governance"},
     {"path": "docs/decision-log.md", "role": "shared decisions"},
     {"path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md", "role": "Job Center state"},

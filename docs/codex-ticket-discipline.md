@@ -1,5 +1,11 @@
 # Codex Ticket Discipline
 
+Canonical shared execution authority is Teachers.Net Engineering Workflow V2:
+`docs/process/conversation-handoff/shared/WORKFLOW-V2.md` and
+`workflow-v2.json`. This document retains specialized project modes and legacy
+detail only where consistent with V2. Conflicting one-defect ticketing,
+preflight, convergence, or Report/Hopper instructions are superseded by V2.
+
 ## Current Ticket Delivery and Reporting Authority
 
 ### Hard formal-ticket validity ceiling
@@ -145,36 +151,31 @@ That gate is reserved for genuinely human-only prerequisites such as login,
 MFA, operator-only permissions, CAPTCHA, subjective visual acceptance,
 external credentials, or inaccessible runtime/browser state.
 
-For the active Teachers.Net project, the canonical slug is `jobcenter`. Every ticket
-must begin by running `python3 tools/hopper/clean_cycle.py begin
---project jobcenter --cycle <YYMMDDHHMMSS>`. This archives the prior
-`tmp/hopper/jobcenter/Report (Job Center)/` and
-`tmp/hopper/jobcenter/Hopper (Job Center)/` contents into the never-deleted
-`tmp/hopper/jobcenter/archive/<cycle-id>/Report (Job Center)/` and
-`tmp/hopper/jobcenter/archive/<cycle-id>/Hopper (Job Center)/` directories.
+Resolve the active project's slug and Report/Hopper route from its registered
+project record. A formal cycle begins only after the Workflow V2 T+0 preflight:
+`python3 tools/hopper/clean_cycle.py begin --project <owner> --cycle
+<YYMMDDHHMMSS> --ticket <ticket-id> --ticket-source <complete-ticket-path>`.
+The helper validates before archiving every active Report/Hopper directory.
 
 ### Report Directory versus Hopper
 
-These are intentionally different deliverables. The Report Directory is the
-optimized ChatGPT review package; the Hopper is the complete permanent archive.
+Report is the complete human-reviewable terminal deliverable set; Hopper is
+Report plus supporting evidence. Primary ticket deliverables are classified
+`REPORT_REQUIRED` and must be physically represented in Report and Hopper.
+Completion summaries never substitute for those artifacts. Supporting evidence
+may be `HOPPER_SUPPORTING`; sensitive and oversized exceptions must be explicit.
+Cycle validation fails when a `REPORT_REQUIRED` artifact is absent from Report.
 
-The Report Directory must contain, when applicable:
+Every V2 tier contains the terminal report, manifest, cycle record, and source
+ticket. Add decisive screenshots, diagnostics, logs, and focused changed-hunk
+or test evidence only when required by the ticket mode/evidence seam. Complete
+committed source is not copied automatically: use Git commit/blob identity.
+Copy full source only when uncommitted, generated/external, not Git-addressable,
+or explicitly required for review/provenance.
 
-- completion report, manifest, cycle record, Architect Report, Command Result,
-  Evidence Index, and NEXT-STEP;
-- every modified source file, including PHP, CSS, JS, HTML/templates, SQL,
-  migrations, and documentation;
-- representative screenshots.
-
-Large evidence bundles, ZIP archives, browser traces, generated caches, and
-historical archives are excluded from the Report Directory by default unless
-ChatGPT requests them. Every source file modified in the cycle is copied into
-the Report Directory automatically.
-
-The Hopper remains the complete long-term engineering archive and continues to
-preserve reports, manifests, cycle records, tickets, modified source,
-screenshots, evidence, ZIP bundles, diagnostics, logs, and supporting files.
-No preservation or archive behavior is reduced by the Report Directory split.
+The Hopper remains the long-term evidence owner for the mode-proportional
+supporting set. Large bundles, browser traces, caches, and historical archives
+are excluded unless they are decisive or explicitly requested.
 
 ChatGPT should normally review the Report Directory first and retrieve Hopper
 artifacts only for historical recovery, audit, or explicitly requested detail.
@@ -382,29 +383,36 @@ Avoid duplicate systems.
 
 Separate architecture, implementation, and presentation.
 
-Do not expand scope unless explicitly instructed.
+Do not expand into a distinct product/architecture/schema/security/destructive
+outcome without authority. Bounded adjacent blockers to the same acceptance
+invariant remain inside the Workflow V2 objective envelope.
 
 Treat approved mockups as implementation specifications.
 
 After an authority mockup is approved, feasibility analysis and implementation
 convergence must treat the approved mockup as a fixed requirement. Do not
 introduce UX changes, rename governed labels, or revive rejected concepts
-without a separate Engineering Director decision. If two bounded convergence
-passes fail to align an implementation with the approved authority, stop and
-issue a diagnostic ticket instead of continuing speculative tuning.
+without a separate Engineering Director decision. The first contradictory
+human/native/runtime pass promotes diagnosis inside the same objective. Two
+ordinary deterministic failed passes likewise promote posture, but do not
+require a new formal ticket merely to continue the same invariant.
 
 Optimize for minimal compute, minimal churn, and deterministic progress.
 
 When project documents conflict, use this precedence:
 
 1. the current user ticket
-2. the active project's Engineering Handoff
-3. the active project's Project Cursor
-4. `docs/codex-direction-manual.md`
-5. active product/design docs
-6. historical planning docs
+2. canonical shared Workflow V2 for execution procedure
+3. the active project's Authority Manifest and approved contracts
+4. the active project's Engineering Handoff
+5. the active project's Project Cursor
+6. `docs/codex-direction-manual.md`
+7. active product/design docs
+8. historical planning docs
 
-Every ticket should improve one screen, one workflow, or one defect—not all three.
+Every formal ticket owns one terminal user outcome. It may repair multiple
+causally related symptoms, owners, or adjacent blockers needed to satisfy that
+same outcome.
 
 ### Engineer intervention for authentication and physical desktop actions
 
@@ -426,8 +434,9 @@ trustworthy same-runtime fallback diagnosis when the ticket objective permits.
 
 If the same visual or behavioral defect survives two or more implementation
 passes, Codex reports completion, and human QA still reproduces it, stop
-speculative patching and issue a diagnostic ticket. Audit conflicting CSS
-authorities (cascade order, specificity, duplicate/later rules, `!important`,
+speculative patching and promote the open objective to diagnostic/convergence
+posture; do not issue a new formal ticket for the same invariant. Audit
+conflicting CSS authorities (cascade order, specificity, duplicate/later rules, `!important`,
 media/container queries, native `[hidden]`, state selectors, and stale or
 workbench-derived rules), JavaScript state/handler ownership and post-load
 mutation, and DOM/rendering duplicates, wrong instances, collapsed/offscreen

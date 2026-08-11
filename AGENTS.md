@@ -11,6 +11,14 @@ Terms classify.
 Jobs authorizes.
 WordPress authenticates.
 
+Shared workflow rule: resolve
+`docs/process/conversation-handoff/shared/workflow-v2.json` and
+`WORKFLOW-V2.md`. The exact user command `BOOTSTRAP` is the stable shared
+reconciliation entry and never authorizes product implementation. Before a
+formal cycle mutates Report/Hopper or begins repository/browser work, run the
+Workflow V2 T+0 ticket preflight. Keep one terminal objective open through
+causally related blockers and convergence.
+
 Project context rule:
 Teachers.Net-specific facts, decisions, and Project Cursor state belong in this
 repo's local docs. The global Engineering Director Playbook contains reusable
@@ -177,55 +185,22 @@ redirects.
 
 ## Project-Specific Clean-Cycle Hopper Procedure
 
-The active Teachers.Net continuity artifacts use the canonical project hopper
-`tmp/hopper/jobcenter/`, with active files only in `current/` and preserved
-history only in `archive/`. Every ticket begins by archiving the prior
-`current/` contents and generating one `YYMMDDHHMMSS` cycle identifier. Every
-created or modified ticket artifact and required evidence is copied into the
-current folder using `<base>-jobcenter-<cycle>.<extension>` filenames; the
-cycle identifier precedes the extension and collisions fail rather than
-overwrite.
+Workflow V2 controls every formal project cycle. Before rotation, run the T+0
+preflight through `tools/hopper/clean_cycle.py begin` with `--ticket` and
+`--ticket-source`. The helper resolves Report/Hopper paths and compatibility
+aliases from the registered project record, archives every active directory,
+preserves `output.txt`, and refuses malformed tickets before mutation.
 
-Each cycle must contain a plain-text final report, a manifest with original
-paths, statuses, sizes, SHA-256 hashes, commit/push state, and purpose, a
-machine-readable JSON cycle record, and an evidence ZIP when multiple evidence
-files exist. Validate that every reported artifact exists, is nonzero, and is
-represented in the manifest and cycle record. Preserve blocked and incomplete
-cycles; never delete historical content or unrelated dirty files. The
-engineer-owned `output.txt` remains protected and is never edited, copied, or
-archived by this procedure.
+Finalize once through `tools/hopper/clean_cycle.py finalize`, then validate.
+Every mode contains the terminal report, manifest, cycle JSON, and source
+ticket. Add only decisive evidence at the mode's V2 report tier. Do not copy
+complete committed source automatically; record Git commit/blob identity
+unless source is uncommitted, generated/external, not Git-addressable, or
+explicitly required. Preserve blocked/incomplete cycles and unrelated dirty
+work; never delete archive history.
 
-Every Codex ticket must begin by archiving the prior project-specific
-`current/` hopper contents and must end with a validated, self-contained
-current-cycle artifact set that the user can drag into ChatGPT in one
-operation. A ticket is not complete until `current/` contains the report,
-manifest, cycle record, every created or modified file, and required evidence.
-
-Cycle flush rule: the beginning-of-cycle operation must flush every active
-Views Report and Hopper directory by archiving its contents into the new
-cycle's archive subdirectories before collecting new artifacts. Never merely
-append to a prior cycle, and never delete the archive. The protected
-`output.txt` exception remains in force.
-
-Views report-publication requirement: at the end of every Views ticket cycle,
-copy the final human-readable report and the generated `output-<cycle>.txt`
-report into both formal report directories:
-
-- `tmp/hopper/views/Report (Views)/`
-- `tmp/hopper/views/Report (views)/`
-
-The report must be present and nonzero in both directories before completion
-is reported. The validated machine-readable cycle record, manifest, and copied
-ticket artifacts remain in `tmp/hopper/views/Hopper (Views)/`; mirror the
-cycle record, manifest, and report artifact into `Hopper (views)/` as well for
-the user's established Windows/ChatGPT handoff path. The final response must
-list both report directories, the Hopper directory, every current-cycle file,
-the WSL paths, and the copyable Windows Explorer command.
-
-Use `python3 tools/hopper/clean_cycle.py` for the deterministic initialization and
-collection workflow. Final responses must print the full current-cycle file
-list, WSL paths, and copyable Windows Explorer command:
-`explorer.exe "<Windows path to current/>"`.
+Final responses list the project-record-resolved Report/Hopper directories,
+current-cycle files, WSL paths, and a copyable Windows Explorer command.
 
 ## Canonical Chrome MCP Recovery
 

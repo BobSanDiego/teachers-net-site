@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Project-aware ChatGPT/Codex workflow registry and Views cycle helper.
+"""Project-aware ChatGPT/Codex Workflow V2 command entry.
 
 This tool manages workflow evidence only. It never infers or implements
 application, schema, UI, service, or business logic changes.
@@ -8,20 +8,34 @@ from __future__ import annotations
 
 import argparse
 import json
-import shutil
 import sys
-import re
-from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.workflow.workflow_v2 import (
+    WorkflowV2Error,
+    bootstrap,
+    load_project_record,
+    project_report_route,
+    reasoning_boost_notice,
+    recommend_reasoning,
+    validate_ticket_payload,
+    workflow_version,
+)
+
+from tools.hopper.clean_cycle import validate as validate_cycle
+
 REGISTRY = ROOT / "tools/workflow/command-registry.json"
 
 
 def paths(project: str):
-    base = ROOT / "tmp/hopper" / project
-    label = "Views" if project == "views" else "Job Center" if project == "jobcenter" else project.replace("-", " ").title()
-    return base, base / f"Report ({label})", base / f"Hopper ({label})", base / "archive", base / "workflow-ledger.json"
+    _, record = load_project_record(project, ROOT)
+    route = project_report_route(record, ROOT)
+    base = route["base"]
+    return base, route["report"], route["hopper"], route["archive"], base / "workflow-ledger.json"
 
 
 def registry():
@@ -29,6 +43,7 @@ def registry():
 
 
 def list_commands():
+    print(f"WORKFLOW {workflow_version()}")
     print("USER COMMANDS")
     for item in registry()["commands"]:
         print(f"- {item['command']} | {item['purpose']} | example: {item.get('example', item['syntax'])}")
@@ -57,21 +72,6 @@ def refresh_queue(project: str):
     print("Formal queue rebuild: PASS")
     print(f"Ledger synchronization: PASS ({len(ledger.get('tickets', []))} recorded ticket(s))")
     return ledger
-
-
-def archive_current(project: str, cycle: str | None = None):
-    base, report, hopper, archive, ledger_path = paths(project)
-    cycle = cycle or datetime.now(timezone.utc).strftime("%y%m%d%H%M%S")
-    destination = archive / cycle
-    destination.mkdir(parents=True, exist_ok=True)
-    for source in (report, hopper):
-        if source.exists():
-            target = destination / source.name
-            if source.exists():
-                shutil.move(str(source), str(target))
-    report.mkdir(parents=True, exist_ok=True)
-    hopper.mkdir(parents=True, exist_ok=True)
-    return cycle, report, hopper, destination
 
 
 def show_status(project: str):
@@ -113,43 +113,74 @@ def show_hopper(project: str):
 
 
 def validate(project: str):
-    _, report, hopper, _, ledger_path = paths(project)
-    errors = []
-    required = ["ARCHITECT-REPORT.txt", "ARCHITECTURE-DELTA.md", "completion-report.txt", "COMMAND-RESULT.txt", "EVIDENCE-INDEX.txt", "NEXT-STEP.txt"]
-    for name in required:
-        if not (report / name).is_file() or (report / name).stat().st_size == 0:
-            errors.append(f"missing report artifact: {name}")
-    report_ids = set()
-    for name in required:
-        path = report / name
-        if path.is_file():
-            report_ids.update(re.findall(r'(?m)^Ticket:\s*\n?([A-Z0-9-]+)', path.read_text(errors='replace')))
-    if len(report_ids) != 1:
-        errors.append(f"report ticket consistency failure: {sorted(report_ids)}")
-    if not ledger_path.is_file():
-        errors.append("missing execution ledger")
-    if not hopper.exists():
-        errors.append("missing Hopper directory")
-    if errors:
-        print("VALIDATE WORKFLOW: FAIL")
-        print("\n".join(f"- {error}" for error in errors))
+    _, _, hopper, _, _ = paths(project)
+    cycles = sorted(hopper.glob(f"cycle-{project}-*.json"))
+    if not cycles:
+        print("VALIDATE WORKFLOW: FAIL\n- no current cycle record", file=sys.stderr)
         return 1
-    print("VALIDATE WORKFLOW: PASS")
-    print(f"- Report (Job Center): {report}")
-    print(f"- Hopper (Job Center): {hopper}")
-    print(f"- report artifacts: {len(list(report.iterdir()))}")
-    print(f"- hopper artifacts: {len(list(hopper.iterdir()))}")
-    print("- ledger: valid JSON")
-    print("- dual-directory structure: valid")
+    payload = json.loads(cycles[-1].read_text(encoding="utf-8"))
+    validate_cycle(project, payload["cycle_id"])
+    print(f"VALIDATE WORKFLOW: PASS workflow={payload['workflow_version']} cycle={payload['cycle_id']}")
     return 0
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("command", nargs="*", help="workflow command words")
-    parser.add_argument("--project", default="views")
+    parser.add_argument("--project")
+    parser.add_argument("--ticket")
+    parser.add_argument("--signal", action="append", default=[])
     args = parser.parse_args(argv)
     command = " ".join(args.command).upper()
+    project_independent = {"LIST COMMANDS", "LIST-COMMANDS", "VALIDATE TICKET", "RECOMMEND REASONING"}
+    if not args.project and command not in project_independent:
+        print(
+            "PROJECT CONTEXT REQUIRED\nBoundary: resolve the active registered project before invoking the shared command; no cross-project default is permitted.",
+            file=sys.stderr,
+        )
+        return 1
+    if command == "BOOTSTRAP":
+        try:
+            result = bootstrap(args.project, root=ROOT)
+        except WorkflowV2Error as exc:
+            print(f"BOOTSTRAP BLOCKED\nBoundary: {exc}", file=sys.stderr)
+            return 1
+        if result["status"] == "BOOTSTRAP COMPLETE":
+            print("BOOTSTRAP COMPLETE")
+            print(f"Project: {result['display_name']}")
+            print(f"Workflow: {result['workflow']}")
+            print(f"Lifecycle: {result['lifecycle']}")
+            print(f"Project ID: {result['project']}")
+            print(f"Repository: {result['repository']}")
+            print(f"Report/Hopper: {result['report_hopper']}")
+            print("Product implementation authorized: NO")
+        else:
+            print("BOOTSTRAP NEW PROJECT")
+            print(f"Project: {result['project']}")
+            print(f"Workflow: {result['workflow']}")
+            print(f"Lifecycle: {result['lifecycle']}")
+            print(f"Onboarding authority: {result['bootstrap_authorization']}")
+            print(f"Bootstrap specification: {result['bootstrap_spec']}")
+            print("Product implementation authorized: NO")
+        return 0
+    if command == "VALIDATE TICKET":
+        if not args.ticket:
+            parser.error("VALIDATE TICKET requires --ticket")
+        try:
+            payload = Path(args.ticket).read_text(encoding="utf-8")
+            print(json.dumps(validate_ticket_payload(payload), indent=2, sort_keys=True))
+        except (OSError, WorkflowV2Error) as exc:
+            print(f"TICKET PREFLIGHT: FAIL\n- {exc}", file=sys.stderr)
+            return 1
+        return 0
+    if command == "RECOMMEND REASONING":
+        posture, reason = recommend_reasoning(args.signal)
+        print(f"reasoning_posture_recommended={posture}")
+        print(f"reasoning_escalation_reason={reason or 'none'}")
+        notice = reasoning_boost_notice(posture)
+        if notice:
+            print(notice)
+        return 0
     if command in {"LIST COMMANDS", "LIST-COMMANDS"}:
         list_commands(); return 0
     if command in {"WORKFLOW STATUS", "STATUS"}:
@@ -165,10 +196,8 @@ def main(argv=None):
     if command == "VALIDATE WORKFLOW":
         return validate(args.project)
     if command == "ARCHIVE CURRENT":
-        cycle, report, hopper, archive = archive_current(args.project)
-        print(f"ARCHIVE CURRENT: PASS cycle={cycle}")
-        print(f"report={report}\nhopper={hopper}\narchive={archive}")
-        return 0
+        print("ARCHIVE CURRENT is retired under Workflow V2; validated cycle initialization is owned by tools/hopper/clean_cycle.py.", file=sys.stderr)
+        return 2
     print("Unsupported or execution-authorizing command; formal ticket execution remains Codex-controlled.", file=sys.stderr)
     return 2
 

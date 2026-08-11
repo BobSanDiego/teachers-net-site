@@ -21,6 +21,28 @@ class CleanCycleLifecycleTest(unittest.TestCase):
         self.original_hopper = clean_cycle.HOPPER
         clean_cycle.ROOT = self.root
         clean_cycle.HOPPER = self.root / "tmp" / "hopper"
+        shared = self.root / "docs" / "process" / "conversation-handoff" / "shared"
+        projects = self.root / "docs" / "process" / "conversation-handoff" / "projects"
+        shared.mkdir(parents=True)
+        projects.mkdir(parents=True)
+        (shared / "workflow-v2.json").write_text(json.dumps({
+            "workflow_version": "V2",
+            "workflow_id": "teachers-net-engineering-workflow",
+        }))
+        project_records = {
+            "jobcenter": "Job Center",
+            "shared-workflow": "Shared Workflow",
+            "profile": "Profile",
+        }
+        for project, label in project_records.items():
+            (projects / f"{project}.json").write_text(json.dumps({
+                "project_id": project,
+                "display_name": label,
+                "state": "REGISTERED / LIFECYCLE READY",
+                "report_label": label,
+                "root_repository": str(self.root),
+                "report_hopper": f"tmp/hopper/{project}",
+            }))
         self.sources = self.root / "sources"
         self.sources.mkdir()
 
@@ -34,6 +56,28 @@ class CleanCycleLifecycleTest(unittest.TestCase):
         path.write_text(text)
         return path
 
+    def ticket_file(self, ticket_id: str, *, mode: str = "STANDARD", owner: str = "jobcenter") -> tuple[Path, dict]:
+        path = self.source_file(
+            f"ticket-{ticket_id}.txt",
+            f"""TICKET READY FOR CODEX
+{ticket_id} — Test fixture
+
+MODE: {mode}
+OWNER: {owner}
+
+OUTCOME
+
+Prove the clean-cycle fixture.
+
+STOP BOUNDARY
+
+Stop after validation.
+
+END TICKET — {ticket_id}
+""",
+        )
+        return path, clean_cycle.validate_ticket_payload(path.read_text())
+
     def begin_collect_finalize_validate(
         self,
         cycle: str,
@@ -43,9 +87,11 @@ class CleanCycleLifecycleTest(unittest.TestCase):
         git_disposition: str | None,
         excluded_artifacts: list[dict] | None = None,
     ) -> dict:
-        clean_cycle.begin("jobcenter", cycle)
+        ticket_id = f"TEST-{cycle}"
+        ticket_source, preflight = self.ticket_file(ticket_id)
+        clean_cycle.begin("jobcenter", cycle, ticket_source)
         ticket = clean_cycle.collect(
-            "jobcenter", cycle, self.source_file(f"ticket-{cycle}.txt", "ticket"), "created"
+            "jobcenter", cycle, ticket_source, "created"
         )
         evidence = clean_cycle.collect(
             "jobcenter", cycle, self.source_file(f"evidence-{cycle}.txt", "evidence"), "created"
@@ -53,7 +99,7 @@ class CleanCycleLifecycleTest(unittest.TestCase):
         report_source = self.source_file(f"report-{cycle}.txt", "status first report")
         clean_cycle.write_records(
             "jobcenter",
-            f"TEST-{cycle}",
+            ticket_id,
             cycle,
             "main",
             status,
@@ -63,6 +109,7 @@ class CleanCycleLifecycleTest(unittest.TestCase):
             git_disposition=git_disposition,
             excluded_artifacts=excluded_artifacts,
             report_source=report_source,
+            ticket_preflight=preflight,
         )
         clean_cycle.validate("jobcenter", cycle)
         record = clean_cycle.HOPPER / "jobcenter" / "Hopper (Job Center)" / f"cycle-jobcenter-{cycle}.json"
@@ -122,7 +169,8 @@ class CleanCycleLifecycleTest(unittest.TestCase):
 
     def test_collect_records_external_source_path_without_crashing(self) -> None:
         cycle = "260101010105"
-        clean_cycle.begin("jobcenter", cycle)
+        ticket_source, _ = self.ticket_file("TEST-EXTERNAL-SOURCE")
+        clean_cycle.begin("jobcenter", cycle, ticket_source)
         with tempfile.TemporaryDirectory() as external_tmp:
             external_ticket = Path(external_tmp) / "pasted-text.txt"
             external_ticket.write_text("external ticket")
@@ -138,7 +186,8 @@ class CleanCycleLifecycleTest(unittest.TestCase):
 
     def test_report_required_artifact_is_copied_and_validated_in_both_sets(self) -> None:
         cycle = "260101010106"
-        clean_cycle.begin("jobcenter", cycle)
+        ticket_source, preflight = self.ticket_file("TEST-REPORT-REQUIRED")
+        clean_cycle.begin("jobcenter", cycle, ticket_source)
         primary = clean_cycle.collect(
             "jobcenter", cycle, self.source_file("primary.md", "terminal"),
             "created", "REPORT_REQUIRED"
@@ -147,10 +196,15 @@ class CleanCycleLifecycleTest(unittest.TestCase):
             "jobcenter", cycle, self.source_file("support.log", "evidence"),
             "created", "HOPPER_SUPPORTING"
         )
+        ticket = clean_cycle.collect(
+            "jobcenter", cycle, ticket_source,
+            "source", "HOPPER_SUPPORTING"
+        )
         clean_cycle.write_records(
             "jobcenter", "TEST-REPORT-REQUIRED", cycle, "main", "complete",
-            None, None, [primary, supporting], git_disposition="NOT_APPLICABLE",
-            report_source=self.source_file("report.txt", "status")
+            None, None, [primary, supporting, ticket], git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("report.txt", "status"),
+            ticket_preflight=preflight,
         )
         clean_cycle.validate("jobcenter", cycle)
         report = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
@@ -161,20 +215,79 @@ class CleanCycleLifecycleTest(unittest.TestCase):
 
     def test_missing_report_required_artifact_fails_validation(self) -> None:
         cycle = "260101010107"
-        clean_cycle.begin("jobcenter", cycle)
+        ticket_source, preflight = self.ticket_file("TEST-REPORT-REQUIRED-MISSING")
+        clean_cycle.begin("jobcenter", cycle, ticket_source)
         primary = clean_cycle.collect(
             "jobcenter", cycle, self.source_file("primary.md", "terminal"),
             "created", "REPORT_REQUIRED"
+        )
+        ticket = clean_cycle.collect(
+            "jobcenter", cycle, ticket_source,
+            "source", "HOPPER_SUPPORTING"
         )
         report = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
         (report / primary["hopper_filename"]).unlink()
         clean_cycle.write_records(
             "jobcenter", "TEST-REPORT-REQUIRED-MISSING", cycle, "main", "complete",
-            None, None, [primary], git_disposition="NOT_APPLICABLE",
-            report_source=self.source_file("report.txt", "status")
+            None, None, [primary, ticket], git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("report.txt", "status"),
+            ticket_preflight=preflight,
         )
         with self.assertRaisesRegex(RuntimeError, "REPORT_REQUIRED"):
             clean_cycle.validate("jobcenter", cycle)
+
+    def test_invalid_ticket_preflight_does_not_initialize_cycle(self) -> None:
+        ticket = self.source_file("invalid-ticket.txt", "TICKET READY FOR CODEX\nTEST — truncated")
+        with self.assertRaisesRegex(RuntimeError, "ticket preflight failed"):
+            clean_cycle.begin("jobcenter", "260101010108", ticket)
+        self.assertFalse((clean_cycle.HOPPER / "jobcenter" / "archive" / "260101010108").exists())
+
+    def test_fast_and_convergence_do_not_copy_committed_sources_automatically(self) -> None:
+        for index, mode in enumerate(("FAST", "CONVERGENCE"), start=9):
+            cycle = f"2601010101{index:02d}"
+            ticket_id = f"TEST-{mode}"
+            ticket_source, preflight = self.ticket_file(ticket_id, mode=mode)
+            clean_cycle.begin("jobcenter", cycle, ticket_source)
+            source_ticket = clean_cycle.collect(
+                "jobcenter", cycle, ticket_source, "source"
+            )
+            clean_cycle.write_records(
+                "jobcenter", ticket_id, cycle, "main", "complete",
+                None, None, [source_ticket], git_disposition="NOT_APPLICABLE",
+                report_source=self.source_file(f"report-{mode}.txt", "status"),
+                mode=mode,
+                ticket_preflight=preflight,
+            )
+            payload = json.loads((
+                clean_cycle.HOPPER / "jobcenter" / "Hopper (Job Center)" /
+                f"cycle-jobcenter-{cycle}.json"
+            ).read_text())
+            self.assertFalse(payload["report_tier"]["copy_committed_source_by_default"])
+            self.assertEqual(len(payload["artifacts"]), 1)
+
+    def test_acceptance_fixture_does_not_own_shared_workflow_cycle(self) -> None:
+        cycle = "260101010111"
+        ticket_source, preflight = self.ticket_file(
+            "TEST-OWNER-FIXTURE", mode="CONVERGENCE", owner="shared-workflow"
+        )
+        clean_cycle.begin("shared-workflow", cycle, ticket_source)
+        source_ticket = clean_cycle.collect(
+            "shared-workflow", cycle, ticket_source, "source"
+        )
+        clean_cycle.write_records(
+            "shared-workflow", "TEST-OWNER-FIXTURE", cycle, "main", "complete",
+            None, None, [source_ticket], git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("report-owner-fixture.txt", "status"),
+            mode="CONVERGENCE", objective_owner="shared-workflow",
+            acceptance_fixtures=["profile"],
+            ticket_preflight=preflight,
+        )
+        shared = clean_cycle.HOPPER / "shared-workflow" / "Hopper (Shared Workflow)"
+        profile = clean_cycle.HOPPER / "profile" / "Hopper (Profile)"
+        payload = json.loads((shared / f"cycle-shared-workflow-{cycle}.json").read_text())
+        self.assertEqual(payload["objective_owner"], "shared-workflow")
+        self.assertEqual(payload["acceptance_fixtures"], ["profile"])
+        self.assertFalse(profile.exists())
 
 
 if __name__ == "__main__":

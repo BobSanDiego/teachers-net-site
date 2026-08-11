@@ -26,6 +26,10 @@ import time
 from pathlib import Path
 from typing import Any, Iterable
 
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 
 RENDERER_VERSION = "codex-transcript-archive-v1"
 VISIBLE_THREAD_DERIVATIVE_VERSION = "codex-visible-thread-derivative-v1"
@@ -570,21 +574,14 @@ def extract_ticket_id(text: str) -> str:
 
 
 def validate_ticket_payload(text: str, require_terminator: bool = True) -> dict[str, Any]:
-    lines = [line.rstrip() for line in text.splitlines()]
-    first = next((line.strip() for line in lines if line.strip()), "")
-    if first != TICKET_READY_LINE:
-        raise ValueError(f"ticket authority must begin with {TICKET_READY_LINE!r}")
-    ticket_id = extract_ticket_id(text)
-    nonempty = [line.strip() for line in lines if line.strip()]
-    terminator = nonempty[-1] if nonempty else ""
-    expected = f"END TICKET — {ticket_id}"
-    if require_terminator and terminator != expected:
-        raise ValueError(f"ticket authority terminator mismatch: expected {expected!r}, got {terminator!r}")
-    return {
-        "ticket_id": ticket_id,
-        "terminator": terminator,
-        "terminator_valid": terminator == expected,
-    }
+    """Use the canonical V2 parser for historical/archive ticket boundaries."""
+    from tools.workflow.workflow_v2 import validate_ticket_payload as validate_v2_ticket
+
+    return validate_v2_ticket(
+        text,
+        require_v2_fields=False,
+        require_terminator=require_terminator,
+    )
 
 
 def compose_ticket_authority(parts: list[str]) -> str:
