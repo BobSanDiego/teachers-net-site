@@ -75,8 +75,9 @@ def safe_name(source: Path, project: str, identifier: str) -> str:
     return f"{source.stem}-{project}-{identifier}{source.suffix}"
 
 
-def collect(project: str, identifier: str, source: Path, status: str) -> dict:
-    _, hopper, _ = paths(project)
+def collect(project: str, identifier: str, source: Path, status: str,
+            classification: str = "HOPPER_SUPPORTING") -> dict:
+    report, hopper, _ = paths(project)
     if source.name == "output.txt":
         raise RuntimeError("protected output.txt cannot be collected")
     if not source.is_file():
@@ -85,6 +86,10 @@ def collect(project: str, identifier: str, source: Path, status: str) -> dict:
     if target.exists():
         raise RuntimeError(f"artifact collision: {target}")
     shutil.copy2(source, target)
+    if classification == "REPORT_REQUIRED":
+        for report_dir in report_directories(project):
+            report_dir.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, report_dir / target.name)
     try:
         original_path = str(source.relative_to(ROOT))
     except ValueError:
@@ -97,6 +102,7 @@ def collect(project: str, identifier: str, source: Path, status: str) -> dict:
         "sha256": sha256(target),
         "committed": False,
         "purpose": "ticket artifact",
+        "classification": classification,
     }
 
 
@@ -298,6 +304,13 @@ def validate(project: str, identifier: str) -> None:
         encoded = json.dumps(artifact, sort_keys=True)
         if encoded not in manifest_artifacts:
             raise RuntimeError("manifest and cycle record excluded artifacts disagree")
+    for artifact in payload["artifacts"]:
+        if artifact.get("classification") == "REPORT_REQUIRED":
+            for report_dir in report_directories(project):
+                if not (report_dir / artifact["hopper_filename"]).is_file():
+                    raise RuntimeError(
+                        f"Report missing REPORT_REQUIRED artifact {artifact['hopper_filename']}: {report_dir}"
+                    )
     for report_dir in report_directories(project):
         if not report_dir.exists() or not any(report_dir.iterdir()):
             raise RuntimeError(f"current Report directory is empty: {report_dir}")
@@ -323,6 +336,7 @@ def main() -> int:
     parser.add_argument("--project", required=True)
     parser.add_argument("--cycle", default=None)
     parser.add_argument("--source")
+    parser.add_argument("--classification", choices=("REPORT_REQUIRED", "HOPPER_SUPPORTING", "LOCAL_ONLY", "SENSITIVE_DO_NOT_PACKAGE", "OVERSIZED_EXTERNAL_REFERENCE"), default="HOPPER_SUPPORTING")
     parser.add_argument("--status", default="modified")
     parser.add_argument("--ticket")
     parser.add_argument("--branch", default="")
@@ -342,7 +356,7 @@ def main() -> int:
     elif args.command == "collect":
         if not args.source:
             parser.error("--source is required for collect")
-        print(json.dumps(collect(args.project, identifier, Path(args.source).resolve(), args.status)))
+        print(json.dumps(collect(args.project, identifier, Path(args.source).resolve(), args.status, args.classification)))
     elif args.command == "finalize":
         if not args.ticket:
             parser.error("--ticket is required for finalize")

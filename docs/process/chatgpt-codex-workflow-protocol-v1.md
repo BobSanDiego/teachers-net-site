@@ -20,14 +20,20 @@ The human-review payload is `tmp/hopper/<project>/Report (Project Name)/`.
 The complete forensic record is `tmp/hopper/<project>/Hopper (Project Name)/`.
 Both are archived together under a timestamped directory before each cycle.
 
-The Report always contains `ARCHITECT-REPORT.txt`, `completion-report.txt`,
-`COMMAND-RESULT.txt`, `manifest-summary.txt`, and `NEXT-STEP.txt`.
-When authority or execution architecture changes, it also contains
-`ARCHITECTURE-DELTA.md` and the changed authority documents.
+Report is the complete human-reviewable terminal deliverable set. It contains
+the source ticket, status-first report, manifest, cycle record, and every
+primary terminal artifact classified `REPORT_REQUIRED`. A summary or manifest
+never substitutes for the actual terminal artifact.
 
 The Hopper contains the source ticket, reports, manifests, cycle record, Git
 evidence, changed files, tests, logs, screenshots, diagnostics, schema
 evidence, and authority documents. Nothing is discarded from a cycle.
+
+The semantic relationship is `Report ⊆ Hopper`: Hopper contains everything in
+Report plus supporting evidence. Use `HOPPER_SUPPORTING` for diagnostics,
+tests, logs, tooling, and reproduction material. Use explicit dispositions for
+`LOCAL_ONLY`, `SENSITIVE_DO_NOT_PACKAGE`, or
+`OVERSIZED_EXTERNAL_REFERENCE`; never silently omit a terminal artifact.
 
 ## Execution commands
 
@@ -42,6 +48,15 @@ NEXT`, `EXECUTE <ticket>`, `EXECUTE ALL PENDING`, `SHOW QUEUE`, or `SHOW NEXT`,
 Codex refreshes the current conversation, rebuilds formal tickets, compares
 them with the ledger, and reports new, superseded, duplicate, completed, and
 pending tickets. If refresh fails, Codex stops without executing.
+
+Refresh failure must distinguish a connection problem from a ticket-format
+problem. When a companion ChatGPT title is expected, Codex first lists available
+threads/chats and verifies the target exists as a ChatGPT-backed conversation,
+not merely a similarly named local Codex transcript. If the ChatGPT source is
+missing or unavailable, Codex reports the exact connection evidence and does not
+ask for pasted ticket text until that bounded troubleshooting pass is complete.
+If the ChatGPT source is readable but the latest block is malformed or
+incomplete, Codex reports the ticket-format defect separately.
 
 `SHOW REPORT` lists only the current human-review directory. `LIST COMMANDS`
 distinguishes user commands, ChatGPT ticket markers, and internal lifecycle

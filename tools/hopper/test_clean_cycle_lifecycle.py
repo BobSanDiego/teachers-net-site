@@ -136,6 +136,46 @@ class CleanCycleLifecycleTest(unittest.TestCase):
             )
             self.assertTrue(copied.is_file())
 
+    def test_report_required_artifact_is_copied_and_validated_in_both_sets(self) -> None:
+        cycle = "260101010106"
+        clean_cycle.begin("jobcenter", cycle)
+        primary = clean_cycle.collect(
+            "jobcenter", cycle, self.source_file("primary.md", "terminal"),
+            "created", "REPORT_REQUIRED"
+        )
+        supporting = clean_cycle.collect(
+            "jobcenter", cycle, self.source_file("support.log", "evidence"),
+            "created", "HOPPER_SUPPORTING"
+        )
+        clean_cycle.write_records(
+            "jobcenter", "TEST-REPORT-REQUIRED", cycle, "main", "complete",
+            None, None, [primary, supporting], git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("report.txt", "status")
+        )
+        clean_cycle.validate("jobcenter", cycle)
+        report = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
+        hopper = clean_cycle.HOPPER / "jobcenter" / "Hopper (Job Center)"
+        self.assertTrue((report / primary["hopper_filename"]).is_file())
+        self.assertTrue((hopper / primary["hopper_filename"]).is_file())
+        self.assertFalse((report / supporting["hopper_filename"]).exists())
+
+    def test_missing_report_required_artifact_fails_validation(self) -> None:
+        cycle = "260101010107"
+        clean_cycle.begin("jobcenter", cycle)
+        primary = clean_cycle.collect(
+            "jobcenter", cycle, self.source_file("primary.md", "terminal"),
+            "created", "REPORT_REQUIRED"
+        )
+        report = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
+        (report / primary["hopper_filename"]).unlink()
+        clean_cycle.write_records(
+            "jobcenter", "TEST-REPORT-REQUIRED-MISSING", cycle, "main", "complete",
+            None, None, [primary], git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("report.txt", "status")
+        )
+        with self.assertRaisesRegex(RuntimeError, "REPORT_REQUIRED"):
+            clean_cycle.validate("jobcenter", cycle)
+
 
 if __name__ == "__main__":
     unittest.main()
