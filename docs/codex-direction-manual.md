@@ -81,13 +81,14 @@ and report the blocker. Never claim visual QA that was not performed. Prefer
  removing conflicting responsive owners over adding overrides, and keep reports
  concise with implementation, verification, and remaining risks separated.
 
-ENGINEERING-GOV002 adds three execution paths: FAST PATH for narrow known-owner
-UI corrections with a measured preflight, one coherent edit, and wide/
-intermediate/narrow smoke test; STANDARD PATH for ordinary implementation; and
-DIAGNOSTIC PATH for unknown, repeated-failure, cross-step, or broad defects.
-FAST PATH permits at most two implementation passes, delays full evidence until
-the smoke test passes, checkpoints at five minutes, stops at eight minutes
-unless only finalization remains, and mandates a stop at ten minutes.
+ENGINEERING-GOV002 adds three execution paths: FAST for narrow known-owner
+corrections with one discriminating regression; STANDARD for ordinary
+implementation; and DIAGNOSTIC for unknown, repeated-failure, cross-step, or
+broad defects. FAST does not require a default responsive matrix or broad
+evidence bundle. It retains repository identity, focused ownership, runtime
+verification, selective Git, truthful acceptance, and validated Report/Hopper
+gates, and escalates immediately when ownership, authority, tooling, or scope
+becomes uncertain.
 
 ENGINEERING-GOV001 v2 adoption: Community 3.0 tickets must name the active
 UX006–UX015 milestone before execution, advance only that milestone, treat

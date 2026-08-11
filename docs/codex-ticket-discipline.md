@@ -280,38 +280,62 @@ explicitly overrides them:
 
 ## ENGINEERING-GOV002 Fast Path
 
-Use FAST PATH for a narrow, known-owner UI correction confined to one component
-or responsive owner, with no architecture, state, data, validation, production,
-security, or accessibility-audit scope. Before editing, inspect only that
-component's complete wide, intermediate, and narrow owners, explicit child
-placements, relevant geometry, active `!important` declarations, source order,
-and winning selector. Measure rendered values rather than estimating them.
+FAST is a lightweight execution mode for a narrow, known-owner correction. A
+ticket qualifies only when its objective is narrow and reversible, the likely
+owner is known or immediately discoverable, authority is settled, no
+architecture/schema/data migration or destructive production operation is
+expected, and one small discriminating regression can demonstrate acceptance.
+Otherwise use STANDARD or DIAGNOSTIC.
 
-FAST PATH then makes one coherent bounded edit, runs a three-state smoke test
-(wide, intermediate, narrow), and begins screenshots or broader evidence only
-after those states pass. It allows at most two implementation passes and two
-smoke-test sweeps. At five minutes, report proven and remaining work; at eight
-minutes, stop unless the implementation already passes and only final evidence
-or commit/push remains; at ten minutes, stop and report. Capture only the
-ticket-required evidence and keep one canonical browser page.
+For a qualified FAST ticket, Codex normally:
 
-STANDARD PATH remains the default for ordinary implementation work and uses the
-ticket's proportionate verification requirements. DIAGNOSTIC PATH is required
-for unknown root causes, repeated failures, cross-step state, broad responsive
-redesign, or any defect that cannot be resolved within the FAST PATH limits.
-ENGINEERING-GOV002 supplements ENGINEERING-GOV001; it does not weaken truth,
-verification, stop-boundary, or evidence requirements.
+1. confirms repository/worktree identity and preserves unrelated dirty work;
+2. inspects the likely owner and directly confirms or reproduces the defect;
+3. patches the smallest actual owner;
+4. runs the exact discriminating regression test;
+5. runs only applicable syntax/static checks and `git diff --check`;
+6. inspects the focused final diff, selectively commits/pushes, and validates
+   the compact Report/Hopper cycle.
 
-Future narrow tickets should state:
+FAST does not automatically require broad archaeology, full authority rereads,
+history searches, responsive matrices, broad browser suites, unrelated
+acceptance reruns, duplicate inspections, architecture inventories,
+exhaustive instrumentation, or evidence bundles. Use those only when the
+ticket or evidence requires them. Search history only for an explicit
+regression question, a suspected removed owner, materially competing causes,
+or a prior contract needed for safe correction.
+
+Verification remains runtime-first and discriminating: an enabled button must
+receive the required ordinary activation; an orphan separator must be absent
+from rendered DOM; a label must match the canonical runtime; a persistence
+correction must complete one save/reload roundtrip. Static inspection cannot
+replace required runtime proof. Human acceptance may remain `PENDING` when the
+interaction is subjective or native/physical and automation cannot faithfully
+reproduce it.
+
+FAST retains these non-negotiable gates: correct project/repository identity,
+one intended source owner, exact regression verification, no speculative
+architecture change, focused final diff, selective staging, applicable
+syntax/static checks, `git diff --check`, authorized commit/push, valid
+Report/Hopper identity and validation, preservation of unrelated work, and a
+truthful distinction between automated verification and human acceptance.
+
+Leave FAST immediately for STANDARD or DIAGNOSTIC when the owner is not quickly
+confirmed, the first bounded correction fails, multiple owners compete,
+tooling/runtime behavior conflicts with source evidence, authority or
+architecture becomes uncertain, or scope expands. Do not accumulate experiments
+under FAST. ENGINEERING-GOV002 refines process economy; it does not weaken
+truth, verification, stop boundaries, or evidence requirements.
+
+Future qualified tickets should state:
 
 ```text
-Execution mode: FAST PATH
-Required pre-edit inspection: complete local owner only
-Smoke-test states: wide, intermediate, narrow
-Maximum implementation passes: 2
-Full evidence begins only after smoke test passes.
-Stop at 8 minutes unless only final evidence or commit/push remains.
-Mandatory stop at 10 minutes.
+Execution mode: FAST
+Evidence class: FUNCTIONAL, RESPONSIVE, VISUAL, or DIAGNOSTIC
+Required pre-edit inspection: named owner only
+Required regression: one discriminating runtime check
+Additional evidence: only if the ticket or evidence requires it
+Escalate to STANDARD/DIAGNOSTIC on uncertainty, competing owners, or failed pass
 ```
 
 When a ticket edits a local Markdown file and the post-ticket report references
