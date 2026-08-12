@@ -11,9 +11,11 @@ published to the active project's registered Report cache, resolved from its
 project record and clean-cycle routing. Do not leave the authoritative report
 only in a repository `tmp/` staging location or another project's cache.
 
-Cycle ownership follows the workstream/objective owner, not an acceptance
-fixture. A Profile, Views, or other project used to exercise shared tooling
-does not own the shared tooling report unless it is itself the objective owner.
+Cycle publication follows the executing Codex agent/project, not an acceptance
+fixture. The logical `objective_owner`, `execution_project`, and
+`acceptance_fixtures` are separate fields; a shared-workflow objective tested
+with Profile, Views, or another fixture must remain in the executing agent's
+normal Report/Hopper location.
 
 An alternate report location is permitted only when the Engineer explicitly
 specifies it. Record that exception in the cycle manifest and terminal report.
@@ -57,8 +59,9 @@ Committed Git-addressable source files are not copied automatically. Record
 commit/blob identity unless the full source is uncommitted, generated/external,
 not Git-addressable, or explicitly required for review/provenance.
 
-Cycle JSON records Workflow V2, objective owner, acceptance fixture(s), mode,
+Cycle JSON records Workflow V2, objective owner, execution project,
+acceptance fixture(s), mode,
 evidence class, objective state, acceptance ledger, known reasoning posture,
 recommended next posture, attempt/checkpoint counts, rework cause, Report/Hopper
-bytes, and reliable execution/human-wait timing when available. Unknown values
+ bytes, and reliable execution/human-wait timing when available. Unknown values
 remain null; never infer timing or reasoning posture.

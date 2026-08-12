@@ -15,6 +15,9 @@
     "bootstrap_entry": "tools/workflow/workflow.py",
     "portable_handoff": "tools/codex_archive/prepare_chatgpt_handoff.py",
     "project_routing": "tools/workflow/workflow_v2.py",
+    "execution_context_routing": "tools/hopper/clean_cycle.py",
+    "unexecuted_stub_owner": "tools/workflow/workflow_v2.py",
+    "authority_freshness": "tools/workflow/workflow_v2.py",
     "report_hopper_finalization": "tools/hopper/clean_cycle.py"
   },
   "bootstrap": {

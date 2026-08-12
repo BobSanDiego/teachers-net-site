@@ -220,9 +220,26 @@ focused evidence. Complete committed source files are not copied by default;
 use Git commit/blob identity. Copy full source only when uncommitted,
 generated/external, not Git-addressable, or explicitly required.
 
-Formal objective owner and acceptance fixture are distinct machine fields.
-Report/Hopper routes to the objective owner. Project records own paths and
-labels; the fixture never owns the report merely because it was exercised.
+Formal objective owner, acceptance fixture, and execution/report project are
+distinct machine fields. Report/Hopper follows the executing Codex agent's
+registered project; the logical objective owner and fixture are recorded as
+metadata and never silently reroute the agent's report.
+
+An unexecuted or blocked intake is not a formal cycle. The executing agent
+maintains one active `UNEXECUTED-STUB.txt` in its normal current Report area,
+including the exact terminal response, ticket/source hash, classification,
+project, logical owner, and timestamp. An unchanged retry matching that stub
+is rejected until the ticket is materially revised or the engineer explicitly
+uses `RETRY BLOCKED`. When a genuine cycle begins, the stub is retired to the
+stable `archive/unexecuted-stubs/` area before normal current-directory flush;
+it is not counted as a new event cycle.
+
+Workflow freshness is a bounded preflight, not a timer. The shared helper
+hashes the canonical shared workflow authorities and compares that marker with
+the executing project's last-consumed marker. Unchanged authority is a cheap
+no-op; changed authority is consumed before execution and frozen for the
+cycle. `BOOTSTRAP` and `PREPARE HANDOFF` remain explicit synchronization
+boundaries.
 
 ## Telemetry and workflow-cost signal
 

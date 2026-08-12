@@ -27,7 +27,10 @@ from tools.workflow.workflow_v2 import (  # noqa: E402
     load_project_record,
     project_report_route,
     report_tier,
-    resolve_report_owner,
+    consume_shared_authority,
+    retry_interlock,
+    retire_unexecuted_stub,
+    ticket_source_hash,
     validate_ticket_payload,
     workflow_version,
 )
@@ -67,14 +70,19 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def begin(project: str, identifier: str, ticket_source: Path) -> dict:
+def begin(project: str, identifier: str, ticket_source: Path, *, explicit_retry: bool = False) -> dict:
     if not ticket_source.is_file():
         raise RuntimeError(f"ticket source does not exist: {ticket_source}")
     try:
         preflight = validate_ticket_payload(ticket_source.read_text(encoding="utf-8"))
+        retry_interlock(project, preflight["ticket_id"], ticket_source_hash(ticket_source),
+                        explicit_retry=explicit_retry, root=ROOT)
     except WorkflowV2Error as exc:
         raise RuntimeError(f"ticket preflight failed before cycle initialization: {exc}") from exc
     report, hopper, archive = paths(project)
+    authority = consume_shared_authority(project, ROOT)
+    preflight["shared_authority"] = authority
+    retire_unexecuted_stub(project, identifier, ROOT)
     for source in cycle_directories(project):
         source.mkdir(parents=True, exist_ok=True)
     archive.mkdir(parents=True, exist_ok=True)
@@ -275,7 +283,8 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
                   human_checkpoints: int = 0,
                   rework_cause: str | None = None,
                   execution_seconds: float | None = None,
-                  human_wait_seconds: float | None = None) -> None:
+                  human_wait_seconds: float | None = None,
+                  execution_project: str | None = None) -> None:
     _, hopper, _ = paths(project)
     status = status.lower()
     commit = normalize_optional(commit)
@@ -303,12 +312,9 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         reasoning_values.add(reasoning_posture_used.upper())
     if not reasoning_values <= VALID_REASONING:
         raise RuntimeError(f"invalid Workflow V2 reasoning posture: {sorted(reasoning_values - VALID_REASONING)}")
-    owner = resolve_report_owner(objective_owner or project,
-                                 (acceptance_fixtures or [None])[0])
-    if owner != project:
-        raise RuntimeError(
-            f"cycle project {project!r} does not match objective owner {owner!r}; route by objective owner"
-        )
+    # Report/Hopper ownership follows the executing Codex agent/project. The
+    # logical objective owner remains metadata and may differ.
+    owner = objective_owner or project
     if not any("ticket" in item.get("hopper_filename", "").lower() or
                "pasted-text" in item.get("hopper_filename", "").lower()
                for item in artifacts):
@@ -321,7 +327,8 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
             raise RuntimeError(f"report source does not exist: {report_source}")
         shutil.copy2(report_source, hopper / report)
     payload = {
-        "project": project, "ticket": ticket, "cycle_id": identifier,
+        "project": project, "execution_project": execution_project or project,
+        "ticket": ticket, "cycle_id": identifier,
         "workflow_version": workflow_version(ROOT),
         "objective_id": ticket,
         "objective_owner": owner,
@@ -392,8 +399,8 @@ def validate(project: str, identifier: str) -> None:
     payload = json.loads(record.read_text())
     if payload.get("workflow_version") != workflow_version(ROOT):
         raise RuntimeError("cycle does not record canonical Workflow V2")
-    if payload.get("objective_owner") != project:
-        raise RuntimeError("cycle objective owner does not match Report/Hopper route")
+    if payload.get("project") != project or payload.get("execution_project", project) != project:
+        raise RuntimeError("cycle execution project does not match Report/Hopper route")
     if payload.get("mode") not in {"FAST", "STANDARD", "DIAGNOSTIC", "CONVERGENCE"}:
         raise RuntimeError("cycle mode is missing or invalid")
     if payload.get("evidence_class") not in VALID_EVIDENCE:
@@ -504,6 +511,7 @@ def main() -> int:
     parser.add_argument("--rework-cause")
     parser.add_argument("--execution-seconds", type=float)
     parser.add_argument("--human-wait-seconds", type=float)
+    parser.add_argument("--explicit-retry", action="store_true")
     args = parser.parse_args()
     identifier = args.cycle or cycle_id()
     if args.command == "begin":
@@ -518,11 +526,7 @@ def main() -> int:
             raise RuntimeError(
                 f"ticket argument mismatch: --ticket={args.ticket!r} payload={preflight['ticket_id']!r}"
             )
-        if resolve_report_owner(preflight["objective_owner"]) != args.project:
-            raise RuntimeError(
-                f"ticket objective owner {preflight['objective_owner']!r} must route cycle to that project, not {args.project!r}"
-            )
-        begin(args.project, identifier, ticket_path)
+        begin(args.project, identifier, ticket_path, explicit_retry=args.explicit_retry)
         print(json.dumps({"cycle_id": identifier, "ticket_preflight": preflight}, indent=2))
     elif args.command == "collect":
         if not args.source:
@@ -554,7 +558,8 @@ def main() -> int:
                       human_checkpoints=args.human_checkpoints,
                       rework_cause=args.rework_cause,
                       execution_seconds=args.execution_seconds,
-                      human_wait_seconds=args.human_wait_seconds)
+                      human_wait_seconds=args.human_wait_seconds,
+                      execution_project=args.project)
         print(f"finalized {args.project}/{identifier}")
     elif args.command == "refresh":
         refresh_records(args.project, identifier, args.commit, args.push,

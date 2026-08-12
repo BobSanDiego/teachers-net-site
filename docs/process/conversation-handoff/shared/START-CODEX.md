@@ -107,3 +107,9 @@ The Windows operational projection is:
 The tracked canonical source is:
 
 `docs/process/conversation-handoff/shared/START-CODEX.md`
+
+Before a formal cycle, compare the shared-authority marker with the active
+project's consumed marker. Refresh only when the canonical shared guidance
+hash changed. If intake is unexecuted, preserve one exact agent-local stub and
+stop; do not create a misleading empty cycle. An unchanged retry is blocked
+until a material ticket revision or explicit `RETRY BLOCKED`.

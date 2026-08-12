@@ -289,6 +289,26 @@ END TICKET — {ticket_id}
         self.assertEqual(payload["acceptance_fixtures"], ["profile"])
         self.assertFalse(profile.exists())
 
+    def test_execution_project_owns_report_when_objective_owner_differs(self) -> None:
+        cycle = "260101010112"
+        ticket_source, preflight = self.ticket_file(
+            "TEST-SHARED-OBJECTIVE", mode="STANDARD", owner="shared-workflow"
+        )
+        clean_cycle.begin("jobcenter", cycle, ticket_source)
+        source_ticket = clean_cycle.collect("jobcenter", cycle, ticket_source, "source")
+        clean_cycle.write_records(
+            "jobcenter", "TEST-SHARED-OBJECTIVE", cycle, "main", "complete",
+            None, None, [source_ticket], git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("report-agent-route.txt", "status"),
+            objective_owner="shared-workflow", ticket_preflight=preflight,
+        )
+        clean_cycle.validate("jobcenter", cycle)
+        payload = json.loads((clean_cycle.HOPPER / "jobcenter" / "Hopper (Job Center)" /
+                              f"cycle-jobcenter-{cycle}.json").read_text())
+        self.assertEqual(payload["project"], "jobcenter")
+        self.assertEqual(payload["execution_project"], "jobcenter")
+        self.assertEqual(payload["objective_owner"], "shared-workflow")
+
 
 if __name__ == "__main__":
     unittest.main()

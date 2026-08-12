@@ -20,6 +20,7 @@ from workflow_v2 import (
     resolve_report_owner,
     validate_ticket_payload,
     workflow_cost_signal,
+    shared_authority_marker,
 )
 
 
@@ -196,6 +197,9 @@ class WorkflowV2Tests(unittest.TestCase):
         for mode in ("FAST", "CONVERGENCE"):
             with self.subTest(mode=mode):
                 self.assertFalse(report_tier(mode)["copy_committed_source_by_default"])
+
+    def test_shared_authority_marker_is_deterministic(self) -> None:
+        self.assertEqual(shared_authority_marker(), shared_authority_marker())
 
     def test_workflow_cost_guardrail(self) -> None:
         self.assertTrue(workflow_cost_signal([

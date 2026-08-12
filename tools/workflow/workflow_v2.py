@@ -7,7 +7,10 @@ registered project records and project-specific authorities.
 from __future__ import annotations
 
 import json
+import hashlib
 import re
+import shutil
+from datetime import datetime, timezone
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
@@ -38,6 +41,102 @@ def load_manifest(root: Path = ROOT) -> dict[str, Any]:
 
 def workflow_version(root: Path = ROOT) -> str:
     return str(load_manifest(root)["workflow_version"])
+
+
+def shared_authority_marker(root: Path = ROOT) -> dict[str, Any]:
+    """Return the hash used for cheap, deterministic workflow freshness checks."""
+    relative = [
+        "docs/process/conversation-handoff/shared/workflow-v2.json",
+        "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
+        "docs/process/conversation-handoff/shared/START-CODEX.md",
+        "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md",
+        "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md",
+    ]
+    digest = hashlib.sha256()
+    present = [item for item in relative if (root / item).is_file()]
+    if not present:
+        raise WorkflowV2Error("shared workflow authority is missing")
+    for item in present:
+        path = root / item
+        digest.update(item.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return {"workflow_version": workflow_version(root), "content_hash": digest.hexdigest(), "sources": present}
+
+
+def consume_shared_authority(project: str, root: Path = ROOT) -> dict[str, Any]:
+    """Compare and, only when changed, record the project's consumed marker."""
+    _, record = load_project_record(project, root)
+    route = project_report_route(record, root)
+    marker_path = route["base"] / "workflow-authority-marker.json"
+    marker = shared_authority_marker(root)
+    previous = json.loads(marker_path.read_text(encoding="utf-8")) if marker_path.is_file() else None
+    result = {**marker, "project": project, "changed": previous != marker, "marker_path": str(marker_path)}
+    if previous != marker:
+        marker_path.parent.mkdir(parents=True, exist_ok=True)
+        marker_path.write_text(json.dumps(marker, indent=2) + "\n", encoding="utf-8")
+    return result
+
+
+def _stub_path(project: str, root: Path = ROOT) -> Path:
+    _, record = load_project_record(project, root)
+    return project_report_route(record, root)["report"] / "UNEXECUTED-STUB.txt"
+
+
+def active_unexecuted_stub(project: str, root: Path = ROOT) -> Path:
+    return _stub_path(project, root)
+
+
+def ticket_source_hash(source: Path) -> str:
+    return hashlib.sha256(source.read_bytes()).hexdigest()
+
+
+def retry_interlock(project: str, ticket_id: str, source_hash: str, *, explicit_retry: bool = False,
+                    root: Path = ROOT) -> None:
+    """Reject an unchanged blocked intake until it is materially revised or retried explicitly."""
+    path = _stub_path(project, root)
+    if explicit_retry or not path.is_file():
+        return
+    text = path.read_text(encoding="utf-8")
+    if re.search(rf"(?mi)^objective/ticket:\s*{re.escape(ticket_id)}\s*$", text) and re.search(
+        rf"(?mi)^source-ticket-sha256:\s*{re.escape(source_hash)}\s*$", text
+    ):
+        raise WorkflowV2Error(
+            f"retry interlock: unchanged unexecuted ticket {ticket_id} matches active stub; use a material revision or RETRY BLOCKED"
+        )
+
+
+def retire_unexecuted_stub(project: str, cycle_id: str, root: Path = ROOT) -> Path | None:
+    path = _stub_path(project, root)
+    if not path.is_file():
+        return None
+    _, record = load_project_record(project, root)
+    archive = project_report_route(record, root)["archive"] / "unexecuted-stubs"
+    archive.mkdir(parents=True, exist_ok=True)
+    target = archive / f"UNEXECUTED-STUB-{cycle_id}.txt"
+    if target.exists():
+        raise WorkflowV2Error(f"unexecuted stub archive collision: {target}")
+    shutil.move(str(path), str(target))
+    return target
+
+
+def write_unexecuted_stub(project: str, *, ticket_id: str, title: str, source_hash: str,
+                          classification: str, response: str, objective_owner: str,
+                          root: Path = ROOT) -> Path:
+    path = _stub_path(project, root)
+    if path.exists():
+        raise WorkflowV2Error(f"active unexecuted stub already exists: {path}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    content = (
+        f"{datetime.now(timezone.utc).isoformat()}\nproject: {project}\n"
+        f"executing agent/project: {project}\nlogical objective owner: {objective_owner}\n"
+        f"objective/ticket: {ticket_id}\nticket title: {title}\n"
+        f"source-ticket-sha256: {source_hash}\nterminal classification: {classification}\n\n"
+        f"{response.rstrip()}\n"
+    )
+    path.write_text(content, encoding="utf-8")
+    return path
 
 
 def _field(text: str, name: str) -> str:
