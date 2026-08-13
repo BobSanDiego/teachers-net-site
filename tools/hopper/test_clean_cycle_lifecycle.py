@@ -289,6 +289,45 @@ END TICKET — {ticket_id}
         self.assertEqual(payload["acceptance_fixtures"], ["profile"])
         self.assertFalse(profile.exists())
 
+    def test_stub_generation_boundary_and_accumulation(self) -> None:
+        from tools.workflow import workflow_v2
+
+        report = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
+        report.mkdir(parents=True, exist_ok=True)
+        (report / "cycle-jobcenter-old.json").write_text("executed")
+        stub = workflow_v2.write_unexecuted_stub(
+            "jobcenter", ticket_id="TEST-STUB-001", title="first", source_hash="hash-1",
+            classification="NOT_EXECUTED / BLOCKED", response="first terminal response",
+            objective_owner="jobcenter", root=self.root,
+        )
+        self.assertTrue(stub.is_file())
+        self.assertEqual([item.name for item in report.iterdir()], ["UNEXECUTED-STUB.txt"])
+        generations = list((clean_cycle.HOPPER / "jobcenter" / "archive" / "report-generations").rglob("cycle-jobcenter-old.json"))
+        self.assertEqual(len(generations), 1)
+        workflow_v2.write_unexecuted_stub(
+            "jobcenter", ticket_id="TEST-STUB-002", title="second", source_hash="hash-2",
+            classification="NOT_EXECUTED / BLOCKED", response="second terminal response",
+            objective_owner="jobcenter", root=self.root,
+        )
+        self.assertEqual(len(list((clean_cycle.HOPPER / "jobcenter" / "archive" / "report-generations").iterdir())), 1)
+        self.assertIn("second terminal response", stub.read_text())
+
+    def test_genuine_cycle_retires_accumulated_stub_once(self) -> None:
+        from tools.workflow import workflow_v2
+
+        report = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
+        report.mkdir(parents=True, exist_ok=True)
+        stub = workflow_v2.write_unexecuted_stub(
+            "jobcenter", ticket_id="TEST-STUB-003", title="stub", source_hash="hash-3",
+            classification="NOT_EXECUTED / BLOCKED", response="terminal response",
+            objective_owner="jobcenter", root=self.root,
+        )
+        retired = workflow_v2.retire_unexecuted_stub("jobcenter", "260101010199", self.root)
+        self.assertEqual(retired.name, "UNEXECUTED-STUB-260101010199.txt")
+        self.assertFalse(stub.exists())
+        self.assertEqual(list(report.iterdir()), [])
+        self.assertEqual(len(list((clean_cycle.HOPPER / "jobcenter" / "archive" / "unexecuted-stubs").iterdir())), 1)
+
     def test_execution_project_owns_report_when_objective_owner_differs(self) -> None:
         cycle = "260101010112"
         ticket_source, preflight = self.ticket_file(

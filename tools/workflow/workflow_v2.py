@@ -121,12 +121,28 @@ def retire_unexecuted_stub(project: str, cycle_id: str, root: Path = ROOT) -> Pa
     return target
 
 
+def _archive_current_report_generation(project: str, generation_id: str, root: Path = ROOT) -> Path | None:
+    """Archive an executed current Report before a first non-executed event."""
+    _, record = load_project_record(project, root)
+    route = project_report_route(record, root)
+    report = route["report"]
+    items = [item for item in report.iterdir() if item.name != "UNEXECUTED-STUB.txt"] if report.is_dir() else []
+    if not items:
+        return None
+    destination = route["archive"] / "report-generations" / generation_id / report.name
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        raise WorkflowV2Error(f"report-generation archive collision: {destination}")
+    destination.mkdir(parents=True)
+    for item in items:
+        shutil.move(str(item), str(destination / item.name))
+    return destination
+
+
 def write_unexecuted_stub(project: str, *, ticket_id: str, title: str, source_hash: str,
                           classification: str, response: str, objective_owner: str,
                           root: Path = ROOT) -> Path:
     path = _stub_path(project, root)
-    if path.exists():
-        raise WorkflowV2Error(f"active unexecuted stub already exists: {path}")
     path.parent.mkdir(parents=True, exist_ok=True)
     content = (
         f"{datetime.now(timezone.utc).isoformat()}\nproject: {project}\n"
@@ -135,6 +151,13 @@ def write_unexecuted_stub(project: str, *, ticket_id: str, title: str, source_ha
         f"source-ticket-sha256: {source_hash}\nterminal classification: {classification}\n\n"
         f"{response.rstrip()}\n"
     )
+    if path.exists():
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write("\n--- additional non-executed terminal event ---\n")
+            handle.write(content)
+        return path
+    generation_id = datetime.now(timezone.utc).strftime("report-generation-%Y%m%d%H%M%S")
+    _archive_current_report_generation(project, generation_id, root)
     path.write_text(content, encoding="utf-8")
     return path
 

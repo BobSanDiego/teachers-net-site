@@ -228,11 +228,17 @@ metadata and never silently reroute the agent's report.
 An unexecuted or blocked intake is not a formal cycle. The executing agent
 maintains one active `UNEXECUTED-STUB.txt` in its normal current Report area,
 including the exact terminal response, ticket/source hash, classification,
-project, logical owner, and timestamp. An unchanged retry matching that stub
-is rejected until the ticket is materially revised or the engineer explicitly
-uses `RETRY BLOCKED`. When a genuine cycle begins, the stub is retired to the
-stable `archive/unexecuted-stubs/` area before normal current-directory flush;
-it is not counted as a new event cycle.
+project, logical owner, and timestamp. The first non-executed event is a
+Report-generation boundary: if the current Report contains an executed
+payload, archive that payload under `archive/report-generations/` and create a
+fresh stub-only current Report. Additional non-executed events append to the
+same stub and create no cycle or per-event archive directory. An unchanged
+retry matching that stub is rejected until the ticket is materially revised or
+the engineer explicitly uses `RETRY BLOCKED`. When a genuine cycle begins, the
+accumulated stub is retired once to the stable `archive/unexecuted-stubs/`
+area before the new executed payload is published; it is not counted as a new
+event cycle. The current Report area therefore contains exactly one generation:
+an executed payload or an active stub, never both.
 
 Workflow freshness is a bounded preflight, not a timer. The shared helper
 hashes the canonical shared workflow authorities and compares that marker with
