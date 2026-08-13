@@ -329,3 +329,13 @@ character ceiling. `PREPARE HANDOFF` remains file-driven and unchanged.
 `GLOBAL CHATGPT SYNC RECOMMENDED` is metadata-only: it may be emitted from a
 structured cross-project signal or an undelivered generation but must never
 read conversation or execute an update by itself.
+
+### Report routing invariant
+
+Every executed ticket or workflow update publishes its primary human-readable
+report, manifest, cycle record, and required evidence in the current Report
+directory of the project/agent that actually executed the work. Logical owner,
+shared-workflow involvement, acceptance fixture, or repository touched does not
+redirect primary Report/Hopper ownership. A shared-workflow or cross-project
+copy is optional secondary provenance only and must never substitute for the
+executing project's current Report publication.

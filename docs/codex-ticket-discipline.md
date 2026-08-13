@@ -109,6 +109,29 @@ and current Report/Hopper artifacts remain the source for settled project
 state. Companion-chat history is retrieved selectively for the active ticket,
 new decisions, and unresolved context.
 
+### Companion Chat Connection Troubleshooting
+
+When a user asks Codex to connect to or refresh a companion ChatGPT session by
+title, Codex must diagnose the connection before asking the user to paste the
+ticket. First load the available thread/chat tools and list recent threads.
+Confirm whether the requested title is present as `kind: chatgpt`; do not
+mistake a similarly titled local `kind: codex` thread for the companion chat.
+If the chat is present, tail-read only the newest turns and recover the latest
+complete ticket under the Companion Chat Handoff Retrieval rule.
+
+If the requested ChatGPT session is missing, unavailable, or not exposed by the
+current tool registry, perform one bounded troubleshooting pass: report the
+exact lookup attempted, whether ChatGPT sources were listed as unavailable,
+whether only local Codex threads were visible, and whether any exact-title or
+near-title match was found. Do not attribute the failure to ticket format until
+the ChatGPT source itself is readable.
+
+Only after that bounded pass may Codex ask the engineer to paste the complete
+ticket. The request must state why paste fallback is needed, identify the
+missing connection evidence, and preserve the required executable format: one
+plain fenced `text` block whose first non-empty line is exactly `TICKET READY
+FOR CODEX`.
+
 The current Job Center sequencing gate is:
 
 `JC053-STEPPER-RUNTIME-PARITY-DIAGNOSTIC` →
@@ -1209,3 +1232,12 @@ Every browser-facing report must separately state:
 `Browser verification: PASS | PARTIAL | UNAVAILABLE`;
 `Engineering diagnosis: PASS | FAIL | BLOCKED`; and
 `Human visual acceptance: PASS | PENDING | NOT REQUIRED`.
+
+### Primary Report routing
+
+Every executed ticket and workflow update must publish its primary report,
+manifest, cycle record, and required evidence in the current Report directory
+of the project/agent that executed the work. Shared-workflow or cross-project
+copies are optional secondary provenance only; logical ownership, an acceptance
+fixture, or a shared repository must never redirect or replace that primary
+executing-project publication.
