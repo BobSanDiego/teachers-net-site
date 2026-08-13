@@ -326,6 +326,10 @@ The routine agent procedure and ceilings are in
 truncated reader item, unavailable required context, or a configured page or
 character ceiling. `PREPARE HANDOFF` remains file-driven and unchanged.
 
+The first G1 generation may use the bounded initial-baseline exception defined
+there. It must disclose `PRE-BASELINE HISTORY NOT INCLUDED`; all later
+generations return to strict stored-boundary increments.
+
 `GLOBAL CHATGPT SYNC RECOMMENDED` is metadata-only: it may be emitted from a
 structured cross-project signal or an undelivered generation but must never
 read conversation or execute an update by itself.

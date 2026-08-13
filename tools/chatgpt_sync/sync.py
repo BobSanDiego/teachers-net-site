@@ -21,6 +21,9 @@ DEFAULT_ARCHIVE = ROOT / "tmp/hopper/shared-workflow/chatgpt-sync/archive"
 MAX_SOURCE_CHARS = 50_000
 MAX_GENERATION_CHARS = 125_000
 MAX_PAGES = 6
+INITIAL_BASELINE_SOURCE_CHARS = 20_000
+INITIAL_BASELINE_GENERATION_CHARS = 60_000
+INITIAL_BASELINE_MAX_PAGES = 1
 
 
 class SyncError(RuntimeError):
@@ -75,15 +78,16 @@ def _validate_thread(project: dict[str, Any], page: dict[str, Any]) -> None:
         raise SyncError(f"{project['project_id']}: account/project identity mismatch")
 
 
-def _source_delta(project: dict[str, Any], pages: list[dict[str, Any]], prior: str | None) -> dict[str, Any]:
+def _source_delta(project: dict[str, Any], pages: list[dict[str, Any]], prior: str | None, *, baseline: bool = False) -> dict[str, Any]:
     if not pages:
         raise SyncError(f"{project['project_id']}: no reader page supplied")
     items: list[dict[str, Any]] = []
     chars = 0
     found_boundary = False
     for index, page in enumerate(pages, start=1):
-        if index > MAX_PAGES:
-            raise SyncError(f"UPDATE CHATGPT BLOCKED — DELTA TOO LARGE: {project['project_id']} exceeds {MAX_PAGES} pages")
+        page_limit = INITIAL_BASELINE_MAX_PAGES if baseline else MAX_PAGES
+        if index > page_limit:
+            raise SyncError(f"UPDATE CHATGPT BLOCKED — DELTA TOO LARGE: {project['project_id']} exceeds {page_limit} pages")
         _validate_thread(project, page)
         for turn in page.get("turns", []):
             for raw in turn.get("items", []):
@@ -97,25 +101,26 @@ def _source_delta(project: dict[str, Any], pages: list[dict[str, Any]], prior: s
                     found_boundary = True
                     break
                 chars += len(text)
-                if chars > MAX_SOURCE_CHARS:
-                    raise SyncError(f"UPDATE CHATGPT BLOCKED — DELTA TOO LARGE: {project['project_id']} exceeds {MAX_SOURCE_CHARS} characters")
+                char_limit = INITIAL_BASELINE_SOURCE_CHARS if baseline else MAX_SOURCE_CHARS
+                if chars > char_limit:
+                    raise SyncError(f"UPDATE CHATGPT BLOCKED — DELTA TOO LARGE: {project['project_id']} exceeds {char_limit} characters")
                 items.append({"id": item_id, "turn_id": turn.get("id"), "role": role, "text": text, "timestamp": turn.get("completedAt") or turn.get("startedAt")})
             if found_boundary:
                 break
         if found_boundary:
             break
-        # An initial sync has no known lower boundary.  It is complete only
-        # when the supplied reader pages reach the reader-visible beginning;
-        # accepting an arbitrary latest page would silently omit history.
+        # A baseline intentionally ends at the oldest item in its bounded
+        # recent window; older history is disclosed, not falsely marked read.
+        if baseline:
+            found_boundary = True
+            break
         if not page.get("page", {}).get("hasMore", False):
-            if prior is None:
-                found_boundary = True
-            else:
+            if prior is not None:
                 raise SyncError(f"{project['project_id']}: prior boundary {prior!r} was not found")
     if not found_boundary:
         raise SyncError(f"{project['project_id']}: prior boundary requires more than {MAX_PAGES} pages")
     items.reverse()  # reader pages are newest-first; preserve source chronology.
-    return {"project": project["project_id"], "thread_id": project["thread_id"], "items": items, "start_item_id": items[0]["id"] if items else prior, "end_item_id": items[-1]["id"] if items else prior, "characters": chars}
+    return {"project": project["project_id"], "thread_id": project["thread_id"], "items": items, "start_item_id": items[0]["id"] if items else prior, "end_item_id": items[-1]["id"] if items else prior, "boundary_item_id": items[0]["id"] if baseline and items else (items[-1]["id"] if items else prior), "characters": chars, "baseline": baseline, "warning": "PRE-BASELINE HISTORY NOT INCLUDED" if baseline else None}
 
 
 def build(registry_path: Path, state_path: Path, reader_path: Path, archive: Path) -> dict[str, Any]:
@@ -128,26 +133,34 @@ def build(registry_path: Path, state_path: Path, reader_path: Path, archive: Pat
     missing = active_projects - set(supplied_projects)
     if missing:
         raise SyncError(f"active registered sources missing: {', '.join(sorted(missing))}")
+    first_generation = int(state.get("next_generation", 1)) == 1 and not state.get("generations")
+    baseline_sources = [project_id for project_id in supplied_projects if not (state.get("sources", {}).get(project_id) or {}).get("last_item_id")]
+    if bool(baseline_sources) != first_generation or (first_generation and len(baseline_sources) != len(active_projects)):
+        raise SyncError("initial baseline is only permitted for the first complete global generation")
     deltas: list[dict[str, Any]] = []
     for source in supplied.get("sources", []):
         project_id = source.get("project")
         if project_id not in known:
             raise SyncError(f"unregistered source project: {project_id}")
         prior = (state.get("sources", {}).get(project_id) or {}).get("last_item_id")
-        deltas.append(_source_delta(known[project_id], source.get("pages", []), prior))
+        deltas.append(_source_delta(known[project_id], source.get("pages", []), prior, baseline=first_generation))
     if not deltas:
         raise SyncError("no active source pages supplied")
     total = sum(item["characters"] for item in deltas)
-    if total > MAX_GENERATION_CHARS:
-        raise SyncError(f"UPDATE CHATGPT BLOCKED — DELTA TOO LARGE: generation exceeds {MAX_GENERATION_CHARS} characters")
+    generation_limit = INITIAL_BASELINE_GENERATION_CHARS if first_generation else MAX_GENERATION_CHARS
+    if total > generation_limit:
+        raise SyncError(f"UPDATE CHATGPT BLOCKED — DELTA TOO LARGE: generation exceeds {generation_limit} characters")
     number = int(state.get("next_generation", 1))
     generation_id = f"G{number}"
     recipients = {pid: "PENDING" for pid, entry in known.items() if entry.get("state") == "ACTIVE"}
     created = datetime.now(timezone.utc).isoformat()
     body = [f"# TNET CHATGPT SYNC {generation_id}", "", "Reader-visible conversation evidence only; repository authority remains controlling.", ""]
+    if first_generation:
+        body += ["## Initial baseline", "This is an initial synchronization baseline. PRE-BASELINE HISTORY NOT INCLUDED.", "Older continuity remains available through PREPARE HANDOFF / portable masters.", ""]
     body.append("## Source boundaries")
     for delta in deltas:
-        body.append(f"- {delta['project']}: `{delta['start_item_id']}` → `{delta['end_item_id']}` ({delta['characters']} characters)")
+        warning = f" — {delta['warning']}" if delta.get("warning") else ""
+        body.append(f"- {delta['project']}: `{delta['start_item_id']}` → `{delta['end_item_id']}` ({delta['characters']} characters){warning}")
     for delta in deltas:
         body += ["", f"## {delta['project']}"]
         for item in delta["items"]:
@@ -162,10 +175,10 @@ def build(registry_path: Path, state_path: Path, reader_path: Path, archive: Pat
     payload_path = archive / f"{generation_id}-chatgpt-sync.md"
     manifest_path = archive / f"{generation_id}-manifest.json"
     payload_path.write_text(rendered, encoding="utf-8")
-    generation = {"id": generation_id, "created_at": created, "payload": str(payload_path), "payload_sha256": payload_sha, "file_sha256": _sha(rendered), "sources": deltas, "recipients": recipients, "completeness": "READER_VISIBLE / NOT LOSSLESS EXPORT", "warnings": []}
+    generation = {"id": generation_id, "created_at": created, "payload": str(payload_path), "payload_sha256": payload_sha, "file_sha256": _sha(rendered), "sources": deltas, "recipients": recipients, "completeness": "INITIAL BOUNDED BASELINE / READER_VISIBLE / NOT LOSSLESS EXPORT" if first_generation else "READER_VISIBLE / NOT LOSSLESS EXPORT", "warnings": ["PRE-BASELINE HISTORY NOT INCLUDED"] if first_generation else []}
     manifest_path.write_text(json.dumps(generation, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     for delta in deltas:
-        state.setdefault("sources", {})[delta["project"]] = {"thread_id": delta["thread_id"], "last_item_id": delta["end_item_id"], "updated_at": created}
+        state.setdefault("sources", {})[delta["project"]] = {"thread_id": delta["thread_id"], "last_item_id": delta["boundary_item_id"], "updated_at": created}
     state["next_generation"] = number + 1
     state.setdefault("generations", []).append(generation)
     _write_json(state_path, state)

@@ -59,6 +59,15 @@ The implementation ceilings are configurable module constants and currently:
 - 125,000 reader-visible characters per generation;
 - six reader pages per source.
 
+G1 is a bounded exception: it uses one recent reader page per active source,
+with a 20,000-character source ceiling and 60,000-character generation
+ceiling. G1 records the exact first-included and last-included item/turn
+provenance and establishes its source boundary at the oldest included item.
+It explicitly marks `PRE-BASELINE HISTORY NOT INCLUDED`; it never claims the
+thread is historically complete. G2 and later use the normal 50,000-character,
+125,000-character-generation, six-page incremental ceilings from the stored
+boundary.
+
 Stop before exceeding a ceiling with `UPDATE CHATGPT BLOCKED — DELTA TOO
 LARGE`, naming the affected source and known boundary. A first baseline is
 complete only if the supplied reader pages reach the reader-visible beginning;

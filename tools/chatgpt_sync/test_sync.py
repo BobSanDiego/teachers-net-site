@@ -46,21 +46,21 @@ class SyncTests(unittest.TestCase):
         return path
 
     def seed_state(self) -> None:
-        self.state.write_text(json.dumps({"schema_version": 1, "next_generation": 1, "sources": {
+        self.state.write_text(json.dumps({"schema_version": 1, "next_generation": 2, "sources": {
             "alpha": {"last_item_id": "a-old"}, "beta": {"last_item_id": "b-old"}
         }, "generations": []}), encoding="utf-8")
 
     def test_incremental_package_and_ack_are_independent(self) -> None:
         self.seed_state()
         result = build(self.registry, self.state, self.reader([item("a-new", "user", "new alpha"), item("a-old", "assistant", "old")], [item("b-new", "assistant", "new beta"), item("b-old", "user", "old")]), self.archive)
-        self.assertEqual("G1", result["id"])
+        self.assertEqual("G2", result["id"])
         self.assertEqual("a-new", result["sources"][0]["end_item_id"])
         self.assertEqual({"alpha": "PENDING", "beta": "PENDING"}, result["recipients"])
         payload = Path(result["payload"]).read_text(encoding="utf-8")
-        self.assertIn(f"SYNC ACK: G1 {result['payload_sha256']}", payload)
+        self.assertIn(f"SYNC ACK: G2 {result['payload_sha256']}", payload)
         ack = self.root / "ack.json"
-        ack.write_text(json.dumps(page("alpha", "thread-alpha", "Alpha", [{"id": "ack-turn", "items": [item("ack", "assistant", f"SYNC ACK: G1 {result['payload_sha256']}")]}])), encoding="utf-8")
-        acknowledged = acknowledge(self.registry, self.state, ack, "alpha", "G1")
+        ack.write_text(json.dumps(page("alpha", "thread-alpha", "Alpha", [{"id": "ack-turn", "items": [item("ack", "assistant", f"SYNC ACK: G2 {result['payload_sha256']}")]}])), encoding="utf-8")
+        acknowledged = acknowledge(self.registry, self.state, ack, "alpha", "G2")
         self.assertEqual("ACKNOWLEDGED", acknowledged["recipients"]["alpha"])
         self.assertEqual("PENDING", acknowledged["recipients"]["beta"])
 
@@ -101,14 +101,32 @@ class SyncTests(unittest.TestCase):
         self.seed_state()
         first = build(self.registry, self.state, self.reader([item("a-one", "user", "one"), item("a-old", "assistant", "old")], [item("b-one", "assistant", "one"), item("b-old", "user", "old")]), self.archive)
         ack = self.root / "ack.json"
-        ack.write_text(json.dumps(page("alpha", "thread-alpha", "Alpha", [{"id": "ack-turn", "items": [item("ack", "assistant", f"SYNC ACK: G1 {first['payload_sha256']}")]}])), encoding="utf-8")
-        acknowledge(self.registry, self.state, ack, "alpha", "G1")
+        ack.write_text(json.dumps(page("alpha", "thread-alpha", "Alpha", [{"id": "ack-turn", "items": [item("ack", "assistant", f"SYNC ACK: G2 {first['payload_sha256']}")]}])), encoding="utf-8")
+        acknowledge(self.registry, self.state, ack, "alpha", "G2")
         second = build(self.registry, self.state, self.reader([item("a-two", "user", "two"), item("a-one", "user", "one")], [item("b-two", "assistant", "two"), item("b-one", "assistant", "one")]), self.archive)
         self.assertEqual("PENDING", second["recipients"]["alpha"])
         self.assertEqual("PENDING", second["recipients"]["beta"])
         state = json.loads(self.state.read_text(encoding="utf-8"))
         self.assertEqual("ACKNOWLEDGED", state["generations"][0]["recipients"]["alpha"])
         self.assertEqual("PENDING", state["generations"][0]["recipients"]["beta"])
+
+    def test_initial_baseline_accepts_one_recent_page_and_discloses_older_history(self) -> None:
+        source = self.reader([item("a-new", "user", "new"), item("a-first", "assistant", "first")], [item("b-new", "assistant", "new"), item("b-first", "user", "first")])
+        result = build(self.registry, self.state, source, self.archive)
+        self.assertEqual("G1", result["id"])
+        self.assertIn("PRE-BASELINE HISTORY NOT INCLUDED", result["warnings"])
+        self.assertTrue(all(delta["baseline"] for delta in result["sources"]))
+        payload = Path(result["payload"]).read_text(encoding="utf-8")
+        self.assertIn("initial synchronization baseline", payload)
+        self.assertIn("PRE-BASELINE HISTORY NOT INCLUDED", payload)
+        state = json.loads(self.state.read_text(encoding="utf-8"))
+        self.assertEqual("a-first", state["sources"]["alpha"]["last_item_id"])
+
+    def test_baseline_rejects_truncated_item_without_advancing_ledger(self) -> None:
+        source = self.reader([item("a-new", "user", "new", True), item("a-first", "assistant", "first")], [item("b-new", "assistant", "new"), item("b-first", "user", "first")])
+        with self.assertRaisesRegex(SyncError, "truncated"):
+            build(self.registry, self.state, source, self.archive)
+        self.assertFalse(self.state.exists())
 
 
 if __name__ == "__main__":
