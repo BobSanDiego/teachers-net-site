@@ -462,6 +462,11 @@ def _startup_text(record: dict[str, Any], snapshot: ChatSnapshot, terminal: dict
     objective_name = objective.get("ticket") or objective.get("objective") or "UNKNOWN"
     objective_state = objective.get("status") or "UNKNOWN"
     missing = "; ".join(warnings) if warnings else "none recorded"
+    semantic_state = "semantic authority unavailable"
+    semantic_path = Path(__file__).resolve().parents[2] / "docs/process/conversation-handoff/shared/semantic-authority.json"
+    if semantic_path.is_file():
+        semantic = json.loads(semantic_path.read_text(encoding="utf-8"))
+        semantic_state = f"catalog revision {semantic['catalog_revision']}; semantic revision {semantic['semantic_revision']}"
     return f"""# LOAD STARTUP — {record['display_name']}
 
 When the Engineering Director says exactly `LOAD STARTUP`, perform this startup
@@ -485,9 +490,12 @@ access to the engineer's repository or filesystem.
    messages may exist after that boundary.
 9. Preserve the Engineering Director's product authority and the project's stop
    boundaries. Do not infer authorization from historical conversation.
+10. Carry forward relevant semantic authority state ({semantic_state}); it is
+    distinct from transcript evidence and consumer-adoption decisions.
 
 Current terminal objective at package generation: `{objective_name}` / `{objective_state}`.
 Known missing/stale sources: {missing}.
+Semantic authority: {semantic_state}.
 
 Reply concisely:
 
@@ -498,6 +506,7 @@ Workflow: V2
 Conversation through: {snapshot.exported_boundary} ({snapshot.status})
 Current objective: {objective_name} / {objective_state}
 Missing/stale sources: <none or list>
+Semantic authority: <catalog/semantic revision>
 READY
 ```
 """

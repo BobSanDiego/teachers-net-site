@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "catalog_revision": 1,
+  "semantic_revision": 1,
+  "registered_projects": ["jobcenter", "views", "profile", "community"],
+  "authority_order": [
+    "implemented canonical Core Terms state",
+    "approved semantic records",
+    "research/evidence",
+    "individual consumer adoption"
+  ],
+  "consumer_adoptions": {
+    "jobcenter": [
+      {"consumer": "Subject Area", "view": "Jobs Subjects", "version": 2},
+      {"consumer": "Grade Level", "view": "Jobs Grade Levels", "version": 1}
+    ],
+    "views": [], "profile": [], "community": []
+  },
+  "records": [
+    {
+      "id": "semantic-001",
+      "concept": "Core Terms / Views boundary",
+      "disposition": "APPROVED",
+      "catalog_revision": 1,
+      "semantic_revision": 1,
+      "canonical_state": "Core Terms owns canonical Term identity and meaning; Views consumes UUID-backed Terms in hierarchy-preserving compositions.",
+      "direction": "Consumer projects do not create competing term meaning or taxonomy authority.",
+      "source_project": "views",
+      "source_session": "durable Views authority",
+      "source_cycle": "CT-SUBJECT002",
+      "engineering_director_authority": "Accepted durable Views authority.",
+      "affected_frameworks": ["Core Terms", "Views", "Job Center"],
+      "affected_projects": ["jobcenter", "views", "profile", "community"],
+      "project_impact": {"views": "ACTION REQUIRED", "jobcenter": "INFORMATIONAL", "profile": "REVIEW", "community": "INFORMATIONAL"},
+      "evidence_pointers": ["docs/core-terms/durable-views-project-cursor.md", "docs/core-terms/durable-views-engineering-handoff.md"],
+      "supersedes": []
+    },
+    {
+      "id": "semantic-002",
+      "concept": "Lists and Collections",
+      "disposition": "DEFERRED",
+      "catalog_revision": 1,
+      "semantic_revision": 1,
+      "canonical_state": "Neither Lists nor Collections is implemented canonical state.",
+      "direction": "Lists are the approved future flat arbitrary-Term composition concept; Collections remain a working/deferred nested editorial composition concept.",
+      "source_project": "views",
+      "source_session": "durable Views authority",
+      "source_cycle": "DV-ARCH002",
+      "engineering_director_authority": "Current durable Views authority; no implementation authorization.",
+      "affected_frameworks": ["Core Terms", "Views"],
+      "affected_projects": ["jobcenter", "views", "profile", "community"],
+      "project_impact": {"views": "REVIEW", "jobcenter": "INFORMATIONAL", "profile": "INFORMATIONAL", "community": "INFORMATIONAL"},
+      "evidence_pointers": ["docs/core-terms/durable-views-project-cursor.md"],
+      "supersedes": []
+    },
+    {
+      "id": "semantic-003",
+      "concept": "Subject Area HOLD placement",
+      "disposition": "DEFERRED",
+      "catalog_revision": 1,
+      "semantic_revision": 1,
+      "canonical_state": "Special Education, Counseling, and Library / Media remain at the Subject Area root without final semantic reclassification.",
+      "direction": "Preserve the current state; final placement remains an Engineering Director decision.",
+      "source_project": "views",
+      "source_session": "CT-SUBJECT002 completion evidence",
+      "source_cycle": "CT-SUBJECT002",
+      "engineering_director_authority": "Accepted CT-SUBJECT002 HOLD evidence.",
+      "affected_frameworks": ["Core Terms", "Views", "Job Center"],
+      "affected_projects": ["jobcenter", "views", "profile", "community"],
+      "project_impact": {"views": "REVIEW", "jobcenter": "INFORMATIONAL", "profile": "INFORMATIONAL", "community": "INFORMATIONAL"},
+      "evidence_pointers": ["docs/core-terms/ct-subject002-completion-report.md"],
+      "supersedes": []
+    }
+  ]
+}

@@ -14,6 +14,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+try:
+    from tools.semantic_sync import sync as semantic_sync
+except ImportError:  # direct script/test execution from tools/chatgpt_sync
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from tools.semantic_sync import sync as semantic_sync
+
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_REGISTRY = ROOT / "docs/process/conversation-handoff/shared/chatgpt-sync-registry.json"
 DEFAULT_STATE = ROOT / "tmp/hopper/shared-workflow/chatgpt-sync/ledger.json"
@@ -161,6 +168,21 @@ def build(registry_path: Path, state_path: Path, reader_path: Path, archive: Pat
     for delta in deltas:
         warning = f" — {delta['warning']}" if delta.get("warning") else ""
         body.append(f"- {delta['project']}: `{delta['start_item_id']}` → `{delta['end_item_id']}` ({delta['characters']} characters){warning}")
+    semantic_authority = semantic_sync._load(semantic_sync.DEFAULT_AUTHORITY)
+    semantic_recipients = sorted(set(recipients) & set(semantic_authority["registered_projects"]))
+    semantic = semantic_sync.delivery_metadata(
+        semantic_sync.DEFAULT_AUTHORITY,
+        semantic_sync.DEFAULT_CURSORS,
+        semantic_recipients,
+    ) if semantic_recipients else {"catalog_revision": None, "semantic_revision": None, "recipients": {}}
+    semantic_sections = [
+        semantic_sync.package_delta(semantic_sync.DEFAULT_AUTHORITY, semantic_sync.DEFAULT_CURSORS, project_id)
+        for project_id in semantic_recipients
+        if semantic["recipients"][project_id]["relevant"]
+    ]
+    if semantic_sections:
+        body += ["", "## Authoritative semantic/catalog deltas", "These compact authority records are distinct from the raw conversation evidence below."]
+        body.extend(section.rstrip() for section in semantic_sections)
     for delta in deltas:
         body += ["", f"## {delta['project']}"]
         for item in delta["items"]:
@@ -175,7 +197,7 @@ def build(registry_path: Path, state_path: Path, reader_path: Path, archive: Pat
     payload_path = archive / f"{generation_id}-chatgpt-sync.md"
     manifest_path = archive / f"{generation_id}-manifest.json"
     payload_path.write_text(rendered, encoding="utf-8")
-    generation = {"id": generation_id, "created_at": created, "payload": str(payload_path), "payload_sha256": payload_sha, "file_sha256": _sha(rendered), "sources": deltas, "recipients": recipients, "completeness": "INITIAL BOUNDED BASELINE / READER_VISIBLE / NOT LOSSLESS EXPORT" if first_generation else "READER_VISIBLE / NOT LOSSLESS EXPORT", "warnings": ["PRE-BASELINE HISTORY NOT INCLUDED"] if first_generation else []}
+    generation = {"id": generation_id, "created_at": created, "payload": str(payload_path), "payload_sha256": payload_sha, "file_sha256": _sha(rendered), "sources": deltas, "recipients": recipients, "semantic": semantic, "completeness": "INITIAL BOUNDED BASELINE / READER_VISIBLE / NOT LOSSLESS EXPORT" if first_generation else "READER_VISIBLE / NOT LOSSLESS EXPORT", "warnings": ["PRE-BASELINE HISTORY NOT INCLUDED"] if first_generation else []}
     manifest_path.write_text(json.dumps(generation, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     for delta in deltas:
         state.setdefault("sources", {})[delta["project"]] = {"thread_id": delta["thread_id"], "last_item_id": delta["boundary_item_id"], "updated_at": created}
@@ -203,6 +225,15 @@ def acknowledge(registry_path: Path, state_path: Path, reader_path: Path, recipi
         raise SyncError(f"{recipient}: exact acknowledgment marker not found")
     generation["recipients"][recipient] = "ACKNOWLEDGED"
     generation.setdefault("ack_provenance", {})[recipient] = {"verified_at": datetime.now(timezone.utc).isoformat(), "thread_id": project["thread_id"]}
+    semantic = generation.get("semantic", {}).get("recipients", {}).get(recipient)
+    if semantic and semantic.get("relevant"):
+        semantic_sync.acknowledge(
+            semantic_sync.DEFAULT_AUTHORITY,
+            semantic_sync.DEFAULT_CURSORS,
+            recipient,
+            semantic["catalog_revision"],
+            semantic["semantic_revision"],
+        )
     _write_json(state_path, state)
     return generation
 

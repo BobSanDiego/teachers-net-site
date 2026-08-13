@@ -16,6 +16,8 @@
     "docs/process/conversation-handoff/shared/workflow-v2.json",
     "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
     "docs/process/conversation-handoff/shared/CHATGPT-SYNC.md",
+    "docs/process/conversation-handoff/shared/SEMANTIC-SYNC.md",
+    "docs/process/conversation-handoff/shared/semantic-authority.json",
     "docs/process/conversation-handoff/shared/chatgpt-sync-registry.json",
     "docs/process/conversation-handoff/shared/START-CODEX.md",
     "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md"
@@ -34,6 +36,7 @@
     {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
     {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},
     {"path": "docs/process/conversation-handoff/shared/CHATGPT-SYNC.md", "role": "incremental global ChatGPT synchronization"},
+    {"path": "docs/process/conversation-handoff/shared/SEMANTIC-SYNC.md", "role": "cross-project semantic authority and delivery"},
     {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "shared Report/Hopper policy"}
   ]
 }

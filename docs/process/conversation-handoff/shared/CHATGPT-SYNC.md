@@ -1,5 +1,13 @@
 # Incremental Global ChatGPT Synchronization
 
+## Semantic authority transport
+
+`UPDATE CHATGPT` may append a compact, recipient-relevant semantic/catalog
+delta from [SEMANTIC-SYNC.md](SEMANTIC-SYNC.md). It remains distinct from raw
+conversation evidence. Packaging does not acknowledge the semantic delta; only
+the existing verified recipient `SYNC ACK` advances that recipient's semantic
+cursor.
+
 ## Purpose and authority boundary
 
 This is the shared Workflow V2 owner for optional cross-project ChatGPT delta

@@ -1,0 +1,1 @@
+"""Shared Semantic Synchronization owner."""
