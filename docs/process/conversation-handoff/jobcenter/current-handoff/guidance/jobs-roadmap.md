@@ -120,6 +120,42 @@ implementation and preserves the existing Employer Operations authority.
 This sequence supersedes older roadmap entries that place Add School/Jobsite
 integration immediately after the first hydration or parity ticket.
 
+### JC-QUICKEDITOR-ROADMAP001 — Quick Editor / Fast Entry product contract
+
+Job Center will support three complementary authoring surfaces over the same
+canonical Job/session/state owners:
+
+- **Guided Wizard** — sequential Steps 1–4 for ordinary and new recruiters,
+  converging on Step 5 Review.
+- **Quick Editor / Fast Entry** — a one-page start-to-finish authoring surface
+  for experienced recruiters and Teachers.Net Jobs Admin, with rapid linear
+  entry, optional-field disclosure, Preview, and the same Step 5 Review and
+  certification/finalization path.
+- **Pro Editor** — document-first inline editing of an existing or complete
+  listing, also converging on Step 5 Review.
+
+These are presentation/orchestration variants, not separate data models. Quick
+Editor must reuse the canonical Job/session identity, field state, validation,
+Views-backed taxonomy, rich-text normalization, draft persistence, final
+projection, certification/finalization, and published working-revision owners.
+It must not create a distinct Quick Editor state.
+
+The intended one-page sequence exposes the canonical School / Jobsite, Job
+Basics, Work Location, Starting Date, Compensation, Job Description, and
+Application Process groups, with optional listing fields available through
+progressive disclosure. Hiding an optional field is presentation-only: it
+must not clear stored values, alter validation, persistence, or canonical state;
+hidden populated fields should remain visibly identifiable.
+
+Future Quick Editor work must first perform a focused controller-reuse audit:
+identify which controllers are shell-independent, which still assume wizard
+navigation, which can mount simultaneously, and how page-wide validation,
+cross-field dependencies, unsaved state, keyboard order, Preview, and
+finalization will operate. Current and future controllers should remain
+presentation-neutral enough to mount in the Wizard, Pro Editor, and Quick
+Editor. This roadmap entry authorizes no Quick Editor UI, schema, persistence,
+or admin-settings implementation.
+
 ### DATA001-REV1 — Adopted data architecture gate
 
 The approved School / Jobsite architecture is the staged hybrid: employer
