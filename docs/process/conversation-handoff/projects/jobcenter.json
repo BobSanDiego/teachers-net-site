@@ -14,6 +14,9 @@
     "conversation_id": "6a79d7ea-da44-83e8-91eb-460b99ab593b"
   },
   "report_hopper": "tmp/hopper/jobcenter/",
+  "primary_report_directory": "tmp/hopper/jobcenter/Report (Job Center)",
+  "primary_hopper_directory": "tmp/hopper/jobcenter/Hopper (Job Center)",
+  "report_routing": "Every executed Job Center ticket publishes primary Report and Hopper artifacts here; shared-workflow copies are optional secondary provenance only.",
   "handoff_archive_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/",
   "handoff_archive_windows": "C:\\Main\\Active\\Projects\\Teachers.Net\\HANDOFFS\\",
   "shared_workflow_projection_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/",

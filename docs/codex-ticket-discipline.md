@@ -1241,3 +1241,8 @@ of the project/agent that executed the work. Shared-workflow or cross-project
 copies are optional secondary provenance only; logical ownership, an acceptance
 fixture, or a shared repository must never redirect or replace that primary
 executing-project publication.
+
+For Job Center, the primary directories are always:
+`tmp/hopper/jobcenter/Report (Job Center)` and
+`tmp/hopper/jobcenter/Hopper (Job Center)`. A Shared Workflow copy is optional
+and does not replace those Job Center publications.

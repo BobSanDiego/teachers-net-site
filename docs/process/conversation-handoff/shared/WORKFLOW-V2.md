@@ -339,3 +339,9 @@ shared-workflow involvement, acceptance fixture, or repository touched does not
 redirect primary Report/Hopper ownership. A shared-workflow or cross-project
 copy is optional secondary provenance only and must never substitute for the
 executing project's current Report publication.
+
+For this registered Job Center project, the primary directories are explicitly
+`tmp/hopper/jobcenter/Report (Job Center)` and
+`tmp/hopper/jobcenter/Hopper (Job Center)`. Shared Workflow is not the primary
+destination for Job Center tickets, even when the ticket changes shared
+workflow infrastructure.
