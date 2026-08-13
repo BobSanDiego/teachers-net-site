@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "authority": "Exact Codex-app thread identity is required. Title similarity is never authority.",
+  "projects": [
+    {"project_id": "jobcenter", "state": "ACTIVE", "thread_id": "6a7aeb6f-3e74-83e8-a542-4ad0dfec7f54", "expected_title": "Job Center (8/11/26)", "account_project_id": "g-p-68e44725803881918fe3c18f39bf4847", "registered_at": "2026-08-13T00:00:00Z", "registration_provenance": "SHARED-CHATGPT-SYNC-AUDIT001 live-reader verification", "replacement_history": [{"replaced_thread_id": "6a79d7ea-da44-83e8-91eb-460b99ab593b", "reason": "Current active companion thread changed; historical record retained."}]},
+    {"project_id": "views", "state": "ACTIVE", "thread_id": "6a79d55f-6944-83e8-90c8-987fdd74ed49", "expected_title": "Views (8/10/26)", "account_project_id": "g-p-68e44725803881918fe3c18f39bf4847", "registered_at": "2026-08-13T00:00:00Z", "registration_provenance": "SHARED-CHATGPT-SYNC-AUDIT001 live-reader verification", "replacement_history": []},
+    {"project_id": "profile", "state": "ACTIVE", "thread_id": "6a7a608f-98fc-83e8-94a0-2c2e3493ca13", "expected_title": "Profile (8/10/26)", "account_project_id": "g-p-68e44725803881918fe3c18f39bf4847", "registered_at": "2026-08-13T00:00:00Z", "registration_provenance": "SHARED-CHATGPT-SYNC-AUDIT001 live-reader verification", "replacement_history": []},
+    {"project_id": "community", "state": "UNREGISTERED", "thread_id": null, "expected_title": null, "account_project_id": null, "registered_at": null, "registration_provenance": "Exact current Community ChatGPT thread was not discoverable during audit; fail closed until explicitly registered.", "replacement_history": []}
+  ]
+}

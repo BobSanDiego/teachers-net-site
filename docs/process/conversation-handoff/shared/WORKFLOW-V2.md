@@ -308,3 +308,24 @@ test. STANDARD states one coherent outcome and affected journey. DIAGNOSTIC
 names the uncertain seam and causal evidence needed. CONVERGENCE names the
 terminal invariant and accepted baseline while keeping internal experiments in
 the acceptance ledger rather than issuing sub-tickets.
+
+## Incremental global ChatGPT synchronization
+
+`UPDATE CHATGPT` is an optional, Engineering-Director-issued transport action,
+not routine work. It builds one global reader-visible delta package only after
+Codex validates every exact ACTIVE thread identity in the checked-in Shared
+Workflow registry. The bounded live reader is evidence, never a lossless
+export or repository authority. The package carries source/turn/item
+provenance, known boundaries, a fixed-marker payload SHA-256, and independent
+recipient acknowledgment state. It is routed only under
+`tmp/hopper/shared-workflow/chatgpt-sync/`; it never creates a product cycle,
+rewrites portable masters, or alters project Report/Hopper streams.
+
+The routine agent procedure and ceilings are in
+`CHATGPT-SYNC.md`. Fail closed on a changed identity, missing prior boundary,
+truncated reader item, unavailable required context, or a configured page or
+character ceiling. `PREPARE HANDOFF` remains file-driven and unchanged.
+
+`GLOBAL CHATGPT SYNC RECOMMENDED` is metadata-only: it may be emitted from a
+structured cross-project signal or an undelivered generation but must never
+read conversation or execute an update by itself.

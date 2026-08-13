@@ -28,6 +28,7 @@ from tools.workflow.workflow_v2 import (
 
 from tools.hopper.clean_cycle import validate as validate_cycle
 from tools.codex_archive.prepare_chatgpt_handoff import HandoffError, prepare as prepare_chatgpt_handoff
+from tools.chatgpt_sync.sync import DEFAULT_STATE as CHATGPT_SYNC_STATE, load_state as load_chatgpt_sync_state
 
 REGISTRY = ROOT / "tools/workflow/command-registry.json"
 
@@ -138,7 +139,7 @@ def main(argv=None):
     parser.add_argument("--include-house-context", action="store_true")
     args = parser.parse_args(argv)
     command = " ".join(args.command).upper()
-    project_independent = {"LIST COMMANDS", "LIST-COMMANDS", "VALIDATE TICKET", "RECOMMEND REASONING"}
+    project_independent = {"LIST COMMANDS", "LIST-COMMANDS", "VALIDATE TICKET", "RECOMMEND REASONING", "UPDATE CHATGPT", "CHATGPT SYNC STATUS"}
     if not args.project and command not in project_independent:
         print(
             "PROJECT CONTEXT REQUIRED\nBoundary: resolve the active registered project before invoking the shared command; no cross-project default is permitted.",
@@ -226,6 +227,17 @@ def main(argv=None):
         notice = reasoning_boost_notice(posture)
         if notice:
             print(notice)
+        return 0
+    if command == "UPDATE CHATGPT":
+        # Live reader access belongs to the Codex agent, not this file-driven
+        # command wrapper.  This is intentionally a no-op until the agent has
+        # bounded, identity-validated reader pages to pass to chatgpt_sync.
+        print("UPDATE CHATGPT: AGENT READER REQUIRED")
+        print("Read only registered active threads through the bounded app reader; then invoke tools/chatgpt_sync/sync.py build with the normalized reader pages.")
+        print("No retrieval, handoff regeneration, or product action was performed by this command.")
+        return 0
+    if command == "CHATGPT SYNC STATUS":
+        print(json.dumps(load_chatgpt_sync_state(CHATGPT_SYNC_STATE), indent=2, sort_keys=True))
         return 0
     if command in {"LIST COMMANDS", "LIST-COMMANDS"}:
         list_commands(); return 0
