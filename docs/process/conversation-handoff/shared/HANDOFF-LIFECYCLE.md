@@ -21,6 +21,14 @@ from the active project record; this document owns the process.
 
    `LOAD STARTUP`
 
+The terminal response must include the exact absolute successor-drop directory
+as a clickable Markdown link, for example:
+
+`[Open handoff directory](/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/<drop>/)`
+
+Plain text paths may be included additionally, but never replace the clickable
+directory link.
+
 5. ChatGPT follows `00-LOAD-STARTUP.md` and returns its prescribed concise
    `STARTUP LOADED` identity/freshness/objective status.
 

@@ -25,6 +25,11 @@ drop containing only `STARTUP-TICKET.txt` and the validated ZIP. The ticket is
 zero-context transport instruction; the ZIP is authoritative. A fresh ChatGPT
 session ingests those two files, follows the ticket, and types exactly
 `LOAD STARTUP`; the supplied `00-LOAD-STARTUP.md` controls ingestion.
+The completion response must include a clickable Markdown link to the exact
+absolute successor-drop directory, such as
+`[Open handoff directory](/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/<drop>/)`.
+This is a shared response requirement for every registered project, not a
+Job Center-specific convention.
 
 ## Read first
 

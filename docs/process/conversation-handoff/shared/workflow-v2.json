@@ -39,6 +39,7 @@
     "operator_drop_role": "TRANSPORT_ONLY",
     "report_routing": "LOCAL_EXECUTING_PROJECT_REPORT_HOPPER",
     "preferred_chatgpt_source": "OPENAI_SHARE_URL",
+    "completion_response_contract": "CLICKABLE_MARKDOWN_ABSOLUTE_HANDOFF_DIRECTORY_LINK_REQUIRED",
     "routine_checkpoint_policy": "SEPARATE_FROM_IMMUTABLE_RECOVERY_CHECKPOINT",
     "delivery_format_decision": "DEFERRED",
     "shared_workflow_chatgpt_project": false,

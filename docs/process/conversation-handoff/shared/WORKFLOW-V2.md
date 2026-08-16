@@ -172,6 +172,9 @@ successor drop beneath the registered HANDOFFS root. The drop contains exactly
 zero-context pointer/instruction; the ZIP and its manifest remain authoritative.
 The drop is transport only and contains no copied masters, reports, manifests,
 raw transcripts, or authority files. The operation returns the exact drop path.
+The terminal handoff response must render that path as a clickable Markdown
+link to the directory itself, using the absolute filesystem path. A plain path
+alone is insufficient; the link is required for every registered project.
 
 Repeated preparation from an unchanged source must not duplicate conversation
 content. A later export from the same open session may add only safely proven
