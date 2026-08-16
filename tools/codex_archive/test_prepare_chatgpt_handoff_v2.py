@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from prepare_chatgpt_handoff import HandoffError, prepare
+from prepare_chatgpt_handoff import HandoffError, _master_message_content, _representation_normalize, prepare
 
 
 PROJECTS = {
@@ -147,6 +147,30 @@ class PortableHandoffV2Tests(unittest.TestCase):
         source.write_text(transcript("Profile (8/10/26)", [("user", "changed in place")]), encoding="utf-8")
         with self.assertRaisesRegex(HandoffError, "historical ChatGPT source"):
             self._run("profile", source, second=31)
+
+    def test_share_wrapper_identity_difference_is_representation_only(self) -> None:
+        first = "asset_pointer=shared_conversation_id=6a81dc34-37ac-83e8-937c-2cd4d2e1967b visible text"
+        second = "asset_pointer=shared_conversation_id=6a81fa58-92a4-83e8-8f2e-b658b3cee98c visible text"
+        self.assertEqual(_representation_normalize(first), _representation_normalize(second))
+
+    def test_exact_dd053_fixture_is_representation_only(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        old_raw = repo / "tmp/hopper/shared-workflow/openai-share-archive/jobcenter/20260811-20260816-job-center-8-11-26/raw-openai-share-f4acd15cf84c.html"
+        new_dir = repo / "tmp/hopper/shared-workflow/openai-share-archive/jobcenter/20260811-20260816-job-center-8-11-26-6a81fa58-92a4-83e8-8f2e-b658b3cee98c"
+        new_raw = sorted(new_dir.glob("raw-openai-share-*.html"))[-1]
+        if not old_raw.is_file() or not new_raw.is_file():
+            self.skipTest("live share provenance fixtures are not present")
+        try:
+            from openai_share_archive import _decode_html
+        except ImportError:
+            from tools.codex_archive.openai_share_archive import _decode_html
+        old = next(x for x in _decode_html(old_raw.read_bytes())["records"] if x["id"] == "dd05312a-d80f-421d-be33-ed92848a9c91")
+        new = next(x for x in _decode_html(new_raw.read_bytes())["records"] if x["id"] == "dd05312a-d80f-421d-be33-ed92848a9c91")
+        self.assertEqual(old["role"], new["role"])
+        self.assertEqual(old["timestamp"], new["timestamp"])
+        self.assertEqual(old["updated_timestamp"], new["updated_timestamp"])
+        self.assertEqual(old["parent_id"], new["parent_id"])
+        self.assertEqual(_representation_normalize(old["text"]), _representation_normalize(new["text"]))
 
     def test_regressed_or_truncated_snapshot_fails_closed(self) -> None:
         source = Path(self.temp.name) / "views.md"

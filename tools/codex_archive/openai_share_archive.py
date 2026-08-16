@@ -102,6 +102,14 @@ def archive(url: str, project: str, root: Path = DEFAULT_ROOT, raw: bytes | None
     end = dt.datetime.fromtimestamp(max(dates), dt.timezone.utc).strftime("%Y%m%d") if dates else "unknown"
     slug = re.sub(r"[^a-z0-9]+", "-", (data.get("title") or project).lower()).strip("-")
     out = root / project / f"{start}-{end}-{slug}"
+    existing_manifest = out / "provenance-manifest.json"
+    if existing_manifest.is_file():
+        existing = json.loads(existing_manifest.read_text(encoding="utf-8"))
+        if existing.get("conversation_id") != data.get("conversation_id"):
+            # Date/title slugs are not unique when ChatGPT creates a successor
+            # share for the same project. Preserve each OpenAI conversation
+            # identity instead of treating the successor as a hash conflict.
+            out = root / project / f"{start}-{end}-{slug}-{data.get('conversation_id', 'unknown')}"
     out.mkdir(parents=True, exist_ok=True)
     raw_hash = hashlib.sha256(raw).hexdigest()
     raw_path = out / "raw-openai-share.html"

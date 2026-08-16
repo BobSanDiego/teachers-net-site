@@ -45,6 +45,24 @@ class OpenAIShareArchiveTests(unittest.TestCase):
             self.assertTrue(ledger["tickets"])
             self.assertTrue(all(item["status"].startswith("UNRESOLVED") for item in ledger["tickets"]))
 
+    def test_successor_conversation_identity_gets_separate_archive_directory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            data = _decode_html(FIXTURE.read_bytes())
+            first = archive("https://chatgpt.com/share/first", "jobcenter", root, FIXTURE.read_bytes())
+            data["conversation_id"] = "successor-conversation-id"
+            successor = Path(tmp) / "successor.html"
+            successor.write_text("", encoding="utf-8")
+            # Exercise the directory contract without requiring another large
+            # serialized fixture: the existing archive manifest is the source
+            # of truth for the collision branch.
+            manifest = Path(first["directory"]) / "provenance-manifest.json"
+            current = json.loads(manifest.read_text())
+            current["conversation_id"] = data["conversation_id"]
+            manifest.write_text(json.dumps(current), encoding="utf-8")
+            second = archive("https://chatgpt.com/share/first", "jobcenter", root, FIXTURE.read_bytes())
+            self.assertNotEqual(first["directory"], second["directory"])
+
     def test_handoff_parser_uses_openai_uuid_as_message_identity(self):
         data = _decode_html(FIXTURE.read_bytes())
         with tempfile.TemporaryDirectory() as tmp:

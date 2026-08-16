@@ -94,6 +94,19 @@ def _redact(value: str) -> tuple[str, int]:
     return CREDENTIAL.sub(replace, value), count
 
 
+def _representation_normalize(value: str) -> str:
+    """Ignore share-wrapper identity embedded in visible asset-pointer text."""
+    value = re.sub(r"shared_conversation_id=[0-9a-f-]+", "shared_conversation_id=<share>", value)
+    value = value.replace("\r\n", "\n").replace("\r", "\n")
+    return "\n".join(line.strip() for line in value.split("\n")).strip()
+
+
+def _master_message_content(master: str, message_id: str) -> str:
+    pattern = rf"^### {re.escape(message_id)} — (?:USER|ASSISTANT)\n\n(.*?)(?=^### |\Z)"
+    match = re.search(pattern, master, re.MULTILINE | re.DOTALL)
+    return match.group(1).rstrip() if match else ""
+
+
 def _parse_openai_canonical(path: Path, source_status: str) -> ChatSnapshot:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -282,7 +295,15 @@ def _reconcile_chatgpt(
         )
     for message in snapshot.messages:
         existing = old_messages.get(message.message_id)
+        if existing and existing.get("role") != message.role:
+            raise HandoffError(
+                f"conflicting historical ChatGPT source at {message.message_id}; message role changed"
+            )
         if existing and existing["content_sha256"] != message.content_sha256:
+            prior_content = _master_message_content(master, message.message_id)
+            equivalent = bool(prior_content) and _representation_normalize(prior_content) == _representation_normalize(message.content)
+            if equivalent:
+                continue
             raise HandoffError(
                 f"conflicting historical ChatGPT source at {message.message_id}; established content hash changed"
             )
