@@ -94,9 +94,63 @@ def _redact(value: str) -> tuple[str, int]:
     return CREDENTIAL.sub(replace, value), count
 
 
+def _parse_openai_canonical(path: Path, source_status: str) -> ChatSnapshot:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise HandoffError(f"OpenAI canonical transcript is unreadable: {path}") from exc
+    records = payload.get("records")
+    if not isinstance(records, list) or not records:
+        raise HandoffError("OpenAI canonical transcript contains no visible records")
+    messages: list[ChatMessage] = []
+    redactions = 0
+    for record in records:
+        role = record.get("role")
+        if role not in {"user", "assistant"}:
+            raise HandoffError(f"OpenAI canonical transcript has invalid role: {role!r}")
+        source_id = str(record.get("id") or "").strip()
+        if not source_id:
+            raise HandoffError("OpenAI canonical transcript contains a record without stable message ID")
+        content = str(record.get("text") or "")
+        safe_content, found = _redact(content)
+        redactions += found
+        messages.append(
+            ChatMessage(
+                message_id=source_id,
+                role=role,
+                content=safe_content,
+                content_sha256=sha_bytes(content.encode("utf-8")),
+            )
+        )
+    timestamps = [record.get("timestamp") for record in records if record.get("timestamp") is not None]
+    if timestamps:
+        last = max(float(value) for value in timestamps)
+        boundary = datetime.fromtimestamp(last, timezone.utc).isoformat()
+    else:
+        boundary = "UNKNOWN"
+    title = str(payload.get("title") or "OpenAI Share Conversation")
+    conversation_id = str(payload.get("conversation_id") or payload.get("source_conversation_id") or "")
+    if not conversation_id:
+        raise HandoffError("OpenAI canonical transcript has no conversation ID")
+    return ChatSnapshot(
+        title=title,
+        session_key=_slug(title),
+        exported_boundary=boundary,
+        declared_messages=len(messages),
+        status=source_status,
+        source_sha256=sha_file(path),
+        source_bytes=path.stat().st_size,
+        source_path=str(path.resolve()),
+        messages=tuple(messages),
+        redaction_count=redactions,
+    )
+
+
 def parse_chatgpt_export(path: Path, status: str = "OPEN/INCOMPLETE") -> ChatSnapshot:
     if not path.is_file() or path.stat().st_size == 0:
         raise HandoffError(f"ChatGPT transcript is missing or empty: {path}")
+    if path.suffix.lower() == ".json":
+        return _parse_openai_canonical(path, status)
     raw_bytes = path.read_bytes()
     text = raw_bytes.decode("utf-8")
     first = next((line.strip() for line in text.splitlines() if line.strip()), "")
@@ -712,3 +766,43 @@ def prepare(
         "house_context_included": include_house_context,
         "warnings": warnings,
     }
+
+
+def prepare_from_share(
+    *,
+    root: Path,
+    project_record: Path,
+    share_url: str,
+    output_root: Path,
+    archive_root: Path,
+    source_status: str = "CLOSED",
+    codex_source: Path | None = None,
+    include_house_context: bool = False,
+    now: datetime | None = None,
+) -> dict[str, Any]:
+    """Retrieve one OpenAI share, archive it, then use its JSON as handoff input."""
+    from tools.codex_archive.openai_share_archive import archive as archive_share
+    from tools.codex_archive.openai_share_index import build_indexes
+
+    record = json.loads(project_record.read_text(encoding="utf-8"))
+    if record.get("project_id") == "shared-workflow":
+        raise HandoffError("Shared Workflow is an objective owner, not an independent ChatGPT target")
+    archived = archive_share(share_url, record["project_id"], archive_root)
+    indexes = build_indexes(archive_root, archived)
+    canonical = Path(archived["directory"]) / "canonical-transcript.json"
+    result = prepare(
+        root=root,
+        project_record=project_record,
+        transcript=canonical,
+        output_root=output_root,
+        source_status=source_status,
+        codex_source=codex_source,
+        include_house_context=include_house_context,
+        now=now,
+    )
+    result["share_archive"] = {
+        "directory": archived["directory"],
+        "manifest": str(Path(archived["directory"]) / "provenance-manifest.json"),
+        **indexes,
+    }
+    return result

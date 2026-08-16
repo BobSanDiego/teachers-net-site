@@ -150,8 +150,9 @@ the flow with the actual boundary.
 ## Portable ChatGPT handoff
 
 `PREPARE HANDOFF` is the canonical routine handoff command for every
-BOOTSTRAP-ready registered product project. Codex resolves the attached/current
-ChatGPT export and project record, then the central owner
+BOOTSTRAP-ready registered product project. The preferred input is an OpenAI
+ChatGPT share URL; the existing file-driven transcript remains the governed
+fallback. Codex resolves the source and project record, then the central owner
 `tools/codex_archive/prepare_chatgpt_handoff.py` must:
 
 - fail before mutation when transcript and project identities conflict;
@@ -324,7 +325,10 @@ rewrites portable masters, or alters project Report/Hopper streams.
 The routine agent procedure and ceilings are in
 `CHATGPT-SYNC.md`. Fail closed on a changed identity, missing prior boundary,
 truncated reader item, unavailable required context, or a configured page or
-character ceiling. `PREPARE HANDOFF` remains file-driven and unchanged.
+character ceiling. The share decoder/archive owners are
+`tools/codex_archive/openai_share_archive.py` and
+`tools/codex_archive/openai_share_index.py`; they feed the same handoff
+reconciliation owner and do not create project-specific variants.
 
 The first G1 generation may use the bounded initial-baseline exception defined
 there. It must disclose `PRE-BASELINE HISTORY NOT INCLUDED`; all later

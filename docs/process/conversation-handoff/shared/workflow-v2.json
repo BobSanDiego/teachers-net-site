@@ -14,6 +14,8 @@
     "ticket_validation": "tools/workflow/workflow_v2.py",
     "bootstrap_entry": "tools/workflow/workflow.py",
     "portable_handoff": "tools/codex_archive/prepare_chatgpt_handoff.py",
+    "share_archive": "tools/codex_archive/openai_share_archive.py",
+    "share_archive_indexes": "tools/codex_archive/openai_share_index.py",
     "project_routing": "tools/workflow/workflow_v2.py",
     "execution_context_routing": "tools/hopper/clean_cycle.py",
     "unexecuted_stub_owner": "tools/workflow/workflow_v2.py",

@@ -5,15 +5,15 @@ from the active project record; this document owns the process.
 
 ## Routine portable ChatGPT startup handoff
 
-1. Export/attach the latest project ChatGPT transcript. It may be open.
-2. Supply it to a BOOTSTRAP-ready project Codex and issue exactly:
+1. Create or update the OpenAI ChatGPT share for the registered project.
+2. Supply its share URL to a BOOTSTRAP-ready project Codex and issue exactly:
 
    `PREPARE HANDOFF`
 
-3. The central workflow resolves the project record, rejects contradictory
-   transcript identity, records the open/closed freshness boundary, reconciles
-   portable masters without duplicate history, and validates one self-contained
-   startup payload under the registered HANDOFFS root.
+3. The central workflow retrieves and archives the share, decodes one canonical
+   visible user/assistant sequence using OpenAI message UUIDs, reconciles the
+   registered project master, consumes terminal evidence, and validates one
+   self-contained startup payload under the registered HANDOFFS root.
 4. Move the payload into a fresh ChatGPT and issue exactly:
 
    `LOAD STARTUP`
@@ -59,3 +59,12 @@ enrichment, hashing, collision refusal, and publication.
 The Windows-accessible operational projection is
 `/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/`; projected files
 identify their canonical tracked source.
+
+The share-based path is implemented centrally by
+tools/codex_archive/openai_share_archive.py and
+tools/codex_archive/openai_share_index.py. It stores raw provenance and a
+faithful canonical session under
+tmp/hopper/shared-workflow/openai-share-archive/<project>/, plus generated
+session/ticket ledgers and a modest static index. If the share is unavailable,
+the existing file-driven transcript path remains the governed fallback; it
+must still pass identity, freshness, and reconciliation validation.

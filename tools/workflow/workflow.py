@@ -28,6 +28,7 @@ from tools.workflow.workflow_v2 import (
 
 from tools.hopper.clean_cycle import validate as validate_cycle
 from tools.codex_archive.prepare_chatgpt_handoff import HandoffError, prepare as prepare_chatgpt_handoff
+from tools.codex_archive.prepare_chatgpt_handoff import prepare_from_share as prepare_chatgpt_handoff_from_share
 from tools.chatgpt_sync.sync import DEFAULT_STATE as CHATGPT_SYNC_STATE, load_state as load_chatgpt_sync_state
 
 REGISTRY = ROOT / "tools/workflow/command-registry.json"
@@ -133,6 +134,8 @@ def main(argv=None):
     parser.add_argument("--ticket")
     parser.add_argument("--signal", action="append", default=[])
     parser.add_argument("--transcript")
+    parser.add_argument("--share-url")
+    parser.add_argument("--share-archive-root")
     parser.add_argument("--source-status", default="OPEN/INCOMPLETE", choices=("OPEN/INCOMPLETE", "CLOSED"))
     parser.add_argument("--codex-source")
     parser.add_argument("--output-root")
@@ -173,8 +176,8 @@ def main(argv=None):
             print("Product implementation authorized: NO")
         return 0
     if command == "PREPARE HANDOFF":
-        if not args.transcript:
-            parser.error("PREPARE HANDOFF requires Codex to resolve the attached transcript and pass --transcript <path>")
+        if not args.transcript and not args.share_url:
+            parser.error("PREPARE HANDOFF requires --share-url or --transcript")
         try:
             record_path, record = load_project_record(args.project, ROOT)
             repository_value = record.get("root_repository") or (record.get("repositories") or {}).get("root")
@@ -187,15 +190,27 @@ def main(argv=None):
                     f"project worktree mismatch: current={current} expected={repository}"
                 )
             output_root = Path(args.output_root) if args.output_root else Path((record.get("handoff") or {}).get("handoffs", "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS"))
-            result = prepare_chatgpt_handoff(
-                root=ROOT,
-                project_record=record_path,
-                transcript=Path(args.transcript),
-                output_root=output_root,
-                source_status=args.source_status,
-                codex_source=Path(args.codex_source) if args.codex_source else None,
-                include_house_context=args.include_house_context,
-            )
+            if args.share_url:
+                result = prepare_chatgpt_handoff_from_share(
+                    root=ROOT,
+                    project_record=record_path,
+                    share_url=args.share_url,
+                    output_root=output_root,
+                    archive_root=Path(args.share_archive_root) if args.share_archive_root else ROOT / "tmp/hopper/shared-workflow/openai-share-archive",
+                    source_status=args.source_status,
+                    codex_source=Path(args.codex_source) if args.codex_source else None,
+                    include_house_context=args.include_house_context,
+                )
+            else:
+                result = prepare_chatgpt_handoff(
+                    root=ROOT,
+                    project_record=record_path,
+                    transcript=Path(args.transcript),
+                    output_root=output_root,
+                    source_status=args.source_status,
+                    codex_source=Path(args.codex_source) if args.codex_source else None,
+                    include_house_context=args.include_house_context,
+                )
         except (OSError, ValueError, HandoffError) as exc:
             print(f"PREPARE HANDOFF: BLOCKED\nBoundary: {exc}", file=sys.stderr)
             return 1
