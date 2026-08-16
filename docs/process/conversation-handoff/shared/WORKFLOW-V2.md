@@ -166,6 +166,13 @@ fallback. Codex resolves the source and project record, then the central owner
   portable masters, provenance, freshness, and a format-independent manifest;
 - validate every required payload member before returning `HANDOFF READY`.
 
+On successful preparation, the same owner also publishes a directly openable
+successor drop beneath the registered HANDOFFS root. The drop contains exactly
+`STARTUP-TICKET.txt` and the validated startup package ZIP. The ticket is a
+zero-context pointer/instruction; the ZIP and its manifest remain authoritative.
+The drop is transport only and contains no copied masters, reports, manifests,
+raw transcripts, or authority files. The operation returns the exact drop path.
+
 Repeated preparation from an unchanged source must not duplicate conversation
 content. A later export from the same open session may add only safely proven
 new messages. The fresh ChatGPT command is exactly `LOAD STARTUP`; its semantics
@@ -180,10 +187,9 @@ project authority. Shared Workflow has no separate ChatGPT project.
 
 Routine startup preparation and full immutable recovery checkpoints are
 separate operations. `PREPARE HANDOFF` does not force a heavyweight checkpoint.
-The physical archive-versus-visible-files delivery decision remains deferred;
-the logical package manifest is authoritative across representations. The
-current preparer may offer both a visible directory and optional ZIP wrapper as
-transport candidates without declaring either the permanent standard.
+The immutable package remains authoritative beneath the registered HANDOFFS
+root. The returned two-file successor drop is the standard operator transport
+surface and is never a second package format.
 
 ## Mode operation
 

@@ -16,11 +16,15 @@ second authorization phrase is required. BOOTSTRAP never authorizes product
 implementation.
 
 After successful BOOTSTRAP, `PREPARE HANDOFF` is centrally available for a
-supplied current project ChatGPT transcript. Codex resolves project-specific
-paths from the project record; the engineer does not provide master, Cursor,
-Handoff, Report/Hopper, or package paths. The resulting self-contained package
-is moved into a fresh ChatGPT session, where the engineer types exactly
-`LOAD STARTUP` and the supplied `00-LOAD-STARTUP.md` controls ingestion.
+supplied OpenAI ChatGPT share URL (the preferred source; the file source is a
+validated fallback). Codex resolves project-specific paths from the project
+record; the engineer does not provide master, Cursor, Handoff, Report/Hopper,
+or package paths. Successful preparation publishes the immutable package under
+the canonical HANDOFFS root and returns a directly openable two-file successor
+drop containing only `STARTUP-TICKET.txt` and the validated ZIP. The ticket is
+zero-context transport instruction; the ZIP is authoritative. A fresh ChatGPT
+session ingests those two files, follows the ticket, and types exactly
+`LOAD STARTUP`; the supplied `00-LOAD-STARTUP.md` controls ingestion.
 
 ## Read first
 
@@ -77,8 +81,10 @@ boundary.
   delivery rule only, not a Codex implementation limit; Codex must not reject
   an otherwise complete ticket solely because of character count.
 - Report is the terminal human-review result; Hopper adds supporting evidence.
-- Routine self-contained ChatGPT startup payloads live in the shared HANDOFFS
-  location and are referenced, not duplicated, in Report/Hopper.
+- Routine self-contained ChatGPT startup packages live in the shared HANDOFFS
+  location and are referenced, not duplicated, in Report/Hopper. The
+  operator-facing drop is transport only; reports remain in the local
+  executing project's Report/Hopper.
 - Use exactly `PREPARE HANDOFF` for routine startup preparation and exactly
   `LOAD STARTUP` in the fresh ChatGPT session.
 - Treat current transcript exports as `OPEN/INCOMPLETE` unless closure is

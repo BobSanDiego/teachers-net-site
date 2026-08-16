@@ -14,7 +14,10 @@ from the active project record; this document owns the process.
    visible user/assistant sequence using OpenAI message UUIDs, reconciles the
    registered project master, consumes terminal evidence, and validates one
    self-contained startup payload under the registered HANDOFFS root.
-4. Move the payload into a fresh ChatGPT and issue exactly:
+4. It then creates a directly openable successor drop containing exactly two
+   files: `STARTUP-TICKET.txt` and the validated startup package ZIP. The ZIP
+   remains the authoritative portable package; the drop is transport only.
+5. Move those two files into a fresh ChatGPT and issue exactly:
 
    `LOAD STARTUP`
 
@@ -23,9 +26,11 @@ from the active project record; this document owns the process.
 
 The routine payload contains visible logical components plus
 `99-PACKAGE-MANIFEST.json`; no essential startup instruction depends on local
-repository access. Physical ZIP versus visible-file delivery remains deferred.
-The preparer may expose both the validated visible directory and an optional
-ZIP transport candidate for empirical testing; neither changes logical roles.
+repository access. The immutable package remains beneath the canonical
+`/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/` root. The two-file drop is
+an operator transport surface and must not contain manifests, masters, reports,
+raw transcripts, or authority files beside the ZIP. Reports remain in the
+local Report/Hopper of the project that executed the operation.
 
 ## Full immutable recovery checkpoint
 
@@ -68,3 +73,7 @@ tmp/hopper/shared-workflow/openai-share-archive/<project>/, plus generated
 session/ticket ledgers and a modest static index. If the share is unavailable,
 the existing file-driven transcript path remains the governed fallback; it
 must still pass identity, freshness, and reconciliation validation.
+
+The canonical two-file successor-drop owner is
+`tools/codex_archive/prepare_chatgpt_handoff.py`; registered projects consume
+it through the shared workflow and do not maintain project-local variants.

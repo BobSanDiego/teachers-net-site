@@ -7,6 +7,7 @@ import json
 import sys
 import tempfile
 import unittest
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -101,6 +102,14 @@ class PortableHandoffV2Tests(unittest.TestCase):
             self.assertEqual(result["status"], "HANDOFF READY")
             self.assertTrue((package / "00-LOAD-STARTUP.md").is_file())
             self.assertTrue(Path(result["package_zip_candidate"]).is_file())
+            drop = Path(result["operator_drop"]["directory"])
+            self.assertEqual(sorted(path.name for path in drop.iterdir()), sorted(["STARTUP-TICKET.txt", Path(result["package_zip_candidate"]).name]))
+            self.assertEqual(sha(drop / Path(result["package_zip_candidate"]).name), result["operator_drop"]["zip_sha256"])
+            ticket = (drop / "STARTUP-TICKET.txt").read_text()
+            self.assertIn(Path(result["package_zip_candidate"]).name, ticket)
+            self.assertIn(result["operator_drop"]["zip_sha256"], ticket)
+            with zipfile.ZipFile(drop / Path(result["package_zip_candidate"]).name) as archive:
+                self.assertIn("99-PACKAGE-MANIFEST.json", archive.namelist())
             self.assertEqual(json.loads((package / "99-PACKAGE-MANIFEST.json").read_text())["project"]["id"], project)
             terminal = json.loads((package / "03-terminal/terminal-state.json").read_text())
             self.assertEqual(terminal["objective"]["ticket"], f"{project.upper()}-CURRENT")
@@ -198,6 +207,21 @@ class PortableHandoffV2Tests(unittest.TestCase):
                 transcript=source,
                 output_root=Path(self.temp.name) / "packages-shared",
             )
+
+    def test_non_jobcenter_project_inherits_shared_successor_contract(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        record = json.loads((repo / "docs/process/conversation-handoff/projects/views.json").read_text())
+        guidance = "\n".join(
+            (repo / entry["path"]).read_text(encoding="utf-8")
+            for entry in record["guidance_sources"]
+            if entry["path"].startswith("docs/process/conversation-handoff/shared/")
+        )
+        self.assertIn("PREPARE HANDOFF", guidance)
+        self.assertIn("OpenAI ChatGPT share URL", guidance)
+        self.assertIn("STARTUP-TICKET.txt", guidance)
+        self.assertIn("validated ZIP", guidance)
+        self.assertIn("HANDOFFS", guidance)
+        self.assertIn("local", guidance.lower())
 
 
 if __name__ == "__main__":

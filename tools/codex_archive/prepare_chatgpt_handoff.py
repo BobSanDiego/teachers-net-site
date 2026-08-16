@@ -623,6 +623,58 @@ def _atomic_write(path: Path, text: str) -> None:
             os.unlink(temporary)
 
 
+def _startup_ticket(record: dict[str, Any], package_name: str, package_sha256: str) -> str:
+    """Return the zero-context instruction transported beside the validated ZIP."""
+    return f"""{record['display_name'].upper()} CHATGPT SUCCESSOR STARTUP
+
+The adjacent file `{package_name}.zip` is the authoritative portable startup
+package for the `{record['display_name']}` project. Treat this ticket as a
+transport pointer, not as a replacement for the package.
+
+1. Open/read the adjacent ZIP and verify its SHA-256 is:
+   {package_sha256}
+2. Extract or inspect the ZIP and validate `99-PACKAGE-MANIFEST.json` before
+   using any historical or continuity content.
+3. Follow the package-defined startup/read order in `00-LOAD-STARTUP.md`.
+4. Establish project identity first, then distinguish authority, current
+   continuity, terminal evidence, portable masters, and historical conversation
+   evidence. Do not reconstruct missing state from conversational guesses.
+5. Execute the package's canonical startup command: `LOAD STARTUP`.
+6. Stop and report any missing, corrupt, hash-invalid, contradictory, or
+   unreadable required package member.
+
+After successful ingestion, return the concise startup status required by the
+package and wait for Engineering Director instruction. The ZIP is the
+authoritative portable package; this two-file directory is transport only.
+"""
+
+
+def _create_operator_drop(output_root: Path, package_name: str, zip_path: Path, record: dict[str, Any]) -> dict[str, str]:
+    """Publish a direct-open transport directory without relocating authority."""
+    drop = output_root / f"{package_name}-DROP"
+    if drop.exists():
+        raise HandoffError(f"refusing to overwrite successor transport drop: {drop}")
+    drop.mkdir(parents=True)
+    drop_zip = drop / zip_path.name
+    shutil.copy2(zip_path, drop_zip)
+    ticket = drop / "STARTUP-TICKET.txt"
+    _atomic_write(ticket, _startup_ticket(record, package_name, sha_file(zip_path)))
+    visible = sorted(path.name for path in drop.iterdir() if path.is_file())
+    if sorted(visible) != sorted(["STARTUP-TICKET.txt", zip_path.name]):
+        raise HandoffError(f"successor transport drop is not exactly two files: {visible}")
+    if sha_file(drop_zip) != sha_file(zip_path):
+        raise HandoffError("successor transport ZIP hash differs from validated package ZIP")
+    ticket_text = ticket.read_text(encoding="utf-8")
+    if zip_path.name not in ticket_text or sha_file(zip_path) not in ticket_text:
+        raise HandoffError("successor transport ticket does not identify its ZIP")
+    return {
+        "directory": str(drop),
+        "startup_ticket": str(ticket),
+        "startup_zip": str(drop_zip),
+        "zip_sha256": sha_file(drop_zip),
+    }
+
+
 def prepare(
     *,
     root: Path,
@@ -746,6 +798,8 @@ def prepare(
         if os.path.exists(temporary_zip):
             os.unlink(temporary_zip)
 
+    operator_drop = _create_operator_drop(output_root, package_name, zip_destination, record)
+
     return {
         "status": "HANDOFF READY",
         "project": project,
@@ -760,6 +814,7 @@ def prepare(
         "startup_payload": "VALIDATED",
         "package_directory": str(destination),
         "package_zip_candidate": str(zip_destination),
+        "operator_drop": operator_drop,
         "package_manifest": str(destination / "99-PACKAGE-MANIFEST.json"),
         "component_count": len(package_manifest["components"]),
         "authority_count": len(authority),

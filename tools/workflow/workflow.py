@@ -222,6 +222,9 @@ def main(argv=None):
         print(f"Startup payload: {result['startup_payload']}")
         print(f"Package directory: {result['package_directory']}")
         print(f"Optional ZIP transport candidate: {result['package_zip_candidate']}")
+        if result.get("operator_drop"):
+            print(f"Successor drop directory: {result['operator_drop']['directory']}")
+            print(f"Successor drop files: {result['operator_drop']['startup_ticket']}, {result['operator_drop']['startup_zip']}")
         for warning in result["warnings"]:
             print(f"Warning: {warning}")
         return 0
