@@ -108,6 +108,12 @@ class PortableHandoffV2Tests(unittest.TestCase):
             ticket = (drop / "STARTUP-TICKET.txt").read_text()
             self.assertIn(Path(result["package_zip_candidate"]).name, ticket)
             self.assertIn(result["operator_drop"]["zip_sha256"], ticket)
+            self.assertIn("Do not\nreport `STARTUP LOADED`, `READY`", ticket)
+            self.assertIn("Verify every required package member exists", ticket)
+            self.assertIn("return `STARTUP BLOCKED`", ticket)
+            self.assertIn("verified ZIP SHA-256", ticket)
+            self.assertIn("Workflow version", ticket)
+            self.assertIn("count of required members", ticket)
             with zipfile.ZipFile(drop / Path(result["package_zip_candidate"]).name) as archive:
                 self.assertIn("99-PACKAGE-MANIFEST.json", archive.namelist())
             self.assertEqual(json.loads((package / "99-PACKAGE-MANIFEST.json").read_text())["project"]["id"], project)

@@ -182,6 +182,17 @@ new messages. The fresh ChatGPT command is exactly `LOAD STARTUP`; its semantics
 come from the supplied `00-LOAD-STARTUP.md`, never hidden project configuration
 or assumed filesystem access.
 
+`STARTUP-TICKET.txt` is a zero-context verification instruction, not evidence
+that startup has completed. Before returning any `STARTUP LOADED`, `READY`,
+project-state summary, or substantive response, the successor must verify the
+adjacent ZIP hash, extract the package, validate `99-PACKAGE-MANIFEST.json` and
+all required member hashes, then execute `00-LOAD-STARTUP.md`. Failure must be
+reported as `STARTUP BLOCKED` with the exact failed seam. Success must include
+evidence derived from the package, including verified ZIP hash, validated-member
+count, project identity, Workflow version, freshness boundary, objective/state,
+source warnings, and semantic-authority status. These rules are shared and
+project-agnostic.
+
 Job Center ChatGPT is the Teachers.Net house/shared-workflow supervisory
 conversation. That convention does not transfer engineering ownership or
 Report/Hopper routing. Another project may receive Job Center house history
@@ -356,6 +367,13 @@ shared-workflow involvement, acceptance fixture, or repository touched does not
 redirect primary Report/Hopper ownership. A shared-workflow or cross-project
 copy is optional secondary provenance only and must never substitute for the
 executing project's current Report publication.
+
+This invariant also applies to every executed diagnostic, prototype, audit, or
+workflow-only ticket that produces a human-readable report, even when it does
+not change product code or is marked prototype-only. The executing project's
+Report and Hopper directories are always the primary publication locations.
+Shared Workflow caches may receive an additional relevant copy, but they must
+never be the sole report location.
 
 For this registered Job Center project, the primary directories are explicitly
 `tmp/hopper/jobcenter/Report (Job Center)` and

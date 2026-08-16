@@ -652,21 +652,34 @@ The adjacent file `{package_name}.zip` is the authoritative portable startup
 package for the `{record['display_name']}` project. Treat this ticket as a
 transport pointer, not as a replacement for the package.
 
-1. Open/read the adjacent ZIP and verify its SHA-256 is:
+IMPORTANT: Do not infer or predict the startup result from this ticket. Do not
+report `STARTUP LOADED`, `READY`, a project-state summary, or substantive
+project work until the complete verification and LOAD STARTUP procedure below
+has actually succeeded.
+
+1. Locate and open/read the adjacent ZIP and verify its SHA-256 is:
    {package_sha256}
-2. Extract or inspect the ZIP and validate `99-PACKAGE-MANIFEST.json` before
-   using any historical or continuity content.
-3. Follow the package-defined startup/read order in `00-LOAD-STARTUP.md`.
-4. Establish project identity first, then distinguish authority, current
+2. Extract the ZIP and read `99-PACKAGE-MANIFEST.json` before using any
+   historical or continuity content.
+3. Verify every required package member exists, is non-empty, and has the
+   SHA-256 recorded by the package manifest.
+4. Read `00-LOAD-STARTUP.md` and execute its required startup/read order.
+5. Establish project identity first, then distinguish authority, current
    continuity, terminal evidence, portable masters, and historical conversation
    evidence. Do not reconstruct missing state from conversational guesses.
-5. Execute the package's canonical startup command: `LOAD STARTUP`.
-6. Stop and report any missing, corrupt, hash-invalid, contradictory, or
+6. Execute the package's canonical startup command: `LOAD STARTUP`.
+7. Stop and report any missing, corrupt, hash-invalid, contradictory, or
    unreadable required package member.
 
-After successful ingestion, return the concise startup status required by the
-package and wait for Engineering Director instruction. The ZIP is the
-authoritative portable package; this two-file directory is transport only.
+If any verification step fails, return `STARTUP BLOCKED` and identify the exact
+failed seam. Do not reconstruct state from guesses.
+
+Only after successful ingestion, return a concise status containing evidence
+from the package itself: the verified ZIP SHA-256, count of required members
+validated, project identity/project ID, Workflow version, conversation
+freshness boundary, current objective/state, missing or stale-source warnings,
+and the semantic-authority revision/status. The ZIP is the authoritative
+portable package; this two-file directory is transport only.
 """
 
 

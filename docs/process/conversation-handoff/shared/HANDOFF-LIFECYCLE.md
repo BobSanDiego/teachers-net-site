@@ -32,6 +32,17 @@ directory link.
 5. ChatGPT follows `00-LOAD-STARTUP.md` and returns its prescribed concise
    `STARTUP LOADED` identity/freshness/objective status.
 
+The successor must complete package verification before any startup status:
+locate the adjacent ZIP, verify its SHA-256 against `STARTUP-TICKET.txt`,
+extract it, read `99-PACKAGE-MANIFEST.json`, verify every required member is
+present/non-empty and matches its manifest hash, then read and execute
+`00-LOAD-STARTUP.md`. It must not infer or predict `STARTUP LOADED` or `READY`
+from the ticket. Any failed seam produces `STARTUP BLOCKED` with the exact
+failure. A successful response must report package-derived evidence including
+ZIP hash, validated-member count, project identity, Workflow version,
+conversation boundary, objective/state, source warnings, and semantic-authority
+status.
+
 The routine payload contains visible logical components plus
 `99-PACKAGE-MANIFEST.json`; no essential startup instruction depends on local
 repository access. The immutable package remains beneath the canonical
