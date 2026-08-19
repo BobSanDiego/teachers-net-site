@@ -33,6 +33,7 @@ class CleanCycleLifecycleTest(unittest.TestCase):
             "jobcenter": "Job Center",
             "shared-workflow": "Shared Workflow",
             "profile": "Profile",
+            "community": "Community",
         }
         for project, label in project_records.items():
             (projects / f"{project}.json").write_text(json.dumps({
@@ -123,6 +124,29 @@ END TICKET — {ticket_id}
         self.assertEqual(payload["commit"], "abc1234")
         report_dir = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
         self.assertTrue((report_dir / "output-jobcenter-260101010101.txt").is_file())
+
+    def test_report_publication_uses_registered_route_not_docs_reports(self) -> None:
+        ticket_source, preflight = self.ticket_file("TEST-COMMUNITY-REPORT-ROUTE", owner="community")
+        clean_cycle.begin("community", "260101010199", ticket_source)
+        ticket = clean_cycle.collect("community", "260101010199", ticket_source, "created")
+        report_source = self.source_file("report-community-route.txt", "registered report only")
+        clean_cycle.write_records(
+            "community",
+            "TEST-COMMUNITY-REPORT-ROUTE",
+            "260101010199",
+            "main",
+            "complete",
+            None,
+            None,
+            [ticket],
+            git_disposition="NOT_APPLICABLE",
+            report_source=report_source,
+            ticket_preflight=preflight,
+        )
+        clean_cycle.validate("community", "260101010199")
+        report_dir = clean_cycle.HOPPER / "community" / "Report (Community)"
+        self.assertTrue((report_dir / "output-community-260101010199.txt").is_file())
+        self.assertFalse((self.root / "docs" / "reports").exists())
 
     def test_completed_no_commit_cycle_validates_without_fake_commit(self) -> None:
         payload = self.begin_collect_finalize_validate(
