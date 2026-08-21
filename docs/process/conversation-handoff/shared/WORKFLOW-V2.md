@@ -287,6 +287,14 @@ current objective, state, cycle/ticket identity, and freshness. Narrative
 roadmap, Cursor, Handoff, and startup projections may describe it but must not
 silently replace or contradict it.
 
+Operational promotion is monotonic against validated terminal lifecycle
+evidence: a late or stale authority-refresh cycle cannot overwrite a newer
+terminal cycle merely because prose projections agree with one another. Such a
+freshness contradiction remains fail-closed until reconciled. The existing
+finalization escape hatch for an explicitly authorized Engineering Director
+reactivation is `--explicit-reactivation`; completion alone does not reactivate
+history.
+
 ## Telemetry and workflow-cost signal
 
 Formal cycles record Workflow V2, objective ID, mode, evidence class,

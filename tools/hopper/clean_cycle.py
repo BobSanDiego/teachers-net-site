@@ -252,9 +252,33 @@ def directory_bytes(path: Path) -> int:
     return sum(item.stat().st_size for item in path.iterdir() if item.is_file())
 
 
+def freshest_terminal_cycle_id(project: str) -> str | None:
+    """Return the newest validated lifecycle cycle available to this project."""
+    _, hopper, archive = paths(project)
+    candidates = list(hopper.glob(f"cycle-{project}-*.json"))
+    if archive.is_dir():
+        candidates.extend(archive.glob(f"*/Report (*)/cycle-{project}-*.json"))
+    ids: list[str] = []
+    for path in candidates:
+        try:
+            payload = json.loads(path.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        if payload.get("project") == project and payload.get("cycle_id"):
+            ids.append(str(payload["cycle_id"]))
+    return max(ids) if ids else None
+
+
 def persist_records(project: str, payload: dict) -> None:
     report, hopper, _ = paths(project)
     state_path = hopper.parent / "operational-current-state.json"
+    if not payload.get("explicit_reactivation"):
+        try:
+            existing_cycle = freshest_terminal_cycle_id(project)
+            if existing_cycle and existing_cycle > str(payload["cycle_id"]):
+                return
+        except (OSError, json.JSONDecodeError, RuntimeError):
+            pass
     state_path.write_text(json.dumps({
         "schema_version": "1.0",
         "project": project,
@@ -314,7 +338,8 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
                   rework_cause: str | None = None,
                   execution_seconds: float | None = None,
                   human_wait_seconds: float | None = None,
-                  execution_project: str | None = None) -> None:
+                  execution_project: str | None = None,
+                  explicit_reactivation: bool = False) -> None:
     _, hopper, _ = paths(project)
     status = status.lower()
     commit = normalize_optional(commit)
@@ -398,6 +423,7 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         "report_hopper_bytes": {"report": 0, "hopper": 0},
         "status": status, "branch": branch, "commit": commit,
         "push": push, "git_disposition": disposition,
+        "explicit_reactivation": explicit_reactivation,
         "current_hopper": str(hopper.relative_to(ROOT)),
         "archive_path": str((hopper.parent / "archive").relative_to(ROOT)),
         "report_file": report, "manifest_file": manifest,
@@ -568,6 +594,7 @@ def main() -> int:
     parser.add_argument("--rework-cause")
     parser.add_argument("--execution-seconds", type=float)
     parser.add_argument("--human-wait-seconds", type=float)
+    parser.add_argument("--explicit-reactivation", action="store_true")
     parser.add_argument("--explicit-retry", action="store_true")
     args = parser.parse_args()
     identifier = args.cycle or cycle_id()
@@ -616,7 +643,8 @@ def main() -> int:
                       rework_cause=args.rework_cause,
                       execution_seconds=args.execution_seconds,
                       human_wait_seconds=args.human_wait_seconds,
-                      execution_project=args.project)
+                      execution_project=args.project,
+                      explicit_reactivation=args.explicit_reactivation)
         print(f"finalized {args.project}/{identifier}")
     elif args.command == "refresh":
         refresh_records(args.project, identifier, args.commit, args.push,

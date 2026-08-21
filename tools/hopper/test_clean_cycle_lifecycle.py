@@ -391,6 +391,41 @@ END TICKET — {ticket_id}
         self.assertEqual(payload["execution_project"], "jobcenter")
         self.assertEqual(payload["objective_owner"], "shared-workflow")
 
+    def test_late_authority_refresh_cannot_overwrite_newer_terminal_state(self) -> None:
+        self.begin_collect_finalize_validate(
+            "260821135327", "complete", None, None, "NOT_APPLICABLE"
+        )
+        ticket_source, preflight = self.ticket_file("JOB-CENTER-AUTHORITY-REFRESH001")
+        clean_cycle.begin("jobcenter", "260821074300", ticket_source, explicit_retry=True)
+        source_ticket = clean_cycle.collect("jobcenter", "260821074300", ticket_source, "created")
+        clean_cycle.write_records(
+            "jobcenter", "JOB-CENTER-AUTHORITY-REFRESH001", "260821074300", "main",
+            "complete", None, None, [source_ticket],
+            git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("authority-refresh-report.txt", "refresh"),
+            ticket_preflight=preflight,
+        )
+        state = json.loads((clean_cycle.HOPPER / "jobcenter" / "operational-current-state.json").read_text())
+        self.assertEqual(state["current_objective"]["ticket"], "TEST-260821135327")
+
+    def test_explicit_reactivation_can_advance_completed_history(self) -> None:
+        self.begin_collect_finalize_validate(
+            "260821135327", "complete", None, None, "NOT_APPLICABLE"
+        )
+        ticket_source, preflight = self.ticket_file("JOB-CENTER-REACTIVATE001")
+        clean_cycle.begin("jobcenter", "260821074300", ticket_source, explicit_retry=True)
+        source_ticket = clean_cycle.collect("jobcenter", "260821074300", ticket_source, "created")
+        clean_cycle.write_records(
+            "jobcenter", "JOB-CENTER-REACTIVATE001", "260821074300", "main",
+            "complete", None, None, [source_ticket],
+            git_disposition="NOT_APPLICABLE",
+            report_source=self.source_file("reactivation-report.txt", "reactivation"),
+            ticket_preflight=preflight,
+            explicit_reactivation=True,
+        )
+        state = json.loads((clean_cycle.HOPPER / "jobcenter" / "operational-current-state.json").read_text())
+        self.assertEqual(state["current_objective"]["ticket"], "JOB-CENTER-REACTIVATE001")
+
 
 if __name__ == "__main__":
     unittest.main()
