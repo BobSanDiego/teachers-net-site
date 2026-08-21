@@ -301,6 +301,33 @@ class PortableHandoffV2Tests(unittest.TestCase):
         with self.assertRaisesRegex(HandoffError, "registered current Codex source is unavailable"):
             self._run("jobcenter", source, second=53)
 
+    def test_registered_open_codex_source_refreshes_only_after_append_only_verification(self) -> None:
+        source = Path(self.temp.name) / "jobcenter.md"
+        source.write_text(transcript("Job Center (8/11/26)", [("user", "state")]), encoding="utf-8")
+        codex = Path(self.temp.name) / "active-codex.jsonl"
+        records = [
+            {"type": "session_meta", "payload": {"id": "019factive0-aaaa-bbbb-cccc-ddddeeeeeeee", "cwd": str(self.root), "title": "Job Center"}},
+            {"type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "first current objective"}]}, "timestamp": "2026-08-21T00:00:00Z"},
+        ]
+        codex.write_text("\n".join(json.dumps(item) for item in records) + "\n", encoding="utf-8")
+        record_path = self.records / "jobcenter.json"
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+        record["codex_active_source"] = str(codex)
+        record_path.write_text(json.dumps(record), encoding="utf-8")
+        self._run("jobcenter", source, second=54)
+
+        with codex.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps({"type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "appended current result"}]}, "timestamp": "2026-08-21T00:00:01Z"}) + "\n")
+        refreshed = self._run("jobcenter", source, second=55)
+
+        self.assertEqual(refreshed["codex"]["status"], "CURRENT ACCESSIBLE SOURCE REFRESHED")
+        package = Path(refreshed["package_directory"])
+        rendered = (package / "06-codex-portable-master.md").read_text()
+        self.assertEqual(rendered.count("HANDOFF V2 CODEX SNAPSHOT — 019factive0-aaaa-bbbb-cccc-ddddeeeeeeee"), 1)
+        self.assertIn("appended current result", rendered)
+        manifest = json.loads((package / "07-codex-master-manifest.json").read_text())
+        self.assertEqual(manifest["sources"][-1]["source_revisions"][0]["reason"], "ACTIVE_SOURCE_APPEND_ONLY_REFRESH")
+
     def test_shared_workflow_does_not_create_an_independent_chatgpt_project(self) -> None:
         source = Path(self.temp.name) / "shared.md"
         source.write_text(transcript("Job Center (8/11/26)", [("user", "house state")]), encoding="utf-8")

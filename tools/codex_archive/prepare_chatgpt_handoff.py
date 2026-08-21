@@ -476,6 +476,60 @@ def _resolve_codex_source(root: Path, record: dict[str, Any], supplied: Path | N
     return candidate
 
 
+def _codex_snapshot_section(rendered: Any, source_sha: str, generated: str) -> str:
+    body = rendered.redacted_text or rendered.transcript_text
+    return (
+        f"\n\n## HANDOFF V2 CODEX SNAPSHOT — {rendered.session_id}\n\n"
+        f"- Generated: `{generated}`\n"
+        f"- Incorporated through: `{rendered.last_timestamp or 'UNKNOWN'}`\n"
+        f"- Source SHA-256: `{source_sha}`\n"
+        f"- Publication: `{rendered.publication_status}`\n\n"
+        f"{body}\n"
+    )
+
+
+def _snapshot_section_bounds(master: str, session_id: str) -> tuple[int, int] | None:
+    heading = f"## HANDOFF V2 CODEX SNAPSHOT — {session_id}"
+    start = master.find(heading)
+    if start < 0:
+        return None
+    start = master.rfind("\n\n", 0, start)
+    start = 0 if start < 0 else start
+    next_start = master.find("\n\n## HANDOFF V2 CODEX SNAPSHOT — ", start + 1)
+    return start, len(master) if next_start < 0 else next_start
+
+
+def _visible_messages_from_snapshot(snapshot: str) -> dict[str, tuple[str, str]]:
+    pattern = re.compile(
+        r"^-------------------------------------------------------------------------------\n"
+        r"(?P<id>CODEX-[^\n]+)\nRole: (?P<role>[^\n]+)\nSource line: [^\n]*\nTimestamp: [^\n]*\n\nText:\n"
+        r"(?P<text>.*?)(?=^-------------------------------------------------------------------------------\nCODEX-|\Z)",
+        re.MULTILINE | re.DOTALL,
+    )
+    return {match["id"]: (match["role"], match["text"]) for match in pattern.finditer(snapshot)}
+
+
+def _assert_active_codex_refresh_is_append_only(previous_snapshot: str, current_body: str, session_id: str) -> None:
+    previous = _visible_messages_from_snapshot(previous_snapshot)
+    current = _visible_messages_from_snapshot(current_body)
+    if not previous or not current:
+        raise HandoffError(f"cannot verify append-only refresh for active Codex session {session_id}")
+    if len(current) < len(previous) or any(current.get(message_id) != message for message_id, message in previous.items()):
+        raise HandoffError(
+            f"Codex source for incorporated session {session_id} changed prior visible content; refusing silent replacement"
+        )
+
+
+def _codex_result(status: str, rendered: Any, source: Path) -> dict[str, Any]:
+    return {
+        "status": status,
+        "updated": True,
+        "session_id": rendered.session_id,
+        "source_path": str(source.resolve()),
+        "incorporated_through": rendered.last_timestamp,
+    }
+
+
 def _reconcile_codex(
     source: Path | None, codex_master_path: Path, manifest: dict[str, Any], generated: str
 ) -> tuple[str, dict[str, Any]]:
@@ -504,20 +558,39 @@ def _reconcile_codex(
         codex_meta["status"] = "CURRENT ACCESSIBLE SOURCE / UNCHANGED"
         return current, {"status": codex_meta["status"], "updated": False}
     if known and known.get("source_sha256") != source_sha:
-        raise HandoffError(
-            f"Codex source for incorporated session {rendered.session_id} changed; refusing silent replacement"
+        bounds = _snapshot_section_bounds(current, rendered.session_id)
+        if bounds is None:
+            raise HandoffError(
+                f"cannot locate incorporated snapshot for active Codex session {rendered.session_id}; refusing silent replacement"
+            )
+        body = rendered.redacted_text or rendered.transcript_text
+        _assert_active_codex_refresh_is_append_only(current[bounds[0] : bounds[1]], body, rendered.session_id)
+        known.setdefault("source_revisions", []).append(
+            {
+                "source_sha256": known.get("source_sha256"),
+                "incorporated_through": known.get("incorporated_through"),
+                "superseded_at": generated,
+                "reason": "ACTIVE_SOURCE_APPEND_ONLY_REFRESH",
+            }
         )
-    body = rendered.redacted_text or rendered.transcript_text
+        known.update(
+            {
+                "source_path": str(source.resolve()),
+                "source_sha256": source_sha,
+                "incorporated_through": rendered.last_timestamp,
+                "publication_status": rendered.publication_status,
+                "credential_status": rendered.credential_status,
+            }
+        )
+        current = current[: bounds[0]] + _codex_snapshot_section(rendered, source_sha, generated) + current[bounds[1] :]
+        codex_meta["status"] = "CURRENT ACCESSIBLE SOURCE REFRESHED"
+        codex_meta["portable_master_path"] = str(codex_master_path)
+        stale_warning = "No current Codex source was resolved for this preparation; the latest incorporated snapshot was preserved."
+        codex_meta["warnings"] = [warning for warning in codex_meta["warnings"] if warning != stale_warning]
+        return current, _codex_result(codex_meta["status"], rendered, source)
     if not current:
         current = "# PORTABLE CODEX CURRENT RECORD\n\nConversation evidence only; repository authority controls.\n"
-    current += (
-        f"\n\n## HANDOFF V2 CODEX SNAPSHOT — {rendered.session_id}\n\n"
-        f"- Generated: `{generated}`\n"
-        f"- Incorporated through: `{rendered.last_timestamp or 'UNKNOWN'}`\n"
-        f"- Source SHA-256: `{source_sha}`\n"
-        f"- Publication: `{rendered.publication_status}`\n\n"
-        f"{body}\n"
-    )
+    current += _codex_snapshot_section(rendered, source_sha, generated)
     codex_meta["sources"].append(
         {
             "session_id": rendered.session_id,
@@ -532,13 +605,7 @@ def _reconcile_codex(
     codex_meta["portable_master_path"] = str(codex_master_path)
     stale_warning = "No current Codex source was resolved for this preparation; the latest incorporated snapshot was preserved."
     codex_meta["warnings"] = [warning for warning in codex_meta["warnings"] if warning != stale_warning]
-    return current, {
-        "status": codex_meta["status"],
-        "updated": True,
-        "session_id": rendered.session_id,
-        "source_path": str(source.resolve()),
-        "incorporated_through": rendered.last_timestamp,
-    }
+    return current, _codex_result(codex_meta["status"], rendered, source)
 
 
 def _report_route(root: Path, record: dict[str, Any]) -> Path:
