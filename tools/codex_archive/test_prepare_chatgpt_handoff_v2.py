@@ -263,6 +263,41 @@ class PortableHandoffV2Tests(unittest.TestCase):
             "LATEST INCORPORATED CODEX SNAPSHOT / NEWER ACTIVE STATE UNPROVEN",
         )
 
+    def test_registered_codex_active_source_is_resolved_without_an_override(self) -> None:
+        source = Path(self.temp.name) / "jobcenter.md"
+        source.write_text(transcript("Job Center (8/11/26)", [("user", "state")]), encoding="utf-8")
+        codex = Path(self.temp.name) / "registered-codex.jsonl"
+        records = [
+            {"type": "session_meta", "payload": {"id": "019fregistered-aaaa-bbbb-cccc-ddddeeeeeeee", "cwd": str(self.root), "title": "Job Center"}},
+            {"type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "current Job Center objective"}]}, "timestamp": "2026-08-21T00:00:00Z"},
+            {"type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "current Job Center result"}]}, "timestamp": "2026-08-21T00:00:01Z"},
+        ]
+        codex.write_text("\n".join(json.dumps(item) for item in records) + "\n", encoding="utf-8")
+        record_path = self.records / "jobcenter.json"
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+        record["codex_active_source"] = str(codex)
+        record_path.write_text(json.dumps(record), encoding="utf-8")
+
+        result = self._run("jobcenter", source, second=52)
+
+        self.assertTrue(result["codex"]["updated"])
+        self.assertEqual(result["codex"]["source_path"], str(codex.resolve()))
+        self.assertEqual(result["codex"]["incorporated_through"], "2026-08-21T00:00:01Z")
+        package_manifest = json.loads((Path(result["package_directory"]) / "07-codex-master-manifest.json").read_text())
+        self.assertEqual(package_manifest["status"], "CURRENT ACCESSIBLE SOURCE INCORPORATED")
+        self.assertEqual(package_manifest["sources"][-1]["source_path"], str(codex.resolve()))
+
+    def test_unavailable_registered_codex_source_fails_closed(self) -> None:
+        source = Path(self.temp.name) / "jobcenter.md"
+        source.write_text(transcript("Job Center (8/11/26)", [("user", "state")]), encoding="utf-8")
+        record_path = self.records / "jobcenter.json"
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+        record["codex_active_source"] = str(Path(self.temp.name) / "missing-codex.jsonl")
+        record_path.write_text(json.dumps(record), encoding="utf-8")
+
+        with self.assertRaisesRegex(HandoffError, "registered current Codex source is unavailable"):
+            self._run("jobcenter", source, second=53)
+
     def test_shared_workflow_does_not_create_an_independent_chatgpt_project(self) -> None:
         source = Path(self.temp.name) / "shared.md"
         source.write_text(transcript("Job Center (8/11/26)", [("user", "house state")]), encoding="utf-8")

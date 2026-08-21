@@ -452,6 +452,30 @@ def _reconcile_chatgpt(
     }
 
 
+def _resolve_codex_source(root: Path, record: dict[str, Any], supplied: Path | None) -> Path | None:
+    """Resolve the registered active Codex record unless an explicit recovery source is supplied.
+
+    A handoff may preserve an older portable Codex master only when the project has
+    no registered current source.  A registered but inaccessible source is a
+    fail-closed condition: silently falling back would advertise stale state as a
+    current handoff.
+    """
+    candidate = supplied
+    if candidate is None:
+        configured = record.get("codex_active_source")
+        if not configured:
+            configured = (record.get("codex") or {}).get("active_source")
+        if not configured:
+            return None
+        candidate = Path(str(configured))
+    if not candidate.is_absolute():
+        candidate = root / candidate
+    if not candidate.is_file():
+        origin = "explicit" if supplied is not None else "registered"
+        raise HandoffError(f"{origin} current Codex source is unavailable: {candidate}")
+    return candidate
+
+
 def _reconcile_codex(
     source: Path | None, codex_master_path: Path, manifest: dict[str, Any], generated: str
 ) -> tuple[str, dict[str, Any]]:
@@ -473,8 +497,6 @@ def _reconcile_codex(
             if warning not in codex_meta["warnings"]:
                 codex_meta["warnings"].append(warning)
         return current, {"status": codex_meta["status"], "updated": False}
-    if not source.is_file():
-        raise HandoffError(f"registered/current Codex source is unavailable: {source}")
     rendered = render_session(source, verify_stats=False)
     source_sha = sha_file(source)
     known = next((item for item in codex_meta["sources"] if item.get("session_id") == rendered.session_id), None)
@@ -508,7 +530,15 @@ def _reconcile_codex(
     )
     codex_meta["status"] = "CURRENT ACCESSIBLE SOURCE INCORPORATED"
     codex_meta["portable_master_path"] = str(codex_master_path)
-    return current, {"status": codex_meta["status"], "updated": True}
+    stale_warning = "No current Codex source was resolved for this preparation; the latest incorporated snapshot was preserved."
+    codex_meta["warnings"] = [warning for warning in codex_meta["warnings"] if warning != stale_warning]
+    return current, {
+        "status": codex_meta["status"],
+        "updated": True,
+        "session_id": rendered.session_id,
+        "source_path": str(source.resolve()),
+        "incorporated_through": rendered.last_timestamp,
+    }
 
 
 def _report_route(root: Path, record: dict[str, Any]) -> Path:
@@ -804,7 +834,10 @@ def prepare(
     chatgpt_master, manifest, chat_result = _reconcile_chatgpt(
         record, snapshot, paths["chatgpt_master"], manifest, generated
     )
-    codex_master, codex_result = _reconcile_codex(codex_source, paths["codex_master"], manifest, generated)
+    resolved_codex_source = _resolve_codex_source(root, record, codex_source)
+    codex_master, codex_result = _reconcile_codex(
+        resolved_codex_source, paths["codex_master"], manifest, generated
+    )
     manifest["chatgpt"]["rendered_master_sha256"] = sha_bytes(chatgpt_master.encode("utf-8"))
     manifest["chatgpt"]["rendered_master_bytes"] = len(chatgpt_master.encode("utf-8"))
     manifest["codex"]["rendered_master_sha256"] = sha_bytes(codex_master.encode("utf-8")) if codex_master else None
