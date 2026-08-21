@@ -554,7 +554,7 @@ def _terminal_state(root: Path, record: dict[str, Any], out: Path) -> dict[str, 
         (
             item for item in candidates
             if item.suffix.lower() in {".txt", ".md"}
-            and "report" in item.name.lower()
+            and ("report" in item.name.lower() or item.name.lower().startswith("output-"))
             and not item.name.lower().startswith("manifest")
         ),
         None,

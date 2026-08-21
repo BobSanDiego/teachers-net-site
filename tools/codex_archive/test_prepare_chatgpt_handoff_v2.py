@@ -181,6 +181,22 @@ class PortableHandoffV2Tests(unittest.TestCase):
         session = manifest["chatgpt"]["sessions"]["chatgpt-reader-live-fixture"]
         self.assertEqual(session["snapshots"][-1]["source_path"], "LIVE_CHATGPT_READER:live-fixture")
 
+    def test_terminal_bundle_prefers_output_report_over_newer_manifest(self) -> None:
+        report = self.root / "tmp/hopper/jobcenter/Report (Job Center)"
+        (report / "output-jobcenter-260820000000.txt").write_text("terminal output report", encoding="utf-8")
+        (report / "MANIFEST-jobcenter-260820000000.txt").write_text("not a report", encoding="utf-8")
+        source = Path(self.temp.name) / "reader-terminal.json"
+        source.write_text(json.dumps(reader_capture("Job Center (8/16/26)", "terminal-fixture", [("user", "state")])), encoding="utf-8")
+        result = prepare_from_reader(
+            root=self.root,
+            project_record=self.records / "jobcenter.json",
+            reader_capture=source,
+            output_root=Path(self.temp.name) / "packages-terminal",
+            now=datetime(2026, 8, 20, tzinfo=timezone.utc),
+        )
+        terminal = Path(result["package_directory"]) / "03-terminal/latest-report.txt"
+        self.assertEqual(terminal.read_text(encoding="utf-8"), "terminal output report")
+
     def test_share_wrapper_identity_difference_is_representation_only(self) -> None:
         first = "asset_pointer=shared_conversation_id=6a81dc34-37ac-83e8-937c-2cd4d2e1967b visible text"
         second = "asset_pointer=shared_conversation_id=6a81fa58-92a4-83e8-8f2e-b658b3cee98c visible text"
