@@ -506,7 +506,10 @@ def _visible_messages_from_snapshot(snapshot: str) -> dict[str, tuple[str, str]]
         r"(?P<text>.*?)(?=^-------------------------------------------------------------------------------\nCODEX-|\Z)",
         re.MULTILINE | re.DOTALL,
     )
-    return {match["id"]: (match["role"], match["text"]) for match in pattern.finditer(snapshot)}
+    return {
+        match["id"]: (match["role"], match["text"].replace("\r\n", "\n").replace("\r", "\n"))
+        for match in pattern.finditer(snapshot)
+    }
 
 
 def _assert_active_codex_refresh_is_append_only(previous_snapshot: str, current_body: str, session_id: str) -> None:

@@ -307,7 +307,7 @@ class PortableHandoffV2Tests(unittest.TestCase):
         codex = Path(self.temp.name) / "active-codex.jsonl"
         records = [
             {"type": "session_meta", "payload": {"id": "019factive0-aaaa-bbbb-cccc-ddddeeeeeeee", "cwd": str(self.root), "title": "Job Center"}},
-            {"type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "first current objective"}]}, "timestamp": "2026-08-21T00:00:00Z"},
+            {"type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "first\r\ncurrent objective"}]}, "timestamp": "2026-08-21T00:00:00Z"},
         ]
         codex.write_text("\n".join(json.dumps(item) for item in records) + "\n", encoding="utf-8")
         record_path = self.records / "jobcenter.json"
@@ -316,6 +316,7 @@ class PortableHandoffV2Tests(unittest.TestCase):
         record_path.write_text(json.dumps(record), encoding="utf-8")
         self._run("jobcenter", source, second=54)
 
+        codex.write_text(codex.read_text(encoding="utf-8").replace(r"\r\n", r"\n"), encoding="utf-8")
         with codex.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps({"type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "appended current result"}]}, "timestamp": "2026-08-21T00:00:01Z"}) + "\n")
         refreshed = self._run("jobcenter", source, second=55)
