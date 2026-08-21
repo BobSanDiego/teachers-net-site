@@ -1,61 +1,116 @@
 {
-  "schema_version": "1.0",
-  "project_id": "jobcenter",
+  "authority_manifest": "wordpress/wp-content/plugins/tnet-jobs/docs/jc053-authority-manifest-v1.json",
+  "canonical_runtime": "https://teachers-net.ddev.site/",
+  "chatgpt_master": "docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md",
+  "codex_active_source": "/mnt/c/Users/bobre/.codex/sessions/2026/08/01/rollout-2026-08-01T17-36-47-019fbfe6-e2d0-73e3-98a1-d10b384cdf7d.jsonl",
+  "codex_fossil": "docs/process/codex-conversation-archive/codex-conversation-fossil.md",
+  "codex_portable_handoff": "docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md",
+  "companion_chat": {
+    "account_project_id": "g-p-68e44725803881918fe3c18f39bf4847",
+    "conversation_id": "6a81ce8b-1050-83e8-b97e-9fc6f56b74ce",
+    "kind": "chatgpt",
+    "reconciled_at": "2026-08-21T00:28:30+00:00",
+    "reconciliation_provenance": "WORKFLOW-V2-HANDOFF-READER001 canonical live-reader reconciliation",
+    "title": "Job Center (8/16/26)"
+  },
   "display_name": "Job Center",
-  "state": "REGISTERED / LIFECYCLE READY",
-  "report_label": "Job Center",
-  "root_repository": "/home/bobreap/projects/teachers-net-site",
+  "engineering_handoff": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md",
+  "guidance_exclusion": [
+    "raw Codex JSONL",
+    "unsafe credentials",
+    "full Codex fossil body"
+  ],
+  "guidance_inclusion": "Job Center authority documents plus shared process contract",
+  "guidance_sources": [
+    {
+      "path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
+      "role": "canonical shared Workflow V2"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/START-CODEX.md",
+      "role": "shared bootstrap"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md",
+      "role": "shared project bootstrap"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md",
+      "role": "shared operating contract"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md",
+      "role": "shared lifecycle"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md",
+      "role": "shared project records"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/TRANSCRIPT-ARCHIVE-SPEC.md",
+      "role": "shared transcript policy"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md",
+      "role": "shared Report/Hopper policy"
+    },
+    {
+      "path": "docs/process/chatgpt-codex-workflow-protocol-v1.md",
+      "role": "historical V1 workflow; superseded by shared Workflow V2"
+    },
+    {
+      "path": "docs/documentation-governance.md",
+      "role": "documentation governance"
+    },
+    {
+      "path": "docs/decision-log.md",
+      "role": "shared decisions"
+    },
+    {
+      "path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md",
+      "role": "Job Center state"
+    },
+    {
+      "path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md",
+      "role": "Job Center handoff"
+    },
+    {
+      "path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jobs-roadmap.md",
+      "role": "Job Center roadmap"
+    }
+  ],
+  "handoff_archive_windows": "C:\\Main\\Active\\Projects\\Teachers.Net\\HANDOFFS\\",
+  "handoff_archive_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/",
+  "handoff_build_directory": "docs/process/conversation-handoff/jobcenter/current-handoff",
+  "handoff_output_policy": "DURABLE_HANDOFF_ARCHIVE_RECEIPT",
+  "handoff_payload_members": [
+    "03-chatgpt-complete-current-record.md",
+    "04-codex-current-handoff-record.md",
+    "conversation-master-manifest.json"
+  ],
+  "handoff_source": "docs/process/conversation-handoff/jobcenter/current-handoff",
+  "handoff_v2": {
+    "chatgpt_title_patterns": [
+      "(?:^|[-\u2013\u2014])\\s*Job Center(?:\\s|\\(|$)"
+    ],
+    "conversation_manifest": "docs/process/conversation-handoff/jobcenter/handoff-v2-conversation-manifest.json",
+    "house_role": "Teachers.Net shared-workflow historical/supervisory context; engineering and Report/Hopper ownership remain with the objective owner",
+    "house_supervisory_context": true
+  },
+  "master_generation": "tools/codex_archive/build_current_masters.py",
   "nested_repositories": [
     "/home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-jobs"
   ],
-  "companion_chat": {
-    "kind": "chatgpt",
-    "title": "Job Center (8/10/26)",
-    "conversation_id": "6a79d7ea-da44-83e8-91eb-460b99ab593b"
-  },
-  "report_hopper": "tmp/hopper/jobcenter/",
-  "primary_report_directory": "tmp/hopper/jobcenter/Report (Job Center)",
   "primary_hopper_directory": "tmp/hopper/jobcenter/Hopper (Job Center)",
-  "report_routing": "Every executed Job Center ticket publishes primary Report and Hopper artifacts here; shared-workflow copies are optional secondary provenance only.",
-  "handoff_archive_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS/",
-  "handoff_archive_windows": "C:\\Main\\Active\\Projects\\Teachers.Net\\HANDOFFS\\",
-  "shared_workflow_projection_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/",
-  "handoff_output_policy": "DURABLE_HANDOFF_ARCHIVE_RECEIPT",
-  "chatgpt_master": "docs/process/conversation-handoff/jobcenter/chatgpt-complete-current-record.md",
-  "codex_portable_handoff": "docs/process/conversation-handoff/jobcenter/codex-complete-current-record.md",
-  "master_generation": "tools/codex_archive/build_current_masters.py",
-  "codex_active_source": "/mnt/c/Users/bobre/.codex/sessions/2026/08/01/rollout-2026-08-01T17-36-47-019fbfe6-e2d0-73e3-98a1-d10b384cdf7d.jsonl",
-  "codex_fossil": "docs/process/codex-conversation-archive/codex-conversation-fossil.md",
-  "authority_manifest": "wordpress/wp-content/plugins/tnet-jobs/docs/jc053-authority-manifest-v1.json",
+  "primary_report_directory": "tmp/hopper/jobcenter/Report (Job Center)",
   "project_cursor": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md",
-  "engineering_handoff": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md",
+  "project_id": "jobcenter",
+  "report_hopper": "tmp/hopper/jobcenter/",
+  "report_label": "Job Center",
+  "report_routing": "Every executed Job Center ticket publishes primary Report and Hopper artifacts here; shared-workflow copies are optional secondary provenance only.",
   "roadmap": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jobs-roadmap.md",
-  "canonical_runtime": "https://teachers-net.ddev.site/",
-  "guidance_inclusion": "Job Center authority documents plus shared process contract",
-  "guidance_exclusion": ["raw Codex JSONL", "unsafe credentials", "full Codex fossil body"],
-  "handoff_source": "docs/process/conversation-handoff/jobcenter/current-handoff",
-  "handoff_build_directory": "docs/process/conversation-handoff/jobcenter/current-handoff",
-  "handoff_payload_members": ["03-chatgpt-complete-current-record.md", "04-codex-current-handoff-record.md", "conversation-master-manifest.json"],
-  "handoff_v2": {
-    "chatgpt_title_patterns": ["(?:^|[-–—])\\s*Job Center(?:\\s|\\(|$)"],
-    "conversation_manifest": "docs/process/conversation-handoff/jobcenter/handoff-v2-conversation-manifest.json",
-    "house_supervisory_context": true,
-    "house_role": "Teachers.Net shared-workflow historical/supervisory context; engineering and Report/Hopper ownership remain with the objective owner"
-  },
-  "guidance_sources": [
-    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
-    {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
-    {"path": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md", "role": "shared project bootstrap"},
-    {"path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md", "role": "shared operating contract"},
-    {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
-    {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
-    {"path": "docs/process/conversation-handoff/shared/TRANSCRIPT-ARCHIVE-SPEC.md", "role": "shared transcript policy"},
-    {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "shared Report/Hopper policy"},
-    {"path": "docs/process/chatgpt-codex-workflow-protocol-v1.md", "role": "historical V1 workflow; superseded by shared Workflow V2"},
-    {"path": "docs/documentation-governance.md", "role": "documentation governance"},
-    {"path": "docs/decision-log.md", "role": "shared decisions"},
-    {"path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/project-cursor.md", "role": "Job Center state"},
-    {"path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/engineering-handoff.md", "role": "Job Center handoff"},
-    {"path": "wordpress/wp-content/plugins/tnet-jobs/docs/job-center/jobs-roadmap.md", "role": "Job Center roadmap"}
-  ]
+  "root_repository": "/home/bobreap/projects/teachers-net-site",
+  "schema_version": "1.0",
+  "shared_workflow_projection_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/",
+  "state": "REGISTERED / LIFECYCLE READY"
 }

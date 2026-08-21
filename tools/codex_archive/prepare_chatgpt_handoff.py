@@ -213,6 +213,69 @@ def parse_chatgpt_export(path: Path, status: str = "OPEN/INCOMPLETE") -> ChatSna
     )
 
 
+def parse_chatgpt_reader(path: Path, status: str = "OPEN/INCOMPLETE") -> ChatSnapshot:
+    """Convert a complete Codex desktop reader capture into a V2 snapshot."""
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise HandoffError(f"live ChatGPT reader capture is unreadable: {path}") from exc
+    source = payload.get("source") or {}
+    if source.get("kind") != "chatgpt" or not source.get("id") or not source.get("title"):
+        raise HandoffError("live ChatGPT reader capture has no identifiable ChatGPT source")
+    pages = payload.get("pages")
+    if not isinstance(pages, list) or not pages:
+        raise HandoffError("live ChatGPT reader capture contains no pages")
+    if any(not isinstance(page, dict) or not isinstance(page.get("turns"), list) for page in pages):
+        raise HandoffError("live ChatGPT reader capture has malformed pages")
+    if pages[-1].get("page", {}).get("hasMore") is not False:
+        raise HandoffError("live ChatGPT reader capture is incomplete; oldest reader page still has more turns")
+    messages: list[ChatMessage] = []
+    redactions = 0
+    timestamps: list[float] = []
+    seen: set[str] = set()
+    for capture in reversed(pages):
+        turns = list(capture["turns"])
+        if capture.get("page", {}).get("order") == "newest_first":
+            turns.reverse()
+        for turn in turns:
+            if isinstance(turn.get("completedAt"), (int, float)):
+                timestamps.append(float(turn["completedAt"]))
+            for item in turn.get("items") or []:
+                if item.get("type") == "userMessage":
+                    role = "user"
+                    content = "\n".join(str(part.get("text") or "") for part in item.get("content") or [] if part.get("type") == "text")
+                elif item.get("type") == "agentMessage":
+                    role = "assistant"
+                    content = str(item.get("text") or "")
+                else:
+                    continue
+                message_id = str(item.get("id") or "").strip()
+                if not message_id:
+                    raise HandoffError("live ChatGPT reader capture has a visible message without stable ID")
+                if message_id in seen:
+                    raise HandoffError(f"live ChatGPT reader capture repeats visible message ID: {message_id}")
+                seen.add(message_id)
+                safe_content, found = _redact(content)
+                redactions += found
+                messages.append(ChatMessage(message_id, role, safe_content, sha_bytes(content.encode("utf-8"))))
+    if not messages:
+        raise HandoffError("live ChatGPT reader capture contains no visible user/assistant messages")
+    boundary = datetime.fromtimestamp(max(timestamps), timezone.utc).isoformat() if timestamps else "UNKNOWN"
+    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return ChatSnapshot(
+        title=str(source["title"]),
+        session_key=f"chatgpt-reader-{source['id']}",
+        exported_boundary=boundary,
+        declared_messages=len(messages),
+        status=status,
+        source_sha256=sha_bytes(canonical),
+        source_bytes=len(canonical),
+        source_path=f"LIVE_CHATGPT_READER:{source['id']}",
+        messages=tuple(messages),
+        redaction_count=redactions,
+    )
+
+
 def _conversation_paths(root: Path, record: dict[str, Any]) -> dict[str, Path]:
     project = record["project_id"]
     conversation = record.get("conversation") or {}
@@ -713,12 +776,13 @@ def prepare(
     *,
     root: Path,
     project_record: Path,
-    transcript: Path,
+    transcript: Path | None,
     output_root: Path,
     source_status: str = "OPEN/INCOMPLETE",
     codex_source: Path | None = None,
     include_house_context: bool = False,
     now: datetime | None = None,
+    snapshot: ChatSnapshot | None = None,
 ) -> dict[str, Any]:
     record = json.loads(project_record.read_text(encoding="utf-8"))
     project = record.get("project_id")
@@ -728,7 +792,10 @@ def prepare(
         raise HandoffError(
             "Shared Workflow has no independent ChatGPT project; prepare the explicit Job Center house context instead"
         )
-    snapshot = parse_chatgpt_export(transcript, source_status)
+    if snapshot is None:
+        if transcript is None:
+            raise HandoffError("ChatGPT transcript source is required when no live reader snapshot is supplied")
+        snapshot = parse_chatgpt_export(transcript, source_status)
     validate_project_identity(record, snapshot)  # decisive: no writes precede this
     paths = _conversation_paths(root, record)
     manifest = _load_manifest(paths["manifest"], record, paths["chatgpt_master"], paths["codex_master"])
@@ -855,6 +922,31 @@ def prepare(
         "house_context_included": include_house_context,
         "warnings": warnings,
     }
+
+
+def prepare_from_reader(
+    *,
+    root: Path,
+    project_record: Path,
+    reader_capture: Path,
+    output_root: Path,
+    source_status: str = "OPEN/INCOMPLETE",
+    codex_source: Path | None = None,
+    include_house_context: bool = False,
+    now: datetime | None = None,
+) -> dict[str, Any]:
+    """Prepare a portable handoff from the validated canonical live reader."""
+    return prepare(
+        root=root,
+        project_record=project_record,
+        transcript=None,
+        output_root=output_root,
+        source_status=source_status,
+        codex_source=codex_source,
+        include_house_context=include_house_context,
+        now=now,
+        snapshot=parse_chatgpt_reader(reader_capture, source_status),
+    )
 
 
 def prepare_from_share(

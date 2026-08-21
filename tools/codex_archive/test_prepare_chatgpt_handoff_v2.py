@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from prepare_chatgpt_handoff import HandoffError, _master_message_content, _representation_normalize, prepare
+from prepare_chatgpt_handoff import HandoffError, _master_message_content, _representation_normalize, prepare, prepare_from_reader
 
 
 PROJECTS = {
@@ -33,6 +33,18 @@ def transcript(title: str, messages: list[tuple[str, str]], exported: str = "8/1
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def reader_capture(title: str, source_id: str, messages: list[tuple[str, str]]) -> dict:
+    items = []
+    for index, (role, text) in enumerate(messages, start=1):
+        message_id = f"{source_id}-{index}"
+        items.append({"type": "userMessage", "id": message_id, "content": [{"type": "text", "text": text}]} if role == "user" else {"type": "agentMessage", "id": message_id, "text": text})
+    return {
+        "source": {"id": source_id, "kind": "chatgpt", "title": title, "projectId": "fixture-project"},
+        "listed_threads": [{"id": source_id, "kind": "chatgpt", "title": title, "projectId": "fixture-project"}],
+        "pages": [{"page": {"order": "newest_first", "hasMore": False}, "turns": [{"completedAt": 1787271431.0, "items": list(reversed(items))}]}],
+    }
 
 
 class PortableHandoffV2Tests(unittest.TestCase):
@@ -153,6 +165,21 @@ class PortableHandoffV2Tests(unittest.TestCase):
         source.write_text(transcript("Profile (8/10/26)", [("user", "changed in place")]), encoding="utf-8")
         with self.assertRaisesRegex(HandoffError, "historical ChatGPT source"):
             self._run("profile", source, second=31)
+
+    def test_registered_live_reader_handoff_needs_no_export_or_share(self) -> None:
+        capture = Path(self.temp.name) / "reader.json"
+        capture.write_text(json.dumps(reader_capture("Job Center (8/16/26)", "live-fixture", [("user", "current request"), ("assistant", "current response")])), encoding="utf-8")
+        result = prepare_from_reader(
+            root=self.root,
+            project_record=self.records / "jobcenter.json",
+            reader_capture=capture,
+            output_root=Path(self.temp.name) / "packages-reader",
+            now=datetime(2026, 8, 20, tzinfo=timezone.utc),
+        )
+        self.assertEqual(result["chatgpt"]["messages_added"], 2)
+        manifest = json.loads((Path(result["package_directory"]) / "05-chatgpt-master-manifest.json").read_text())
+        session = manifest["chatgpt"]["sessions"]["chatgpt-reader-live-fixture"]
+        self.assertEqual(session["snapshots"][-1]["source_path"], "LIVE_CHATGPT_READER:live-fixture")
 
     def test_share_wrapper_identity_difference_is_representation_only(self) -> None:
         first = "asset_pointer=shared_conversation_id=6a81dc34-37ac-83e8-937c-2cd4d2e1967b visible text"

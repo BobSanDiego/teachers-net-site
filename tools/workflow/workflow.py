@@ -27,8 +27,13 @@ from tools.workflow.workflow_v2 import (
 )
 
 from tools.hopper.clean_cycle import validate as validate_cycle
-from tools.codex_archive.prepare_chatgpt_handoff import HandoffError, prepare as prepare_chatgpt_handoff
-from tools.codex_archive.prepare_chatgpt_handoff import prepare_from_share as prepare_chatgpt_handoff_from_share
+from tools.codex_archive.prepare_chatgpt_handoff import (
+    HandoffError,
+    prepare as prepare_chatgpt_handoff,
+    prepare_from_reader as prepare_chatgpt_handoff_from_reader,
+    prepare_from_share as prepare_chatgpt_handoff_from_share,
+)
+from tools.workflow.companion_reader import CompanionReaderError, resolve_and_reconcile
 from tools.chatgpt_sync.sync import DEFAULT_STATE as CHATGPT_SYNC_STATE, load_state as load_chatgpt_sync_state
 
 REGISTRY = ROOT / "tools/workflow/command-registry.json"
@@ -135,6 +140,7 @@ def main(argv=None):
     parser.add_argument("--signal", action="append", default=[])
     parser.add_argument("--transcript")
     parser.add_argument("--share-url")
+    parser.add_argument("--reader-json")
     parser.add_argument("--share-archive-root")
     parser.add_argument("--source-status", default="OPEN/INCOMPLETE", choices=("OPEN/INCOMPLETE", "CLOSED"))
     parser.add_argument("--codex-source")
@@ -176,8 +182,9 @@ def main(argv=None):
             print("Product implementation authorized: NO")
         return 0
     if command == "PREPARE HANDOFF":
-        if not args.transcript and not args.share_url:
-            parser.error("PREPARE HANDOFF requires --share-url or --transcript")
+        if not args.transcript and not args.share_url and not args.reader_json:
+            print("PREPARE HANDOFF: BLOCKED\\nBoundary: canonical live reader input is required; Codex must obtain it from the registered companion reader.", file=sys.stderr)
+            return 1
         try:
             record_path, record = load_project_record(args.project, ROOT)
             repository_value = record.get("root_repository") or (record.get("repositories") or {}).get("root")
@@ -201,7 +208,7 @@ def main(argv=None):
                     codex_source=Path(args.codex_source) if args.codex_source else None,
                     include_house_context=args.include_house_context,
                 )
-            else:
+            elif args.transcript:
                 result = prepare_chatgpt_handoff(
                     root=ROOT,
                     project_record=record_path,
@@ -211,7 +218,24 @@ def main(argv=None):
                     codex_source=Path(args.codex_source) if args.codex_source else None,
                     include_house_context=args.include_house_context,
                 )
-        except (OSError, ValueError, HandoffError) as exc:
+            else:
+                reader_capture = Path(args.reader_json)
+                resolution = resolve_and_reconcile(
+                    project_record_path=record_path,
+                    registry_path=ROOT / "docs/process/conversation-handoff/shared/chatgpt-sync-registry.json",
+                    reader_path=reader_capture,
+                )
+                result = prepare_chatgpt_handoff_from_reader(
+                    root=ROOT,
+                    project_record=record_path,
+                    reader_capture=reader_capture,
+                    output_root=output_root,
+                    source_status=args.source_status,
+                    codex_source=Path(args.codex_source) if args.codex_source else None,
+                    include_house_context=args.include_house_context,
+                )
+                result["live_reader"] = resolution
+        except (OSError, ValueError, HandoffError, CompanionReaderError) as exc:
             print(f"PREPARE HANDOFF: BLOCKED\nBoundary: {exc}", file=sys.stderr)
             return 1
         print("HANDOFF READY")
@@ -219,6 +243,9 @@ def main(argv=None):
         print(f"Workflow: {result['workflow']}")
         print(f"ChatGPT master: {result['chatgpt']['status']} through {result['chatgpt']['boundary']}")
         print(f"Codex master: {result['codex']['status']}")
+        if result.get("live_reader"):
+            reader = result["live_reader"]
+            print(f"Live companion: {reader['title']} ({reader['source_id']}); reconciled={reader['reconciled']}")
         print(f"Startup payload: {result['startup_payload']}")
         print(f"Package directory: {result['package_directory']}")
         print(f"Optional ZIP transport candidate: {result['package_zip_candidate']}")
