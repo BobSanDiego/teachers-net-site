@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import sys
 from datetime import datetime, timezone
@@ -74,7 +75,15 @@ def begin(project: str, identifier: str, ticket_source: Path, *, explicit_retry:
     if not ticket_source.is_file():
         raise RuntimeError(f"ticket source does not exist: {ticket_source}")
     try:
-        preflight = validate_ticket_payload(ticket_source.read_text(encoding="utf-8"))
+        ticket_text = ticket_source.read_text(encoding="utf-8")
+        preflight = validate_ticket_payload(ticket_text)
+        nonempty = [line.strip() for line in ticket_text.splitlines() if line.strip()]
+        preflight.update({
+            "source_path": str(ticket_source.resolve()),
+            "source_bytes": ticket_source.stat().st_size,
+            "source_sha256": ticket_source_hash(ticket_source),
+            "title": nonempty[1] if len(nonempty) > 1 else preflight["ticket_id"],
+        })
         retry_interlock(project, preflight["ticket_id"], ticket_source_hash(ticket_source),
                         explicit_retry=explicit_retry, root=ROOT)
     except WorkflowV2Error as exc:
@@ -128,6 +137,8 @@ def collect(project: str, identifier: str, source: Path, status: str,
         "status": status,
         "size": target.stat().st_size,
         "sha256": sha256(target),
+        "source_sha256": sha256(source),
+        "source_bytes": source.stat().st_size,
         "committed": False,
         "purpose": "ticket artifact",
         "classification": classification,
@@ -243,6 +254,25 @@ def directory_bytes(path: Path) -> int:
 
 def persist_records(project: str, payload: dict) -> None:
     report, hopper, _ = paths(project)
+    state_path = hopper.parent / "operational-current-state.json"
+    state_path.write_text(json.dumps({
+        "schema_version": "1.0",
+        "project": project,
+        "owner": "tools/hopper/clean_cycle.py",
+        "current_objective": {
+            "ticket": payload["ticket"],
+            "state": payload["objective_state"],
+            "cycle_id": payload["cycle_id"],
+            "objective_owner": payload["objective_owner"],
+        },
+        "last_terminal_cycle": payload["cycle_id"],
+        "ticket_identity": payload.get("ticket_identity"),
+        "freshness": {
+            "workflow_version": payload["workflow_version"],
+            "updated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+            "cycle_id": payload["cycle_id"],
+        },
+    }, indent=2) + "\n")
     record_path = hopper / payload["cycle_record_file"]
     manifest_path = hopper / payload["manifest_file"]
     for _ in range(4):
@@ -304,6 +334,21 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         raise RuntimeError("ticket preflight mode does not match finalized mode")
     if ticket_preflight.get("objective_owner") != (objective_owner or project):
         raise RuntimeError("ticket preflight owner does not match finalized objective owner")
+    identity = {
+        key: ticket_preflight.get(key)
+        for key in ("ticket_id", "title", "source_path", "source_bytes", "source_sha256")
+    }
+    if not all(identity.values()):
+        raise RuntimeError("ticket preflight is missing immutable source identity")
+    matching_ticket_sources = [
+        item for item in artifacts
+        if item.get("source_sha256") == identity["source_sha256"]
+        or item.get("original_path") == identity["source_path"]
+    ]
+    if not matching_ticket_sources or not any(
+        item.get("source_sha256") == identity["source_sha256"] for item in matching_ticket_sources
+    ):
+        raise RuntimeError("finalization source identity does not match the executed ticket")
     reasoning_values = {
         reasoning_posture_recommended.upper(),
         reasoning_posture_recommended_next.upper(),
@@ -339,6 +384,7 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
         "objective_state": objective_state or ("complete" if status == "complete" else status),
         "acceptance_ledger": acceptance_ledger or {"objective_id": ticket, "seams": [], "checkpoints": []},
         "ticket_preflight": ticket_preflight,
+        "ticket_identity": identity,
         "reasoning_posture_recommended": reasoning_posture_recommended.upper(),
         "reasoning_posture_used": reasoning_posture_used.upper() if reasoning_posture_used else None,
         "reasoning_posture_recommended_next": reasoning_posture_recommended_next.upper(),
@@ -397,6 +443,17 @@ def validate(project: str, identifier: str) -> None:
         raise RuntimeError("zero-byte artifact in current Hopper directory")
     record = hopper / f"cycle-{project}-{identifier}.json"
     payload = json.loads(record.read_text())
+    identity = payload.get("ticket_identity") or {}
+    if identity.get("ticket_id") != payload.get("ticket") or not identity.get("source_sha256"):
+        raise RuntimeError("cycle ticket identity is missing or inconsistent")
+    operational_owner = hopper.parent / "operational-current-state.json"
+    if not operational_owner.is_file():
+        raise RuntimeError("canonical operational current-state owner is missing")
+    operational = json.loads(operational_owner.read_text())
+    if operational.get("current_objective", {}).get("ticket") != payload.get("ticket"):
+        raise RuntimeError("operational current state conflicts with cycle ticket")
+    if operational.get("current_objective", {}).get("cycle_id") != payload.get("cycle_id"):
+        raise RuntimeError("operational current state conflicts with cycle identity")
     if payload.get("workflow_version") != workflow_version(ROOT):
         raise RuntimeError("cycle does not record canonical Workflow V2")
     if payload.get("project") != project or payload.get("execution_project", project) != project:

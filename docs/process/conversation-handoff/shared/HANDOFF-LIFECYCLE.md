@@ -51,6 +51,20 @@ an operator transport surface and must not contain manifests, masters, reports,
 raw transcripts, or authority files beside the ZIP. Reports remain in the
 local Report/Hopper of the project that executed the operation.
 
+Every routine package also carries the canonical shared supervisory behavioral
+contract under `02-authority/`. Its source path, byte count, and SHA-256 are
+recorded in the authority index and package manifest. Startup must verify that
+member before reading it; older conversation prose or absent account-level
+custom instructions cannot silently supersede it. The contract remains
+subordinate to Workflow V2 and the target project's current authority.
+
+The package also carries the registered project's single operational
+current-state owner under `03-terminal/`. PREPARE HANDOFF compares that owner
+with the current validated Report/Hopper cycle and required source boundaries;
+missing, stale, or conflicting state blocks publication. LOAD STARTUP repeats
+the same deterministic project/cycle/ticket/freshness check before reporting
+startup success.
+
 ## Full immutable recovery checkpoint
 
 Every successful checkpoint is named `<Project-Name>-YYYYMMDD-HHMMSS` and is

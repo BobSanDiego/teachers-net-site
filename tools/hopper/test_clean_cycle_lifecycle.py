@@ -77,7 +77,14 @@ Stop after validation.
 END TICKET — {ticket_id}
 """,
         )
-        return path, clean_cycle.validate_ticket_payload(path.read_text())
+        preflight = clean_cycle.validate_ticket_payload(path.read_text())
+        preflight.update({
+            "source_path": str(path.resolve()),
+            "source_bytes": path.stat().st_size,
+            "source_sha256": clean_cycle.sha256(path),
+            "title": f"{ticket_id} — Test fixture",
+        })
+        return path, preflight
 
     def begin_collect_finalize_validate(
         self,
@@ -124,6 +131,18 @@ END TICKET — {ticket_id}
         self.assertEqual(payload["commit"], "abc1234")
         report_dir = clean_cycle.HOPPER / "jobcenter" / "Report (Job Center)"
         self.assertTrue((report_dir / "output-jobcenter-260101010101.txt").is_file())
+
+    def test_mismatched_ticket_identity_cannot_finalize(self) -> None:
+        ticket_source, preflight = self.ticket_file("TEST-IDENTITY-A")
+        clean_cycle.begin("jobcenter", "260101010199", ticket_source)
+        source_ticket = clean_cycle.collect("jobcenter", "260101010199", ticket_source, "source")
+        with self.assertRaisesRegex(RuntimeError, "preflight identity"):
+            clean_cycle.write_records(
+                "jobcenter", "TEST-IDENTITY-B", "260101010199", "main", "complete",
+                None, None, [source_ticket], git_disposition="NOT_APPLICABLE",
+                report_source=self.source_file("identity-report.txt", "status"),
+                ticket_preflight=preflight,
+            )
 
     def test_report_publication_uses_registered_route_not_docs_reports(self) -> None:
         ticket_source, preflight = self.ticket_file("TEST-COMMUNITY-REPORT-ROUTE", owner="community")

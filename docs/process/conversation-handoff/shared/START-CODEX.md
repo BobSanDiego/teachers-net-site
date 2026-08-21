@@ -31,6 +31,16 @@ absolute successor-drop directory, such as
 This is a shared response requirement for every registered project, not a
 Job Center-specific convention.
 
+## Exact shared-command precedence
+
+The exact standalone commands UPDATE CHATGPT and CHATGPT SYNC STATUS are
+centrally inherited Shared Workflow commands. After normalizing whitespace and
+case, dispatch them before project selection, BOOTSTRAP/local command handling,
+or conversational interpretation. A registered project must never answer
+either command with a project status summary. UPDATE CHATGPT continues
+through the live-reader and bounded sync builder; without valid reader input it
+must report the precise transport boundary and stop.
+
 ## Read first
 
 Read these canonical shared authorities:
@@ -118,6 +128,12 @@ The Windows operational projection is:
 The tracked canonical source is:
 
 `docs/process/conversation-handoff/shared/START-CODEX.md`
+
+The shared supervisory behavioral contract is maintained at
+`docs/process/conversation-handoff/shared/chatgpt-codex-behavioral-contract.md`.
+Successor packages carry and hash it; do not recreate it in project guidance or
+infer it from conversation history. Account-level custom instructions are only
+the live convenience surface for the same policy.
 
 Before a formal cycle, compare the shared-authority marker with the active
 project's consumed marker. Refresh only when the canonical shared guidance

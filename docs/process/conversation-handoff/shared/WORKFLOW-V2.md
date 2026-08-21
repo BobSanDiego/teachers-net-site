@@ -141,6 +141,18 @@ Workflow: V2
 Lifecycle: READY
 ```
 
+## Supervisory behavioral contract
+
+The canonical shared supervisory behavior is maintained in
+`docs/process/conversation-handoff/shared/chatgpt-codex-behavioral-contract.md`.
+It defines the Engineering Director, ChatGPT, and Codex role boundary and the
+durability/continuity rules accepted by `JOB-CENTER-WORKFLOW-RETRO002`. It is
+subordinate to this workflow and to current project authority; it contains no
+volatile project facts. Handoff packages include this file with its provenance
+hash, and `LOAD STARTUP` verifies and reads it before relying on conversation
+continuity. Account-level custom instructions are a convenience surface for the
+same policy, not a substitute or second authority.
+
 For an unregistered named project, BOOTSTRAP is sufficient authorization to
 enter the bounded non-product onboarding path in `PROJECT-BOOTSTRAP-SPEC.md`.
 It does not authorize product implementation. Genuine identity, ownership,
@@ -267,6 +279,13 @@ the executing project's last-consumed marker. Unchanged authority is a cheap
 no-op; changed authority is consumed before execution and frozen for the
 cycle. `BOOTSTRAP` and `PREPARE HANDOFF` remain explicit synchronization
 boundaries.
+
+Each registered project has one machine-readable operational current-state
+owner at `tmp/hopper/<project>/operational-current-state.json`, written by the
+Report/Hopper finalization owner. It is the live continuation invariant for
+current objective, state, cycle/ticket identity, and freshness. Narrative
+roadmap, Cursor, Handoff, and startup projections may describe it but must not
+silently replace or contradict it.
 
 ## Telemetry and workflow-cost signal
 

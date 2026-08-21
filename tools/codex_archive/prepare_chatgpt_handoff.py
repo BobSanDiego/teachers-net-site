@@ -26,6 +26,7 @@ except ImportError:  # pragma: no cover - imported as a package by workflow.py
 
 
 RENDERER_VERSION = "handoff-v2.1"
+BEHAVIORAL_CONTRACT_PATH = "docs/process/conversation-handoff/shared/chatgpt-codex-behavioral-contract.md"
 CHATGPT_ROLE = re.compile(r"(?m)^\*\*(🙍🏻‍♂️ You|🤖 ChatGPT):\*\*\s*$")
 EXPORTED = re.compile(r"(?mi)^\*\*Exported:\*\*\s*(.+?)\s*$")
 DECLARED_MESSAGES = re.compile(r"(?mi)^\*\*Messages:\*\*\s*(\d+)\s*$")
@@ -623,6 +624,20 @@ def _report_route(root: Path, record: dict[str, Any]) -> Path:
 def _copy_authority(root: Path, record: dict[str, Any], out: Path) -> list[dict[str, Any]]:
     out.mkdir()
     entries = []
+    contract = root / BEHAVIORAL_CONTRACT_PATH
+    if not contract.is_file():
+        raise HandoffError(f"canonical behavioral contract is unavailable: {contract}")
+    contract_dest = out / "00-SHARED-BEHAVIORAL-CONTRACT.md"
+    shutil.copy2(contract, contract_dest)
+    entries.append(
+        {
+            "filename": contract_dest.name,
+            "source": BEHAVIORAL_CONTRACT_PATH,
+            "authority_role": "shared supervisory behavioral contract",
+            "sha256": sha_file(contract_dest),
+            "bytes": contract_dest.stat().st_size,
+        }
+    )
     for index, item in enumerate(record.get("guidance_sources", []), start=1):
         source = root / item["path"]
         if not source.is_file():
@@ -664,6 +679,12 @@ def _terminal_state(root: Path, record: dict[str, Any], out: Path) -> dict[str, 
     if latest:
         shutil.copy2(latest, out / f"latest-report{latest.suffix.lower()}")
     base = report_dir.parent
+    operational_owner = base / "operational-current-state.json"
+    if not operational_owner.is_file():
+        raise HandoffError(f"canonical operational current-state owner is unavailable: {operational_owner}")
+    operational = json.loads(operational_owner.read_text(encoding="utf-8"))
+    if operational.get("project") != record["project_id"] or operational.get("owner") != "tools/hopper/clean_cycle.py":
+        raise HandoffError("operational current-state owner has invalid project/owner identity")
     ledger = base / "workflow-ledger.json"
     objective: dict[str, Any] | None = None
     cycles = [item for item in candidates if item.name.startswith("cycle-") and item.suffix == ".json"]
@@ -685,18 +706,22 @@ def _terminal_state(root: Path, record: dict[str, Any], out: Path) -> dict[str, 
         if objective is None:
             tickets = json.loads(ledger.read_text(encoding="utf-8")).get("tickets", [])
             objective = tickets[-1] if tickets else None
+    if objective and operational.get("current_objective", {}).get("ticket") != objective.get("ticket"):
+        raise HandoffError("operational current state conflicts with the current Report/Hopper objective")
+    shutil.copy2(operational_owner, out / "operational-current-state.json")
     state = {
         "project": record["project_id"],
         "latest_report_source": str(latest) if latest else None,
         "latest_report_included": bool(latest),
         "objective": objective or {"status": "UNKNOWN", "warning": "No current workflow-ledger objective was available."},
+        "operational_current_state": operational,
     }
     (out / "terminal-state.json").write_text(json.dumps(state, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return state
 
 
 def _startup_text(
-    record: dict[str, Any], snapshot: ChatSnapshot, terminal: dict[str, Any], codex: dict[str, Any], warnings: list[str]
+    record: dict[str, Any], snapshot: ChatSnapshot, terminal: dict[str, Any], codex: dict[str, Any], warnings: list[str], authority: list[dict[str, Any]]
 ) -> str:
     objective = terminal.get("objective") or {}
     objective_name = objective.get("ticket") or objective.get("objective") or "UNKNOWN"
@@ -711,6 +736,7 @@ def _startup_text(
     latest_codex = max(codex_sources, key=lambda item: str(item["incorporated_through"])) if codex_sources else None
     codex_boundary = latest_codex.get("incorporated_through") if latest_codex else "NOT AVAILABLE"
     codex_session = latest_codex.get("session_id") if latest_codex else "NOT AVAILABLE"
+    contract = next(item for item in authority if item.get("authority_role") == "shared supervisory behavioral contract")
     return f"""# LOAD STARTUP — {record['display_name']}
 
 When the Engineering Director says exactly `LOAD STARTUP`, perform this startup
@@ -720,8 +746,15 @@ access to the engineer's repository or filesystem.
 1. Read `99-PACKAGE-MANIFEST.json` and verify every required component exists,
    is non-empty, hashes correctly, and identifies project `{record['project_id']}`.
 2. Read `01-project-record.json`, then `02-authority/00-AUTHORITY-INDEX.json`
-   and its files. Workflow V2 and current project authorities control.
+   and its files. First verify `02-authority/{contract['filename']}` is present,
+   non-empty, and matches SHA-256 `{contract['sha256']}`. Then read that
+   canonical supervisory behavioral contract. Workflow V2 and current project
+   authorities control; the contract is subordinate to both.
 3. Read `03-terminal/terminal-state.json` and its included latest report/ledger.
+   Verify `03-terminal/operational-current-state.json` matches the packaged
+   terminal objective, project, cycle, ticket/source identity, and Workflow V2
+   freshness identity before continuing. If it is missing, stale, or conflicts,
+   return `STARTUP BLOCKED`.
 4. Read `05-chatgpt-master-manifest.json`, then `04-chatgpt-portable-master.md`.
 5. Read `07-codex-master-manifest.json` before `06-codex-portable-master.md`.
    When multiple Codex sources are listed, select the source with the latest
@@ -769,6 +802,8 @@ def _write_component_manifest(package: Path, record: dict[str, Any], generated: 
         "05-chatgpt-master-manifest.json": "CONVERSATION_PROVENANCE",
         "06-codex-portable-master.md": "CODEX_PORTABLE_MASTER",
         "07-codex-master-manifest.json": "CODEX_PROVENANCE",
+        "02-authority/00-SHARED-BEHAVIORAL-CONTRACT.md": "SHARED_BEHAVIORAL_CONTRACT",
+        "03-terminal/operational-current-state.json": "OPERATIONAL_CURRENT_STATE",
     }
     components = []
     for path in sorted(item for item in package.rglob("*") if item.is_file() and item.name != "99-PACKAGE-MANIFEST.json"):
@@ -791,6 +826,22 @@ def _write_component_manifest(package: Path, record: dict[str, Any], generated: 
         "delivery_format_decision": "DEFERRED; logical roles are format-independent",
         "transport_candidates": ["VISIBLE_FILES_DIRECTORY", "OPTIONAL_ZIP_WRAPPER"],
         "self_contained_for_chatgpt": True,
+        "behavioral_contract": next(
+            (
+                {"path": item["path"], "sha256": item["sha256"], "bytes": item["bytes"]}
+                for item in components
+                if item["path"] == "02-authority/00-SHARED-BEHAVIORAL-CONTRACT.md"
+            ),
+            None,
+        ),
+        "operational_current_state": next(
+            (
+                {"path": item["path"], "sha256": item["sha256"], "bytes": item["bytes"]}
+                for item in components
+                if item["path"] == "03-terminal/operational-current-state.json"
+            ),
+            None,
+        ),
         "components": components,
     }
     required = {name for name in roles}
@@ -907,6 +958,10 @@ def prepare(
         if transcript is None:
             raise HandoffError("ChatGPT transcript source is required when no live reader snapshot is supplied")
         snapshot = parse_chatgpt_export(transcript, source_status)
+    if str(source_status).upper() in {"STALE", "UNKNOWN", "MISSING", "UNAVAILABLE"}:
+        raise HandoffError(f"ChatGPT source freshness is not acceptable: {source_status}")
+    if not snapshot.exported_boundary or str(snapshot.exported_boundary).upper() in {"UNKNOWN", "NOT AVAILABLE"}:
+        raise HandoffError("ChatGPT source has no usable freshness boundary")
     validate_project_identity(record, snapshot)  # decisive: no writes precede this
     paths = _conversation_paths(root, record)
     manifest = _load_manifest(paths["manifest"], record, paths["chatgpt_master"], paths["codex_master"])
@@ -985,7 +1040,7 @@ def prepare(
                 encoding="utf-8",
             )
         (package / "00-LOAD-STARTUP.md").write_text(
-            _startup_text(record, snapshot, terminal, manifest["codex"], warnings), encoding="utf-8"
+            _startup_text(record, snapshot, terminal, manifest["codex"], warnings, authority), encoding="utf-8"
         )
         package_manifest = _write_component_manifest(package, record, generated)
         startup = (package / "00-LOAD-STARTUP.md").read_text(encoding="utf-8")

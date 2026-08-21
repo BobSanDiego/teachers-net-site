@@ -21,7 +21,10 @@
     "execution_context_routing": "tools/hopper/clean_cycle.py",
     "unexecuted_stub_owner": "tools/workflow/workflow_v2.py",
     "authority_freshness": "tools/workflow/workflow_v2.py",
-    "report_hopper_finalization": "tools/hopper/clean_cycle.py"
+    "operational_current_state": "tmp/hopper/<project>/operational-current-state.json",
+    "report_hopper_finalization": "tools/hopper/clean_cycle.py",
+    "shared_command_dispatch": "tools/workflow/workflow.py::dispatch_shared_command",
+    "behavioral_contract": "docs/process/conversation-handoff/shared/chatgpt-codex-behavioral-contract.md"
   },
   "bootstrap": {
     "command": "BOOTSTRAP",
@@ -44,6 +47,12 @@
     "delivery_format_decision": "DEFERRED",
     "shared_workflow_chatgpt_project": false,
     "house_supervisory_chatgpt_project": "jobcenter"
+  },
+  "shared_commands": {
+    "dispatch": "PREEMPTIVE_BEFORE_PROJECT_ROUTING",
+    "exact_commands": ["UPDATE CHATGPT", "CHATGPT SYNC STATUS"],
+    "reader_required_for": "UPDATE CHATGPT",
+    "project_local_interpretation_forbidden": true
   },
   "ticket": {
     "first_line": "TICKET READY FOR CODEX",

@@ -57,6 +57,9 @@ class PortableHandoffV2Tests(unittest.TestCase):
         authority = self.root / "docs/shared-authority.md"
         authority.parent.mkdir(parents=True, exist_ok=True)
         authority.write_text("# Workflow V2 authority\n", encoding="utf-8")
+        contract = self.root / "docs/process/conversation-handoff/shared/chatgpt-codex-behavioral-contract.md"
+        contract.parent.mkdir(parents=True, exist_ok=True)
+        contract.write_text("# Shared behavioral contract\n\nEngineering Director authority.\n", encoding="utf-8")
         for project, (name, pattern, prefix) in PROJECTS.items():
             base = self.root / f"docs/process/conversation-handoff/{project}"
             base.mkdir(parents=True)
@@ -71,6 +74,18 @@ class PortableHandoffV2Tests(unittest.TestCase):
             )
             (report.parent / "workflow-ledger.json").write_text(
                 json.dumps({"tickets": [{"ticket": "STALE-LEDGER", "status": "completed"}]}),
+                encoding="utf-8",
+            )
+            (report.parent / "operational-current-state.json").write_text(
+                json.dumps({
+                    "schema_version": "1.0",
+                    "project": project,
+                    "owner": "tools/hopper/clean_cycle.py",
+                    "current_objective": {"ticket": f"{project.upper()}-CURRENT", "state": "complete", "cycle_id": f"260811200000", "objective_owner": project},
+                    "last_terminal_cycle": "260811200000",
+                    "ticket_identity": {"ticket_id": f"{project.upper()}-CURRENT", "source_sha256": "fixture"},
+                    "freshness": {"workflow_version": "V2", "updated_at": "2026-08-11T20:00:00Z", "cycle_id": "260811200000"},
+                }),
                 encoding="utf-8",
             )
             record = {
@@ -132,6 +147,41 @@ class PortableHandoffV2Tests(unittest.TestCase):
             terminal = json.loads((package / "03-terminal/terminal-state.json").read_text())
             self.assertEqual(terminal["objective"]["ticket"], f"{project.upper()}-CURRENT")
             self.assertEqual(terminal["objective"]["source"], "CURRENT VALIDATED REPORT/HOPPER CYCLE")
+
+    def test_startup_packages_include_and_verify_shared_behavioral_contract(self) -> None:
+        source = Path(self.temp.name) / "jobcenter-contract.md"
+        source.write_text(transcript("Job Center (8/11/26)", [("user", "current"), ("assistant", "ready")]), encoding="utf-8")
+        result = self._run("jobcenter", source, second=31)
+        package = Path(result["package_directory"])
+        contract = package / "02-authority/00-SHARED-BEHAVIORAL-CONTRACT.md"
+        manifest = json.loads((package / "99-PACKAGE-MANIFEST.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["behavioral_contract"]["path"], "02-authority/00-SHARED-BEHAVIORAL-CONTRACT.md")
+        self.assertEqual(manifest["behavioral_contract"]["sha256"], sha(contract))
+        startup = (package / "00-LOAD-STARTUP.md").read_text(encoding="utf-8")
+        self.assertIn("02-authority/00-SHARED-BEHAVIORAL-CONTRACT.md", startup)
+        self.assertIn(sha(contract), startup)
+
+    def test_stale_chatgpt_source_blocks_prepare(self) -> None:
+        source = Path(self.temp.name) / "stale.md"
+        source.write_text(transcript("Job Center (8/11/26)", [("user", "current")]), encoding="utf-8")
+        with self.assertRaisesRegex(HandoffError, "freshness"):
+            prepare(
+                root=self.root,
+                project_record=self.records / "jobcenter.json",
+                transcript=source,
+                output_root=Path(self.temp.name) / "stale-package",
+                source_status="STALE",
+            )
+
+    def test_stale_operational_authority_blocks_prepare(self) -> None:
+        source = Path(self.temp.name) / "conflict.md"
+        source.write_text(transcript("Job Center (8/11/26)", [("user", "current")]), encoding="utf-8")
+        owner = self.root / "tmp/hopper/jobcenter/operational-current-state.json"
+        payload = json.loads(owner.read_text(encoding="utf-8"))
+        payload["current_objective"]["ticket"] = "STALE-OBJECTIVE"
+        owner.write_text(json.dumps(payload), encoding="utf-8")
+        with self.assertRaisesRegex(HandoffError, "conflicts"):
+            self._run("jobcenter", source, second=32)
 
     def test_project_mismatch_fails_before_master_mutation(self) -> None:
         source = Path(self.temp.name) / "views.md"
