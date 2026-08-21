@@ -286,6 +286,9 @@ class PortableHandoffV2Tests(unittest.TestCase):
         package_manifest = json.loads((Path(result["package_directory"]) / "07-codex-master-manifest.json").read_text())
         self.assertEqual(package_manifest["status"], "CURRENT ACCESSIBLE SOURCE INCORPORATED")
         self.assertEqual(package_manifest["sources"][-1]["source_path"], str(codex.resolve()))
+        startup = (Path(result["package_directory"]) / "00-LOAD-STARTUP.md").read_text()
+        self.assertIn("select the source with the latest", startup)
+        self.assertIn("2026-08-21T00:00:01Z", startup)
 
     def test_unavailable_registered_codex_source_fails_closed(self) -> None:
         source = Path(self.temp.name) / "jobcenter.md"

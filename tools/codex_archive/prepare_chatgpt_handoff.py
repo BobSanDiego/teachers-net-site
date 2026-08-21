@@ -625,7 +625,9 @@ def _terminal_state(root: Path, record: dict[str, Any], out: Path) -> dict[str, 
     return state
 
 
-def _startup_text(record: dict[str, Any], snapshot: ChatSnapshot, terminal: dict[str, Any], warnings: list[str]) -> str:
+def _startup_text(
+    record: dict[str, Any], snapshot: ChatSnapshot, terminal: dict[str, Any], codex: dict[str, Any], warnings: list[str]
+) -> str:
     objective = terminal.get("objective") or {}
     objective_name = objective.get("ticket") or objective.get("objective") or "UNKNOWN"
     objective_state = objective.get("status") or "UNKNOWN"
@@ -635,6 +637,10 @@ def _startup_text(record: dict[str, Any], snapshot: ChatSnapshot, terminal: dict
     if semantic_path.is_file():
         semantic = json.loads(semantic_path.read_text(encoding="utf-8"))
         semantic_state = f"catalog revision {semantic['catalog_revision']}; semantic revision {semantic['semantic_revision']}"
+    codex_sources = [item for item in codex.get("sources", []) if item.get("incorporated_through")]
+    latest_codex = max(codex_sources, key=lambda item: str(item["incorporated_through"])) if codex_sources else None
+    codex_boundary = latest_codex.get("incorporated_through") if latest_codex else "NOT AVAILABLE"
+    codex_session = latest_codex.get("session_id") if latest_codex else "NOT AVAILABLE"
     return f"""# LOAD STARTUP — {record['display_name']}
 
 When the Engineering Director says exactly `LOAD STARTUP`, perform this startup
@@ -647,7 +653,11 @@ access to the engineer's repository or filesystem.
    and its files. Workflow V2 and current project authorities control.
 3. Read `03-terminal/terminal-state.json` and its included latest report/ledger.
 4. Read `05-chatgpt-master-manifest.json`, then `04-chatgpt-portable-master.md`.
-5. Read the Codex manifest and portable record when present and materially useful.
+5. Read `07-codex-master-manifest.json` before `06-codex-portable-master.md`.
+   When multiple Codex sources are listed, select the source with the latest
+   `incorporated_through` boundary as the current continuity snapshot; earlier
+   sources are historical provenance and must not replace it. This package's
+   latest Codex source is `{codex_session}` through `{codex_boundary}`.
 6. Treat transcripts as continuity/provenance evidence, not automatic product,
    architecture, implementation, or approval authority.
 7. Verify all components agree on the target project. Refuse silent cross-project
@@ -672,6 +682,7 @@ STARTUP LOADED
 Project: {record['display_name']} ({record['project_id']})
 Workflow: V2
 Conversation through: {snapshot.exported_boundary} ({snapshot.status})
+Codex continuity through: {codex_boundary} ({codex_session})
 Current objective: {objective_name} / {objective_state}
 Missing/stale sources: <none or list>
 Semantic authority: <catalog/semantic revision>
@@ -904,7 +915,7 @@ def prepare(
                 encoding="utf-8",
             )
         (package / "00-LOAD-STARTUP.md").write_text(
-            _startup_text(record, snapshot, terminal, warnings), encoding="utf-8"
+            _startup_text(record, snapshot, terminal, manifest["codex"], warnings), encoding="utf-8"
         )
         package_manifest = _write_component_manifest(package, record, generated)
         startup = (package / "00-LOAD-STARTUP.md").read_text(encoding="utf-8")
