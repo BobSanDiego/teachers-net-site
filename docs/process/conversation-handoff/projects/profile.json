@@ -6,7 +6,7 @@
   "repositories": {
     "root": "/home/bobreap/projects/teachers-net-site",
     "continuity_root": "/home/bobreap/projects/teachers-net-site",
-    "ownership_status": "Repository established; Profile implementation ownership is not yet assigned."
+    "ownership_status": "Repository established; bounded Profile avatar architecture and implementation boundary assigned."
   },
   "conversation": {
     "source_directory": "docs/process/conversation-handoff/profile/chatgpt-sources",
@@ -28,6 +28,7 @@
   "authority_index": [
     "docs/profile/project-cursor.md",
     "docs/profile/engineering-handoff.md",
+    "docs/profile/avatar-architecture.md",
     "docs/process/conversation-handoff/profile/profile-project-record.json"
   ],
   "scope": {
@@ -60,7 +61,7 @@
   },
   "bootstrap": {
     "authorization": "Bounded Profile project onboarding authorized by Engineering Director in active Codex conversation on 2026-08-11.",
-    "implementation_authorized": false,
+    "implementation_authorized": true,
     "transcript_is_evidence_not_authority": true
   }
 }
