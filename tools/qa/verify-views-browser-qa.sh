@@ -5,24 +5,23 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 views_url='https://teachers-net.ddev.site/wp-admin/admin.php?page=cfm-views&version_id=17'
 endpoint='http://127.0.0.1:9222'
 launcher_win="$(wslpath -w "$repo_root/tools/qa/launch-chrome-cdp-9222.ps1")"
-probe_win="$(wslpath -w "$repo_root/tools/qa/probe-windows-chrome-cdp.mjs")"
 screenshot_wsl="$repo_root/tmp/qa/windows-local-probe/canonical-ready.png"
 screenshot_win="$(wslpath -w "$screenshot_wsl")"
-node_bin="${CODEX_WINDOWS_NODE_EXE:-$(command -v node.exe || true)}"
+node_runner="$repo_root/tools/qa/run-windows-node-hidden.sh"
 
-if [[ -z "$node_bin" ]]; then
-  echo 'ENGINEERING INPUT REQUIRED: Windows node.exe is unavailable for the command-level CDP probe.' >&2
+if [[ ! -x "$node_runner" ]]; then
+  echo 'ENGINEERING INPUT REQUIRED: canonical hidden Windows Node runner is unavailable.' >&2
   exit 2
 fi
 
-if ! powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$launcher_win" -Url "$views_url"; then
+if ! powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File "$launcher_win" -Url "$views_url"; then
   echo 'ENGINEERING INPUT REQUIRED: the isolated Windows Chrome launcher failed.' >&2
   exit 3
 fi
 
 mkdir -p "$(dirname "$screenshot_wsl")"
 run_probe() {
-  "$node_bin" "$probe_win" \
+  "$node_runner" --timeout-seconds 20 "$repo_root/tools/qa/probe-windows-chrome-cdp.mjs" \
     --endpoint="$endpoint" \
     --mode=views \
     --url="$views_url" \
@@ -36,7 +35,7 @@ if probe_output="$(run_probe)"; then
   echo 'BROWSER SELF-HEALING: NOT NEEDED'
 else
   echo 'Windows-local command probe failed; restarting only the dedicated QA Chrome profile.' >&2
-  if ! powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$launcher_win" -Url "$views_url" -Restart; then
+  if ! powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File "$launcher_win" -Url "$views_url" -Restart; then
     echo 'ENGINEERING INPUT REQUIRED: dedicated QA Chrome restart failed.' >&2
     exit 4
   fi
