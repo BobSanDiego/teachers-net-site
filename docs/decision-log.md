@@ -98,6 +98,21 @@ schema migration, delivery, or broad UX implementation.
 
 ## Architectural Decisions
 
+### TNET-NOTIFICATIONS-ADR001 — Shared Notifications Boundary
+
+**Status:** Accepted
+**Date:** 2026-08-27
+
+Teachers.Net Notifications is a shared platform/communications capability,
+independent of Jobs, Community/Chatboards, Lessons, Core Terms, the theme, and
+shell UI. Products retain event facts, recipient eligibility, authorization,
+and routes; Notifications owns the normalized contract and later
+recipient-specific persistence/read state; shells consume the contract for
+presentation. The current Jobs-hosted shell fixture is not a Notifications
+platform owner. Canonical ADR and contract:
+`docs/notifications/teachers-net-notifications-adr001.md` and
+`docs/notifications/teachers-net-notifications-contract-v1.md`.
+
 ### ADR001 — JC-030 Implementation Strategy
 
 **Status:** Accepted
