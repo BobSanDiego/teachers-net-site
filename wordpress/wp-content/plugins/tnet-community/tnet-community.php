@@ -25,6 +25,8 @@ require_once __DIR__ . '/includes/class-tnet-community-authoring.php';
 require_once __DIR__ . '/includes/class-tnet-community-composer-contracts.php';
 require_once __DIR__ . '/includes/class-tnet-community-composer-view.php';
 require_once __DIR__ . '/includes/class-tnet-community-runtime-authority.php';
+require_once __DIR__ . '/includes/class-tnet-community-legacy-feed-contract.php';
+require_once __DIR__ . '/includes/class-tnet-community-legacy-feed-adapter.php';
 add_action('admin_menu', static function (): void { TNet_Community_Workbench::register(); });
 add_action('init', static function (): void { TNet_Community_Thread_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Landing_Controller::register(); });
