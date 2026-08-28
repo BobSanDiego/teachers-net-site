@@ -40,6 +40,14 @@ final class TNet_Notifications_Repository {
     return $wpdb->get_results($wpdb->prepare("SELECT * FROM {$this->table} WHERE {$where} ORDER BY created_at DESC, notification_id DESC LIMIT %d", $values), ARRAY_A);
   }
 
+  public function list_page($recipient_user_id, $source_product = '', $limit = 25, $after_created_at = '', $after_id = 0) {
+    $limit = max(1, min(100, absint($limit) ?: 25));
+    $rows = $this->list($recipient_user_id, $source_product, $limit + 1, $after_created_at, $after_id);
+    $has_more = count($rows) > $limit;
+    if ($has_more) array_pop($rows);
+    return ['rows' => $rows, 'has_more' => $has_more];
+  }
+
   public function mark_read($recipient_user_id, $notification_id) {
     global $wpdb;
     $result = $wpdb->query($wpdb->prepare("UPDATE {$this->table} SET read_at = COALESCE(read_at, %s) WHERE notification_id = %d AND recipient_user_id = %d AND active_state = 'active'", current_time('mysql', true), absint($notification_id), absint($recipient_user_id)));

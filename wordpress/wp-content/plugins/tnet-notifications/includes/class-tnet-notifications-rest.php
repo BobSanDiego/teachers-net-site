@@ -14,8 +14,8 @@ final class TNet_Notifications_REST {
   private static function user_id() { return get_current_user_id(); }
   public static function unread_count() { return rest_ensure_response(['unread_count' => self::$service->unread_count(self::user_id())]); }
   public static function list_notifications(WP_REST_Request $request) {
-    $result = self::$service->list_for_recipient(self::user_id(), (string) $request->get_param('source'), (int) $request->get_param('limit'), (string) $request->get_param('after_created_at'), (int) $request->get_param('after_id'));
-    return is_wp_error($result) ? $result : rest_ensure_response(['items' => $result]);
+    $result = self::$service->list_page_for_recipient(self::user_id(), (string) $request->get_param('source'), (int) $request->get_param('limit'), (string) $request->get_param('after_created_at'), (int) $request->get_param('after_id'));
+    return is_wp_error($result) ? $result : rest_ensure_response($result);
   }
   public static function mark_read(WP_REST_Request $request) {
     $result = self::$service->mark_read(self::user_id(), (int) $request['id']);

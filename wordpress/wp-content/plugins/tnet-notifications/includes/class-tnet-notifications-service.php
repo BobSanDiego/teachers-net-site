@@ -57,6 +57,25 @@ final class TNet_Notifications_Service {
     return $output;
   }
 
+  public function list_page_for_recipient($recipient_user_id, $source_product = '', $limit = 25, $after_created_at = '', $after_id = 0) {
+    $recipient_user_id = absint($recipient_user_id);
+    $source_product = $source_product === '' ? '' : sanitize_key($source_product);
+    if ($source_product !== '' && !TNet_Notifications_Registry::has_source($source_product)) return new WP_Error('tnet_notifications_source_invalid', 'Source filter is not registered.');
+    $page = $this->repository->list_page($recipient_user_id, $source_product, $limit, $after_created_at, $after_id);
+    $output = [];
+    foreach (($page['rows'] ?? []) as $row) {
+      $definition = TNet_Notifications_Registry::definition($row['source_product'], $row['event_type'], (int) $row['payload_version']);
+      if (!$definition) continue;
+      $record = $this->public_record($row);
+      if (!$record) continue;
+      $authorization = $definition['authorize'] ?? null;
+      if (is_callable($authorization) && !call_user_func($authorization, $recipient_user_id, $record)) continue;
+      $output[] = $record;
+    }
+    $last = end($output);
+    return ['items' => $output, 'has_more' => !empty($page['has_more']), 'next_cursor' => $last ? ['after_created_at' => $last['created_at'], 'after_id' => (int) $last['notification_id']] : null];
+  }
+
   public function mark_read($recipient_user_id, $notification_id) { return $this->repository->mark_read(absint($recipient_user_id), absint($notification_id)); }
   public function mark_all_read($recipient_user_id, $source_product = '') {
     if ($source_product !== '' && !TNet_Notifications_Registry::has_source($source_product)) return new WP_Error('tnet_notifications_source_invalid', 'Source filter is not registered.');
