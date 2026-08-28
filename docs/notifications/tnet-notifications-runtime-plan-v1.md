@@ -1,6 +1,8 @@
 # Teachers.Net Notifications Runtime Plan v1
 
-**Status:** Accepted executable implementation plan; no runtime implementation
+**Status:** Accepted executable implementation plan; phases A–C are implemented
+in the dedicated `tnet-notifications` plugin. Native producer integration remains
+deferred until the persistence/API seam is accepted.
 **Decision ticket:** `TNET-NOTIFICATIONS-RUNTIME001`
 **Architecture authority:** `teachers-net-notifications-adr001.md`
 **Consumer contract:** `teachers-net-notifications-contract-v1.md`

@@ -2,7 +2,9 @@
 
 **Status:** Accepted contract; synthetic consumer fixture implemented
 **Architecture authority:** `teachers-net-notifications-adr001.md`
-**Runtime status:** No durable persistence or native producer is implemented.
+**Runtime status:** Durable persistence and the authenticated read/read-state API
+are implemented in the dedicated `tnet-notifications` plugin. No native producer
+is implemented yet.
 
 ## 1. Purpose and versioning
 

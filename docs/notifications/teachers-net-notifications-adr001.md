@@ -33,9 +33,9 @@ consumer mappings after current authorization is established.
 
 The v1 shared contract is `docs/notifications/teachers-net-notifications-contract-v1.md`.
 The physical runtime owner and executable v1 boundary are now established by
-`tnet-notifications-runtime-plan-v1.md`. The first implementation remains a
-separate persistence/API ticket; this ADR does not itself authorize a
-notification table, migration, native producer, email-channel change,
+`tnet-notifications-runtime-plan-v1.md`. The separate persistence/API ticket now
+implements the dedicated notification table, migration, and authenticated API;
+this ADR does not itself authorize a native producer, email-channel change,
 preferences system, or production write.
 
 ## Physical runtime owner — TNET-NOTIFICATIONS-RUNTIME001
