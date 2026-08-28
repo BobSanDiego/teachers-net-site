@@ -25,6 +25,16 @@ repo's local docs. The global Engineering Director Playbook contains reusable
 methodology only. Do not import workflow state, routes, branding, plugin
 decisions, or product assumptions from other projects.
 
+Community VS Code execution context:
+For formal Community tickets, open `Community-VSCode.code-workspace` from this
+control-plane repository. Keep `teachers-net-community3` as the registered
+source folder and `teachers-net-live` as a runtime mirror only. A runtime-only
+workspace is not a valid formal execution context because it cannot discover
+the central Workflow V2 tools, records, or Report/Hopper owner. A Community
+ticket must not be reported terminally complete until `clean_cycle.py finalize`
+and `clean_cycle.py validate` have both succeeded and updated the current
+Report/Hopper state.
+
 Repository continuity and inspection rule: accepted authority manifests,
 contracts, governance, roadmaps, execution plans, and verified implementation
 facts remain valid unless the current ticket requires re-audit or direct

@@ -1,0 +1,46 @@
+{
+  "folders": [
+    {
+      "name": "CONTROL PLANE — teachers-net-site",
+      "path": "."
+    },
+    {
+      "name": "SOURCE — teachers-net-community3 (registered)",
+      "path": "../teachers-net-community3"
+    },
+    {
+      "name": "RUNTIME MIRROR — teachers-net-live",
+      "path": "../teachers-net-live"
+    }
+  ],
+  "settings": {
+    "terminal.integrated.cwd": "${workspaceFolder:CONTROL PLANE — teachers-net-site}",
+    "files.exclude": {
+      "**/.git": true,
+      "**/node_modules": true
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Community: BOOTSTRAP (control plane)",
+        "type": "shell",
+        "command": "python3 tools/workflow/workflow.py BOOTSTRAP --project community",
+        "options": {
+          "cwd": "${workspaceFolder:CONTROL PLANE — teachers-net-site}"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Community: VALIDATE WORKFLOW (control plane)",
+        "type": "shell",
+        "command": "python3 tools/hopper/clean_cycle.py validate --project community --cycle $(python3 -c \"import json; print(json.load(open('tmp/hopper/community/operational-current-state.json'))['last_terminal_cycle'])\")",
+        "options": {
+          "cwd": "${workspaceFolder:CONTROL PLANE — teachers-net-site}"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
