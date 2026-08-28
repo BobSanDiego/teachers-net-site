@@ -50,6 +50,7 @@ final class TNet_Notifications_Service {
       if (!$definition) continue;
       $authorization = $definition['authorize'] ?? null;
       $record = $this->public_record($row);
+      if (!$record) continue;
       if (is_callable($authorization) && !call_user_func($authorization, $recipient_user_id, $record)) continue;
       $output[] = $record;
     }
@@ -67,6 +68,12 @@ final class TNet_Notifications_Service {
   }
 
   private function public_record(array $row) {
+    $definition = TNet_Notifications_Registry::definition($row['source_product'], $row['event_type'], (int) $row['payload_version']);
+    $resolved_destination = null;
+    if ($definition && is_callable($definition['resolve'] ?? null)) {
+      $resolved_destination = call_user_func($definition['resolve'], json_decode($row['destination_args_json'], true) ?: []);
+      if (!$resolved_destination) return null;
+    }
     return [
       'notification_id' => (int) $row['notification_id'],
       'recipient_user_id' => (int) $row['recipient_user_id'],
@@ -79,6 +86,7 @@ final class TNet_Notifications_Service {
       'object_id' => $row['object_id'],
       'destination_key' => $row['destination_key'],
       'destination_args' => json_decode($row['destination_args_json'], true) ?: [],
+      'destination' => $resolved_destination,
       'metadata' => json_decode($row['metadata_json'], true) ?: [],
       'created_at' => $row['created_at'],
       'read_at' => $row['read_at'],
