@@ -113,6 +113,13 @@ platform owner. Canonical ADR and contract:
 `docs/notifications/teachers-net-notifications-adr001.md` and
 `docs/notifications/teachers-net-notifications-contract-v1.md`.
 
+`TNET-NOTIFICATIONS-RUNTIME001` establishes the durable runtime owner as the
+new dedicated `tnet-notifications` WordPress plugin. It is independent of
+Jobs, Core Terms, Community, Lessons, the theme, and shell presentation. Its
+accepted executable persistence/API/producer plan is
+`docs/notifications/tnet-notifications-runtime-plan-v1.md`; implementation
+requires its own explicit ticket.
+
 ### ADR001 — JC-030 Implementation Strategy
 
 **Status:** Accepted

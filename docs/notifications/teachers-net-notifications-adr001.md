@@ -32,13 +32,39 @@ the durable boundary. The shell resolves presentation through centrally owned
 consumer mappings after current authorization is established.
 
 The v1 shared contract is `docs/notifications/teachers-net-notifications-contract-v1.md`.
-No notification table, migration, native producer, email-channel change,
-preferences system, or production write is authorized by this ADR.
+The physical runtime owner and executable v1 boundary are now established by
+`tnet-notifications-runtime-plan-v1.md`. The first implementation remains a
+separate persistence/API ticket; this ADR does not itself authorize a
+notification table, migration, native producer, email-channel change,
+preferences system, or production write.
+
+## Physical runtime owner — TNET-NOTIFICATIONS-RUNTIME001
+
+The durable owner is a new dedicated WordPress plugin with the canonical
+package directory `wordpress/wp-content/plugins/tnet-notifications/` and the
+runtime/plugin identity `tnet-notifications`.
+
+This is a platform boundary, not a relocation of the current Jobs shell
+fixture. It owns Notifications tables, schema/version upgrades, producer
+registration, normalized event validation, recipient-notification persistence,
+authenticated query/read-state services, and the REST transport adapter. It
+loads independently of Jobs, Community, Lessons, Core Terms, the theme, and a
+particular shell.
+
+Products depend inward on this contract as registered producers. The shell
+depends on the authenticated consumer API. Notifications must never depend on
+Jobs lifecycle classes or query Jobs tables directly; source-specific
+eligibility, object/media resolution, and destination authorization remain
+registered source adapters owned by their products.
+
+The complete accepted implementation plan, including schema, security,
+producer, migration, and native acceptance seams, is
+`docs/notifications/tnet-notifications-runtime-plan-v1.md`.
 
 ## Deferred decisions
 
-The Engineering Director must separately approve the durable storage owner,
-producer registration/ingress, retention/retraction policy, preferences and
-consent integration, transport/digest policy, and the first native Jobs
-producer. Those decisions must preserve this boundary rather than absorbing it
-into a product-specific table or shell UI.
+Preferences and consent integration, email/transport/digest policy, scheduled
+retention execution, Community and Lessons producers, and every channel beyond
+the authenticated in-product consumer remain separate decisions. The first
+Jobs producer is planned but is not authorized for implementation by this ADR
+or its runtime plan.
