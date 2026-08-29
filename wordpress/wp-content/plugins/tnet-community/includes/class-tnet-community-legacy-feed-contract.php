@@ -38,6 +38,7 @@ final class TNet_Community_Legacy_Feed_Contract {
                 'wordpress_id' => (int)$row->wordpress_id,
             ],
             'published_at' => (string)$row->post_datetime,
+            'latest_activity_at' => (string)($row->latest_activity_at ?? $row->post_datetime),
             'body' => (string)$row->post_content,
             'excerpt_source' => (string)$row->post_content,
             'replies' => ['count' => (int)($row->reply_count ?? 0)],

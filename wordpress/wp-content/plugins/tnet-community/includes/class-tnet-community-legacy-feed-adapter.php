@@ -39,10 +39,11 @@ final class TNet_Community_Legacy_Feed_Adapter {
         }
         $topic_ids = self::unique_ids($rows, 'topic_id');
         $post_ids = self::unique_ids($rows, 'post_id');
-        $reply_counts = $like_counts = $liked = [];
+        $reply_counts = $like_counts = $liked = $latest_activity = [];
         if ($topic_ids) {
             $ph = implode(',', array_fill(0, count($topic_ids), '%d'));
             foreach ($db->get_results($db->prepare("SELECT topic_id, COUNT(1) AS reply_count FROM tnet_chatposts WHERE topic_id IN ({$ph}) AND post_type = 'reply' AND status = 0 GROUP BY topic_id", $topic_ids)) as $reply) $reply_counts[(int)$reply->topic_id] = (int)$reply->reply_count;
+            foreach ($db->get_results($db->prepare("SELECT topic_id, MAX(post_datetime) AS latest_activity_at FROM tnet_chatposts WHERE topic_id IN ({$ph}) AND status = 0 GROUP BY topic_id", $topic_ids)) as $activity) $latest_activity[(int)$activity->topic_id] = (string)$activity->latest_activity_at;
         }
         if ($post_ids) {
             $ph = implode(',', array_fill(0, count($post_ids), '%d'));
@@ -70,6 +71,7 @@ final class TNet_Community_Legacy_Feed_Adapter {
             $row->member_count = $member_counts[$group_id] ?? 0;
             $row->is_member = !empty($memberships[$group_id]);
             $row->reply_count = $reply_counts[(int)$row->topic_id] ?? 0;
+            $row->latest_activity_at = $latest_activity[(int)$row->topic_id] ?? (string)$row->post_datetime;
             $row->like_count = $like_counts[(int)$row->post_id] ?? 0;
             $row->liked = !empty($liked[(int)$row->post_id]);
             $items[] = TNet_Community_Legacy_Feed_Contract::from_legacy($row, $media_map[(int)$row->post_id] ?? []);
