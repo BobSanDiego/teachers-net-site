@@ -90,6 +90,7 @@ boundary.
 - Formal tickets require `TICKET READY FOR CODEX`, one terminal objective,
   complete acceptance/scope/stop boundary, and a matching `END TICKET`.
 - Run the Workflow V2 T+0 mechanical preflight before cycle initialization,
+- Use `tools/hopper/terminalize.py` as the canonical fail-closed finalize → validate entrypoint; do not report governed COMPLETE before it succeeds.
   archive rotation, repository/browser inspection, or implementation.
 - ChatGPT should keep complete formal tickets below 15,000 characters as a
   hard authoring/transport constraint for safe copying. This is a ChatGPT
