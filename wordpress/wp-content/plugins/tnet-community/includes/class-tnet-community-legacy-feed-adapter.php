@@ -58,7 +58,7 @@ final class TNet_Community_Legacy_Feed_Adapter {
         $media_map = [];
         if ($post_ids) {
             $ph = implode(',', array_fill(0, count($post_ids), '%d'));
-            $media_rows = $db->get_results($db->prepare("SELECT id, post_id, imglink, image_width, image_height FROM tnet_chatposts_meta WHERE post_id IN ({$ph}) ORDER BY post_id ASC, id ASC", $post_ids));
+            $media_rows = $db->get_results($db->prepare("SELECT id, post_id, imglink, image_width, image_height, og_title, og_description, og_site_name, site_domain, og_url, og_image, og_type FROM tnet_chatposts_meta WHERE post_id IN ({$ph}) ORDER BY post_id ASC, id ASC", $post_ids));
             foreach ($media_rows as $media) $media_map[(int)$media->post_id][] = $media;
         }
         $items = [];
@@ -72,6 +72,8 @@ final class TNet_Community_Legacy_Feed_Adapter {
             $row->is_member = !empty($memberships[$group_id]);
             $row->reply_count = $reply_counts[(int)$row->topic_id] ?? 0;
             $row->latest_activity_at = $latest_activity[(int)$row->topic_id] ?? (string)$row->post_datetime;
+            $meta = $media_map[(int)$row->post_id][0] ?? null;
+            if ($meta) { foreach (['imglink','image_width','image_height','og_title','og_description','og_site_name','site_domain','og_url','og_image','og_type'] as $field) { $row->{$field} = $meta->{$field} ?? ''; } }
             $row->like_count = $like_counts[(int)$row->post_id] ?? 0;
             $row->liked = !empty($liked[(int)$row->post_id]);
             $items[] = TNet_Community_Legacy_Feed_Contract::from_legacy($row, $media_map[(int)$row->post_id] ?? []);
