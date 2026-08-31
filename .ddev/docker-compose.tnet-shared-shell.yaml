@@ -1,0 +1,7 @@
+services:
+  web:
+    volumes:
+      - type: bind
+        source: /home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-shared-shell
+        target: /var/www/html/wordpress/wp-content/plugins/tnet-shared-shell
+        read_only: true
