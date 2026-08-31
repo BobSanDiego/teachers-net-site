@@ -24,17 +24,20 @@ ticket explicitly requires them.
 
 Current executable objective:
 
-`TNET-SHARED-SHELL-GENERALIZE001` is complete and HUMAN_QA accepted. The
-terminal accepted boundary is recorded in Workflow V2 cycle `260831180000`,
-with the generalized v2 contract committed in `27f24ab707e23df30635367f2f441b6d3209d6d6` on top of
-the accepted VISUAL001 baseline `9826f92`;
+`TNET-SHARED-SHELL-STATES001` is complete and HUMAN_QA accepted. The terminal
+accepted boundary is recorded in Workflow V2 cycle `260831180113`, with the
+canonical state/frame implementation committed in parent commit `a247204`
+and Jobs adapter commit `8d9404b`, on top of generalized v2 commit `27f24ab`;
 the canonical physical owner is the tracked
 `wordpress/wp-content/plugins/tnet-shared-shell/` plugin. The accepted parity
 oracle remains `902bdc0704a75860ac6f98673cd11d41f04dd095`, with accepted parity
 CSS SHA-256 `f0d7af828761937ce140e5878cea5221e90dfbaeac696c4f632bbc99abba1141`
 and byte-identical accepted parity JavaScript preserved. Desktop, disclosures,
 notifications, resolved avatar/account, responsive collapse, compact
-navigation, and narrow account-panel containment are HUMAN_QA PASS.
+navigation, narrow account-panel containment, squared outer frame, guest width
+viability, and the complete three-state matrix are HUMAN_QA PASS. Guest
+desktop uses direct Log In and primary Sign Up with no bell/avatar/account
+disclosure. Compact guest utilities remain first, before consumer navigation.
 
 The current accepted consumer contract is
 `TNet_Shared_Shell::render_host(['contract' => 'canonical', ...])` (v2).
@@ -438,7 +441,7 @@ lifecycle, presentation, and application behavior.
   fixture-verified. Archived jobs remain hidden and approved-only jobs are not
   employer-visible.
 - Current implementation status: the canonical Shared Shell owner is complete
-  through accepted CONT7. `JC053-STEP2-INTEGRATION` is not the current
+  through accepted STATES001. `JC053-STEP2-INTEGRATION` is not the current
   executable objective; its older implementation sequence remains historical
   until a new Director-authorized ticket is issued. Existing unrelated dirty
   work remains preserved.
@@ -458,11 +461,11 @@ acceptance.
 
 ## Next Executable Ticket
 
-No next executable ticket is authorized after accepted
-`TNET-SHARED-SHELL-OWNER001-CONT7`. Preferred next objective, pending Director
-selection and a new ticket, is a bounded first consumer migration to the
-canonical Shared Shell. Do not begin Community/Newskin migration from this
-cursor.
+No new Job Center product work is authorized after accepted
+`TNET-SHARED-SHELL-STATES001`. Preferred next objective is to resume the same
+existing `COMMUNITY-SHARED-SHELL-CONSUMER001` objective at CONT2 against
+canonical v2. Do not retire legacy v1 until Community adopts v2 and passes
+HUMAN_QA; do not begin Feed/responsive calibration here.
 
 Completed prerequisite chain:
 

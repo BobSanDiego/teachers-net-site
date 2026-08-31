@@ -144,15 +144,19 @@ implementation.
 
 ## 2. Current Ticket
 
-`TNET-SHARED-SHELL-GENERALIZE001` is complete with Engineering Director
-HUMAN_QA PASS. Workflow V2 cycle `260831180000` and commit
-`27f24ab707e23df30635367f2f441b6d3209d6d6` is the terminal accepted boundary after VISUAL001
-commit `9826f92` and baseline `d10760d`. The tracked canonical physical owner is
+`TNET-SHARED-SHELL-STATES001` is complete with Engineering Director HUMAN_QA
+PASS. Workflow V2 cycle `260831180113`; parent commit `a247204` and nested
+Jobs adapter commit `8d9404b` are the terminal accepted boundary after
+generalized v2 commit `27f24ab`, VISUAL001 commit `9826f92`, and baseline
+`d10760d`. The tracked canonical physical owner is
 `wordpress/wp-content/plugins/tnet-shared-shell/`; Jobs remains an adapter and
 Shared Shell has no Jobs dependency. Accepted scope includes desktop shell,
 Job Center/Chatboards/Lesson Plans disclosures, notifications, resolved
-avatar/account menu, responsive collapse, compact navigation, and narrow
-account-panel containment.
+avatar/account menu, responsive collapse, compact navigation, narrow
+account-panel containment, squared outer frame, guest width viability, and the
+complete three-state acceptance matrix. Guest desktop uses direct Log In and
+primary Sign Up with no bell/avatar/account disclosure; compact guest utility
+actions remain above consumer navigation.
 
 The accepted 902bdc0 oracle and parity provenance remain authoritative. The
 preferred next objective is to resume
@@ -323,12 +327,13 @@ The JC053 V1 field inventory and admission contract is recorded at
 
 ## 3. Last Completed Milestone
 
-`TNET-SHARED-SHELL-GENERALIZE001` is the latest completed milestone. The
+`TNET-SHARED-SHELL-STATES001` is the latest completed milestone. The
 canonical Shared Shell plugin owns the renderer/component structure and
 accepted parity CSS/JS; the isolated Job Center Shell Lab consumes it through
 the Jobs adapter. The 902bdc0 oracle remains preserved for provenance. Native
 HUMAN_QA PASS covers the complete CONT7 desktop, disclosure, responsive,
-compact, and narrow account-panel acceptance ledger. VISUAL001 additionally
+compact, narrow account-panel, outer-frame, and three-state acceptance ledger.
+VISUAL001 additionally
 accepted the 70px header, 174px desktop wordmark, and removal of the brand,
 utility, and bell/account dividers. Commit `9826f92` is the accepted visual
 baseline; `27f24ab707e23df30635367f2f441b6d3209d6d6` is the current v2 contract baseline. The
