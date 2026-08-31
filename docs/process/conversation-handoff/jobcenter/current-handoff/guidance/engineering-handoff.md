@@ -144,19 +144,20 @@ implementation.
 
 ## 2. Current Ticket
 
-`TNET-SHARED-SHELL-VISUAL001` is complete with Engineering Director HUMAN_QA
-PASS. Workflow V2 cycle `260831170000` and commit `9826f92` are the terminal
-accepted boundary after baseline `d10760d`. The tracked canonical physical owner is
+`TNET-SHARED-SHELL-GENERALIZE001` is complete with Engineering Director
+HUMAN_QA PASS. Workflow V2 cycle `260831180000` and commit
+`27f24ab707e23df30635367f2f441b6d3209d6d6` is the terminal accepted boundary after VISUAL001
+commit `9826f92` and baseline `d10760d`. The tracked canonical physical owner is
 `wordpress/wp-content/plugins/tnet-shared-shell/`; Jobs remains an adapter and
 Shared Shell has no Jobs dependency. Accepted scope includes desktop shell,
 Job Center/Chatboards/Lesson Plans disclosures, notifications, resolved
 avatar/account menu, responsive collapse, compact navigation, and narrow
 account-panel containment.
 
-The accepted 902bdc0 oracle and parity provenance remain authoritative. No next
-product ticket is authorized. A future bounded first consumer migration is the
-preferred next objective pending a new Director ticket; Community/Newskin
-migration is explicitly not authorized by CONT7.
+The accepted 902bdc0 oracle and parity provenance remain authoritative. The
+preferred next objective is to resume
+`COMMUNITY-SHARED-SHELL-CONSUMER001-CONT2` against the v2 contract. Do not
+retire legacy v1 until Community native parity and HUMAN_QA pass.
 
 `JOB-CENTER-NOTIFICATIONS-LAYOUT001`, `JOB-CENTER-CONTINUITY-REFRESH001`, and
 JC053 assertions below are historical continuity only and do not supersede the
@@ -322,14 +323,18 @@ The JC053 V1 field inventory and admission contract is recorded at
 
 ## 3. Last Completed Milestone
 
-`TNET-SHARED-SHELL-VISUAL001` is the latest completed milestone. The
+`TNET-SHARED-SHELL-GENERALIZE001` is the latest completed milestone. The
 canonical Shared Shell plugin owns the renderer/component structure and
 accepted parity CSS/JS; the isolated Job Center Shell Lab consumes it through
 the Jobs adapter. The 902bdc0 oracle remains preserved for provenance. Native
 HUMAN_QA PASS covers the complete CONT7 desktop, disclosure, responsive,
 compact, and narrow account-panel acceptance ledger. VISUAL001 additionally
 accepted the 70px header, 174px desktop wordmark, and removal of the brand,
-utility, and bell/account dividers. Commit `9826f92` is the current baseline.
+utility, and bell/account dividers. Commit `9826f92` is the accepted visual
+baseline; `27f24ab707e23df30635367f2f441b6d3209d6d6` is the current v2 contract baseline. The
+accepted consumer seam is `TNet_Shared_Shell::render_host(['contract' =>
+'canonical', ...])`; legacy v1 is temporary compatibility only until the
+suspended Community migration adopts v2 and passes HUMAN_QA.
 
 EMP-IMP002A through EMP-IMP003D replaced and converged the legacy My Jobs
 presentation into the Employer Operations workspace while preserving existing

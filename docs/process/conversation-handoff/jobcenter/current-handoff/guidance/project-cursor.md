@@ -24,9 +24,10 @@ ticket explicitly requires them.
 
 Current executable objective:
 
-`TNET-SHARED-SHELL-VISUAL001` is complete and HUMAN_QA accepted. The terminal
-accepted boundary is recorded in Workflow V2 cycle `260831170000`, with the
-accepted refinement committed in `9826f92` on top of baseline `d10760d`;
+`TNET-SHARED-SHELL-GENERALIZE001` is complete and HUMAN_QA accepted. The
+terminal accepted boundary is recorded in Workflow V2 cycle `260831180000`,
+with the generalized v2 contract committed in `27f24ab707e23df30635367f2f441b6d3209d6d6` on top of
+the accepted VISUAL001 baseline `9826f92`;
 the canonical physical owner is the tracked
 `wordpress/wp-content/plugins/tnet-shared-shell/` plugin. The accepted parity
 oracle remains `902bdc0704a75860ac6f98673cd11d41f04dd095`, with accepted parity
@@ -35,9 +36,11 @@ and byte-identical accepted parity JavaScript preserved. Desktop, disclosures,
 notifications, resolved avatar/account, responsive collapse, compact
 navigation, and narrow account-panel containment are HUMAN_QA PASS.
 
-No next inline product ticket is authorized. Any future Shared Shell consumer
-migration requires a separate bounded ticket; Community/Newskin migration is
-not implied by CONT7.
+The current accepted consumer contract is
+`TNet_Shared_Shell::render_host(['contract' => 'canonical', ...])` (v2).
+Legacy v1 remains temporary compatibility only for the suspended Community
+migration and must remain until Community adopts v2 and passes HUMAN_QA. The
+exact continuation boundary is `COMMUNITY-SHARED-SHELL-CONSUMER001-CONT2`.
 
 The prior `JOB-CENTER-NOTIFICATIONS-LAYOUT001`,
 `JOB-CENTER-CONTINUITY-REFRESH001`, and JC053 execution assertions below are
