@@ -1,0 +1,532 @@
+/* Canonical Employer Shell Lab: isolated from legacy employer-route cascades. */
+.tnet-jobs-shell-lab-body {
+  min-height: 100vh;
+  background: var(--shell-lab-canvas, #f4f5f7);
+  color: #243044;
+  font-family: "Manrope", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.tnet-jobs-shell-lab-body.tnet-jobs-app-canvas { width: 100%; max-width: none; margin: 0; }
+.tnet-jobs-shell-lab-body.tnet-jobs-shell-clean-preview {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  margin: 0;
+  background: #f7f8fa;
+}
+
+.tnet-jobs-shell-lab-body .tnet-jobs-shell-lab,
+.tnet-jobs-shell-lab-body .tnet-jobs-shell-lab * { box-sizing: border-box; }
+
+.tnet-jobs-shell-lab {
+  --shell-lab-canvas: #f4f5f7;
+  --shell-lab-surface: #ffffff;
+  --shell-lab-page-edge: #cbd5e1;
+  --shell-lab-page-edge-width: 0px;
+  --shell-lab-nav-start: #ffffff;
+  --shell-lab-nav-end: #ffffff;
+  --shell-lab-nav-text: #102a75;
+  --shell-lab-rail-width: 250px;
+  --shell-lab-logo-width: 210px;
+  --shell-lab-nav-height: 80px;
+  --shell-lab-nav-link-font: 17px;
+  --shell-lab-radius: 18px;
+  --shell-lab-shadow-x: 0px;
+  --shell-lab-shadow-y: 14px;
+  --shell-lab-shadow-blur: 42px;
+  --shell-lab-shadow-spread: 0px;
+  --shell-lab-shadow-opacity: .10;
+  --shell-lab-nav-shadow-x: 0px;
+  --shell-lab-nav-shadow-y: 0px;
+  --shell-lab-nav-shadow-blur: 0px;
+  --shell-lab-nav-shadow-spread: 0px;
+  --shell-lab-nav-shadow-opacity: 0;
+  width: min(1280px, 100%);
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 44px);
+  margin: 22px auto;
+  overflow: visible;
+  outline: var(--shell-lab-page-edge-width) solid var(--shell-lab-page-edge);
+  border-radius: var(--shell-lab-radius);
+  background: var(--shell-lab-surface);
+  box-shadow: var(--shell-lab-shadow-x) var(--shell-lab-shadow-y) var(--shell-lab-shadow-blur) var(--shell-lab-shadow-spread) rgba(35, 48, 68, var(--shell-lab-shadow-opacity));
+}
+.tnet-jobs-shell-lab[data-shell-presentation="flush"], .tnet-jobs-shell-lab[data-shell-presentation="pinned"] { width: min(1280px, 100%); min-height: 100vh; margin: 0 auto; border-radius: 0; }
+.tnet-jobs-shell-lab a { color: inherit; }
+.tnet-jobs-shell-lab-header { position: relative; z-index: 2; height: var(--shell-lab-nav-height); min-height: var(--shell-lab-nav-height); border-bottom: 1px solid #dfe6f0; background: linear-gradient(105deg, var(--shell-lab-nav-start), var(--shell-lab-nav-end)); box-shadow: var(--shell-lab-nav-shadow-x) var(--shell-lab-nav-shadow-y) var(--shell-lab-nav-shadow-blur) var(--shell-lab-nav-shadow-spread) rgba(22, 37, 73, var(--shell-lab-nav-shadow-opacity)); color: var(--shell-lab-nav-text); }
+.tnet-jobs-shell-lab[data-shell-presentation="floating"] .tnet-jobs-shell-lab-header { border-top-left-radius: var(--shell-lab-radius); border-top-right-radius: var(--shell-lab-radius); }
+.tnet-jobs-shell-lab[data-shell-gradient="off"] .tnet-jobs-shell-lab-header { background: var(--shell-lab-nav-start); }
+.tnet-jobs-shell-lab[data-shell-presentation="pinned"] .tnet-jobs-shell-lab-header { position: sticky; z-index: 8; top: 0; }
+.tnet-jobs-shell-lab-header-inner { position: relative; display: flex; min-height: var(--shell-lab-nav-height); align-items: center; gap: 24px; padding: 0 24px; }
+.tnet-jobs-shell-lab-rail-divider { position: absolute; z-index: 1; top: 50%; left: calc(var(--shell-lab-rail-width) - 1px); width: 1px; height: 46px; background: #b8c4d8; pointer-events: none; transform: translateY(-50%); }
+.tnet-jobs-shell-lab-brand { position: absolute; z-index: 2; left: 0; display: inline-flex; width: var(--shell-lab-rail-width); height: 100%; align-items: center; justify-content: center; text-decoration: none; white-space: nowrap; }
+.tnet-jobs-shell-lab-brand img, .tnet-jobs-shell-lab-footer img { display: block; width: var(--shell-lab-logo-width); height: auto; object-fit: contain; }
+.tnet-jobs-shell-lab-brand img { position: static; }
+.tnet-jobs-shell-lab-navbar-right { position: absolute; z-index: 1; top: 0; right: 0; bottom: 0; left: var(--shell-lab-rail-width); display: flex; align-items: center; gap: 24px; min-width: 0; padding: 0 24px; }
+.tnet-jobs-shell-lab-product-name { flex: 0 0 auto; color: var(--shell-lab-nav-text); font-size: 25.5px; font-weight: 660; letter-spacing: -.03em; white-space: nowrap; }
+.tnet-jobs-shell-lab-main-nav { display: flex; flex: 1 1 auto; align-items: center; justify-content: center; gap: clamp(24px, 2.5vw, 38px); min-width: 0; margin-left: 0; }
+.tnet-jobs-shell-lab-nav-menu { position: relative; }
+.tnet-jobs-shell-lab-product-menu.is-current > .tnet-jobs-shell-lab-nav-trigger { box-shadow: inset 0 -3px 0 var(--tnet-jobs-primary, #0a33df); }
+.tnet-jobs-shell-lab-nav-trigger { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0; border: 0; background: transparent; color: var(--shell-lab-nav-text); font: inherit; font-size: var(--shell-lab-nav-link-font); font-weight: 600; white-space: nowrap; cursor: pointer; }
+.tnet-jobs-shell-lab-nav-chevron { width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid #000; transform: translateY(1px); }
+.tnet-jobs-shell-lab-main-nav a { color: var(--shell-lab-nav-text); font-size: var(--shell-lab-nav-link-font); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.tnet-jobs-shell-lab-main-nav a:hover, .tnet-jobs-shell-lab-main-nav a:focus-visible { color: var(--shell-lab-nav-text); text-decoration: underline; }
+.tnet-jobs-shell-lab-account-area { display: flex; flex: 0 0 154px; width: 154px; height: 62px; align-items: center; align-self: center; border: 1px solid #dbe3ef; border-radius: 10px; background: var(--shell-lab-surface); }
+.tnet-jobs-shell-lab-bell { position: relative; display: grid; flex: 0 0 72px; width: 72px; height: 60px; margin: 0; place-items: center; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--shell-lab-nav-text); cursor: pointer; }
+.tnet-jobs-shell-lab-bell svg { width: 34px; height: 34px; }
+.tnet-jobs-shell-lab-bell > span { position: absolute; top: 9px; right: 18px; display: grid; width: 18px; height: 18px; place-items: center; border-radius: 50%; background: #ec1f27; color: #fff; font-size: 10px; font-weight: 800; }
+.tnet-jobs-shell-lab-account-menu, .tnet-jobs-shell-lab-mobile-menu { position: relative; }
+.tnet-jobs-shell-lab-account-menu { display: flex; flex: 1 1 auto; width: auto; height: 60px; align-items: center; justify-content: center; box-sizing: border-box; padding-left: 0; border-left: 0; }
+.tnet-jobs-shell-lab-account-menu::before { position: absolute; top: 50%; left: 0; width: 1px; height: 46px; background: #dbe3ef; content: ""; pointer-events: none; transform: translateY(-50%); }
+.tnet-jobs-shell-lab-disclosure-toggle { display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.tnet-jobs-shell-lab-account-menu .tnet-jobs-shell-lab-disclosure-toggle { width: 100%; height: 100%; justify-content: center; }
+.tnet-jobs-shell-lab-account-menu .tnet-jobs-shell-lab-disclosure-toggle > img, .tnet-jobs-shell-lab-avatar-fallback { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.tnet-jobs-shell-lab-avatar-fallback { display: grid; place-items: center; background: #b84f36; color: #fff; font-size: 13px; font-weight: 800; }
+.tnet-jobs-shell-lab-popover { position: absolute; z-index: 4; top: calc(100% + 10px); right: 0; display: none; min-width: 180px; padding: 8px; border: 1px solid #d9e0e8; border-radius: 10px; background: #fff; box-shadow: 0 12px 28px rgba(28, 42, 63, .15); }
+.is-open > .tnet-jobs-shell-lab-popover { display: grid; }
+.tnet-jobs-shell-lab-popover a { padding: 8px 10px; border-radius: 6px; color: #314863; font-size: 13px; font-weight: 600; text-decoration: none; }
+.tnet-jobs-shell-lab-popover a:hover, .tnet-jobs-shell-lab-popover a:focus-visible { background: #edf5ff; }
+.tnet-jobs-shell-lab-notification-menu { position: relative; flex: 0 0 auto; }
+.tnet-jobs-shell-lab-notification-popover { top: calc(100% + 10px); width: 370px; min-width: 370px; max-height: min(610px, calc(100dvh - 112px)); padding: 0; overflow: hidden; border-color: #dfe6f0; border-radius: 14px; box-shadow: 0 16px 34px rgba(28, 42, 63, .18); color: #182538; }
+.tnet-jobs-shell-lab-notification-menu.is-open > .tnet-jobs-shell-lab-notification-popover { display: block; }
+.tnet-jobs-shell-lab-notification-panel { display: grid; max-height: inherit; background: #fff; }
+.tnet-jobs-shell-lab-notification-loading, .tnet-jobs-shell-lab-notification-empty { margin: 0; padding: 24px; color: #5e6d81; font-size: 13px; line-height: 1.45; }
+.tnet-jobs-shell-lab-notification-header { display: flex; min-height: 55px; align-items: center; justify-content: space-between; padding: 0 17px; border-bottom: 1px solid #e6ebf2; }
+.tnet-jobs-shell-lab-notification-header h2 { margin: 0; color: #17253a; font-size: 17px; font-weight: 700; line-height: 1.2; }
+.tnet-jobs-shell-lab-notification-more { display: grid; width: 34px; height: 34px; place-items: center; padding: 0 0 5px; border: 0; border-radius: 7px; background: transparent; color: #637188; font: inherit; font-size: 21px; letter-spacing: 1px; line-height: 1; }
+.tnet-jobs-shell-lab-notification-more:disabled { cursor: default; opacity: .7; }
+.tnet-jobs-shell-lab-notification-actions { position: relative; }
+.tnet-jobs-shell-lab-notification-actions-menu { position: absolute; z-index: 3; top: calc(100% + 6px); right: 0; min-width: 176px; padding: 5px; background: #fff; border: 1px solid #dfe6f0; border-radius: 8px; box-shadow: 0 10px 22px rgba(28,42,63,.16); }
+.tnet-jobs-shell-lab-notification-actions-menu[hidden] { display: none; }
+.tnet-jobs-shell-lab-notification-actions-menu button,
+.tnet-jobs-shell-lab-notification-actions-menu a { display: block; width: 100%; padding: 8px 10px; border: 0; border-radius: 5px; background: transparent; color: #263d5f; font: inherit; font-size: 12px; text-align: left; text-decoration: none; white-space: nowrap; }
+.tnet-jobs-shell-lab-notification-actions-menu button:hover,
+.tnet-jobs-shell-lab-notification-actions-menu button:focus-visible,
+.tnet-jobs-shell-lab-notification-actions-menu a:hover,
+.tnet-jobs-shell-lab-notification-actions-menu a:focus-visible { background: #eaf3ff; outline: 0; }
+.tnet-jobs-shell-lab-notification-actions-menu button:disabled { color: #9aa6b6; cursor: default; }
+.tnet-jobs-shell-lab-notification-filters { display: flex; gap: 7px; padding: 12px 15px 11px; overflow-x: auto; border-bottom: 1px solid #eef2f6; scrollbar-width: thin; }
+.tnet-jobs-shell-lab-notification-filter { flex: 0 0 auto; min-height: 32px; padding: 0 11px; border: 1px solid transparent; border-radius: 16px; background: transparent; color: #43536b; font: inherit; font-size: 12px; font-weight: 650; line-height: 1; cursor: pointer; }
+.tnet-jobs-shell-lab-notification-filter.is-selected { border-color: #dce8f8; background: #eaf3ff; color: #263d5f; }
+.tnet-jobs-shell-lab-notification-filter:hover { background: #f3f7fc; }
+.tnet-jobs-shell-lab-notification-feed { max-height: min(460px, calc(100dvh - 219px)); overflow-y: auto; overscroll-behavior: contain; }
+.tnet-jobs-shell-lab-notification-group { margin: 0; padding: 10px 0 2px; }
+.tnet-jobs-shell-lab-notification-group + .tnet-jobs-shell-lab-notification-group { border-top: 1px solid #eef2f6; }
+.tnet-jobs-shell-lab-notification-group h3 { margin: 0; padding: 0 17px 5px; color: #718097; font-size: 10px; font-weight: 750; letter-spacing: .08em; line-height: 1.4; }
+.tnet-jobs-shell-lab-notification-row { display: grid; width: 100%; min-height: 70px; grid-template-columns: 45px minmax(0, 1fr) 10px; gap: 10px; align-items: start; padding: 9px 17px 10px; border: 0; background: transparent; color: #25344b; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-notification-row:hover { background: #f7faff; }
+.tnet-jobs-shell-lab-notification-avatar { position: relative; display: grid; width: 39px; height: 39px; place-items: center; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 750; line-height: 1; }
+.tnet-jobs-shell-lab-notification-avatar.is-source-fallback { background: #2674c9; }
+.tnet-jobs-shell-lab-notification-avatar--teal { background: #397b78; }
+.tnet-jobs-shell-lab-notification-avatar--violet { background: #7050a5; }
+.tnet-jobs-shell-lab-notification-avatar--gold { background: #a66d28; }
+.tnet-jobs-shell-lab-notification-source-icon { width: 20px; height: 20px; }
+.tnet-jobs-shell-lab-notification-event-badge { position: absolute; right: -4px; bottom: -3px; display: grid; width: 17px; height: 17px; place-items: center; border: 2px solid #fff; border-radius: 50%; background: #e9f3ff; color: #2674c9; }
+.tnet-jobs-shell-lab-notification-event-icon { width: 10px; height: 10px; stroke-width: 2.2; }
+.tnet-jobs-shell-lab-notification-copy { display: grid; min-width: 0; gap: 3px; padding-top: 1px; }
+.tnet-jobs-shell-lab-notification-payload { display: -webkit-box; overflow: hidden; color: #25344b; font-size: 13px; font-weight: 500; line-height: 18px; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.tnet-jobs-shell-lab-notification-meta { overflow: hidden; color: #748197; font-size: 11px; font-weight: 600; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.tnet-jobs-shell-lab-notification-unread-dot { width: 7px; height: 7px; margin-top: 7px; border-radius: 50%; background: #0a66c2; }
+.tnet-jobs-shell-lab-notification-read-spacer { width: 7px; height: 7px; }
+.tnet-jobs-shell-lab-account-menu > .tnet-jobs-shell-lab-popover { top: calc(100% + 10px); right: 0; width: 304px; min-width: 304px; padding: 0; overflow: hidden; border-color: #e5eaf1; border-radius: 12px; box-shadow: 0 12px 28px rgba(28, 42, 63, .14); }
+.tnet-jobs-shell-lab-account-popover { display: grid; }
+.tnet-jobs-shell-lab-account-identity { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 12px; align-items: center; padding: 18px; border-bottom: 1px solid #e5eaf1; }
+.tnet-jobs-shell-lab-account-identity > img, .tnet-jobs-shell-lab-account-identity > .tnet-jobs-shell-lab-avatar-fallback { width: 58px; height: 58px; }
+.tnet-jobs-shell-lab-account-identity > div { display: grid; gap: 3px; min-width: 0; }
+.tnet-jobs-shell-lab-account-identity strong { color: #142235; font-size: 16px; font-weight: 700; line-height: 1.2; }
+.tnet-jobs-shell-lab-account-identity span { overflow: hidden; color: #657286; font-size: 12px; font-weight: 500; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+.tnet-jobs-shell-lab-account-actions, .tnet-jobs-shell-lab-account-session { display: grid; padding: 8px; }
+.tnet-jobs-shell-lab-account-actions { border-bottom: 1px solid #e5eaf1; }
+.tnet-jobs-shell-lab-account-actions a, .tnet-jobs-shell-lab-account-actions button, .tnet-jobs-shell-lab-account-session a { display: grid; width: 100%; min-height: 42px; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: center; padding: 0 8px; border: 0; border-radius: 8px; background: transparent; color: #142235; font: inherit; font-size: 14px; font-weight: 600; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-account-actions a:hover, .tnet-jobs-shell-lab-account-actions a:focus-visible, .tnet-jobs-shell-lab-account-actions button:hover, .tnet-jobs-shell-lab-account-actions button:focus-visible { background: #f3f7fd; color: #0a33df; outline: 0; }
+.tnet-jobs-shell-lab-account-actions [aria-hidden="true"], .tnet-jobs-shell-lab-account-session [aria-hidden="true"] { display: grid; width: 20px; height: 20px; place-items: center; color: currentColor; font-size: 20px; line-height: 1; }
+.tnet-jobs-shell-lab-account-actions svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.tnet-jobs-shell-lab-account-session a { color: #d92d20; }
+.tnet-jobs-shell-lab-account-session a:hover, .tnet-jobs-shell-lab-account-session a:focus-visible { background: #fff2f1; outline: 0; }
+.tnet-jobs-shell-lab-product-menu { position: relative; }
+.tnet-jobs-shell-lab-product-popover { top: calc(100% + 14px); padding: 0; overflow: hidden; border-color: #e5eaf1; border-radius: 12px; box-shadow: 0 12px 28px rgba(28, 42, 63, .14); }
+.tnet-jobs-shell-lab-product-menu.is-open > .tnet-jobs-shell-lab-product-popover { display: block; }
+.tnet-jobs-shell-lab-product-section { display: none; padding: 7px 18px 9px; }
+.tnet-jobs-shell-lab-product-menu[data-product-flow="employer"] [data-product-flow-panel="employer"], .tnet-jobs-shell-lab-product-menu[data-product-flow="jobseeker"] [data-product-flow-panel="jobseeker"] { display: block; }
+.tnet-jobs-shell-lab-product-switch { display: none; width: 100%; min-height: 49px; align-items: center; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; padding: 10px 20px; border: 0; background: #fff; color: #98a1af; font: inherit; font-size: 13px; font-weight: 600; letter-spacing: .01em; text-align: left; text-transform: uppercase; cursor: pointer; }
+.tnet-jobs-shell-lab-product-menu[data-product-flow="employer"] [data-product-flow-switch="jobseeker"], .tnet-jobs-shell-lab-product-menu[data-product-flow="jobseeker"] [data-product-flow-switch="employer"] { display: grid; }
+.tnet-jobs-shell-lab-product-menu [data-product-flow-switch] { border-top: 1px solid #e5eaf1; }
+.tnet-jobs-shell-lab-product-switch:hover, .tnet-jobs-shell-lab-product-switch:focus-visible { background: #f8fafc; color: #53657c; }
+.tnet-jobs-shell-lab-product-heading, .tnet-jobs-shell-lab-product-section > a { display: grid; grid-template-columns: 18px minmax(0, 1fr); align-items: center; gap: 12px; margin: 0; border-radius: 8px; color: #263b63; text-decoration: none; }
+.tnet-jobs-shell-lab-product-heading { min-height: 41px; padding: 0; color: #263b63; font-size: 13px; font-weight: 600; letter-spacing: .01em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-product-section > a { min-height: 44px; margin-left: 8px; padding: 0 10px; font-size: 15px; font-weight: 600; }
+.tnet-jobs-shell-lab-product-section > a.is-current { background: #edf4ff; color: #0a33df; }
+.tnet-jobs-shell-lab-product-section > a:hover, .tnet-jobs-shell-lab-product-section > a:focus-visible { background: #f3f7fd; color: #0a33df; }
+.tnet-jobs-shell-lab-product-icon { display: grid; width: 18px; height: 18px; place-items: center; color: currentColor; }
+.tnet-jobs-shell-lab-product-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.tnet-jobs-shell-lab-chatboards-popover { top: calc(100% + 14px); padding: 0; overflow: hidden; border-color: #e5eaf1; border-radius: 12px; box-shadow: 0 12px 28px rgba(28, 42, 63, .14); }
+.tnet-jobs-shell-lab-nav-menu.is-open > .tnet-jobs-shell-lab-chatboards-popover { display: block; }
+.tnet-jobs-shell-lab-chatboards-section { padding: 9px 14px 8px; border-bottom: 1px solid #e5eaf1; }
+.tnet-jobs-shell-lab-chatboards-section > p { margin: 0 0 3px; padding: 0 8px; color: #657286; font-size: 12px; font-weight: 600; letter-spacing: .01em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-chatboards-item { display: grid; width: 100%; min-height: 42px; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 0 8px; border: 0; border-radius: 8px; background: transparent; color: #142235; font: inherit; font-size: 15px; font-weight: 600; line-height: 20px; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-chatboards-popover .tnet-jobs-shell-lab-chatboards-item { font-size: 15px; line-height: 20px; }
+.tnet-jobs-shell-lab-chatboards-item:hover, .tnet-jobs-shell-lab-chatboards-item:focus-visible { background: #f3f7fd; color: #0a33df; outline: 0; }
+.tnet-jobs-shell-lab-chatboards-icon, .tnet-jobs-shell-lab-chatboards-spacer { display: grid; width: 20px; height: 20px; place-items: center; color: currentColor; }
+.tnet-jobs-shell-lab-chatboards-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.tnet-jobs-shell-lab-chatboards-item.is-more { color: var(--tnet-jobs-primary, #0a33df); }
+.tnet-jobs-shell-lab-chatboards-more-arrow { color: #52617a; font-size: 26px; font-weight: 400; line-height: 1; }
+.tnet-jobs-shell-lab-chatboards-browse { width: calc(100% - 28px); min-height: 58px; margin: 0 14px; padding: 8px; border-radius: 0; }
+.tnet-jobs-shell-lab-chatboards-section:first-child,
+.tnet-jobs-shell-lab-lessonplans-section:first-child { padding-top: 12px; }
+.tnet-jobs-shell-lab-lessonplans-popover { top: calc(100% + 14px); max-height: calc(100dvh - var(--shell-lab-nav-height) - 32px); padding: 0; overflow: auto; border-color: #e5eaf1; border-radius: 12px; box-shadow: 0 12px 28px rgba(28, 42, 63, .14); }
+.tnet-jobs-shell-lab-product-popover, .tnet-jobs-shell-lab-chatboards-popover, .tnet-jobs-shell-lab-lessonplans-popover { right: auto; left: 0; width: 304px; min-width: 304px; }
+.tnet-jobs-shell-lab-nav-menu.is-open > .tnet-jobs-shell-lab-lessonplans-popover { display: block; }
+.tnet-jobs-shell-lab-lessonplans-section { padding: 9px 14px 8px; border-bottom: 1px solid #e5eaf1; }
+.tnet-jobs-shell-lab-lessonplans-section > p { margin: 0 0 3px; padding: 0 8px; color: #657286; font-size: 12px; font-weight: 600; letter-spacing: .01em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-lessonplans-item { display: grid; width: 100%; min-height: 42px; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 0 8px; border: 0; border-radius: 8px; background: transparent; color: #142235; font: inherit; font-size: 15px; font-weight: 600; text-align: left; cursor: pointer; }
+.tnet-jobs-shell-lab-lessonplans-item:hover, .tnet-jobs-shell-lab-lessonplans-item:focus-visible { background: #f3f7fd; color: #0a33df; outline: 0; }
+.tnet-jobs-shell-lab-lessonplans-item.is-accordion-active { background: transparent; color: #0a33df; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy-parent .tnet-jobs-shell-lab-chatboards-icon { color: #142235; }
+.tnet-jobs-shell-lab-chatboards-menu .tnet-jobs-shell-lab-lessonplans-taxonomy-parent--grade .tnet-jobs-shell-lab-chatboards-icon { color: #a61735; }
+.tnet-jobs-shell-lab-chatboards-menu .tnet-jobs-shell-lab-lessonplans-taxonomy-parent--subject .tnet-jobs-shell-lab-chatboards-icon { color: #6310ff; }
+.tnet-jobs-shell-lab-lessonplans-menu .tnet-jobs-shell-lab-lessonplans-taxonomy-parent--grade .tnet-jobs-shell-lab-chatboards-icon { color: #a61735; }
+.tnet-jobs-shell-lab-lessonplans-menu .tnet-jobs-shell-lab-lessonplans-taxonomy-parent--subject .tnet-jobs-shell-lab-chatboards-icon { color: #6310ff; }
+.tnet-jobs-shell-lab-chatboards-item.tnet-jobs-shell-lab-lessonplans-taxonomy-parent--grade.is-accordion-active { background: transparent; color: #a61735; }
+.tnet-jobs-shell-lab-chatboards-item.tnet-jobs-shell-lab-lessonplans-taxonomy-parent--subject.is-accordion-active { background: transparent; color: #6310ff; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy-parent--grade .tnet-jobs-shell-lab-lessonplans-parent-label { color: #a61735; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy-parent--subject .tnet-jobs-shell-lab-lessonplans-parent-label { color: #6310ff; }
+.tnet-jobs-shell-lab-lessonplans-item.is-more { color: var(--tnet-jobs-primary, #0a33df); }
+.tnet-jobs-shell-lab-lessonplans-actions { padding-bottom: 9px; border-bottom: 0; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy { margin: 2px 8px 10px 40px; color: #0a33df; font-size: 13px; font-weight: 400; line-height: 18px; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy[data-lesson-accordion-panel="grade"] { color: #a61735; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy[data-lesson-accordion-panel="subject"] { color: #6310ff; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy[hidden] { display: none; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy button { display: inline; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy button:hover, .tnet-jobs-shell-lab-lessonplans-taxonomy button:focus-visible { color: #0017dd; text-decoration: underline; text-underline-offset: 2px; outline: 0; }
+.tnet-jobs-shell-lab-lessonplans-taxonomy-separator { color: #657286; }
+.tnet-jobs-shell-lab-mobile-menu { position: relative; display: none; }
+.tnet-jobs-shell-lab-compact-navigation { right: 0; left: auto; width: min(300px, calc(100vw - 32px)); min-width: min(300px, calc(100vw - 32px)); max-height: calc(100dvh - 104px); padding: 10px; overflow: auto; }
+.tnet-jobs-shell-lab-compact-panel { display: grid; gap: 2px; }
+.tnet-jobs-shell-lab-compact-panel[hidden] { display: none; }
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow][hidden] { display: none; }
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] { display: grid; gap: 2px; }
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > strong { margin: 10px 8px 3px; color: #657286; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > a,
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > button { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: space-between; padding: 9px 10px; border: 0; border-radius: 8px; background: transparent; color: #142235; font: inherit; font-size: 15px; font-weight: 600; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > a,
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > button { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 12px; justify-content: initial; }
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > a:hover,
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > a:focus-visible,
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > button:hover,
+.tnet-jobs-shell-lab-compact-panel [data-compact-flow] > button:focus-visible { background: #f3f7fd; color: var(--tnet-jobs-primary, #0a33df); outline: 0; }
+.tnet-jobs-shell-lab-compact-panel > p { margin: 4px 8px 7px; color: #657286; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-compact-panel > strong { margin: 10px 8px 3px; color: #657286; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-compact-panel > button, .tnet-jobs-shell-lab-compact-panel > a { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: space-between; padding: 9px 10px; border: 0; border-radius: 8px; background: transparent; color: #142235; font: inherit; font-size: 15px; font-weight: 600; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-compact-panel > button:hover, .tnet-jobs-shell-lab-compact-panel > button:focus-visible, .tnet-jobs-shell-lab-compact-panel > a:hover, .tnet-jobs-shell-lab-compact-panel > a:focus-visible { background: #f3f7fd; color: var(--tnet-jobs-primary, #0a33df); outline: 0; }
+.tnet-jobs-shell-lab-compact-resource { display: grid; gap: 2px; border-bottom: 1px solid #e5eaf1; }
+.tnet-jobs-shell-lab-compact-resource > button { display: grid; width: 100%; min-height: 48px; grid-template-columns: 16px minmax(0, 1fr); gap: 10px; align-items: center; padding: 9px 10px; border: 0; border-radius: 8px; background: transparent; color: #142235; font: inherit; font-size: 15px; font-weight: 700; text-align: left; cursor: pointer; }
+.tnet-jobs-shell-lab-compact-resource > button:hover { background: #f8fafc; color: #142235; }
+.tnet-jobs-shell-lab-compact-resource > button:focus-visible { background: transparent; color: #142235; outline: 2px solid #657286; outline-offset: 2px; }
+.tnet-jobs-shell-lab-compact-resource > button.is-muted { color: #98a1af; }
+.tnet-jobs-shell-lab-compact-resource > button.is-muted:hover, .tnet-jobs-shell-lab-compact-resource > button.is-muted:focus-visible { color: #98a1af; }
+.tnet-jobs-shell-lab-compact-caret { width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
+.tnet-jobs-shell-lab-compact-resource > button[aria-expanded="true"] .tnet-jobs-shell-lab-compact-caret { transform: rotate(45deg); }
+.tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel] { display: grid; gap: 2px; padding: 0 8px 8px 36px; }
+.tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel][hidden] { display: none; }
+.tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel] > a { display: grid; min-height: 44px; grid-template-columns: 20px minmax(0, 1fr); gap: 12px; align-items: center; padding: 9px 10px; border-radius: 8px; color: #142235; font: inherit; font-size: 15px; font-weight: 600; text-decoration: none; }
+.tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel] > a:hover, .tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel] > a:focus-visible { background: #f3f7fd; color: var(--tnet-jobs-primary, #0a33df); outline: 0; }
+.tnet-jobs-shell-lab-compact-panel > .tnet-jobs-shell-lab-chatboards-item { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 12px; justify-content: initial; }
+.tnet-jobs-shell-lab-compact-panel > .tnet-jobs-shell-lab-chatboards-item .tnet-jobs-shell-lab-chatboards-icon { display: grid; width: 20px; height: 20px; place-items: center; color: currentColor; }
+.tnet-jobs-shell-lab-compact-panel > .tnet-jobs-shell-lab-chatboards-item .tnet-jobs-shell-lab-chatboards-icon svg { width: 20px; height: 20px; }
+.tnet-jobs-shell-lab-compact-taxonomy { margin: -2px 8px 8px 44px; color: #0a33df; font-size: 13px; font-weight: 400; line-height: 18px; }
+.tnet-jobs-shell-lab-compact-taxonomy[hidden] { display: none; }
+.tnet-jobs-shell-lab-compact-taxonomy button { display: inline; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-compact-taxonomy button:hover, .tnet-jobs-shell-lab-compact-taxonomy button:focus-visible { color: #0017dd; text-decoration: underline; outline: 0; }
+.tnet-jobs-shell-lab-compact-taxonomy[data-compact-taxonomy-panel="chatboard-grade"], .tnet-jobs-shell-lab-compact-taxonomy[data-compact-taxonomy-panel="lesson-grade"] { color: #a61735; }
+.tnet-jobs-shell-lab-compact-taxonomy[data-compact-taxonomy-panel="lesson-subject"] { color: #6310ff; }
+.tnet-jobs-shell-lab-compact-taxonomy-trigger--grade { color: #a61735 !important; }
+.tnet-jobs-shell-lab-compact-taxonomy-trigger--subject { color: #6310ff !important; }
+.tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel] > a.tnet-jobs-shell-lab-compact-link--subject { color: #6310ff; }
+.tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel] > a.tnet-jobs-shell-lab-compact-link--subject:hover, .tnet-jobs-shell-lab-compact-resource > [data-compact-accordion-panel] > a.tnet-jobs-shell-lab-compact-link--subject:focus-visible { color: #6310ff; }
+.tnet-jobs-shell-lab-compact-taxonomy-trigger[aria-expanded="true"] { background: transparent; }
+.tnet-jobs-shell-lab-compact-start-topic { margin-top: 6px; border-top: 1px solid #e5eaf1; border-radius: 0 !important; }
+.tnet-jobs-shell-lab-compact-panel > .tnet-jobs-shell-lab-compact-back { min-height: 36px; justify-content: flex-start; color: var(--tnet-jobs-primary, #0a33df); font-size: 14px; }
+.tnet-jobs-shell-lab-compact-employer-section { display: none; gap: 2px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5eaf1; }
+.tnet-jobs-shell-lab-compact-employer-section > p { margin: 4px 8px 7px; color: #657286; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-compact-employer-section > a { display: flex; min-height: 44px; align-items: center; padding: 9px 10px; border-radius: 8px; color: #142235; font-size: 15px; font-weight: 600; text-decoration: none; }
+.tnet-jobs-shell-lab-compact-employer-section > a:hover, .tnet-jobs-shell-lab-compact-employer-section > a:focus-visible { background: #f3f7fd; color: var(--tnet-jobs-primary, #0a33df); outline: 0; }
+.tnet-jobs-shell-lab-mobile-fixture-label { display: block; margin: 9px 10px 4px; color: #7a8798; font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-mobile-menu .tnet-jobs-shell-lab-fixture-switcher { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 0; padding: 4px; }
+.tnet-jobs-shell-lab-mobile-menu .tnet-jobs-shell-lab-fixture-switcher a { min-width: 0; padding: 7px 5px; color: #657388; font-size: 10px; text-align: center; }
+.tnet-jobs-shell-lab-mobile-menu .tnet-jobs-shell-lab-fixture-switcher a.is-current { color: #245687; }
+
+.tnet-jobs-shell-lab-body-frame { display: grid; flex: 1 0 auto; grid-template-columns: var(--shell-lab-rail-width) minmax(0, 1fr); min-height: 650px; }
+.tnet-jobs-shell-lab-rail { display: flex; flex-direction: column; gap: 15px; padding: 27px 14px 20px; border-right: 1px solid #e5eaf0; background: color-mix(in srgb, var(--shell-lab-surface) 94%, #e8edf4); }
+.tnet-jobs-shell-lab[data-shell-presentation="pinned"] .tnet-jobs-shell-lab-rail { position: sticky; top: var(--shell-lab-nav-height); align-self: start; }
+.tnet-jobs-shell-lab-rail-label { margin: 0 10px 2px; color: #7a8798; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-rail nav { display: grid; gap: 0; }
+.tnet-jobs-shell-lab-rail nav a { display: flex; min-height: 42px; align-items: center; gap: 5px; margin-bottom: 0; padding: 6px 12px; border-radius: 8px; color: #4e5d73; font-size: 14.773px; font-weight: 700; line-height: 1.5; text-decoration: none; }
+.tnet-jobs-shell-lab-nav-main { display: flex; min-width: 0; width: 100%; align-items: center; gap: 9px; }
+.tnet-jobs-shell-lab-nav-main strong { min-width: 0; flex: 1 1 auto; }
+.tnet-jobs-shell-lab-nav-icon { display: inline-flex; flex: 0 0 22px; width: 22px; height: 22px; align-items: center; justify-content: center; color: currentColor; }
+.tnet-jobs-shell-lab-nav-icon svg { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+.tnet-jobs-shell-lab-rail nav a:hover, .tnet-jobs-shell-lab-rail nav a:focus-visible { background: #edf3fa; color: #25588f; }
+.tnet-jobs-shell-lab-rail nav a.is-active { box-sizing: border-box; border: 1px solid #c8d6f4; background: #eaf1ff; box-shadow: 0 3px 10px rgba(28, 47, 90, .06); color: #0017dd; }
+.tnet-jobs-shell-lab-rail nav b, .tnet-jobs-shell-lab-filter-list b { display: inline-flex; min-width: 20px; height: 20px; box-sizing: border-box; align-items: center; justify-content: center; padding: 0 6px; border-radius: 999px; background: #e5ebf2; color: #617188; font-size: 11px; line-height: 1; font-weight: 600; text-align: center; }
+.tnet-jobs-shell-lab-rail nav a:not(.is-active) b { background: #e7edff; color: var(--tnet-jobs-primary); }
+.tnet-jobs-shell-lab-rail nav a.is-active b { background: #d0ddfd; color: #0017dd; }
+.tnet-jobs-shell-lab-rail-divider-rule { border-top: 1px solid #d9e2eb; margin: 0 0 10px; }
+.tnet-jobs-shell-lab-help-card { margin-top: 0; padding: 22px 16px; border: 1px solid #dce5f6; border-radius: 8px; background: #fff; color: #122875; }
+.tnet-jobs-shell-lab-help-card p { margin: 0 0 12px; color: #0017dd; font-size: 16px; line-height: 1.25; font-weight: 600; }
+.tnet-jobs-shell-lab-help-card div { margin: 0 0 16px; color: #263b65; font-size: 14px; line-height: 1.7; }
+.tnet-jobs-shell-lab-help-card a { display: block; width: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid #0017dd; border-radius: 6px; color: #0017dd; font: inherit; font-size: 16px; line-height: 24px; font-weight: 700; text-align: center; text-decoration: none; }
+.tnet-jobs-shell-lab-workspace { min-width: 0; padding: 43px clamp(22px, 3vw, 48px) 42px; background: var(--shell-lab-surface); }
+.tnet-jobs-shell-lab-employer-menu { display: none; position: relative; }
+.tnet-jobs-shell-lab-fixture-switcher { display: inline-flex; gap: 4px; margin-bottom: 26px; padding: 4px; border-radius: 9px; background: #f0f4f8; }
+.tnet-jobs-shell-lab-fixture-switcher a { padding: 7px 10px; border-radius: 6px; color: #657388; font-size: 12px; font-weight: 700; text-decoration: none; }
+.tnet-jobs-shell-lab-fixture-switcher a.is-current { background: #fff; color: #245687; box-shadow: 0 1px 3px rgba(29, 51, 78, .14); }
+.tnet-jobs-shell-lab-rail .tnet-jobs-shell-lab-fixture-switcher { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; width: 100%; margin: 0 0 2px; padding: 4px; }
+.tnet-jobs-shell-lab-rail .tnet-jobs-shell-lab-fixture-switcher a { min-width: 0; padding: 7px 5px; color: #657388; font-size: 10px; text-align: center; }
+.tnet-jobs-shell-lab-rail .tnet-jobs-shell-lab-fixture-switcher a.is-current { color: #245687; }
+.tnet-jobs-shell-lab-route { min-width: 0; }
+.tnet-jobs-shell-lab-route-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+.tnet-jobs-shell-lab-title-context { position: relative; min-width: 0; margin-top: 2px; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector { position: relative; width: max-content; max-width: 100%; border: 0; border-radius: 0; background: transparent; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector summary { display: flex; width: max-content; min-width: 111.703px; max-width: 100%; height: 38px; min-height: 38px; align-items: center; gap: 7px; padding: 0; cursor: pointer; list-style: none; color: #142235; font-weight: 400; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector summary::-webkit-details-marker { display: none; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-icon { display: none; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-copy { display: grid; align-self: center; height: 26.04px; gap: 4px; transform: translateY(-3.5px); }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-copy strong { color: #07154f; font-size: 24.8px; font-weight: 700; line-height: 26.04px; letter-spacing: -.496px; white-space: nowrap; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-caret { position: relative; width: 10px; height: 7px; margin-left: 2px; color: #000; font-size: 0; transform: translateY(-3.5px); }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-caret::before { display: block; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid currentColor; content: ""; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu { position: absolute; z-index: 10; top: calc(100% + 6px); left: -1px; display: grid; width: 135.703px; min-width: 135.703px; gap: 2px; padding: 10px; border: 1px solid #d7deea; border-radius: 8px; background: #fff; box-shadow: 0 10px 24px rgba(28, 47, 90, .14); color: #142235; font-weight: 400; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu a, .tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-label { padding: 7px 8px; color: #122875; text-decoration: none; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu a:hover, .tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu a:focus { background: #eef3ff; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-label { margin-top: 5px; color: #526273; font-size: .72rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu { width: 355px; min-width: 355px; max-width: min(355px, calc(100vw - 32px)); max-height: 680px; padding: 17px 9px 9px; overflow: hidden; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu > a { display: flex; align-items: center; min-height: 40px; white-space: normal; }
+.tnet-jobs-shell-lab-title-context .scope-check { display: inline-flex; flex: 0 0 20px; align-items: center; justify-content: center; margin-left: auto; visibility: hidden; color: #0017dd; font-weight: 800; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu > a.is-selected { background: #eef3ff; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu > a.is-selected .scope-check { visibility: visible; }
+.tnet-jobs-shell-lab-title-context .scope-check--leading { margin: 0 8px 0 0; visibility: hidden; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu > [data-scope-all].is-selected { background: transparent; }
+.tnet-jobs-shell-lab-title-context .scope-school-icon, .tnet-jobs-shell-lab-title-context .scope-manage-icon { position: relative; display: inline-flex; flex: 0 0 20px; width: 20px; height: 20px; align-items: center; justify-content: center; color: #294879; }
+.tnet-jobs-shell-lab-title-context .scope-school-icon svg, .tnet-jobs-shell-lab-title-context .scope-manage-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+.tnet-jobs-shell-lab-title-context .scope-check--school { position: absolute; inset: 0; margin: 0; color: var(--tnet-jobs-primary); }
+.tnet-jobs-shell-lab-title-context .scope-list a.is-selected .scope-school-icon svg { display: none; }
+.tnet-jobs-shell-lab-title-context .scope-list a.is-selected .scope-check--school { visibility: visible; }
+.tnet-jobs-shell-lab-title-context .scope-list { display: grid; max-height: 200px; overflow: auto; scrollbar-width: thin; scrollbar-color: #9ca8ba transparent; }
+.tnet-jobs-shell-lab-title-context [data-preview-inventory-state="4"] .scope-list { max-height: none; overflow: visible; }
+.tnet-jobs-shell-lab-title-context [data-preview-inventory-state="27"].is-preview-expanded .scope-list { max-height: 255px; }
+.tnet-jobs-shell-lab-title-context .scope-list::-webkit-scrollbar { width: 7px; }
+.tnet-jobs-shell-lab-title-context .scope-list::-webkit-scrollbar-thumb { border-radius: 8px; background: #9ca8ba; }
+.tnet-jobs-shell-lab-title-context .scope-list a { display: grid; grid-template-columns: 20px minmax(0, 1fr); align-items: center; column-gap: 8px; min-height: 40px; padding: 6px; }
+.tnet-jobs-shell-lab-title-context .scope-list a[hidden] { display: none; }
+.tnet-jobs-shell-lab-title-context .scope-list a .scope-school-label { min-width: 0; color: #122875; font-size: 15.5px; font-weight: 600; line-height: 22px; overflow-wrap: anywhere; }
+.tnet-jobs-shell-lab-title-context .scope-list a.is-selected { background: #eef3ff; }
+.tnet-jobs-shell-lab-title-context .scope-list a.is-selected .scope-check { visibility: visible; }
+.tnet-jobs-shell-lab-title-context .scope-search { position: relative; display: grid; height: 40px; align-items: center; margin: 11px 0 5px; line-height: 0; }
+.tnet-jobs-shell-lab-title-context .scope-search-icon { position: static; grid-area: 1 / 1; justify-self: end; display: inline-flex; width: 17px; height: 17px; align-items: center; justify-content: center; margin-top: 0; margin-right: 11px; color: #526273; pointer-events: none; }
+.tnet-jobs-shell-lab-title-context .scope-search-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; }
+.tnet-jobs-shell-lab-title-context .scope-search input { grid-area: 1 / 1; width: 100%; height: 40px; box-sizing: border-box; padding: 7px 36px 7px 10px; border: 1px solid #d7deea; border-radius: 8px; color: #142235; font: inherit; font-size: 14.5px; font-weight: 400; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu a.scope-view-all { justify-content: center; margin: 6px 0 7px; color: var(--tnet-jobs-primary); }
+.tnet-jobs-shell-lab-title-context .scope-view-all[hidden] { display: none; }
+.tnet-jobs-shell-lab-title-context .scope-manage-label { border-top: 1px solid #d7deea; padding-top: 12px; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-label { font-size: 13.5px; font-weight: 600; line-height: 20px; letter-spacing: 0; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu > .tnet-jobs-employer-workspace-selector-label:first-child { margin-bottom: 8px; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu > [data-scope-all] { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #d7deea; color: var(--tnet-jobs-primary); font-size: 15.5px; font-weight: 600; }
+.tnet-jobs-shell-lab-title-context .tnet-jobs-employer-workspace-selector-menu a.scope-view-all { font-size: 15.5px; font-weight: 600; }
+.tnet-jobs-shell-lab-title-context .scope-manage { display: grid; grid-template-columns: 20px minmax(0, 1fr); align-items: center; column-gap: 8px; min-height: 40px; color: #122875; }
+.tnet-jobs-shell-lab-title-context .scope-manage span { margin-top: 0; color: #122875; font-size: 15.5px; font-weight: 600; }
+.tnet-jobs-shell-lab-route-header p { margin: 0 0 5px; color: #6c7a90; font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.tnet-jobs-shell-lab-route-header h1 { margin: 0; color: #2d3e58; font-size: clamp(27px, 3vw, 36px); line-height: 1.08; }
+.tnet-jobs-shell-lab-route-header span { display: block; margin-top: 7px; color: #718096; font-size: 14px; }
+.tnet-jobs-shell-lab-primary-cta, .tnet-jobs-shell-lab-secondary-cta { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; padding: 9px 15px; border: 1px solid transparent; border-radius: 7px; font: inherit; font-size: 13px; font-weight: 750; text-decoration: none; white-space: nowrap; cursor: pointer; }
+.tnet-jobs-shell-lab .tnet-jobs-shell-lab-primary-cta { background: var(--tnet-jobs-primary); color: #fff; }
+.tnet-jobs-shell-lab .tnet-jobs-shell-lab-primary-cta:hover, .tnet-jobs-shell-lab .tnet-jobs-shell-lab-primary-cta:focus-visible { background: var(--tnet-jobs-primary-hover, #175893); color: #fff; }
+.tnet-jobs-shell-lab-secondary-cta { border-color: #c8d3df; background: #fff; color: #395069; }
+.tnet-jobs-shell-lab-controls { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+.tnet-jobs-shell-lab-filter-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.tnet-jobs-shell-lab-filter-list button { display: inline-flex; min-height: 34px; align-items: center; gap: 6px; padding: 6px 9px; border: 1px solid #dce4ed; border-radius: 7px; background: #fff; color: #56667c; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.tnet-jobs-shell-lab-filter-list button.is-active { border-color: #b8d5ef; background: #edf6ff; color: #1d5e98; }
+.tnet-jobs-shell-lab-search { display: flex; flex: 0 1 245px; align-items: center; min-width: 190px; border: 1px solid #d3dce7; border-radius: 7px; background: #fff; }
+.tnet-jobs-shell-lab-search input { min-width: 0; flex: 1; padding: 9px 0 9px 11px; border: 0; outline: 0; background: transparent; color: #33465d; font: inherit; font-size: 13px; }
+.tnet-jobs-shell-lab-search > span:last-child { flex: 0 0 37px; color: #748298; text-align: center; }
+.tnet-jobs-shell-lab-table-wrap { width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; border: 1px solid #e0e6ed; border-radius: 10px; }
+.tnet-jobs-shell-lab-table-wrap table { width: 100%; min-width: 650px; border-collapse: collapse; }
+.tnet-jobs-shell-lab-table-wrap th { padding: 12px 16px; border-bottom: 1px solid #e0e6ed; color: #758299; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-align: left; text-transform: uppercase; }
+.tnet-jobs-shell-lab-table-wrap td { padding: 15px 16px; border-bottom: 1px solid #edf0f4; color: #56667a; font-size: 13px; vertical-align: middle; }
+.tnet-jobs-shell-lab-table-wrap tr:last-child td { border-bottom: 0; }
+.tnet-jobs-shell-lab-table-wrap td strong, .tnet-jobs-shell-lab-table-wrap td span { display: block; }
+.tnet-jobs-shell-lab-table-wrap td strong { color: #30435e; font-size: 14px; }
+.tnet-jobs-shell-lab-table-wrap td span { margin-top: 4px; color: #7b8796; font-size: 12px; }
+.tnet-jobs-shell-lab-table-wrap em { display: inline-block; padding: 4px 7px; border-radius: 999px; font-size: 11px; font-style: normal; font-weight: 800; white-space: nowrap; }
+.tnet-jobs-shell-lab-table-wrap .is-live { background: #e0f4e8; color: #23734a; }
+.tnet-jobs-shell-lab-table-wrap .is-review { background: #fff2d9; color: #9a671a; }
+.tnet-jobs-shell-lab-row-action { color: #1b619e; font-size: 12px; font-weight: 800; text-decoration: none; }
+
+.tnet-jobs-shell-lab-stepper { display: flex; gap: 0; margin: 0 0 27px; padding: 0; list-style: none; overflow: hidden; border: 1px solid #dde4ec; border-radius: 9px; }
+.tnet-jobs-shell-lab-stepper li { display: flex; flex: 1 1 0; align-items: center; gap: 8px; min-width: 0; padding: 12px 10px; color: #78869a; font-size: 12px; font-weight: 700; }
+.tnet-jobs-shell-lab-stepper li + li { border-left: 1px solid #e3e8ee; }
+.tnet-jobs-shell-lab-stepper span { display: grid; flex: 0 0 22px; width: 22px; height: 22px; place-items: center; border-radius: 50%; background: #e7edf4; color: #708096; font-size: 11px; }
+.tnet-jobs-shell-lab-stepper .is-complete span { background: #d9efe1; color: #28754d; }
+.tnet-jobs-shell-lab-stepper .is-current { background: #f0f7ff; color: #1c5e9c; }
+.tnet-jobs-shell-lab-stepper .is-current span { background: #286bab; color: #fff; }
+.tnet-jobs-shell-lab-form { display: grid; gap: 18px; max-width: 780px; }
+.tnet-jobs-shell-lab-form fieldset { margin: 0; padding: 20px; border: 1px solid #e0e6ed; border-radius: 10px; }
+.tnet-jobs-shell-lab-form legend { padding: 0 6px; color: #384b66; font-size: 15px; font-weight: 800; }
+.tnet-jobs-shell-lab-form label { display: grid; gap: 6px; color: #53647a; font-size: 12px; font-weight: 750; }
+.tnet-jobs-shell-lab-form input, .tnet-jobs-shell-lab-form select { min-width: 0; height: 40px; padding: 8px 10px; border: 1px solid #cdd8e4; border-radius: 7px; background: #fff; color: #33465e; font: inherit; font-size: 14px; }
+.tnet-jobs-shell-lab-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; margin-top: 15px; }
+.tnet-jobs-shell-lab-form fieldset + fieldset .tnet-jobs-shell-lab-form-grid { grid-template-columns: minmax(0, 1.5fr) minmax(130px, .8fr) minmax(95px, .55fr); }
+.tnet-jobs-shell-lab-form-actions { display: flex; justify-content: space-between; gap: 14px; padding-top: 4px; }
+
+.tnet-jobs-shell-lab { container-type: inline-size; }
+.tnet-jobs-shell-lab-footer { display: grid; grid-template-columns: var(--shell-lab-rail-width) minmax(0, 1fr); min-height: 68px; height: 68px; padding: 0; border-top: 1px solid #e2e8ee; background: var(--shell-lab-surface); }
+.tnet-jobs-shell-lab[data-shell-presentation="floating"] .tnet-jobs-shell-lab-footer { border-bottom-left-radius: var(--shell-lab-radius); border-bottom-right-radius: var(--shell-lab-radius); }
+.tnet-jobs-shell-lab-footer-brand { display: flex; min-width: 0; align-items: center; justify-content: center; }
+.tnet-jobs-shell-lab-footer-brand img { width: 150px; height: auto; }
+.tnet-jobs-shell-lab-footer-utility { display: flex; min-width: 0; align-items: center; justify-content: space-between; gap: 24px; padding: 0 34px; }
+.tnet-jobs-shell-lab-footer-utility nav { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+.tnet-jobs-shell-lab-footer-utility nav a { color: #526273; font-size: 14px; font-weight: 500; line-height: 20px; text-decoration: none; }
+.tnet-jobs-shell-lab-footer-utility nav a:hover, .tnet-jobs-shell-lab-footer-utility nav a:focus-visible { color: var(--tnet-jobs-primary); text-decoration: underline; }
+.tnet-jobs-shell-lab-footer-copyright { flex: 0 0 auto; color: #8490a0; font-size: 13px; font-weight: 500; line-height: 20px; white-space: nowrap; }
+
+.tnet-jobs-shell-lab[data-shell-clean="true"] {
+  width: min(1280px, 100%);
+  flex: 1 0 auto;
+  min-height: 0;
+  margin: 0 auto 10px;
+  border-radius: 0;
+  background: #fff;
+}
+.tnet-jobs-shell-lab[data-shell-clean="true"] .tnet-jobs-shell-lab-header { position: relative; border-radius: 0; background: #fff; }
+.tnet-jobs-shell-lab[data-shell-clean="true"] .tnet-jobs-shell-lab-rail,
+.tnet-jobs-shell-lab[data-shell-clean="true"] .tnet-jobs-shell-lab-workspace,
+.tnet-jobs-shell-lab[data-shell-clean="true"] .tnet-jobs-shell-lab-footer { background: #fff; }
+
+@media (max-width: 1324px) {
+  .tnet-jobs-shell-lab[data-shell-presentation="floating"] { margin-inline: 0; }
+}
+
+@media (max-width: 640px) {
+  .tnet-jobs-shell-lab-chevron { display: none; }
+  .tnet-jobs-shell-lab-workspace { padding: 20px 15px 28px; }
+  .tnet-jobs-shell-lab-fixture-switcher { margin-bottom: 19px; }
+  .tnet-jobs-shell-lab-route-header { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+  .tnet-jobs-shell-lab-route-header h1 { font-size: 29px; }
+  .tnet-jobs-shell-lab-route-header .tnet-jobs-shell-lab-primary-cta { width: 100%; }
+  .tnet-jobs-shell-lab-controls { align-items: stretch; flex-direction: column; gap: 12px; }
+  .tnet-jobs-shell-lab-filter-list { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; }
+  .tnet-jobs-shell-lab-filter-list button { flex: 0 0 auto; }
+  .tnet-jobs-shell-lab-search { flex-basis: auto; width: 100%; }
+  .tnet-jobs-shell-lab-table-wrap { overflow: visible; border: 0; border-radius: 0; }
+  .tnet-jobs-shell-lab-table-wrap table, .tnet-jobs-shell-lab-table-wrap tbody, .tnet-jobs-shell-lab-table-wrap tr, .tnet-jobs-shell-lab-table-wrap td { display: block; min-width: 0; width: 100%; }
+  .tnet-jobs-shell-lab-table-wrap thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tnet-jobs-shell-lab-table-wrap tr { position: relative; margin-bottom: 11px; padding: 15px; border: 1px solid #dfe6ed; border-radius: 10px; }
+  .tnet-jobs-shell-lab-table-wrap td { padding: 5px 0; border: 0; }
+  .tnet-jobs-shell-lab-table-wrap td:not(:first-child) { display: inline-block; width: auto; margin-right: 10px; color: #6f7d90; font-size: 12px; }
+  .tnet-jobs-shell-lab-table-wrap td:not(:first-child)::before { content: attr(data-label) ": "; color: #8a96a5; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+  .tnet-jobs-shell-lab-table-wrap td:last-child { position: absolute; top: 13px; right: 14px; width: auto; }
+  .tnet-jobs-shell-lab-stepper { overflow-x: auto; }
+  .tnet-jobs-shell-lab-stepper li { flex: 0 0 auto; padding: 10px; }
+  .tnet-jobs-shell-lab-stepper li:not(.is-current) { font-size: 0; }
+  .tnet-jobs-shell-lab-form fieldset { padding: 16px; }
+  .tnet-jobs-shell-lab-form-grid, .tnet-jobs-shell-lab-form fieldset + fieldset .tnet-jobs-shell-lab-form-grid { grid-template-columns: 1fr; }
+  .tnet-jobs-shell-lab-form-actions { flex-direction: column-reverse; }
+  .tnet-jobs-shell-lab-form-actions > * { width: 100%; }
+}
+
+@media (max-width: 390px) {
+  .tnet-jobs-shell-lab-fixture-switcher { display: flex; width: 100%; }
+  .tnet-jobs-shell-lab-fixture-switcher a { flex: 1; padding-inline: 6px; text-align: center; }
+}
+
+/* RESP001: desktop navigation persists through 901px; compact begins at 900px. */
+@media (max-width: 900px) {
+  .tnet-jobs-shell-lab-header-inner { gap: 16px; padding-inline: 20px; }
+  .tnet-jobs-shell-lab-rail-divider { display: none; }
+  .tnet-jobs-shell-lab-brand { position: relative; z-index: auto; flex: 0 0 var(--shell-lab-logo-width); width: var(--shell-lab-logo-width); }
+  .tnet-jobs-shell-lab-brand img { width: var(--shell-lab-logo-width); }
+  .tnet-jobs-shell-lab-navbar-right { position: relative; inset: auto; flex: 1 1 auto; gap: 12px; padding: 0; }
+  .tnet-jobs-shell-lab-product-name, .tnet-jobs-shell-lab-main-nav { display: none; }
+  .tnet-jobs-shell-lab-mobile-menu { display: block; }
+  .tnet-jobs-shell-lab-mobile-menu .tnet-jobs-shell-lab-disclosure-toggle { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 8px; background: #f1f5fa; color: #39516d; font-size: 22px; }
+  /* Keep the compact panel inside the viewport even when the toggle sits beside a wide account control. */
+  .tnet-jobs-shell-lab-mobile-menu > .tnet-jobs-shell-lab-compact-navigation { position: fixed; top: calc(var(--shell-lab-nav-height) - 8px); right: 16px; left: auto; }
+  .tnet-jobs-shell-lab-compact-employer-section { display: grid; }
+  .tnet-jobs-shell-lab-body-frame { display: block; min-height: 0; }
+  .tnet-jobs-shell-lab-rail { display: none; }
+  .tnet-jobs-shell-lab-workspace { padding: 23px 24px 34px; }
+  .tnet-jobs-shell-lab-employer-menu { display: none; }
+}
+
+/* RESP002-CONT8: keep the normalized utilities in one right-aligned cluster. */
+@media (max-width: 900px) {
+  .tnet-jobs-shell-lab-header-inner { gap: 0; padding-inline: 14px; }
+  .tnet-jobs-shell-lab-brand { flex: 0 0 150px; width: 150px; }
+  .tnet-jobs-shell-lab-brand img,
+  .tnet-jobs-shell-lab[data-shell-clean="true"] .tnet-jobs-shell-lab-brand img { width: 150px; }
+  .tnet-jobs-shell-lab-navbar-right { display: flex; flex: 1 1 auto; align-items: center; justify-content: flex-end; gap: 8px; min-width: 0; padding: 0; }
+  .tnet-jobs-shell-lab-account-area { display: contents; width: auto; height: auto; margin-left: 0; border: 0; border-radius: 0; background: transparent; }
+  .tnet-jobs-shell-lab-anonymous-account-area { min-width: 0; gap: 0; }
+  .tnet-jobs-shell-lab-anonymous-account-area .tnet-jobs-shell-lab-anonymous-signup { display: none; }
+  .tnet-jobs-shell-lab-anonymous-account-area .tnet-jobs-shell-lab-anonymous-login { min-width: 66px; padding-inline: 6px; }
+  .tnet-jobs-shell-lab-bell { flex: 0 0 48px; width: 48px; }
+  .tnet-jobs-shell-lab-bell svg { width: 30px; height: 30px; }
+  .tnet-jobs-shell-lab-account-menu { flex: 0 0 48px; width: 48px; }
+  .tnet-jobs-shell-lab-account-menu::before { display: none; }
+  .tnet-jobs-shell-lab-account-menu .tnet-jobs-shell-lab-disclosure-toggle > img,
+  .tnet-jobs-shell-lab-account-menu .tnet-jobs-shell-lab-avatar-fallback { width: 35px; height: 35px; }
+  .tnet-jobs-shell-lab-mobile-menu { flex: 0 0 42px; width: 42px; margin-left: 0; }
+  .tnet-jobs-shell-lab-mobile-menu .tnet-jobs-shell-lab-disclosure-toggle { display: grid; width: 42px; height: 42px; place-items: center; padding: 0; border: 0; border-radius: 0; background: transparent; color: #39516d; }
+  .tnet-jobs-shell-lab-mobile-menu-icon { display: block; width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 3; }
+  .tnet-jobs-shell-lab-notification-popover { position: fixed; z-index: 20; top: calc(var(--shell-lab-nav-height) + 8px); right: 12px; width: min(370px, calc(100vw - 24px)); min-width: 0; max-height: calc(100dvh - var(--shell-lab-nav-height) - 20px); }
+  .tnet-jobs-shell-lab-notification-feed { max-height: calc(100dvh - var(--shell-lab-nav-height) - 128px); }
+  .tnet-jobs-shell-lab-footer { grid-template-columns: 170px minmax(0, 1fr); }
+  .tnet-jobs-shell-lab-footer-brand { box-sizing: border-box; justify-content: flex-start; padding-left: 20px; border-bottom: 0; }
+  .tnet-jobs-shell-lab-footer-utility { justify-content: flex-start; }
+  .tnet-jobs-shell-lab-footer-utility nav { margin-inline: auto; }
+}
+
+@container (max-width: 725px) {
+  .tnet-jobs-shell-lab-footer-copyright { display: none; }
+  .tnet-jobs-shell-lab-footer-utility { padding-inline: 24px; }
+  .tnet-jobs-shell-lab-footer-utility nav { flex: 1 1 auto; width: auto; margin-inline: 0; justify-content: space-between; }
+}
+
+@container (max-width: 550px) {
+  .tnet-jobs-shell-lab-footer { display: flex; flex-direction: column; height: auto; min-height: 0; }
+  .tnet-jobs-shell-lab-footer-brand { flex: 0 0 auto; min-height: 0; height: auto; justify-content: center; padding: 0; border-bottom: 0; }
+  .tnet-jobs-shell-lab-footer-utility { flex: 0 0 auto; min-height: 0; padding: 20px 15px 0; align-items: flex-start; }
+  .tnet-jobs-shell-lab-footer-utility nav { width: 100%; justify-content: space-between; gap: 12px 18px; }
+}
+
+/* FINAL-MINWIDTH001: keep one clear logo-to-bell boundary below the measured 330px collision. */
+@media (max-width: 330px) {
+  .tnet-jobs-shell-lab-brand { flex-basis: clamp(120px, calc(100vw - 190px), 140px); width: clamp(120px, calc(100vw - 190px), 140px); }
+  .tnet-jobs-shell-lab-brand img,
+  .tnet-jobs-shell-lab[data-shell-clean="true"] .tnet-jobs-shell-lab-brand img { width: clamp(120px, calc(100vw - 190px), 140px); }
+}
+
+/* Canonical shell focus indicator: keyboard state is never conveyed by color alone. */
+.tnet-jobs-shell-lab-body .tnet-jobs-shell-lab :is(a, button):focus-visible {
+  outline: 2px solid #657286;
+  outline-offset: 2px;
+}
+/* Deterministic anonymous shell fixture actions. */
+.tnet-jobs-shell-lab-anonymous-login,
+.tnet-jobs-shell-lab-anonymous-signup,
+.tnet-jobs-shell-lab-compact-auth a { text-decoration: none; font-weight: 700; }
+.tnet-jobs-shell-lab-anonymous-account-area { flex: 0 0 auto; width: auto; min-width: 178px; justify-content: flex-end; gap: 8px; border: 0; background: transparent; }
+.tnet-jobs-shell-lab-anonymous-login { display: inline-flex; min-width: 72px; justify-content: center; color: var(--tnet-jobs-primary, #0033cc); padding: .5rem .75rem; white-space: nowrap; }
+.tnet-jobs-shell-lab-anonymous-signup,
+.tnet-jobs-shell-lab-anonymous-signup:hover,
+.tnet-jobs-shell-lab-anonymous-signup:focus,
+.tnet-jobs-shell-lab-anonymous-signup:focus-visible { color: var(--tnet-jobs-color-text-inverse, #fff) !important; }
+.tnet-jobs-shell-lab-anonymous-signup { display: inline-flex; min-width: 84px; justify-content: center; background: var(--tnet-jobs-primary-button, #0033cc); border-radius: .45rem; padding: .5rem .8rem; white-space: nowrap; }
+.tnet-jobs-shell-lab-compact-auth { display: flex; gap: .65rem; padding: .75rem 1rem; border-bottom: 1px solid #e2e8f0; }
+.tnet-jobs-shell-lab-compact-auth a:last-child,
+.tnet-jobs-shell-lab-compact-auth a:last-child:hover,
+.tnet-jobs-shell-lab-compact-auth a:last-child:focus,
+.tnet-jobs-shell-lab-compact-auth a:last-child:focus-visible { color: var(--tnet-jobs-color-text-inverse, #fff) !important; }
+.tnet-jobs-shell-lab-compact-auth a:last-child { background: var(--tnet-jobs-primary-button, #0033cc); border-radius: .4rem; padding: .45rem .7rem; }
+.tnet-jobs-shell-lab-anonymous-state .tnet-jobs-shell-lab-rail,
+.tnet-jobs-shell-lab-anonymous-hidden { display: none; }
+.tnet-jobs-shell-lab-anonymous-state .tnet-jobs-shell-lab-workspace { grid-column: 1 / -1; }
+.tnet-jobs-shell-lab-anonymous-content { max-width: 42rem; margin: 4rem auto; padding: 2rem; text-align: center; }

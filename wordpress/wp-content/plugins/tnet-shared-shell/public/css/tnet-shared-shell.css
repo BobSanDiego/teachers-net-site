@@ -1,0 +1,173 @@
+/* Canonical platform shell primitives. Product regions and archetype topology stay local. */
+:root {
+  --tnet-shell-frame-width: 1280px;
+  --tnet-shell-header-height: 70px;
+  --tnet-shell-footer-min-height: 72px;
+  --tnet-shell-surface: #fff;
+  --tnet-shell-canvas: #eef2f6;
+  --tnet-shell-text: #18304f;
+  --tnet-shell-muted: #687892;
+  --tnet-shell-border: #d8e2ef;
+  --tnet-shell-primary: #0f4fc4;
+  --tnet-shell-focus: #0f4fc4;
+  --tnet-shell-outer-inset: 0px;
+  --tnet-shell-column-gutter: 0px;
+  --tnet-shell-radius: 18px;
+}
+
+[data-tnet-shared-shell] {
+  width: min(var(--tnet-shell-frame-width), 100%);
+  min-height: 100vh;
+  margin-inline: auto;
+  background: var(--tnet-shell-surface);
+  color: var(--tnet-shell-text);
+}
+
+/* The isolated Job Center fixture keeps its adapter selectors, but these
+ * contract values are owned by the platform layer and win by explicit scope. */
+[data-tnet-shared-shell] [data-tnet-shell-header] {
+  position: relative;
+  z-index: 2;
+  height: var(--tnet-shell-header-height);
+  min-height: var(--tnet-shell-header-height);
+  border-bottom: 1px solid var(--tnet-shell-border);
+  background: linear-gradient(105deg, #fff, #f8fbff);
+}
+
+[data-tnet-shared-shell] [data-tnet-shell-footer] {
+  min-height: var(--tnet-shell-footer-min-height);
+  padding-block: 18px;
+  border-top: 1px solid var(--tnet-shell-border);
+  background: var(--tnet-shell-surface);
+}
+
+[data-tnet-shared-shell] :where(button, a, [tabindex]):focus-visible {
+  outline: 2px solid var(--tnet-shell-focus);
+  outline-offset: 2px;
+}
+
+[data-tnet-shell-disclosure][aria-expanded="false"] + [data-tnet-shell-panel] { display: none; }
+[data-tnet-shell-disclosure][aria-expanded="true"] + [data-tnet-shell-panel] { display: block; }
+[data-tnet-shared-shell] [data-tnet-shell-panel][hidden],
+[data-tnet-shared-shell] [data-tnet-shell-nested-panel][hidden],
+[data-tnet-shared-shell] [data-tnet-shell-flow-panel][hidden],
+[data-tnet-shared-shell] [data-tnet-shell-compact-section-panel][hidden] { display: none !important; }
+
+.tnet-shared-shell__header-inner { position: relative; min-height: var(--tnet-shell-header-height); display: grid; grid-template-columns: 190px minmax(0, 728px) 300px; gap: 12px; align-items: center; padding: 0 19px; }
+.tnet-shared-shell__header-main { display: contents; }
+.tnet-shared-shell__brand { position: relative; display: inline-flex; width: 190px; height: 46px; align-items: center; justify-content: flex-start; text-decoration: none; }
+.tnet-shared-shell__brand img { display: block; width: 190px; height: auto; }
+.tnet-shared-shell__brand::after { position: absolute; top: 0; right: -12px; width: 1px; height: 46px; background: #b8c4d8; content: ""; }
+.tnet-shared-shell__navigation, .tnet-shared-shell__utilities { display: flex; align-items: center; gap: 12px; }
+.tnet-shared-shell__navigation { min-width: 0; justify-content: center; gap: 42px; }
+.tnet-shared-shell__menu { position: relative; }
+.tnet-shared-shell__trigger, .tnet-shared-shell__utility, .tnet-shared-shell__compact-toggle { border: 0; background: transparent; color: #102f68; cursor: pointer; font: inherit; padding: 8px 0; }
+.tnet-shared-shell__trigger { display: inline-flex; min-height: 70px; align-items: center; gap: 8px; padding: 24px 0 17px; color: #102f68; font-size: 17px; font-weight: 700; line-height: 29.75px; text-decoration: none; white-space: nowrap; }
+.tnet-shared-shell__navigation > a { display: block; padding: 24px 0 17px; color: #102f68; font-size: 17px; font-weight: 700; line-height: 29.75px; text-decoration: none; white-space: nowrap; }
+.tnet-shared-shell__navigation > a:hover, .tnet-shared-shell__navigation > a:focus-visible { color: #0f4fc4; text-decoration: none; }
+.tnet-shared-shell__menu.is-current > .tnet-shared-shell__trigger { box-shadow: inset 0 -3px 0 #0a33df; }
+.tnet-shared-shell__caret { display: inline-block; width: 0; height: 0; flex: 0 0 auto; margin: 0; border-inline: 4px solid transparent; border-top: 6px solid currentColor; }
+.tnet-shared-shell__panel { position: absolute; z-index: 20; top: calc(100% + 10px); left: 0; min-width: 304px; padding: 8px; background: var(--tnet-shell-surface); border: 1px solid #e5eaf1; border-radius: 12px; box-shadow: 0 12px 28px rgb(28 42 63 / 14%); }
+.tnet-shared-shell__panel a { display: block; padding: 9px 10px; color: inherit; text-decoration: none; }
+.tnet-shared-shell__panel p { margin: 0; padding: 10px 12px; color: #5e6d81; font-size: 13px; line-height: 1.45; }
+.tnet-shared-shell__menu-section + .tnet-shared-shell__menu-section { margin-top: 7px; padding-top: 7px; border-top: 1px solid #e5eaf1; }
+.tnet-shared-shell__menu-heading, .tnet-shared-shell__notification-heading { padding: 7px 10px 5px !important; color: #687892 !important; font-size: 11px !important; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.tnet-shared-shell__menu-link, .tnet-shared-shell__nested-trigger { display: flex !important; width: 100%; min-height: 38px; align-items: center; justify-content: space-between; box-sizing: border-box; border: 0; border-radius: 7px; background: transparent; color: #18304f; font: inherit; font-size: 14px; font-weight: 650; text-align: left; }
+.tnet-shared-shell__menu-link:hover, .tnet-shared-shell__menu-link:focus-visible, .tnet-shared-shell__nested-trigger:hover, .tnet-shared-shell__nested-trigger:focus-visible { background: #f3f7fd; color: #0a33df; text-decoration: none; }
+.tnet-shared-shell__nested-trigger { padding: 9px 10px; cursor: pointer; }
+.tnet-shared-shell__nested-trigger .tnet-shared-shell__caret { transform: rotate(-90deg); }
+.tnet-shared-shell__nested-trigger[aria-expanded="true"] .tnet-shared-shell__caret { transform: rotate(0); }
+.tnet-shared-shell__nested-panel { display: flex; flex-wrap: wrap; gap: 2px 5px; padding: 2px 10px 8px 18px; }
+.tnet-shared-shell__taxonomy-item { min-height: 25px; padding: 2px 0 !important; color: #52647d !important; font-size: 12px !important; font-weight: 600; }
+.tnet-shared-shell__flow-controls { display: flex; gap: 5px; margin-top: 7px; padding-top: 7px; border-top: 1px solid #e5eaf1; }
+.tnet-shared-shell__flow-controls button { flex: 1; min-height: 32px; border: 1px solid #d8e2ef; border-radius: 7px; background: #fff; color: #18304f; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; }
+.tnet-shared-shell__flow-controls button[aria-pressed="true"] { border-color: #0f4fc4; background: #edf4ff; color: #0a33df; }
+.tnet-shared-shell__panel-header { display: flex; min-height: 38px; align-items: center; padding: 0 10px; border-bottom: 1px solid #e5eaf1; color: #18304f; }
+.tnet-shared-shell__notification-panel { right: 0; left: auto; width: min(350px, calc(100vw - 32px)); padding: 0; overflow: hidden; }
+.tnet-shared-shell__notification-section { padding: 3px 0 6px; }
+.tnet-shared-shell__notification-section + .tnet-shared-shell__notification-section { border-top: 1px solid #e5eaf1; }
+.tnet-shared-shell__notification-row { display: flex; gap: 10px; min-height: 48px; align-items: flex-start; padding: 9px 14px; }
+.tnet-shared-shell__notification-row > div { min-width: 0; flex: 1; }
+.tnet-shared-shell__notification-row strong, .tnet-shared-shell__notification-row span { display: block; }
+.tnet-shared-shell__notification-row strong { color: #18304f; font-size: 13px; line-height: 1.3; }
+.tnet-shared-shell__notification-row span { margin-top: 2px; color: #687892; font-size: 11px; line-height: 1.3; }
+.tnet-shared-shell__notification-row i { display: block; width: 7px; height: 7px; margin-top: 5px; border-radius: 50%; background: #0f4fc4; }
+.tnet-shared-shell__account-panel { right: 0; left: auto; padding: 0; overflow: hidden; }
+.tnet-shared-shell__account-identity { display: flex; gap: 10px; min-width: 260px; align-items: center; padding: 14px; border-bottom: 1px solid #e5eaf1; }
+.tnet-shared-shell__account-identity .tnet-shared-shell__avatar { position: static; flex: 0 0 38px; width: 38px; height: 38px; }
+.tnet-shared-shell__account-identity div { display: grid; gap: 2px; }
+.tnet-shared-shell__account-identity strong { color: #18304f; font-size: 13px; }
+.tnet-shared-shell__account-identity span:not(.tnet-shared-shell__avatar) { color: #687892; font-size: 11px; }
+.tnet-shared-shell__account-actions { padding: 6px; }
+.tnet-shared-shell__account-actions a { min-height: 36px; display: flex; align-items: center; box-sizing: border-box; border-radius: 7px; font-size: 13px; font-weight: 650; }
+.tnet-shared-shell__account-actions a:hover, .tnet-shared-shell__account-actions a:focus-visible { background: #f3f7fd; color: #0a33df; }
+.tnet-shared-shell__account-session { padding: 6px; border-top: 1px solid #e5eaf1; }
+.tnet-shared-shell__account-session a { min-height: 36px; display: flex; align-items: center; box-sizing: border-box; border-radius: 7px; color: #a82c2c; font-size: 13px; font-weight: 700; }
+.tnet-shared-shell__utilities { display: flex; width: 300px; height: 58px; align-items: center; justify-content: flex-end; gap: 0; padding: 0 20px 0 0; background: transparent; }
+.tnet-shared-shell__utility { display: inline-flex; height: 58px; align-items: center; justify-content: center; gap: 0; padding: 0; font-size: 13px; font-weight: 650; }
+.tnet-shared-shell__notification-trigger { position: relative; width: 92px; font-size: 19px; }
+.tnet-shared-shell__notification-icon { display: grid; width: 30px; height: 30px; place-items: center; color: #102f68; }
+.tnet-shared-shell__notification-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+.tnet-shared-shell__notification-count { position: absolute; top: 12px; right: 16px; display: grid; width: 18px; height: 18px; place-items: center; margin: 0; border-radius: 50%; background: #ec1f27; color: #fff; font-size: 10px; font-weight: 800; }
+.tnet-shared-shell__utility-label, .tnet-shared-shell__account-copy, .tnet-shared-shell__account-trigger > .tnet-shared-shell__caret { display: none; }
+.tnet-shared-shell__account-trigger { position: relative; width: 58px; flex: 0 0 58px; align-self: center; border: 0; padding: 0; transform: translateY(3px); }
+.tnet-shared-shell__avatar { position: absolute; top: 5px; left: 5px; display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; background: #b84f36; color: #fff; font-size: 13px; font-weight: 800; }
+.tnet-shared-shell__account-copy { display: grid; gap: 2px; text-align: left; }
+.tnet-shared-shell__account-copy strong { font-size: 13px; line-height: 1.1; }
+.tnet-shared-shell__account-copy span { color: #657286; font-size: 11px; font-weight: 500; }
+.tnet-shared-shell__account-copy { display: none; }
+.tnet-shared-shell__compact-toggle, .tnet-shared-shell__compact-navigation { display: none; }
+.tnet-shared-shell__content { min-height: 240px; }
+.tnet-shared-shell__footer { display: flex; min-height: var(--tnet-shell-footer-min-height); align-items: center; gap: 30px; flex-wrap: wrap; padding: 18px 19px; color: #657286; font-size: 12px; }
+.tnet-shared-shell__footer-brand { color: #18304f; font-size: 15px; font-weight: 750; text-decoration: none; }
+.tnet-shared-shell__footer nav { display: flex; gap: 18px; flex: 1 1 auto; flex-wrap: wrap; }
+.tnet-shared-shell__footer nav a { color: inherit; text-decoration: none; }
+
+/* The owner provides the component system. An adapter selects this Employer
+ * workspace arrangement with semantic values; Feed/Newskin's grid stays a
+ * separate configuration rather than becoming a universal shell rule. */
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__header-inner { display: block; height: var(--tnet-shell-header-height); min-height: 0; padding: 0; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__brand { position: absolute; z-index: 2; top: 0; left: 0; width: var(--tnet-shell-brand-region-width); height: var(--tnet-shell-header-height); justify-content: center; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__brand img { width: var(--tnet-shell-brand-image-width); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__brand::after { top: 50%; right: 0; height: var(--tnet-shell-brand-divider-height); transform: translateY(-50%); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__header-main { position: absolute; inset: 0 0 0 var(--tnet-shell-brand-region-width); display: flex; min-width: 0; align-items: center; gap: var(--tnet-shell-header-gap); padding-left: var(--tnet-shell-header-gap); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__product-identity { flex: 0 0 auto; color: #18304f; font-size: 25.5px; font-weight: 660; letter-spacing: -.03em; line-height: 1; white-space: nowrap; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__navigation { flex: 1 1 auto; height: var(--tnet-shell-header-height); justify-content: center; gap: clamp(24px, 2.5vw, 38px); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__trigger { min-height: var(--tnet-shell-header-height); padding: 8px 0; color: #18304f; font-size: var(--tnet-shell-nav-link-font, 15px); font-weight: 600; line-height: 1.2; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__menu.is-current > .tnet-shared-shell__trigger { box-shadow: none; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__caret { width: 7px; height: 7px; border: 0; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__utilities { flex: 0 0 auto; width: auto; height: var(--tnet-shell-header-height); gap: var(--tnet-shell-header-gap); padding: 0; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__utilities > .tnet-shared-shell__menu { display: flex; align-items: center; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__notification-trigger { width: var(--tnet-shell-bell-button-size); height: var(--tnet-shell-bell-button-size); min-height: 0; border-radius: 50%; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__notification-icon, [data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__notification-icon svg { width: var(--tnet-shell-bell-glyph-size); height: var(--tnet-shell-bell-glyph-size); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__notification-icon svg { stroke-width: var(--tnet-shell-bell-stroke-width); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__notification-count { top: 0; right: 0; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__utilities > .tnet-shared-shell__menu:last-child { width: var(--tnet-shell-account-region-width); height: var(--tnet-shell-header-height); justify-content: center; box-sizing: border-box; border-left: 1px solid var(--tnet-shell-border); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__account-trigger { display: flex; width: 100%; height: var(--tnet-shell-header-height); min-height: 0; align-items: center; justify-content: center; gap: 8px; transform: none; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__avatar { position: static; flex: 0 0 var(--tnet-shell-avatar-size); width: var(--tnet-shell-avatar-size); height: var(--tnet-shell-avatar-size); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__account-copy, [data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__account-trigger > .tnet-shared-shell__caret { display: inline-grid; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__account-copy { max-width: 100px; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__account-copy strong, [data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__account-copy span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__account-trigger > .tnet-shared-shell__caret { transform: rotate(45deg) translateY(-2px); }
+[data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__panel { top: calc(100% + 10px); }
+@media (max-width: 760px) {
+  .tnet-shared-shell__navigation, .tnet-shared-shell__utilities { display: none; }
+  .tnet-shared-shell__header-inner, [data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__header-inner { display: flex; height: auto; min-height: var(--tnet-shell-header-height); padding-inline: 16px; }
+  [data-tnet-shell-layout="employer-workspace"] .tnet-shared-shell__header-main { display: none; }
+  .tnet-shared-shell__brand { width: auto; height: auto; flex-basis: auto; justify-content: flex-start; }
+  .tnet-shared-shell__brand::after { display: none; }
+  .tnet-shared-shell__brand img { width: min(190px, 60vw); }
+  .tnet-shared-shell__compact-toggle { display: inline-flex; margin-inline-start: auto; }
+  .tnet-shared-shell__compact-navigation[hidden] { display: none; }
+  .tnet-shared-shell__compact-navigation { position: absolute; z-index: 24; top: var(--tnet-shell-header-height); right: 0; left: 0; display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-top: 1px solid var(--tnet-shell-border); border-bottom: 1px solid var(--tnet-shell-border); background: var(--tnet-shell-surface); box-shadow: 0 12px 28px rgb(28 42 63 / 14%); }
+  .tnet-shared-shell__compact-navigation a { min-height: 44px; padding: 10px; border-radius: 8px; color: #142235; font-size: 15px; font-weight: 600; text-decoration: none; }
+  .tnet-shared-shell__compact-navigation a:hover, .tnet-shared-shell__compact-navigation a:focus-visible { background: #f3f7fd; color: #0a33df; text-decoration: none; }
+  .tnet-shared-shell__compact-section + .tnet-shared-shell__compact-section { border-top: 1px solid #e5eaf1; }
+  .tnet-shared-shell__compact-section-trigger { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: space-between; border: 0; background: transparent; color: #142235; cursor: pointer; font: inherit; font-size: 15px; font-weight: 750; text-align: left; }
+  .tnet-shared-shell__compact-section-trigger[aria-expanded="true"] .tnet-shared-shell__caret { transform: rotate(180deg); }
+  .tnet-shared-shell__compact-section-panel { display: grid; gap: 2px; padding: 0 0 8px 12px; }
+  .tnet-shared-shell__compact-link { min-height: 40px !important; padding: 8px 10px !important; }
+  .tnet-shared-shell__compact-section-panel .tnet-shared-shell__nested { padding: 0 10px; }
+  .tnet-shared-shell__compact-section-panel .tnet-shared-shell__nested-trigger { min-height: 40px; font-size: 15px; }
+  .tnet-shared-shell__compact-section-panel .tnet-shared-shell__nested-panel { padding-left: 10px; }
+}

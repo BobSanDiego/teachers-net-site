@@ -144,7 +144,32 @@ implementation.
 
 ## 2. Current Ticket
 
-`JC053-STEP2-INTEGRATION` is the next executable ticket.
+`TNET-SHARED-SHELL-OWNER001-CONT7` is complete with Engineering Director
+HUMAN_QA PASS. Workflow V2 cycle `260831160000` is the terminal accepted
+boundary. The tracked canonical physical owner is
+`wordpress/wp-content/plugins/tnet-shared-shell/`; Jobs remains an adapter and
+Shared Shell has no Jobs dependency. Accepted scope includes desktop shell,
+Job Center/Chatboards/Lesson Plans disclosures, notifications, resolved
+avatar/account menu, responsive collapse, compact navigation, and narrow
+account-panel containment.
+
+The accepted 902bdc0 oracle and parity provenance remain authoritative. No next
+product ticket is authorized. A future bounded first consumer migration is the
+preferred next objective pending a new Director ticket; Community/Newskin
+migration is explicitly not authorized by CONT7.
+
+`JOB-CENTER-NOTIFICATIONS-LAYOUT001`, `JOB-CENTER-CONTINUITY-REFRESH001`, and
+JC053 assertions below are historical continuity only and do not supersede the
+accepted Shared Shell boundary.
+
+`TNET-RESPONSIVE-ARCH001` documents the four-archetype responsive contract only.
+The next recommended boundary is Feed / Community native calibration; this is
+not yet an executable calibration ticket.
+
+`TNET-SHARED-SHELL-RECON001` is the predecessor diagnostic ownership/token
+ledger. Its proposed dedicated owner was implemented and accepted through
+OWNER001-CONT7; the historical proposal wording must not be used as current
+state.
 
 The completed prerequisite chain is:
 
@@ -297,6 +322,13 @@ The JC053 V1 field inventory and admission contract is recorded at
 
 ## 3. Last Completed Milestone
 
+`TNET-SHARED-SHELL-OWNER001-CONT7` is the latest completed milestone. The
+canonical Shared Shell plugin owns the renderer/component structure and
+accepted parity CSS/JS; the isolated Job Center Shell Lab consumes it through
+the Jobs adapter. The 902bdc0 oracle remains preserved for provenance. Native
+HUMAN_QA PASS covers the complete CONT7 desktop, disclosure, responsive,
+compact, and narrow account-panel acceptance ledger.
+
 EMP-IMP002A through EMP-IMP003D replaced and converged the legacy My Jobs
 presentation into the Employer Operations workspace while preserving existing
 services, authorization, school selection, actions, sorting, and pagination.
@@ -325,11 +357,11 @@ reintroduce a separate Employer Dashboard operating destination for V1.
 
 ## 4. Next Five Planned Tickets
 
-1. JC053-STEP2-INTEGRATION.
-2. JC053-STEP2-BROWSER-CERTIFICATION.
-3. JC053 Step 3 integration.
-4. JC053 Step 3 browser certification.
-5. JC053 Step 4 integration.
+1. No ticket authorized; Engineering Director selects the next bounded
+   objective.
+2. Preferred candidate: first bounded consumer migration to canonical Shared
+   Shell, subject to a new ticket and acceptance fixture.
+3. Community/Newskin migration remains explicitly deferred.
 
 JC053 shared UI authority is now durable at
 `docs/job-center/jc053-wizard-design-system-v1.md`. Future wizard work must

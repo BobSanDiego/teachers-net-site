@@ -1,0 +1,14 @@
+/* CONT7 bounded responsive acceptance correction: preserve desktop anchoring. */
+/* At 380px the legacy trigger-relative panel reaches its 12px safe left edge. */
+@media (max-width: 380px) {
+  .tnet-jobs-shell-lab-account-menu > .tnet-jobs-shell-lab-popover {
+    position: fixed;
+    top: calc(var(--shell-lab-nav-height) + 10px) !important;
+    right: auto !important;
+    left: 50% !important;
+    width: 304px !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 24px) !important;
+    transform: translateX(-50%);
+  }
+}
