@@ -1,4 +1,26 @@
 /* CONT7 bounded responsive acceptance correction: preserve desktop anchoring. */
+/* VISUAL001 desktop chrome refinement: keep the accepted parity assets intact. */
+@media (min-width: 901px) {
+  .tnet-jobs-shell-lab {
+    --shell-lab-nav-height: 70px !important;
+    --shell-lab-logo-width: 174px !important;
+  }
+
+  .tnet-jobs-shell-lab-rail-divider {
+    display: none !important;
+  }
+
+  .tnet-jobs-shell-lab-account-area {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  .tnet-jobs-shell-lab-account-menu::before {
+    display: none !important;
+  }
+}
+
 /* At 380px the legacy trigger-relative panel reaches its 12px safe left edge. */
 @media (max-width: 380px) {
   .tnet-jobs-shell-lab-account-menu > .tnet-jobs-shell-lab-popover {
