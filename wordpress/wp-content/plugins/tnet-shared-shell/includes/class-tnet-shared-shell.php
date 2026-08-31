@@ -59,6 +59,9 @@ final class TNet_Shared_Shell {
       'contractVersion' => self::CONTRACT_VERSION,
       'context' => sanitize_key((string) $context),
     ]);
+    if (class_exists('TNet_Notifications')) {
+      TNet_Notifications::enqueue_client_assets();
+    }
   }
 
   public static function navigation_config(array $destinations, array $available = []) {

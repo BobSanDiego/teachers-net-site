@@ -15,6 +15,7 @@ define('TNET_NOTIFICATIONS_SCHEMA_VERSION_OPTION', 'tnet_notifications_schema_ve
 define('TNET_NOTIFICATIONS_SCHEMA_LAST_ERROR_OPTION', 'tnet_notifications_schema_last_error');
 define('TNET_NOTIFICATIONS_PLUGIN_FILE', __FILE__);
 define('TNET_NOTIFICATIONS_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('TNET_NOTIFICATIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once TNET_NOTIFICATIONS_PLUGIN_DIR . 'includes/class-tnet-notifications-schema.php';
 require_once TNET_NOTIFICATIONS_PLUGIN_DIR . 'includes/class-tnet-notifications-registry.php';
@@ -38,6 +39,12 @@ final class TNet_Notifications {
   public static function activate() {
     $result = TNet_Notifications_Schema::install();
     if (is_wp_error($result)) wp_die(esc_html($result->get_error_message()));
+  }
+
+  public static function enqueue_client_assets() {
+    wp_enqueue_script('tnet-notifications-icons', TNET_NOTIFICATIONS_PLUGIN_URL . 'public/js/tnet-notifications-icons.js', [], (string) filemtime(TNET_NOTIFICATIONS_PLUGIN_DIR . 'public/js/tnet-notifications-icons.js'), true);
+    wp_enqueue_script('tnet-notifications-runtime', TNET_NOTIFICATIONS_PLUGIN_URL . 'public/js/tnet-notifications-runtime.js', [], (string) filemtime(TNET_NOTIFICATIONS_PLUGIN_DIR . 'public/js/tnet-notifications-runtime.js'), true);
+    wp_localize_script('tnet-notifications-runtime', 'TNetNotificationsRuntimeConfig', ['root' => trailingslashit(rest_url('tnet-notifications/v1')), 'nonce' => wp_create_nonce('wp_rest')]);
   }
 
   public static function deactivate() {
