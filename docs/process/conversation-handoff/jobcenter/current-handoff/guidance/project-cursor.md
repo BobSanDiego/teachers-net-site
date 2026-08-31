@@ -24,8 +24,9 @@ ticket explicitly requires them.
 
 Current executable objective:
 
-`TNET-SHARED-SHELL-OWNER001-CONT7` is complete and HUMAN_QA accepted. The
-terminal accepted boundary is recorded in Workflow V2 cycle `260831160000`;
+`TNET-SHARED-SHELL-VISUAL001` is complete and HUMAN_QA accepted. The terminal
+accepted boundary is recorded in Workflow V2 cycle `260831170000`, with the
+accepted refinement committed in `9826f92` on top of baseline `d10760d`;
 the canonical physical owner is the tracked
 `wordpress/wp-content/plugins/tnet-shared-shell/` plugin. The accepted parity
 oracle remains `902bdc0704a75860ac6f98673cd11d41f04dd095`, with accepted parity

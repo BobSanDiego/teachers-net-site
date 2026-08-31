@@ -144,9 +144,9 @@ implementation.
 
 ## 2. Current Ticket
 
-`TNET-SHARED-SHELL-OWNER001-CONT7` is complete with Engineering Director
-HUMAN_QA PASS. Workflow V2 cycle `260831160000` is the terminal accepted
-boundary. The tracked canonical physical owner is
+`TNET-SHARED-SHELL-VISUAL001` is complete with Engineering Director HUMAN_QA
+PASS. Workflow V2 cycle `260831170000` and commit `9826f92` are the terminal
+accepted boundary after baseline `d10760d`. The tracked canonical physical owner is
 `wordpress/wp-content/plugins/tnet-shared-shell/`; Jobs remains an adapter and
 Shared Shell has no Jobs dependency. Accepted scope includes desktop shell,
 Job Center/Chatboards/Lesson Plans disclosures, notifications, resolved
@@ -322,12 +322,14 @@ The JC053 V1 field inventory and admission contract is recorded at
 
 ## 3. Last Completed Milestone
 
-`TNET-SHARED-SHELL-OWNER001-CONT7` is the latest completed milestone. The
+`TNET-SHARED-SHELL-VISUAL001` is the latest completed milestone. The
 canonical Shared Shell plugin owns the renderer/component structure and
 accepted parity CSS/JS; the isolated Job Center Shell Lab consumes it through
 the Jobs adapter. The 902bdc0 oracle remains preserved for provenance. Native
 HUMAN_QA PASS covers the complete CONT7 desktop, disclosure, responsive,
-compact, and narrow account-panel acceptance ledger.
+compact, and narrow account-panel acceptance ledger. VISUAL001 additionally
+accepted the 70px header, 174px desktop wordmark, and removal of the brand,
+utility, and bell/account dividers. Commit `9826f92` is the current baseline.
 
 EMP-IMP002A through EMP-IMP003D replaced and converged the legacy My Jobs
 presentation into the Employer Operations workspace while preserving existing
