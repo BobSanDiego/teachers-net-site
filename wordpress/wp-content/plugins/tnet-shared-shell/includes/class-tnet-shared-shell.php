@@ -5,14 +5,14 @@ if (!defined('ABSPATH')) {
 }
 
 final class TNet_Shared_Shell {
-  const CONTRACT_VERSION = '1.0';
+  const CONTRACT_VERSION = '2.0';
 
   public static function init() {
     // The platform owner exposes assets and configuration primitives. Consumers
     // opt in explicitly; no production consumer is migrated by registration.
   }
 
-  public static function enqueue_assets($context = 'shell-lab') {
+  public static function enqueue_assets($context = 'canonical') {
     $css = TNET_SHARED_SHELL_PLUGIN_DIR . 'public/css/tnet-shared-shell.css';
     $js = TNET_SHARED_SHELL_PLUGIN_DIR . 'public/js/tnet-shared-shell.js';
     $parity_css = TNET_SHARED_SHELL_PLUGIN_DIR . 'public/css/tnet-shared-shell-parity.css';
@@ -32,7 +32,9 @@ final class TNet_Shared_Shell {
       self::asset_version($js),
       true
     );
-    if (sanitize_key((string) $context) === 'shell-lab') {
+    // Canonical v2 uses the HUMAN-accepted presentation assets. The legacy
+    // shell-lab context remains a temporary comparison-oracle alias only.
+    if (in_array(sanitize_key((string) $context), ['canonical', 'shell-lab'], true)) {
       wp_enqueue_style(
         'tnet-shared-shell-parity',
         TNET_SHARED_SHELL_PLUGIN_URL . 'public/css/tnet-shared-shell-parity.css',
@@ -72,8 +74,9 @@ final class TNet_Shared_Shell {
    * this owner retains the shell DOM and interaction seams.
    */
   public static function render_host(array $config = []) {
-    if (!empty($config['accepted_shell_lab_parity'])) {
-      self::render_accepted_shell_lab_parity($config);
+    $contract = sanitize_key((string) ($config['contract'] ?? 'legacy'));
+    if ($contract === 'canonical') {
+      self::render_canonical_presentation($config);
       return;
     }
     $brand = (array) ($config['brand'] ?? []);
@@ -220,7 +223,12 @@ final class TNet_Shared_Shell {
    * shared owner; the consumer supplies only product facts, destinations and
    * its content callback.
    */
-  private static function render_accepted_shell_lab_parity(array $config) {
+  /**
+   * Canonical v2 presentation. This is platform-owned markup and behavior;
+   * consumers supply only their resolved destinations, identity, notification
+   * provider facts, taxonomy data, and product-content callback.
+   */
+  private static function render_canonical_presentation(array $config) {
     $urls = (array) ($config['urls'] ?? []);
     $identity = (array) ($config['identity'] ?? []);
     $taxonomy = (array) ($config['taxonomy'] ?? []);
@@ -252,6 +260,7 @@ final class TNet_Shared_Shell {
     $lesson_plan_subject_areas = (array) ($taxonomy['lesson_subject_areas'] ?? []);
     $chatboard_grade_levels = (array) ($taxonomy['chatboard_grade_levels'] ?? []);
     $content_renderer = $config['content'] ?? null;
+    $contract_version = self::CONTRACT_VERSION;
     if (!is_callable($content_renderer)) {
       return;
     }

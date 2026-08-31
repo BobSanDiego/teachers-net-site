@@ -8,7 +8,7 @@
     </head>
     <body <?php body_class(['tnet-jobs-app-canvas', 'tnet-jobs-shell-lab-body', 'tnet-jobs-route-employer-shell-lab', $anonymous_fixture ? 'tnet-jobs-route-browse' : '', $clean ? 'tnet-jobs-shell-clean-preview' : '']); ?>>
       <?php if (function_exists('wp_body_open')) wp_body_open(); ?>
-      <div class="tnet-jobs-shell-lab" data-shell-owner="shared-shell-host" data-shell-adapter="shell-lab" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
+      <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="shell-lab" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
         <header class="tnet-jobs-shell-lab-header">
           <div class="tnet-jobs-shell-lab-header-inner">
             <span class="tnet-jobs-shell-lab-rail-divider" aria-hidden="true"></span>
