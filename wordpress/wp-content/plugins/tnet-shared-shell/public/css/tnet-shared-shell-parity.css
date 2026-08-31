@@ -75,6 +75,7 @@
 .tnet-jobs-shell-lab-bell { position: relative; display: grid; flex: 0 0 72px; width: 72px; height: 60px; margin: 0; place-items: center; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--shell-lab-nav-text); cursor: pointer; }
 .tnet-jobs-shell-lab-bell svg { width: 34px; height: 34px; }
 .tnet-jobs-shell-lab-bell > span { position: absolute; top: 9px; right: 18px; display: grid; width: 18px; height: 18px; place-items: center; border-radius: 50%; background: #ec1f27; color: #fff; font-size: 10px; font-weight: 800; }
+.tnet-jobs-shell-lab-bell > span[hidden] { display: none !important; }
 .tnet-jobs-shell-lab-account-menu, .tnet-jobs-shell-lab-mobile-menu { position: relative; }
 .tnet-jobs-shell-lab-account-menu { display: flex; flex: 1 1 auto; width: auto; height: 60px; align-items: center; justify-content: center; box-sizing: border-box; padding-left: 0; border-left: 0; }
 .tnet-jobs-shell-lab-account-menu::before { position: absolute; top: 50%; left: 0; width: 1px; height: 46px; background: #dbe3ef; content: ""; pointer-events: none; transform: translateY(-50%); }

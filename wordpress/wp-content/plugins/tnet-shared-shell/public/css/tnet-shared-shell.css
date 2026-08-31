@@ -17,6 +17,8 @@
 
 [data-tnet-shared-shell] {
   width: min(var(--tnet-shell-frame-width), 100%);
+  min-width: 0;
+  flex: 1 0 auto;
   min-height: 100vh;
   margin-inline: auto;
   background: var(--tnet-shell-surface);
@@ -52,6 +54,7 @@
 [data-tnet-shared-shell] [data-tnet-shell-nested-panel][hidden],
 [data-tnet-shared-shell] [data-tnet-shell-flow-panel][hidden],
 [data-tnet-shared-shell] [data-tnet-shell-compact-section-panel][hidden] { display: none !important; }
+
 
 .tnet-shared-shell__header-inner { position: relative; min-height: var(--tnet-shell-header-height); display: grid; grid-template-columns: 190px minmax(0, 728px) 300px; gap: 12px; align-items: center; padding: 0 19px; }
 .tnet-shared-shell__header-main { display: contents; }

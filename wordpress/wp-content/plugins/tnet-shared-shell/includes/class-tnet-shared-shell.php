@@ -234,8 +234,16 @@ final class TNet_Shared_Shell {
     $taxonomy = (array) ($config['taxonomy'] ?? []);
     $fixture = sanitize_key((string) ($config['fixture'] ?? 'dashboard'));
     $clean = !empty($config['clean']);
-    $presentation = sanitize_key((string) ($config['presentation'] ?? 'floating'));
-    $anonymous_fixture = !empty($config['anonymous']);
+    // A canonical application shell is page-aligned and square at its outer
+    // boundary. Pinned remains a supported behavior, but floating card chrome
+    // is not part of the canonical v2 presentation.
+    $presentation = sanitize_key((string) ($config['presentation'] ?? 'flush'));
+    $presentation = $presentation === 'pinned' ? 'pinned' : 'flush';
+    $fixture_state = sanitize_key((string) ($config['fixture_state'] ?? (!empty($config['anonymous']) ? 'guest' : 'auth-unread')));
+    if (!in_array($fixture_state, ['auth-unread', 'auth-zero', 'guest'], true)) {
+      $fixture_state = !empty($config['anonymous']) ? 'guest' : 'auth-unread';
+    }
+    $anonymous_fixture = $fixture_state === 'guest';
     $effective_logged_in = !empty($config['logged_in']);
     $shell_has_employer_access = !empty($config['employer_access']);
     $user_name = (string) ($identity['name'] ?? 'Guest user');
@@ -259,6 +267,7 @@ final class TNet_Shared_Shell {
     $lesson_plan_grade_levels = (array) ($taxonomy['lesson_grade_levels'] ?? []);
     $lesson_plan_subject_areas = (array) ($taxonomy['lesson_subject_areas'] ?? []);
     $chatboard_grade_levels = (array) ($taxonomy['chatboard_grade_levels'] ?? []);
+    $notification_fixture_state = $fixture_state === 'auth-zero' ? 'zero' : 'unread';
     $content_renderer = $config['content'] ?? null;
     $contract_version = self::CONTRACT_VERSION;
     if (!is_callable($content_renderer)) {

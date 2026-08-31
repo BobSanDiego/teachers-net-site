@@ -8,7 +8,7 @@
     </head>
     <body <?php body_class(['tnet-jobs-app-canvas', 'tnet-jobs-shell-lab-body', 'tnet-jobs-route-employer-shell-lab', $anonymous_fixture ? 'tnet-jobs-route-browse' : '', $clean ? 'tnet-jobs-shell-clean-preview' : '']); ?>>
       <?php if (function_exists('wp_body_open')) wp_body_open(); ?>
-      <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="shell-lab" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
+      <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="shell-lab" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-shell-fixture-state="<?php echo esc_attr($fixture_state); ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
         <header class="tnet-jobs-shell-lab-header">
           <div class="tnet-jobs-shell-lab-header-inner">
             <span class="tnet-jobs-shell-lab-rail-divider" aria-hidden="true"></span>
@@ -73,10 +73,10 @@
                   <a class="tnet-jobs-shell-lab-anonymous-login" href="<?php echo esc_url($login_url); ?>"><?php echo esc_html__('Log In', 'tnet-shared-shell'); ?></a>
                   <a class="tnet-jobs-shell-lab-anonymous-signup" href="<?php echo esc_url($signup_url); ?>"><?php echo esc_html__('Sign Up', 'tnet-shared-shell'); ?></a>
                 <?php elseif ($effective_logged_in) : ?>
-                <div class="tnet-jobs-shell-lab-notification-menu" data-notification-center data-notification-provider="<?php echo $clean ? 'fixture' : 'runtime'; ?>" data-notification-fixture-only="<?php echo $clean ? 'true' : 'false'; ?>">
+                <div class="tnet-jobs-shell-lab-notification-menu" data-notification-center data-notification-provider="<?php echo $clean ? 'fixture' : 'runtime'; ?>" data-notification-fixture-only="<?php echo $clean ? 'true' : 'false'; ?>" data-notification-fixture-state="<?php echo esc_attr($notification_fixture_state); ?>">
                   <button id="tnet-jobs-shell-notification-toggle" type="button" class="tnet-jobs-shell-lab-bell tnet-jobs-shell-lab-notification-toggle" aria-expanded="false" aria-controls="tnet-jobs-shell-notification-center" aria-haspopup="dialog" aria-label="<?php echo esc_attr__('Notifications, loading synthetic fixture data', 'tnet-shared-shell'); ?>">
                     <?php self::render_parity_bell_icon(); ?>
-                    <span data-notification-unread-count aria-hidden="true">0</span>
+                    <span data-notification-unread-count aria-hidden="true"<?php echo $notification_fixture_state === 'zero' ? ' hidden' : ''; ?>>0</span>
                   </button>
                   <section id="tnet-jobs-shell-notification-center" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-notification-popover" role="dialog" aria-modal="false" aria-labelledby="tnet-jobs-shell-notification-title" data-notification-panel>
                     <div class="tnet-jobs-shell-lab-notification-panel" data-notification-fixture-only="<?php echo $clean ? 'true' : 'false'; ?>">

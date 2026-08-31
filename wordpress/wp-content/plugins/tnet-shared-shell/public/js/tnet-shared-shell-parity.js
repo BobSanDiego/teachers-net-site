@@ -86,7 +86,10 @@
     });
     if (rootPanel) {
       var initialResource = rootPanel.querySelector('[data-compact-resource="' + rootPanel.dataset.compactFlow + '"]');
-      if (initialResource) rootPanel.insertBefore(initialResource, rootPanel.firstElementChild);
+      // Session utilities are platform-level controls. Preserve their leading
+      // position instead of deriving it from the active consumer resource.
+      var utilityRow = rootPanel.querySelector('.tnet-jobs-shell-lab-compact-auth');
+      if (initialResource) rootPanel.insertBefore(initialResource, utilityRow ? utilityRow.nextSibling : rootPanel.firstElementChild);
     }
     function toggleResource(button) {
       var root = rootPanel;
@@ -149,6 +152,8 @@
     var provider = fixtureOnly ? fixture : runtime;
     if (!provider || (fixtureOnly && !fixture.is_synthetic) || !icons || !toggle || !panel) return;
     var notifications = provider.getNotifications();
+    var fixtureState = menu.getAttribute('data-notification-fixture-state');
+    if (fixtureOnly && fixtureState === 'zero') notifications = [];
     var selectedFilter = 'all';
     var sourceLabels = { all: 'All', jobs: 'Jobs', chatboards: 'Chatboards', lessons: 'Lessons' };
     var sourceIcons = { jobs: 'briefcase', chatboards: 'chat', lessons: 'book' };
@@ -192,7 +197,7 @@
         '<div class="tnet-jobs-shell-lab-notification-filters" role="group" aria-label="Filter synthetic notifications">' + Object.keys(sourceLabels).map(function (key) {
           return '<button type="button" class="tnet-jobs-shell-lab-notification-filter' + (selectedFilter === key ? ' is-selected' : '') + '" data-notification-filter="' + key + '" aria-pressed="' + (selectedFilter === key ? 'true' : 'false') + '">' + sourceLabels[key] + '</button>';
         }).join('') + '</div>' +
-        '<div class="tnet-jobs-shell-lab-notification-feed" data-notification-feed>' + group('new', newItems) + group('earlier', earlierItems) + (visible.length ? '' : '<p class="tnet-jobs-shell-lab-notification-empty">No synthetic notifications in this filter.</p>') + '</div>' +
+        '<div class="tnet-jobs-shell-lab-notification-feed" data-notification-feed>' + group('new', newItems) + group('earlier', earlierItems) + (visible.length ? '' : '<p class="tnet-jobs-shell-lab-notification-empty">' + (fixtureState === 'zero' ? 'You’re all caught up. New notifications will appear here.' : 'No synthetic notifications in this filter.') + '</p>') + '</div>' +
         '<p class="screen-reader-text" aria-live="polite" data-notification-status>' + escapeHtml(message || 'Synthetic fixture notification center loaded.') + '</p>';
       Array.prototype.forEach.call(panel.querySelectorAll('[data-notification-filter]'), function (button) {
         button.addEventListener('click', function (event) { event.stopPropagation(); selectedFilter = button.dataset.notificationFilter; render('Showing ' + sourceLabels[selectedFilter] + ' synthetic fixture notifications.'); });
