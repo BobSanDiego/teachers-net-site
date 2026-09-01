@@ -170,7 +170,10 @@
     }
     function icon(name, className) { return icons.render(name, className); }
     function relativeTime(value) {
-      var date = new Date(String(value || '').replace(' ', 'T') + 'Z');
+      var normalized = String(value || '').trim().replace(' ', 'T');
+      if (!normalized) return '';
+      if (!/(?:Z|[+-]\d{2}:?\d{2})$/i.test(normalized)) normalized += 'Z';
+      var date = new Date(normalized);
       if (Number.isNaN(date.getTime())) return '';
       var seconds = Math.max(0, Math.floor((Date.now() - date.getTime()) / 1000));
       if (seconds < 60) return 'now';
