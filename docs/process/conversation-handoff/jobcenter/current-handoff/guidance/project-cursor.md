@@ -24,16 +24,19 @@ ticket explicitly requires them.
 
 Current executable objective:
 
-`TNET-SHARED-NOTIFICATIONS-VISUAL-CONVERGE001` is the current executable
-objective. Engineering evidence is ready and HUMAN_QA is OPEN in Workflow V2
-cycle `260901135224`. The scoped implementation is parent commit `3802d88`
-(canonical shared relative-time normalization) plus nested Jobs adapter commit
-`116630d` (removal of the obsolete Jobs notification renderer/CSS enqueue and
-normalized synthetic Shell Lab records). The canonical physical owners remain
+`TNET-SHARED-NOTIFICATIONS-VISUAL-CONVERGE001` is complete with Engineering
+Director HUMAN_QA PASS in Workflow V2 cycle `260901135224`. The accepted
+scoped implementation is parent commit `3802d88` (canonical shared
+relative-time normalization) plus nested Jobs adapter commit `116630d`
+(removal of the obsolete Jobs notification renderer/CSS enqueue and normalized
+synthetic Shell Lab records), with continuity recorded in parent commit
+`ccf1f94`. The canonical physical owners remain
 the tracked `wordpress/wp-content/plugins/tnet-shared-shell/` and
 `wordpress/wp-content/plugins/tnet-notifications/` plugins; Jobs is only a
 fixture adapter. This ticket does not change notification persistence,
-destination, or Community producer ownership.
+destination, or Community producer ownership. Native Community/Job Center
+notification visual convergence, responsive containment, and focused
+interaction regression are accepted.
 
 `TNET-SHARED-SHELL-STATES001` remains complete and HUMAN_QA accepted. Its
 terminal accepted boundary is Workflow V2 cycle `260831180113`, parent commit
@@ -75,13 +78,17 @@ Center, and Job Center proves 54px actor avatars, 29px Reply/Like badges with
 treatment, no overflow, and native Escape/focus/outside-click behavior.
 Synthetic fixture rows establish presentation and fixture-session read
 behavior only; they do not prove a real Job Center producer/provider
-integration. HUMAN_QA remains the decisive open gate. Prior Shared Shell frame,
+integration. HUMAN_QA PASS is terminal for this objective. Prior Shared Shell frame,
 auth, guest, navigation, and responsive acceptance remains PROVEN and was not
 reopened.
 
 The prior `JOB-CENTER-NOTIFICATIONS-LAYOUT001`,
 `JOB-CENTER-CONTINUITY-REFRESH001`, and JC053 execution assertions below are
 historical continuity and must not displace the accepted Shared Shell boundary.
+
+The preferred next boundary is the existing
+`COMMUNITY-SHARED-SHELL-CONSUMER001` continuation against canonical v2. Do not
+reopen this accepted notification objective.
 
 `TNET-RESPONSIVE-ARCH001` is now the architecture-only boundary for the four
 responsive layout archetypes. Its contract is in the canonical Job Center
