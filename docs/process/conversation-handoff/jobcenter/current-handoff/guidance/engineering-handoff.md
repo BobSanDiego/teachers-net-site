@@ -144,9 +144,19 @@ implementation.
 
 ## 2. Current Ticket
 
-`TNET-SHARED-SHELL-STATES001` is complete with Engineering Director HUMAN_QA
-PASS. Workflow V2 cycle `260831180113`; parent commit `a247204` and nested
-Jobs adapter commit `8d9404b` are the terminal accepted boundary after
+`TNET-SHARED-NOTIFICATIONS-VISUAL-CONVERGE001` is current, with engineering
+evidence ready and HUMAN_QA OPEN in Workflow V2 cycle `260901135224`. Parent
+commit `3802d88` normalizes canonical Shared Shell relative-time parsing;
+nested Jobs commit `116630d` removes the obsolete Jobs notification renderer
+and CSS enqueue path, then supplies normalized fixture-only presentation data.
+The canonical physical owners remain `tnet-shared-shell` and
+`tnet-notifications`; Jobs is an adapter/fixture provider only. Community
+retains `reply.created` and `like.added` producer ownership. No real Job Center
+notification producer/provider integration is claimed by the synthetic fixture.
+
+`TNET-SHARED-SHELL-STATES001` remains complete with Engineering Director
+HUMAN_QA PASS. Workflow V2 cycle `260831180113`; parent commit `a247204` and
+nested Jobs adapter commit `8d9404b` are the terminal accepted boundary after
 generalized v2 commit `27f24ab`, VISUAL001 commit `9826f92`, and baseline
 `d10760d`. The tracked canonical physical owner is
 `wordpress/wp-content/plugins/tnet-shared-shell/`; Jobs remains an adapter and
@@ -176,13 +186,16 @@ and responsive/no-overflow panel behavior. Community remains owner of the
 `reply.created` and `like.added` producers; Shared Shell/Notifications own
 presentation/provider contracts.
 
-Because this shared presentation owner advanced after the prior Job Center
-acceptance, cycle `260901133129` ran the minimum Shell Lab regression. The
-authenticated unread and zero fixtures passed populated/empty panel
-presentation, badge behavior, resolved presentation, fixture-session row
-read handling, and desktop/compact containment. This is presentation evidence
-only and does not claim a real Job Center producer/provider integration. No
-other PROVEN Shared Shell seam was invalidated.
+Cycle `260901133129` ran the initial minimum Shell Lab regression after the
+shared presentation owner advanced. Cycle `260901135224` then diagnosed the
+native Community-versus-Job Center contradiction: the Lab had still enqueued a
+second, obsolete Jobs renderer/CSS path and its fixture records did not expose
+canonical Reply/Like semantics. The corrective path now loads the same shared
+parity stylesheet hash in both runtimes and proves 54px actor avatars, 29px
+Reply/Like badges with a 4px overlay, source/generic fallbacks, compact
+relative time, read/unread treatment, desktop and compact containment, and
+native Escape/focus/outside-click behavior. This remains presentation evidence
+only; HUMAN_QA is OPEN and no other PROVEN Shared Shell seam was invalidated.
 
 `JOB-CENTER-NOTIFICATIONS-LAYOUT001`, `JOB-CENTER-CONTINUITY-REFRESH001`, and
 JC053 assertions below are historical continuity only and do not supersede the

@@ -24,18 +24,26 @@ ticket explicitly requires them.
 
 Current executable objective:
 
-`TNET-SHARED-SHELL-STATES001` is complete and HUMAN_QA accepted. The terminal
-accepted boundary is recorded in Workflow V2 cycle `260831180113`, with the
-canonical state/frame implementation committed in parent commit `a247204`
-and Jobs adapter commit `8d9404b`, on top of generalized v2 commit `27f24ab`;
-the canonical physical owner is the tracked
-`wordpress/wp-content/plugins/tnet-shared-shell/` plugin. The accepted parity
-oracle remains `902bdc0704a75860ac6f98673cd11d41f04dd095`, with accepted parity
-CSS SHA-256 `f0d7af828761937ce140e5878cea5221e90dfbaeac696c4f632bbc99abba1141`
-and byte-identical accepted parity JavaScript preserved. Desktop, disclosures,
-notifications, resolved avatar/account, responsive collapse, compact
+`TNET-SHARED-NOTIFICATIONS-VISUAL-CONVERGE001` is the current executable
+objective. Engineering evidence is ready and HUMAN_QA is OPEN in Workflow V2
+cycle `260901135224`. The scoped implementation is parent commit `3802d88`
+(canonical shared relative-time normalization) plus nested Jobs adapter commit
+`116630d` (removal of the obsolete Jobs notification renderer/CSS enqueue and
+normalized synthetic Shell Lab records). The canonical physical owners remain
+the tracked `wordpress/wp-content/plugins/tnet-shared-shell/` and
+`wordpress/wp-content/plugins/tnet-notifications/` plugins; Jobs is only a
+fixture adapter. This ticket does not change notification persistence,
+destination, or Community producer ownership.
+
+`TNET-SHARED-SHELL-STATES001` remains complete and HUMAN_QA accepted. Its
+terminal accepted boundary is Workflow V2 cycle `260831180113`, parent commit
+`a247204`, and Jobs adapter commit `8d9404b`, on top of generalized v2 commit
+`27f24ab`. The accepted parity oracle remains
+`902bdc0704a75860ac6f98673cd11d41f04dd095`, with accepted parity CSS SHA-256
+`f0d7af828761937ce140e5878cea5221e90dfbaeac696c4f632bbc99abba1141`.
+Desktop, disclosures, resolved avatar/account, responsive collapse, compact
 navigation, narrow account-panel containment, squared outer frame, guest width
-viability, and the complete three-state matrix are HUMAN_QA PASS. Guest
+viability, and the complete three-state matrix remain HUMAN_QA PASS. Guest
 desktop uses direct Log In and primary Sign Up with no bell/avatar/account
 disclosure. Compact guest utilities remain first, before consumer navigation.
 
@@ -57,14 +65,19 @@ resolution. Community remains the producer owner for `reply.created` and
 `like.added`; the shared owners remain responsible for presentation/provider
 seams, not Community or Jobs domain semantics.
 
-The focused Job Center Shell Lab regression for this owner change is recorded
-in Workflow V2 cycle `260901133129`. Authenticated unread and zero fixtures
-show the bell, populated/empty panel, resolved presentation, correct badge
-absence at zero, and no horizontal overflow at desktop and compact widths.
+The prior focused Job Center Shell Lab regression is recorded in Workflow V2
+cycle `260901133129`. Current cycle `260901135224` proved the visual
+contradiction was caused by a later, obsolete Jobs CSS/renderer path plus
+fixture records that did not express canonical semantic events. The current
+runtime loads the same shared parity stylesheet hash in Community and Job
+Center, and Job Center proves 54px actor avatars, 29px Reply/Like badges with
+4px overlay, actorless system fallbacks, compact relative time, read/unread
+treatment, no overflow, and native Escape/focus/outside-click behavior.
 Synthetic fixture rows establish presentation and fixture-session read
 behavior only; they do not prove a real Job Center producer/provider
-integration. Prior Shared Shell frame, auth, guest, navigation, and responsive
-acceptance remains PROVEN and was not reopened.
+integration. HUMAN_QA remains the decisive open gate. Prior Shared Shell frame,
+auth, guest, navigation, and responsive acceptance remains PROVEN and was not
+reopened.
 
 The prior `JOB-CENTER-NOTIFICATIONS-LAYOUT001`,
 `JOB-CENTER-CONTINUITY-REFRESH001`, and JC053 execution assertions below are
