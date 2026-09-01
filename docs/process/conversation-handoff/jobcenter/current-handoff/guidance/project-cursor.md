@@ -45,6 +45,27 @@ Legacy v1 remains temporary compatibility only for the suspended Community
 migration and must remain until Community adopts v2 and passes HUMAN_QA. The
 exact continuation boundary is `COMMUNITY-SHARED-SHELL-CONSUMER001-CONT2`.
 
+The current shared notification presentation authority is in the tracked
+`wordpress/wp-content/plugins/tnet-notifications/` and
+`wordpress/wp-content/plugins/tnet-shared-shell/` owners. The accepted
+Community downstream closure `TNET-NOTIFICATIONS-LIKE-PRODUCER001` ended at
+`8d83b33fe0d38199151152aaf0f8966e799c25ca`; current repository authority is
+`9ee1ec2510e716e298ffee4a338903137221e8d9`, which includes the accepted
+destination/read, actor/avatar, semantic event-badge, quoted-context,
+relative-time, and responsive notification presentation plus BuddyPress avatar
+resolution. Community remains the producer owner for `reply.created` and
+`like.added`; the shared owners remain responsible for presentation/provider
+seams, not Community or Jobs domain semantics.
+
+The focused Job Center Shell Lab regression for this owner change is recorded
+in Workflow V2 cycle `260901133129`. Authenticated unread and zero fixtures
+show the bell, populated/empty panel, resolved presentation, correct badge
+absence at zero, and no horizontal overflow at desktop and compact widths.
+Synthetic fixture rows establish presentation and fixture-session read
+behavior only; they do not prove a real Job Center producer/provider
+integration. Prior Shared Shell frame, auth, guest, navigation, and responsive
+acceptance remains PROVEN and was not reopened.
+
 The prior `JOB-CENTER-NOTIFICATIONS-LAYOUT001`,
 `JOB-CENTER-CONTINUITY-REFRESH001`, and JC053 execution assertions below are
 historical continuity and must not displace the accepted Shared Shell boundary.

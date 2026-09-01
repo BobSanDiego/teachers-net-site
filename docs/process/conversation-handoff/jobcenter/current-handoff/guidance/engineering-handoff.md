@@ -163,6 +163,27 @@ preferred next objective is to resume
 `COMMUNITY-SHARED-SHELL-CONSUMER001-CONT2` against the v2 contract. Do not
 retire legacy v1 until Community native parity and HUMAN_QA pass.
 
+Current shared notification authority is tracked in the canonical
+`tnet-notifications` and `tnet-shared-shell` plugins. The accepted Community
+closure identity was `8d83b33fe0d38199151152aaf0f8966e799c25ca`; current
+authority is `9ee1ec2510e716e298ffee4a338903137221e8d9`, including resolved
+BuddyPress custom-avatar preference and fallback. The accepted presentation
+seams are generic destination/read handling, whole-row navigation and
+provider mark-read, actor identity/avatar, semantic Like/Reply badges,
+actor-first 54px avatar with 29px overlaid badge, actor-emphasized copy,
+quoted target/reply context, bounded `reply_excerpt`, compact relative time,
+and responsive/no-overflow panel behavior. Community remains owner of the
+`reply.created` and `like.added` producers; Shared Shell/Notifications own
+presentation/provider contracts.
+
+Because this shared presentation owner advanced after the prior Job Center
+acceptance, cycle `260901133129` ran the minimum Shell Lab regression. The
+authenticated unread and zero fixtures passed populated/empty panel
+presentation, badge behavior, resolved presentation, fixture-session row
+read handling, and desktop/compact containment. This is presentation evidence
+only and does not claim a real Job Center producer/provider integration. No
+other PROVEN Shared Shell seam was invalidated.
+
 `JOB-CENTER-NOTIFICATIONS-LAYOUT001`, `JOB-CENTER-CONTINUITY-REFRESH001`, and
 JC053 assertions below are historical continuity only and do not supersede the
 accepted Shared Shell boundary.

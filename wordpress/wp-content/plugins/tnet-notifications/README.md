@@ -4,6 +4,24 @@ This plugin owns the shared recipient-notification persistence and authenticated
 consumer API. It has no dependency on `tnet-jobs`, Community, Lessons, Core
 Terms, or the theme, and it exposes no public producer-write endpoint.
 
+## Current presentation contract
+
+The current repository authority includes the Community-accepted shared
+notification presentation contract. The accepted downstream closure was
+`8d83b33fe0d38199151152aaf0f8966e799c25ca`; the current canonical source is
+`9ee1ec2510e716e298ffee4a338903137221e8d9`, which additionally resolves
+BuddyPress custom avatars when available and otherwise preserves the existing
+resolved-avatar fallback.
+
+The shared API supplies resolved destinations, read state, actor identity and
+avatar data, event type/icon, quoted context, bounded `reply_excerpt`, and
+timestamps. Shared Shell owns the visible row, whole-row navigation and
+presentation mechanics, including actor-first 54px avatars with overlaid 29px
+event badges and responsive panel containment. Providers own persistence,
+facts, and mark-read operations; Community continues to own `reply.created`
+and `like.added` producers. Job Center fixtures prove presentation only and do
+not establish producer/provider integration.
+
 ## Local activation and migration
 
 From the repository root:
