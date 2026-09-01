@@ -100,6 +100,19 @@ final class TNet_Notifications_Service {
         $avatar = function_exists('tnet_profile_resolve_avatar')
           ? tnet_profile_resolve_avatar((int) $actor_user->ID, 48)
           : (function_exists('get_avatar_data') ? get_avatar_data((int) $actor_user->ID, ['size' => 48, 'default' => 'identicon']) : []);
+        if (function_exists('bp_get_user_has_avatar') && bp_get_user_has_avatar((int) $actor_user->ID) && function_exists('bp_core_fetch_avatar')) {
+          $bp_avatar_url = bp_core_fetch_avatar([
+            'item_id' => (int) $actor_user->ID,
+            'object' => 'user',
+            'type' => 'full',
+            'width' => 48,
+            'height' => 48,
+            'html' => false,
+          ]);
+          if ($bp_avatar_url) {
+            $avatar = ['url' => $bp_avatar_url, 'source' => 'buddypress', 'is_custom' => true];
+          }
+        }
         $actor = [
           'user_id' => (int) $actor_user->ID,
           'display_name' => (string) $actor_user->display_name,
