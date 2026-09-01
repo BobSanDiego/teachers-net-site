@@ -195,19 +195,21 @@
     function identity(item) {
       if (item.actor && item.actor.avatar) {
         var hasCustomAvatar = item.actor.avatar.is_custom && item.actor.avatar.url;
-        return '<span class="tnet-jobs-shell-lab-notification-avatar ' + (hasCustomAvatar ? 'is-actor-avatar' : 'is-generic-user') + '" data-notification-actor-avatar="' + (hasCustomAvatar ? 'custom' : 'fallback') + '" aria-label="' + escapeHtml(hasCustomAvatar ? 'Avatar for ' + item.actor.display_name : 'Generic user avatar for ' + item.actor.display_name) + '">' + (hasCustomAvatar ? '<img src="' + escapeHtml(item.actor.avatar.url) + '" alt="">' : icon('user', 'tnet-jobs-shell-lab-notification-source-icon')) + '<span class="tnet-jobs-shell-lab-notification-event-badge">' + icon(item.event_icon, 'tnet-jobs-shell-lab-notification-event-icon') + '</span></span>';
+        var badgeClass = item.event_type === 'like.added' ? 'is-like' : (item.event_type === 'reply.created' ? 'is-reply' : 'is-system');
+        return '<span class="tnet-jobs-shell-lab-notification-avatar ' + (hasCustomAvatar ? 'is-actor-avatar' : 'is-generic-user') + '" data-notification-actor-avatar="' + (hasCustomAvatar ? 'custom' : 'fallback') + '" aria-label="' + escapeHtml(hasCustomAvatar ? 'Avatar for ' + item.actor.display_name : 'Generic user avatar for ' + item.actor.display_name) + '">' + (hasCustomAvatar ? '<img src="' + escapeHtml(item.actor.avatar.url) + '" alt="">' : icon('user', 'tnet-jobs-shell-lab-notification-source-icon')) + '<span class="tnet-jobs-shell-lab-notification-event-badge ' + badgeClass + '">' + icon(item.event_icon, 'tnet-jobs-shell-lab-notification-event-icon') + '</span></span>';
       }
       return '<span class="tnet-jobs-shell-lab-notification-avatar is-source-fallback" data-notification-source-fallback="' + escapeHtml(item.source_product) + '" aria-label="' + escapeHtml(sourceLabels[item.source_product]) + ' source fallback">' + icon(sourceIcons[item.source_product] || 'system', 'tnet-jobs-shell-lab-notification-source-icon') + '<span class="tnet-jobs-shell-lab-notification-event-badge">' + icon(item.event_icon, 'tnet-jobs-shell-lab-notification-event-icon') + '</span></span>';
     }
     function row(item) {
       var unread = item.read_state === 'unread';
       var presentation = semanticPresentation(item);
-      var statement = presentation.actor ? presentation.actor + presentation.primary + (presentation.context ? ' ' + presentation.context : '') : presentation.primary;
+      var quotedContext = presentation.context ? '“' + presentation.context + '”' : '';
+      var statement = presentation.actor ? presentation.actor + presentation.primary + (quotedContext ? ' ' + quotedContext : '') : presentation.primary;
       var label = statement + ' ' + (unread ? 'Unread.' : 'Read.') + ' Notification destination: ' + (item.destination.key || '') + '.';
       var href = item.destination && item.destination.href ? item.destination.href : '#';
       return '<a class="tnet-jobs-shell-lab-notification-row' + (unread ? ' is-unread' : '') + '" href="' + escapeHtml(href) + '" data-notification-id="' + escapeHtml(item.notification_id) + '" data-notification-destination="' + escapeHtml(href) + '" aria-label="' + escapeHtml(label) + '">' +
         identity(Object.assign({}, item, { event_icon: presentation.icon })) +
-        '<span class="tnet-jobs-shell-lab-notification-copy"><span class="tnet-jobs-shell-lab-notification-payload">' + (presentation.actor ? '<strong>' + escapeHtml(presentation.actor) + '</strong>' + escapeHtml(presentation.primary) : escapeHtml(presentation.primary)) + (presentation.context ? ' ' + escapeHtml(presentation.context) : '') + '</span><span class="tnet-jobs-shell-lab-notification-time">' + escapeHtml(relativeTime(item.created_at || item.display_time)) + '</span></span>' +
+        '<span class="tnet-jobs-shell-lab-notification-copy"><span class="tnet-jobs-shell-lab-notification-payload">' + (presentation.actor ? '<strong>' + escapeHtml(presentation.actor) + '</strong>' + escapeHtml(presentation.primary) : escapeHtml(presentation.primary)) + (quotedContext ? ' ' + escapeHtml(quotedContext) : '') + '</span><span class="tnet-jobs-shell-lab-notification-time">' + escapeHtml(relativeTime(item.created_at || item.display_time)) + '</span></span>' +
         (unread ? '<span class="tnet-jobs-shell-lab-notification-unread-dot" aria-hidden="true"></span>' : '<span class="tnet-jobs-shell-lab-notification-read-spacer" aria-hidden="true"></span>') +
       '</a>';
     }

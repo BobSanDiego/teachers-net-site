@@ -114,9 +114,9 @@
 .tnet-jobs-shell-lab-notification-group { margin: 0; padding: 10px 0 2px; }
 .tnet-jobs-shell-lab-notification-group + .tnet-jobs-shell-lab-notification-group { border-top: 1px solid #eef2f6; }
 .tnet-jobs-shell-lab-notification-group h3 { margin: 0; padding: 0 17px 5px; color: #718097; font-size: 10px; font-weight: 750; letter-spacing: .08em; line-height: 1.4; }
-.tnet-jobs-shell-lab-notification-row { display: grid; width: 100%; min-height: 70px; grid-template-columns: 45px minmax(0, 1fr) 10px; gap: 10px; align-items: start; padding: 9px 17px 10px; border: 0; background: transparent; color: #25344b; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-jobs-shell-lab-notification-row { display: grid; width: 100%; min-height: 82px; grid-template-columns: 58px minmax(0, 1fr) 10px; gap: 10px; align-items: start; padding: 12px 17px 13px; border: 0; background: transparent; color: #25344b; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
 .tnet-jobs-shell-lab-notification-row:hover { background: #f7faff; }
-.tnet-jobs-shell-lab-notification-avatar { position: relative; display: grid; width: 39px; height: 39px; place-items: center; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 750; line-height: 1; }
+.tnet-jobs-shell-lab-notification-avatar { position: relative; display: grid; width: 54px; height: 54px; place-items: center; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 750; line-height: 1; }
 .tnet-jobs-shell-lab-notification-avatar.is-source-fallback { background: #2674c9; }
 .tnet-jobs-shell-lab-notification-avatar.is-actor-avatar, .tnet-jobs-shell-lab-notification-avatar.is-generic-user { overflow: hidden; background: #e8eef6; color: #52657d; }
 .tnet-jobs-shell-lab-notification-avatar.is-actor-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -124,8 +124,10 @@
 .tnet-jobs-shell-lab-notification-avatar--violet { background: #7050a5; }
 .tnet-jobs-shell-lab-notification-avatar--gold { background: #a66d28; }
 .tnet-jobs-shell-lab-notification-source-icon { width: 20px; height: 20px; }
-.tnet-jobs-shell-lab-notification-event-badge { position: absolute; right: -3px; bottom: -3px; display: grid; width: 23px; height: 23px; place-items: center; border: 2px solid #fff; border-radius: 50%; background: #fff; color: #2674c9; box-shadow: 0 1px 3px rgba(22, 44, 72, .16); }
-.tnet-jobs-shell-lab-notification-event-icon { width: 14px; height: 14px; stroke-width: 2.2; }
+.tnet-jobs-shell-lab-notification-event-badge { position: absolute; right: -4px; bottom: -4px; display: grid; width: 29px; height: 29px; place-items: center; border: 2px solid #fff; border-radius: 50%; background: #fff; color: #2674c9; box-shadow: 0 1px 3px rgba(22, 44, 72, .16); }
+.tnet-jobs-shell-lab-notification-event-badge.is-like { background: #df5a73; color: #fff; }
+.tnet-jobs-shell-lab-notification-event-badge.is-reply { background: #2f6fae; color: #fff; }
+.tnet-jobs-shell-lab-notification-event-icon { width: 17px; height: 17px; stroke-width: 2.2; }
 .tnet-jobs-shell-lab-notification-copy { display: grid; min-width: 0; gap: 3px; padding-top: 1px; }
 .tnet-jobs-shell-lab-notification-payload { display: -webkit-box; overflow: hidden; color: #25344b; font-size: 13px; font-weight: 500; line-height: 18px; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .tnet-jobs-shell-lab-notification-payload strong { font-weight: 750; }
