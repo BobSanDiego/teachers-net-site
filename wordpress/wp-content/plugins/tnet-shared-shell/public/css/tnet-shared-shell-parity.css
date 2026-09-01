@@ -118,13 +118,14 @@
 .tnet-jobs-shell-lab-notification-row:hover { background: #f7faff; }
 .tnet-jobs-shell-lab-notification-avatar { position: relative; display: grid; width: 54px; height: 54px; place-items: center; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 750; line-height: 1; }
 .tnet-jobs-shell-lab-notification-avatar.is-source-fallback { background: #2674c9; }
-.tnet-jobs-shell-lab-notification-avatar.is-actor-avatar, .tnet-jobs-shell-lab-notification-avatar.is-generic-user { overflow: hidden; background: #e8eef6; color: #52657d; }
-.tnet-jobs-shell-lab-notification-avatar.is-actor-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tnet-jobs-shell-lab-notification-avatar.is-actor-avatar, .tnet-jobs-shell-lab-notification-avatar.is-generic-user { overflow: visible; background: #e8eef6; color: #52657d; }
+.tnet-jobs-shell-lab-notification-avatar.is-actor-avatar img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 .tnet-jobs-shell-lab-notification-avatar--teal { background: #397b78; }
 .tnet-jobs-shell-lab-notification-avatar--violet { background: #7050a5; }
 .tnet-jobs-shell-lab-notification-avatar--gold { background: #a66d28; }
 .tnet-jobs-shell-lab-notification-source-icon { width: 20px; height: 20px; }
-.tnet-jobs-shell-lab-notification-event-badge { position: absolute; right: -4px; bottom: -4px; display: grid; width: 29px; height: 29px; place-items: center; border: 2px solid #fff; border-radius: 50%; background: #fff; color: #2674c9; box-shadow: 0 1px 3px rgba(22, 44, 72, .16); }
+.tnet-jobs-shell-lab-notification-avatar.is-generic-user .tnet-jobs-shell-lab-notification-source-icon { width: 34px; height: 34px; }
+.tnet-jobs-shell-lab-notification-event-badge { position: absolute; right: -4px; bottom: -4px; z-index: 1; display: grid; width: 29px; height: 29px; place-items: center; border: 2px solid #fff; border-radius: 50%; background: #fff; color: #2674c9; box-shadow: 0 1px 3px rgba(22, 44, 72, .16); }
 .tnet-jobs-shell-lab-notification-event-badge.is-like { background: #df5a73; color: #fff; }
 .tnet-jobs-shell-lab-notification-event-badge.is-reply { background: #2f6fae; color: #fff; }
 .tnet-jobs-shell-lab-notification-event-icon { width: 17px; height: 17px; stroke-width: 2.2; }
