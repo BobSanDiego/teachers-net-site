@@ -222,13 +222,14 @@
           event.stopPropagation(); // Rendering replaces the clicked row before the shared outside-dismissal listener runs.
           var item = notifications.filter(function (candidate) { return String(candidate.notification_id) === String(button.dataset.notificationId); })[0];
           if (!item) return;
+          var destinationHref = button.getAttribute('href') || button.dataset.notificationDestination || '#';
           if (fixtureOnly) {
             item.read_state = 'read';
             item.read_at = 'fixture-session';
             updateBadge();
             render('Synthetic fixture notification marked read.');
           } else if (provider.markRead) {
-            provider.markRead(item.notification_id).then(function () { item.read_state = 'read'; item.read_at = 'runtime-session'; updateBadge(); window.location.assign(href); }).catch(function () { window.location.assign(href); });
+            provider.markRead(item.notification_id).then(function () { item.read_state = 'read'; item.read_at = 'runtime-session'; updateBadge(); window.location.assign(destinationHref); }).catch(function () { window.location.assign(destinationHref); });
           }
         });
       });
