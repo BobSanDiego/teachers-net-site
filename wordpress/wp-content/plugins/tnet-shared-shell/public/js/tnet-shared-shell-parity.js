@@ -169,6 +169,19 @@
       toggle.setAttribute('aria-label', unread ? 'Notifications, ' + unread + ' unread' + qualifier : 'Notifications, no unread' + qualifier);
     }
     function icon(name, className) { return icons.render(name, className); }
+    function semanticPresentation(item) {
+      var metadata = item.metadata || {};
+      var actor = metadata.like_actor || metadata.reply_author || '';
+      if (!actor && item.event_type === 'like.added') actor = String(metadata.payload || '').replace(/\s+liked your post:?\s*$/i, '');
+      if (!actor && item.event_type === 'reply.created') actor = String(metadata.payload || '').replace(/^New reply from\s+/i, '');
+      if (item.event_type === 'like.added') {
+        return { icon: 'heart', primary: (actor || 'Someone') + ' liked your post:', context: metadata.topic_title || metadata.meta || '' };
+      }
+      if (item.event_type === 'reply.created') {
+        return { icon: 'reply', primary: (actor || 'Someone') + ' replied to your post:', context: metadata.reply_excerpt || metadata.meta || '' };
+      }
+      return { icon: item.event_icon || 'system', primary: metadata.payload || 'You have a new notification.', context: metadata.meta || '' };
+    }
     function identity(item) {
       if (item.actor && item.actor.avatar) {
         return '<span class="tnet-jobs-shell-lab-notification-avatar is-fixture-avatar tnet-jobs-shell-lab-notification-avatar--' + escapeHtml(item.actor.avatar.tone) + '" data-notification-actor-avatar="fixture" aria-label="Fixture avatar for ' + escapeHtml(item.actor.display_name) + '">' + escapeHtml(item.actor.avatar.initials) + '<span class="tnet-jobs-shell-lab-notification-event-badge">' + icon(item.event_icon, 'tnet-jobs-shell-lab-notification-event-icon') + '</span></span>';
@@ -177,11 +190,12 @@
     }
     function row(item) {
       var unread = item.read_state === 'unread';
-      var label = item.metadata.payload + '. ' + item.metadata.meta + '. ' + (unread ? 'Unread.' : 'Read.') + ' Fixture destination: ' + item.destination.key + '.';
+      var presentation = semanticPresentation(item);
+      var label = presentation.primary + ' ' + presentation.context + ' ' + (unread ? 'Unread.' : 'Read.') + ' Notification destination: ' + (item.destination.key || '') + '.';
       var href = item.destination && item.destination.href ? item.destination.href : '#';
       return '<a class="tnet-jobs-shell-lab-notification-row' + (unread ? ' is-unread' : '') + '" href="' + escapeHtml(href) + '" data-notification-id="' + escapeHtml(item.notification_id) + '" data-notification-destination="' + escapeHtml(href) + '" aria-label="' + escapeHtml(label) + '">' +
-        identity(item) +
-        '<span class="tnet-jobs-shell-lab-notification-copy"><span class="tnet-jobs-shell-lab-notification-payload">' + escapeHtml(item.metadata.payload) + '</span><span class="tnet-jobs-shell-lab-notification-meta">' + escapeHtml(item.display_time) + ' · ' + escapeHtml(item.metadata.meta) + '</span></span>' +
+        identity(Object.assign({}, item, { event_icon: presentation.icon })) +
+        '<span class="tnet-jobs-shell-lab-notification-copy"><span class="tnet-jobs-shell-lab-notification-payload">' + escapeHtml(presentation.primary) + '</span><span class="tnet-jobs-shell-lab-notification-meta">' + escapeHtml(presentation.context) + '</span><span class="tnet-jobs-shell-lab-notification-time">' + escapeHtml(item.display_time) + '</span></span>' +
         (unread ? '<span class="tnet-jobs-shell-lab-notification-unread-dot" aria-hidden="true"></span>' : '<span class="tnet-jobs-shell-lab-notification-read-spacer" aria-hidden="true"></span>') +
       '</a>';
     }
@@ -206,7 +220,7 @@
         button.addEventListener('click', function (event) {
           event.preventDefault(); // Fixture-only interception preserves the browser-visible mark-one-read proof.
           event.stopPropagation(); // Rendering replaces the clicked row before the shared outside-dismissal listener runs.
-          var item = notifications.filter(function (candidate) { return candidate.notification_id === button.dataset.notificationId; })[0];
+          var item = notifications.filter(function (candidate) { return String(candidate.notification_id) === String(button.dataset.notificationId); })[0];
           if (!item) return;
           if (fixtureOnly) {
             item.read_state = 'read';
@@ -214,7 +228,7 @@
             updateBadge();
             render('Synthetic fixture notification marked read.');
           } else if (provider.markRead) {
-            provider.markRead(item.notification_id).then(function () { item.read_state = 'read'; item.read_at = 'runtime-session'; updateBadge(); render('Notification marked read.'); });
+            provider.markRead(item.notification_id).then(function () { item.read_state = 'read'; item.read_at = 'runtime-session'; updateBadge(); window.location.assign(href); }).catch(function () { window.location.assign(href); });
           }
         });
       });
