@@ -93,6 +93,24 @@ final class TNet_Notifications_Service {
       $resolved_destination = call_user_func($definition['resolve'], json_decode($row['destination_args_json'], true) ?: []);
       if (!$resolved_destination) return null;
     }
+    $actor = null;
+    if ($row['actor_user_id'] !== null && function_exists('get_userdata')) {
+      $actor_user = get_userdata((int) $row['actor_user_id']);
+      if ($actor_user) {
+        $avatar = function_exists('tnet_profile_resolve_avatar')
+          ? tnet_profile_resolve_avatar((int) $actor_user->ID, 48)
+          : (function_exists('get_avatar_data') ? get_avatar_data((int) $actor_user->ID, ['size' => 48, 'default' => 'identicon']) : []);
+        $actor = [
+          'user_id' => (int) $actor_user->ID,
+          'display_name' => (string) $actor_user->display_name,
+          'avatar' => [
+            'url' => !empty($avatar['url']) ? esc_url_raw((string) $avatar['url']) : '',
+            'source' => !empty($avatar['source']) ? sanitize_key((string) $avatar['source']) : 'wordpress-fallback',
+            'is_custom' => !empty($avatar['is_custom']),
+          ],
+        ];
+      }
+    }
     return [
       'notification_id' => (int) $row['notification_id'],
       'recipient_user_id' => (int) $row['recipient_user_id'],
@@ -101,6 +119,7 @@ final class TNet_Notifications_Service {
       'event_type' => $row['event_type'],
       'payload_version' => (int) $row['payload_version'],
       'actor_user_id' => $row['actor_user_id'] === null ? null : (int) $row['actor_user_id'],
+      'actor' => $actor,
       'object_type' => $row['object_type'],
       'object_id' => $row['object_id'],
       'destination_key' => $row['destination_key'],

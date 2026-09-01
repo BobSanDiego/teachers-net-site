@@ -169,33 +169,45 @@
       toggle.setAttribute('aria-label', unread ? 'Notifications, ' + unread + ' unread' + qualifier : 'Notifications, no unread' + qualifier);
     }
     function icon(name, className) { return icons.render(name, className); }
+    function relativeTime(value) {
+      var date = new Date(String(value || '').replace(' ', 'T') + 'Z');
+      if (Number.isNaN(date.getTime())) return '';
+      var seconds = Math.max(0, Math.floor((Date.now() - date.getTime()) / 1000));
+      if (seconds < 60) return 'now';
+      if (seconds < 3600) return Math.floor(seconds / 60) + 'm';
+      if (seconds < 86400) return Math.floor(seconds / 3600) + 'h';
+      if (seconds < 172800) return 'Yesterday';
+      return Math.floor(seconds / 86400) + 'd';
+    }
     function semanticPresentation(item) {
       var metadata = item.metadata || {};
-      var actor = metadata.like_actor || metadata.reply_author || '';
+      var actor = item.actor && item.actor.display_name ? item.actor.display_name : (metadata.like_actor || metadata.reply_author || '');
       if (!actor && item.event_type === 'like.added') actor = String(metadata.payload || '').replace(/\s+liked your post:?\s*$/i, '');
       if (!actor && item.event_type === 'reply.created') actor = String(metadata.payload || '').replace(/^New reply from\s+/i, '');
       if (item.event_type === 'like.added') {
-        return { icon: 'heart', primary: (actor || 'Someone') + ' liked your post:', context: metadata.topic_title || metadata.meta || '' };
+        return { icon: 'heart', actor: actor || 'Someone', primary: ' liked your post:', context: metadata.topic_title || metadata.meta || '' };
       }
       if (item.event_type === 'reply.created') {
-        return { icon: 'reply', primary: (actor || 'Someone') + ' replied to your post:', context: metadata.reply_excerpt || metadata.meta || '' };
+        return { icon: 'reply', actor: actor || 'Someone', primary: ' replied to your post:', context: metadata.reply_excerpt || metadata.meta || '' };
       }
-      return { icon: item.event_icon || 'system', primary: metadata.payload || 'You have a new notification.', context: metadata.meta || '' };
+      return { icon: item.event_icon || 'system', actor: '', primary: metadata.payload || 'You have a new notification.', context: metadata.meta || '' };
     }
     function identity(item) {
       if (item.actor && item.actor.avatar) {
-        return '<span class="tnet-jobs-shell-lab-notification-avatar is-fixture-avatar tnet-jobs-shell-lab-notification-avatar--' + escapeHtml(item.actor.avatar.tone) + '" data-notification-actor-avatar="fixture" aria-label="Fixture avatar for ' + escapeHtml(item.actor.display_name) + '">' + escapeHtml(item.actor.avatar.initials) + '<span class="tnet-jobs-shell-lab-notification-event-badge">' + icon(item.event_icon, 'tnet-jobs-shell-lab-notification-event-icon') + '</span></span>';
+        var hasCustomAvatar = item.actor.avatar.is_custom && item.actor.avatar.url;
+        return '<span class="tnet-jobs-shell-lab-notification-avatar ' + (hasCustomAvatar ? 'is-actor-avatar' : 'is-generic-user') + '" data-notification-actor-avatar="' + (hasCustomAvatar ? 'custom' : 'fallback') + '" aria-label="' + escapeHtml(hasCustomAvatar ? 'Avatar for ' + item.actor.display_name : 'Generic user avatar for ' + item.actor.display_name) + '">' + (hasCustomAvatar ? '<img src="' + escapeHtml(item.actor.avatar.url) + '" alt="">' : icon('user', 'tnet-jobs-shell-lab-notification-source-icon')) + '<span class="tnet-jobs-shell-lab-notification-event-badge">' + icon(item.event_icon, 'tnet-jobs-shell-lab-notification-event-icon') + '</span></span>';
       }
       return '<span class="tnet-jobs-shell-lab-notification-avatar is-source-fallback" data-notification-source-fallback="' + escapeHtml(item.source_product) + '" aria-label="' + escapeHtml(sourceLabels[item.source_product]) + ' source fallback">' + icon(sourceIcons[item.source_product] || 'system', 'tnet-jobs-shell-lab-notification-source-icon') + '<span class="tnet-jobs-shell-lab-notification-event-badge">' + icon(item.event_icon, 'tnet-jobs-shell-lab-notification-event-icon') + '</span></span>';
     }
     function row(item) {
       var unread = item.read_state === 'unread';
       var presentation = semanticPresentation(item);
-      var label = presentation.primary + ' ' + presentation.context + ' ' + (unread ? 'Unread.' : 'Read.') + ' Notification destination: ' + (item.destination.key || '') + '.';
+      var statement = presentation.actor ? presentation.actor + presentation.primary + (presentation.context ? ' ' + presentation.context : '') : presentation.primary;
+      var label = statement + ' ' + (unread ? 'Unread.' : 'Read.') + ' Notification destination: ' + (item.destination.key || '') + '.';
       var href = item.destination && item.destination.href ? item.destination.href : '#';
       return '<a class="tnet-jobs-shell-lab-notification-row' + (unread ? ' is-unread' : '') + '" href="' + escapeHtml(href) + '" data-notification-id="' + escapeHtml(item.notification_id) + '" data-notification-destination="' + escapeHtml(href) + '" aria-label="' + escapeHtml(label) + '">' +
         identity(Object.assign({}, item, { event_icon: presentation.icon })) +
-        '<span class="tnet-jobs-shell-lab-notification-copy"><span class="tnet-jobs-shell-lab-notification-payload">' + escapeHtml(presentation.primary) + '</span><span class="tnet-jobs-shell-lab-notification-meta">' + escapeHtml(presentation.context) + '</span><span class="tnet-jobs-shell-lab-notification-time">' + escapeHtml(item.display_time) + '</span></span>' +
+        '<span class="tnet-jobs-shell-lab-notification-copy"><span class="tnet-jobs-shell-lab-notification-payload">' + (presentation.actor ? '<strong>' + escapeHtml(presentation.actor) + '</strong>' + escapeHtml(presentation.primary) : escapeHtml(presentation.primary)) + (presentation.context ? ' ' + escapeHtml(presentation.context) : '') + '</span><span class="tnet-jobs-shell-lab-notification-time">' + escapeHtml(relativeTime(item.created_at || item.display_time)) + '</span></span>' +
         (unread ? '<span class="tnet-jobs-shell-lab-notification-unread-dot" aria-hidden="true"></span>' : '<span class="tnet-jobs-shell-lab-notification-read-spacer" aria-hidden="true"></span>') +
       '</a>';
     }
