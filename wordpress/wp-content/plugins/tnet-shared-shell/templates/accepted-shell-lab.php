@@ -9,7 +9,7 @@
     <body <?php body_class(['tnet-jobs-app-canvas', 'tnet-jobs-shell-lab-body', 'tnet-jobs-route-' . $route_class, $anonymous_fixture ? 'tnet-jobs-route-browse' : '', $clean ? 'tnet-jobs-shell-clean-preview' : '']); ?>>
       <?php if (function_exists('wp_body_open')) wp_body_open(); ?>
       <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="<?php echo esc_attr($adapter); ?>" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-shell-fixture-state="<?php echo esc_attr($fixture_state); ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
-        <header class="tnet-jobs-shell-lab-header">
+        <header class="tnet-jobs-shell-lab-header" data-tnet-shell-header>
           <div class="tnet-jobs-shell-lab-header-inner">
             <span class="tnet-jobs-shell-lab-rail-divider" aria-hidden="true"></span>
             <a class="tnet-jobs-shell-lab-brand" href="<?php echo esc_url($shell_home_url); ?>" aria-label="<?php echo esc_attr__('Teachers.Net home', 'tnet-shared-shell'); ?>">

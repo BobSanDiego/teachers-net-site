@@ -28,9 +28,12 @@
 
 /* The isolated Job Center fixture keeps its adapter selectors, but these
  * contract values are owned by the platform layer and win by explicit scope. */
-[data-tnet-shared-shell] [data-tnet-shell-header] {
-  position: relative;
-  z-index: 2;
+[data-tnet-shared-shell][data-shell-contract="canonical"].tnet-shared-shell__canonical [data-tnet-shell-header] {
+  /* Persistent platform navigation stays in document flow while pinning at
+   * the viewport edge; consumers retain ownership of regions below it. */
+  position: sticky;
+  top: 0;
+  z-index: 30;
   height: var(--tnet-shell-header-height);
   min-height: var(--tnet-shell-header-height);
   border-bottom: 1px solid var(--tnet-shell-border);
