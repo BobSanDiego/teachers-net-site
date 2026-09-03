@@ -3,12 +3,12 @@
     <head>
       <meta charset="<?php bloginfo('charset'); ?>">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title><?php echo esc_html__('Employer Shell Lab | Teachers.Net Job Center', 'tnet-shared-shell'); ?></title>
+      <title><?php echo esc_html($document_title); ?></title>
       <?php wp_head(); ?>
     </head>
-    <body <?php body_class(['tnet-jobs-app-canvas', 'tnet-jobs-shell-lab-body', 'tnet-jobs-route-employer-shell-lab', $anonymous_fixture ? 'tnet-jobs-route-browse' : '', $clean ? 'tnet-jobs-shell-clean-preview' : '']); ?>>
+    <body <?php body_class(['tnet-jobs-app-canvas', 'tnet-jobs-shell-lab-body', 'tnet-jobs-route-' . $route_class, $anonymous_fixture ? 'tnet-jobs-route-browse' : '', $clean ? 'tnet-jobs-shell-clean-preview' : '']); ?>>
       <?php if (function_exists('wp_body_open')) wp_body_open(); ?>
-      <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="shell-lab" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-shell-fixture-state="<?php echo esc_attr($fixture_state); ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
+      <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="<?php echo esc_attr($adapter); ?>" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-shell-fixture-state="<?php echo esc_attr($fixture_state); ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
         <header class="tnet-jobs-shell-lab-header">
           <div class="tnet-jobs-shell-lab-header-inner">
             <span class="tnet-jobs-shell-lab-rail-divider" aria-hidden="true"></span>
@@ -17,8 +17,9 @@
             </a>
             <div class="tnet-jobs-shell-lab-navbar-right">
               <nav class="tnet-jobs-shell-lab-main-nav" aria-label="<?php echo esc_attr__('Teachers.Net navigation', 'tnet-shared-shell'); ?>">
-                <div class="tnet-jobs-shell-lab-nav-menu tnet-jobs-shell-lab-product-menu is-current" data-product-flow="employer" data-employer-access="<?php echo $shell_has_employer_access ? 'true' : 'false'; ?>">
-                  <button type="button" class="tnet-jobs-shell-lab-nav-trigger" aria-expanded="false" aria-controls="tnet-jobs-shell-product-navigation" aria-haspopup="true"><?php echo esc_html__('Job Center', 'tnet-shared-shell'); ?><span class="tnet-jobs-shell-lab-nav-chevron" aria-hidden="true"></span></button>
+                <a class="tnet-jobs-shell-lab-home-link<?php echo $active_destination === 'home' ? ' is-current' : ''; ?>" href="<?php echo esc_url($shell_home_url); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-home'); ?></span><span><?php echo esc_html__('Home', 'tnet-shared-shell'); ?></span></a>
+                <div class="tnet-jobs-shell-lab-nav-menu tnet-jobs-shell-lab-product-menu<?php echo $active_destination === 'job-center' ? ' is-current' : ''; ?>" data-product-flow="employer" data-employer-access="<?php echo $shell_has_employer_access ? 'true' : 'false'; ?>">
+                  <button type="button" class="tnet-jobs-shell-lab-nav-trigger" aria-expanded="false" aria-controls="tnet-jobs-shell-product-navigation" aria-haspopup="true"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-job-center'); ?></span><span><?php echo esc_html__('Job Center', 'tnet-shared-shell'); ?></span><span class="tnet-jobs-shell-lab-nav-chevron" aria-hidden="true"></span></button>
                   <div id="tnet-jobs-shell-product-navigation" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-product-popover">
                     <section class="tnet-jobs-shell-lab-product-section" data-product-flow-panel="employer">
                       <p class="tnet-jobs-shell-lab-product-heading"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('school'); ?></span><?php echo esc_html__('For Employers', 'tnet-shared-shell'); ?></p>
@@ -39,8 +40,8 @@
                     <button type="button" class="tnet-jobs-shell-lab-product-switch" data-product-flow-switch="employer"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('school'); ?></span><span><?php echo esc_html__('For Employers', 'tnet-shared-shell'); ?></span></button>
                   </div>
                 </div>
-                <div class="tnet-jobs-shell-lab-nav-menu tnet-jobs-shell-lab-chatboards-menu">
-                  <button type="button" class="tnet-jobs-shell-lab-nav-trigger" aria-expanded="false" aria-controls="tnet-jobs-shell-chatboards-navigation" aria-haspopup="true"><?php echo esc_html__('Chatboards', 'tnet-shared-shell'); ?><span class="tnet-jobs-shell-lab-nav-chevron" aria-hidden="true"></span></button>
+                <div class="tnet-jobs-shell-lab-nav-menu tnet-jobs-shell-lab-chatboards-menu<?php echo $active_destination === 'chatboards' ? ' is-current' : ''; ?>">
+                  <button type="button" class="tnet-jobs-shell-lab-nav-trigger" aria-expanded="false" aria-controls="tnet-jobs-shell-chatboards-navigation" aria-haspopup="true"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-chatboards'); ?></span><span><?php echo esc_html__('Chatboards', 'tnet-shared-shell'); ?></span><span class="tnet-jobs-shell-lab-nav-chevron" aria-hidden="true"></span></button>
                   <div id="tnet-jobs-shell-chatboards-navigation" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-chatboards-popover">
                     <section class="tnet-jobs-shell-lab-chatboards-section">
                       <button type="button" class="tnet-jobs-shell-lab-chatboards-item" data-shell-preview-demo="teacher-chatboard"><span class="tnet-jobs-shell-lab-chatboards-icon" aria-hidden="true"><?php self::render_parity_product_icon('chat'); ?></span><span>Teacher Chatboard</span></button>
@@ -53,8 +54,8 @@
                     <a href="<?php echo esc_url($new_topic_url); ?>" class="tnet-jobs-shell-lab-chatboards-item tnet-jobs-shell-lab-chatboards-browse"><span class="tnet-jobs-shell-lab-chatboards-icon" aria-hidden="true"><?php self::render_parity_product_icon('compose'); ?></span><span>Start a Topic</span></a>
                   </div>
                 </div>
-                <div class="tnet-jobs-shell-lab-nav-menu tnet-jobs-shell-lab-lessonplans-menu">
-                  <button type="button" class="tnet-jobs-shell-lab-nav-trigger" aria-expanded="false" aria-controls="tnet-jobs-shell-lessonplans-navigation" aria-haspopup="true"><?php echo esc_html__('Lesson Plans', 'tnet-shared-shell'); ?><span class="tnet-jobs-shell-lab-nav-chevron" aria-hidden="true"></span></button>
+                <div class="tnet-jobs-shell-lab-nav-menu tnet-jobs-shell-lab-lessonplans-menu<?php echo $active_destination === 'lesson-plans' ? ' is-current' : ''; ?>">
+                  <button type="button" class="tnet-jobs-shell-lab-nav-trigger" aria-expanded="false" aria-controls="tnet-jobs-shell-lessonplans-navigation" aria-haspopup="true"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-lesson-plans'); ?></span><span><?php echo esc_html__('Lesson Plans', 'tnet-shared-shell'); ?></span><span class="tnet-jobs-shell-lab-nav-chevron" aria-hidden="true"></span></button>
                   <div id="tnet-jobs-shell-lessonplans-navigation" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-lessonplans-popover">
                     <section class="tnet-jobs-shell-lab-lessonplans-section">
                       <button type="button" class="tnet-jobs-shell-lab-lessonplans-item" data-shell-preview-demo="browse-lessons"><span class="tnet-jobs-shell-lab-chatboards-icon"><?php self::render_parity_product_icon('search'); ?></span><span>Browse Lesson Plans</span></button>
@@ -73,14 +74,14 @@
                   <a class="tnet-jobs-shell-lab-anonymous-login" href="<?php echo esc_url($login_url); ?>"><?php echo esc_html__('Log In', 'tnet-shared-shell'); ?></a>
                   <a class="tnet-jobs-shell-lab-anonymous-signup" href="<?php echo esc_url($signup_url); ?>"><?php echo esc_html__('Sign Up', 'tnet-shared-shell'); ?></a>
                 <?php elseif ($effective_logged_in) : ?>
-                <div class="tnet-jobs-shell-lab-notification-menu" data-notification-center data-notification-provider="<?php echo $clean ? 'fixture' : 'runtime'; ?>" data-notification-fixture-only="<?php echo $clean ? 'true' : 'false'; ?>" data-notification-fixture-state="<?php echo esc_attr($notification_fixture_state); ?>">
-                  <button id="tnet-jobs-shell-notification-toggle" type="button" class="tnet-jobs-shell-lab-bell tnet-jobs-shell-lab-notification-toggle" aria-expanded="false" aria-controls="tnet-jobs-shell-notification-center" aria-haspopup="dialog" aria-label="<?php echo esc_attr__('Notifications, loading synthetic fixture data', 'tnet-shared-shell'); ?>">
+                <div class="tnet-jobs-shell-lab-notification-menu" data-notification-center data-notification-provider="<?php echo $notification_fixture_only ? 'fixture' : 'runtime'; ?>" data-notification-fixture-only="<?php echo $notification_fixture_only ? 'true' : 'false'; ?>" data-notification-fixture-state="<?php echo esc_attr($notification_fixture_state); ?>">
+                  <button id="tnet-jobs-shell-notification-toggle" type="button" class="tnet-jobs-shell-lab-bell tnet-jobs-shell-lab-notification-toggle" aria-expanded="false" aria-controls="tnet-jobs-shell-notification-center" aria-haspopup="dialog" aria-label="<?php echo esc_attr__($notification_fixture_only ? 'Notifications, loading synthetic fixture data' : 'Notifications, loading notifications', 'tnet-shared-shell'); ?>">
                     <?php self::render_parity_bell_icon(); ?>
                     <span data-notification-unread-count aria-hidden="true"<?php echo $notification_fixture_state === 'zero' ? ' hidden' : ''; ?>>0</span>
                   </button>
                   <section id="tnet-jobs-shell-notification-center" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-notification-popover" role="dialog" aria-modal="false" aria-labelledby="tnet-jobs-shell-notification-title" data-notification-panel>
-                    <div class="tnet-jobs-shell-lab-notification-panel" data-notification-fixture-only="<?php echo $clean ? 'true' : 'false'; ?>">
-                      <p class="tnet-jobs-shell-lab-notification-loading"><?php echo esc_html__($clean ? 'Loading synthetic notification fixture…' : 'Loading notifications…', 'tnet-shared-shell'); ?></p>
+                    <div class="tnet-jobs-shell-lab-notification-panel" data-notification-fixture-only="<?php echo $notification_fixture_only ? 'true' : 'false'; ?>">
+                      <p class="tnet-jobs-shell-lab-notification-loading"><?php echo esc_html__($notification_fixture_only ? 'Loading synthetic notification fixture…' : 'Loading notifications…', 'tnet-shared-shell'); ?></p>
                     </div>
                   </section>
                 </div>
@@ -110,6 +111,7 @@
                 <div id="tnet-jobs-shell-compact-navigation" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-compact-navigation">
                   <section class="tnet-jobs-shell-lab-compact-panel is-active" data-compact-panel="root" data-compact-flow="<?php echo $shell_has_employer_access ? 'employer' : 'jobseeker'; ?>">
                     <?php if ($anonymous_fixture) : ?><div class="tnet-jobs-shell-lab-compact-auth"><a href="<?php echo esc_url($login_url); ?>"><?php echo esc_html__('Log In', 'tnet-shared-shell'); ?></a><a href="<?php echo esc_url($signup_url); ?>"><?php echo esc_html__('Sign Up', 'tnet-shared-shell'); ?></a></div><?php endif; ?>
+                    <a class="tnet-jobs-shell-lab-compact-home" href="<?php echo esc_url($shell_home_url); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-home'); ?></span><span><?php echo esc_html__('Home', 'tnet-shared-shell'); ?></span></a>
                     <div class="tnet-jobs-shell-lab-compact-resource" data-compact-resource="employer">
                       <button type="button" data-compact-accordion-toggle="employer" aria-expanded="<?php echo $shell_has_employer_access ? 'true' : 'false'; ?>" aria-controls="tnet-jobs-shell-compact-employer" class="<?php echo $shell_has_employer_access ? '' : 'is-muted'; ?>"><span class="tnet-jobs-shell-lab-compact-caret" aria-hidden="true"></span><span><?php echo esc_html__('For Employers', 'tnet-shared-shell'); ?></span></button>
                       <div id="tnet-jobs-shell-compact-employer" data-compact-accordion-panel="employer" <?php echo $shell_has_employer_access ? '' : 'hidden'; ?>>
@@ -150,22 +152,12 @@
             </div>
           </div>
         </header>
-        <div class="tnet-jobs-shell-lab-body-frame<?php echo $anonymous_fixture ? ' tnet-jobs-shell-lab-anonymous-state' : ''; ?>">
-          <?php if (!$anonymous_fixture && $shell_has_employer_access) : ?>
-          <aside class="tnet-jobs-shell-lab-rail" aria-label="<?php echo esc_attr__('Employer navigation', 'tnet-shared-shell'); ?>">
-            <nav>
-              <a class="is-active" aria-current="page" href="<?php echo esc_url($urls["my_jobs"]); ?>"><span class="tnet-jobs-shell-lab-nav-main"><span class="tnet-jobs-shell-lab-nav-icon" aria-hidden="true"><?php self::render_parity_product_icon('briefcase'); ?></span><strong><?php echo esc_html__('My Jobs', 'tnet-shared-shell'); ?></strong><b aria-label="90 jobs">90</b></span></a>
-              <a href="<?php echo esc_url($urls["post_job"]); ?>"><span class="tnet-jobs-shell-lab-nav-main"><span class="tnet-jobs-shell-lab-nav-icon" aria-hidden="true"><?php self::render_parity_product_icon('plus'); ?></span><strong><?php echo esc_html__('Post a Job', 'tnet-shared-shell'); ?></strong></span></a>
-              <a href="<?php echo esc_url($urls["schools"]); ?>"><span class="tnet-jobs-shell-lab-nav-main"><span class="tnet-jobs-shell-lab-nav-icon" aria-hidden="true"><?php self::render_parity_product_icon('school'); ?></span><strong><?php echo esc_html__('Schools / Jobsites', 'tnet-shared-shell'); ?></strong><b aria-label="3 schools or jobsites">3</b></span></a>
-              <a href="<?php echo esc_url($urls["archived"]); ?>"><span class="tnet-jobs-shell-lab-nav-main"><span class="tnet-jobs-shell-lab-nav-icon" aria-hidden="true"><?php self::render_parity_product_icon('archive'); ?></span><strong><?php echo esc_html__('Archived Jobs', 'tnet-shared-shell'); ?></strong></span></a>
-            </nav>
-            <div class="tnet-jobs-shell-lab-rail-divider-rule" aria-hidden="true"></div>
-            <section class="tnet-jobs-shell-lab-help-card">
-              <p><?php echo esc_html__('First time posting?', 'tnet-shared-shell'); ?></p>
-              <div><?php echo esc_html__('Our quick wizard helps you create a job listing in just a few minutes', 'tnet-shared-shell'); ?></div>
-              <a href="<?php echo esc_url($urls["post_job"]); ?>"><?php echo esc_html__('View Posting Tips', 'tnet-shared-shell'); ?></a>
-            </section>
-            <?php if (!$clean) : ?><section class="tnet-jobs-shell-lab-instrumentation" aria-label="<?php echo esc_attr__('Shell Lab controls', 'tnet-shared-shell'); ?>">
+        <div class="tnet-jobs-shell-lab-body-frame<?php echo $anonymous_fixture ? ' tnet-jobs-shell-lab-anonymous-state' : ''; ?><?php echo $workspace_owner === 'consumer' ? ' tnet-shared-shell__consumer-workspace' : ''; ?><?php echo $has_consumer_rail ? ' tnet-shared-shell__consumer-rail' : ''; ?>">
+          <?php if ($has_consumer_rail) : ?>
+            <?php call_user_func($rail_renderer); ?>
+          <?php elseif ($workspace_owner === 'shell' && !$anonymous_fixture && $shell_has_employer_access && !$clean) : ?>
+          <aside class="tnet-jobs-shell-lab-rail" aria-label="<?php echo esc_attr__('Shell Lab controls', 'tnet-shared-shell'); ?>">
+            <section class="tnet-jobs-shell-lab-instrumentation" aria-label="<?php echo esc_attr__('Shell Lab controls', 'tnet-shared-shell'); ?>">
               <div class="tnet-jobs-shell-lab-instrumentation-heading"><span><?php echo esc_html__('Shell Lab', 'tnet-shared-shell'); ?></span><small><?php echo esc_html__('Local only', 'tnet-shared-shell'); ?></small></div>
               <nav class="tnet-jobs-shell-lab-fixture-switcher" aria-label="<?php echo esc_attr__('Shell Lab fixture mode', 'tnet-shared-shell'); ?>">
                 <a class="<?php echo $fixture === 'dashboard' ? 'is-current' : ''; ?>" href="<?php echo esc_url($dashboard_url); ?>"><?php echo esc_html__('Dashboard / List', 'tnet-shared-shell'); ?></a>
@@ -216,11 +208,11 @@
                 <label class="tnet-jobs-shell-lab-toggle-control"><input type="checkbox" data-shell-setting="stress"> <?php echo esc_html__('Scroll stress', 'tnet-shared-shell'); ?></label>
                 <p class="tnet-jobs-shell-lab-instrumentation-status" data-shell-lab-status aria-live="polite"></p>
               </div>
-            </section><?php endif; ?>
+            </section>
           </aside>
           <?php endif; ?>
           <main class="tnet-jobs-shell-lab-workspace" id="tnet-jobs-shell-lab-workspace">
-            <?php if (!$anonymous_fixture && $shell_has_employer_access) : ?>
+            <?php if ($workspace_owner === 'shell' && !$anonymous_fixture && $shell_has_employer_access && !$has_consumer_rail) : ?>
             <div class="tnet-jobs-shell-lab-employer-menu<?php echo $anonymous_fixture ? ' tnet-jobs-shell-lab-anonymous-hidden' : ''; ?>">
               <button type="button" class="tnet-jobs-shell-lab-disclosure-toggle" aria-expanded="false" aria-controls="tnet-jobs-shell-employer-workspace-navigation" aria-haspopup="true"><span><?php echo esc_html__('Employer workspace', 'tnet-shared-shell'); ?></span><span aria-hidden="true">My Jobs</span><span class="tnet-jobs-shell-lab-chevron" aria-hidden="true"></span></button>
               <div id="tnet-jobs-shell-employer-workspace-navigation" class="tnet-jobs-shell-lab-popover">

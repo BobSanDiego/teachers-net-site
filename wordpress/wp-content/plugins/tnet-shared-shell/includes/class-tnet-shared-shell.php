@@ -236,6 +236,14 @@ final class TNet_Shared_Shell {
     $identity = (array) ($config['identity'] ?? []);
     $taxonomy = (array) ($config['taxonomy'] ?? []);
     $fixture = sanitize_key((string) ($config['fixture'] ?? 'dashboard'));
+    // Consumer identity and workspace ownership are explicit configuration
+    // seams. The shell never infers product layout or depends on a consumer.
+    $adapter = sanitize_key((string) ($config['adapter'] ?? 'shell-lab'));
+    $workspace_owner = sanitize_key((string) ($config['workspace_owner'] ?? 'shell'));
+    $workspace_owner = $workspace_owner === 'consumer' ? 'consumer' : 'shell';
+    $route_class = sanitize_html_class((string) ($config['route_class'] ?? 'employer-shell-lab'));
+    $document_title = (string) ($config['document_title'] ?? 'Teachers.Net');
+    $active_destination = sanitize_key((string) ($config['active_destination'] ?? ''));
     $clean = !empty($config['clean']);
     // A canonical application shell is page-aligned and square at its outer
     // boundary. Pinned remains a supported behavior, but floating card chrome
@@ -270,8 +278,13 @@ final class TNet_Shared_Shell {
     $lesson_plan_grade_levels = (array) ($taxonomy['lesson_grade_levels'] ?? []);
     $lesson_plan_subject_areas = (array) ($taxonomy['lesson_subject_areas'] ?? []);
     $chatboard_grade_levels = (array) ($taxonomy['chatboard_grade_levels'] ?? []);
-    $notification_fixture_state = $fixture_state === 'auth-zero' ? 'zero' : 'unread';
+    $notification_fixture_only = !empty($config['notification_fixture_only']);
+    $notification_fixture_state = $notification_fixture_only ? ($fixture_state === 'auth-zero' ? 'zero' : 'unread') : '';
     $content_renderer = $config['content'] ?? null;
+    // Consumer chrome is an opaque callback. The platform supplies only the
+    // placement seam and never imports product classes, routes, or facts.
+    $rail_renderer = $config['rail'] ?? null;
+    $has_consumer_rail = is_callable($rail_renderer);
     $contract_version = self::CONTRACT_VERSION;
     if (!is_callable($content_renderer)) {
       return;
@@ -284,8 +297,22 @@ final class TNet_Shared_Shell {
   }
 
   private static function render_parity_product_icon($icon) {
-    $paths = ['user' => '<circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c.8-3.4 3.3-5.1 7.5-5.1s6.7 1.7 7.5 5.1"/>', 'search' => '<circle cx="10.5" cy="10.5" r="5.7"/><path d="m15 15 4.3 4.3"/>', 'bookmark' => '<path d="M6.5 4.5h11v15l-5.5-3.8-5.5 3.8z"/>', 'alert' => '<path d="M18 10a6 6 0 0 0-12 0c0 3.2-1.2 4.8-2.2 5.9-.5.6-.1 1.4.7 1.4h15c.8 0 1.2-.9.7-1.4C19.2 14.8 18 13.2 18 10Z"/><path d="M9.8 20a2.4 2.4 0 0 0 4.4 0"/>', 'chat' => '<path d="M20 11.5a7.7 7.7 0 0 1-8 7.5 8.8 8.8 0 0 1-3.7-.8L4 20l1.4-3.9A7.2 7.2 0 0 1 4 11.5 7.7 7.7 0 0 1 12 4a7.7 7.7 0 0 1 8 7.5Z"/>', 'flame' => '<path d="M13.8 3.6c.5 3.3-1.4 4.4-2.5 5.8-.8-1.2-1-2.2-.7-3.6C7.4 8 5.4 10.7 5.4 14a6.6 6.6 0 0 0 13.2 0c0-3.7-1.7-7-4.8-10.4Z"/>', 'graduate' => '<path d="m3 10 9-5 9 5-9 5-9-5Z"/><path d="M6.6 12v4.2c2.9 2 7.9 2 10.8 0V12M21 10v5"/>', 'pin' => '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/>', 'compose' => '<path d="M4 20h4l10.5-10.5a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m12.8 7.2 4 4"/>', 'plus' => '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/>', 'briefcase' => '<rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 12h16M10 12v1h4v-1"/>', 'school' => '<path d="M4 20V9l8-4 8 4v11M7 20v-8h10v8M10 20v-4h4v4M9 12h.01M12 12h.01M15 12h.01"/>', 'archive' => '<path d="M4 7h16v13H4zM3 4h18v3H3zM9 11h6"/>'];
-    echo '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' . ($paths[$icon] ?? $paths['briefcase']) . '</svg>';
+    $paths = ['home' => '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>', 'user' => '<circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c.8-3.4 3.3-5.1 7.5-5.1s6.7 1.7 7.5 5.1"/>', 'search' => '<circle cx="10.5" cy="10.5" r="5.7"/><path d="m15 15 4.3 4.3"/>', 'bookmark' => '<path d="M6.5 4.5h11v15l-5.5-3.8-5.5 3.8z"/>', 'alert' => '<path d="M18 10a6 6 0 0 0-12 0c0 3.2-1.2 4.8-2.2 5.9-.5.6-.1 1.4.7 1.4h15c.8 0 1.2-.9.7-1.4C19.2 14.8 18 13.2 18 10Z"/><path d="M9.8 20a2.4 2.4 0 0 0 4.4 0"/>', 'chat' => '<path d="M20.5 10.8a6.3 6.3 0 0 1-6.5 6.1 7.4 7.4 0 0 1-3-.6L7 18l1-3.1a6 6 0 0 1-1-3.6 6.3 6.3 0 0 1 6.5-6.1 6.3 6.3 0 0 1 6 3.5Z"/><path d="M6.7 8.4a5.8 5.8 0 0 0-3.2 5.1 5.5 5.5 0 0 0 1 3.2L3.5 19l3.2-1.2"/>', 'book' => '<path d="M4 5.5c2.7-.7 5.3-.2 8 1.5v12c-2.7-1.7-5.3-2.2-8-1.5zM20 5.5c-2.7-.7-5.3-.2-8 1.5v12c2.7-1.7 5.3-2.2 8-1.5z"/><path d="M12 7v12"/>', 'flame' => '<path d="M13.8 3.6c.5 3.3-1.4 4.4-2.5 5.8-.8-1.2-1-2.2-.7-3.6C7.4 8 5.4 10.7 5.4 14a6.6 6.6 0 0 0 13.2 0c0-3.7-1.7-7-4.8-10.4Z"/>', 'graduate' => '<path d="m3 10 9-5 9 5-9 5-9-5Z"/><path d="M6.6 12v4.2c2.9 2 7.9 2 10.8 0V12M21 10v5"/>', 'pin' => '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/>', 'compose' => '<path d="M4 20h4l10.5-10.5a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m12.8 7.2 4 4"/>', 'plus' => '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/>', 'briefcase' => '<rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 12h16M10 12v1h4v-1"/>', 'school' => '<path d="M4 20V9l8-4 8 4v11M7 20v-8h10v8M10 20v-4h4v4M9 12h.01M12 12h.01M15 12h.01"/>', 'archive' => '<path d="M4 7h16v13H4zM3 4h18v3H3zM9 11h6"/>'];
+    $paths['home'] = '<path fill-rule="evenodd" d="M3 10 12 3l9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Zm7 11h4v-6h-4v6Z"/><path d="M16 6V3.8h2.5v4.1"/>';
+    $paths['chat'] = '<path d="M3.5 10.7a6.4 6.4 0 0 1 6.7-6.1 6.4 6.4 0 0 1 6.7 6.1 6.4 6.4 0 0 1-6.7 6.1 7.2 7.2 0 0 1-2.7-.5l-3.5 1.4 1-3a5.9 5.9 0 0 1-1.5-4Z"/><path d="M12.2 8.1a6.5 6.5 0 0 1 5.4-2.7 6.5 6.5 0 0 1 6.2 6.1 6.1 6.1 0 0 1-1.5 4l1 3-3.5-1.4a7.2 7.2 0 0 1-2.7.5"/>';
+    $paths['book'] = '<path d="M4 5.5c2.7-.7 5.3-.2 8 1.5v12c-2.7-1.7-5.3-2.2-8-1.5zM20 5.5c-2.7-.7-5.3-.2-8 1.5v12c-2.7-1.7-5.3-2.2-8-1.5z"/><path d="M12 7v12M6.5 9c1.7-.2 3.5.1 5.5 1M17.5 9c-1.7-.2-3.5.1-5.5 1M6.5 12.5c1.7-.2 3.5.1 5.5 1M17.5 12.5c-1.7-.2-3.5.1-5.5 1"/>';
+    // Platform navigation has a dedicated visual vocabulary. Generic icons
+    // below retain their existing use by menu and product-local surfaces.
+    $paths['home'] = '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>';
+    $paths['chat'] = '<path d="M20.5 10.8a6.3 6.3 0 0 1-6.5 6.1 7.4 7.4 0 0 1-3-.6L7 18l1-3.1a6 6 0 0 1-1-3.6 6.3 6.3 0 0 1 6.5-6.1 6.3 6.3 0 0 1 6 3.5Z"/><path d="M6.7 8.4a5.8 5.8 0 0 0-3.2 5.1 5.5 5.5 0 0 0 1 3.2L3.5 19l3.2-1.2"/>';
+    $paths['book'] = '<path d="M4 5.5c2.7-.7 5.3-.2 8 1.5v12c-2.7-1.7-5.3-2.2-8-1.5zM20 5.5c-2.7-.7-5.3-.2-8 1.5v12c2.7-1.7 5.3-2.2-8-1.5z"/><path d="M12 7v12"/>';
+    $paths['platform-home'] = '<path fill="currentColor" d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z"/><path fill="currentColor" d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z"/>';
+    $paths['platform-job-center'] = '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.75" y="7.4" width="18.5" height="12.1" rx="1.8"/><path d="M8 7.4V5.9c0-.78.62-1.4 1.4-1.4h5.2c.78 0 1.4.62 1.4 1.4v1.5"/><path d="M2.75 11.7h18.5"/><rect x="10.1" y="10.7" width="3.8" height="2.5" rx=".55" fill="white"/></g>';
+    $paths['platform-chatboards'] = '<path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>';
+    $paths['platform-lesson-plans'] = '<path d="M2.75 5.15c3.1-.72 6.35-.08 9.25 2.05v12.15c-2.9-2.13-6.15-2.77-9.25-2.05V5.15Zm18.5 0c-3.1-.72-6.35-.08-9.25 2.05v12.15c2.9-2.13 6.15-2.77 9.25-2.05V5.15Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 7.2v12.15M5.2 8.65c1.7-.12 3.25.27 4.65 1.15M5.2 11.55c1.7-.12 3.25.27 4.65 1.15M18.8 8.65c-1.7-.12-3.25.27-4.65 1.15M18.8 11.55c-1.7-.12-3.25.27-4.65 1.15" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>';
+    $icon = array_key_exists($icon, $paths) ? $icon : 'briefcase';
+    $view_box = '0 0 24 24';
+    echo '<svg data-product-icon="' . esc_attr($icon) . '" viewBox="' . esc_attr($view_box) . '" aria-hidden="true" focusable="false">' . $paths[$icon] . '</svg>';
   }
 
   private static function asset_version($path) {

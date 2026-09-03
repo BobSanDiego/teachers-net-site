@@ -221,17 +221,18 @@
       return '<section class="tnet-jobs-shell-lab-notification-group" aria-label="' + (name === 'new' ? 'New notifications' : 'Earlier notifications') + '"><h3>' + (name === 'new' ? 'NEW' : 'EARLIER') + '</h3>' + items.map(row).join('') + '</section>';
     }
     function render(message) {
-      var visible = notifications.filter(function (item) { return selectedFilter === 'all' || item.source_product === selectedFilter; });
+      var zeroState = unreadCount() === 0;
+      var visible = zeroState ? [] : notifications.filter(function (item) { return selectedFilter === 'all' || item.source_product === selectedFilter; });
       var newItems = visible.filter(function (item) { return item.group === 'new'; });
       var earlierItems = visible.filter(function (item) { return item.group === 'earlier'; });
       panel.innerHTML = '<div class="tnet-jobs-shell-lab-notification-header"><h2 id="tnet-jobs-shell-notification-title">Notifications</h2><span class="tnet-jobs-shell-lab-notification-actions"><button type="button" class="tnet-jobs-shell-lab-notification-more" aria-label="More notification actions" aria-expanded="false" aria-controls="tnet-jobs-shell-notification-actions-menu">···</button><span id="tnet-jobs-shell-notification-actions-menu" class="tnet-jobs-shell-lab-notification-actions-menu" role="menu" hidden><button type="button" role="menuitem" data-notification-mark-all>Mark all as read</button><a role="menuitem" href="/notifications/">Open Notifications</a></span></span></div>' +
-        '<div class="tnet-jobs-shell-lab-notification-filters" role="group" aria-label="Filter synthetic notifications">' + Object.keys(sourceLabels).map(function (key) {
+        '<div class="tnet-jobs-shell-lab-notification-filters" role="group" aria-label="Filter ' + (fixtureOnly ? 'synthetic ' : '') + 'notifications">' + Object.keys(sourceLabels).map(function (key) {
           return '<button type="button" class="tnet-jobs-shell-lab-notification-filter' + (selectedFilter === key ? ' is-selected' : '') + '" data-notification-filter="' + key + '" aria-pressed="' + (selectedFilter === key ? 'true' : 'false') + '">' + sourceLabels[key] + '</button>';
         }).join('') + '</div>' +
-        '<div class="tnet-jobs-shell-lab-notification-feed" data-notification-feed>' + group('new', newItems) + group('earlier', earlierItems) + (visible.length ? '' : '<p class="tnet-jobs-shell-lab-notification-empty">' + (fixtureState === 'zero' ? 'You’re all caught up. New notifications will appear here.' : 'No synthetic notifications in this filter.') + '</p>') + '</div>' +
-        '<p class="screen-reader-text" aria-live="polite" data-notification-status>' + escapeHtml(message || 'Synthetic fixture notification center loaded.') + '</p>';
+        '<div class="tnet-jobs-shell-lab-notification-feed" data-notification-feed>' + group('new', newItems) + group('earlier', earlierItems) + (visible.length ? '' : '<p class="tnet-jobs-shell-lab-notification-empty">' + (zeroState ? 'You’re all caught up. New notifications will appear here.' : (fixtureOnly ? 'No synthetic notifications in this filter.' : 'No notifications in this filter.')) + '</p>') + '</div>' +
+        '<p class="screen-reader-text" aria-live="polite" data-notification-status>' + escapeHtml(message || (fixtureOnly ? 'Synthetic fixture notification center loaded.' : 'Notification center loaded.')) + '</p>';
       Array.prototype.forEach.call(panel.querySelectorAll('[data-notification-filter]'), function (button) {
-        button.addEventListener('click', function (event) { event.stopPropagation(); selectedFilter = button.dataset.notificationFilter; render('Showing ' + sourceLabels[selectedFilter] + ' synthetic fixture notifications.'); });
+        button.addEventListener('click', function (event) { event.stopPropagation(); selectedFilter = button.dataset.notificationFilter; render('Showing ' + sourceLabels[selectedFilter] + (fixtureOnly ? ' synthetic fixture notifications.' : ' notifications.')); });
       });
       Array.prototype.forEach.call(panel.querySelectorAll('[data-notification-id]'), function (button) {
         button.addEventListener('click', function (event) {
