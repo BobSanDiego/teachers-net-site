@@ -1,5 +1,21 @@
 # Community 3.0 Project Cursor
 
+## 2026-09-05 Workflow Continuity Update
+
+The current Community Workflow V2 cursor is
+`COMMUNITY-LEGACY-CHATBOARD-MIGRATION001-CONT2`, cycle `260905171732`.
+Its terminal Report/Hopper validation passed, with state `partial` /
+`HUMAN_QA_PENDING` because the required native browser bridge was unavailable;
+source, local runtime, and server-route evidence were completed. The current
+terminal ledger and operational cursor are authoritative at
+`tmp/hopper/community/` in the registered control-plane repository.
+
+This legacy Chatboard migration cycle is continuity work adjacent to, and not a
+replacement for, the historical Community 3.0 recovery gates below. AI in
+Education remains the selected first dedicated-board migration fixture. The
+next required step is native authenticated/visual HUMAN_QA for CONT2; no
+additional product scope is authorized by this continuity update.
+
 ## Project State
 
 Maintenance

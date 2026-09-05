@@ -1,5 +1,21 @@
 # Community 3.0 Engineering Handoff
 
+## 2026-09-05 Workflow Continuity Update
+
+The current Community Workflow V2 terminal cursor is
+`COMMUNITY-LEGACY-CHATBOARD-MIGRATION001-CONT2`, cycle `260905171732`.
+The cycle is finalized and validated with state `partial` /
+`HUMAN_QA_PENDING`: the AI in Education dedicated-board route and local source
+bridge are proven, while native browser acceptance remains pending because the
+registered browser bridge was unavailable. The matching Report, manifest,
+cycle JSON, ledger, runtime evidence, and operational-current-state are in
+`tmp/hopper/community/` under the registered control-plane repository.
+
+This is the current legacy Chatboard migration continuity boundary. It does not
+reopen settled Shared Shell, Home, notification, profile, or Community 3.0
+contract decisions, and it does not supersede the historical recovery and
+roadmap material retained below. Sandy/production remains untouched.
+
 Screenshot evidence governance: Engineering Director screenshots are mandatory
 evidence when a ticket requires them. Codex must access and inspect the actual
 attachment through the supported attachment/conversation route, reconcile
