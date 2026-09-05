@@ -3,12 +3,13 @@ defined('ABSPATH') || exit;
 
 /** Read-only, bounded adapter for the currently proven legacy feed. */
 final class TNet_Community_Legacy_Feed_Adapter {
-    public static function get_items(int $limit = 20, ?int $user_id = null, ?object $db = null): array {
+    public static function get_items(int $limit = 20, ?int $user_id = null, ?object $db = null, ?int $local_id = null): array {
         if (!$db) { global $wpdb; $db = $wpdb; }
         if (!$db) return [];
         $user_id = $user_id === null && function_exists('get_current_user_id') ? (int)get_current_user_id() : (int)$user_id;
         $limit = max(1, min(20, $limit));
-        $rows = $db->get_results("SELECT post_id, topic_id, post_type, post_datetime, chatboard_url, post_title, post_author, wordpress_id, post_url, post_content, image_url, video_url, views, local_id FROM tnet_chatposts WHERE status = 0 AND post_type = 'post' ORDER BY post_datetime DESC, post_id DESC LIMIT {$limit}");
+        $board_clause = $local_id !== null && $local_id > 0 ? ' AND local_id = ' . (int) $local_id : '';
+        $rows = $db->get_results("SELECT post_id, topic_id, post_type, post_datetime, chatboard_url, post_title, post_author, wordpress_id, post_url, post_content, image_url, video_url, views, local_id FROM tnet_chatposts WHERE status = 0 AND post_type = 'post'{$board_clause} ORDER BY post_datetime DESC, post_id DESC LIMIT {$limit}");
         if (empty($rows)) return [];
 
         $local_ids = self::unique_ids($rows, 'local_id');
