@@ -25,12 +25,12 @@ final class TNet_Community_Thread_View {
             $row['_branch_id'] = $lineage['l1_id'];
             $row['_branch_created_at'] = $l1['created_at'];
             $row['_branch_post_id'] = $l1['post_id'];
-            $row['_author_display'] = 'Local synthetic author';
+            $row['_author_display'] = TNet_Community_Historical_Author::display($row);
             $row['_target_display'] = $this->target_display($row, $by_id, $admin);
             $visible[] = $this->safe($row);
         }
         usort($visible, [$this, 'compare_rows']);
-        return ['root'=>$this->safe(array_merge($root, ['_level'=>0,'_author_display'=>'Local synthetic author'])), 'rows'=>$visible, 'thread_id'=>$root['thread_id']];
+        return ['root'=>$this->safe(array_merge($root, ['_level'=>0,'_author_display'=>TNet_Community_Historical_Author::display($root)])), 'rows'=>$visible, 'thread_id'=>$root['thread_id']];
     }
 
     private function lineage(array $row, array $by_id): array {
@@ -57,7 +57,7 @@ final class TNet_Community_Thread_View {
         if (!$target || (!$admin && !in_array($target['publication_state'], ['published','restored'], true))) {
             return ['label'=>'Replying to a previous reply','post_id'=>null];
         }
-        return ['label'=>'Replying to Local synthetic author','post_id'=>$target['post_id']];
+        return ['label'=>'Replying to ' . TNet_Community_Historical_Author::display($target),'post_id'=>$target['post_id']];
     }
 
     private function compare_rows(array $a, array $b): int {

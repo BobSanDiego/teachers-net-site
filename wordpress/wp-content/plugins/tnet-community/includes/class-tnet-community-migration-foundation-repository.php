@@ -14,24 +14,60 @@ final class TNet_Community_Migration_Foundation_Repository {
     }
 
     public function process(array $source, array $board, array $alias, string $run_id, string $rule_version): array {
-        $this->validate_source($source, $run_id, $rule_version);
         global $wpdb;
         $wpdb->query('START TRANSACTION');
         try {
-            $this->ensure_run($run_id, $rule_version);
-            $board_id = $this->upsert_board_map($source['source_namespace'], $board);
-            $ledger_id = $this->upsert_ledger($source, $board_id, $run_id, $rule_version);
-            $alias_id = $this->upsert_alias($source, $alias);
-            foreach ((array) ($source['exceptions'] ?? []) as $exception) {
-                $this->upsert_exception($source, $exception, $run_id);
-            }
+            $result = $this->record_in_transaction($source, $board, $alias, $run_id, $rule_version);
             $wpdb->query('COMMIT');
-            return ['ledger_id' => $ledger_id, 'board_map_id' => $board_id, 'alias_id' => $alias_id];
+            return $result;
         } catch (Throwable $error) {
             $wpdb->query('ROLLBACK');
             throw $error;
         }
     }
+
+    /** Record a source row without owning the transaction; migration application owns atomicity. */
+    public function record_in_transaction(array $source, array $board, array $alias, string $run_id, string $rule_version): array {
+        $this->validate_source($source, $run_id, $rule_version);
+        $this->ensure_run($run_id, $rule_version);
+        $board_id = $this->upsert_board_map($source['source_namespace'], $board);
+        $ledger_id = $this->upsert_ledger($source, $board_id, $run_id, $rule_version);
+        $alias_id = $this->upsert_alias($source, $alias);
+        foreach ((array) ($source['exceptions'] ?? []) as $exception) $this->upsert_exception($source, $exception, $run_id);
+        return ['ledger_id' => $ledger_id, 'board_map_id' => $board_id, 'alias_id' => $alias_id];
+    }
+
+    public function ensure_board_map(string $namespace, array $board): int {
+        global $wpdb;
+        $wpdb->query('START TRANSACTION');
+        try {
+            $id = $this->ensure_board_map_in_transaction($namespace, $board);
+            $wpdb->query('COMMIT');
+            return $id;
+        } catch (Throwable $error) {
+            $wpdb->query('ROLLBACK');
+            throw $error;
+        }
+    }
+
+    public function ensure_board_map_in_transaction(string $namespace, array $board): int {
+        return $this->upsert_board_map($namespace, $board);
+    }
+
+    public function assign_target_in_transaction(array $source, string $community_id, string $post_id, string $thread_id, string $run_id): void {
+        global $wpdb;
+        $ledger = $this->tables['migration_ledger'];
+        $existing = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$ledger} WHERE source_namespace=%s AND legacy_post_id=%s", $source['source_namespace'], (string) $source['legacy_post_id']), ARRAY_A);
+        if (!$existing) throw new RuntimeException('SOURCE_LEDGER_TARGET_ASSIGNMENT_MISSING');
+        foreach (['target_community_id' => $community_id, 'target_post_id' => $post_id, 'target_thread_id' => $thread_id] as $field => $value) {
+            if ($existing[$field] !== null && $existing[$field] !== '' && $existing[$field] !== $value) throw new RuntimeException('SOURCE_TARGET_IDENTITY_CONFLICT');
+        }
+        if (false === $wpdb->update($ledger, ['target_community_id'=>$community_id, 'target_post_id'=>$post_id, 'target_thread_id'=>$thread_id], ['id'=>(int) $existing['id']], ['%s','%s','%s'], ['%d'])) throw new RuntimeException('SOURCE_LEDGER_TARGET_ASSIGNMENT_FAILED');
+        if (false === $wpdb->update($this->tables['url_aliases'], ['target_community_id'=>$community_id, 'target_post_id'=>$post_id, 'target_thread_id'=>$thread_id], ['source_namespace'=>$source['source_namespace'], 'legacy_post_id'=>(string) $source['legacy_post_id']], ['%s','%s','%s'], ['%s','%s'])) throw new RuntimeException('URL_ALIAS_TARGET_ASSIGNMENT_FAILED');
+        $this->append_audit($source['source_namespace'], (string) $source['legacy_post_id'], $run_id, 'target_assigned', ['target_community_id'=>$community_id, 'target_post_id'=>$post_id, 'target_thread_id'=>$thread_id]);
+    }
+
+    public function table_names(): array { return $this->tables; }
 
     public function reconciliation(array $source_keys): array {
         global $wpdb;

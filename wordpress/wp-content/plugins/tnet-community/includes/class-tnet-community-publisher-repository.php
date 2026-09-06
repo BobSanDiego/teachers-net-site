@@ -10,14 +10,27 @@ final class TNet_Community_Publisher_Repository {
         global $wpdb;
         $post = $publication['post'] ?? null;
         if (!is_array($post) || empty($post['post_id'])) return ['accepted' => false, 'reason_code' => 'PUBLICATION_INVALID'];
-        $existing = $this->find_by_submission_key($post['community_id'], $post['author_id'], $post['idempotency_key']);
-        if ($existing) {
-            return $existing['post']['body'] === $post['body'] && $existing['post']['title'] === $post['title']
-                ? $existing : ['accepted' => false, 'reason_code' => 'IDEMPOTENCY_CONFLICT'];
-        }
         $wpdb->query('START TRANSACTION');
         try {
-            $now = current_time('mysql', true);
+            $result = $this->persist_publication_in_transaction($publication, $actor);
+            if (empty($result['accepted'])) throw new RuntimeException((string) ($result['reason_code'] ?? 'PUBLICATION_WRITE_FAILED'));
+            $wpdb->query('COMMIT');
+            return $result;
+        } catch (Throwable $e) { $wpdb->query('ROLLBACK'); return ['accepted'=>false,'reason_code'=>$e->getMessage()]; }
+    }
+
+    /** Persist a publication inside a caller-owned transaction. */
+    public function persist_publication_in_transaction(array $publication, array $actor = []): array {
+        global $wpdb;
+        $post = $publication['post'] ?? null;
+        if (!is_array($post) || empty($post['post_id'])) throw new InvalidArgumentException('PUBLICATION_INVALID');
+        $existing = $this->find_by_submission_key($post['community_id'], $post['author_id'], $post['idempotency_key']);
+        if ($existing) {
+            if ($existing['post']['body'] !== $post['body'] || $existing['post']['title'] !== $post['title']) throw new RuntimeException('IDEMPOTENCY_CONFLICT');
+            return $existing;
+        }
+        $now = current_time('mysql', true);
+        try {
             $row = ['post_id'=>$post['post_id'],'community_id'=>$post['community_id'],'author_id'=>$post['author_id'],'thread_id'=>$post['thread_id'],'parent_post_id'=>$post['parent_post_id'] ?? null,'post_type'=>$post['post_type'],'title'=>$post['title'],'body'=>$post['body'],'visibility'=>$post['visibility'],'moderation_state'=>$post['moderation_state'],'publication_state'=>$post['publication_state'],'created_at'=>$post['created_at'] ?? $now,'updated_at'=>$now,'published_at'=>$post['published_at'] ?? null,'idempotency_key'=>$post['idempotency_key'],'revision'=>(int)($post['revision'] ?? 1),'safe_target'=>$post['safe_target'] ?? 'community-post','compatibility_json'=>wp_json_encode($post['compatibility_refs'] ?? []),'audit_json'=>wp_json_encode($post['audit_metadata'] ?? []),'conversation_root_id'=>$post['conversation_root_id'] ?? null,'reply_to_post_id'=>$post['reply_to_post_id'] ?? null,'reply_to_author_id'=>$post['reply_to_author_id'] ?? null,'owner_product'=>$post['owner_product'] ?? null,'subject_type'=>$post['subject_type'] ?? null,'subject_id'=>$post['subject_id'] ?? null,'source_namespace'=>$post['source_namespace'] ?? null,'subject_revision'=>$post['subject_revision'] ?? null];
             if (!empty($this->failures['post'])) throw new RuntimeException('POST_WRITE_FAILED');
             $post_formats = array_fill(0, count($row), '%s'); $post_formats[15] = '%d';
@@ -30,8 +43,8 @@ final class TNet_Community_Publisher_Repository {
                 if (!empty($this->failures['event'])) throw new RuntimeException('EVENT_WRITE_FAILED');
                 if (false === $wpdb->insert($this->tables['events'], $event_row, array_fill(0, count($event_row), '%s'))) throw new RuntimeException('EVENT_WRITE_FAILED');
             }
-            $wpdb->query('COMMIT'); return ['accepted'=>true,'post'=>$post,'event'=>$publication['event'] ?? null];
-        } catch (Throwable $e) { $wpdb->query('ROLLBACK'); return ['accepted'=>false,'reason_code'=>$e->getMessage()]; }
+            return ['accepted'=>true,'post'=>$post,'event'=>$publication['event'] ?? null];
+        } catch (Throwable $e) { throw $e; }
     }
     public function find_post(string $post_id): ?array { global $wpdb; $row=$wpdb->get_row($wpdb->prepare("SELECT * FROM {$this->tables['posts']} WHERE post_id=%s",$post_id),ARRAY_A); return $row ? $this->decode($row) : null; }
     public function find_by_submission_key(string $community_id,string $author_id,string $key): ?array { global $wpdb; $row=$wpdb->get_row($wpdb->prepare("SELECT * FROM {$this->tables['posts']} WHERE community_id=%s AND author_id=%s AND idempotency_key=%s",$community_id,$author_id,$key),ARRAY_A); return $row ? ['accepted'=>true,'post'=>$this->decode($row),'event'=>null] : null; }

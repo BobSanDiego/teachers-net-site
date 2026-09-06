@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 final class TNet_Community_Schema {
-    public const VERSION = '3';
+    public const VERSION = '4';
 
     public static function table_names(): array {
         global $wpdb;
@@ -10,6 +10,7 @@ final class TNet_Community_Schema {
             'posts' => $wpdb->prefix . 'community_posts',
             'audit' => $wpdb->prefix . 'community_post_audit',
             'events' => $wpdb->prefix . 'community_publication_events',
+            'communities' => $wpdb->prefix . 'community_communities',
         ];
     }
 
@@ -106,6 +107,21 @@ final class TNet_Community_Schema {
             UNIQUE KEY event_id (event_id),
             UNIQUE KEY dedupe (dedupe_key),
             KEY pending_events (delivery_status, id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['communities']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            community_id VARCHAR(80) NOT NULL,
+            slug VARCHAR(120) NOT NULL,
+            display_name VARCHAR(255) NOT NULL,
+            lifecycle_state VARCHAR(24) NOT NULL,
+            visibility VARCHAR(24) NOT NULL,
+            compatibility_json LONGTEXT NOT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY community_id (community_id),
+            UNIQUE KEY slug (slug),
+            KEY lifecycle_visibility (lifecycle_state, visibility)
         ) $c;");
         self::install_migration_foundation();
         update_option('tnet_community_schema_version', self::VERSION, false);

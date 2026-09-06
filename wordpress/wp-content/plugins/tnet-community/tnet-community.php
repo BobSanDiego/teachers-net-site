@@ -7,6 +7,9 @@
 defined('ABSPATH') || exit;
 require_once __DIR__ . '/includes/class-tnet-community-schema.php';
 require_once __DIR__ . '/includes/class-tnet-community-migration-foundation-repository.php';
+require_once __DIR__ . '/includes/class-tnet-community-historical-author.php';
+require_once __DIR__ . '/includes/class-tnet-community-community-registry.php';
+require_once __DIR__ . '/includes/class-tnet-community-migration-application.php';
 require_once __DIR__ . '/includes/class-tnet-community-subject-reference.php';
 require_once __DIR__ . '/includes/class-tnet-community-link-preview.php';
 require_once __DIR__ . '/includes/class-tnet-community-link-attachment-service.php';

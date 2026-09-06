@@ -547,5 +547,21 @@ registry/map, historical author-display policy, and a transactional migration
 application path; it must still not import records, activate aliases, or alter
 public routing. CONT5 legacy reply-target enhancement remains suspended.
 
+`COMMUNITY3-AI-PILOT-ENABLEMENT001` is complete locally without importing an
+AI source row. The canonical AI entity is the opaque
+`community:60e1ab24-56c6-4a16-8b2b-a5a0f9854ea4` with slug
+`ai-in-education`; its explicit compatibility mapping records legacy
+`path_id=241` and `group_id=227` without treating either numeric value as the
+Community identity. The migration application atomically persists canonical
+target records, publisher audit with a suppressed-historical event policy,
+immutable source provenance, ledger target identities, disabled URL candidates,
+and exclusions. Historical author snapshots display faithfully and never map by
+numeric coincidence. Synthetic root/reply/excluded fixtures proved atomic
+failure rollback, exact rerun idempotency, retained migration evidence after
+batch rollback, and fixture cleanup. The next bounded objective may import the
+eight already-censused local AI rows only: 3 public records into two threads and
+5 status-9 records as no-target ARCHIVE_ONLY ledger entries. Public routes,
+aliases, redirects, writer cutover, Sandy, and production remain disabled.
+
 Current state remains Active Development. No Community, legacy, schema, DDEV,
 Sandy, production, or runtime behavior changed in the ratification cycle.
