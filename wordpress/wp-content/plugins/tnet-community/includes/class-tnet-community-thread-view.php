@@ -34,6 +34,9 @@ final class TNet_Community_Thread_View {
     }
 
     private function lineage(array $row, array $by_id): array {
+        if (!empty($row['conversation_root_id']) && ($row['reply_to_post_id'] ?? null) === $row['conversation_root_id']) {
+            return ['l1_id'=>$row['post_id'],'cycle'=>false];
+        }
         if (!empty($row['conversation_root_id']) && isset($by_id[$row['conversation_root_id']])) {
             return ['l1_id'=>$row['conversation_root_id'],'cycle'=>false];
         }
@@ -72,6 +75,10 @@ final class TNet_Community_Thread_View {
 
     private function safe(array $row): array {
         $refs=$row['compatibility_refs']??[]; $composer=is_array($refs['composer']??null)?$refs['composer']:[]; $attachments=$composer['attachments']??[]; if(!is_array($attachments)) $attachments=[]; $preview=is_array($composer['preview']??null)?$composer['preview']:[];
-        return ['post_id'=>$row['post_id'],'community_id'=>$row['community_id'],'thread_id'=>$row['thread_id'],'parent_post_id'=>$row['parent_post_id'] ?? null,'reply_to_post_id'=>$row['reply_to_post_id'] ?? null,'reply_to_author_id'=>$row['reply_to_author_id'] ?? null,'post_type'=>$row['post_type'],'title'=>$row['title'],'body'=>$row['body'],'publication_state'=>$row['publication_state'],'created_at'=>$row['created_at'],'published_at'=>$row['published_at'],'attachments'=>$attachments,'preview'=>$preview,'_level'=>$row['_level'] ?? 0,'_branch_id'=>$row['_branch_id'] ?? null,'_branch_created_at'=>$row['_branch_created_at'] ?? $row['created_at'],'_branch_post_id'=>$row['_branch_post_id'] ?? $row['post_id'],'_author_display'=>$row['_author_display'] ?? 'Local synthetic author','_target_display'=>$row['_target_display'] ?? null,'_tombstone'=>false];
+        $legacy = is_array($refs['legacy_media_provenance'] ?? null) ? $refs['legacy_media_provenance'] : [];
+        if (!$attachments && !empty($legacy['imglink']) && preg_match('~^https://teachers\.net/[A-Za-z0-9_.\/-]+$~', (string) $legacy['imglink'])) {
+            $attachments[] = ['attachment_id'=>'legacy:'.substr(hash('sha256', (string) $legacy['imglink']), 0, 16),'attachment_type'=>'image','source_kind'=>'legacy_static_artifact','source_reference'=>(string)$legacy['imglink'],'title'=>(string)($legacy['image_name'] ?? 'Historical image'),'description'=>'Historical media preserved from legacy source evidence.','alt_text'=>'Historical media attached to this discussion','mime_type'=>'image/png','file_size'=>0,'width'=>(int)($legacy['image_width'] ?? 0),'height'=>(int)($legacy['image_height'] ?? 0),'rights_status'=>'legacy-provenance','moderation_state'=>'clear','lifecycle_state'=>'preserved','created_at'=>(string)$row['created_at']];
+        }
+        return ['post_id'=>$row['post_id'],'community_id'=>$row['community_id'],'thread_id'=>$row['thread_id'],'parent_post_id'=>$row['parent_post_id'] ?? null,'reply_to_post_id'=>$row['reply_to_post_id'] ?? null,'reply_to_author_id'=>$row['reply_to_author_id'] ?? null,'post_type'=>$row['post_type'],'title'=>$row['title'],'body'=>$row['body'],'publication_state'=>$row['publication_state'],'created_at'=>$row['created_at'],'published_at'=>$row['published_at'],'compatibility_refs'=>$refs,'attachments'=>$attachments,'preview'=>$preview,'_level'=>$row['_level'] ?? 0,'_branch_id'=>$row['_branch_id'] ?? null,'_branch_created_at'=>$row['_branch_created_at'] ?? $row['created_at'],'_branch_post_id'=>$row['_branch_post_id'] ?? $row['post_id'],'_author_display'=>$row['_author_display'] ?? 'Local synthetic author','_target_display'=>$row['_target_display'] ?? null,'_tombstone'=>false];
     }
 }

@@ -11,7 +11,8 @@ final class TNet_Community_Attachment {
     }
     public static function validate(array $a): array {
         $source=(string)($a['source_kind']??''); $ref=(string)($a['source_reference']??'');
-        if (($source==='local_fixture'&&!preg_match('/^fixture:[A-Za-z0-9_\/-]+$/',$ref)) || ($source==='local_upload'&&!preg_match('/^wp-content\/uploads\/[A-Za-z0-9_.\/-]+$/',$ref)) || !in_array($source,['local_fixture','local_upload'],true)) throw new InvalidArgumentException('ATTACHMENT_SOURCE_UNSUPPORTED');
+        $legacy_static = $source === 'legacy_static_artifact' && preg_match('~^https://teachers\.net/[A-Za-z0-9_.\/-]+$~', $ref);
+        if (($source==='local_fixture'&&!preg_match('/^fixture:[A-Za-z0-9_\/-]+$/',$ref)) || ($source==='local_upload'&&!preg_match('/^wp-content\/uploads\/[A-Za-z0-9_.\/-]+$/',$ref)) || (!$legacy_static && !in_array($source,['local_fixture','local_upload'],true))) throw new InvalidArgumentException('ATTACHMENT_SOURCE_UNSUPPORTED');
         $type=(string)($a['attachment_type']??''); $mime=(string)($a['mime_type']??'');
         if ($type==='image'&&!in_array($mime,self::MIMES,true)) throw new InvalidArgumentException('ATTACHMENT_MIME_MISMATCH');
         if ($type!=='image'&&!in_array($type,['video','audio','document'],true)) throw new InvalidArgumentException('ATTACHMENT_TYPE_UNSUPPORTED');
@@ -23,7 +24,7 @@ final class TNet_Community_Attachment {
         $label=esc_html($a['title']??ucfirst($a['attachment_type'])); $desc=esc_html($a['description']??''); $type=$a['attachment_type'];
         if ($type==='image') {
             if (($a['source_kind']??'')==='local_fixture') return '<div class="story-image-placeholder" role="img" aria-label="'.esc_attr($a['alt_text']).'"></div>';
-            $ref=(string)$a['source_reference']; $url=content_url(substr($ref,strlen('wp-content/')));
+            $ref=(string)$a['source_reference']; $url=($a['source_kind']??'')==='legacy_static_artifact' ? $ref : content_url(substr($ref,strlen('wp-content/')));
             return '<img class="story-image" src="'.esc_url($url).'" alt="'.esc_attr($a['alt_text']).'" loading="lazy">';
         }
         return '<div class="attachment-card"><strong>'.$label.'</strong><p>'.$desc.'</p></div>';

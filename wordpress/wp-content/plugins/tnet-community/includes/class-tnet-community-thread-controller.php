@@ -5,7 +5,8 @@ final class TNet_Community_Thread_Controller {
     public static function register(): void {
         if (!self::local()) return;
         add_rewrite_rule('^community/thread/([^/]+)/?$', 'index.php?tnet_community_thread=$matches[1]', 'top');
-        add_filter('query_vars', static function (array $vars): array { $vars[] = 'tnet_community_thread'; return $vars; });
+        add_rewrite_rule('^community/([a-z0-9-]+)/([a-z0-9-]+)/?$', 'index.php?tnet_community_thread_community=$matches[1]&tnet_community_thread_slug=$matches[2]', 'top');
+        add_filter('query_vars', static function (array $vars): array { $vars[] = 'tnet_community_thread'; $vars[] = 'tnet_community_thread_community'; $vars[] = 'tnet_community_thread_slug'; return $vars; });
         add_action('template_redirect', [self::class, 'render']);
     }
 
@@ -13,8 +14,17 @@ final class TNet_Community_Thread_Controller {
 
     public static function render(): void {
         $id = get_query_var('tnet_community_thread');
-        if (!$id) return;
-        $post_id = urldecode(sanitize_text_field($id));
+        $community_slug = sanitize_title((string) get_query_var('tnet_community_thread_community'));
+        $thread_slug = sanitize_title((string) get_query_var('tnet_community_thread_slug'));
+        if (!$id && (!$community_slug || !$thread_slug)) return;
+        $repository = new TNet_Community_Publisher_Repository();
+        if ($id) $post_id = urldecode(sanitize_text_field($id));
+        else {
+            $route_community = (new TNet_Community_Community_Registry())->find_by_slug($community_slug);
+            $post = $route_community ? $repository->find_topic_by_canonical_slug((string) $route_community['community_id'], $thread_slug) : null;
+            if (!$post) { status_header(404); self::shell('<main><h1>Thread not found</h1><p>This local Community thread is unavailable.</p></main>'); }
+            $post_id = (string) $post['post_id'];
+        }
         $data = (new TNet_Community_Thread_View())->find($post_id, current_user_can('manage_options'));
         if (!$data) { status_header(404); self::shell('<main><h1>Thread not found</h1><p>This local Community thread is unavailable.</p></main>'); }
         $errors = [];
@@ -25,8 +35,9 @@ final class TNet_Community_Thread_Controller {
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
         $root = $data['root'];
         $community = (new TNet_Community_Community_Registry())->find((string) $root['community_id']);
-        $context = $community ? '<p class="meta community-context">'.esc_html($community['display_name']).' · local historical migration pilot</p>' : '';
-        $html = '<main><p class="thread-navigation"><a class="back-to-community" href="'.esc_url(home_url('/community/')).'">← Back to Community</a></p>'.$context.'<h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . TNet_Community_Link_Preview::render($root['preview'] ?? []) . '</article>';
+        $context = $community ? '<p class="meta community-context">'.esc_html($community['display_name']).'</p>' : '';
+        $back = $community ? home_url('/community/'.$community['slug'].'/') : home_url('/community/');
+        $html = '<main><p class="thread-navigation"><a class="back-to-community" href="'.esc_url($back).'">← Back to Community</a></p>'.$context.'<h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . TNet_Community_Link_Preview::render($root['preview'] ?? []) . '</article>';
         $html .= self::reply_form_normalized($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;
@@ -67,13 +78,14 @@ final class TNet_Community_Thread_Controller {
         if (empty($result['accepted']) || empty($result['post']['post_id'])) { TNet_Community_Composer_Contracts::cleanup_created_uploads(); return ['The reply could not be published. Please try again.']; }
         TNet_Community_Composer_Contracts::retain_created_uploads();
         $reply_path = str_replace('%3A', ':', rawurlencode($result['post']['post_id']));
-        $root_path = str_replace('%3A', ':', rawurlencode($data['root']['post_id']));
-        wp_safe_redirect(home_url('/community/thread/' . $root_path . '/#reply-post:' . $reply_path));
+        $url = TNet_Community_Canonical_Route::url($data['root']);
+        if ($url === '') { $root_path = str_replace('%3A', ':', rawurlencode($data['root']['post_id'])); $url = home_url('/community/thread/' . $root_path . '/'); }
+        wp_safe_redirect($url . '#reply-post:' . $reply_path);
         return [];
     }
 
     private static function reply_form_normalized(array $root, array $rows, array $errors): string {
-        if (!is_user_logged_in()) { $url = home_url('/community/thread/' . str_replace('%3A', ':', rawurlencode($root['post_id'])) . '/'); return '<p class="meta"><a href="' . esc_url(wp_login_url($url)) . '">Log in to reply.</a></p>'; }
+        if (!is_user_logged_in()) { $url = TNet_Community_Canonical_Route::url($root) ?: home_url('/community/thread/' . str_replace('%3A', ':', rawurlencode($root['post_id'])) . '/'); return '<p class="meta"><a href="' . esc_url(wp_login_url($url)) . '">Log in to reply.</a></p>'; }
         $key = 'reply-' . wp_generate_uuid4(); $html = '';
         if ($errors) { $html .= '<div class="errors" role="alert"><ul>'; foreach ($errors as $error) $html .= '<li>' . esc_html($error) . '</li>'; $html .= '</ul></div>'; }
         $nonce = wp_nonce_field('tnet_community_reply', 'tnet_reply_nonce', true, false);

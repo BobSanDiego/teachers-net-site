@@ -63,4 +63,13 @@ final class TNet_Community_Community_Registry {
         $row['compatibility'] = json_decode((string) $row['compatibility_json'], true) ?: [];
         return $row;
     }
+
+    public function find_by_slug(string $slug): ?array {
+        global $wpdb;
+        $table = TNet_Community_Schema::table_names()['communities'];
+        $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$table} WHERE slug=%s", sanitize_title($slug)), ARRAY_A);
+        if (!$row) return null;
+        $row['compatibility'] = json_decode((string) $row['compatibility_json'], true) ?: [];
+        return $row;
+    }
 }
