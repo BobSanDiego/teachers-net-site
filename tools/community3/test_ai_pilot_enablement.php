@@ -66,8 +66,10 @@ $thread = $root_target ? (new TNet_Community_Thread_View())->find($root_target) 
 $ledger_rows = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$migration['migration_ledger']} WHERE source_namespace=%s ORDER BY legacy_post_id", $namespace), ARRAY_A) ?: [];
 $alias_states = $wpdb->get_col($wpdb->prepare("SELECT DISTINCT route_state FROM {$migration['url_aliases']} WHERE source_namespace=%s", $namespace));
 $events = $root_target ? (new TNet_Community_Publisher_Repository())->get_events($root_target) : [];
+$audit_before_rerun = (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$migration['migration_audit']} WHERE source_namespace=%s", $namespace));
 $rerun = $app->apply($unit);
 $after_rerun_posts = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$core['posts']}");
+$audit_after_rerun = (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$migration['migration_audit']} WHERE source_namespace=%s", $namespace));
 
 $failure_source = $source('fixture-failure-103', 'fixture-topic-12', 'root', '0', 'MIGRATE_PUBLIC');
 $failure_unit = $unit;
@@ -96,7 +98,7 @@ $results = [
     'historical_event_policy_suppressed' => $events === [],
     'disabled_aliases' => $alias_states === ['disabled'],
     'excluded_has_no_target' => !empty($ledger_rows[0]) && $ledger_rows[0]['legacy_post_id'] === 'fixture-excluded-102' && $ledger_rows[0]['target_post_id'] === null,
-    'rerun_idempotent' => !empty($rerun['accepted']) && $after_rerun_posts === $after_first_posts,
+    'rerun_idempotent' => !empty($rerun['accepted']) && $after_rerun_posts === $after_first_posts && $audit_after_rerun === $audit_before_rerun,
     'failure_rolls_back_target_and_ledger' => empty($failure['accepted']) && $failure_leaked === 0,
     'batch_rollback_retains_ledger' => !empty($rollback['accepted']) && $after_rollback_targets === 0 && $retained_ledger === 3,
     'rerun_after_rollback' => !empty($rerun_after_rollback['accepted']) && $after_rollback_rerun === 2 && !empty($final_rollback['accepted']),

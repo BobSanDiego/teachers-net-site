@@ -62,6 +62,15 @@ final class TNet_Community_Migration_Foundation_Repository {
         foreach (['target_community_id' => $community_id, 'target_post_id' => $post_id, 'target_thread_id' => $thread_id] as $field => $value) {
             if ($existing[$field] !== null && $existing[$field] !== '' && $existing[$field] !== $value) throw new RuntimeException('SOURCE_TARGET_IDENTITY_CONFLICT');
         }
+        // A matched target is an exact rerun, not a new migration event.  Keeping
+        // this return inside the surrounding application transaction preserves
+        // the immutable first-assignment audit trail without creating a duplicate
+        // target_assigned event on an idempotent invocation.
+        if (
+            $existing['target_community_id'] === $community_id &&
+            $existing['target_post_id'] === $post_id &&
+            $existing['target_thread_id'] === $thread_id
+        ) return;
         if (false === $wpdb->update($ledger, ['target_community_id'=>$community_id, 'target_post_id'=>$post_id, 'target_thread_id'=>$thread_id], ['id'=>(int) $existing['id']], ['%s','%s','%s'], ['%d'])) throw new RuntimeException('SOURCE_LEDGER_TARGET_ASSIGNMENT_FAILED');
         if (false === $wpdb->update($this->tables['url_aliases'], ['target_community_id'=>$community_id, 'target_post_id'=>$post_id, 'target_thread_id'=>$thread_id], ['source_namespace'=>$source['source_namespace'], 'legacy_post_id'=>(string) $source['legacy_post_id']], ['%s','%s','%s'], ['%s','%s'])) throw new RuntimeException('URL_ALIAS_TARGET_ASSIGNMENT_FAILED');
         $this->append_audit($source['source_namespace'], (string) $source['legacy_post_id'], $run_id, 'target_assigned', ['target_community_id'=>$community_id, 'target_post_id'=>$post_id, 'target_thread_id'=>$thread_id]);

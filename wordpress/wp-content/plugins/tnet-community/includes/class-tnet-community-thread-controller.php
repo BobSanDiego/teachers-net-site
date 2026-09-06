@@ -24,7 +24,9 @@ final class TNet_Community_Thread_Controller {
         }
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
         $root = $data['root'];
-        $html = '<main><p class="thread-navigation"><a class="back-to-community" href="'.esc_url(home_url('/community/')).'">← Back to Community</a></p><h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . TNet_Community_Link_Preview::render($root['preview'] ?? []) . '</article>';
+        $community = (new TNet_Community_Community_Registry())->find((string) $root['community_id']);
+        $context = $community ? '<p class="meta community-context">'.esc_html($community['display_name']).' · local historical migration pilot</p>' : '';
+        $html = '<main><p class="thread-navigation"><a class="back-to-community" href="'.esc_url(home_url('/community/')).'">← Back to Community</a></p>'.$context.'<h1>' . esc_html($root['title']) . '</h1><article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . TNet_Community_Link_Preview::render($root['preview'] ?? []) . '</article>';
         $html .= self::reply_form_normalized($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;

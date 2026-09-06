@@ -59,6 +59,7 @@ final class TNet_Community_Migration_Application {
                     'compatibility_refs' => [
                         'historical_author' => array_merge($author['legacy_snapshot'], ['state'=>$author['state'], 'display_name'=>$author['display_name'], 'mapping_evidence'=>$author['mapping_evidence']]),
                         'legacy_source' => ['source_namespace'=>$source['source_namespace'], 'legacy_post_id'=>(string) $source['legacy_post_id'], 'legacy_topic_id'=>(string) $source['legacy_topic_id'], 'source_checksum'=>$source['source_checksum']],
+                        'legacy_media_provenance' => (array) (($source['source_snapshot'] ?? [])['media_provenance'] ?? []),
                     ],
                     'audit_context' => ['actor_id'=>'system:migration', 'event_policy'=>'suppressed_historical', 'run_id'=>$unit['run_id']],
                 ];
