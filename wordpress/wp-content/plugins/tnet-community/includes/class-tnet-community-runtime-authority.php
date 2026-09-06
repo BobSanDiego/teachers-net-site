@@ -3,7 +3,9 @@ defined('ABSPATH') || exit;
 
 final class TNet_Community_Runtime_Authority {
     public static function is_local(): bool {
-        return (defined('DDEV_PROJECT') && DDEV_PROJECT === 'teachers-net-community3') || getenv('DDEV_PROJECT') === 'teachers-net-community3';
+        $project = (string) (getenv('DDEV_PROJECT') ?: (defined('DDEV_PROJECT') ? DDEV_PROJECT : ''));
+        $expected = (string) (getenv('C3_AUTHORITY_PROJECT') ?: 'teachers-net-community3');
+        return $project !== '' && hash_equals($expected, $project);
     }
 
     public static function facts(): array {
