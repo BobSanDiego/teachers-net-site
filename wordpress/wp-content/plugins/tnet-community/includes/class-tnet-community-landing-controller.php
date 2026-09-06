@@ -33,8 +33,9 @@ final class TNet_Community_Landing_Controller {
         header('X-Robots-Tag: noindex, nofollow');
         $name = $community['display_name'] ?? 'Community Activity';
         $new = $community ? home_url('/community/' . $community['slug'] . '/new/') : home_url('/community/new/');
+        $landing = $community ? home_url('/community/' . $community['slug'] . '/') : home_url('/community/');
 
-        TNet_Community_Shared_Shell::render($name, static function () use ($rows, $name, $new, $community): void {
+        TNet_Community_Shared_Shell::render($name, static function () use ($rows, $name, $new, $landing, $community): void {
             $community_id = (string) ($community['community_id'] ?? '');
             $authenticated = is_user_logged_in() && $community_id !== '';
             $launcher = '<a class="feed-composer-launcher" href="' . esc_url($authenticated ? $new : wp_login_url($new)) . '"><span aria-hidden="true">＋</span><span>Share a thought, question, or resource…</span></a>';
@@ -43,7 +44,7 @@ final class TNet_Community_Landing_Controller {
                 $user = wp_get_current_user();
                 $avatar = get_avatar($user->ID, 36, '', '', ['class' => 'feed-composer-avatar']);
                 $launcher = '<button type="button" class="feed-composer-launcher" data-open-composer="community-composer-dialog">' . $avatar . '<span class="feed-composer-prompt">Share a thought, question, or resource…</span><span class="feed-composer-media" aria-hidden="true">▧</span></button>';
-                $dialog = '<dialog id="community-composer-dialog" class="community-composer-dialog" aria-labelledby="community-composer-title"><div class="community-composer-dialog__inner"><header><div><p>Posting to</p><h2 id="community-composer-title">' . esc_html($name) . '</h2></div><button type="button" class="secondary" data-close-composer aria-label="Close composer">×</button></header>' . TNet_Community_Topic_Composer_Controller::embedded_form($community_id, $name, $new, [], true) . '</div></dialog>';
+                $dialog = '<dialog id="community-composer-dialog" class="community-composer-dialog" aria-labelledby="community-composer-title"><div class="community-composer-dialog__inner"><header><div><p>Posting to</p><h2 id="community-composer-title">' . esc_html($name) . '</h2></div><button type="button" class="secondary" data-close-composer aria-label="Close composer">×</button></header>' . TNet_Community_Topic_Composer_Controller::embedded_form($community_id, $name, $new, ['action_url' => $new, 'return_to_feed' => $landing], true) . '</div></dialog>';
             }
             echo '<section class="c3-community-page"><header class="community-header"><p>Teachers.Net Community</p><h1>' . esc_html($name) . '</h1><p>Recent conversations from teachers and education professionals.</p></header>' . $launcher . '<section aria-labelledby="activity-heading"><h2 id="activity-heading">Latest Activity</h2>';
             if (!$rows) {
