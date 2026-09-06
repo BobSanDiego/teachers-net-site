@@ -32,7 +32,13 @@ final class TNet_Community_Historical_Author {
         $refs = $post['compatibility_refs'] ?? $post['compatibility_json'] ?? [];
         $author = is_array($refs['historical_author'] ?? null) ? $refs['historical_author'] : [];
         $display = trim((string) ($author['display_name'] ?? ''));
-        return $display !== '' ? $display : 'Local synthetic author';
+        if ($display !== '') return $display;
+        $author_id = (string) ($post['author_id'] ?? '');
+        if (preg_match('/^user:(\d+)$/', $author_id, $matches)) {
+            $user = get_user_by('id', (int) $matches[1]);
+            if ($user) return $user->display_name ?: $user->user_login;
+        }
+        return 'Local synthetic author';
     }
 
     private static function snapshot(array $author): array {
