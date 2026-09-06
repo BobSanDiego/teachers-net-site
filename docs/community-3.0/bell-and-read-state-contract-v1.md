@@ -148,3 +148,11 @@ Later implementation must demonstrate:
 11. Expiry, retention, rollback, retraction, and audit behavior are tested without production writes or mail sends.
 
 This document authorizes no implementation. The next decision is whether the Engineering Director authorizes a bounded C3-NOT003 follow-up.
+
+## Ratified convergence amendment
+
+Bell items consume semantic notification targets and resolve them again at
+access time. A canonical discussion page is preferred for discovery; a focused
+same-context modal remains permissible without modal chaining. Read state is
+independent of navigation and engagement, and restricted or unresolved targets
+must not disclose content.

@@ -14,3 +14,12 @@
 | M9 | Consider communications provider, campaign, analytics, AI, and post-view expansion. | Stop unless all prior controls are accepted. |
 
 This sequence is planning authority only. It does not authorize migrations, schema changes, plugin changes, routes, mail delivery, or production edits.
+
+## Ratified Community convergence sequence
+
+For the Community discussion strand, the active order is: contract package;
+local reversible migration foundation; production writer/routing readiness;
+AI in Education local pilot and reconciliation; native HUMAN_QA; explicit
+Director authorization; staged board cutover; immutable archive and separately
+authorized legacy-writer/storage retirement. This sequence supersedes the prior
+Community-discussion documentation-first NO-GO only for this bounded program.

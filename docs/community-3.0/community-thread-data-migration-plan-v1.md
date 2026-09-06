@@ -28,3 +28,12 @@ and are not auto-published or notified.
 The selected hybrid storage requires one future schema ticket, C3-ARCH002,
 followed by a separately authorized backfill/migration ticket if evidence
 supports execution.
+
+## Ratified historical-source amendment
+
+For the legacy source profile, do not walk or infer a missing historical
+`parent_post_id`: legacy replies have no reply-to-reply edge and import as
+direct children of the topic root. Preserve `topic_id` separately from the
+root `post_id`, raw status, identity snapshot, URL, and exception evidence.
+Batch idempotency, source checksums, aliases, and reconciliation are governed by
+`community-migration-ledger-reconciliation-contract-v1.md`.

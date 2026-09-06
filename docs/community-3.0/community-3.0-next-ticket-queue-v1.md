@@ -14,3 +14,11 @@ These tickets are proposed only; none is executed by C3-RR001.
 10. **C3-SEM001 — Core Terms and Portable Views contract.** Establish semantic and reusable-view authority.
 11. **C3-MAIL001 — Production mail boundary audit.** Read-only Postfix/provider/source correlation with no queue mutation.
 12. **C3-REL001 — Relationship governance design.** Define consent, approvals, explainability, and safe discovery prerequisites.
+
+## Ratified Community discussion queue amendment
+
+The next Community discussion objective is
+**COMMUNITY3-MIGRATION-FOUNDATION001**: local/reversible source identity,
+idempotent migration ledger, explicit board mapping, and verified URL aliases.
+It must not perform a public import, route cutover, or writer switch. AI in
+Education is the subsequent bounded pilot after readiness and contract gates.

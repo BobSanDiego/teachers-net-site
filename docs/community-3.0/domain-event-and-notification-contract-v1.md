@@ -166,3 +166,11 @@ Later implementation must demonstrate:
 12. Tests cover replay, duplicate events, visibility changes, suppression changes, appeals, recovery, and rollback without sending unsolicited mail.
 
 This document authorizes no implementation. The next decision is whether the Engineering Director authorizes a bounded follow-up such as C3-NOT002.
+
+## Ratified convergence amendment
+
+Community page-context transition and navigation-context events may be recorded
+under the separate page-context contract. They are relevance/analytics signals
+only: they do not imply communication consent, membership, visibility, or
+advertising disclosure authority. Notification event targets must use the
+semantic destination contract rather than a feed ordinal or display-text route.

@@ -30,3 +30,12 @@ attachment and migration writes remain blocked.
 
 This recommendation is documentation-only and does not authorize source
 acquisition, schema changes, production hooks, migration, or deployment.
+
+## Ratified convergence amendment
+
+The terminal recommendation is now ratified as staged full historical
+migration with temporary read-only legacy compatibility and aliases. Community
+3.0 becomes the sole writer per migrated scope after reconciliation; permanent
+dual-read/dual-write is rejected. The local migration foundation must satisfy
+the source-profile, ledger, status, URL, media, contextual-retrieval, and
+production-readiness contracts before any public import or cutover.

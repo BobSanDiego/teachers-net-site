@@ -518,3 +518,22 @@ UX003-REF001 extracted shared HTTPS URL detection and representative selection
 plus a normalized staged-image contract with focused tests. Topic and reply
 controllers, uploads, publication, routing, and metadata remain separate and
 unchanged. Next: UX003-REF002 — Shared Composer View Partial for Topic.
+
+## Ratified Community convergence boundary
+
+`COMMUNITY3-CONVERGENCE-CONTRACTS001` is complete as a documentation-only
+authority package. The active Community discussion direction is staged full
+historical migration with temporary read-only legacy compatibility and one
+Community 3.0 writer per migrated scope. Legacy IDs, topic identity, URLs,
+raw status, identity snapshots, media evidence, and duplicate dispositions are
+immutable migration provenance. Legacy replies remain flat by topic/root.
+
+The next bounded objective is `COMMUNITY3-MIGRATION-FOUNDATION001`: local and
+reversible source identity, idempotent migration ledger, explicit board mapping,
+and verified URL aliases. It must not perform public import, route cutover, or
+writer switching. AI in Education follows as the bounded local pilot after
+readiness and reconciliation gates; CONT5 legacy reply-target enhancement
+remains suspended.
+
+Current state remains Active Development. No Community, legacy, schema, DDEV,
+Sandy, production, or runtime behavior changed in the ratification cycle.

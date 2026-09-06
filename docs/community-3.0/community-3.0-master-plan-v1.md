@@ -292,3 +292,13 @@ flowchart TD
 ```
 
 The arrows describe a governance relationship, not a requirement that every product use every layer. Product ownership remains with each subscriber. Identity is authentication; Core Terms is semantic authority; Subscriber Policies govern local selection and permission; Relationship Graphs govern connections; Communications governs eligibility and delivery. Those distinctions must remain visible in future product and engineering documents.
+
+## Ratified Community discussion convergence amendment
+
+The Community discussion strand now follows
+`community-convergence-authority-addendum-v1.md`: staged full historical
+migration, temporary read-only legacy compatibility, one Community 3.0 writer
+per migrated scope, verified legacy aliases, and legacy-writer retirement only
+after cutover and rollback gates. This narrowly supersedes the former
+documentation-first Community-discussion NO-GO; it does not authorize
+implementation, schema changes, route changes, or production edits by itself.

@@ -19,3 +19,11 @@
 The central boundary is that business behavior may be preserved while the
 execution architecture is retired. “Preserve” never means copy unverified code
 or trust an unverified identity mapping.
+
+## Ratified convergence amendment
+
+For migrated scopes, `chat_posts`, static output, CGI, and SSI remain
+read-only/archive compatibility inputs. A verified Community 3.0 writer and
+per-board cutover switch replace them only after source, URL, moderation,
+reconciliation, rollback, and native acceptance gates pass. No switch may leave
+two active writers.

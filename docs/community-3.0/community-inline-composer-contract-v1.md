@@ -19,3 +19,10 @@ interception, but the no-JavaScript POST form is the authority.
 
 Draft retention is in-memory for the page and may be retained only through a
 confirmed navigation flow; no cross-session draft storage is authorized in v1.
+
+## Ratified convergence amendment
+
+Home, board, and modal entry surfaces consume one canonical Community writer
+and select an explicit return context after success. A presentation surface
+must not create a second persistence path or change the canonical discussion
+destination policy.

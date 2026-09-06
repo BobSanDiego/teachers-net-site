@@ -27,3 +27,12 @@ Verified legacy identity includes the post file and `chat_posts.post_id`,
 author name/optional `wordpress_id`, `local_path`, and `topic_dir` reply
 context. Canonical `path_id`, `group_id`, explicit mapping, modern visibility,
 and modern moderation are not verified. `path_id == group_id` is not supported.
+
+## Ratified convergence amendment
+
+This legacy lifecycle is preserved as behavioral and provenance evidence only.
+For a migrated scope, Community 3.0 owns the writer and publication lifecycle;
+legacy CGI/static writes are disabled after the verified cutover gate. Raw
+legacy status and moderation/report evidence are retained and dispositioned by
+the migration ledger; status 9 is excluded from public migration under the
+ratified program decision.

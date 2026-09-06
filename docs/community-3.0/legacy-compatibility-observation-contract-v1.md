@@ -21,3 +21,10 @@ successful guess. A future native publisher may be compared against these
 observations, but this contract does not authorize native implementation or
 define unverified edit/delete, moderation, authentication, mailring,
 concurrency, or recovery semantics.
+
+## Ratified convergence amendment
+
+The observation boundary now also records source namespace/key, checksum,
+disposition, alias status, raw status/moderation evidence, identity state, and
+exception references needed by the historical source profile and migration
+ledger. Observation remains read-only and does not authorize publication.

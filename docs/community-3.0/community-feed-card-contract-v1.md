@@ -18,3 +18,11 @@ domain publication events and honor moderation/suppression state.
 
 No feed implementation is part of this audit. The contract is required before
 rich composer implementation and safe to defer as code.
+
+## Ratified convergence amendment
+
+The card is discovery, not the canonical discussion object. It may open a
+same-context modal for supported interaction, but it must always expose the
+canonical discussion destination. Cold, external, search, share,
+cross-community, and discovery-notification entry resolves to the canonical
+page; modal close/focus/scroll restoration remains required.

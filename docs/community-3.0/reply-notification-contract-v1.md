@@ -138,3 +138,10 @@ Later implementation must demonstrate:
 8. Verification and rollback/stop conditions are recorded without production writes or unsolicited mail.
 
 This document authorizes no implementation. The next decision is whether the Engineering Director authorizes a bounded C3-NOT004 follow-up.
+
+## Ratified convergence amendment
+
+Reply notification targets are semantic discussion/reply identities with a
+visibility-checked canonical destination. Discovery favors the canonical page;
+same-context interaction may use a supported modal. This destination policy
+does not change recipient, privacy, suppression, consent, or audit rules.

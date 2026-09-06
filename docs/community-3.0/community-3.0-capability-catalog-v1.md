@@ -44,3 +44,12 @@ This catalog reconciles the Community 3.0 product surface with the existing Teac
 | C3-AI-001 | AI-assisted classification or discovery | Members/operators | Proposed | Terms, privacy, review | Defer |
 
 The catalog deliberately does not turn these entries into schema, route, plugin, or production-change instructions. The invariant that `path_id` identifies chatboard/path/feed context while `group_id` identifies teacher-group membership remains authoritative.
+
+## Ratified convergence disposition
+
+The Community discussion migration strand is now an approved staged program,
+not an active implementation grant. Existing safeguards remain in force and
+require the ratified convergence contracts before implementation. The contract
+package and the local-only migration foundation are the next bounded gates;
+public capability remains unverified until native and production-readiness
+acceptance is separately proven.
