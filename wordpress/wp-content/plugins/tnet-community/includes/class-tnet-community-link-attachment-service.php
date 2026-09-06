@@ -5,6 +5,17 @@ final class TNet_Community_Link_Attachment_Service {
     public function prepare(string $url, string $choice='keep'): array {
         return TNet_Community_Link_Preview::apply(TNet_Community_Link_Preview::resolve($url), $choice);
     }
+    /** Keep the first viable preview, not merely the first URL typed. */
+    public function prepare_first_eligible(array $urls, string $choice='keep'): array {
+        if ($choice === 'remove') return ['status'=>'removed', 'url'=>(string)($urls[0] ?? '')];
+        $fallback = ['status'=>'raw_only', 'url'=>(string)($urls[0] ?? '')];
+        foreach ($urls as $url) {
+            $preview = $this->prepare((string) $url, 'keep');
+            if (($preview['status'] ?? '') === 'preview') return $preview;
+            if (($fallback['url'] ?? '') === '') $fallback = $preview;
+        }
+        return $fallback;
+    }
     public function render_placeholder(array $preview): string {
         $status = $preview['status'] ?? 'raw_only';
         if ($status === 'removed') return '<p class="preview-status">Preview removed; the raw link will remain available.</p>';

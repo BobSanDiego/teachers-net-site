@@ -1,6 +1,21 @@
 <?php
 defined('ABSPATH') || exit;
 final class TNet_Community_Authoring {
+    /** Durable label for slug/document identity; never a visible v1 subject field. */
+    public static function body_label(string $body): string {
+        $text = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($body)) ?? '');
+        if ($text === '') return 'Community discussion';
+        if (mb_strlen($text) <= 84) return $text;
+        $slice = mb_substr($text, 0, 84);
+        $boundary = mb_strrpos($slice, ' ');
+        return rtrim($boundary === false ? $slice : mb_substr($slice, 0, $boundary)) . '…';
+    }
+
+    public static function is_subjectless(array $post): bool {
+        $refs = is_array($post['compatibility_refs'] ?? null) ? $post['compatibility_refs'] : [];
+        return !empty($refs['presentation']['subjectless']);
+    }
+
     public static function markdown(string $source): string {
         $source = esc_html($source);
         $source = preg_replace_callback('/\[([^\]]+)\]\((https:\/\/[^)]+)\)/', static fn($m) => '<a href="'.esc_url($m[2]).'">'.$m[1].'</a>', $source);
