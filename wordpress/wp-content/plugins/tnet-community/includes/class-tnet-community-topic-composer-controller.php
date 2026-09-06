@@ -28,6 +28,14 @@ final class TNet_Community_Topic_Composer_Controller {
         $html=str_replace('const strong=document.createElement("strong");strong.textContent=m.title||new URL(p.url).hostname;c.appendChild(strong)','if(m.image_url){const i=document.createElement("img");i.src=m.image_url;i.alt="";i.loading="lazy";c.appendChild(i)}const strong=document.createElement("strong");strong.textContent=m.title||new URL(p.url).hostname;c.appendChild(strong)',$html);
         $html=str_replace('.link-card{','#image-preview{margin-top:.85rem}#image-preview img{display:block;width:100%;max-height:420px;object-fit:cover;border-radius:10px}#image-preview p{margin:.45rem 0;color:#646970}.link-card{margin-top:.85rem;background:#f6f7f7;border:1px solid #dcdcde;border-radius:10px;padding:1rem}.link-card strong{display:block;font-size:1.05rem;margin-bottom:.35rem}.link-card p{margin:.35rem 0;color:#50575e;line-height:1.45}.link-card small{display:block;color:#646970;margin-top:.5rem}.link-card button{margin-top:.75rem}',$html);
         $html=str_replace('.link-card strong{','.link-card img{display:block;width:100%;max-height:260px;object-fit:cover;border-radius:6px;margin-bottom:.75rem}.link-card strong{',$html);
-        echo TNet_Community_Composer_View::topic($html);
+        // The composer predates the canonical Shared Shell and still builds a
+        // local document string while assembling its staged-media scripts.
+        // Keep that product payload intact, then remove only its retired
+        // document wrapper before handing it to the governed host.
+        $html = preg_replace('/^<!doctype html>.*?<body>/is', '', $html) ?? $html;
+        $html = preg_replace('/<\/body>\s*<\/html>\s*$/i', '', $html) ?? $html;
+        TNet_Community_Shared_Shell::render('Start a Discussion', static function () use ($html): void {
+            echo '<section class="c3-community-page c3-composer-page">' . TNet_Community_Composer_View::topic($html) . '</section>';
+        });
     }
 }

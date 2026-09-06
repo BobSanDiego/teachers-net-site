@@ -1,0 +1,13 @@
+services:
+  web:
+    volumes:
+      # Governed local-only availability seam: Community3 consumes the
+      # platform-owned Shared Shell and notifications providers directly.
+      - type: bind
+        source: /home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-shared-shell
+        target: /var/www/html/wordpress/wp-content/plugins/tnet-shared-shell
+        read_only: true
+      - type: bind
+        source: /home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-notifications
+        target: /var/www/html/wordpress/wp-content/plugins/tnet-notifications
+        read_only: true
