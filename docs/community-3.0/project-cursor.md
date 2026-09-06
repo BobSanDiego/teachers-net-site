@@ -532,10 +532,20 @@ immutable migration provenance. Legacy replies remain flat by topic/root.
 now owns reversible migration-run, ledger/audit, explicit legacy-board-map,
 legacy-URL-alias, and exception storage, tested with representative root/reply
 and status-9 fixtures. Alias records are routing-disabled candidates; no legacy
-record, canonical Community post, public route, or writer changed. The next
-boundary is a separately authorized AI in Education local pilot-readiness
-objective after writer/routing readiness and reconciliation gates; CONT5
-legacy reply-target enhancement remains suspended.
+record, canonical Community post, public route, or writer changed.
+
+`COMMUNITY3-AI-PILOT-READINESS001` characterized the local AI in Education
+source as eight records: two public roots and one public direct reply across
+two topics, plus five status-9 records that remain archive-only. The source
+mapping is verified as `path_id=241` to `group_id=227`, but the target is NOT
+READY for import: no governed AI Community entity/opaque identity and slug are
+registered, the migration foundation intentionally does not materialize target
+posts atomically, and the current local renderer substitutes synthetic author
+display while the target runtime lacks the source User A identity. The next
+bounded objective is local-only pilot enablement for an explicit Community
+registry/map, historical author-display policy, and a transactional migration
+application path; it must still not import records, activate aliases, or alter
+public routing. CONT5 legacy reply-target enhancement remains suspended.
 
 Current state remains Active Development. No Community, legacy, schema, DDEV,
 Sandy, production, or runtime behavior changed in the ratification cycle.
