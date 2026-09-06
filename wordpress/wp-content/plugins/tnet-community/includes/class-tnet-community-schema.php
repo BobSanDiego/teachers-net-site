@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 final class TNet_Community_Schema {
-    public const VERSION = '2';
+    public const VERSION = '3';
 
     public static function table_names(): array {
         global $wpdb;
@@ -10,6 +10,23 @@ final class TNet_Community_Schema {
             'posts' => $wpdb->prefix . 'community_posts',
             'audit' => $wpdb->prefix . 'community_post_audit',
             'events' => $wpdb->prefix . 'community_publication_events',
+        ];
+    }
+
+    /**
+     * Local, additive storage for historical migration preparation. These
+     * tables are deliberately separate from canonical Community publication
+     * tables: creating a foundation record never publishes a discussion.
+     */
+    public static function migration_table_names(): array {
+        global $wpdb;
+        return [
+            'migration_runs' => $wpdb->prefix . 'community_migration_runs',
+            'migration_ledger' => $wpdb->prefix . 'community_migration_ledger',
+            'migration_audit' => $wpdb->prefix . 'community_migration_audit',
+            'board_maps' => $wpdb->prefix . 'community_legacy_board_maps',
+            'url_aliases' => $wpdb->prefix . 'community_legacy_url_aliases',
+            'exceptions' => $wpdb->prefix . 'community_migration_exceptions',
         ];
     }
 
@@ -90,11 +107,124 @@ final class TNet_Community_Schema {
             UNIQUE KEY dedupe (dedupe_key),
             KEY pending_events (delivery_status, id)
         ) $c;");
+        self::install_migration_foundation();
         update_option('tnet_community_schema_version', self::VERSION, false);
+    }
+
+    public static function install_migration_foundation(): void {
+        global $wpdb;
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        $t = self::migration_table_names();
+        $c = $wpdb->get_charset_collate();
+        dbDelta("CREATE TABLE {$t['migration_runs']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            run_id VARCHAR(80) NOT NULL,
+            rule_version VARCHAR(64) NOT NULL,
+            run_state VARCHAR(24) NOT NULL,
+            metadata_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY run_id (run_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['board_maps']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            source_namespace VARCHAR(128) NOT NULL,
+            legacy_path_id VARCHAR(80) NOT NULL,
+            legacy_local_path VARCHAR(255) NOT NULL,
+            legacy_group_id VARCHAR(80) NULL,
+            community_id VARCHAR(80) NOT NULL,
+            mapping_state VARCHAR(24) NOT NULL,
+            evidence_ref VARCHAR(255) NOT NULL,
+            mapping_checksum CHAR(64) NOT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY source_path (source_namespace, legacy_path_id),
+            KEY community_state (community_id, mapping_state)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['migration_ledger']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            source_namespace VARCHAR(128) NOT NULL,
+            legacy_post_id VARCHAR(80) NOT NULL,
+            legacy_topic_id VARCHAR(80) NOT NULL,
+            legacy_post_type VARCHAR(16) NOT NULL,
+            raw_status VARCHAR(32) NULL,
+            source_checksum CHAR(64) NOT NULL,
+            board_map_id BIGINT UNSIGNED NULL,
+            identity_state VARCHAR(32) NOT NULL,
+            moderation_state VARCHAR(32) NOT NULL,
+            asset_state VARCHAR(32) NOT NULL,
+            disposition VARCHAR(64) NOT NULL,
+            reason_code VARCHAR(128) NULL,
+            target_community_id VARCHAR(80) NULL,
+            target_post_id VARCHAR(80) NULL,
+            target_thread_id VARCHAR(80) NULL,
+            first_run_id VARCHAR(80) NOT NULL,
+            rule_version VARCHAR(64) NOT NULL,
+            source_snapshot_json LONGTEXT NOT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY source_record (source_namespace, legacy_post_id),
+            KEY topic_source (source_namespace, legacy_topic_id),
+            KEY disposition_state (disposition, raw_status),
+            KEY target_identity (target_community_id, target_thread_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['migration_audit']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            source_namespace VARCHAR(128) NOT NULL,
+            legacy_post_id VARCHAR(80) NOT NULL,
+            run_id VARCHAR(80) NOT NULL,
+            action VARCHAR(64) NOT NULL,
+            evidence_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            KEY source_audit (source_namespace, legacy_post_id, id),
+            KEY run_audit (run_id, id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['url_aliases']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            source_namespace VARCHAR(128) NOT NULL,
+            legacy_url_hash CHAR(64) NOT NULL,
+            legacy_url TEXT NOT NULL,
+            legacy_post_id VARCHAR(80) NOT NULL,
+            legacy_topic_id VARCHAR(80) NOT NULL,
+            target_community_id VARCHAR(80) NULL,
+            target_post_id VARCHAR(80) NULL,
+            target_thread_id VARCHAR(80) NULL,
+            intended_target_key VARCHAR(160) NOT NULL,
+            alias_state VARCHAR(32) NOT NULL,
+            route_state VARCHAR(32) NOT NULL,
+            verification_state VARCHAR(32) NOT NULL,
+            evidence_ref VARCHAR(255) NOT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY source_url (source_namespace, legacy_url_hash),
+            KEY source_post (source_namespace, legacy_post_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['exceptions']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            source_namespace VARCHAR(128) NOT NULL,
+            legacy_post_id VARCHAR(80) NOT NULL,
+            exception_code VARCHAR(128) NOT NULL,
+            exception_state VARCHAR(32) NOT NULL,
+            evidence_json LONGTEXT NULL,
+            first_run_id VARCHAR(80) NOT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY source_exception (source_namespace, legacy_post_id, exception_code),
+            KEY exception_state (exception_state, exception_code)
+        ) $c;");
+    }
+
+    public static function remove_migration_foundation(): void {
+        global $wpdb;
+        foreach (self::migration_table_names() as $table) {
+            $wpdb->query("DROP TABLE IF EXISTS {$table}");
+        }
     }
 
     public static function uninstall(): void {
         global $wpdb; foreach (self::table_names() as $table) $wpdb->query("DROP TABLE IF EXISTS {$table}");
+        self::remove_migration_foundation();
         delete_option('tnet_community_schema_version');
     }
 }

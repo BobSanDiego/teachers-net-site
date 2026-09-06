@@ -528,12 +528,14 @@ Community 3.0 writer per migrated scope. Legacy IDs, topic identity, URLs,
 raw status, identity snapshots, media evidence, and duplicate dispositions are
 immutable migration provenance. Legacy replies remain flat by topic/root.
 
-The next bounded objective is `COMMUNITY3-MIGRATION-FOUNDATION001`: local and
-reversible source identity, idempotent migration ledger, explicit board mapping,
-and verified URL aliases. It must not perform public import, route cutover, or
-writer switching. AI in Education follows as the bounded local pilot after
-readiness and reconciliation gates; CONT5 legacy reply-target enhancement
-remains suspended.
+`COMMUNITY3-MIGRATION-FOUNDATION001` is complete locally. The Community plugin
+now owns reversible migration-run, ledger/audit, explicit legacy-board-map,
+legacy-URL-alias, and exception storage, tested with representative root/reply
+and status-9 fixtures. Alias records are routing-disabled candidates; no legacy
+record, canonical Community post, public route, or writer changed. The next
+boundary is a separately authorized AI in Education local pilot-readiness
+objective after writer/routing readiness and reconciliation gates; CONT5
+legacy reply-target enhancement remains suspended.
 
 Current state remains Active Development. No Community, legacy, schema, DDEV,
 Sandy, production, or runtime behavior changed in the ratification cycle.
