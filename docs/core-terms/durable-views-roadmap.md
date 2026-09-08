@@ -325,3 +325,20 @@ the Project Cursor and Engineering Handoff.
 | DV-UX010 | Adopt Meta-Groups tree structure in Core Terms Library | 8 | Complete; compact recursive Library tree browser-verified; Current View tree unchanged |
 | DV-UX010A | Correct Library Tree Structure and Ancestor Shuttle Contract | 8 | Complete; nested disclosure, whole-tree selection prompt, and muted ancestor context browser-verified |
 | DV-UX010B | Enforce Canonical Tree Rendering and Ancestor Shuttle | 8 | Complete; Meta-Groups controls, canonical ordering, depth rendering, and persisted ancestor paths browser-verified |
+
+## List and C3 Rail Parent foundation
+
+Durable Views now reserves `taxonomy` as the backward-compatible default and
+supports `list` as a flat, ordered, Core Terms-backed structure. A List has one
+typed parent reference (currently a Core Term), included canonical Term members,
+and authoritative `display_order`; it does not import ancestors, expand
+descendants, or use groups. The `c3_rail_parent` role is valid only for Lists
+and is exclusive among currently published List consumers for a canonical
+parent Term. The published service exposes this typed contract for a future C3
+consumer; C3 rail rendering is outside this boundary.
+
+`collection` is reserved only as a future structure identifier. A future
+Collection may require arbitrary authored hierarchy, repeated Term references,
+presentation-only container nodes, ordering, and reparenting. The current List
+schema, groups, lineage fields, or metadata JSON must not be promoted as a
+universal Collection model.
