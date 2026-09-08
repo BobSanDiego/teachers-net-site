@@ -333,9 +333,12 @@ supports `list` as a flat, ordered, Core Terms-backed structure. A List has one
 typed parent reference (currently a Core Term), included canonical Term members,
 and authoritative `display_order`; it does not import ancestors, expand
 descendants, or use groups. The `c3_rail_parent` role is valid only for Lists
-and is exclusive among currently published List consumers for a canonical
-parent Term. The published service exposes this typed contract for a future C3
-consumer; C3 rail rendering is outside this boundary.
+and a canonical included member Term may appear in at most one active published
+Rail Parent List within its governed framework/scope. Draft conflicts are
+warnings and publication fails closed with member/conflicting-List evidence.
+Parent Terms are not a separate exclusivity boundary. The published service
+exposes this typed contract for a future C3 consumer; C3 rail rendering is
+outside this boundary.
 
 `collection` is reserved only as a future structure identifier. A future
 Collection may require arbitrary authored hierarchy, repeated Term references,
