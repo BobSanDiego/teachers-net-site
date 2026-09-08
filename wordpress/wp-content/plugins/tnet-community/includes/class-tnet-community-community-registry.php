@@ -16,9 +16,10 @@ final class TNet_Community_Community_Registry {
                 'source_namespace' => 'legacy:chatpost',
                 'legacy_path_id' => '241',
                 'legacy_group_id' => '227',
-                'mapping_state' => 'explicit',
-                'evidence_ref' => 'COMMUNITY3-AI-PILOT-READINESS001',
-            ],
+            'mapping_state' => 'explicit',
+            'evidence_ref' => 'COMMUNITY3-AI-PILOT-READINESS001',
+            'canonical_term_slug' => 'ai-in-education',
+        ],
         ]);
     }
 

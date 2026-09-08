@@ -24,6 +24,7 @@ require_once __DIR__ . '/admin/class-tnet-community-workbench.php';
 require_once __DIR__ . '/includes/class-tnet-community-thread-view.php';
 require_once __DIR__ . '/includes/class-tnet-community-thread-controller.php';
 require_once __DIR__ . '/includes/class-tnet-community-landing-view.php';
+require_once __DIR__ . '/includes/class-tnet-community-rail-parent-service.php';
 require_once __DIR__ . '/includes/class-tnet-community-landing-controller.php';
 require_once __DIR__ . '/includes/class-tnet-community-topic-composer-controller.php';
 require_once __DIR__ . '/includes/class-tnet-community-authoring.php';
