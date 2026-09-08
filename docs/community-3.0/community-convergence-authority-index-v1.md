@@ -6,7 +6,8 @@ index while preserving that package as historical evidence.
 
 ## Authority order
 
-1. `community-convergence-authority-addendum-v1.md` and explicit Director
+1. `community-convergence-authority-addendum-v1.md`,
+   `community-v1-authority-consolidation-v1.md`, and explicit Director
    decisions.
 2. Canonical identity, visibility/moderation, publisher, thread, historical
    source-profile, migration-ledger, and URL contracts.
@@ -37,6 +38,16 @@ index while preserving that package as historical evidence.
 | reply notification contract | AMEND | canonical destination policy |
 | bell/read-state contract | AMEND | canonical target and modal/page policy |
 | master plan, capability catalog, integrated roadmap, project cursor/queue | AMEND | point durable planning to this index and next boundary |
+| v1 authority consolidation | CREATE | accepted v1 scope, navigation, feed relationships, notifications, moderation, and deferred social intelligence |
+
+## V1 authority consolidation
+
+`community-v1-authority-consolidation-v1.md` is the canonical compact summary of
+the accepted v1 term/community model, feed relationships, Hot Topics boundary,
+navigation, composer/feed surfaces, notification states, moderation minimum,
+personalization boundary, and essential/near/deferred scope. It records
+authority and scope; it does not claim implementation or authorize schema,
+runtime, or production changes.
 
 ## Keep authority
 
@@ -48,7 +59,7 @@ moderation, audit, or `path_id != group_id` invariants.
 
 ## Next boundary
 
-`COMMUNITY3-MIGRATION-FOUNDATION001` is the next implementation objective. It is
-local/reversible and must establish source identity, the migration ledger,
-board mapping, and aliases without public import, route cutover, or writer
-switch. Production readiness and native HUMAN_QA precede any public cutover.
+No implementation ticket is opened by this consolidation. The preferred next
+v1 foundation is moderation, followed by relationship/feed and notification
+foundations, each requiring its own authorized ticket. Migration, routing,
+writer, and production/cutover gates remain governed by the existing contracts.

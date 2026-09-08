@@ -472,3 +472,21 @@ controller delegates pure HTTPS URL detection to the shared contract class;
 the staged-image contract and focused PHP test are present. No reply upload,
 shared view, route, publication, or schema work was performed. Next:
 UX003-REF002 — Shared Composer View Partial for Topic.
+
+## Current v1 authority handoff
+
+Use `community-v1-authority-consolidation-v1.md` as the current compact
+authority for accepted v1 scope, navigation, feed relationships, Hot Topics,
+composer/feed surfaces, notifications, moderation minimum, personalization
+boundaries, and deferred work. It records product/architecture boundaries and
+does not claim that absent capabilities are implemented.
+
+Detailed evidence remains in the validated diagnostic cycles
+`260907204929` (feed relationship architecture) and `260908134731`
+(capability/moderation readiness). The preferred next implementation boundary
+is moderation foundation, followed by relationship/feed foundation and
+notification relationships, each requiring its own authorized ticket. Preserve
+the Community source branch/worktree and DDEV authority in `project-cursor.md`;
+the mixed control-plane recovery workspace is not a Community product source
+owner. No production, Sandy, schema, runtime, or public-cutover change is
+authorized by this handoff.

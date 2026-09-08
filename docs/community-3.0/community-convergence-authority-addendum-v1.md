@@ -83,3 +83,17 @@ communication or alter visibility.
 
 The suspended CONT5 legacy reply-target enhancement remains outside this
 program until separately reauthorized.
+
+## Current C3 v1 product authority
+
+The accepted v1 scope and product/architecture boundaries are consolidated in
+`community-v1-authority-consolidation-v1.md`. That document records Director
+decisions for the term/community model, feed relationships, Hot Topics,
+navigation, composer/feed surfaces, notification states, moderation minimum,
+personalization boundary, and essential/near/deferred scope.
+
+It is authority and guidance, not an implementation claim or authorization for
+schema, runtime, production, or public-cutover changes. The detailed evidence
+remains in `COMMUNITY3-FEED-RELATIONSHIP-ARCH-DIAGNOSTIC001` cycle
+`260907204929` and `COMMUNITY3-V1-CAPABILITY-MODERATION-READINESS001` cycle
+`260908134731`.

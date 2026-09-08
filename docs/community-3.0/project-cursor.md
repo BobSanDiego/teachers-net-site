@@ -565,3 +565,20 @@ aliases, redirects, writer cutover, Sandy, and production remain disabled.
 
 Current state remains Active Development. No Community, legacy, schema, DDEV,
 Sandy, production, or runtime behavior changed in the ratification cycle.
+
+## Current v1 authority consolidation
+
+`community-v1-authority-consolidation-v1.md` is the durable summary of the
+accepted C3 v1 term/community model, feed relationships, Hot Topics,
+navigation, composer/feed surfaces, notifications, moderation minimum,
+personalization boundary, and essential/near/deferred scope. It is guidance,
+not an implementation or cutover authorization.
+
+The relationship-architecture diagnostic is finalized/validated as cycle
+`260907204929`; the capability/moderation readiness diagnostic is
+finalized/validated as cycle `260908134731`. Future implementation tickets must
+declare which v1, near-v1, or deferred boundary they exercise. The preferred
+next implementation sequence is moderation foundation, then relationship/feed
+foundation, then notification relationships, subject to explicit authorization.
+No schema, runtime, Shared Shell, Sandy, production, or public-cutover change
+is implied here.
