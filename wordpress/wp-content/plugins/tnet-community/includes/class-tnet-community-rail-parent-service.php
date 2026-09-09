@@ -38,6 +38,35 @@ final class TNet_Community_Rail_Parent_Service {
         return $html . '</aside>';
     }
 
+    /**
+     * Local-only visual comparison surface for Director selection. It is
+     * intentionally query-gated and does not alter the production rail icon.
+     */
+    public static function render_lesson_plan_icon_qa(): string {
+        if (!isset($_GET['icon-qa']) || sanitize_key(wp_unslash($_GET['icon-qa'])) !== 'lesson-plans') return '';
+
+        $base = plugins_url('assets/lesson-plan-icon-qa/', dirname(__DIR__) . '/tnet-community.php');
+        $candidates = [
+            ['number' => 1, 'name' => 'Checklist Clipboard', 'asset' => '01-checklist-clipboard.svg'],
+            ['number' => 2, 'name' => 'Document / turned-down corner', 'asset' => '02-document.svg'],
+            ['number' => 3, 'name' => 'Calendar', 'asset' => '03-calendar.svg'],
+            ['number' => 4, 'name' => 'Presentation Board', 'asset' => '04-presentation-board.svg'],
+            ['number' => 5, 'name' => 'Page + Pencil / Edit Plan', 'asset' => '05-edit-plan.svg'],
+            ['number' => 6, 'name' => 'Lightbulb', 'asset' => '06-lightbulb.svg'],
+            ['number' => 7, 'name' => 'Outline / Structure', 'asset' => '07-outline-structure.svg'],
+            ['number' => 8, 'name' => 'Book + Bookmark', 'asset' => '08-book-bookmark.svg'],
+            ['number' => 9, 'name' => 'Goals / Target', 'asset' => '09-goals-target.svg'],
+            ['number' => 10, 'name' => 'Instructor / Teaching Board', 'asset' => '10-instructor-board.svg'],
+        ];
+
+        $html = '<section class="c3-lesson-plan-icon-qa" aria-labelledby="c3-lesson-plan-icon-qa-title"><header><p>Temporary visual comparison</p><h2 id="c3-lesson-plan-icon-qa-title">Lesson Plans icon candidates</h2></header><div class="c3-lesson-plan-icon-qa__grid">';
+        foreach ($candidates as $candidate) {
+            $label = 'Candidate ' . (int) $candidate['number'] . ': ' . (string) $candidate['name'];
+            $html .= '<figure class="c3-lesson-plan-icon-qa__candidate"><figcaption>Candidate ' . (int) $candidate['number'] . '</figcaption><a class="c3-lesson-plan-icon-qa__row" href="' . esc_url(home_url('/lessons/')) . '" aria-label="' . esc_attr($label) . '"><img src="' . esc_url($base . $candidate['asset']) . '" alt="" aria-hidden="true" width="20" height="20"><span>Lesson Plans</span></a></figure>';
+        }
+        return $html . '</div></section>';
+    }
+
     public static function render_right(?array $community, array $rows, string $new_url, bool $authenticated): string {
         $post_url = $authenticated ? $new_url : wp_login_url($new_url);
         $name = (string) ($community['display_name'] ?? 'This Community');
