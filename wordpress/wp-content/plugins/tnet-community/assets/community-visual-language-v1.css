@@ -72,11 +72,21 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
 /* C3 desktop shell convergence: consume the platform's real brand/account
    controls while composing Community's approved three-column page surface. */
 @media (min-width:901px){
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-search,
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-hero,
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-local-nav,
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-page{
+    width:min(642px,100%) !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    box-sizing:border-box;
+  }
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__platform a,.tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__utility a{font-size:.94rem}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__section-label{font-size:.96rem}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family h2{font-size:.92rem}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family li a,.tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family li span{font-size:.87rem}
 }
+
   .tnet-shared-shell__canonical[data-shell-adapter="community3"]{--c3-shell-left:190px;--c3-shell-center:728px;--c3-shell-right:300px;--c3-shell-gap:32px;width:100%!important;max-width:none!important;min-height:100vh;background:#f7f8fa}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] [data-tnet-shell-header]{position:absolute!important;z-index:30;inset:0 0 auto;height:0!important;min-height:0!important;border:0!important;background:transparent!important;box-shadow:none!important;pointer-events:none}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-header-inner{position:static;min-height:0;padding:0}

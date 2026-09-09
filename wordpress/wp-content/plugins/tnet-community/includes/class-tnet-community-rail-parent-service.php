@@ -106,8 +106,8 @@ final class TNet_Community_Rail_Parent_Service {
     private static function family_icon(string $name): string {
         return match ($name) {
             'Hot Topics' => 'flame',
-            'Grade Levels' => 'layers',
-            'Subject Areas' => 'book',
+            'Grade Levels' => 'graduate',
+            'Subject Areas' => 'school',
             default => 'chat',
         };
     }
@@ -120,6 +120,8 @@ final class TNet_Community_Rail_Parent_Service {
             'chat' => '<path d="M20 11a7 7 0 0 1-8 6.9L7 20l1-4a7 7 0 1 1 12-5z"/>',
             'flame' => '<path d="M13.8 3.6c.5 3.3-1.4 4.4-2.5 5.8-.8-1.2-1-2.2-.7-3.6C7.4 8 5.4 10.7 5.4 14a6.6 6.6 0 0 0 13.2 0c0-3.7-1.7-7-4.8-10.4Z"/>',
             'layers' => '<path d="m3 7 9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4"/>',
+            'graduate' => '<path d="m3 10 9-5 9 5-9 5-9-5Z"/><path d="M6.6 12v4.2c2.9 2 7.9 2 10.8 0V12M21 10v5"/>',
+            'school' => '<path d="M4 20V9l8-4 8 4v11M7 20v-8h10v8M10 20v-4h4v4M9 12h.01M12 12h.01M15 12h.01"/>',
             'pin' => '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0z"/><circle cx="12" cy="10" r="2"/>',
             'help' => '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.6 2.6 0 1 1 4.6 1.7c-1.2 1.2-2.1 1.6-2.1 3.3M12 17h.01"/>',
             'settings' => '<path d="M12 3.5 13.4 5a7.3 7.3 0 0 1 1.8.7l2-.7 1.8 1.8-.7 2a7.3 7.3 0 0 1 .7 1.8l1.5 1.4v2.6L19 16a7.3 7.3 0 0 1-.7 1.8l.7 2-1.8 1.8-2-.7a7.3 7.3 0 0 1-1.8.7L12 23h-2.6L8 21.5a7.3 7.3 0 0 1-1.8-.7l-2 .7-1.8-1.8.7-2a7.3 7.3 0 0 1-.7-1.8l-1.4-1.4V12l1.4-1.4a7.3 7.3 0 0 1 .7-1.8l-.7-2 1.8-1.8 2 .7A7.3 7.3 0 0 1 8 5l1.4-1.5H12Z"/><circle cx="12" cy="12" r="3"/>',
