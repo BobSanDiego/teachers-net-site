@@ -125,7 +125,7 @@ final class TNet_Community_Rail_Parent_Service {
             'school' => '<path d="M4 20V9l8-4 8 4v11M7 20v-8h10v8M10 20v-4h4v4M9 12h.01M12 12h.01M15 12h.01"/>',
             'pin' => '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0z"/><circle cx="12" cy="10" r="2"/>',
             'help' => '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.6 2.6 0 1 1 4.6 1.7c-1.2 1.2-2.1 1.6-2.1 3.3M12 17h.01"/>',
-            'settings' => '<path d="M12 3.5a2 2 0 0 1 2 2v.15a6.8 6.8 0 0 1 1.6.9l.13-.08a2 2 0 0 1 2.73.73l.22.38a2 2 0 0 1-.73 2.73l-.13.08a6.8 6.8 0 0 1 0 1.84l.13.08a2 2 0 0 1 .73 2.73l-.22.38a2 2 0 0 1-2.73.73l-.13-.08a6.8 6.8 0 0 1-1.6.9V18.5a2 2 0 0 1-2 2h-.44a2 2 0 0 1-2-2v-.15a6.8 6.8 0 0 1-1.6-.9l-.13.08a2 2 0 0 1-2.73-.73l-.22-.38a2 2 0 0 1 .73-2.73l.13-.08a6.8 6.8 0 0 1 0-1.84l-.13-.08a2 2 0 0 1-.73-2.73l.22-.38a2 2 0 0 1 2.73-.73l.13.08a6.8 6.8 0 0 1 1.6-.9V5.5a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12" r="3"/>',
+            'settings' => '<circle cx="12" cy="12" r="4"/><path d="M12 3.5v2M12 18.5v2M20.5 12h-2M5.5 12h-2M18 6l-1.4 1.4M7.4 16.6 6 18M18 18l-1.4-1.4M7.4 7.4 6 6"/>',
         ];
         return '<svg class="c3-community-icon c3-community-icon--' . esc_attr($name) . '" aria-hidden="true" viewBox="0 0 24 24" focusable="false">' . ($paths[$name] ?? '') . '</svg>';
     }

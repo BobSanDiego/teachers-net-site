@@ -61,8 +61,13 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail svg{inline-size:22px!important;block-size:22px!important;flex-basis:22px!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--document{transform:scale(1.08)!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--chat{transform:scale(1.08)!important}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--graduate{transform:scale(1.06)!important}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--pin{transform:scale(1.08)!important}
+  /* Home, Jobs, Lesson Plans, and Chatboards are the frozen visual reference
+     set. Equal SVG boxes leave several lower-rail glyphs visibly undersized. */
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--flame{transform:scale(1.18)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--graduate{transform:scale(1.10,1.38)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--book{transform:scale(1.15)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--pin{transform:scale(1.25,1.04)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--settings{transform:scale(1.06)!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__section-label{min-block-size:40px!important;margin-block-end:2px!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family{margin-block-end:0!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family h2{min-block-size:40px!important;line-height:20px!important}
@@ -73,7 +78,7 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family--context{margin-block-start:0!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .feed-composer,
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .feed-composer-launcher{margin-block-start:14px!important}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-area{top:15px!important;right:max(24px,calc(50% - 640px))!important;gap:12px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-area{top:15px!important;right:max(16px,calc(50% - 624px))!important;gap:12px!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-login,
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-signup{block-size:40px!important;min-block-size:40px!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-login{color:var(--c3-shell-text)!important}
@@ -117,15 +122,15 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] [data-tnet-shell-header]{position:absolute!important;z-index:30;inset:0 0 auto;height:0!important;min-height:0!important;border:0!important;background:transparent!important;box-shadow:none!important;pointer-events:none}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-header-inner{position:static;min-height:0;padding:0}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-rail-divider,.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-main-nav,.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-mobile-menu{display:none!important}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-brand{position:fixed!important;z-index:32;top:16px;left:max(24px,calc(50% - 640px));display:flex;width:var(--c3-shell-left);height:42px;justify-content:flex-start;pointer-events:auto}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-brand{position:fixed!important;z-index:32;top:16px;left:max(16px,calc(50% - 624px));display:flex;width:var(--c3-shell-left);height:42px;justify-content:flex-start;pointer-events:auto}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"]{--c3-action:var(--tnet-shell-primary,var(--tnet-jobs-primary-button,#003dee));--c3-shell-text:var(--tnet-shell-text,#18304f);--c3-shell-muted:var(--tnet-shell-muted,#687892);--c3-shell-border:var(--tnet-shell-border,#d8e2ef);--c3-shell-surface:var(--tnet-shell-surface,#fff);--c3-shell-active:var(--tnet-shell-navigation-active,#0049dd)}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-brand img{width:165px}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-navbar-right{position:static;display:block;padding:0}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-area{position:fixed!important;z-index:32;top:18px;right:max(56px,calc(50% - 600px));display:flex;width:auto;height:40px;border:0;border-radius:0;background:transparent;pointer-events:auto}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-area{position:fixed!important;z-index:32;top:15px;right:max(16px,calc(50% - 624px));display:flex;width:auto;height:40px;border:0;border-radius:0;background:transparent;pointer-events:auto}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-account-area{gap:.45rem}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-login,.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-signup{display:inline-flex;align-items:center;min-height:38px;padding:0 .8rem;border-radius:8px;font-size:.86rem;font-weight:650;text-decoration:none}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-login{color:#334155}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-signup{background:#0d4b83;color:#fff}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-bell{width:40px;height:40px;flex-basis:40px}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-bell svg{width:30px;height:30px}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-bell>span{top:-2px;right:-4px;z-index:1}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-bell{width:40px;height:40px;flex-basis:40px}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-bell svg{width:30px;height:30px}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-bell>span{top:-1px;right:0;z-index:1}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-menu{width:40px;height:40px;flex-basis:40px}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-menu::before{display:none}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-menu .tnet-jobs-shell-lab-disclosure-toggle{height:40px}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-menu .tnet-jobs-shell-lab-disclosure-toggle>img,.tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-avatar-fallback{width:40px;height:40px}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-workspace{max-width:none;margin:0;padding:0;background:transparent}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-runtime-badge{display:none}
