@@ -15,6 +15,16 @@ preserve `path_id` for chatboard, post, and feed operations.
 No new group architecture, notification redesign, production migration, or
 semantic-platform implementation is authorized by that corrective milestone.
 
+## Release blocker: `/community/` route ownership
+
+The integrated C3 `/community/` route currently renders chatboard-specific
+contextual modules without an actual Community/chatboard owner. This is a
+release blocker for normal route semantics, separate from the accepted C3 shell
+visual and rail-consumption work. A follow-up product decision must choose
+between a dedicated Community discovery landing page and redirecting
+`/community/` to the Teachers.Net homepage. This shell cycle does not change
+that route or activate public cutover.
+
 ## Platform Direction
 
 Teachers.Net is increasingly understood as a semantic platform whose
