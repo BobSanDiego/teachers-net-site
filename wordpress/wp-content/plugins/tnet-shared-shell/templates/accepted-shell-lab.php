@@ -212,6 +212,8 @@
           </aside>
           <?php endif; ?>
           <main class="tnet-jobs-shell-lab-workspace" id="tnet-jobs-shell-lab-workspace">
+            <?php if ($guest_state && $workspace_owner === 'shell') : ?><div class="tnet-shared-shell__guest-content">
+            <?php endif; ?>
             <?php if ($workspace_owner === 'shell' && !$anonymous_fixture && $shell_has_employer_access && !$has_consumer_rail) : ?>
             <div class="tnet-jobs-shell-lab-employer-menu<?php echo $anonymous_fixture ? ' tnet-jobs-shell-lab-anonymous-hidden' : ''; ?>">
               <button type="button" class="tnet-jobs-shell-lab-disclosure-toggle" aria-expanded="false" aria-controls="tnet-jobs-shell-employer-workspace-navigation" aria-haspopup="true"><span><?php echo esc_html__('Employer workspace', 'tnet-shared-shell'); ?></span><span aria-hidden="true">My Jobs</span><span class="tnet-jobs-shell-lab-chevron" aria-hidden="true"></span></button>
@@ -224,6 +226,8 @@
             </div>
             <?php endif; ?>
             <?php call_user_func($content_renderer); ?>
+            <?php if ($guest_state && $workspace_owner === 'shell') : ?></div>
+            <?php endif; ?>
           </main>
         </div>
         <footer class="tnet-jobs-shell-lab-footer" data-shell-footer>
