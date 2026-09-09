@@ -19,7 +19,7 @@ final class TNet_Community_Shared_Shell {
         $community_url = home_url('/community/');
         $request_path = (string) wp_unslash($_SERVER['REQUEST_URI'] ?? '/community/');
         $current_url = home_url($request_path);
-        $logo = plugins_url('public/assets/images/teachers-net-logo.png', WP_PLUGIN_DIR . '/tnet-jobs/tnet-jobs.php');
+        $logo = plugins_url('assets/teachers-net-wordmark.svg', dirname(__DIR__) . '/tnet-community.php');
         $visual_css = dirname(__DIR__) . '/assets/community-visual-language-v1.css';
 
         TNet_Shared_Shell::enqueue_assets('canonical');
