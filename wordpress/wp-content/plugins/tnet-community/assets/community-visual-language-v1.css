@@ -54,6 +54,30 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
 .tnet-shared-shell__canonical[data-shell-adapter="community3"] .community-composer-dialog .link-card{max-height:10rem;overflow:hidden}
 @media(max-width:600px){.tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-page{width:100%;padding-inline:.75rem}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .feed-card{padding:1rem}.tnet-shared-shell__canonical[data-shell-adapter="community3"] .community-composer-dialog{width:calc(100vw - 1rem)}}
 
+/* CONT4 desktop shell calibration: preserve accepted track arithmetic while
+ * giving the canvas a continuous edge surface and the rail content one cadence. */
+@media (min-width:901px){
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-layout{background:var(--c3-shell-canvas,#f7f8fa)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail svg{inline-size:22px!important;block-size:22px!important;flex-basis:22px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--document{transform:scale(1.08)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--chat{transform:scale(1.08)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--graduate{transform:scale(1.06)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail .c3-community-icon--pin{transform:scale(1.08)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__section-label{min-block-size:40px!important;margin-block-end:2px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family{margin-block-end:0!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family h2{min-block-size:40px!important;line-height:20px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family ul{margin-block:2px 0!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family li a,
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family li span{display:flex!important;min-block-size:40px!important;align-items:center!important;padding-block:0!important;line-height:20px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family--context{margin-block-start:0!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .feed-composer-launcher{margin-block-start:14px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-area{top:15px!important;right:max(24px,calc(50% - 640px))!important;gap:12px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-login,
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-signup{block-size:40px!important;min-block-size:40px!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-login{color:var(--c3-shell-text)!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-signup{background:var(--c3-action)!important;color:#fff!important}
+}
+
 /* C3 Rail Parent consumption: data comes only from the public Views contract. */
 .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-layout{box-sizing:border-box;display:grid;grid-template-columns:minmax(11rem,14rem) minmax(0,1fr);gap:clamp(1rem,3vw,2.5rem);width:min(1180px,100%);margin:0 auto;padding:clamp(1rem,2vw,1.5rem)}
 .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-main{min-width:0}
