@@ -52,8 +52,7 @@ final class TNet_Community_Landing_Controller {
             $hero = '<header class="community-header c3-community-hero"><p>Community</p><h1>' . esc_html($name) . '</h1><p>Exploring how artificial intelligence can support teachers, enhance learning, and shape the future of education.</p></header>';
             $local_nav = '<nav class="c3-community-local-nav" aria-label="AI in Education navigation"><a href="' . esc_url($landing) . '" aria-current="page">Discussion</a><span>About</span><span>Members</span><span>Media</span></nav>';
             $filters = '<nav class="c3-community-feed-controls" aria-label="Discussion view"><span class="is-current">Latest</span><span>Popular</span><span>Unanswered</span></nav>';
-            $icon_qa = TNet_Community_Rail_Parent_Service::render_lesson_plan_icon_qa();
-            echo '<div class="c3-community-layout">' . TNet_Community_Rail_Parent_Service::render($community) . '<main class="c3-community-main">' . $search . $hero . $local_nav . '<section class="c3-community-page">' . $icon_qa . $launcher . $filters . '<section aria-labelledby="activity-heading"><h2 id="activity-heading" class="screen-reader-text">Latest Activity</h2>';
+            echo '<div class="c3-community-layout">' . TNet_Community_Rail_Parent_Service::render($community) . '<main class="c3-community-main">' . $search . $hero . $local_nav . '<section class="c3-community-page">' . $launcher . $filters . '<section aria-labelledby="activity-heading"><h2 id="activity-heading" class="screen-reader-text">Latest Activity</h2>';
             if (!$rows) {
                 echo '<p class="empty-state">There is no activity to show yet. Check back soon.</p>';
             } else {

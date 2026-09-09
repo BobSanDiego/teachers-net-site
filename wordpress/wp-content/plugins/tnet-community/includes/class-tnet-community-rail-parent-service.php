@@ -23,7 +23,7 @@ final class TNet_Community_Rail_Parent_Service {
         $active_uuid = self::term_uuid_for_slug($active_slug);
         $families = self::visible_families($lists, $active_uuid);
         $html = '<aside class="c3-community-rail" aria-label="Community navigation">';
-        $html .= '<nav class="c3-community-rail__platform" aria-label="Teachers.Net"><a href="' . esc_url(home_url('/')) . '">' . self::icon('home') . '<span>Home</span></a><a href="' . esc_url(home_url('/jobs/')) . '">' . self::icon('briefcase') . '<span>Jobs</span></a><a href="' . esc_url(home_url('/lessons/')) . '">' . self::icon('book') . '<span>Lesson Plans</span></a></nav>';
+        $html .= '<nav class="c3-community-rail__platform" aria-label="Teachers.Net"><a href="' . esc_url(home_url('/')) . '">' . self::icon('home') . '<span>Home</span></a><a href="' . esc_url(home_url('/jobs/')) . '">' . self::icon('briefcase') . '<span>Jobs</span></a><a href="' . esc_url(home_url('/lessons/')) . '">' . self::icon('document') . '<span>Lesson Plans</span></a></nav>';
         $html .= '<div class="c3-community-rail__divider" aria-hidden="true"></div><div class="c3-community-rail__section-label">' . self::icon('chat') . '<span>Chatboards</span></div>';
         foreach ($families as $family) {
             $html .= '<section class="c3-community-rail__family"><h2>' . self::icon(self::family_icon((string) $family['name'])) . '<span>' . esc_html((string) $family['name']) . '</span></h2>';
@@ -36,35 +36,6 @@ final class TNet_Community_Rail_Parent_Service {
         $html .= '<section class="c3-community-rail__family c3-community-rail__family--context"><h2>' . self::icon('pin') . '<span>CA Teachers</span></h2></section>';
         $html .= '<nav class="c3-community-rail__utility" aria-label="Community support"><a href="' . esc_url(home_url('/help/')) . '">' . self::icon('help') . '<span>Help</span></a><a href="' . esc_url(home_url('/settings/')) . '">' . self::icon('settings') . '<span>Settings</span></a></nav>';
         return $html . '</aside>';
-    }
-
-    /**
-     * Local-only visual comparison surface for Director selection. It is
-     * intentionally query-gated and does not alter the production rail icon.
-     */
-    public static function render_lesson_plan_icon_qa(): string {
-        if (!isset($_GET['icon-qa']) || sanitize_key(wp_unslash($_GET['icon-qa'])) !== 'lesson-plans') return '';
-
-        $base = plugins_url('assets/lesson-plan-icon-qa/', dirname(__DIR__) . '/tnet-community.php');
-        $candidates = [
-            ['number' => 1, 'name' => 'Checklist Clipboard', 'asset' => '01-checklist-clipboard.svg'],
-            ['number' => 2, 'name' => 'Document / turned-down corner', 'asset' => '02-document.svg'],
-            ['number' => 3, 'name' => 'Calendar', 'asset' => '03-calendar.svg'],
-            ['number' => 4, 'name' => 'Presentation Board', 'asset' => '04-presentation-board.svg'],
-            ['number' => 5, 'name' => 'Page + Pencil / Edit Plan', 'asset' => '05-edit-plan.svg'],
-            ['number' => 6, 'name' => 'Lightbulb', 'asset' => '06-lightbulb.svg'],
-            ['number' => 7, 'name' => 'Outline / Structure', 'asset' => '07-outline-structure.svg'],
-            ['number' => 8, 'name' => 'Book + Bookmark', 'asset' => '08-book-bookmark.svg'],
-            ['number' => 9, 'name' => 'Goals / Target', 'asset' => '09-goals-target.svg'],
-            ['number' => 10, 'name' => 'Instructor / Teaching Board', 'asset' => '10-instructor-board.svg'],
-        ];
-
-        $html = '<section class="c3-lesson-plan-icon-qa" aria-labelledby="c3-lesson-plan-icon-qa-title"><header><p>Temporary visual comparison</p><h2 id="c3-lesson-plan-icon-qa-title">Lesson Plans icon candidates</h2></header><div class="c3-lesson-plan-icon-qa__grid">';
-        foreach ($candidates as $candidate) {
-            $label = 'Candidate ' . (int) $candidate['number'] . ': ' . (string) $candidate['name'];
-            $html .= '<figure class="c3-lesson-plan-icon-qa__candidate"><figcaption>Candidate ' . (int) $candidate['number'] . '</figcaption><a class="c3-lesson-plan-icon-qa__row" href="' . esc_url(home_url('/lessons/')) . '" aria-label="' . esc_attr($label) . '"><img src="' . esc_url($base . $candidate['asset']) . '" alt="" aria-hidden="true" width="20" height="20"><span>Lesson Plans</span></a></figure>';
-        }
-        return $html . '</div></section>';
     }
 
     public static function render_right(?array $community, array $rows, string $new_url, bool $authenticated): string {
@@ -136,7 +107,7 @@ final class TNet_Community_Rail_Parent_Service {
         return match ($name) {
             'Hot Topics' => 'flame',
             'Grade Levels' => 'graduate',
-            'Subject Areas' => 'school',
+            'Subject Areas' => 'book',
             default => 'chat',
         };
     }
@@ -145,6 +116,7 @@ final class TNet_Community_Rail_Parent_Service {
         $paths = [
             'home' => '<path d="m3 10 9-7 9 7v10H15v-6H9v6H3z"/>',
             'briefcase' => '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2M3 12h18"/>',
+            'document' => '<path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h5M9 12h6M9 16h6M9 8h2"/>',
             'book' => '<path d="M4 5.5c2.8-.8 5.4-.3 8 1.4v12c-2.6-1.7-5.2-2.2-8-1.4zM20 5.5c-2.8-.8-5.4-.3-8 1.4v12c2.6-1.7 5.2-2.2 8-1.4zM12 7v12"/>',
             'chat' => '<path d="M20 11a7 7 0 0 1-8 6.9L7 20l1-4a7 7 0 1 1 12-5z"/>',
             'flame' => '<path d="M13.8 3.6c.5 3.3-1.4 4.4-2.5 5.8-.8-1.2-1-2.2-.7-3.6C7.4 8 5.4 10.7 5.4 14a6.6 6.6 0 0 0 13.2 0c0-3.7-1.7-7-4.8-10.4Z"/>',

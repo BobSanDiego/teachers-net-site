@@ -81,16 +81,6 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
     margin-right:auto !important;
     box-sizing:border-box;
   }
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa{margin:18px 0 16px;padding:14px 16px 16px;border:1px solid var(--c3-shell-border);border-radius:10px;background:var(--c3-shell-surface)}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa header{margin:0 0 12px}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa header p{margin:0 0 2px;color:var(--c3-shell-muted);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa h2{margin:0;color:var(--c3-shell-text);font-size:16px;line-height:1.35}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa__grid{display:grid;grid-template-columns:repeat(3,minmax(0,190px));column-gap:20px;row-gap:12px;justify-content:space-between}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa__candidate{min-width:0;margin:0}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa__candidate figcaption{margin:0 0 3px;color:var(--c3-shell-muted);font-size:10px;font-weight:700;letter-spacing:.03em;line-height:1.2}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa__row{display:flex;align-items:center;gap:10px;min-height:40px;color:var(--c3-shell-text);font-family:Manrope,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:16px;font-weight:500;line-height:28px;text-decoration:none;white-space:nowrap}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa__row:hover{color:var(--c3-action)}
-  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-lesson-plan-icon-qa__row img{display:block;flex:0 0 20px;width:20px;height:20px}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__platform a,.tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__utility a{font-size:.94rem}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__section-label{font-size:.96rem}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family h2{font-size:.92rem}
