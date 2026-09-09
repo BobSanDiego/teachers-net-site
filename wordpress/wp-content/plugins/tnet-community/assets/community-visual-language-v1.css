@@ -67,6 +67,7 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family{margin-block-end:0!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family h2{min-block-size:40px!important;line-height:20px!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family ul{margin-block:2px 0!important}
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__section-label + .c3-community-rail__family ul{margin-block-start:7px!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family li a,
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family li span{display:flex!important;min-block-size:40px!important;align-items:center!important;padding-block:0!important;line-height:20px!important}
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family--context{margin-block-start:0!important}
