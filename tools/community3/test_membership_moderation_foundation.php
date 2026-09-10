@@ -19,6 +19,12 @@ $cleanup = static function () use ($wpdb, $core, $membership_namespace, $migrati
         $wpdb->delete($core['reports'], ['report_id'=>$report_id], ['%s']);
     }
     $post_ids = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM {$core['posts']} WHERE idempotency_key=%s", $post_key)) ?: [];
+    $thread_ids = $wpdb->get_col($wpdb->prepare("SELECT DISTINCT thread_id FROM {$core['posts']} WHERE idempotency_key=%s", $post_key)) ?: [];
+    foreach ($thread_ids as $thread_id) {
+        $relationship_ids = $wpdb->get_col($wpdb->prepare("SELECT relationship_id FROM {$core['relationships']} WHERE target_key=%s", $thread_id)) ?: [];
+        foreach ($relationship_ids as $relationship_id) $wpdb->delete($core['relationship_audit'], ['relationship_id'=>$relationship_id], ['%s']);
+        $wpdb->delete($core['relationships'], ['target_key'=>$thread_id], ['%s']);
+    }
     foreach ($post_ids as $post_id) {
         $wpdb->delete($core['events'], ['post_id'=>$post_id], ['%s']);
         $wpdb->delete($core['audit'], ['post_id'=>$post_id], ['%s']);
