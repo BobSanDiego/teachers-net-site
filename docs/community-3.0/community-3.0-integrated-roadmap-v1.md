@@ -15,6 +15,21 @@
 
 This sequence is planning authority only. It does not authorize migrations, schema changes, plugin changes, routes, mail delivery, or production edits.
 
+## 2026-09-10 release-convergence supersession
+
+The active production-replacement sequence is the explicit
+[Community V1 Release Convergence Ledger](community-v1-release-convergence-ledger-v1.md).
+The earlier M0–M9 rows remain historical planning context, but must not be read
+as omitting membership migration, consent-safe preference migration, production
+media operations, report/queue/sanctions, public URL evidence, native release
+acceptance, deployment rollback, monitoring, or legacy-writer retirement.
+
+The next implementation order is: byte-identified runtime/release baseline;
+membership/moderation foundation; relationship/notification-preference
+foundation; media operations; full migration and URL rehearsal; then a separate
+release-candidate/cutover gate. No local pilot or source-only proof authorizes
+public cutover.
+
 ## Ratified Community convergence sequence
 
 For the Community discussion strand, the active order is: contract package;

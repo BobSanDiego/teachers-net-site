@@ -2,6 +2,30 @@
 
 These tickets are proposed only; none is executed by C3-RR001.
 
+## 2026-09-10 authoritative V1 release sequence
+
+This sequence supersedes the older queue for the active C3 replacement line.
+Each objective remains separately authorized; none authorizes Sandy/production
+cutover merely by appearing here.
+
+1. **COMMUNITY3-V1-RUNTIME-AND-RELEASE-BASELINE001** — governed
+   `teachers-net-live` byte identity and native release acceptance baseline.
+2. **COMMUNITY3-V1-MEMBERSHIP-AND-MODERATION-FOUNDATION001** — canonical
+   membership/profile/role and migration-safe moderation foundation.
+3. **COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001** — Community and
+   thread relationship state, bell candidate integration, and consent-safe
+   preference/suppression migration.
+4. **COMMUNITY3-V1-MEDIA-OPERATIONS-FOUNDATION001** — approved production media
+   and link-preview operations, safety, accessibility and historical media.
+5. **COMMUNITY3-V1-FULL-MIGRATION-AND-URL-REHEARSAL001** — all-board dry run,
+   reconciliation and empirical public legacy-URL disposition sampling.
+6. **COMMUNITY3-V1-RELEASE-CANDIDATE-AND-CUTOVER-GATE001** — complete native,
+   operational, security/performance/accessibility and rollback proof before a
+   separate production decision.
+
+See [Community V1 Release Convergence Ledger](community-v1-release-convergence-ledger-v1.md)
+for capability status and Director decisions.
+
 1. **C3-PLAN002 — Engineering Director reconciliation review.** Accept or revise this package and choose M1 scope.
 2. **C3-TRUST001 — Subscriber policy contract.** Define consent, pause, unsubscribe, frequency, and history.
 3. **C3-TRUST002 — Suppression and abuse-control contract.** Define dedupe, throttles, audit, and kill switches.

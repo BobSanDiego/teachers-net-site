@@ -49,6 +49,14 @@ personalization boundary, and essential/near/deferred scope. It records
 authority and scope; it does not claim implementation or authorize schema,
 runtime, or production changes.
 
+## 2026-09-10 release-convergence ledger
+
+`community-v1-release-convergence-ledger-v1.md` is the current execution
+planning supplement. It reconciles the earlier authority package with the Sep.
+8 readiness audit and Sep. 10 local implementation/runtime evidence, classifies
+material V1 seams, and orders the remaining release gates. It does not weaken
+the authority order above or authorize public migration/cutover.
+
 ## Keep authority
 
 Canonical Community/board identity, publisher persistence/event, publishing

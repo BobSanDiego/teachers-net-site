@@ -45,6 +45,17 @@ This catalog reconciles the Community 3.0 product surface with the existing Teac
 
 The catalog deliberately does not turn these entries into schema, route, plugin, or production-change instructions. The invariant that `path_id` identifies chatboard/path/feed context while `group_id` identifies teacher-group membership remains authoritative.
 
+## 2026-09-10 V1 release reconciliation
+
+The current release disposition is recorded in
+[Community V1 Release Convergence Ledger](community-v1-release-convergence-ledger-v1.md).
+It refines this historical catalog against the Sep. 8 readiness audit and Sep.
+10 runtime/hero evidence: C3 has a local topic/reply/migration pilot, while
+canonical membership, preference/suppression migration, production media,
+report/queue/sanctions, search, public URL/SEO, release operations and full
+native acceptance remain explicit release gates. `tnet_memberships.email_posts`
+and `email_responses` are evidence, never automatic C3 email consent.
+
 ## Ratified convergence disposition
 
 The Community discussion migration strand is now an approved staged program,

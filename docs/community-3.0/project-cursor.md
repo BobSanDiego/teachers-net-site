@@ -1,5 +1,27 @@
 # Community 3.0 Project Cursor
 
+## 2026-09-10 current release-convergence state
+
+`COMMUNITY3-V1-RELEASE-CONVERGENCE-AUDIT002` is complete as a planning-only
+reconciliation. The current release authority is
+`community-v1-release-convergence-ledger-v1.md`, read with the convergence
+authority index. C3 is a local pilot, not a production-ready legacy replacement.
+The next bounded work is `COMMUNITY3-V1-RUNTIME-AND-RELEASE-BASELINE001`, then
+membership/moderation, relationship/notification-preference, media operations,
+full migration/URL rehearsal, and a release-candidate gate.
+
+The registered source remains `/home/bobreap/projects/teachers-net-community3`
+on `COMMUNITY3-ui-working`. The intended integrated acceptance host is
+`teachers-net-live`; its C3 runtime authority currently reports a plugin-tree
+hash mismatch. Treat browser claims from that host as provisional until the
+governed identity is reconciled. No Sandy/production change, public route
+activation, writer switch, or legacy retirement is authorized by this audit.
+
+Membership migration, follow/thread interest, email/push consent, and legacy
+preference fields are distinct seams. Preserve legacy membership and
+`email_posts`/`email_responses` evidence without silently creating C3 follow or
+email delivery state.
+
 ## Project State
 
 Maintenance

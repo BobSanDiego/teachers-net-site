@@ -1,5 +1,23 @@
 # Community 3.0 Engineering Handoff
 
+## 2026-09-10 release-convergence handoff
+
+The active execution plan is `community-v1-release-convergence-ledger-v1.md`,
+not the older documentation queue alone. Carry forward: AI local migration
+pilot and C3 topic/reply seams are useful local proof; they are not a public V1
+replacement claim. The remaining release gates are runtime byte identity,
+canonical membership and moderation, relationship/notification-preference
+policy, production media, full migration/URL rehearsal, and complete
+release-candidate operations.
+
+Do not infer C3 membership from legacy `tnet_memberships`, or email consent
+from `email_posts`/`email_responses`. Do not infer Community profile description,
+artwork, owner/moderator, follow/watch or filter state from current literals.
+`teachers-net-live` currently reports C3 runtime authority `status=mismatch`
+for plugin-tree hash; native release acceptance is provisional until repaired.
+No public cutover, Sandy/production deployment, writer switch, or legacy
+retirement is authorized.
+
 ## 1. Current Phase
 
 Branch authority: Community implementation work uses

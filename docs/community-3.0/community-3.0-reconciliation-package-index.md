@@ -9,6 +9,7 @@ This index is the C3-RR001 deliverable. It is a planning and go-point package; i
 - [Integrated Roadmap](community-3.0-integrated-roadmap-v1.md)
 - [Go-Point Readiness](community-3.0-go-point-readiness-v1.md)
 - [Next Ticket Queue](community-3.0-next-ticket-queue-v1.md)
+- [V1 Release Convergence Ledger](community-v1-release-convergence-ledger-v1.md)
 
 ## Reconciliation summary
 
