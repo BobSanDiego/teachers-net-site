@@ -6,9 +6,9 @@ enrollment is enabled by this document.
 
 Source/runtime proof: `/home/bobreap/projects/teachers-net-community3`, branch
 `COMMUNITY3-ui-working`, commit
-`24b6fbc98307f580663a6dbd2f484d2300288dcb`; integrated `teachers-net-live`
+`8fc7618f12e4e1573db76c2a08333fe2d1735541`; integrated `teachers-net-live`
 runtime status `ok`, plugin tree hash
-`ac0353f54987f74d457f1a3aa0340617ccb1b37e3f8943d2d8fef272c734649a`.
+`9ed2390975074f0bc59230ba80363d02402f96ba22a32821cbb2bebd0f9c6e53`.
 
 ## Ownership
 

@@ -15,10 +15,10 @@ rollback, and full native acceptance remain release gates.
 
 The registered source is `/home/bobreap/projects/teachers-net-community3`,
 branch `COMMUNITY3-ui-working`, at committed baseline
-`24b6fbc98307f580663a6dbd2f484d2300288dcb`. The integrated local host is
+`8fc7618f12e4e1573db76c2a08333fe2d1735541`. The integrated local host is
 `teachers-net-live`; its generated authority record identifies the same commit
 and mounted plugin tree hash
-`ac0353f54987f74d457f1a3aa0340617ccb1b37e3f8943d2d8fef272c734649a`, and the
+`9ed2390975074f0bc59230ba80363d02402f96ba22a32821cbb2bebd0f9c6e53`, and the
 runtime header reports `status=ok`. The previously ignored maintained
 subject-reference class and accepted rail change are now committed; no
 runtime-required Community product source remains ignored or untracked.
