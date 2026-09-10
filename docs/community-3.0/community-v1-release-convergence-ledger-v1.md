@@ -14,8 +14,8 @@ operations, user safety/moderation, URL/SEO evidence, operational cutover and
 rollback, and full native acceptance remain release gates.
 
 The registered source is `/home/bobreap/projects/teachers-net-community3`,
-branch `COMMUNITY3-ui-working`, now at pushed commit
-`c6feb48a7501eef0c8e643d5d8339925febd0734`. The intended integrated local host
+branch `COMMUNITY3-ui-working`, with the plugin baseline inspected at pushed
+commit `c6feb48a7501eef0c8e643d5d8339925febd0734`. The intended integrated local host
 is `teachers-net-live`. Its C3 authority header still reports `status=mismatch`:
 the read-only mount points at the governed source path, but the source worktree
 contains one uncommitted plugin change and one ignored runtime-required plugin

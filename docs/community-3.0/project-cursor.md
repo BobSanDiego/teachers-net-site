@@ -11,7 +11,8 @@ membership/moderation, relationship/notification-preference, media operations,
 full migration/URL rehearsal, and a release-candidate gate.
 
 The registered source remains `/home/bobreap/projects/teachers-net-community3`
-on `COMMUNITY3-ui-working`, pushed HEAD `c6feb48a7501eef0c8e643d5d8339925febd0734`.
+on `COMMUNITY3-ui-working`; the plugin baseline was inspected at pushed commit
+`c6feb48a7501eef0c8e643d5d8339925febd0734`.
 The integrated acceptance host is `teachers-net-live`; its read-only mount is
 the governed C3 path, but runtime authority remains `status=mismatch` because
 the source worktree has an uncommitted rail-parent change and an ignored,
