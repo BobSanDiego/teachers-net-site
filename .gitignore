@@ -1,5 +1,14 @@
 # WordPress runtime
-wordpress/
+/wordpress/*
+!/wordpress/wp-content/
+/wordpress/wp-content/*
+!/wordpress/wp-content/plugins/
+/wordpress/wp-content/plugins/*
+!/wordpress/wp-content/plugins/tnet-community/
+/wordpress/wp-content/plugins/tnet-community/*
+!/wordpress/wp-content/plugins/tnet-community/includes/
+/wordpress/wp-content/plugins/tnet-community/includes/*
+!/wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-subject-reference.php
 
 # DDEV runtime
 .ddev/.webimageBuild/

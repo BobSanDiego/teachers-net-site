@@ -114,7 +114,7 @@ final class TNet_Community_Rail_Parent_Service {
 
     private static function icon(string $name): string {
         $paths = [
-            'home' => '<path d="m3 10 9-7 9 7v10H15v-6H9v6H3z"/>',
+            'home' => '<path d="M2.5 10.5 12 2.8l9.5 7.7"/><path d="M17.2 6.9V4.7h2v3.8"/><path d="M5.5 12.2 12 6.9l6.5 5.3V21h-4.2v-5.2H9.7V21H5.5z"/>',
             'briefcase' => '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2M3 12h18"/>',
             'document' => '<path d="M4 3h10l6 6v13H4Z"/><path d="M14 3v6h6M8 13h8M8 17h8M8 9h3"/>',
             'book' => '<path d="M4 5.5c2.8-.8 5.4-.3 8 1.4v12c-2.6-1.7-5.2-2.2-8-1.4zM20 5.5c-2.8-.8-5.4-.3-8 1.4v12c2.6-1.7 5.2-2.2 8-1.4zM12 7v12"/>',
