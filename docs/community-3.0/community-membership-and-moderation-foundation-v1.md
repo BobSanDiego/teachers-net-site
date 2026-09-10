@@ -4,6 +4,12 @@ Status: implemented local foundation; integrated runtime acceptance only. No
 Sandy/production migration, writer cutover, notification delivery, or email
 enrollment is enabled by this document.
 
+Source/runtime proof: `/home/bobreap/projects/teachers-net-community3`, branch
+`COMMUNITY3-ui-working`, commit
+`24b6fbc98307f580663a6dbd2f484d2300288dcb`; integrated `teachers-net-live`
+runtime status `ok`, plugin tree hash
+`ac0353f54987f74d457f1a3aa0340617ccb1b37e3f8943d2d8fef272c734649a`.
+
 ## Ownership
 
 WordPress supplies authenticated identity. C3 owns the opaque relationship

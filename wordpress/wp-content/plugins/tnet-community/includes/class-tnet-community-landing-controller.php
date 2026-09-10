@@ -105,8 +105,8 @@ final class TNet_Community_Landing_Controller {
         if ($action === 'report') {
             if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tnet_community_report_nonce'] ?? '')), 'tnet_community_report')) wp_die(esc_html__('Invalid report request.','tnet-community'),'', ['response'=>403]);
             $result = (new TNet_Community_Moderation_Service())->report(sanitize_text_field(wp_unslash($_POST['target_post_id'] ?? '')), 'user:' . (int)get_current_user_id(), sanitize_key(wp_unslash($_POST['reason_code'] ?? '')), (string)wp_unslash($_POST['note'] ?? ''));
-            $notice = !empty($result['accepted']) ? 'reported=1' : 'reported=error';
-            wp_safe_redirect(add_query_arg('c3_' . $notice, '', wp_get_referer() ?: home_url('/community/' . $community['slug'] . '/'))); exit;
+            $notice = !empty($result['accepted']) ? '1' : 'error';
+            wp_safe_redirect(add_query_arg('c3_reported', $notice, wp_get_referer() ?: home_url('/community/' . $community['slug'] . '/'))); exit;
         }
         wp_die(esc_html__('Unsupported Community action.','tnet-community'),'', ['response'=>400]);
     }

@@ -6,20 +6,21 @@
 reconciliation. The current release authority is
 `community-v1-release-convergence-ledger-v1.md`, read with the convergence
 authority index. C3 is a local pilot, not a production-ready legacy replacement.
-The next bounded work is `COMMUNITY3-V1-RUNTIME-AND-RELEASE-BASELINE001`, then
-membership/moderation, relationship/notification-preference, media operations,
+The runtime/release baseline is complete. The current bounded work is
+`COMMUNITY3-V1-MEMBERSHIP-AND-MODERATION-FOUNDATION001`, followed by
+relationship/notification-preference, media operations,
 full migration/URL rehearsal, and a release-candidate gate.
 
 The registered source remains `/home/bobreap/projects/teachers-net-community3`
 on `COMMUNITY3-ui-working` at pushed commit
-`9b2f35a983f7153a822a0c43c53447b48ea36019`.
+`24b6fbc98307f580663a6dbd2f484d2300288dcb`.
 The integrated acceptance host is `teachers-net-live`; its read-only mount is
 the governed C3 path, and its generated runtime authority record matches the
 same commit and plugin tree hash
-`0a3d3f5e8b29f8b307d2c2f977cf3b3d0814347803887320eb5d53c1543071bf` with
+`ac0353f54987f74d457f1a3aa0340617ccb1b37e3f8943d2d8fef272c734649a` with
 `status=ok`. The maintained subject-reference class and accepted rail change
-were reconciled into the source commit. Membership/moderation remains the next
-separate objective and is not pre-accepted by this baseline.
+were reconciled into the source commit. Membership/moderation is now a local
+foundation and remains release-gated pending native and role-matrix acceptance.
 
 Membership migration, follow/thread interest, email/push consent, and legacy
 preference fields are distinct seams. Preserve legacy membership and
@@ -34,9 +35,9 @@ Maintenance
 
 Community work must run from `/home/bobreap/projects/teachers-net-community3` on
 `COMMUNITY3-ui-working`, based on the current verified branch head. The
-canonical local review runtime is DDEV project `teachers-net-community3` at
-`https://teachers-net-community3.ddev.site`; it must not be silently replaced
-by the main `teachers-net` project.
+canonical integrated acceptance runtime is DDEV project `teachers-net-live` at
+`https://teachers-net-live.ddev.site`; it must not be silently replaced by an
+isolated Community runtime for integrated acceptance.
 The prior `COMMUNITY003-semantic-community-communications-working-draft` is a
 mixed recovery source containing Job Center commits and is not a valid active
 Community implementation branch. Run

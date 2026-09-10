@@ -15,6 +15,11 @@
 
 This sequence is planning authority only. It does not authorize migrations, schema changes, plugin changes, routes, mail delivery, or production edits.
 
+The local membership/moderation foundation is implemented as a bounded,
+release-gated seam under `COMMUNITY3-V1-MEMBERSHIP-AND-MODERATION-FOUNDATION001`.
+It does not authorize production roles, sanctions, notification/email delivery,
+or cutover; those remain later policy and acceptance boundaries.
+
 ## 2026-09-10 release-convergence supersession
 
 The active production-replacement sequence is the explicit

@@ -15,10 +15,10 @@ rollback, and full native acceptance remain release gates.
 
 The registered source is `/home/bobreap/projects/teachers-net-community3`,
 branch `COMMUNITY3-ui-working`, at committed baseline
-`9b2f35a983f7153a822a0c43c53447b48ea36019`. The integrated local host is
+`24b6fbc98307f580663a6dbd2f484d2300288dcb`. The integrated local host is
 `teachers-net-live`; its generated authority record identifies the same commit
 and mounted plugin tree hash
-`0a3d3f5e8b29f8b307d2c2f977cf3b3d0814347803887320eb5d53c1543071bf`, and the
+`ac0353f54987f74d457f1a3aa0340617ccb1b37e3f8943d2d8fef272c734649a`, and the
 runtime header reports `status=ok`. The previously ignored maintained
 subject-reference class and accepted rail change are now committed; no
 runtime-required Community product source remains ignored or untracked.
@@ -30,7 +30,7 @@ runtime-required Community product source remains ignored or untracked.
 | Opaque Community identity, slug, legacy path/group mapping | PROVEN locally | Registry persists opaque `community_id`, slug, lifecycle, visibility and explicit `path_id=241` / `group_id=227` mapping. Numeric equality is prohibited. |
 | Core Terms and Rail Parent presentation | PROVEN locally | C3 consumes the Views/Core Terms public published-List contract. It is presentation, not membership. |
 | Community profile: description/about, artwork, owner/moderator identity, editable visibility | MISSING | AI description and About copy are literals; registry has no description/artwork/owner fields or product editor. |
-| Community membership and join/leave | MISSING / RELEASE_GATE | `tnet_memberships` is a compatibility read only. C3 lacks membership persistence, mutation, migration linkage and inactive/leave state. |
+| Community membership and join/leave | LOCAL FOUNDATION / RELEASE_GATE | C3 owns opaque membership persistence, idempotent active/left state, audit, explicit legacy mapping, unresolved dispositions, and rollback. Native role/product acceptance remains a release gate. |
 | Topic/reply writer, thread identity, direct/deep reply lineage | IMPLEMENTED_NOT_ACCEPTED | Local publisher/repository and routes exist; release needs reconciled runtime provenance and authenticated native journeys. |
 | Historical AI pilot: 3 public, 5 status-9 excluded | PROVEN local pilot only | 8/8 local reconciliation, idempotency and rollback evidence. Not corpus migration, public routing or production cutover. |
 | Landing/feed/card/Quick View/composer | IMPLEMENTED_NOT_ACCEPTED | Local surfaces exist; pilot literals must not be claimed as product state and the current host mismatch blocks release-quality acceptance. |
@@ -40,7 +40,7 @@ runtime-required Community product source remains ignored or untracked.
 | Bell, reply, reaction, mention, group notifications | PARTIAL | Shared provider is real; C3 lacks complete producers, recipient/visibility resolution, thread interest, aggregation and mention support. |
 | Notification preferences and delivery | RELEASE_GATE | Legacy flags are evidence only. No automatic migration may create email or push consent. |
 | Save/hide/mute/block | MISSING / DEFERRED | Per-reader and safety relationships are absent; scope and moderation interaction require a product decision. |
-| Report/moderation queue, scoped roles, sanctions | PARTIAL / RELEASE_GATE | Publisher lifecycle/audit exists. Report intake, queue, roles, user sanctions, reporter privacy, abuse controls and appeals are absent. |
+| Report/moderation queue, scoped roles, sanctions | LOCAL FOUNDATION / RELEASE_GATE | C3 owns bounded report intake, private reporter identity, admin queue, report audit, and publisher-owned reversible content actions. Role matrix, sanctions, appeals, rate controls and native acceptance remain release gates. |
 | Direct uploads/attachments/accessibility | PARTIAL / RELEASE_GATE | Local prototype exists; durable storage, scans, quotas, derivatives, retention and operations are not production-shaped. |
 | OG/link preview acquisition | PARTIAL / RELEASE_GATE | Local mock/deterministic seams exist. Safe fetch/cache/SSRF, moderation and failure policy need production proof. Raw-link fallback is essential. |
 | Search/indexing | MISSING | Current form is generic site search; no visibility-aware C3 index/document/event owner exists. |

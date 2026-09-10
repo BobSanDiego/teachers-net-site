@@ -15,13 +15,20 @@ from `email_posts`/`email_responses`. Do not infer Community profile description
 artwork, owner/moderator, follow/watch or filter state from current literals.
 The runtime/release baseline has reconciled the integrated host: `teachers-net-live`
 reports C3 runtime authority `status=ok`, with generated record commit
-`9b2f35a983f7153a822a0c43c53447b48ea36019` and plugin-tree hash
-`0a3d3f5e8b29f8b307d2c2f977cf3b3d0814347803887320eb5d53c1543071bf`. The mount
+`24b6fbc98307f580663a6dbd2f484d2300288dcb` and plugin-tree hash
+`ac0353f54987f74d457f1a3aa0340617ccb1b37e3f8943d2d8fef272c734649a`. The mount
 is the governed source path; the maintained subject-reference class and accepted
 rail change are committed, and no runtime-required Community product source is
 ignored or untracked. This resolves runtime provenance, not full product release
 readiness. No public cutover, Sandy/production deployment, writer switch, or
 legacy retirement is authorized.
+
+The membership/moderation foundation is implemented at commit
+`24b6fbc98307f580663a6dbd2f484d2300288dcb`. It owns local opaque membership
+state, bounded legacy membership migration, report intake, private reporter
+state, an authorized queue, and publisher-owned reversible content actions.
+It does not grant roles, create notification/email state, or authorize
+Sandy/production use; native and role-matrix acceptance remain release gates.
 
 ## 1. Current Phase
 
