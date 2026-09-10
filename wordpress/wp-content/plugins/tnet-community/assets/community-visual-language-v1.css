@@ -85,6 +85,10 @@ body.c3-visual-language{max-width:none;margin:0;background:#f4f7fa;color:var(--c
   .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-anonymous-signup{background:var(--c3-action)!important;color:#fff!important}
 }
 
+/* CONT7: Rail Parent headings/icons use the same canonical normal navigation
+   token as the platform links; semantic Hot Topics red remains owned below. */
+.tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family h2{color:var(--c3-shell-text)}
+
 /* C3 Rail Parent consumption: data comes only from the public Views contract. */
 .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-layout{box-sizing:border-box;display:grid;grid-template-columns:minmax(11rem,14rem) minmax(0,1fr);gap:clamp(1rem,3vw,2.5rem);width:min(1180px,100%);margin:0 auto;padding:clamp(1rem,2vw,1.5rem)}
 .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-main{min-width:0}
