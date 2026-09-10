@@ -9,6 +9,10 @@
 !/wordpress/wp-content/plugins/tnet-community/includes/
 /wordpress/wp-content/plugins/tnet-community/includes/*
 !/wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-subject-reference.php
+!/wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-membership-repository.php
+!/wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-membership-service.php
+!/wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-moderation-repository.php
+!/wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-moderation-service.php
 
 # DDEV runtime
 .ddev/.webimageBuild/

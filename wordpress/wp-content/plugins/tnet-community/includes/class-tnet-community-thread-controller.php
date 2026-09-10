@@ -29,7 +29,7 @@ final class TNet_Community_Thread_Controller {
         if (!$data) { status_header(404); self::shell('<main><h1>Thread not found</h1><p>This local Community thread is unavailable.</p></main>'); }
         $errors = [];
         if ('POST' === strtoupper($_SERVER['REQUEST_METHOD'] ?? '')) {
-            $errors = self::submit($data);
+            $errors = sanitize_key(wp_unslash($_POST['tnet_community_action'] ?? '')) === 'report' ? self::submit_report($data) : self::submit($data);
             if (!$errors) exit;
         }
         status_header(200); nocache_headers(); header('X-Robots-Tag: noindex, nofollow');
@@ -38,7 +38,7 @@ final class TNet_Community_Thread_Controller {
         $context = $community ? '<p class="meta community-context">'.esc_html($community['display_name']).'</p>' : '';
         $back = $community ? home_url('/community/'.$community['slug'].'/') : home_url('/community/');
         $heading = '<h1' . (TNet_Community_Authoring::is_subjectless($root) ? ' class="screen-reader-text"' : '') . '>' . esc_html($root['title']) . '</h1>';
-        $html = '<main><p class="thread-navigation"><a class="back-to-community" href="'.esc_url($back).'">← Back to Community</a></p>'.$context.$heading.'<article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . TNet_Community_Link_Preview::render($root['preview'] ?? []) . '</article>';
+        $html = '<main><p class="thread-navigation"><a class="back-to-community" href="'.esc_url($back).'">← Back to Community</a></p>'.$context.$heading.'<article class="thread-card"><p class="meta">' . esc_html($root['_author_display'] . ' · ' . $root['created_at']) . '</p><div>' . TNet_Community_Authoring::markdown($root['body']) . '</div>' . self::attachments($root) . TNet_Community_Link_Preview::render($root['preview'] ?? []) . self::report_form($root['post_id']) . '</article>';
         $html .= self::reply_form_normalized($root, $data['rows'], $errors);
         $html .= '<section aria-labelledby="replies"><h2 id="replies">Replies</h2>';
         $reply_count = 0;
@@ -53,7 +53,7 @@ final class TNet_Community_Thread_Controller {
                 $html .= $target['post_id'] ? '<a href="#reply-post:' . esc_attr($target['post_id']) . '">' . esc_html($target['label']) . '</a>' : esc_html($target['label']);
                 $html .= '</p>';
             }
-            $html .= '<div>' . TNet_Community_Authoring::markdown($row['body']) . '</div>' . self::attachments($row);
+            $html .= '<div>' . TNet_Community_Authoring::markdown($row['body']) . '</div>' . self::attachments($row) . self::report_form($row['post_id']);
             if (is_user_logged_in()) $html .= '<p><a href="#reply-composer" data-reply-target="' . esc_attr($row['post_id']) . '">Reply to this ' . esc_html($row['_level'] === 1 ? 'comment' : 'reply') . '</a></p>';
             $html .= '</article>';
         }
@@ -83,6 +83,27 @@ final class TNet_Community_Thread_Controller {
         if ($url === '') { $root_path = str_replace('%3A', ':', rawurlencode($data['root']['post_id'])); $url = home_url('/community/thread/' . $root_path . '/'); }
         wp_safe_redirect($url . '#reply-post:' . $reply_path);
         return [];
+    }
+
+    private static function submit_report(array $data): array {
+        if (!is_user_logged_in() || !current_user_can('read')) { auth_redirect(); }
+        if (!isset($_POST['tnet_community_report_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tnet_community_report_nonce'])), 'tnet_community_report')) return ['Report verification failed. Please try again.'];
+        $target_id = sanitize_text_field(wp_unslash($_POST['target_post_id'] ?? ''));
+        $target = null;
+        foreach ($data['rows'] as $row) if ($row['post_id'] === $target_id) { $target = $row; break; }
+        if (!$target) return ['That report target is not available in this discussion.'];
+        $result = (new TNet_Community_Moderation_Service())->report($target_id, 'user:' . (int) get_current_user_id(), sanitize_key(wp_unslash($_POST['reason_code'] ?? '')), (string) wp_unslash($_POST['note'] ?? ''));
+        if (empty($result['accepted'])) return ['The report could not be submitted. Please try again.'];
+        $url = TNet_Community_Canonical_Route::url($data['root']);
+        if ($url === '') $url = home_url('/community/thread/' . str_replace('%3A', ':', rawurlencode($data['root']['post_id'])) . '/');
+        wp_safe_redirect(add_query_arg('c3_reported', '1', $url) . '#reply-post:' . str_replace('%3A', ':', rawurlencode($target_id)));
+        return [];
+    }
+
+    private static function report_form(string $post_id): string {
+        if (!is_user_logged_in()) return '';
+        $id = 'thread-report-' . substr(md5($post_id), 0, 8);
+        return '<details class="c3-report"><summary>Report</summary><form method="post"><input type="hidden" name="tnet_community_action" value="report">' . wp_nonce_field('tnet_community_report', 'tnet_community_report_nonce', true, false) . '<input type="hidden" name="target_post_id" value="' . esc_attr($post_id) . '"><label for="' . esc_attr($id) . '-reason">Reason</label><select id="' . esc_attr($id) . '-reason" name="reason_code"><option value="abuse">Abuse</option><option value="harassment">Harassment</option><option value="spam">Spam</option><option value="privacy">Privacy</option><option value="copyright">Copyright</option><option value="other">Other</option></select><label for="' . esc_attr($id) . '-note">Optional note</label><textarea id="' . esc_attr($id) . '-note" name="note" rows="2"></textarea><button type="submit">Submit report</button></form></details>';
     }
 
     private static function reply_form_normalized(array $root, array $rows, array $errors): string {

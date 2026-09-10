@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 final class TNet_Community_Schema {
-    public const VERSION = '4';
+    public const VERSION = '5';
 
     public static function table_names(): array {
         global $wpdb;
@@ -11,6 +11,11 @@ final class TNet_Community_Schema {
             'audit' => $wpdb->prefix . 'community_post_audit',
             'events' => $wpdb->prefix . 'community_publication_events',
             'communities' => $wpdb->prefix . 'community_communities',
+            'memberships' => $wpdb->prefix . 'community_memberships',
+            'membership_audit' => $wpdb->prefix . 'community_membership_audit',
+            'membership_migrations' => $wpdb->prefix . 'community_membership_migrations',
+            'reports' => $wpdb->prefix . 'community_reports',
+            'report_audit' => $wpdb->prefix . 'community_report_audit',
         ];
     }
 
@@ -122,6 +127,101 @@ final class TNet_Community_Schema {
             UNIQUE KEY community_id (community_id),
             UNIQUE KEY slug (slug),
             KEY lifecycle_visibility (lifecycle_state, visibility)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['memberships']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            membership_id VARCHAR(80) NOT NULL,
+            community_id VARCHAR(80) NOT NULL,
+            user_id VARCHAR(80) NOT NULL,
+            state VARCHAR(24) NOT NULL,
+            joined_at DATETIME NULL,
+            state_changed_at DATETIME NOT NULL,
+            source_namespace VARCHAR(128) NULL,
+            source_membership_id VARCHAR(80) NULL,
+            legacy_group_id VARCHAR(80) NULL,
+            provenance_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY membership_id (membership_id),
+            UNIQUE KEY community_user (community_id, user_id),
+            KEY community_state (community_id, state),
+            KEY source_membership (source_namespace, source_membership_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['membership_audit']} (
+            audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            membership_id VARCHAR(80) NOT NULL,
+            action VARCHAR(64) NOT NULL,
+            actor_id VARCHAR(80) NOT NULL,
+            previous_state VARCHAR(24) NULL,
+            new_state VARCHAR(24) NOT NULL,
+            reason TEXT NOT NULL,
+            evidence_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (audit_id),
+            KEY membership_audit (membership_id, audit_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['membership_migrations']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            source_namespace VARCHAR(128) NOT NULL,
+            source_membership_id VARCHAR(80) NOT NULL,
+            legacy_group_id VARCHAR(80) NULL,
+            legacy_user_id VARCHAR(80) NULL,
+            source_state VARCHAR(24) NULL,
+            source_checksum CHAR(64) NOT NULL,
+            mapping_state VARCHAR(24) NOT NULL,
+            identity_state VARCHAR(24) NOT NULL,
+            disposition VARCHAR(40) NOT NULL,
+            reason_code VARCHAR(128) NULL,
+            community_id VARCHAR(80) NULL,
+            canonical_user_id VARCHAR(80) NULL,
+            target_membership_id VARCHAR(80) NULL,
+            run_id VARCHAR(80) NOT NULL,
+            rule_version VARCHAR(64) NOT NULL,
+            source_snapshot_json LONGTEXT NOT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY source_membership (source_namespace, source_membership_id),
+            KEY migration_disposition (disposition, mapping_state, identity_state),
+            KEY target_membership (target_membership_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['reports']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            report_id VARCHAR(80) NOT NULL,
+            target_post_id VARCHAR(80) NOT NULL,
+            target_type VARCHAR(16) NOT NULL,
+            community_id VARCHAR(80) NOT NULL,
+            reporter_id VARCHAR(80) NOT NULL,
+            reason_code VARCHAR(32) NOT NULL,
+            note TEXT NULL,
+            evidence_json LONGTEXT NULL,
+            state VARCHAR(24) NOT NULL,
+            idempotency_key VARCHAR(128) NOT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            resolved_at DATETIME NULL,
+            resolved_by VARCHAR(80) NULL,
+            resolution_code VARCHAR(40) NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY report_id (report_id),
+            UNIQUE KEY report_submission (reporter_id, idempotency_key),
+            KEY report_queue (state, created_at),
+            KEY report_target (target_post_id, state),
+            KEY report_community (community_id, state)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['report_audit']} (
+            audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            report_id VARCHAR(80) NOT NULL,
+            action VARCHAR(64) NOT NULL,
+            actor_id VARCHAR(80) NOT NULL,
+            previous_state VARCHAR(24) NULL,
+            new_state VARCHAR(24) NOT NULL,
+            reason TEXT NOT NULL,
+            evidence_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (audit_id),
+            KEY report_audit (report_id, audit_id)
         ) $c;");
         self::install_migration_foundation();
         update_option('tnet_community_schema_version', self::VERSION, false);

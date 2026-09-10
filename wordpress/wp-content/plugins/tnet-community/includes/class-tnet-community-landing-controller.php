@@ -18,6 +18,7 @@ final class TNet_Community_Landing_Controller {
 
     public static function render(): void {
         if (!get_query_var('tnet_community_landing')) return;
+        self::handle_post();
         $slug = sanitize_title((string) get_query_var('tnet_community_community'));
         $community = $slug ? (new TNet_Community_Community_Registry())->find_by_slug($slug) : null;
         if ($slug && !$community) {
@@ -38,6 +39,13 @@ final class TNet_Community_Landing_Controller {
         TNet_Community_Shared_Shell::render($name, static function () use ($rows, $name, $new, $landing, $community): void {
             $community_id = (string) ($community['community_id'] ?? '');
             $authenticated = is_user_logged_in() && $community_id !== '';
+            $membership = $authenticated ? (new TNet_Community_Membership_Service())->state($community_id) : ['state'=>'none','joined'=>false,'member_count'=>0];
+            $membership_control = '';
+            if ($authenticated) {
+                $action = $membership['joined'] ? 'leave' : 'join';
+                $label = $membership['joined'] ? 'Leave Community' : 'Join Community';
+                $membership_control = '<form class="c3-membership-control" method="post">' . wp_nonce_field('tnet_community_membership', 'tnet_community_membership_nonce', true, false) . '<input type="hidden" name="tnet_community_action" value="membership"><input type="hidden" name="membership_command" value="' . esc_attr($action) . '"><button type="submit">' . esc_html($label) . '</button><span>' . esc_html(number_format_i18n((int)$membership['member_count'])) . ' members</span></form>';
+            }
             $launcher = '<a class="feed-composer-launcher" href="' . esc_url($authenticated ? $new : wp_login_url($new)) . '"><span aria-hidden="true">＋</span><span>Share a thought, question, or resource…</span></a>';
             $dialog = '';
             if ($authenticated) {
@@ -49,7 +57,7 @@ final class TNet_Community_Landing_Controller {
                 $dialog = '<dialog id="community-composer-dialog" class="community-composer-dialog" aria-labelledby="community-composer-title"><div class="community-composer-dialog__inner"><header><h2 id="community-composer-title">Create post</h2><button type="button" class="secondary composer-close" data-close-composer aria-label="Close composer">×</button></header>' . $identity . TNet_Community_Topic_Composer_Controller::embedded_form($community_id, $name, $new, ['action_url' => $new, 'return_to_feed' => $landing, 'hide_cancel' => true], true) . '</div></dialog>';
             }
             $search = '<form class="c3-community-search" role="search" method="get" action="' . esc_url(home_url('/')) . '"><label class="screen-reader-text" for="c3-community-search">Search Teachers.Net</label><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4.5 4.5"/></svg><input id="c3-community-search" type="search" name="s" placeholder="Search Teachers.Net"></form>';
-            $hero = '<header class="community-header c3-community-hero"><p>Community</p><h1>' . esc_html($name) . '</h1><p>Exploring how artificial intelligence can support teachers, enhance learning, and shape the future of education.</p></header>';
+            $hero = '<header class="community-header c3-community-hero"><p>Community</p><h1>' . esc_html($name) . '</h1><p>Exploring how artificial intelligence can support teachers, enhance learning, and shape the future of education.</p>' . $membership_control . '</header>';
             $local_nav = '<nav class="c3-community-local-nav" aria-label="AI in Education navigation"><a href="' . esc_url($landing) . '" aria-current="page">Discussion</a><span>About</span><span>Members</span><span>Media</span></nav>';
             $filters = '<nav class="c3-community-feed-controls" aria-label="Discussion view"><span class="is-current">Latest</span><span>Popular</span><span>Unanswered</span></nav>';
             echo '<div class="c3-community-layout">' . TNet_Community_Rail_Parent_Service::render($community) . '<main class="c3-community-main">' . $search . $hero . $local_nav . '<section class="c3-community-page">' . $launcher . $filters . '<section aria-labelledby="activity-heading"><h2 id="activity-heading" class="screen-reader-text">Latest Activity</h2>';
@@ -75,7 +83,32 @@ final class TNet_Community_Landing_Controller {
         $title = '<h2' . ($subjectless ? ' class="screen-reader-text"' : '') . '><a href="' . esc_url($url) . '">' . esc_html($row['title']) . '</a></h2>';
         $reply_label = number_format_i18n($row['reply_count']) . ' ' . _n('reply', 'replies', $row['reply_count'], 'tnet-community');
         $discussion_icon = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4.1A2.5 2.5 0 0 1 4 12.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
-        echo '<article class="feed-card"' . ($subjectless ? ' aria-label="' . esc_attr($row['title']) . '"' : '') . '><p class="feed-meta"><strong>' . esc_html($row['author_display']) . '</strong> · ' . esc_html(self::relative_time($row['last_activity'])) . '</p>' . $title . '<div class="feed-excerpt"' . ($truncated ? ' data-expandable="true" tabindex="0" role="button" aria-expanded="false" aria-label="Read full post"' : '') . '><span class="feed-excerpt-collapsed">' . TNet_Community_Authoring::markdown($text) . '</span>' . ($truncated ? '<span class="feed-excerpt-expanded" hidden>' . TNet_Community_Authoring::markdown($body) . '</span>' : '') . '</div>' . self::media($row) . '<div class="feed-engagement"><button class="discussion-entry" type="button" data-open-dialog="' . esc_attr($dialog) . '" aria-label="Open discussion">' . $discussion_icon . '<span>' . esc_html($reply_label) . '</span></button></div><dialog id="' . esc_attr($dialog) . '" aria-labelledby="' . esc_attr($dialog) . '-title"><h2 id="' . esc_attr($dialog) . '-title"' . ($subjectless ? ' class="screen-reader-text"' : '') . '>' . esc_html($row['title']) . '</h2><p>' . esc_html($row['author_display']) . '</p><div>' . TNet_Community_Authoring::markdown($text) . '</div><p class="dialog-actions"><a href="' . esc_url($url) . '">Open discussion page</a> <button type="button" data-close-dialog>Close</button></p></dialog></article>';
+        $report = '';
+        if (is_user_logged_in()) $report = '<details class="c3-report"><summary>Report</summary><form method="post">' . wp_nonce_field('tnet_community_report', 'tnet_community_report_nonce', true, false) . '<input type="hidden" name="tnet_community_action" value="report"><input type="hidden" name="target_post_id" value="' . esc_attr($row['post_id']) . '"><label>Reason <select name="reason_code"><option value="abuse">Abuse</option><option value="harassment">Harassment</option><option value="spam">Spam</option><option value="privacy">Privacy</option><option value="copyright">Copyright</option><option value="other">Other</option></select></label><label class="screen-reader-text" for="report-note-' . esc_attr(substr(md5($row['post_id']), 0, 8)) . '">Optional note</label><textarea id="report-note-' . esc_attr(substr(md5($row['post_id']), 0, 8)) . '" name="note" rows="2" placeholder="Optional note"></textarea><button type="submit">Submit report</button></form></details>';
+        echo '<article class="feed-card"' . ($subjectless ? ' aria-label="' . esc_attr($row['title']) . '"' : '') . '><p class="feed-meta"><strong>' . esc_html($row['author_display']) . '</strong> · ' . esc_html(self::relative_time($row['last_activity'])) . '</p>' . $title . '<div class="feed-excerpt"' . ($truncated ? ' data-expandable="true" tabindex="0" role="button" aria-expanded="false" aria-label="Read full post"' : '') . '><span class="feed-excerpt-collapsed">' . TNet_Community_Authoring::markdown($text) . '</span>' . ($truncated ? '<span class="feed-excerpt-expanded" hidden>' . TNet_Community_Authoring::markdown($body) . '</span>' : '') . '</div>' . self::media($row) . '<div class="feed-engagement"><button class="discussion-entry" type="button" data-open-dialog="' . esc_attr($dialog) . '" aria-label="Open discussion">' . $discussion_icon . '<span>' . esc_html($reply_label) . '</span></button>' . $report . '</div><dialog id="' . esc_attr($dialog) . '" aria-labelledby="' . esc_attr($dialog) . '-title"><h2 id="' . esc_attr($dialog) . '-title"' . ($subjectless ? ' class="screen-reader-text"' : '') . '>' . esc_html($row['title']) . '</h2><p>' . esc_html($row['author_display']) . '</p><div>' . TNet_Community_Authoring::markdown($text) . '</div><p class="dialog-actions"><a href="' . esc_url($url) . '">Open discussion page</a> <button type="button" data-close-dialog>Close</button></p></dialog></article>';
+    }
+
+    private static function handle_post(): void {
+        if (strtoupper($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') return;
+        if (!is_user_logged_in() || !current_user_can('read')) { auth_redirect(); return; }
+        $action = sanitize_key(wp_unslash($_POST['tnet_community_action'] ?? ''));
+        $slug = sanitize_title((string)get_query_var('tnet_community_community'));
+        $community = $slug ? (new TNet_Community_Community_Registry())->find_by_slug($slug) : null;
+        if (!$community) { status_header(404); wp_die(esc_html__('Community not found.','tnet-community'),'', ['response'=>404]); }
+        if ($action === 'membership') {
+            if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tnet_community_membership_nonce'] ?? '')), 'tnet_community_membership')) wp_die(esc_html__('Invalid membership request.','tnet-community'),'', ['response'=>403]);
+            $command = sanitize_key(wp_unslash($_POST['membership_command'] ?? ''));
+            $result = $command === 'join' ? (new TNet_Community_Membership_Service())->join($community['community_id']) : ($command === 'leave' ? (new TNet_Community_Membership_Service())->leave($community['community_id']) : ['accepted'=>false]);
+            $notice = !empty($result['accepted']) ? ($command === 'join' ? 'joined' : 'left') : 'error';
+            wp_safe_redirect(add_query_arg('c3_membership', $notice, home_url('/community/' . $community['slug'] . '/'))); exit;
+        }
+        if ($action === 'report') {
+            if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tnet_community_report_nonce'] ?? '')), 'tnet_community_report')) wp_die(esc_html__('Invalid report request.','tnet-community'),'', ['response'=>403]);
+            $result = (new TNet_Community_Moderation_Service())->report(sanitize_text_field(wp_unslash($_POST['target_post_id'] ?? '')), 'user:' . (int)get_current_user_id(), sanitize_key(wp_unslash($_POST['reason_code'] ?? '')), (string)wp_unslash($_POST['note'] ?? ''));
+            $notice = !empty($result['accepted']) ? 'reported=1' : 'reported=error';
+            wp_safe_redirect(add_query_arg('c3_' . $notice, '', wp_get_referer() ?: home_url('/community/' . $community['slug'] . '/'))); exit;
+        }
+        wp_die(esc_html__('Unsupported Community action.','tnet-community'),'', ['response'=>400]);
     }
 
     private static function relative_time(string $value): string {
