@@ -14,13 +14,14 @@ operations, user safety/moderation, URL/SEO evidence, operational cutover and
 rollback, and full native acceptance remain release gates.
 
 The registered source is `/home/bobreap/projects/teachers-net-community3`,
-branch `COMMUNITY3-ui-working`, with the plugin baseline inspected at pushed
-commit `c6feb48a7501eef0c8e643d5d8339925febd0734`. The intended integrated local host
-is `teachers-net-live`. Its C3 authority header still reports `status=mismatch`:
-the read-only mount points at the governed source path, but the source worktree
-contains one uncommitted plugin change and one ignored runtime-required plugin
-file absent from the pushed commit. Browser observation there is provisional
-until this source-integrity decision is resolved.
+branch `COMMUNITY3-ui-working`, at committed baseline
+`9b2f35a983f7153a822a0c43c53447b48ea36019`. The integrated local host is
+`teachers-net-live`; its generated authority record identifies the same commit
+and mounted plugin tree hash
+`0a3d3f5e8b29f8b307d2c2f977cf3b3d0814347803887320eb5d53c1543071bf`, and the
+runtime header reports `status=ok`. The previously ignored maintained
+subject-reference class and accepted rail change are now committed; no
+runtime-required Community product source remains ignored or untracked.
 
 ## V1 capability ledger
 

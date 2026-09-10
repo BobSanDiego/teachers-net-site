@@ -11,15 +11,15 @@ membership/moderation, relationship/notification-preference, media operations,
 full migration/URL rehearsal, and a release-candidate gate.
 
 The registered source remains `/home/bobreap/projects/teachers-net-community3`
-on `COMMUNITY3-ui-working`; the plugin baseline was inspected at pushed commit
-`c6feb48a7501eef0c8e643d5d8339925febd0734`.
+on `COMMUNITY3-ui-working` at pushed commit
+`9b2f35a983f7153a822a0c43c53447b48ea36019`.
 The integrated acceptance host is `teachers-net-live`; its read-only mount is
-the governed C3 path, but runtime authority remains `status=mismatch` because
-the source worktree has an uncommitted rail-parent change and an ignored,
-runtime-required `class-tnet-community-subject-reference.php` absent from the
-pushed commit. Preserve both until Director/source-owner disposition; do not
-rewrite the expected hash or claim a reproducible baseline. Membership/
-moderation is not unblocked by this baseline.
+the governed C3 path, and its generated runtime authority record matches the
+same commit and plugin tree hash
+`0a3d3f5e8b29f8b307d2c2f977cf3b3d0814347803887320eb5d53c1543071bf` with
+`status=ok`. The maintained subject-reference class and accepted rail change
+were reconciled into the source commit. Membership/moderation remains the next
+separate objective and is not pre-accepted by this baseline.
 
 Membership migration, follow/thread interest, email/push consent, and legacy
 preference fields are distinct seams. Preserve legacy membership and
