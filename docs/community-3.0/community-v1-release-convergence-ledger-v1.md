@@ -14,11 +14,11 @@ operations, user safety/moderation, URL/SEO evidence, operational cutover and
 rollback, and full native acceptance remain release gates.
 
 The registered source is `/home/bobreap/projects/teachers-net-community3`,
-branch `COMMUNITY3-ui-working`, at committed baseline
-`8fc7618f12e4e1573db76c2a08333fe2d1735541`. The integrated local host is
+branch `COMMUNITY3-ui-working`, at the current pushed HEAD recorded in the
+generated runtime authority record. The integrated local host is
 `teachers-net-live`; its generated authority record identifies the same commit
 and mounted plugin tree hash
-`9ed2390975074f0bc59230ba80363d02402f96ba22a32821cbb2bebd0f9c6e53`, and the
+`3adbc56908450eabaf11ee15a06db2f04101c834be35c3eddd44c8f8118616cd`, and the
 runtime header reports `status=ok`. The previously ignored maintained
 subject-reference class and accepted rail change are now committed; no
 runtime-required Community product source remains ignored or untracked.

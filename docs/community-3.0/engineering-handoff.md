@@ -14,9 +14,9 @@ Do not infer C3 membership from legacy `tnet_memberships`, or email consent
 from `email_posts`/`email_responses`. Do not infer Community profile description,
 artwork, owner/moderator, follow/watch or filter state from current literals.
 The runtime/release baseline has reconciled the integrated host: `teachers-net-live`
-reports C3 runtime authority `status=ok`, with generated record commit
-`8fc7618f12e4e1573db76c2a08333fe2d1735541` and plugin-tree hash
-`9ed2390975074f0bc59230ba80363d02402f96ba22a32821cbb2bebd0f9c6e53`. The mount
+reports C3 runtime authority `status=ok`, with the generated record's current
+source commit and plugin-tree hash
+`3adbc56908450eabaf11ee15a06db2f04101c834be35c3eddd44c8f8118616cd`. The mount
 is the governed source path; the maintained subject-reference class and accepted
 rail change are committed, and no runtime-required Community product source is
 ignored or untracked. This resolves runtime provenance, not full product release

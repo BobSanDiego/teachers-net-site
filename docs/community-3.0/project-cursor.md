@@ -18,7 +18,7 @@ from the final pushed source identity after each source change and must report
 The integrated acceptance host is `teachers-net-live`; its read-only mount is
 the governed C3 path, and its generated runtime authority record matches the
 same commit and plugin tree hash
-`9ed2390975074f0bc59230ba80363d02402f96ba22a32821cbb2bebd0f9c6e53` with
+`3adbc56908450eabaf11ee15a06db2f04101c834be35c3eddd44c8f8118616cd` with
 `status=ok` for the currently recorded source. The maintained subject-reference
 class and accepted rail change are committed. Membership/moderation is now a
 local foundation and remains release-gated pending native and role-matrix
