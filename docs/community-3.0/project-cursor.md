@@ -11,11 +11,14 @@ membership/moderation, relationship/notification-preference, media operations,
 full migration/URL rehearsal, and a release-candidate gate.
 
 The registered source remains `/home/bobreap/projects/teachers-net-community3`
-on `COMMUNITY3-ui-working`. The intended integrated acceptance host is
-`teachers-net-live`; its C3 runtime authority currently reports a plugin-tree
-hash mismatch. Treat browser claims from that host as provisional until the
-governed identity is reconciled. No Sandy/production change, public route
-activation, writer switch, or legacy retirement is authorized by this audit.
+on `COMMUNITY3-ui-working`, pushed HEAD `c6feb48a7501eef0c8e643d5d8339925febd0734`.
+The integrated acceptance host is `teachers-net-live`; its read-only mount is
+the governed C3 path, but runtime authority remains `status=mismatch` because
+the source worktree has an uncommitted rail-parent change and an ignored,
+runtime-required `class-tnet-community-subject-reference.php` absent from the
+pushed commit. Preserve both until Director/source-owner disposition; do not
+rewrite the expected hash or claim a reproducible baseline. Membership/
+moderation is not unblocked by this baseline.
 
 Membership migration, follow/thread interest, email/push consent, and legacy
 preference fields are distinct seams. Preserve legacy membership and

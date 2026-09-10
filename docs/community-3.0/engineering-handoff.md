@@ -14,9 +14,12 @@ Do not infer C3 membership from legacy `tnet_memberships`, or email consent
 from `email_posts`/`email_responses`. Do not infer Community profile description,
 artwork, owner/moderator, follow/watch or filter state from current literals.
 `teachers-net-live` currently reports C3 runtime authority `status=mismatch`
-for plugin-tree hash; native release acceptance is provisional until repaired.
-No public cutover, Sandy/production deployment, writer switch, or legacy
-retirement is authorized.
+for plugin-tree hash. The mount is the governed source path, but the source
+worktree has an uncommitted rail-parent change and an ignored,
+runtime-required `class-tnet-community-subject-reference.php` absent from the
+pushed commit. Native release acceptance is provisional until the source owner
+disposes those files; do not rewrite the expected hash. No public cutover,
+Sandy/production deployment, writer switch, or legacy retirement is authorized.
 
 ## 1. Current Phase
 
