@@ -7,25 +7,48 @@ reconciliation. The current release authority is
 `community-v1-release-convergence-ledger-v1.md`, read with the convergence
 authority index. C3 is a local pilot, not a production-ready legacy replacement.
 The runtime/release baseline is complete. The current bounded work is
-`COMMUNITY3-V1-MEMBERSHIP-AND-MODERATION-FOUNDATION001`, followed by
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001`, followed by
 relationship/notification-preference, media operations,
 full migration/URL rehearsal, and a release-candidate gate.
 
 The registered source remains `/home/bobreap/projects/teachers-net-community3`
-on `COMMUNITY3-ui-working` at pushed commit
-`8fc7618f12e4e1573db76c2a08333fe2d1735541`.
+on `COMMUNITY3-ui-working`. The runtime authority record must be regenerated
+from the final pushed source identity after each source change and must report
+`status=ok` before integrated native acceptance is claimed.
 The integrated acceptance host is `teachers-net-live`; its read-only mount is
 the governed C3 path, and its generated runtime authority record matches the
 same commit and plugin tree hash
 `9ed2390975074f0bc59230ba80363d02402f96ba22a32821cbb2bebd0f9c6e53` with
-`status=ok`. The maintained subject-reference class and accepted rail change
-were reconciled into the source commit. Membership/moderation is now a local
-foundation and remains release-gated pending native and role-matrix acceptance.
+`status=ok` for the currently recorded source. The maintained subject-reference
+class and accepted rail change are committed. Membership/moderation is now a
+local foundation and remains release-gated pending native and role-matrix
+acceptance.
 
 Membership migration, follow/thread interest, email/push consent, and legacy
 preference fields are distinct seams. Preserve legacy membership and
 `email_posts`/`email_responses` evidence without silently creating C3 follow or
 email delivery state.
+
+## 2026-09-10 relationship/notification-preference execution
+
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001` is implemented as a
+local, release-gated foundation. The canonical relationship service persists
+idempotent Community follows, thread follows, and separately typed inferred
+thread participation with audit evidence. The notification integration is
+post-commit and provider-backed for eligible replies and followed Community
+activity; self-events and duplicate event/recipient pairs are suppressed.
+Bell eligibility is independent of email. Explicit bell/email frequencies are
+`immediate`, `daily`, `weekly`, and `never`. Legacy preference evidence is
+bounded, idempotently classified, and never creates email consent. Email is
+evaluated but not delivered.
+
+The deterministic proof is
+`tools/community3/test_relationship_notification_preference.php`; its latest
+serial run passed all assertions. The full owner/invariant contract is
+`docs/community-3.0/community-relationship-notification-preference-v1.md`.
+Native authenticated bell/account inspection is not claimed until the required
+browser control path is available. The next planned objective is
+`COMMUNITY3-V1-MEDIA-OPERATIONS-FOUNDATION001`.
 
 ## Project State
 
@@ -590,8 +613,9 @@ eight already-censused local AI rows only: 3 public records into two threads and
 5 status-9 records as no-target ARCHIVE_ONLY ledger entries. Public routes,
 aliases, redirects, writer cutover, Sandy, and production remain disabled.
 
-Current state remains Active Development. No Community, legacy, schema, DDEV,
-Sandy, production, or runtime behavior changed in the ratification cycle.
+Current state remains Active Development. The relationship/notification
+preference foundation adds local C3 schema and post-commit adapter behavior;
+there is no legacy, Sandy, production, or public-cutover change.
 
 ## Current v1 authority consolidation
 
@@ -603,9 +627,9 @@ not an implementation or cutover authorization.
 
 The relationship-architecture diagnostic is finalized/validated as cycle
 `260907204929`; the capability/moderation readiness diagnostic is
-finalized/validated as cycle `260908134731`. Future implementation tickets must
-declare which v1, near-v1, or deferred boundary they exercise. The preferred
-next implementation sequence is moderation foundation, then relationship/feed
-foundation, then notification relationships, subject to explicit authorization.
-No schema, runtime, Shared Shell, Sandy, production, or public-cutover change
-is implied here.
+finalized/validated as cycle `260908134731`. The relationship/notification
+preference implementation is now recorded above and remains local and
+release-gated. Future implementation tickets must declare which v1, near-v1,
+or deferred boundary they exercise. The next planned implementation is media
+operations. No Sandy, production, Shared Shell, or public-cutover change is
+implied here.

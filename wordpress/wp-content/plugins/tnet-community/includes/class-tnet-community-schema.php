@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 final class TNet_Community_Schema {
-    public const VERSION = '5';
+    public const VERSION = '6';
 
     public static function table_names(): array {
         global $wpdb;
@@ -16,6 +16,13 @@ final class TNet_Community_Schema {
             'membership_migrations' => $wpdb->prefix . 'community_membership_migrations',
             'reports' => $wpdb->prefix . 'community_reports',
             'report_audit' => $wpdb->prefix . 'community_report_audit',
+            'relationships' => $wpdb->prefix . 'community_relationships',
+            'relationship_audit' => $wpdb->prefix . 'community_relationship_audit',
+            'preferences' => $wpdb->prefix . 'community_notification_preferences',
+            'preference_audit' => $wpdb->prefix . 'community_notification_preference_audit',
+            'suppressions' => $wpdb->prefix . 'community_notification_suppressions',
+            'preference_reconciliation' => $wpdb->prefix . 'community_notification_preference_reconciliation',
+            'notification_decisions' => $wpdb->prefix . 'community_notification_decisions',
         ];
     }
 
@@ -222,6 +229,121 @@ final class TNet_Community_Schema {
             created_at DATETIME NOT NULL,
             PRIMARY KEY (audit_id),
             KEY report_audit (report_id, audit_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['relationships']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            relationship_id VARCHAR(96) NOT NULL,
+            relationship_type VARCHAR(40) NOT NULL,
+            user_id VARCHAR(80) NOT NULL,
+            community_id VARCHAR(80) NULL,
+            thread_id VARCHAR(80) NULL,
+            target_key VARCHAR(191) NOT NULL,
+            state VARCHAR(24) NOT NULL,
+            provenance_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            state_changed_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY relationship_id (relationship_id),
+            UNIQUE KEY relationship_target (relationship_type, user_id, target_key),
+            KEY community_relationships (community_id, relationship_type, state),
+            KEY thread_relationships (thread_id, relationship_type, state),
+            KEY user_relationships (user_id, relationship_type, state)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['relationship_audit']} (
+            audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            relationship_id VARCHAR(96) NOT NULL,
+            action VARCHAR(48) NOT NULL,
+            actor_id VARCHAR(80) NOT NULL,
+            previous_state VARCHAR(24) NULL,
+            new_state VARCHAR(24) NOT NULL,
+            reason VARCHAR(128) NOT NULL,
+            provenance_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (audit_id),
+            KEY relationship_audit (relationship_id, audit_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['preferences']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            preference_id VARCHAR(96) NOT NULL,
+            user_id VARCHAR(80) NOT NULL,
+            category VARCHAR(64) NOT NULL,
+            channel VARCHAR(24) NOT NULL,
+            frequency VARCHAR(16) NOT NULL,
+            state VARCHAR(24) NOT NULL DEFAULT 'explicit',
+            source_namespace VARCHAR(128) NULL,
+            provenance_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY preference_id (preference_id),
+            UNIQUE KEY user_preference (user_id, category, channel),
+            KEY preference_lookup (category, channel, frequency, state)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['preference_audit']} (
+            audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            preference_id VARCHAR(96) NOT NULL,
+            action VARCHAR(48) NOT NULL,
+            actor_id VARCHAR(80) NOT NULL,
+            previous_frequency VARCHAR(16) NULL,
+            new_frequency VARCHAR(16) NOT NULL,
+            reason VARCHAR(128) NOT NULL,
+            provenance_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (audit_id),
+            KEY preference_audit (preference_id, audit_id)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['suppressions']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            suppression_id VARCHAR(96) NOT NULL,
+            user_id VARCHAR(80) NOT NULL,
+            channel VARCHAR(24) NOT NULL,
+            scope VARCHAR(64) NOT NULL,
+            reason_code VARCHAR(48) NOT NULL,
+            state VARCHAR(24) NOT NULL DEFAULT 'active',
+            source_namespace VARCHAR(128) NOT NULL,
+            evidence_json LONGTEXT NOT NULL,
+            effective_at DATETIME NOT NULL,
+            lifted_at DATETIME NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY suppression_id (suppression_id),
+            KEY suppression_lookup (user_id, channel, scope, state),
+            KEY suppression_reason (reason_code, state)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['preference_reconciliation']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            reconciliation_id VARCHAR(96) NOT NULL,
+            user_id VARCHAR(80) NULL,
+            source_namespace VARCHAR(128) NOT NULL,
+            source_key VARCHAR(191) NOT NULL,
+            source_value_json LONGTEXT NOT NULL,
+            classification VARCHAR(40) NOT NULL,
+            reason_code VARCHAR(128) NOT NULL,
+            rule_version VARCHAR(64) NOT NULL,
+            evidence_json LONGTEXT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY reconciliation_id (reconciliation_id),
+            UNIQUE KEY reconciliation_source (source_namespace, source_key),
+            KEY reconciliation_classification (classification, reason_code)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['notification_decisions']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            decision_id VARCHAR(96) NOT NULL,
+            event_id VARCHAR(191) NOT NULL,
+            recipient_user_id BIGINT UNSIGNED NOT NULL,
+            channel VARCHAR(24) NOT NULL,
+            decision VARCHAR(24) NOT NULL,
+            reason_code VARCHAR(128) NOT NULL,
+            relationship_basis VARCHAR(191) NULL,
+            preference_basis VARCHAR(191) NULL,
+            suppression_basis VARCHAR(191) NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY decision_id (decision_id),
+            UNIQUE KEY event_recipient_channel (event_id, recipient_user_id, channel),
+            KEY recipient_decisions (recipient_user_id, channel, decision, created_at),
+            KEY event_decisions (event_id, created_at)
         ) $c;");
         self::install_migration_foundation();
         update_option('tnet_community_schema_version', self::VERSION, false);

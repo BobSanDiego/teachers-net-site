@@ -32,8 +32,11 @@ acceptance, deployment rollback, monitoring, or legacy-writer retirement.
 The next implementation order is: byte-identified runtime/release baseline;
 membership/moderation foundation; relationship/notification-preference
 foundation; media operations; full migration and URL rehearsal; then a separate
-release-candidate/cutover gate. No local pilot or source-only proof authorizes
-public cutover.
+release-candidate/cutover gate. The relationship/notification-preference
+foundation is now implemented locally and remains release-gated: bell events
+are provider-backed, explicit preferences and suppression evidence are durable,
+and email is evaluated but not delivered. No local pilot or source-only proof
+authorizes public cutover.
 
 ## Ratified Community convergence sequence
 

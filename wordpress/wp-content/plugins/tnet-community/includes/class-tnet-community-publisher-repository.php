@@ -15,6 +15,9 @@ final class TNet_Community_Publisher_Repository {
             $result = $this->persist_publication_in_transaction($publication, $actor);
             if (empty($result['accepted'])) throw new RuntimeException((string) ($result['reason_code'] ?? 'PUBLICATION_WRITE_FAILED'));
             $wpdb->query('COMMIT');
+            if (!empty($result['event'])) {
+                do_action('tnet_community_publication_committed', $result['event'], $result['post']);
+            }
             return $result;
         } catch (Throwable $e) { $wpdb->query('ROLLBACK'); return ['accepted'=>false,'reason_code'=>$e->getMessage()]; }
     }

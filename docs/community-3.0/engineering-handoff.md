@@ -30,6 +30,45 @@ state, an authorized queue, and publisher-owned reversible content actions.
 It does not grant roles, create notification/email state, or authorize
 Sandy/production use; native and role-matrix acceptance remain release gates.
 
+## 2026-09-10 relationship/notification-preference handoff
+
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001` is implemented in the
+canonical C3 source as a local foundation. Source owners are:
+
+- `includes/class-tnet-community-schema.php` — additive schema version 6 and
+  relationship/preference/suppression/audit tables;
+- `includes/class-tnet-community-relationship-repository.php` and
+  `class-tnet-community-relationship-service.php` — opaque, idempotent,
+  auditable Community/thread follow and inferred participation state;
+- `includes/class-tnet-community-notification-preference-service.php` —
+  explicit bell/email frequency state, bounded legacy evidence reconciliation,
+  and email suppression;
+- `includes/class-tnet-community-notification-integration.php` — post-commit
+  C3 reply/followed-activity adapter to the governed shared notification
+  provider, canonical target resolution, self/dedupe policy, and no-delivery
+  email evaluation;
+- `includes/class-tnet-community-publisher-repository.php` — the single
+  post-commit hook point; publication remains independent of optional
+  notification enrichment;
+- `tools/community3/test_relationship_notification_preference.php` —
+  disposable deterministic proof. Run it serially with membership fixtures;
+  it cleans only its own synthetic rows.
+
+The latest serial proof passed all assertions. It proves idempotent relationship
+state, membership separation, distinct inferred participation, explicit
+immediate/daily/weekly/never channel state, deterministic legacy classifications,
+unsubscribe/hard-bounce/complaint suppression, bell/email independence,
+provider-backed exactly-one notification, canonical target arguments,
+duplicate suppression, and self-event suppression. No production email or full
+legacy preference migration exists. The unsafe
+`local_publisher_persistence_tests.php` remains prohibited because it can
+uninstall the C3 schema.
+
+The next planned objective is
+`COMMUNITY3-V1-MEDIA-OPERATIONS-FOUNDATION001`. Native authenticated
+bell/account acceptance remains HUMAN_QA pending if the required browser
+control path is unavailable.
+
 ## 1. Current Phase
 
 Branch authority: Community implementation work uses

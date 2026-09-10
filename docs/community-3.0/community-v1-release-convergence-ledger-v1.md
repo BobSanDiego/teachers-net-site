@@ -36,9 +36,9 @@ runtime-required Community product source remains ignored or untracked.
 | Landing/feed/card/Quick View/composer | IMPLEMENTED_NOT_ACCEPTED | Local surfaces exist; pilot literals must not be claimed as product state and the current host mismatch blocks release-quality acceptance. |
 | Feed definitions | PARTIAL | Deterministic latest exists. Popular/Unanswered are presentation literals, not queries. |
 | Canonical page and modal navigation | IMPLEMENTED_NOT_ACCEPTED | Local page-versus-modal contract exists; public URL/SEO and release acceptance remain gates. |
-| Community/thread follow and interest | MISSING | No C3 relationship persistence, controls, eligibility, or migration. |
-| Bell, reply, reaction, mention, group notifications | PARTIAL | Shared provider is real; C3 lacks complete producers, recipient/visibility resolution, thread interest, aggregation and mention support. |
-| Notification preferences and delivery | RELEASE_GATE | Legacy flags are evidence only. No automatic migration may create email or push consent. |
+| Community/thread follow and interest | LOCAL FOUNDATION / RELEASE_GATE | C3 now owns opaque, idempotent Community/thread follow and separately typed inferred participation with audit evidence; native relationship controls and migration remain release gates. |
+| Bell, reply, reaction, mention, group notifications | LOCAL FOUNDATION / PARTIAL | C3 post-commit adapter produces bounded reply and followed-Community activity bell events through the shared provider with recipient, target, self-event and dedupe policy; reactions, mentions, aggregation and full visibility acceptance remain open. |
+| Notification preferences and delivery | LOCAL FOUNDATION / RELEASE_GATE | Explicit bell/email frequency state, suppression precedence, and bounded legacy-evidence reconciliation are implemented; email is evaluated but not delivered and no consent is inferred. |
 | Save/hide/mute/block | MISSING / DEFERRED | Per-reader and safety relationships are absent; scope and moderation interaction require a product decision. |
 | Report/moderation queue, scoped roles, sanctions | LOCAL FOUNDATION / RELEASE_GATE | C3 owns bounded report intake, private reporter identity, admin queue, report audit, and publisher-owned reversible content actions. Role matrix, sanctions, appeals, rate controls and native acceptance remain release gates. |
 | Direct uploads/attachments/accessibility | PARTIAL / RELEASE_GATE | Local prototype exists; durable storage, scans, quotas, derivatives, retention and operations are not production-shaped. |
@@ -71,6 +71,27 @@ The Sep. 10 Hero audit makes two release blockers explicit:
 No later evidence changes the Sep. 8 findings on moderation queue/sanctions,
 relationship state, delivery policy, production media, global search, public
 URLs or cutover operations.
+
+## Relationship and notification-preference foundation
+
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001` adds the local target
+foundation without changing the shared provider contract or sending mail.
+Community follow, thread follow, and inferred thread participation are opaque,
+typed, idempotent, separately auditable relationships. Replies may notify the
+direct parent author and active thread/Community followers; new topics may
+notify active Community followers. Self-events and duplicate event/recipient
+pairs are suppressed, and canonical destinations are revalidated through the
+Community thread route.
+
+Explicit `bell` and `email` preferences support `immediate`, `daily`, `weekly`,
+and `never`. Bell eligibility is independent of email. Email requires explicit
+preference, applies unsubscribe/hard-bounce/complaint suppression, and remains
+`NO_EMAIL` when absent; this objective records an eligible/no-delivery result
+only. Bounded legacy evidence is retained and classified as deterministic,
+confirmation-required, `NO_EMAIL`, or suppressed. The deterministic local
+proof is `tools/community3/test_relationship_notification_preference.php`.
+Native authenticated bell/account inspection is still a HUMAN_QA gate when the
+browser-control path is available.
 
 ## Membership migration: mandatory and separate
 
@@ -162,14 +183,11 @@ behavior are rehearsed. Current local/noindex AI routes are not SEO evidence.
 2. **COMMUNITY3-V1-MEMBERSHIP-AND-MODERATION-FOUNDATION001** — canonical
    membership/profile/role/migration foundation plus credible report/queue/
    sanction capabilities; preserve legacy state without importing consent.
-3. **COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001** — Community and
-   thread relationships, bounded C3 bell candidates, and the legacy
-   preference/suppression census and no-email/confirmation matrix.
-4. **COMMUNITY3-V1-MEDIA-OPERATIONS-FOUNDATION001** — approved production media
+3. **COMMUNITY3-V1-MEDIA-OPERATIONS-FOUNDATION001** — approved production media
    and link-preview operations, safety, accessibility and historical media.
-5. **COMMUNITY3-V1-FULL-MIGRATION-AND-URL-REHEARSAL001** — all-board dry run,
+4. **COMMUNITY3-V1-FULL-MIGRATION-AND-URL-REHEARSAL001** — all-board dry run,
    reconciliation and empirical legacy URL disposition sampling; no cutover.
-6. **COMMUNITY3-V1-RELEASE-CANDIDATE-AND-CUTOVER-GATE001** — native,
+5. **COMMUNITY3-V1-RELEASE-CANDIDATE-AND-CUTOVER-GATE001** — native,
    operational, security/performance/accessibility and rollback proof before a
    separate production decision.
 

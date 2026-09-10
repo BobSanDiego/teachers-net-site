@@ -38,10 +38,15 @@ require_once __DIR__ . '/includes/class-tnet-community-membership-repository.php
 require_once __DIR__ . '/includes/class-tnet-community-membership-service.php';
 require_once __DIR__ . '/includes/class-tnet-community-moderation-repository.php';
 require_once __DIR__ . '/includes/class-tnet-community-moderation-service.php';
+require_once __DIR__ . '/includes/class-tnet-community-relationship-repository.php';
+require_once __DIR__ . '/includes/class-tnet-community-relationship-service.php';
+require_once __DIR__ . '/includes/class-tnet-community-notification-preference-service.php';
+require_once __DIR__ . '/includes/class-tnet-community-notification-integration.php';
 add_action('admin_menu', static function (): void { TNet_Community_Workbench::register(); });
 add_action('init', static function (): void { TNet_Community_Topic_Composer_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Landing_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Thread_Controller::register(); });
+TNet_Community_Notification_Integration::boot();
 add_action('template_redirect', static function (): void {
     if ((!defined('DDEV_PROJECT') && !getenv('DDEV_PROJECT')) || (!get_query_var('tnet_community_landing') && !get_query_var('tnet_community_thread') && !get_query_var('tnet_community_thread_community') && !get_query_var('tnet_community_topic_composer'))) return;
     TNet_Community_Runtime_Authority::header();
