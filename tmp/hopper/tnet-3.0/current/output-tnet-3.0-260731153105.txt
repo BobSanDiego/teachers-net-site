@@ -1,0 +1,63 @@
+C3-IMP004 — In-Memory Candidate Store and Continuity Flush Correction
+
+Status: executed and complete.
+
+Implementation:
+- Added process-local InMemoryCandidateStore with add/get/contains,
+  recipient/event queries, count, and clear.
+- Validates only candidate-boundary objects; rejects malformed candidates,
+  duplicate IDs, non-deferred channels, persistent candidates, and equal
+  path_id/group_id.
+- Deep-copies on input and output to prevent silent mutation.
+- Added continuity validation guard at tools/hopper/validate_community_continuity.py.
+
+Verification:
+- python3 -m unittest discover -s tools/community3 -p 'test_*.py'
+- Result: 7 tests passed.
+- python3 -m py_compile tools/community3/*.py tools/hopper/validate_community_continuity.py
+- git diff --check passed.
+- Continuity guard passed against source cursor, handoff, and cycle metadata.
+
+Continuity diagnosis:
+- Verified Git history contains C3-IMP001 and C3-IMP003, but no C3-IMP002
+  implementation commit and no C3-NOT005 contract/implementation commit.
+- Source cursor/handoff retained stale forward-looking C3-IMP002/C3-NOT005
+  statements after C3-IMP003.
+- Hopper rebuild copied source continuity files without semantic validation.
+- Corrected source continuity and added a fail-closed semantic validation guard.
+- C3-IMP002 is explicitly not complete; C3-NOT005 is explicitly not complete.
+
+Modified files included in this cycle:
+- tools/community3/notification_candidate_store.py (created)
+- tools/community3/test_notification_candidate_store.py (created)
+- tools/community3/notification_candidate_boundary.py (included existing)
+- tools/community3/test_notification_candidate_boundary.py (included existing)
+- tools/hopper/validate_community_continuity.py (created)
+- docs/community-3.0/candidate-store-interface-v1.md (created)
+- docs/community-3.0/continuity-flush-diagnostic-v1.md (created)
+- docs/community-3.0/notification-implementation-sequence-v1.md (modified)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+
+Commits pushed:
+- a172977 — candidate store and continuity correction
+- de3d44a — corrected duplicate test fixture; final tests pass
+- Hopper package commit follows this report.
+
+No database writes, filesystem persistence by the store, schema changes,
+queues, bell records, email, digest generation, network access, production data,
+UI, or unrelated product changes occurred. Protected output.txt was preserved
+and excluded.
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/260731153105/
+
+Recommended next ticket: Engineering Director review and explicit authorization
+of a separately bounded persistence or channel slice. Do not implement
+persistence, bell, email, digest, queues, or delivery under C3-IMP004.

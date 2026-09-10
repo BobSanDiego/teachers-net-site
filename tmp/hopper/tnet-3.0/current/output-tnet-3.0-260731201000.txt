@@ -1,0 +1,17 @@
+C3-CORE007 — Test-Only WordPress-Native Publisher Domain Core
+
+Status: COMPLETE — pure process-local implementation and automated verification.
+
+Functional advancement: the test domain can now create canonical synthetic topics, direct replies, and nested replies; validate community/thread ownership and content; execute post-first or explicit pending moderation; apply lifecycle transitions; prove process-local idempotency; and produce canonical publication events.
+
+Implementation: tools/community3/community_publisher_domain.py and focused tests, synthetic fixtures, implementation documentation, fixture catalog, and reason-code catalog. Events use canonical community/post/thread identities and compatibility metadata only as references. No legacy path/group dependency is used in canonical behavior.
+
+Verification: focused publisher tests — 16 passed; characterization tests — 13 passed; all tools/community3 tests — 72 passed; Python compilation, fixture JSON integrity, and git diff --check passed. No WordPress runtime, database, schema, filesystem persistence, network, queue, mail, notification invocation, UI, legacy CGI, or production side effect occurred.
+
+Event-construction failure leaves the accepted synthetic domain post intact without an event. Invalid validation/lifecycle transitions create no replacement state. Separate service instances remain isolated. Persistence and runtime integration remain the next boundary.
+
+Commit/push: 6675c3a.
+
+Exact next ticket: authorize the persistence implementation boundary after review; no production integration is implied by this ticket.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.

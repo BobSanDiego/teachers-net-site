@@ -1,0 +1,15 @@
+C3-CORE011 — Community Publisher Developer Sandbox
+
+Status: COMPLETE — local sandbox extension and automated verification.
+
+Visible capability: the existing authenticated DDEV workbench now supports create topic, reply to topic, reply to reply, thread browsing, hide, retract, restore, soft delete, audit history, and publication-event history. All actions use the PHP domain/application/repository layers. No public Community UI, public route, notification dispatch, legacy CGI, migration, or production behavior was added.
+
+Verification: sandbox contract tests — 4 passed; all Community Python tests — 85 passed; PHP lint passed for domain/application/repository/workbench files; DDEV persistence smoke and rollback/idempotency tests passed; git diff --check passed. Audit and event queries are escaped and displayed in compact tables.
+
+Human visual QA: browser inspection was attempted but the browser bridge could not initialize in this session; therefore no visual-success claim or screenshot is recorded. The existing QA document records the limitation. Local unauthenticated access remains admin-login protected.
+
+Commit/push: 929cac2.
+
+Next ticket: authenticated local visual QA and lifecycle/reply acceptance review before any public Community-facing UI.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.

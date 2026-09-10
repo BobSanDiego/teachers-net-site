@@ -1,0 +1,28 @@
+project=tnet-3.0
+ticket=C3-CORE010
+cycle_id=260731212000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=f878c2a
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+report_file=output-tnet-3.0-260731212000.txt
+manifest_file=MANIFEST-tnet-3.0-260731212000.txt
+cycle_record_file=cycle-tnet-3.0-260731212000.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "tnet-community-tnet-3.0-260731212000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/tnet-community.php", "purpose": "ticket artifact", "sha256": "6c8f8c8f787909411f72c39457c52435267923371a609bf63fd4432c279101d4", "size": 743, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-publisher-domain-tnet-3.0-260731212000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-publisher-domain.php", "purpose": "ticket artifact", "sha256": "40f48f4f4b8982c673af111d8fb9a67586c47b03e0b9b1363893e4d60b39049e", "size": 5816, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-publisher-application-tnet-3.0-260731212000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-publisher-application.php", "purpose": "ticket artifact", "sha256": "4cccd848ddb76e9cbd2700263ab94e2513bf55c3346c5b889b001a5a94d118d0", "size": 709, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-workbench-service-tnet-3.0-260731212000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-workbench-service.php", "purpose": "ticket artifact", "sha256": "4faef543c61ea67b9edbd041614667c23adc915c03731b2fd3baf29e27ffd858", "size": 1404, "status": "modified"}
+{"committed": true, "hopper_filename": "test_shared_parity_fixture-tnet-3.0-260731212000.py", "original_path": "tools/community3/test_shared_parity_fixture.py", "purpose": "ticket artifact", "sha256": "4a2fda88bb629012368106c5b99720f678ff29b9d834147249faadfa0b43b6f9", "size": 526, "status": "modified"}
+{"committed": true, "hopper_filename": "local_publisher_domain_tests-tnet-3.0-260731212000.php", "original_path": "tools/community3/local_publisher_domain_tests.php", "purpose": "ticket artifact", "sha256": "364eebb4c2e1c9138803107f59ed18299d646252200cc76e013b409de18d1a40", "size": 1032, "status": "modified"}
+{"committed": true, "hopper_filename": "shared-parity-tnet-3.0-260731212000.json", "original_path": "tests/fixtures/community3/publisher-domain/shared-parity.json", "purpose": "ticket artifact", "sha256": "59e6d174c0ce651f8f0bcc4da4cb5e7dca73f620f47d8531e2f155e896e5a566", "size": 1152, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-php-domain-v1-tnet-3.0-260731212000.md", "original_path": "docs/community-3.0/community-publisher-php-domain-v1.md", "purpose": "ticket artifact", "sha256": "dc8164631afc4ea3f74f9a0a5ecc6544f9d989517043ec95ab878c4db174fb3d", "size": 674, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-cross-language-parity-v1-tnet-3.0-260731212000.md", "original_path": "docs/community-3.0/community-publisher-cross-language-parity-v1.md", "purpose": "ticket artifact", "sha256": "a8ec6b4c34931307b9dcf51902d3ed7287189f7f1ec66d78effa042e8e3795eb", "size": 636, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-runtime-authority-v1-tnet-3.0-260731212000.md", "original_path": "docs/community-3.0/community-publisher-runtime-authority-v1.md", "purpose": "ticket artifact", "sha256": "10c852967451382a80a85de52e825318be5111e68eb7a0c914d6764638500c1b", "size": 658, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-runtime-language-boundary-v1-tnet-3.0-260731212000.md", "original_path": "docs/community-3.0/community-publisher-runtime-language-boundary-v1.md", "purpose": "ticket artifact", "sha256": "f9def8bf48774ead469e7d98061bafd89dde8d976fbbcf182dbfb17017596da9", "size": 753, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-developer-workbench-v1-tnet-3.0-260731212000.md", "original_path": "docs/community-3.0/community-publisher-developer-workbench-v1.md", "purpose": "ticket artifact", "sha256": "e6795f5a1552a31c8736fb2b9c936d0d12b8d80421e30f3711766fee0b67ffc5", "size": 1156, "status": "modified"}
+{"committed": true, "hopper_filename": "project-cursor-tnet-3.0-260731212000.md", "original_path": "docs/community-3.0/project-cursor.md", "purpose": "ticket artifact", "sha256": "1fdeadf08e74e05be861658378aff6056da6343a197f42ba3f51867fb75158a6", "size": 14104, "status": "modified"}
+{"committed": true, "hopper_filename": "engineering-handoff-tnet-3.0-260731212000.md", "original_path": "docs/community-3.0/engineering-handoff.md", "purpose": "ticket artifact", "sha256": "bb1c362e430090f1044e4ca17efc305456b54bd7d95141c443702ccbb18a83ba", "size": 13058, "status": "modified"}

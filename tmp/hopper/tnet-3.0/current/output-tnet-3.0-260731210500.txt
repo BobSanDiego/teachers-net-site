@@ -1,0 +1,17 @@
+C3-CORE009 — Local Community Publisher Developer Workbench
+
+Status: COMPLETE — local authenticated workbench implementation and verification.
+
+Visible advancement: an authenticated local administrator can open Tools → Community Publisher Workbench at https://teachers-net.ddev.site/wp-admin/tools.php?page=tnet-community-workbench, install/remove only the three prototype tables, enter synthetic topic fields, click Publish Topic, and inspect persisted post/audit/pending-event information. Replies are not supported in this workbench; the next real Community-facing UI remains deferred.
+
+Runtime ownership: wordpress/wp-content/plugins/tnet-community/. The workbench is DDEV-marker gated, capability protected, nonce protected, absent from public navigation, and has no REST/AJAX route. The PHP adapter is documented as a bounded local bridge over the Python-tested C3-CORE007 contract and delegates durable state to the C3-CORE008 repository.
+
+Verification: workbench contract tests — 8 passed; all Community Python tests — 80 passed; PHP lint passed; admin menu registration passed; local DDEV persistence smoke and rollback tests passed; unauthenticated HTTP request returned 302 to wp-login; git diff --check passed. Browser visual QA was attempted but the browser bridge could not initialize, so no rendered-success claim is made.
+
+No production/staging access, public route, legacy CGI, notification, mail, queue, migration, membership, Core Terms, Portable View, or unrelated product change occurred. Local prototype tables were cleaned by verification scripts.
+
+Next ticket: perform authenticated human visual QA in the local DDEV workbench, then decide whether to add a bounded developer verification/cleanup refinement before any Community-facing UI or production persistence.
+
+Commit/push: 338c1c6.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.

@@ -1,0 +1,13 @@
+project=tnet-3.0
+ticket=C3-NOT006
+cycle_id=260731150146
+status=payload-recreated
+source_commit=a6a3619
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+protected_file=output.txt (preserved in place; excluded)
+
+artifacts:
+{"hopper_filename":"group-activity-notification-contract-v1-tnet-3.0-260731150146.md","original_path":"docs/community-3.0/group-activity-notification-contract-v1.md","status":"source-existing","sha256":"df656a7a248042c3be5c866c06c4245224664c0d65914a64165ba9743224fbb1"}
+{"hopper_filename":"project-cursor-tnet-3.0-260731150146.md","original_path":"docs/community-3.0/project-cursor.md","status":"source-existing","sha256":"aa506b346903b94eb8c49475c2043a5f0a1f677768b5f487036f9be6a8b2e27e"}
+{"hopper_filename":"engineering-handoff-tnet-3.0-260731150146.md","original_path":"docs/community-3.0/engineering-handoff.md","status":"source-existing","sha256":"ed7c29c3896e9ecba47e39cd7eab9a52d76b8f1e40d90e2c6d3ee2eab48fff9d"}

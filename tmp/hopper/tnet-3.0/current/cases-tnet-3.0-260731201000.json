@@ -1,0 +1,6 @@
+{
+  "valid": ["topic", "direct_reply", "nested_reply"],
+  "invalid": ["missing_title", "missing_body", "cross_community", "locked_thread", "restricted_parent"],
+  "moderation": ["flagged", "spam", "pending"],
+  "redaction": "synthetic opaque IDs only; no production data"
+}

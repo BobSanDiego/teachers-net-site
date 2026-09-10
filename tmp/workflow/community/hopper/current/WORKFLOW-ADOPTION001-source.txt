@@ -1,0 +1,9 @@
+TICKET READY FOR CODEX
+Ticket: WORKFLOW-ADOPTION001
+Mode: DOCUMENT
+Project: Community
+Repository: Current Community repository
+Objective: Adopt the standardized ChatGPT to Codex engineering workflow.
+Authority: Ticket supplied by the project owner.
+Verification: command registry, ledger, report directory, hopper directory, archive behavior, refresh marker, queue selection, LIST COMMANDS.
+Stop boundary: Stop after workflow adoption is documented; do not modify product functionality.

@@ -1,0 +1,89 @@
+{
+  "project": "tnet-3.0",
+  "ticket": "C3-CORE002",
+  "cycle_id": "260731185900",
+  "status": "complete",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": "f8b1ae9",
+  "push": "successful",
+  "current_hopper": "tmp/hopper/tnet-3.0/current",
+  "archive_path": "tmp/hopper/tnet-3.0/archive",
+  "report_file": "output-tnet-3.0-260731185900.txt",
+  "manifest_file": "MANIFEST-tnet-3.0-260731185900.txt",
+  "cycle_record_file": "cycle-tnet-3.0-260731185900.json",
+  "evidence_bundle": null,
+  "artifacts": [
+    {
+      "hopper_filename": "legacy-publisher-architecture-audit-v1-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/legacy-publisher-architecture-audit-v1.md",
+      "status": "modified",
+      "size": 4519,
+      "sha256": "ba9d9f218453ad4df755381e0ce3024c22456859494d7d46f4157a6fa4b556f9",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "legacy-publisher-behavior-catalog-v1-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/legacy-publisher-behavior-catalog-v1.md",
+      "status": "modified",
+      "size": 2188,
+      "sha256": "9388cbe6a5c41fc965d2ef412804e115df7bf239f0b2f7a33e8be91ebbcd02b6",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "legacy-to-wordpress-migration-options-v1-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/legacy-to-wordpress-migration-options-v1.md",
+      "status": "modified",
+      "size": 1744,
+      "sha256": "7ad1368764c9192287b492bb97d9f95e79db07342b2e9b53f08eb1548c94165b",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "legacy-publisher-preserve-translate-retire-matrix-v1-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/legacy-publisher-preserve-translate-retire-matrix-v1.md",
+      "status": "modified",
+      "size": 1690,
+      "sha256": "13886f37095251276c7e2450d4da2547d8221d39b58714a4f09d5189193e679a",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "legacy-publisher-characterization-test-plan-v1-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/legacy-publisher-characterization-test-plan-v1.md",
+      "status": "modified",
+      "size": 1601,
+      "sha256": "50b2315df6e5402484412fe46abc173824c869a0e9e9faf65545d0ee7b4c43b4",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "community-publisher-migration-recommendation-v1-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/community-publisher-migration-recommendation-v1.md",
+      "status": "modified",
+      "size": 1604,
+      "sha256": "39c64acf97b336f15a09f9d661b137da318907e2b83f234574bb2c22e0e25179",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "project-cursor-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/project-cursor.md",
+      "status": "modified",
+      "size": 10993,
+      "sha256": "e243d0ef1566de72437a96097d3ded8367353fa817a8721ce0140a89c92fcedd",
+      "committed": true,
+      "purpose": "ticket artifact"
+    },
+    {
+      "hopper_filename": "engineering-handoff-tnet-3.0-260731185900.md",
+      "original_path": "docs/community-3.0/engineering-handoff.md",
+      "status": "modified",
+      "size": 9868,
+      "sha256": "1a3703207e23bc14815363b02be55468eba2efdd53ee54d309e6f29ec12f51e0",
+      "committed": true,
+      "purpose": "ticket artifact"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+No next ticket is authorized by WORKFLOW-ADOPTION001. Await the oldest formal
+ticket beginning with `TICKET READY FOR CODEX`.

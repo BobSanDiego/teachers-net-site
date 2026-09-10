@@ -1,0 +1,18 @@
+project=tnet-3.0
+ticket=OPS-CONT001
+cycle_id=260731161010
+status=complete
+commit=edd950d
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+protected_file=output.txt (preserved and excluded)
+
+artifacts:
+{"hopper_filename":"validate_community_continuity-tnet-3.0-260731161010.py","original_path":"tools/hopper/validate_community_continuity.py","status":"modified","committed":true}
+{"hopper_filename":"test_validate_community_continuity-tnet-3.0-260731161010.py","original_path":"tools/hopper/test_validate_community_continuity.py","status":"created","committed":true}
+{"hopper_filename":"community-continuity-root-cause-v1-tnet-3.0-260731161010.md","original_path":"docs/process/community-continuity-root-cause-v1.md","status":"created","committed":true}
+{"hopper_filename":"community-hopper-governance-v1-tnet-3.0-260731161010.md","original_path":"docs/process/community-hopper-governance-v1.md","status":"created","committed":true}
+{"hopper_filename":"community-continuity-validation-v1-tnet-3.0-260731161010.md","original_path":"docs/process/community-continuity-validation-v1.md","status":"created","committed":true}
+{"hopper_filename":"project-cursor-tnet-3.0-260731161010.md","original_path":"docs/community-3.0/project-cursor.md","status":"modified","committed":true}
+{"hopper_filename":"engineering-handoff-tnet-3.0-260731161010.md","original_path":"docs/community-3.0/engineering-handoff.md","status":"modified","committed":true}

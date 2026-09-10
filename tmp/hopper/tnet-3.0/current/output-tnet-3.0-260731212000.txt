@@ -1,0 +1,19 @@
+C3-CORE010 — Authoritative PHP Publisher Domain and Cross-Language Parity
+
+Status: COMPLETE — local implementation, shared-fixture parity, and documentation.
+
+PHP is now the sole intended WordPress runtime authority. The temporary topic-only workbench adapter was replaced with TNet_Community_Publisher_Domain and TNet_Community_Publisher_Application. Topics and replies share the PHP domain behavior; the repository remains responsible for durable state and transactions. Python remains characterization/regression support only and is not executed by WordPress.
+
+PHP behavior covers topic/reply validation, same-community and parent/thread rules, restricted/locked parents, post-first and pending moderation, deterministic moderation inputs, idempotency, lifecycle result classification, canonical publication events, and compatibility metadata preservation. The workbench delegates rather than constructing canonical post/event arrays.
+
+Shared parity: shared-parity.json was consumed by Python tests and the DDEV PHP parity script. PHP parity assertions passed for fixture inventory, accepted topic, canonical event type, and unresolved Community. Python suite: 81 tests passed. PHP lint passed. Persistence smoke/rollback/idempotency checks passed. git diff --check passed.
+
+Local browser regression: unauthenticated access remains admin-login protected; visual browser inspection was attempted but the browser bridge could not initialize, so no rendered-success claim is made.
+
+No Python runtime bridge, production access/deployment, notification dispatch, legacy CGI, migration, public UI, or unrelated product change occurred.
+
+Next ticket: authenticated local QA of PHP reply and lifecycle behavior before any Community-facing UI or production boundary.
+
+Commit/push: f878c2a.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.

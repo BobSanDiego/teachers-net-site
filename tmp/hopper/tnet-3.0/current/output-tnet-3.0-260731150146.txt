@@ -1,0 +1,38 @@
+C3-NOT006 — Group Activity Notification Contract Hopper Rebuild
+
+Status: payload recreated from existing committed source documents.
+
+No source document was modified in this cycle. The payload contains the
+completed C3-NOT006 contract and the Community 3.0 continuity documents needed
+to preserve context.
+
+Included source files:
+- docs/community-3.0/group-activity-notification-contract-v1.md
+- docs/community-3.0/project-cursor.md
+- docs/community-3.0/engineering-handoff.md
+
+Source documentation commit: a6a3619 (contract package); current continuity
+documents also include later project-state updates.
+
+Current hopper (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Current hopper (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive directory:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/
+
+Cycle: 260731150146
+
+The protected engineer-owned output.txt was already present in current/ and
+was not moved, renamed, deleted, edited, copied, archived, or included in the
+manifest. It remains alongside the handoff payload by explicit exception.
+
+Current payload files:
+- group-activity-notification-contract-v1-tnet-3.0-260731150146.md
+- project-cursor-tnet-3.0-260731150146.md
+- engineering-handoff-tnet-3.0-260731150146.md
+- output-tnet-3.0-260731150146.txt
+- MANIFEST-tnet-3.0-260731150146.txt
+- cycle-tnet-3.0-260731150146.json

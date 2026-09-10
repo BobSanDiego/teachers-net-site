@@ -1,0 +1,44 @@
+C3-IMP003 — Candidate Audit Boundary
+
+Status: executed and complete.
+
+Implemented and verified:
+- Test-only non-persistent candidate object consuming only evaluator output.
+- Deterministic candidate IDs and stable sorted reason codes.
+- Redacted append-only in-memory audit record.
+- Explicit separation of event, candidate, eligibility, bell, email, digest,
+  delivery, and engagement concepts.
+- Explicit preservation of distinct path_id and group_id values.
+- Tests for eligible, blocked, ineligible, stable reasons, audit completeness,
+  deferred channels, and zero side effects.
+- Updated Community 3.0 contract documentation, Project Cursor, and Handoff.
+
+Verification:
+python3 -m unittest discover -s tools/community3 -p 'test_*.py'
+Result: 3 tests passed.
+
+No database writes, schema changes, queues, bell records, email, digest
+generation, production data, UI, provider, or persistent audit store were used.
+
+Modified files included in this cycle:
+- tools/community3/notification_candidate_boundary.py (created)
+- tools/community3/test_notification_candidate_boundary.py (created)
+- docs/community-3.0/candidate-audit-boundary-v1.md (created)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+
+Source commit: 5228bd3
+Push: successful to origin/COMMUNITY003-semantic-community-communications-working-draft.
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive directory:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/
+
+Cycle: 260731150837
+
+Protected output.txt was preserved in place and excluded.

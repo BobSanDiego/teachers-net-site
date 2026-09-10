@@ -1,0 +1,53 @@
+{
+  "project": "tnet-3.0",
+  "ticket": "C3-IMP007",
+  "cycle_id": "260731162023",
+  "status": "complete",
+  "commit": "3df0bdd",
+  "push": "successful",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "current_hopper": "tmp/hopper/tnet-3.0/current",
+  "archive_path": "tmp/hopper/tnet-3.0/archive",
+  "report_file": "output-tnet-3.0-260731162023.txt",
+  "manifest_file": "MANIFEST-tnet-3.0-260731162023.txt",
+  "cycle_record_file": "cycle-tnet-3.0-260731162023.json",
+  "protected_file": "output.txt",
+  "artifacts": [
+    {
+      "hopper_filename": "notification_application_service-tnet-3.0-260731162023.py",
+      "original_path": "tools/community3/notification_application_service.py",
+      "status": "created",
+      "committed": true
+    },
+    {
+      "hopper_filename": "test_notification_application_service-tnet-3.0-260731162023.py",
+      "original_path": "tools/community3/test_notification_application_service.py",
+      "status": "created",
+      "committed": true
+    },
+    {
+      "hopper_filename": "notification-application-service-v1-tnet-3.0-260731162023.md",
+      "original_path": "docs/community-3.0/notification-application-service-v1.md",
+      "status": "created",
+      "committed": true
+    },
+    {
+      "hopper_filename": "project-cursor-tnet-3.0-260731162023.md",
+      "original_path": "docs/community-3.0/project-cursor.md",
+      "status": "modified",
+      "committed": true
+    },
+    {
+      "hopper_filename": "engineering-handoff-tnet-3.0-260731162023.md",
+      "original_path": "docs/community-3.0/engineering-handoff.md",
+      "status": "modified",
+      "committed": true
+    },
+    {
+      "hopper_filename": "clean_cycle-tnet-3.0-260731162023.py",
+      "original_path": "tools/hopper/clean_cycle.py",
+      "status": "modified",
+      "committed": true
+    }
+  ]
+}

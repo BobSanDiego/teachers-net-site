@@ -1,0 +1,46 @@
+C3-IMP006 — End-to-End Dry-Run Notification Pipeline
+
+Status: executed and complete.
+
+Implemented a test-only orchestration path:
+Domain Event → Evaluator → Candidate → Candidate Store → Bell Repository.
+
+Verified:
+- eligible flow creates one deterministic candidate and unread bell;
+- blocked, ineligible, and private-group rejection stop before creation;
+- paused email produces a bell-only report outcome;
+- duplicate event IDs return the same report without duplicate state;
+- repeatability, identity mapping, and zero side effects.
+
+Test command:
+python3 -m unittest discover -s tools/community3 -p 'test_*.py'
+Result: 16 tests passed.
+
+Python compilation and git diff --check passed. No database writes, schema,
+migrations, queues, email, digest generation, production access, UI, or
+delivery behavior was added.
+
+Modified files included in this cycle:
+- tools/community3/notification_dry_run_pipeline.py (created)
+- tools/community3/test_notification_dry_run_pipeline.py (created)
+- docs/community-3.0/dry-run-notification-pipeline-v1.md (created)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+
+Source commit: a3a5cb6
+Push: successful to origin/COMMUNITY003-semantic-community-communications-working-draft.
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/260731161359/
+
+Cycle: 260731161359
+Protected output.txt was preserved and excluded.
+
+Recommended next step: Engineering Director review before any persistent
+candidate/bell storage or delivery-channel work.

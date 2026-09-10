@@ -1,0 +1,22 @@
+{
+  "accepted_topic": {"post_type":"topic","accepted":true,"publication_state":"published","event_type":"community.post.published"},
+  "accepted_reply": {"post_type":"reply","accepted":true},
+  "accepted_nested_reply": {"post_type":"reply","accepted":true},
+  "missing_title": {"reason":"TITLE_REQUIRED"},
+  "missing_body": {"reason":"BODY_REQUIRED"},
+  "unsupported_post_type": {"reason":"POST_TYPE_UNSUPPORTED"},
+  "reply_missing_parent": {"reason":"REPLY_PARENT_REQUIRED"},
+  "cross_community_parent": {"reason":"PARENT_COMMUNITY_MISMATCH"},
+  "restricted_parent": {"reason":"PARENT_RESTRICTED"},
+  "locked_thread": {"reason":"THREAD_LOCKED"},
+  "post_first": {"publication_state":"published"},
+  "pending": {"publication_state":"pending"},
+  "flagged": {"moderation_state":"flagged"},
+  "spam": {"moderation_state":"spam"},
+  "duplicate": {"reason":"IDEMPOTENT_REPEAT"},
+  "conflict": {"reason":"IDEMPOTENCY_CONFLICT"},
+  "event_shape": {"event_type":"community.post.published"},
+  "compatibility": {"preserved":true},
+  "unresolved_community": {"reason":"COMMUNITY_UNRESOLVED"},
+  "invalid_transition": {"reason":"LIFECYCLE_TRANSITION_INVALID"}
+}

@@ -1,0 +1,4 @@
+WORKFLOW-ADOPTION001 complete.
+
+The standardized formal-ticket workflow is documented and demonstrated. Product
+functionality was not changed.

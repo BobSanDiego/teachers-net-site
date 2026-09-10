@@ -1,0 +1,50 @@
+C3-IMP005 — In-Memory Bell Persistence Interface
+
+Status: executed and complete.
+
+Implemented:
+- In-memory bell repository consuming only eligible validated candidates.
+- create_bell, get, list_unread, mark_read, mark_unread, archive,
+  count_unread, and clear.
+- Supported states: unread, read, archived.
+- Deterministic bell IDs, recipient isolation, candidate immutability, and
+  distinct path_id/group_id preservation.
+
+Verification:
+- python3 -m unittest discover -s tools/community3 -p 'test_*.py'
+- Result: 12 tests passed.
+- python3 -m py_compile tools/community3/*.py passed.
+- git diff --check passed.
+
+No database, schema, migration, WordPress option, queue, email, digest,
+production data, UI, network, or delivery change occurred. Bell state remains
+separate from event, candidate, delivery, and engagement.
+
+Modified files included in this cycle:
+- tools/community3/notification_bell_repository.py (created)
+- tools/community3/test_notification_bell_repository.py (created)
+- docs/community-3.0/bell-repository-interface-v1.md (created)
+- docs/community-3.0/project-cursor.md (modified)
+- docs/community-3.0/engineering-handoff.md (modified)
+- tools/community3/notification_candidate_store.py (included existing)
+- tools/community3/notification_candidate_boundary.py (included existing)
+
+Source commit: 016da88
+Push: successful to origin/COMMUNITY003-semantic-community-communications-working-draft.
+
+Hopper current (WSL):
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/current/
+
+Hopper current (Windows Explorer):
+\\wsl$\Ubuntu-24.04\home\bobreap\projects\teachers-net-site\tmp\hopper\tnet-3.0\current\
+
+Archive:
+/home/bobreap/projects/teachers-net-site/tmp/hopper/tnet-3.0/archive/260731155819/
+
+Cycle: 260731155819
+Protected output.txt was preserved and excluded.
+
+Recommended next ticket: Engineering Director review and explicit
+authorization of the next bounded bell persistence or read-state slice. Do
+not add persistent storage, UI, email, digests, queues, or delivery under
+C3-IMP005.

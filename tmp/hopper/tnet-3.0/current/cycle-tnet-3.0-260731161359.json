@@ -1,0 +1,18 @@
+{
+  "project":"tnet-3.0",
+  "ticket":"C3-IMP006",
+  "cycle_id":"260731161359",
+  "status":"complete",
+  "commit":"a3a5cb6",
+  "push":"successful",
+  "current_hopper":"tmp/hopper/tnet-3.0/current",
+  "archive_path":"tmp/hopper/tnet-3.0/archive",
+  "protected_file":"output.txt",
+  "artifacts":[
+    {"hopper_filename":"notification_dry_run_pipeline-tnet-3.0-260731161359.py","original_path":"tools/community3/notification_dry_run_pipeline.py","status":"created"},
+    {"hopper_filename":"test_notification_dry_run_pipeline-tnet-3.0-260731161359.py","original_path":"tools/community3/test_notification_dry_run_pipeline.py","status":"created"},
+    {"hopper_filename":"dry-run-notification-pipeline-v1-tnet-3.0-260731161359.md","original_path":"docs/community-3.0/dry-run-notification-pipeline-v1.md","status":"created"},
+    {"hopper_filename":"project-cursor-tnet-3.0-260731161359.md","original_path":"docs/community-3.0/project-cursor.md","status":"modified"},
+    {"hopper_filename":"engineering-handoff-tnet-3.0-260731161359.md","original_path":"docs/community-3.0/engineering-handoff.md","status":"modified"}
+  ]
+}

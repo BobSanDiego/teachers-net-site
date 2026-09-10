@@ -1,0 +1,25 @@
+project=tnet-3.0
+ticket=C3-CORE003
+cycle_id=260731190500
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=86b2abf
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+report_file=output-tnet-3.0-260731190500.txt
+manifest_file=MANIFEST-tnet-3.0-260731190500.txt
+cycle_record_file=cycle-tnet-3.0-260731190500.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "legacy_publisher_characterization-tnet-3.0-260731190500.py", "original_path": "tools/community3/legacy_publisher_characterization.py", "purpose": "ticket artifact", "sha256": "afcee8cc67fafe2cf4b7f8b9af4a72bcaafed9c505a491a2b079ca48be540565", "size": 2215, "status": "modified"}
+{"committed": true, "hopper_filename": "test_legacy_publisher_characterization-tnet-3.0-260731190500.py", "original_path": "tools/community3/test_legacy_publisher_characterization.py", "purpose": "ticket artifact", "sha256": "06673c4e912927347689e5ed8800ce0c5a3f6d9a8ba8bf462a0652a6887063a6", "size": 2515, "status": "modified"}
+{"committed": true, "hopper_filename": "board-tnet-3.0-260731190500.json", "original_path": "tests/fixtures/community3/legacy-publisher/board.json", "purpose": "ticket artifact", "sha256": "e9f2c9d54b52d79ff151234d34ed599602fa643f5100f0c1a0950941ec9b473f", "size": 201, "status": "modified"}
+{"committed": true, "hopper_filename": "new-topic-tnet-3.0-260731190500.json", "original_path": "tests/fixtures/community3/legacy-publisher/new-topic.json", "purpose": "ticket artifact", "sha256": "91b3495ac33f21e41b6893d7c87d9d5c7f45209d53e78707399a1ff0bc736176", "size": 186, "status": "modified"}
+{"committed": true, "hopper_filename": "reply-tnet-3.0-260731190500.json", "original_path": "tests/fixtures/community3/legacy-publisher/reply.json", "purpose": "ticket artifact", "sha256": "ec1c66a06f29e2e239d65958ffec2e856224961315c03d860f6727351464245c", "size": 134, "status": "modified"}
+{"committed": true, "hopper_filename": "edge-cases-tnet-3.0-260731190500.json", "original_path": "tests/fixtures/community3/legacy-publisher/edge-cases.json", "purpose": "ticket artifact", "sha256": "2bd61458e3f11920aa2311ec092c1d8f9b25eaa88ffd91c58aee08fe5df996df", "size": 347, "status": "modified"}
+{"committed": true, "hopper_filename": "legacy-publisher-characterization-harness-v1-tnet-3.0-260731190500.md", "original_path": "docs/community-3.0/legacy-publisher-characterization-harness-v1.md", "purpose": "ticket artifact", "sha256": "f627d375de0f73fa0b683fad2902633d3526c1daf8affdbfb0b0fe2ba71dd36f", "size": 1650, "status": "modified"}
+{"committed": true, "hopper_filename": "legacy-publisher-fixture-catalog-v1-tnet-3.0-260731190500.md", "original_path": "docs/community-3.0/legacy-publisher-fixture-catalog-v1.md", "purpose": "ticket artifact", "sha256": "5dbcad8908cea4c5fdb9fea87711306fe80329c9461ac2ccecc65debda53bdd4", "size": 1058, "status": "modified"}
+{"committed": true, "hopper_filename": "legacy-compatibility-observation-contract-v1-tnet-3.0-260731190500.md", "original_path": "docs/community-3.0/legacy-compatibility-observation-contract-v1.md", "purpose": "ticket artifact", "sha256": "f48b58510dd9bd8912093ce284752b77ae009e649a03a9ef7f9fcb7607520d2c", "size": 1130, "status": "modified"}
+{"committed": true, "hopper_filename": "project-cursor-tnet-3.0-260731190500.md", "original_path": "docs/community-3.0/project-cursor.md", "purpose": "ticket artifact", "sha256": "d1a6461c11a671e4eadec60584a8683c2d5ba7b6dccd31ea2eca6213befaf698", "size": 11436, "status": "modified"}
+{"committed": true, "hopper_filename": "engineering-handoff-tnet-3.0-260731190500.md", "original_path": "docs/community-3.0/engineering-handoff.md", "purpose": "ticket artifact", "sha256": "198bbc8746b70b2ba6966d924194f22ccde1f589aa7f10c8446f353c5d50d69b", "size": 10300, "status": "modified"}

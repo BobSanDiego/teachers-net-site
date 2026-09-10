@@ -1,0 +1,26 @@
+project=tnet-3.0
+ticket=C3-CORE008
+cycle_id=260731204000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=04cdc98
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+report_file=output-tnet-3.0-260731204000.txt
+manifest_file=MANIFEST-tnet-3.0-260731204000.txt
+cycle_record_file=cycle-tnet-3.0-260731204000.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "tnet-community-tnet-3.0-260731204000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/tnet-community.php", "purpose": "ticket artifact", "sha256": "9ee8db04972cbfd7dafd92a90af4f60bc3c4bc1a61469eccfba14fde78182217", "size": 341, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-schema-tnet-3.0-260731204000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-schema.php", "purpose": "ticket artifact", "sha256": "7378a1904233337b8f6b6709fe069976556d8640a545aab2e9015f45c0ae0ecb", "size": 3349, "status": "modified"}
+{"committed": true, "hopper_filename": "class-tnet-community-publisher-repository-tnet-3.0-260731204000.php", "original_path": "wordpress/wp-content/plugins/tnet-community/includes/class-tnet-community-publisher-repository.php", "purpose": "ticket artifact", "sha256": "c6569062b2115ec800ec00951b3fb8c9ede0e2706af53f18d5f1de9f165b16c9", "size": 5545, "status": "modified"}
+{"committed": true, "hopper_filename": "local_publisher_persistence_smoke-tnet-3.0-260731204000.php", "original_path": "tools/community3/local_publisher_persistence_smoke.php", "purpose": "ticket artifact", "sha256": "0c1367c27be6a828ff91448e6b661d030fe344c6cabf51aa1f681dc2e7da3af0", "size": 1708, "status": "modified"}
+{"committed": true, "hopper_filename": "local_publisher_persistence_tests-tnet-3.0-260731204000.php", "original_path": "tools/community3/local_publisher_persistence_tests.php", "purpose": "ticket artifact", "sha256": "284d7ab38c41d50880029c17108e12856f831226332472c537711ff8c420097f", "size": 1909, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-persistence-prototype-v1-tnet-3.0-260731204000.md", "original_path": "docs/community-3.0/community-publisher-persistence-prototype-v1.md", "purpose": "ticket artifact", "sha256": "686f484122b60e07d432dbe5156f27f6a2287fbbceab577505f74c546294cdd4", "size": 1000, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-schema-v1-tnet-3.0-260731204000.md", "original_path": "docs/community-3.0/community-publisher-schema-v1.md", "purpose": "ticket artifact", "sha256": "e9b8ed74570b45a85d274f85d4cd0063fd9088c37eac3525be95527b07ebfc64", "size": 599, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-repository-interface-v1-tnet-3.0-260731204000.md", "original_path": "docs/community-3.0/community-publisher-repository-interface-v1.md", "purpose": "ticket artifact", "sha256": "0b45fb00c57200dde0cd08c1035a9c5785f749133de01490a60811b5e153c470", "size": 648, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-local-verification-v1-tnet-3.0-260731204000.md", "original_path": "docs/community-3.0/community-publisher-local-verification-v1.md", "purpose": "ticket artifact", "sha256": "2157005900cee2c1ec46674044c100a3455a893fc3855af85508ae6c37e90dc3", "size": 622, "status": "modified"}
+{"committed": true, "hopper_filename": "community-publisher-persistence-rollback-v1-tnet-3.0-260731204000.md", "original_path": "docs/community-3.0/community-publisher-persistence-rollback-v1.md", "purpose": "ticket artifact", "sha256": "13b512d2c9e990872d42655b113d61bcaf69edaab387da0cbe34099e3e8b6429", "size": 613, "status": "modified"}
+{"committed": true, "hopper_filename": "project-cursor-tnet-3.0-260731204000.md", "original_path": "docs/community-3.0/project-cursor.md", "purpose": "ticket artifact", "sha256": "9d93cb6ee5b14b65f090ae81cf56374bb6f0a0f8a693d98464ec108d4e0f4e17", "size": 13231, "status": "modified"}
+{"committed": true, "hopper_filename": "engineering-handoff-tnet-3.0-260731204000.md", "original_path": "docs/community-3.0/engineering-handoff.md", "purpose": "ticket artifact", "sha256": "fd22093f64f9c55c65efb72282bd182a6021c13524847ccb71491465fb49594a", "size": 12229, "status": "modified"}

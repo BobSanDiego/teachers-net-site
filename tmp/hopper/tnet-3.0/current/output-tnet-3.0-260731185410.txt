@@ -1,0 +1,26 @@
+C3-CORE001 — Community Publisher Source Discovery and Authority Audit
+
+Status: COMPLETE — read-only discovery and authority audit only.
+
+Authority decision: PUBLISHER EXISTS BUT SOURCE IS NOT OWNED/AVAILABLE.
+
+Evidence found
+- The repository contains no owned authoritative Community post writer or modern production publisher.
+- Read-only SSH inspection of Sandy identified the legacy Perl publisher at /var/www/www.teachers.net/cgi-bin/chatboard/chatboard.cgi, with related chatpost.cgi and posted.cgi files.
+- The legacy writer validates input, creates HTML post files, updates include/index files, and inserts chat_posts rows. It uses legacy local_path and wplogin-style context, but no verified canonical group_id/path_id mapping or modern publication callback was found.
+- The source is production-accessible but is not owned or available in this repository. No source was copied, and no production mutation was performed.
+
+Deliverables
+- Source census, publication lifecycle, authority decision, and minimum publisher contract documents were created/updated.
+- Project Cursor and Engineering Handoff were updated for C3-CORE001.
+- Existing test-only shadow-hook files were included as evidence; no live hook or delivery behavior was added.
+
+Verification
+- python3 -m unittest discover -s tools/community3 -p 'test_*.py' — 32 passed.
+- python3 -m py_compile tools/community3/*.py — passed.
+- git diff --check — passed.
+- Hopper mechanical and semantic validation are required before finalizing this cycle.
+
+No production changes were made. The next recommended ticket is a read-only source-ownership/compatibility boundary decision for the Sandy legacy publisher, followed by explicit authorization to modernize, wrap, or retire it.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not read, edited, archived, or collected.

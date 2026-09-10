@@ -1,0 +1,16 @@
+project=tnet-3.0
+ticket=C3-IMP003
+cycle_id=260731150837
+status=complete
+commit=5228bd3
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+protected_file=output.txt (preserved and excluded)
+
+artifacts:
+{"hopper_filename":"notification_candidate_boundary-tnet-3.0-260731150837.py","original_path":"tools/community3/notification_candidate_boundary.py","status":"created","committed":true}
+{"hopper_filename":"test_notification_candidate_boundary-tnet-3.0-260731150837.py","original_path":"tools/community3/test_notification_candidate_boundary.py","status":"created","committed":true}
+{"hopper_filename":"candidate-audit-boundary-v1-tnet-3.0-260731150837.md","original_path":"docs/community-3.0/candidate-audit-boundary-v1.md","status":"created","committed":true}
+{"hopper_filename":"project-cursor-tnet-3.0-260731150837.md","original_path":"docs/community-3.0/project-cursor.md","status":"modified","committed":true}
+{"hopper_filename":"engineering-handoff-tnet-3.0-260731150837.md","original_path":"docs/community-3.0/engineering-handoff.md","status":"modified","committed":true}

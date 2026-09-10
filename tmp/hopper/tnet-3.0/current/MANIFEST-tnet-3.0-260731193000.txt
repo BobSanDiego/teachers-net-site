@@ -1,0 +1,21 @@
+project=tnet-3.0
+ticket=C3-CORE005
+cycle_id=260731193000
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=8a9250e
+push=successful
+current_hopper=tmp/hopper/tnet-3.0/current
+archive_path=tmp/hopper/tnet-3.0/archive
+report_file=output-tnet-3.0-260731193000.txt
+manifest_file=MANIFEST-tnet-3.0-260731193000.txt
+cycle_record_file=cycle-tnet-3.0-260731193000.json
+evidence_bundle=
+
+artifacts:
+{"committed": true, "hopper_filename": "community_identity_resolver-tnet-3.0-260731193000.py", "original_path": "tools/community3/community_identity_resolver.py", "purpose": "ticket artifact", "sha256": "fe0cf72da0a4e69391059a9c60830adc26d95ac2394f44494657ea35ef74219d", "size": 5191, "status": "modified"}
+{"committed": true, "hopper_filename": "test_community_identity_resolver-tnet-3.0-260731193000.py", "original_path": "tools/community3/test_community_identity_resolver.py", "purpose": "ticket artifact", "sha256": "2fe176748428b8f61f0f7fa84d3329ea63afb9aeef145942fb9efbf3ac68b889", "size": 3880, "status": "modified"}
+{"committed": true, "hopper_filename": "identity-resolver-cases-tnet-3.0-260731193000.json", "original_path": "tests/fixtures/community3/legacy-publisher/identity-resolver-cases.json", "purpose": "ticket artifact", "sha256": "baa85eee9aa1196603a87b8d312dc3408615d045913407fbf52cfeaeb8057fa4", "size": 302, "status": "modified"}
+{"committed": true, "hopper_filename": "community-identity-resolver-implementation-v1-tnet-3.0-260731193000.md", "original_path": "docs/community-3.0/community-identity-resolver-implementation-v1.md", "purpose": "ticket artifact", "sha256": "b35fe442a1a6afa94b578d2d0d1f1ca50d4fc92f384d7131d2376ea0f1e42d0d", "size": 1770, "status": "modified"}
+{"committed": true, "hopper_filename": "community-identity-fixture-catalog-v1-tnet-3.0-260731193000.md", "original_path": "docs/community-3.0/community-identity-fixture-catalog-v1.md", "purpose": "ticket artifact", "sha256": "b674130b962cdf77557341eb69c4bd9f1a875dca1a103c6d33f0354c81627d98", "size": 737, "status": "modified"}
+{"committed": true, "hopper_filename": "project-cursor-tnet-3.0-260731193000.md", "original_path": "docs/community-3.0/project-cursor.md", "purpose": "ticket artifact", "sha256": "551df22e1f824c21bacf42a100868803a59805811bd772356cba2f34f9089f61", "size": 12155, "status": "modified"}
+{"committed": true, "hopper_filename": "engineering-handoff-tnet-3.0-260731193000.md", "original_path": "docs/community-3.0/engineering-handoff.md", "purpose": "ticket artifact", "sha256": "0ea9ea19d879c660ea8f95228206ab4e6d1c40cd0f57cb21d87ba122af0f2e52", "size": 11029, "status": "modified"}

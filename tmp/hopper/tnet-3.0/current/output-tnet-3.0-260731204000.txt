@@ -1,0 +1,17 @@
+C3-CORE008 — Local WordPress Publisher Persistence Prototype
+
+Status: COMPLETE — local DDEV implementation and rollback verification only.
+
+Functional advancement: local WordPress can durably store synthetic canonical Community topics and publication events in dedicated custom tables, retrieve them through a narrow repository, prove duplicate submission idempotency, and roll back injected post/audit/event failures. Replies/thread retrieval is supported by the repository contract; no UI is exposed.
+
+Runtime ownership: wordpress/wp-content/plugins/tnet-community/. Tables: community_posts, community_post_audit, community_publication_events with WordPress prefix, indexes, uniqueness, schema version, and opt-in install/uninstall. The repository uses parameterized $wpdb operations and one transaction for post, audit, and outbox row.
+
+Verification: DDEV PHP lint passed. Smoke output: persisted=true, idempotent_repeat=true, post_id=post:local-synth, thread_id=thread:local-synth, audit_count=1, pending_event_count=1. Transaction checks: all_assertions=true; post/audit/event rollback=true; duplicate retry=true; audit dedupe=true; restart retrieval=true. All 72 Community Python tests passed; compilation and git diff --check passed.
+
+No production connection, production files, legacy tables, migration, routes, UI, forms, notification dispatch, mail, queue, membership, or CGI behavior was changed. Tables were installed only in local DDEV and removed by the verification scripts.
+
+Next ticket: local developer-facing verification/QA page or CLI expansion, only after persistence review; no production cutover is implied.
+
+Commit/push: 04cdc98.
+
+Protected tmp/hopper/tnet-3.0/current/output.txt was not edited, archived, or collected.
