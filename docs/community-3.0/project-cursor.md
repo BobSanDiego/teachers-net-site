@@ -1,5 +1,25 @@
 # Community 3.0 Project Cursor
 
+## 2026-09-11 production media and AWS diagnostic
+
+`COMMUNITY3-V1-MEDIA-ARCHITECTURE-AND-AWS-COST-DIAGNOSTIC001` is complete as a
+diagnostic-only Director decision package. It recommends C3-owned media
+identity/registry, browser direct-to-private-S3 quarantine, SQS plus isolated
+image processing, a 2048px JPEG master with 480/960/1440 WebP derivatives,
+EXIF/GPS stripping, CloudFront OAC delivery, and no ordinary raw retention
+after 24 hours. No AWS resource, billing, credential, production, Sandy,
+schema, or product code was changed.
+
+The report models 0.75-2.6 MB retained/photo, about $33-$80/month at 1M photos
+and $369-$834/month at 10M before full DR replication and an unselected scanner.
+It classifies local uploads, JSON-only persistence, single-`src` rendering, and
+deletion/retention as non-production. It also records that
+`TNet_Community_Link_Preview` synchronously fetches remotely despite the
+fixture-only boundary; production must replace or disable it. Director approval
+is now required for provider/account/region, scanner, public/private scope, DR,
+retention, CloudFront plan and budget-response ownership. Detail:
+`community-v1-media-architecture-and-aws-cost-diagnostic-v1.md`.
+
 ## 2026-09-11 notification convergence completion
 
 `COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001-CONT1` is

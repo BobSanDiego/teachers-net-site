@@ -1,5 +1,25 @@
 # Community 3.0 Engineering Handoff
 
+## 2026-09-11 media architecture and AWS cost diagnostic
+
+The diagnostic-only `COMMUNITY3-V1-MEDIA-ARCHITECTURE-AND-AWS-COST-DIAGNOSTIC001`
+is complete. Recommended V1: C3 authorizes browser direct-to-private-S3
+quarantine; SQS plus isolated processing validates, scans, normalizes and
+releases C3-owned media versions; a 2048px JPEG master plus 480/960/1440 WebP
+derivatives are delivered through CloudFront OAC. Ordinary raw input is
+transient for 24 hours; curated artwork is governed separately. No AWS resource,
+billing, credential, production/Sandy, schema, or product implementation changed.
+
+The detailed report is `community-v1-media-architecture-and-aws-cost-diagnostic-v1.md`.
+It identifies current local filesystem/JSON media seams as non-production and
+finds a source/continuity conflict: `TNet_Community_Link_Preview::resolve()`
+performs synchronous remote fetches, so it must be replaced or disabled before a
+production media release. Await Director decisions for provider/account/region,
+scanner/release owner, retention policy, public/private scope, recovery copy,
+CloudFront plan and cost-alert response owner. The next task must be explicitly
+authorized implementation; do not create AWS resources or repair the discovered
+link-preview seam under this diagnostic.
+
 ## 2026-09-11 notification convergence completion
 
 `COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001-CONT1` is
