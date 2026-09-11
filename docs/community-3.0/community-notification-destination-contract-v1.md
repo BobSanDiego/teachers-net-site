@@ -14,3 +14,12 @@ and alias status at access time. Unavailable targets use a truthful fallback and
 do not disclose restricted content. The global bell remains available during
 modal presentation. Providers may add transport metadata, but producer and
 renderer must not invent a route from display text.
+
+## Ratified consumer-boundary clarification
+
+The source resolver may return the visibility-checked canonical URL as a string.
+At the shared-shell presentation boundary it is normalized with its registered
+destination key into `{ key, href }` before rendering. The normalized `href`
+must preserve the complete canonical route and any supported immutable reply
+fragment, including `#reply-post:{opaque-id}`; a valid resolver result must
+never be reduced to `#` or lose its accessible destination label.

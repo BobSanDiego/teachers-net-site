@@ -5,6 +5,21 @@ supersedes earlier scheduling shorthand where it conflicts with current
 implementation evidence. It authorizes no schema, runtime, route, legacy-data,
 Sandy, or production change.
 
+## 2026-09-11 native relationship-notification acceptance amendment
+
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001-CONT1` is
+`COMPLETE / PROVEN_NATIVE` for the authenticated Shared Shell bell and C3
+reply-notification destination/read seam on the canonical local fixture. The
+provider lookup now invokes event-level destination/authorization callbacks,
+and Shared Shell preserves valid resolver URL strings as destination links.
+Native proof includes one unread User A item, the full
+`#reply-post:post:256447c50a99dba0` href and meaningful `community.thread`
+label, canonical exact-reply click-through, visible User B reply, persistent
+read state after reload, zero User B self-notifications, and no email delivery.
+Existing relationship, preference, suppression, duplicate, and self-event
+seams remain carried forward. This is local acceptance evidence only; it does
+not change the release conclusion or authorize production/Sandy work.
+
 ## Release conclusion
 
 Community 3.0 is a credible local, text-first discussion and migration pilot.
@@ -37,7 +52,7 @@ runtime-required Community product source remains ignored or untracked.
 | Feed definitions | PARTIAL | Deterministic latest exists. Popular/Unanswered are presentation literals, not queries. |
 | Canonical page and modal navigation | IMPLEMENTED_NOT_ACCEPTED | Local page-versus-modal contract exists; public URL/SEO and release acceptance remain gates. |
 | Community/thread follow and interest | LOCAL FOUNDATION / RELEASE_GATE | C3 now owns opaque, idempotent Community/thread follow and separately typed inferred participation with audit evidence; native relationship controls and migration remain release gates. |
-| Bell, reply, reaction, mention, group notifications | LOCAL FOUNDATION / PARTIAL | C3 post-commit adapter produces bounded reply and followed-Community activity bell events through the shared provider with recipient, target, self-event and dedupe policy; reactions, mentions, aggregation and full visibility acceptance remain open. |
+| Bell, reply, reaction, mention, group notifications | LOCAL FOUNDATION / PARTIAL | C3 post-commit adapter produces bounded reply and followed-Community activity bell events through the shared provider with recipient, target, self-event and dedupe policy; authenticated reply destination/read acceptance is PROVEN_NATIVE; reactions, mentions, aggregation and full visibility acceptance remain open. |
 | Notification preferences and delivery | LOCAL FOUNDATION / RELEASE_GATE | Explicit bell/email frequency state, suppression precedence, and bounded legacy-evidence reconciliation are implemented; email is evaluated but not delivered and no consent is inferred. |
 | Save/hide/mute/block | MISSING / DEFERRED | Per-reader and safety relationships are absent; scope and moderation interaction require a product decision. |
 | Report/moderation queue, scoped roles, sanctions | LOCAL FOUNDATION / RELEASE_GATE | C3 owns bounded report intake, private reporter identity, admin queue, report audit, and publisher-owned reversible content actions. Role matrix, sanctions, appeals, rate controls and native acceptance remain release gates. |
@@ -90,8 +105,9 @@ preference, applies unsubscribe/hard-bounce/complaint suppression, and remains
 only. Bounded legacy evidence is retained and classified as deterministic,
 confirmation-required, `NO_EMAIL`, or suppressed. The deterministic local
 proof is `tools/community3/test_relationship_notification_preference.php`.
-Native authenticated bell/account inspection is still a HUMAN_QA gate when the
-browser-control path is available.
+Native authenticated bell/account inspection is PROVEN_NATIVE for the retained
+reply fixture; broader notification families, visibility cases, and delivery
+remain release gates when their browser journeys are available.
 
 ## Membership migration: mandatory and separate
 

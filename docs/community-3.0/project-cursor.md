@@ -1,5 +1,76 @@
 # Community 3.0 Project Cursor
 
+## 2026-09-11 notification convergence completion
+
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001-CONT1` is
+`COMPLETE / PROVEN_NATIVE` on the canonical integrated fixture
+`https://teachers-net-live.ddev.site/community/ai-in-education/`. The prior
+native contradiction was diagnosed to the shared Notifications registry/service:
+event-level `authorize`/`resolve` callbacks were registered but the service
+looked them up in the version schema, so the REST record exposed no resolved
+destination. The provider now exposes the registered resolver result and the
+Shared Shell presentation boundary preserves URL-string destinations as
+`{key, href}` semantics.
+
+Using retained User A/User B state, the authenticated User A bell showed exactly
+one unread C3 reply item, with label `Notification destination:
+community.thread.` and href ending in
+`#reply-post:post:256447c50a99dba0`. Clicking it navigated to that canonical
+thread and exact reply anchor; the User B reply was visible. The read write
+persisted across reload: User A's bell reported no unread notifications and
+the provider row had a non-null `read_at`. Provider state remains one C3 row for
+the event, User B has zero self-notifications, and no email delivery state was
+created. Focused deterministic assertions pass, including the resolved reply
+destination. No Chrome/CDP/bridge recovery was rerun.
+
+The release ledger now carries native proof for the authenticated relationship
+notification destination/read seam. The local runtime authority remains
+`status=ok`; no production, Sandy, schema, role, or credential state changed.
+
+## 2026-09-11 native notification acceptance
+
+`COMMUNITY3-NATIVE-NOTIFICATION-ACCEPTANCE001` generated one legitimate C3
+reply notification through the canonical relationship service plus User B's
+native reply composer on the integrated `teachers-net-live` fixture. User A's
+bell showed `1 unread notifications`, and the drawer showed the expected User B
+reply with Community/thread context. The provider and decision records agree,
+and the actor received no self-notification.
+
+The native notification item is blocked at the destination/presentation seam:
+its accessible label says `Notification destination: .` and its href ends in
+the canonical thread URL plus `#`, omitting the expected
+`#reply-post:post:256447c50a99dba0` context. Native click-through and read-state
+acceptance were therefore not attempted or claimed. The disposable follow was
+unfollowed through the canonical service; the reply and notification remain as
+explicit local evidence of the contradiction. No product repair was made.
+
+## 2026-09-11 native acceptance follow-up
+
+The browser resume condition from `TNET-BROWSER-BRIDGE-RECOVERY001` is
+satisfied. Native acceptance used the approved Chrome DevTools control path
+without rerunning Chrome/CDP/bridge recovery, against the canonical integrated
+fixture `https://teachers-net-live.ddev.site/community/ai-in-education/`.
+
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001` remains
+`PARTIAL / HUMAN_QA_PENDING`: authenticated Shared Shell account, bell, and C3
+feed presentation, plus one legitimate C3 notification's native visibility,
+are proven. The native destination href contradicts the deterministic full
+destination context, so click-through/read-state completion is blocked at the
+notification presentation seam. Deterministic duplicate/self-event evidence
+remains carried forward; no product source was repaired.
+
+`COMMUNITY3-V1-MEMBERSHIP-AND-MODERATION-FOUNDATION001` is now
+`COMPLETE / PROVEN_NATIVE`: User B Join/Leave state persists across reload,
+User B submitted a report on an existing C3 topic, User A reached the
+canonical Community Publisher Workbench, observed the existing open spam
+report, and natively resolved it with `Take action` plus `Hide target`. The
+queue showed `Report resolution persisted` and `No unresolved reports`; the
+target lifecycle and audit history agree, and the result persisted after
+reload. User B remains denied moderator operations. The temporary local
+`manage_options` capability was granted to User A through WP-CLI solely for
+this journey, then removed and verified absent; no product source, schema,
+presentation, Sandy, production, or durable role/credential state was changed.
+
 ## 2026-09-10 current release-convergence state
 
 `COMMUNITY3-V1-RELEASE-CONVERGENCE-AUDIT002` is complete as a planning-only

@@ -1,5 +1,69 @@
 # Community 3.0 Engineering Handoff
 
+## 2026-09-11 notification convergence completion
+
+`COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001-CONT1` is
+`COMPLETE / PROVEN_NATIVE` against
+`https://teachers-net-live.ddev.site/community/ai-in-education/`. The native
+destination contradiction was owned by the shared Notifications registry/service
+lookup, not by Community route generation: event-level `authorize` and
+`resolve` callbacks were being read from the version schema and were therefore
+not invoked over REST. The service now resolves the registered event adapter;
+Shared Shell also normalizes a valid resolver URL string at its presentation
+boundary without disturbing object-shaped fixtures.
+
+Native User A evidence: one unread C3 reply item, meaningful
+`community.thread` destination label, full `#reply-post:post:256447c50a99dba0`
+href, canonical click-through with the User B reply visible, and persistent
+read state after reload. Deterministic/native evidence agrees on one recipient
+row, zero User B self-notifications, and no email delivery. Focused C3
+relationship/notification assertions pass. The runtime authority remains
+`status=ok`; Chrome/CDP/bridge recovery was not rerun and no production,
+Sandy, schema, role, or credential state changed.
+
+## 2026-09-11 native notification acceptance
+
+`COMMUNITY3-NATIVE-NOTIFICATION-ACCEPTANCE001` generated one legitimate C3
+reply notification through the canonical relationship service and User B's
+native reply composer. User A's authenticated bell showed `1 unread
+notifications`, and the drawer showed the expected User B reply with
+Community/thread context. Provider/decision state agrees; User B received no
+self-notification and no email preference or email event was created.
+
+Native acceptance stopped at the destination/presentation owner: the item
+exposes `Notification destination: .` and an href ending in the canonical
+thread URL plus `#`, rather than the expected
+`#reply-post:post:256447c50a99dba0` deep context. Click-through and read-state
+were not attempted after this contradiction. The temporary thread follow was
+unfollowed through the canonical service; the reply and notification remain as
+documented local evidence. No product repair was made.
+
+## 2026-09-11 native acceptance follow-up
+
+The `TNET-BROWSER-BRIDGE-RECOVERY001` resume condition is satisfied. Native
+acceptance used the approved Chrome DevTools control path without rerunning
+Chrome/CDP/bridge recovery on the canonical integrated fixture
+`https://teachers-net-live.ddev.site/community/ai-in-education/`.
+
+Relationship/notification acceptance is `PARTIAL / HUMAN_QA_PENDING`:
+authenticated User A and User B Shared Shell account, bell, and C3 feed
+presentation passed, and one legitimate C3 notification was visible natively.
+The native notification href omitted the required reply deep-context fragment,
+contradicting the deterministic destination seam; click-through/read-state
+completion is therefore blocked at that presentation owner. Duplicate/self
+deterministic evidence remains carried forward.
+
+Membership/moderation native acceptance is `COMPLETE / PROVEN_NATIVE`:
+User B Join/Leave persisted across reload, User B submitted a report on an
+existing C3 topic, User B was denied the canonical Community Publisher
+Workbench, and the existing open spam report was natively observed and
+resolved by authenticated User A with `Take action` plus `Hide target`. The
+queue resolution, hidden publisher lifecycle, matching audit history, and
+post-reload state agree. User A's temporary local `manage_options` capability
+was granted through WP-CLI solely for this journey, then removed and verified
+absent; no product source, schema, presentation, Sandy/production, or durable
+role/credential state was changed.
+
 ## 2026-09-10 release-convergence handoff
 
 The active execution plan is `community-v1-release-convergence-ledger-v1.md`,

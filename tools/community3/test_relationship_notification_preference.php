@@ -79,6 +79,7 @@ $self_reply = (new TNet_Community_Publisher_Application())->publish_reply(['subm
 $self_event_id = (string)($self_reply['event']['event_id'] ?? ''); if ($self_event_id) $expected_event_ids[] = $self_event_id;
 $self_notifications = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->prefix}tnet_notifications WHERE source_product='community' AND event_id=%s", $self_event_id));
 $destination = $provider_rows[0]['destination_args_json'] ?? '';
+$resolved_destination = $destination ? TNet_Community_Notification_Integration::resolve_destination(json_decode($destination, true) ?: []) : false;
 $provider_available = class_exists('TNet_Notifications_Registry') && function_exists('tnet_notifications') && $wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}tnet_notifications'") === $wpdb->prefix . 'tnet_notifications';
 
 $checks = [
@@ -94,6 +95,7 @@ $checks = [
     'provider_event_exactly_once' => $provider_available && count($provider_rows) === 1 && count($provider_rows_after_duplicate) === 1,
     'self_event_suppressed' => (int)$self_notifications === 0,
     'canonical_target_args' => strpos($destination, 'community_id') !== false && strpos($destination, 'thread_id') !== false && strpos($destination, 'post_id') !== false,
+    'canonical_resolved_reply_destination' => is_string($resolved_destination) && str_ends_with($resolved_destination, '#reply-post:' . $reply_id),
 ];
-echo wp_json_encode(['all_assertions'=>!in_array(false, $checks, true),'checks'=>$checks,'provider_available'=>$provider_available,'provider_count'=>count($provider_rows),'provider_count_after_duplicate'=>count($provider_rows_after_duplicate),'destination_args_json'=>$destination,'email_evaluations'=>$email_evaluations,'legacy_classifications'=>array_map(static fn($r)=>$r['reconciliation']['classification'] ?? null,$legacy_results)], JSON_PRETTY_PRINT) . "\n";
+echo wp_json_encode(['all_assertions'=>!in_array(false, $checks, true),'checks'=>$checks,'provider_available'=>$provider_available,'provider_count'=>count($provider_rows),'provider_count_after_duplicate'=>count($provider_rows_after_duplicate),'destination_args_json'=>$destination,'resolved_destination'=>$resolved_destination,'email_evaluations'=>$email_evaluations,'legacy_classifications'=>array_map(static fn($r)=>$r['reconciliation']['classification'] ?? null,$legacy_results)], JSON_PRETTY_PRINT) . "\n";
 $cleanup(); wp_set_current_user(1);
