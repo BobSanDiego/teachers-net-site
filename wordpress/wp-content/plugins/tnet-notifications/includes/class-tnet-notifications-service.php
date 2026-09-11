@@ -46,9 +46,9 @@ final class TNet_Notifications_Service {
     $rows = $this->repository->list($recipient_user_id, $source_product, $limit, $after_created_at, $after_id);
     $output = [];
     foreach ($rows as $row) {
-      $definition = TNet_Notifications_Registry::definition($row['source_product'], $row['event_type'], (int) $row['payload_version']);
-      if (!$definition) continue;
-      $authorization = $definition['authorize'] ?? null;
+      $event_definition = TNet_Notifications_Registry::event_definition($row['source_product'], $row['event_type']);
+      if (!$event_definition || !TNet_Notifications_Registry::definition($row['source_product'], $row['event_type'], (int) $row['payload_version'])) continue;
+      $authorization = $event_definition['authorize'] ?? null;
       $record = $this->public_record($row);
       if (!$record) continue;
       if (is_callable($authorization) && !call_user_func($authorization, $recipient_user_id, $record)) continue;
@@ -64,11 +64,11 @@ final class TNet_Notifications_Service {
     $page = $this->repository->list_page($recipient_user_id, $source_product, $limit, $after_created_at, $after_id);
     $output = [];
     foreach (($page['rows'] ?? []) as $row) {
-      $definition = TNet_Notifications_Registry::definition($row['source_product'], $row['event_type'], (int) $row['payload_version']);
-      if (!$definition) continue;
+      $event_definition = TNet_Notifications_Registry::event_definition($row['source_product'], $row['event_type']);
+      if (!$event_definition || !TNet_Notifications_Registry::definition($row['source_product'], $row['event_type'], (int) $row['payload_version'])) continue;
       $record = $this->public_record($row);
       if (!$record) continue;
-      $authorization = $definition['authorize'] ?? null;
+      $authorization = $event_definition['authorize'] ?? null;
       if (is_callable($authorization) && !call_user_func($authorization, $recipient_user_id, $record)) continue;
       $output[] = $record;
     }
@@ -87,7 +87,7 @@ final class TNet_Notifications_Service {
   }
 
   private function public_record(array $row) {
-    $definition = TNet_Notifications_Registry::definition($row['source_product'], $row['event_type'], (int) $row['payload_version']);
+    $definition = TNet_Notifications_Registry::event_definition($row['source_product'], $row['event_type']);
     $resolved_destination = null;
     if ($definition && is_callable($definition['resolve'] ?? null)) {
       $resolved_destination = call_user_func($definition['resolve'], json_decode($row['destination_args_json'], true) ?: []);

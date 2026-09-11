@@ -6,7 +6,9 @@ $fail = static function ($message) { throw new RuntimeException($message); };
 $ok = static function ($condition, $message) use ($fail) { if (!$condition) $fail($message); };
 
 $definition = [
-  'versions' => [1 => ['metadata_keys' => ['title', 'count'], 'destinations' => ['test.item' => static function ($args) { return isset($args['id']) && absint($args['id']) > 0; }], 'authorize' => static function ($recipient, $record) { return (int) $record['recipient_user_id'] === (int) $recipient; }]],
+  'versions' => [1 => ['metadata_keys' => ['title', 'count'], 'destinations' => ['test.item' => static function ($args) { return isset($args['id']) && absint($args['id']) > 0; }]]],
+  'authorize' => static function ($recipient, $record) { return (int) $record['recipient_user_id'] === (int) $recipient; },
+  'resolve' => static function ($args) { return 'https://example.test/items/' . absint($args['id']) . '/'; },
 ];
 $ok(TNet_Notifications_Registry::register_source('test', ['test.created' => $definition]), 'test source registration failed');
 
@@ -58,6 +60,8 @@ $unknown_list = $service->list_for_recipient(1, 'unknown');
 $ok(is_wp_error($unknown_list), 'unknown source list did not fail closed');
 $ok(count($service->list_for_recipient(1)) === 1, 'recipient list incorrect');
 $ok(count($service->list_for_recipient(317)) === 1, 'second recipient list incorrect');
+$test_record = $service->list_for_recipient(1, 'test')[0] ?? [];
+$ok(($test_record['destination'] ?? null) === 'https://example.test/items/1/', 'resolved destination was not exposed to the consumer');
 wp_set_current_user(1);
 $rest_user_one = rest_do_request(new WP_REST_Request('GET', '/tnet-notifications/v1/notifications'));
 $rest_user_one_data = $rest_user_one->get_data();

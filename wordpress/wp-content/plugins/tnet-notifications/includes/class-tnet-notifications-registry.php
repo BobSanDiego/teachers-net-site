@@ -30,6 +30,12 @@ final class TNet_Notifications_Registry {
     return self::$sources[$source_product][$event_type]['versions'][(int) $version];
   }
 
+  public static function event_definition($source_product, $event_type) {
+    $source_product = sanitize_key((string) $source_product);
+    $event_type = self::event_key($event_type);
+    return self::$sources[$source_product][$event_type] ?? null;
+  }
+
   public static function validate_event(array $event) {
     $required = ['event_id','source_product','event_type','payload_version','object_type','object_id','destination_key','destination_args','metadata','dedupe_key'];
     foreach ($required as $field) if (!array_key_exists($field, $event)) return new WP_Error('tnet_notifications_event_invalid', "Missing event field: {$field}.");

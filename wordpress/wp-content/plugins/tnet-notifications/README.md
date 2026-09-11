@@ -22,6 +22,12 @@ facts, and mark-read operations; Community continues to own `reply.created`
 and `like.added` producers. Job Center fixtures prove presentation only and do
 not establish producer/provider integration.
 
+Event-level `authorize` and `resolve` callbacks are hydrated from the registered
+event definition when a recipient list is built. A source resolver may return a
+canonical URL string or a structured destination; the Shared Shell presentation
+boundary normalizes URL strings with `destination_key` into `{ key, href }` and
+preserves supported deep-link fragments.
+
 ## Local activation and migration
 
 From the repository root:

@@ -208,8 +208,15 @@
       var presentation = semanticPresentation(item);
       var quotedContext = presentation.context ? '“' + presentation.context + '”' : '';
       var statement = presentation.actor ? presentation.actor + presentation.primary + (quotedContext ? ' ' + quotedContext : '') : presentation.primary;
-      var label = statement + ' ' + (unread ? 'Unread.' : 'Read.') + ' Notification destination: ' + (item.destination.key || '') + '.';
-      var href = item.destination && item.destination.href ? item.destination.href : '#';
+      // Source resolvers may return a canonical URL string, while synthetic
+      // consumers provide the normalized { key, href } shape. Normalize at
+      // the shared presentation boundary so a valid deep link is never
+      // reduced to '#' and its destination is always announced.
+      var destination = typeof item.destination === 'string'
+        ? { key: item.destination_key || '', href: item.destination }
+        : (item.destination || {});
+      var label = statement + ' ' + (unread ? 'Unread.' : 'Read.') + ' Notification destination: ' + (destination.key || item.destination_key || '') + '.';
+      var href = destination.href || '#';
       return '<a class="tnet-jobs-shell-lab-notification-row' + (unread ? ' is-unread' : '') + '" href="' + escapeHtml(href) + '" data-notification-id="' + escapeHtml(item.notification_id) + '" data-notification-destination="' + escapeHtml(href) + '" aria-label="' + escapeHtml(label) + '">' +
         identity(Object.assign({}, item, { event_icon: presentation.icon })) +
         '<span class="tnet-jobs-shell-lab-notification-copy"><span class="tnet-jobs-shell-lab-notification-payload">' + (presentation.actor ? '<strong>' + escapeHtml(presentation.actor) + '</strong>' + escapeHtml(presentation.primary) : escapeHtml(presentation.primary)) + (quotedContext ? ' ' + escapeHtml(quotedContext) : '') + '</span><span class="tnet-jobs-shell-lab-notification-time">' + escapeHtml(relativeTime(item.created_at || item.display_time)) + '</span></span>' +
