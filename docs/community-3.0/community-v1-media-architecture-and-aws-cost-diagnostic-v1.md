@@ -75,8 +75,9 @@ the ordinary-user raw-deletion rule.
 ### Measured local encoder evidence
 
 Inputs are local PNG UI/QA fixtures, not phone photos; their byte results are
-illustrative only. The largest input, `wordpress/wp-content/uploads/2026/08/
-image-1.png`, is 2448x1960 and 6.70 MB. Its four-byte decoded raster is about
+illustrative only. The largest input,
+`wordpress/wp-content/uploads/2026/08/image-1.png`, is 2448x1960 and 6.70 MB.
+Its four-byte decoded raster is about
 18.3 MiB before codec overhead.
 
 | Output | Dimensions | Bytes | Local DDEV ImageMagick wall time |
