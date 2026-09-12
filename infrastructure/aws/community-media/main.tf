@@ -118,7 +118,7 @@ resource "aws_sqs_queue" "processing" {
   sqs_managed_sse_enabled    = true
 
   redrive_policy = jsonencode({
-    deadLetterTargetArn = aws_sqs_queue.dlq.arn
+    deadLetterTargetArn = "arn:aws:sqs:${local.region}:${local.account_id}:${local.processing_dlq}"
     maxReceiveCount     = 3
   })
 }
@@ -134,7 +134,7 @@ resource "aws_sqs_queue" "dlq" {
 
   redrive_allow_policy = jsonencode({
     redrivePermission = "byQueue"
-    sourceQueueArns   = [aws_sqs_queue.processing.arn]
+    sourceQueueArns   = ["arn:aws:sqs:${local.region}:${local.account_id}:${local.processing_queue}"]
   })
 }
 
@@ -324,13 +324,14 @@ resource "aws_cloudwatch_log_group" "processor" {
 }
 
 resource "aws_lambda_function" "processor" {
-  function_name = local.processor_name
-  role          = aws_iam_role.processor.arn
-  package_type  = "Image"
-  image_uri     = local.processor_image
-  architectures = ["arm64"]
-  memory_size   = 2048
-  timeout       = 60
+  function_name                  = local.processor_name
+  role                           = aws_iam_role.processor.arn
+  package_type                   = "Image"
+  image_uri                      = local.processor_image
+  architectures                  = ["arm64"]
+  memory_size                    = 2048
+  timeout                        = 60
+  reserved_concurrent_executions = 2
 
   ephemeral_storage {
     size = 512
@@ -350,11 +351,6 @@ resource "aws_lambda_function" "processor" {
     log_format = "Text"
     log_group  = "/aws/lambda/${local.processor_name}"
   }
-}
-
-resource "aws_lambda_reserved_concurrency" "processor" {
-  function_name                  = aws_lambda_function.processor.function_name
-  reserved_concurrent_executions = 2
 }
 
 resource "aws_lambda_event_source_mapping" "processor" {
