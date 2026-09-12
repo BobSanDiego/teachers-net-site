@@ -27,6 +27,7 @@ Thumbs.db
 /tmp/qa/
 __pycache__/
 *.pyc
+infrastructure/aws/community-media/.terraform/
 
 # Node tooling
 node_modules/
