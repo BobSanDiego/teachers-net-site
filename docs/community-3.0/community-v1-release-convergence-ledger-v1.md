@@ -286,3 +286,15 @@ target are complete. The four disabled legacy distributions remain untouched.
   notification and media-provenance contracts.
 - Current C3 source at `be6f258` and read-only integrated runtime evidence in
   the Hero audit.
+
+## C3 IaC reconciliation — 2026-09-12
+
+Cycle `260912194154` imported all declared existing C3 media anchors into the
+existing versioned state backend without applying a plan. `tofu validate`
+passed. The final no-apply plan is `0 to add, 1 to change, 0 to destroy`.
+The sole residual is provider-only representation: the imported event-source
+mapping UUID `6219b5b3-b709-485b-880e-a186fc5c9618` exposes an empty
+`metrics_config`, while the provider schema requires at least one metric and
+cannot declare that empty default. Lambda state was corrected by a state-only
+canonical-name re-import; CloudFront origin and S3 lifecycle declarations were
+normalized without changing live AWS behavior. No apply occurred.

@@ -728,3 +728,21 @@ the Community source branch/worktree and DDEV authority in `project-cursor.md`;
 the mixed control-plane recovery workspace is not a Community product source
 owner. No production, Sandy, schema, runtime, or public-cutover change is
 authorized by this handoff.
+
+## C3 IaC reconciliation completion — 2026-09-12
+
+Cycle `260912194154` brought all declared existing C3 media anchors into the
+canonical OpenTofu state using the existing versioned SSE-S3 backend. Imports
+and normalization were state/declaration-only; no AWS plan was applied and no
+proven resource was recreated, replaced, deleted, or behaviorally changed.
+The Lambda identity was corrected by state-only removal and re-import using
+the canonical function name. CloudFront/OAC and S3 lifecycle declarations now
+match accepted native state.
+
+Validation passed. The final no-apply plan has zero additions and zero
+destructions. Its only residual is provider-only representation of an imported
+empty event-source `metrics_config`; the AWS provider requires at least one
+metric and the empty default cannot be represented without changing behavior.
+This semantically equivalent residual is accepted. The next boundary is
+application upload/signing and media-registry planning; no implementation is
+authorized by this handoff.

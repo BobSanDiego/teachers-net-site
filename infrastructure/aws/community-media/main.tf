@@ -66,8 +66,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "media" {
     id     = "expire-noncurrent-media-versions-30d"
     status = "Enabled"
 
-    filter {}
-
     noncurrent_version_expiration {
       noncurrent_days           = 30
       newer_noncurrent_versions = 1
@@ -382,10 +380,6 @@ resource "aws_cloudfront_distribution" "media" {
     origin_id                = "C3MediaS3Origin"
     origin_path              = "/ready"
     origin_access_control_id = aws_cloudfront_origin_access_control.media.id
-
-    s3_origin_config {
-      origin_access_identity = ""
-    }
   }
 
   default_cache_behavior {

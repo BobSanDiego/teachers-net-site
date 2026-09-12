@@ -161,3 +161,27 @@ unchanged until that evidence and Director approval exist.
 This foundation does not authorize composer/upload UI, signing/upload
 integration, historical migration, Community hero administration, or
 production cutover.
+
+## IaC reconciliation — 2026-09-12
+
+Cycle `260912194154` completed state-only import of the governed S3 bucket and
+subresources, SQS queues and policies, ECR repository and policy, processor IAM
+boundary/role/policy, Lambda function, event-source mapping, log group,
+CloudFront distribution/OAC, and the `media.teachers.net` Route 53 record.
+The backend is the existing versioned, SSE-S3 state bucket
+`tnet-c3-media-state-553830187994-us-west-2`; it remains a separate backend
+anchor rather than a resource in this stack.
+
+The Lambda was corrected in state only by removing the ARN-valued import and
+re-importing the same function by canonical name. ARN, immutable image digest,
+arm64 architecture, runtime role, sizing, environment, concurrency, and
+logging configuration remained unchanged. The CloudFront declaration now
+matches the imported OAC-backed origin representation, and the lifecycle
+declaration matches the unfiltered noncurrent-version rule.
+
+Final `tofu validate` passed. The no-apply plan has zero additions and zero
+destructions, with one provider-only representation difference: the imported
+event-source mapping exposes an empty `metrics_config`, while the provider
+schema cannot declare an empty metrics list. No plan was applied. This state is
+accepted as semantically equivalent; no proven AWS behavior is to be mutated
+to remove the residual.

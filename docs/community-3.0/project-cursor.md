@@ -767,3 +767,22 @@ bucket-policy anchors. Import must precede plan and any apply; no resource may
 be recreated to obtain state. Application upload/signing integration, registry
 implementation, migration, and production cutover remain gated until that
 reconciliation is reviewed.
+
+## 2026-09-12 C3 IaC reconciliation completion
+
+`C3-V1-MEDIA-IAC-RECONCILIATION001`, cycle `260912194154`, completed the
+controlled state-only reconciliation. All declared existing C3 media anchors
+are represented in the existing versioned backend
+`tnet-c3-media-state-553830187994-us-west-2`; no resource was recreated,
+replaced, deleted, or applied. Lambda was re-imported by canonical bare
+function name with its ARN, immutable image digest, runtime configuration, and
+accepted behavior unchanged. CloudFront and S3 lifecycle declarations now
+match the imported representations.
+
+`tofu validate` passed. The reviewed no-apply plan is semantically equivalent:
+zero additions and destructions, with one provider-only event-source
+`metrics_config` empty-default residual that cannot be declared because the
+provider requires at least one metric. Native processor/runtime and
+CloudFront delivery seams remain `PROVEN_NATIVE`. Application upload/signing,
+media-registry implementation, migration, and production cutover remain
+outside this objective.
