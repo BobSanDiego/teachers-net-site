@@ -266,6 +266,19 @@ native processing seam was reopened.
 
 ## Evidence sources
 
+## CloudFront continuation — 2026-09-12
+
+The Director has selected `media.teachers.net` as the canonical C3 public
+media hostname. The reviewable least-privilege CloudFront operator design is
+`community-v1-media-cloudfront-iam-and-delivery-design-v1.md`.
+
+The current runtime operator cannot inspect CloudFront, so no existing
+distribution/OAC state is claimed and no AWS state was changed. The design
+uses a one-time tagged create/discovery phase followed by exact distribution
+and OAC ARNs; it preserves the private S3 origin and returns the exact
+`ready/*` bucket-policy statement for human review. An `ISSUED` ACM certificate
+in `us-east-1` and DNS validation/cutover remain human prerequisites.
+
 - `COMMUNITY3-V1-CAPABILITY-MODERATION-READINESS001`, cycle `260908134731`.
 - `COMMUNITY3-HERO-INFORMATION-AUDIT001`, cycle `260910131500`.
 - Convergence addendum, V1 authority consolidation, identity, migration, URL,

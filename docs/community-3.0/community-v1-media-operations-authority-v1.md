@@ -1,6 +1,6 @@
 # Community V1 Media Operations Authority v1
 
-Status: `PARTIAL / DIRECTOR_DECISION_REQUIRED`, recorded 2026-09-12.
+Status: `PARTIAL / CLOUDFRONT_OPERATOR_AUTHORIZATION_REQUIRED`, recorded 2026-09-12.
 
 This is the durable Community authority for the manually bootstrapped C3 media
 infrastructure, import-first IaC reconciliation, cost-safety controls, the
@@ -46,7 +46,7 @@ queue, function, role, log group, ECR repository, or notification.
 | ECR repository | `tnet-c3-media-processor` | immutable image proven; import/reconcile pending |
 | processor runtime role/policy/boundary | `TNetC3MediaProcessor`, `TNetC3MediaProcessorRuntime`, `TNetC3MediaProcessorBoundary` | bounded and proven; import/reconcile pending |
 | processor log group | `/aws/lambda/tnet-c3-media-processor` | seven-day retention proven; import/reconcile pending |
-| CloudFront distribution/OAC | no distribution is proven by the current operator | not established; Director decision required |
+| CloudFront distribution/OAC | hostname approved as `media.teachers.net`; current operator cannot inspect | not established; CloudFront operator bootstrap pending |
 
 The existing Lambda contract remains: arm64 image, 2048 MB memory, 60-second
 timeout, 512 MB ephemeral storage, reserved concurrency 2, SQS batch size 1,
@@ -81,17 +81,23 @@ verify their current account state before any usage-bearing expansion.
 
 ## CloudFront gate
 
-The V1 service/region/scope decision permits CloudFront Free initially for
-public Community imagery, but the current approved operator returned
-`AccessDenied` for `cloudfront:ListDistributions`. Therefore no distribution,
-OAC, hostname, cache policy, or DNS state is claimed or changed.
+The Director has selected `media.teachers.net` as the canonical public media
+hostname. The current runtime operator returned `AccessDenied` for
+`cloudfront:ListDistributions`; no distribution, OAC, cache policy, hostname,
+or DNS state is claimed or changed.
 
-The single outstanding Director decision is: authorize a narrowly scoped
-CloudFront read/provisioning path and choose either (a) the distribution's
-default `cloudfront.net` hostname for the initial integration, or (b) a
-canonical custom media hostname with its DNS/TLS owner and mapping. Until that
-decision and read access exist, application delivery/upload integration stays
-gated. No Route 53 or edge resource is created by this cycle.
+The least-privilege design is recorded in
+`community-v1-media-cloudfront-iam-and-delivery-design-v1.md`. It uses a
+two-phase CloudFront operator: account-level list/create permissions only for
+the reviewed one-time bootstrap, followed by exact distribution/OAC ARNs after
+IDs are recorded. The design explicitly excludes Route 53, ACM, S3, IAM,
+Lambda, SQS, ECR, billing, WAF, edge compute, real-time logs, Origin Shield,
+and invalidations.
+
+CloudFront custom aliases require an `ISSUED` trusted ACM certificate covering
+`media.teachers.net` in `us-east-1`. DNS validation and the eventual CNAME or
+ALIAS to the returned `cloudfront.net` domain are separate human-authorized
+steps. No Route 53, certificate, or S3 bucket-policy mutation occurred here.
 
 ## Media-registry contract before application integration
 
@@ -141,7 +147,7 @@ unchanged until that evidence and Director approval exist.
 | Bounded logging and current Lambda sizing | `PROVEN_NATIVE` | Runtime-proof cycle; 2048 MB unchanged |
 | IaC import/reconciliation authority | `BOUNDED / PENDING` | Canonical home and import map recorded; apply is a later controlled step |
 | Account cost controls | `BOUNDED / HUMAN_OWNER` | No optional paid telemetry; Director must verify billing alerts |
-| CloudFront delivery foundation | `DIRECTOR_DECISION_REQUIRED` | Current operator cannot list distributions; hostname/DNS choice and access path required |
+| CloudFront delivery foundation | `OPERATOR_AUTH_REQUIRED` | Hostname approved; CloudFront operator role, us-east-1 certificate, read-only discovery, and exact S3 policy review remain |
 | Registry metadata contract | `DEFINED / NOT_IMPLEMENTED` | Contract recorded; application integration is a later ticket |
 
 This foundation does not authorize composer/upload UI, signing/upload

@@ -742,3 +742,10 @@ reads are outside its policy. No AWS mutation occurred. CloudFront therefore
 stops at one Director decision: default CloudFront hostname versus an
 approved custom media hostname/DNS owner, plus the least-privilege CloudFront
 access path. Application upload/delivery integration remains gated.
+
+The Director has now approved `media.teachers.net` as the canonical public
+media hostname. CloudFront IAM and delivery configuration is recorded in
+`community-v1-media-cloudfront-iam-and-delivery-design-v1.md`; the current
+runtime operator still lacks CloudFront inspection authority. The next step is
+human bootstrap of that exact MFA-gated role plus an `ISSUED` ACM certificate
+in `us-east-1`; DNS and S3 policy changes remain separately authorized.

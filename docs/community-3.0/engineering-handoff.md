@@ -671,6 +671,22 @@ narrow CloudFront read/provisioning path. Billing controls remain Engineering
 Director-owned. Application upload/delivery integration must wait for this
 gate; the proven Lambda processing path is unchanged.
 
+## 2026-09-12 CloudFront hostname decision
+
+The Engineering Director selected `media.teachers.net` as the canonical C3
+public media hostname. The reviewable least-privilege CloudFront operator
+design is `community-v1-media-cloudfront-iam-and-delivery-design-v1.md`.
+CloudFront work is not yet natively executable: the approved runtime operator
+cannot call `cloudfront:ListDistributions`, and no distribution/OAC/DNS/cert
+state was changed. The design requires an `ISSUED` ACM certificate in
+`us-east-1`, separate DNS validation, and a human-reviewed exact `ready/*`
+S3 bucket-policy statement before delivery is used.
+
+Do not start application upload integration or mutate Route 53, ACM, S3,
+CloudFront, or the proven Lambda runtime until the CloudFront operator is
+bootstrapped and the one-time create permissions are narrowed after IDs are
+recorded.
+
 ## Current v1 authority handoff
 
 Use `community-v1-authority-consolidation-v1.md` as the current compact
