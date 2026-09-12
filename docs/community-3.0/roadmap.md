@@ -165,3 +165,11 @@ application runtime-to-signer role chain. Exact least-privilege JSON and
 bootstrap procedure: `community-v1-media-application-integration-bootstrap-
 gate-v1.md`. Existing runtime, delivery, and IaC seams remain closed and
 proven.
+
+## C3 application bootstrap execution blocker — 2026-09-12
+
+`C3-V1-MEDIA-APPLICATION-BOOTSTRAP001` is blocked at cycle `260912224719`
+because the approved WSL AWS wrapper fails with WinError 193 before AWS
+contact. Human PowerShell must provide read-only identity and Sandy
+instance-profile results before any temporary operator expansion or OpenTofu
+bootstrap work proceeds. No alternate credentials or AWS mutation is allowed.

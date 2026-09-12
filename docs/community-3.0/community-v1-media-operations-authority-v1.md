@@ -200,3 +200,9 @@ The existing Sandy/production host remains untouched. Do not add application
 credentials or begin implementation until the Engineering Director identifies
 the approved application host/runtime principal and completes the reviewed
 role bootstrap. The proven Lambda remains storage-only.
+
+The separate `C3-V1-MEDIA-APPLICATION-BOOTSTRAP001` cycle `260912224719` is
+currently blocked by the approved WSL AWS launcher failing with WinError 193
+before AWS contact. The exact human PowerShell read-only recovery commands and
+the no-alternate-credentials boundary are recorded in
+`community-v1-media-application-integration-bootstrap-gate-v1.md`.

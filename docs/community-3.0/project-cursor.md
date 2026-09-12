@@ -817,3 +817,13 @@ Preserve all runtime, CloudFront, DNS, S3, SQS, ECR, IAM, and OpenTofu seams as
 proven. Do not modify Sandy/production or add credentials. Resume implementation
 only after the dedicated application host/runtime identity and signer role
 chain are human-created and harmlessly verified.
+
+## 2026-09-12 C3 application bootstrap execution blocker
+
+`C3-V1-MEDIA-APPLICATION-BOOTSTRAP001` cycle `260912224719` is
+`PARTIAL / AWS_CLI_LAUNCHER_BLOCKED`. The approved WSL `aws` wrapper reaches
+the Windows CLI path but fails with `WinError 193` before AWS contact. No
+alternate profile, credential path, MFA capture, or AWS mutation was used.
+Human PowerShell must run the exact read-only identity and Sandy profile
+commands recorded in `community-v1-media-application-integration-bootstrap-
+gate-v1.md` before the consolidated operator expansion can be designed.

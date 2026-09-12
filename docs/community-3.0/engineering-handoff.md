@@ -743,6 +743,16 @@ Do not modify Sandy/production, proven AWS media resources, or credentials.
 After the human role bootstrap and safe role-chain preflight, resume the same
 objective; do not reopen the proven Lambda, CloudFront, or OpenTofu seams.
 
+## C3 media application bootstrap execution blocker — 2026-09-12
+
+The bootstrap follow-on cycle `260912224719` cannot perform its required
+read-only Sandy inspection because the approved WSL AWS launcher fails with
+WinError 193 before AWS contact. No alternate credential path or MFA capture
+was attempted. Human PowerShell read-only identity/profile output is required
+before the temporary `TNetC3MediaIaCOperator` expansion can be safely scoped.
+The exact commands are in
+`community-v1-media-application-integration-bootstrap-gate-v1.md`.
+
 ## C3 media application integration gate — 2026-09-12
 
 The dropped `C3-V1-MEDIA-APPLICATION-INTEGRATION001` ticket was executed to

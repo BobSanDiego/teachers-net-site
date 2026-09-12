@@ -200,3 +200,31 @@ IAM user key or reuse an existing operational role.
 No AWS resource or credential was created by this cycle. Product implementation
 and native acceptance resume only after the human bootstrap is complete and
 the role-chain evidence is supplied without exposing temporary credentials.
+
+## Bootstrap execution blocker — cycle 260912224719
+
+The follow-on bootstrap ticket `C3-V1-MEDIA-APPLICATION-BOOTSTRAP001` could
+not begin the required read-only Sandy inspection. The approved WSL `aws`
+launcher resolves to the existing Windows AWS CLI, but both
+`sts get-caller-identity` and Sandy discovery failed before contacting AWS
+with `WinError 193: %1 is not a valid Win32 application`. No alternate
+credential path was used and no AWS state changed.
+
+Human PowerShell execution is required for these exact read-only commands:
+
+```powershell
+aws.exe sts get-caller-identity --profile tnet-c3-media-iac-operator --region us-west-2 --output json
+aws.exe ec2 describe-instances --profile tnet-c3-media-iac-operator --region us-west-2 --filters "Name=tag:Name,Values=Sandy" "Name=instance-state-name,Values=pending,running,stopping,stopped" --query "Reservations[].Instances[].{InstanceId:InstanceId,State:State.Name,Profile:IamInstanceProfile.Arn,PrivateDns:PrivateDnsName,PublicDns:PublicDnsName,Tags:Tags}" --output json
+```
+
+If the instance result includes a profile, run the following after replacing
+only `<PROFILE_NAME>` with the profile name returned by AWS:
+
+```powershell
+aws.exe iam get-instance-profile --profile tnet-c3-media-iac-operator --region us-west-2 --instance-profile-name <PROFILE_NAME> --query "InstanceProfile.{Arn:Arn,Name:InstanceProfileName,Roles:Roles[].{RoleName:RoleName,RoleArn:Arn}}" --output json
+```
+
+Enter MFA only in the PowerShell prompt if requested. Do not return temporary
+credentials, credential-process output, or cache contents. Return only the
+JSON results of these read-only identity/profile calls so the consolidated
+operator expansion can be scoped to the actual Sandy authority.
