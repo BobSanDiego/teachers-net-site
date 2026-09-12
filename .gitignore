@@ -23,6 +23,11 @@ Thumbs.db
 # logs
 *.log
 
+# generated QA and Python cache output
+/tmp/qa/
+__pycache__/
+*.pyc
+
 # Node tooling
 node_modules/
 test-results/
