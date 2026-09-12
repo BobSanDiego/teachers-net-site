@@ -801,3 +801,19 @@ and remains `PROVEN_NATIVE`.
 Stop before product implementation until the Director decides the approved
 application signing/credential boundary and READY/FAILED registry transition
 owner. No AWS, runtime, IaC, production, Sandy, or migration state changed.
+
+## 2026-09-12 C3 application integration bootstrap gate
+
+Director decisions for `C3-V1-MEDIA-APPLICATION-INTEGRATION001` now authorize
+the dedicated `TNetC3MediaApplicationSigner`, no browser credentials,
+Community-owned registry state, bounded readiness polling, and READY-only
+publish. Resumed cycle `260912223125` is `PARTIAL /
+HUMAN_IAM_BOOTSTRAP_REQUIRED`: the repository has no approved application
+runtime principal, signer role, AWS dependency, or role-assumption
+configuration. Exact role JSON and bootstrap steps are in
+`community-v1-media-application-integration-bootstrap-gate-v1.md`.
+
+Preserve all runtime, CloudFront, DNS, S3, SQS, ECR, IAM, and OpenTofu seams as
+proven. Do not modify Sandy/production or add credentials. Resume implementation
+only after the dedicated application host/runtime identity and signer role
+chain are human-created and harmlessly verified.

@@ -729,6 +729,20 @@ the mixed control-plane recovery workspace is not a Community product source
 owner. No production, Sandy, schema, runtime, or public-cutover change is
 authorized by this handoff.
 
+## C3 media application integration bootstrap gate — 2026-09-12
+
+The Director has approved the dedicated application signer, Community-owned
+READY/FAILED state, bounded readiness polling, and READY-only publish
+semantics. Resumed cycle `260912223125` is blocked before implementation
+because the current repository and IaC contain no approved application runtime
+principal or signer role-assumption path. The exact least-privilege design and
+human procedure are recorded in
+`community-v1-media-application-integration-bootstrap-gate-v1.md`.
+
+Do not modify Sandy/production, proven AWS media resources, or credentials.
+After the human role bootstrap and safe role-chain preflight, resume the same
+objective; do not reopen the proven Lambda, CloudFront, or OpenTofu seams.
+
 ## C3 media application integration gate — 2026-09-12
 
 The dropped `C3-V1-MEDIA-APPLICATION-INTEGRATION001` ticket was executed to

@@ -185,3 +185,18 @@ event-source mapping exposes an empty `metrics_config`, while the provider
 schema cannot declare an empty metrics list. No plan was applied. This state is
 accepted as semantically equivalent; no proven AWS behavior is to be mutated
 to remove the residual.
+
+## C3 application integration bootstrap gate — 2026-09-12
+
+Director decisions now authorize the dedicated application signer model,
+Community-owned media state, bounded readiness polling, and READY-only publish
+semantics. Resumed cycle `260912223125` stopped before implementation because
+no approved application runtime principal, signer role, AWS SDK, or
+role-assumption path exists in repository authority. The exact least-privilege
+role JSON and human procedure are recorded in
+`community-v1-media-application-integration-bootstrap-gate-v1.md`.
+
+The existing Sandy/production host remains untouched. Do not add application
+credentials or begin implementation until the Engineering Director identifies
+the approved application host/runtime principal and completes the reviewed
+role bootstrap. The proven Lambda remains storage-only.

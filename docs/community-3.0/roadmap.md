@@ -154,3 +154,14 @@ repository contains no approved AWS signer/runtime credential path or
 processor-to-application readiness transition. Director decisions are needed
 for those authorization and state-ownership seams. The proven AWS runtime,
 CloudFront delivery, and OpenTofu reconciliation remain closed and unchanged.
+
+## C3 application integration bootstrap gate — 2026-09-12
+
+Director decisions authorize a dedicated application signer, no browser AWS
+credentials, Community-owned media state, bounded readiness polling, and
+READY-only publication. Resumed cycle `260912223125` is stopped before
+implementation pending human creation and harmless verification of the
+application runtime-to-signer role chain. Exact least-privilege JSON and
+bootstrap procedure: `community-v1-media-application-integration-bootstrap-
+gate-v1.md`. Existing runtime, delivery, and IaC seams remain closed and
+proven.
