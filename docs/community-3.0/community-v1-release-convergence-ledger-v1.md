@@ -254,15 +254,16 @@ optional paid telemetry, edge compute, WAF, NAT, replication, CMK, or verbose
 logging is enabled. Billing controls remain Engineering Director-owned and
 must be verified separately.
 
-CloudFront is `DIRECTOR_DECISION_REQUIRED`: the approved operator cannot list
-distributions, and no distribution/OAC/hostname/DNS state is claimed. The
-exact decision is whether initial delivery uses the default CloudFront
-hostname or a Director-approved custom media hostname/DNS owner, together with
-the narrowly scoped CloudFront access path.
+CloudFront delivery is now `PROVEN_NATIVE`: distribution `EXVHOH58DVJUJ`,
+OAC `E3GATUZLP66CJT`, Route 53 hostname `media.teachers.net`, the private
+ready-only bucket policy, and canonical-host HTTP 200 proof are recorded in
+the media operations authority. The exact delivery and policy configuration
+must be imported/reconciled into the canonical IaC home before this operations
+foundation is closed.
 
-The next application integration objective remains gated until that delivery
-decision and IaC import/reconciliation authority are available. No proven
-native processing seam was reopened.
+The next application integration objective remains gated until the controlled
+IaC import/reconciliation step is reviewed. No proven native processing seam
+was reopened.
 
 ## Evidence sources
 
@@ -272,12 +273,12 @@ The Director has selected `media.teachers.net` as the canonical C3 public
 media hostname. The reviewable least-privilege CloudFront operator design is
 `community-v1-media-cloudfront-iam-and-delivery-design-v1.md`.
 
-The current runtime operator cannot inspect CloudFront, so no existing
-distribution/OAC state is claimed and no AWS state was changed. The design
-uses a one-time tagged create/discovery phase followed by exact distribution
-and OAC ARNs; it preserves the private S3 origin and returns the exact
-`ready/*` bucket-policy statement for human review. An `ISSUED` ACM certificate
-in `us-east-1` and DNS validation/cutover remain human prerequisites.
+The approved one-time tagged bootstrap created exactly one C3 distribution and
+one OAC; human completion then proved the private ready-only origin, Route 53
+target, and canonical-host delivery. The exact anchors are distribution
+`EXVHOH58DVJUJ`, domain `dqmsvj26oip2t.cloudfront.net`, and OAC
+`E3GATUZLP66CJT`. The `ISSUED` `us-east-1` certificate prerequisite and DNS
+target are complete. The four disabled legacy distributions remain untouched.
 
 - `COMMUNITY3-V1-CAPABILITY-MODERATION-READINESS001`, cycle `260908134731`.
 - `COMMUNITY3-HERO-INFORMATION-AUDIT001`, cycle `260910131500`.

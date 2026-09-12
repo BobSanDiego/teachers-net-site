@@ -1,6 +1,6 @@
 # Community V1 Media Operations Authority v1
 
-Status: `PARTIAL / CLOUDFRONT_OPERATOR_AUTHORIZATION_REQUIRED`, recorded 2026-09-12.
+Status: `PARTIAL / IAC_IMPORT_RECONCILIATION_PENDING`, recorded 2026-09-12.
 
 This is the durable Community authority for the manually bootstrapped C3 media
 infrastructure, import-first IaC reconciliation, cost-safety controls, the
@@ -27,9 +27,10 @@ retested or changed by this foundation record.
 The canonical future IaC home is the Community source repository directory
 `infrastructure/aws/community-media/`, using the repository's approved
 OpenTofu/Terraform workflow. The existing `processor/` directory remains the
-container source and test authority. No executable resource definitions were
-applied in this cycle because the anchors were manually created and the
-approved runtime operator cannot inspect all configuration subresources.
+container source and test authority. No executable resource definitions have
+been applied. The manually bootstrapped runtime anchors and the subsequently
+created CloudFront delivery anchors remain import-first; native proof is
+recorded separately from future IaC state ownership.
 
 Future IaC must declare the existing resources, import them into state, run a
 plan, and reconcile only after review. It must not create a parallel bucket,
@@ -46,7 +47,10 @@ queue, function, role, log group, ECR repository, or notification.
 | ECR repository | `tnet-c3-media-processor` | immutable image proven; import/reconcile pending |
 | processor runtime role/policy/boundary | `TNetC3MediaProcessor`, `TNetC3MediaProcessorRuntime`, `TNetC3MediaProcessorBoundary` | bounded and proven; import/reconcile pending |
 | processor log group | `/aws/lambda/tnet-c3-media-processor` | seven-day retention proven; import/reconcile pending |
-| CloudFront distribution/OAC | hostname approved as `media.teachers.net`; current operator cannot inspect | not established; CloudFront operator bootstrap pending |
+| CloudFront distribution | `EXVHOH58DVJUJ`; ARN `arn:aws:cloudfront::553830187994:distribution/EXVHOH58DVJUJ`; domain `dqmsvj26oip2t.cloudfront.net`; alternate `media.teachers.net` | native delivery proven; IaC import pending |
+| CloudFront OAC | `E3GATUZLP66CJT` (`tnet-c3-media-ready-oac`); S3 SigV4, signing always | native origin authority proven; IaC import pending |
+| CloudFront ready-origin bucket policy | `s3:GetObject` on `ready/*`, conditioned to distribution ARN `EXVHOH58DVJUJ` | human-applied and native delivery proven; IaC import/reconcile pending |
+| Route 53 `media.teachers.net` record | human-managed record targets `dqmsvj26oip2t.cloudfront.net`; hosted-zone/record import identity not supplied | native canonical-host proof; DNS IaC ownership pending separate review |
 
 The existing Lambda contract remains: arm64 image, 2048 MB memory, 60-second
 timeout, 512 MB ephemeral storage, reserved concurrency 2, SQS batch size 1,
@@ -81,10 +85,11 @@ verify their current account state before any usage-bearing expansion.
 
 ## CloudFront gate
 
-The Director has selected `media.teachers.net` as the canonical public media
-hostname. The current runtime operator returned `AccessDenied` for
-`cloudfront:ListDistributions`; no distribution, OAC, cache policy, hostname,
-or DNS state is claimed or changed.
+The Director selected `media.teachers.net` as the canonical public media
+hostname. The approved two-phase CloudFront bootstrap created exactly one C3
+distribution and one OAC. Human completion then proved the canonical-host
+delivery path and the exact private-bucket policy boundary; no legacy
+distribution was repurposed.
 
 The least-privilege design is recorded in
 `community-v1-media-cloudfront-iam-and-delivery-design-v1.md`. It uses a
@@ -94,10 +99,13 @@ IDs are recorded. The design explicitly excludes Route 53, ACM, S3, IAM,
 Lambda, SQS, ECR, billing, WAF, edge compute, real-time logs, Origin Shield,
 and invalidations.
 
-CloudFront custom aliases require an `ISSUED` trusted ACM certificate covering
-`media.teachers.net` in `us-east-1`. DNS validation and the eventual CNAME or
-ALIAS to the returned `cloudfront.net` domain are separate human-authorized
-steps. No Route 53, certificate, or S3 bucket-policy mutation occurred here.
+CloudFront custom aliases require the trusted `ISSUED` certificate covering
+`media.teachers.net` in `us-east-1`; that prerequisite was human-confirmed.
+Route 53 now targets `dqmsvj26oip2t.cloudfront.net`, and the human-reviewed
+bucket statement is applied only to `ready/*` for the exact distribution ARN.
+The canonical-host proof returned HTTP 200, `image/jpeg`, 262142 bytes, and
+`X-Cache: Hit from cloudfront` for
+`runtime-proof-260912-runtime4/master.jpg`.
 
 ## Media-registry contract before application integration
 
@@ -145,9 +153,9 @@ unchanged until that evidence and Director approval exist.
 | Four outputs, metadata stripping, no-upscale, deletion ordering | `PROVEN_NATIVE` | Runtime-proof cycle |
 | Invalid-input retry/source retention/DLQ | `PROVEN_NATIVE` | Runtime-proof cycle |
 | Bounded logging and current Lambda sizing | `PROVEN_NATIVE` | Runtime-proof cycle; 2048 MB unchanged |
-| IaC import/reconciliation authority | `BOUNDED / PENDING` | Canonical home and import map recorded; apply is a later controlled step |
+| IaC import/reconciliation authority | `BOUNDED / PENDING_CONTROLLED_STEP` | Canonical home and exact runtime/CloudFront import map recorded; import, plan, drift review, and any apply remain a later controlled step |
 | Account cost controls | `BOUNDED / HUMAN_OWNER` | No optional paid telemetry; Director must verify billing alerts |
-| CloudFront delivery foundation | `OPERATOR_AUTH_REQUIRED` | Hostname approved; CloudFront operator role, us-east-1 certificate, read-only discovery, and exact S3 policy review remain |
+| CloudFront delivery foundation | `PROVEN_NATIVE` | Distribution `EXVHOH58DVJUJ`, OAC `E3GATUZLP66CJT`, human DNS target, ready-only bucket policy, and canonical-host HTTP 200 proof |
 | Registry metadata contract | `DEFINED / NOT_IMPLEMENTED` | Contract recorded; application integration is a later ticket |
 
 This foundation does not authorize composer/upload UI, signing/upload

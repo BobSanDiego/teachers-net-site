@@ -687,6 +687,30 @@ CloudFront, or the proven Lambda runtime until the CloudFront operator is
 bootstrapped and the one-time create permissions are narrowed after IDs are
 recorded.
 
+## 2026-09-12 CloudFront native delivery completion
+
+Human completion has superseded the prior CloudFront decision gate. The exact
+C3 distribution is `EXVHOH58DVJUJ`, ARN
+`arn:aws:cloudfront::553830187994:distribution/EXVHOH58DVJUJ`, domain
+`dqmsvj26oip2t.cloudfront.net`; the OAC is `E3GATUZLP66CJT`.
+`media.teachers.net` now targets that distribution through Route 53, and the
+private media bucket permits CloudFront `s3:GetObject` only for `ready/*` and
+only from that distribution ARN.
+
+Native canonical-host proof for
+`https://media.teachers.net/runtime-proof-260912-runtime4/master.jpg` returned
+HTTP 200, `image/jpeg`, 262142 bytes, `X-Cache: Hit from cloudfront`, and an
+exactly 262142-byte download. The four disabled legacy distributions remain
+untouched. No runtime seam was retested.
+
+The operations foundation remains `PARTIAL /
+IAC_IMPORT_RECONCILIATION_PENDING`, not because delivery is unproven, but
+because the manually bootstrapped anchors still need controlled import into
+the canonical `infrastructure/aws/community-media/` state, a no-change plan,
+and drift review. Do not begin application upload/registry integration,
+historical migration, or production cutover until that reconciliation is
+complete and reviewed.
+
 ## Current v1 authority handoff
 
 Use `community-v1-authority-consolidation-v1.md` as the current compact

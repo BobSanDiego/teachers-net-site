@@ -119,12 +119,12 @@ manual AWS-anchor import map, fail-closed cost controls, media-registry
 technical/economic metadata contract, and a future cost/refinement review in
 `community-v1-media-operations-authority-v1.md`.
 
-The next media step is gated, not implementation-ready: the Engineering
-Director must choose default CloudFront delivery versus a custom media
-hostname/DNS owner and provide a narrowly scoped CloudFront administration
-path. Do not begin application upload/signing, composer integration,
-historical media migration, or production cutover before that decision and
-import/reconciliation review.
+The CloudFront delivery decision is complete: `media.teachers.net` targets
+`dqmsvj26oip2t.cloudfront.net` through distribution `EXVHOH58DVJUJ`, with OAC
+`E3GATUZLP66CJT` and a ready-only private-bucket policy. The remaining media
+operations gate is controlled IaC import/reconciliation and drift review. Do
+not begin application upload/signing, composer integration, historical media
+migration, or production cutover before that review.
 
 Continue documentation-first convergence. Do not issue implementation tickets,
 change schemas, import taxonomy, migrate records, redesign production UI, or

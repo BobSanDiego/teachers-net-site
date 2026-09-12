@@ -432,3 +432,70 @@ The operations foundation is ready to reactivate for native CloudFront work
 only after steps 1–3. Application upload integration remains prohibited until
 the distribution, OAC, reviewed bucket policy, and separate DNS authorization
 are complete.
+
+## Provisioned C3 delivery anchor and native completion — 2026-09-12
+
+The approved two-phase bootstrap created exactly one C3 media OAC and one C3
+media distribution. The four disabled legacy distributions were not changed.
+
+```json
+{
+  "distribution_id": "EXVHOH58DVJUJ",
+  "distribution_arn": "arn:aws:cloudfront::553830187994:distribution/EXVHOH58DVJUJ",
+  "distribution_domain": "dqmsvj26oip2t.cloudfront.net",
+  "alternate_domain": "media.teachers.net",
+  "oac_id": "E3GATUZLP66CJT",
+  "oac_name": "tnet-c3-media-ready-oac",
+  "origin_id": "C3MediaS3Origin",
+  "origin_domain": "tnet-c3-media-553830187994-us-west-2.s3.us-west-2.amazonaws.com",
+  "origin_path": "/ready",
+  "signing_protocol": "sigv4",
+  "signing_behavior": "always",
+  "viewer_protocol_policy": "redirect-to-https",
+  "allowed_methods": ["GET", "HEAD"],
+  "cached_methods": ["GET", "HEAD"],
+  "cache_policy_id": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+  "compress": true,
+  "price_class": "PriceClass_100",
+  "ipv6_enabled": true,
+  "certificate_arn": "arn:aws:acm:us-east-1:553830187994:certificate/f976179d-4f1c-4efd-970e-05cb73b8c47b",
+  "tls": "TLSv1.2_2021",
+  "sni_only": true,
+  "edge_compute": false,
+  "origin_shield": false,
+  "web_acl": null,
+  "logging_enabled": false
+}
+```
+
+Human completion proved that Route 53 `media.teachers.net` targets
+`dqmsvj26oip2t.cloudfront.net`, and that the private bucket policy permits the
+CloudFront service to read only `ready/*` from the exact distribution ARN.
+Canonical-host proof for
+`https://media.teachers.net/runtime-proof-260912-runtime4/master.jpg` returned
+HTTP 200, `image/jpeg`, `Content-Length: 262142`,
+`X-Cache: Hit from cloudfront`, and exactly 262142 downloaded bytes.
+
+The exact bucket-policy statement applied by the human owner is:
+
+```json
+{
+  "Sid": "AllowCloudFrontC3MediaReadyOnly",
+  "Effect": "Allow",
+  "Principal": {"Service": "cloudfront.amazonaws.com"},
+  "Action": "s3:GetObject",
+  "Resource": "arn:aws:s3:::tnet-c3-media-553830187994-us-west-2/ready/*",
+  "Condition": {
+    "StringEquals": {
+      "AWS:SourceArn": "arn:aws:cloudfront::553830187994:distribution/EXVHOH58DVJUJ"
+    }
+  }
+}
+```
+
+CloudFront delivery is now `PROVEN_NATIVE`. The remaining operations-foundation
+step is controlled IaC import/reconciliation: declare these anchors in the
+canonical `infrastructure/aws/community-media/` stack, import existing IDs
+into the approved state bucket, run a no-change comparison plan, and review
+any drift before apply. Do not recreate or mutate the proven runtime or
+delivery anchors during import.

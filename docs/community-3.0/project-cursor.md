@@ -746,6 +746,24 @@ access path. Application upload/delivery integration remains gated.
 The Director has now approved `media.teachers.net` as the canonical public
 media hostname. CloudFront IAM and delivery configuration is recorded in
 `community-v1-media-cloudfront-iam-and-delivery-design-v1.md`; the current
-runtime operator still lacks CloudFront inspection authority. The next step is
-human bootstrap of that exact MFA-gated role plus an `ISSUED` ACM certificate
-in `us-east-1`; DNS and S3 policy changes remain separately authorized.
+runtime operator created the exact C3 OAC/distribution, and human completion
+proved the DNS, private ready-only S3 policy, and canonical-host delivery path.
+
+## 2026-09-12 media operations CloudFront completion
+
+`C3-V1-MEDIA-OPERATIONS-FOUNDATION001` is now
+`PARTIAL / IAC_IMPORT_RECONCILIATION_PENDING`. Carry forward the native runtime
+proof from `260912013811` and the native CloudFront delivery proof without
+retest. The canonical delivery anchors are distribution `EXVHOH58DVJUJ`,
+domain `dqmsvj26oip2t.cloudfront.net`, OAC `E3GATUZLP66CJT`, and hostname
+`media.teachers.net`; the governed ready-only bucket policy is conditioned on
+that distribution ARN.
+
+The canonical IaC home remains
+`infrastructure/aws/community-media/`. The only remaining operations-foundation
+step is controlled import/reconciliation of the manually bootstrapped storage,
+queue, Lambda, ECR, IAM, logs, notification, CloudFront, OAC, and applicable
+bucket-policy anchors. Import must precede plan and any apply; no resource may
+be recreated to obtain state. Application upload/signing integration, registry
+implementation, migration, and production cutover remain gated until that
+reconciliation is reviewed.
