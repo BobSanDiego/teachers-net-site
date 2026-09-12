@@ -5,6 +5,21 @@ supersedes earlier scheduling shorthand where it conflicts with current
 implementation evidence. It authorizes no schema, runtime, route, legacy-data,
 Sandy, or production change.
 
+## 2026-09-12 native media runtime proof amendment
+
+`C3-V1-MEDIA-RUNTIME-PROOF001` / cycle `260912013811` is
+`COMPLETE / PROVEN_NATIVE` for the existing AWS runtime seam. Native evidence
+proves S3 quarantine notification, SQS delivery, enabled Lambda mapping,
+arm64 container execution, four-output JPEG/WebP release, post-write
+verification, metadata stripping, source deletion ordering, bounded logs,
+queue idle state, invalid-input retention, three receives and DLQ transition.
+The exact anchors and evidence are recorded in
+`community-v1-media-runtime-proof-v1.md`.
+
+This does not close the broader media-operations release gate. Browser upload
+authorization, media registry integration, CloudFront delivery, application
+rendering, historical media and production cutover remain open.
+
 ## 2026-09-11 native relationship-notification acceptance amendment
 
 `COMMUNITY3-V1-RELATIONSHIP-NOTIFICATION-PREFERENCE001-CONT1` is
@@ -56,7 +71,7 @@ runtime-required Community product source remains ignored or untracked.
 | Notification preferences and delivery | LOCAL FOUNDATION / RELEASE_GATE | Explicit bell/email frequency state, suppression precedence, and bounded legacy-evidence reconciliation are implemented; email is evaluated but not delivered and no consent is inferred. |
 | Save/hide/mute/block | MISSING / DEFERRED | Per-reader and safety relationships are absent; scope and moderation interaction require a product decision. |
 | Report/moderation queue, scoped roles, sanctions | LOCAL FOUNDATION / RELEASE_GATE | C3 owns bounded report intake, private reporter identity, admin queue, report audit, and publisher-owned reversible content actions. Role matrix, sanctions, appeals, rate controls and native acceptance remain release gates. |
-| Direct uploads/attachments/accessibility | PARTIAL / RELEASE_GATE | Local prototype exists; durable storage, scans, quotas, derivatives, retention and operations are not production-shaped. |
+| Direct uploads/attachments/accessibility | PARTIAL / RELEASE_GATE | Native AWS quarantine-to-ready processing, four derivatives, metadata boundary, retry and DLQ behavior are PROVEN_NATIVE; browser upload authorization, registry integration, accessibility presentation, quotas, historical media and production operations remain open. |
 | OG/link preview acquisition | PARTIAL / RELEASE_GATE | Local mock/deterministic seams exist. Safe fetch/cache/SSRF, moderation and failure policy need production proof. Raw-link fallback is essential. |
 | Search/indexing | MISSING | Current form is generic site search; no visibility-aware C3 index/document/event owner exists. |
 | Responsive, keyboard, screen-reader, error-state QA | IMPLEMENTED_NOT_ACCEPTED | Local visual work exists; must rerun from a byte-identified integrated runtime using required guest/authenticated journeys. |

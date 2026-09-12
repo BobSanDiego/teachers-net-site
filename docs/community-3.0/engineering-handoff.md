@@ -1,5 +1,32 @@
 # Community 3.0 Engineering Handoff
 
+## 2026-09-12 native media runtime proof
+
+`C3-V1-MEDIA-RUNTIME-PROOF001` / cycle `260912013811` is
+`COMPLETE / PROVEN_NATIVE`. The existing AWS C3 runtime is proven in
+`us-west-2` using the governed media bucket, processing queue and DLQ, enabled
+`tnet-c3-media-processor` arm64 Lambda mapping, and the approved immutable
+container image.
+
+The positive journey used
+`quarantine/runtime-proof-260912-runtime4/original.png` and produced exactly
+`master.jpg`, `1440.webp`, `960.webp`, and `480.webp`; every output was
+verified, metadata-free and non-upscaled, and the quarantine source was
+deleted only after all four checks. The queue returned idle and Lambda emitted
+bounded `image_released` evidence. The invalid zero-byte PNG remained in
+quarantine, emitted bounded `image_rejected` evidence on three receives, and
+moved to the DLQ at the configured maximum receive count.
+
+The prior post-write failure was resolved by adding `s3:GetObject` on the exact
+media `ready/*` ARN to both `TNetC3MediaProcessorRuntime` and
+`TNetC3MediaProcessorBoundary`. The full configuration and evidence record is
+`community-v1-media-runtime-proof-v1.md`.
+
+This is runtime acceptance only. Browser upload authorization, media registry
+integration, CloudFront delivery, application rendering, historical media and
+production cutover remain in the separately authorized media-operations and
+release-gate objectives.
+
 ## 2026-09-11 media architecture and AWS cost diagnostic
 
 The diagnostic-only `COMMUNITY3-V1-MEDIA-ARCHITECTURE-AND-AWS-COST-DIAGNOSTIC001`
