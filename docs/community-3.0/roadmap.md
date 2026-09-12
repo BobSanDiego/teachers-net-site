@@ -111,6 +111,21 @@ communications delivery to implementation status.
 
 ## Immediate Stop Boundary
 
+## C3 V1 media operations checkpoint — 2026-09-12
+
+The native C3 media processor path is proven through the runtime-proof cycle
+`260912013811`. `C3-V1-MEDIA-OPERATIONS-FOUNDATION001` has now recorded the
+manual AWS-anchor import map, fail-closed cost controls, media-registry
+technical/economic metadata contract, and a future cost/refinement review in
+`community-v1-media-operations-authority-v1.md`.
+
+The next media step is gated, not implementation-ready: the Engineering
+Director must choose default CloudFront delivery versus a custom media
+hostname/DNS owner and provide a narrowly scoped CloudFront administration
+path. Do not begin application upload/signing, composer integration,
+historical media migration, or production cutover before that decision and
+import/reconciliation review.
+
 Continue documentation-first convergence. Do not issue implementation tickets,
 change schemas, import taxonomy, migrate records, redesign production UI, or
 start communication delivery until the first planning package and its stop

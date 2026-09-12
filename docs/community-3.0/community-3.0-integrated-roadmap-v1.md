@@ -15,6 +15,13 @@
 
 This sequence is planning authority only. It does not authorize migrations, schema changes, plugin changes, routes, mail delivery, or production edits.
 
+The C3 media runtime is now natively proven under
+`C3-V1-MEDIA-RUNTIME-PROOF001` / cycle `260912013811`. The operations
+foundation records import-first IaC and the media-registry contract, but
+CloudFront delivery remains gated on one hostname/DNS decision and a scoped
+administration path; application upload integration does not start before that
+gate.
+
 The local membership/moderation foundation is implemented as a bounded,
 release-gated seam under `COMMUNITY3-V1-MEMBERSHIP-AND-MODERATION-FOUNDATION001`.
 It does not authorize production roles, sanctions, notification/email delivery,

@@ -1,5 +1,12 @@
 # Community V1 Media Architecture and AWS Cost Diagnostic v1
 
+> **Superseded state note — 2026-09-12:** This diagnostic predates the
+> manually bootstrapped and natively proven C3 media runtime. Its
+> resource-not-created statements are historical diagnostic context. Current
+> AWS anchor, import-first IaC, cost-safety, registry, and CloudFront gate
+> authority is `community-v1-media-operations-authority-v1.md` together with
+> `community-v1-media-runtime-proof-v1.md`.
+
 Status: DIAGNOSTIC / DIRECTOR DECISION REQUIRED
 
 Ticket: `COMMUNITY3-V1-MEDIA-ARCHITECTURE-AND-AWS-COST-DIAGNOSTIC001`

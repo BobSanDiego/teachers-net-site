@@ -234,6 +234,36 @@ behavior are rehearsed. Current local/noindex AI routes are not SEO evidence.
 - Public legacy URL exception policy, staged cutover order, rollback window and
   legacy-writer retirement criterion.
 
+## C3 media operations foundation — 2026-09-12
+
+`C3-V1-MEDIA-OPERATIONS-FOUNDATION001` carries the native runtime-proof
+seams from cycle `260912013811` as `PROVEN_NATIVE` and records the durable
+operations authority in `community-v1-media-operations-authority-v1.md`.
+The canonical future IaC home is
+`infrastructure/aws/community-media/`; existing manually bootstrapped anchors
+must be imported/reconciled and never recreated merely to obtain state.
+
+The registry contract now requires immutable asset/source identity, source and
+variant bytes/dimensions/formats, processor identity and digest, processing
+timestamps/duration, and lifecycle/reconciliation evidence. It records
+economic retained-byte facts but adds no behavioral telemetry.
+
+Cost controls remain fail-closed: seven-day required Lambda logs, bounded
+reserved concurrency, S3 lifecycle/versioning and SSE-S3 are retained; no
+optional paid telemetry, edge compute, WAF, NAT, replication, CMK, or verbose
+logging is enabled. Billing controls remain Engineering Director-owned and
+must be verified separately.
+
+CloudFront is `DIRECTOR_DECISION_REQUIRED`: the approved operator cannot list
+distributions, and no distribution/OAC/hostname/DNS state is claimed. The
+exact decision is whether initial delivery uses the default CloudFront
+hostname or a Director-approved custom media hostname/DNS owner, together with
+the narrowly scoped CloudFront access path.
+
+The next application integration objective remains gated until that delivery
+decision and IaC import/reconciliation authority are available. No proven
+native processing seam was reopened.
+
 ## Evidence sources
 
 - `COMMUNITY3-V1-CAPABILITY-MODERATION-READINESS001`, cycle `260908134731`.

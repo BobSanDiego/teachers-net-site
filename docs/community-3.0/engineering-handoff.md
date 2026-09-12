@@ -653,6 +653,24 @@ the staged-image contract and focused PHP test are present. No reply upload,
 shared view, route, publication, or schema work was performed. Next:
 UX003-REF002 — Shared Composer View Partial for Topic.
 
+## 2026-09-12 media operations foundation
+
+`C3-V1-MEDIA-OPERATIONS-FOUNDATION001` is `PARTIAL /
+DIRECTOR_DECISION_REQUIRED`. The accepted native runtime remains
+`C3-V1-MEDIA-RUNTIME-PROOF001` / cycle `260912013811` and is carried forward
+without retest. The durable operations authority and registry contract are in
+`community-v1-media-operations-authority-v1.md`; the canonical future IaC home
+is `infrastructure/aws/community-media/` and reconciliation is import-first.
+
+The current approved runtime operator session is valid for account
+`553830187994` in `us-west-2`, but cannot inspect CloudFront distributions or
+S3 bucket configuration. No AWS resources were changed. The exact remaining
+Director decision is the initial public delivery hostname (default
+`cloudfront.net` versus custom hostname/DNS owner) and authorization of a
+narrow CloudFront read/provisioning path. Billing controls remain Engineering
+Director-owned. Application upload/delivery integration must wait for this
+gate; the proven Lambda processing path is unchanged.
+
 ## Current v1 authority handoff
 
 Use `community-v1-authority-consolidation-v1.md` as the current compact

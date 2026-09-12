@@ -724,3 +724,21 @@ release-gated. Future implementation tickets must declare which v1, near-v1,
 or deferred boundary they exercise. The next planned implementation is media
 operations. No Sandy, production, Shared Shell, or public-cutover change is
 implied here.
+
+## 2026-09-12 media operations foundation
+
+`C3-V1-MEDIA-OPERATIONS-FOUNDATION001` is active at
+`PARTIAL / DIRECTOR_DECISION_REQUIRED`. The native runtime proof from cycle
+`260912013811` remains carried forward as `PROVEN_NATIVE`; no runtime seam was
+retested or changed. Durable operations, import-first IaC, cost safety,
+registry metadata, and the future cost/refinement review are recorded in
+`community-v1-media-operations-authority-v1.md`.
+
+The canonical IaC home is `infrastructure/aws/community-media/`. Existing
+manually bootstrapped AWS anchors are to be imported/reconciled, not recreated.
+The runtime operator authenticated in account `553830187994`, region
+`us-west-2`, but `cloudfront:ListDistributions` and S3 bucket-configuration
+reads are outside its policy. No AWS mutation occurred. CloudFront therefore
+stops at one Director decision: default CloudFront hostname versus an
+approved custom media hostname/DNS owner, plus the least-privilege CloudFront
+access path. Application upload/delivery integration remains gated.
