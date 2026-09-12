@@ -144,3 +144,13 @@ provider and is not applied. No proven runtime or delivery seam was reopened.
 The media foundation is now ready for a separately authorized application
 upload/signing and media-registry objective. Historical migration, composer
 integration, and production cutover remain deferred.
+
+## C3 media application integration gate — 2026-09-12
+
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001` reached a bounded diagnostic stop at
+cycle `260912221312` before implementation. The existing application has only
+local single-file upload and compatibility-JSON attachment storage; the
+repository contains no approved AWS signer/runtime credential path or
+processor-to-application readiness transition. Director decisions are needed
+for those authorization and state-ownership seams. The proven AWS runtime,
+CloudFront delivery, and OpenTofu reconciliation remain closed and unchanged.

@@ -1,6 +1,6 @@
 # Community V1 Media Operations Authority v1
 
-Status: `PARTIAL / IAC_IMPORT_RECONCILIATION_PENDING`, recorded 2026-09-12.
+Status: `COMPLETE / IAC_RECONCILED`, recorded 2026-09-12.
 
 This is the durable Community authority for the manually bootstrapped C3 media
 infrastructure, import-first IaC reconciliation, cost-safety controls, the
@@ -38,19 +38,19 @@ queue, function, role, log group, ECR repository, or notification.
 
 | Logical IaC object | Existing anchor / import identity | State |
 |---|---|---|
-| media bucket and S3 subresources | `tnet-c3-media-553830187994-us-west-2`; bucket subresources use that bucket name | proven; import/reconcile pending |
-| IaC state bucket | private, versioned manually bootstrapped state bucket; exact name is not present in the current approved runtime record | exact-name inventory pending human infrastructure read |
-| processing queue | `arn:aws:sqs:us-west-2:553830187994:tnet-c3-media-processing` | proven; import/reconcile pending |
-| processing DLQ | `arn:aws:sqs:us-west-2:553830187994:tnet-c3-media-processing-dlq` | proven; import/reconcile pending |
-| Lambda function | `arn:aws:lambda:us-west-2:553830187994:function:tnet-c3-media-processor` | proven; import/reconcile pending |
-| event-source mapping | UUID `6219b5b3-b709-485b-880e-a186fc5c9618` | enabled and proven; import/reconcile pending |
-| ECR repository | `tnet-c3-media-processor` | immutable image proven; import/reconcile pending |
-| processor runtime role/policy/boundary | `TNetC3MediaProcessor`, `TNetC3MediaProcessorRuntime`, `TNetC3MediaProcessorBoundary` | bounded and proven; import/reconcile pending |
-| processor log group | `/aws/lambda/tnet-c3-media-processor` | seven-day retention proven; import/reconcile pending |
-| CloudFront distribution | `EXVHOH58DVJUJ`; ARN `arn:aws:cloudfront::553830187994:distribution/EXVHOH58DVJUJ`; domain `dqmsvj26oip2t.cloudfront.net`; alternate `media.teachers.net` | native delivery proven; IaC import pending |
-| CloudFront OAC | `E3GATUZLP66CJT` (`tnet-c3-media-ready-oac`); S3 SigV4, signing always | native origin authority proven; IaC import pending |
-| CloudFront ready-origin bucket policy | `s3:GetObject` on `ready/*`, conditioned to distribution ARN `EXVHOH58DVJUJ` | human-applied and native delivery proven; IaC import/reconcile pending |
-| Route 53 `media.teachers.net` record | human-managed record targets `dqmsvj26oip2t.cloudfront.net`; hosted-zone/record import identity not supplied | native canonical-host proof; DNS IaC ownership pending separate review |
+| media bucket and S3 subresources | `tnet-c3-media-553830187994-us-west-2`; bucket subresources use that bucket name | imported/reconciled |
+| IaC state bucket | `tnet-c3-media-state-553830187994-us-west-2` | existing versioned SSE-S3 backend; separate anchor |
+| processing queue | `arn:aws:sqs:us-west-2:553830187994:tnet-c3-media-processing` | imported/reconciled |
+| processing DLQ | `arn:aws:sqs:us-west-2:553830187994:tnet-c3-media-processing-dlq` | imported/reconciled |
+| Lambda function | `arn:aws:lambda:us-west-2:553830187994:function:tnet-c3-media-processor` | imported by canonical function name |
+| event-source mapping | UUID `6219b5b3-b709-485b-880e-a186fc5c9618` | imported; provider-only empty metrics residual |
+| ECR repository | `tnet-c3-media-processor` | imported/reconciled |
+| processor runtime role/policy/boundary | `TNetC3MediaProcessor`, `TNetC3MediaProcessorRuntime`, `TNetC3MediaProcessorBoundary` | imported/reconciled |
+| processor log group | `/aws/lambda/tnet-c3-media-processor` | imported/reconciled |
+| CloudFront distribution | `EXVHOH58DVJUJ`; ARN `arn:aws:cloudfront::553830187994:distribution/EXVHOH58DVJUJ`; domain `dqmsvj26oip2t.cloudfront.net`; alternate `media.teachers.net` | imported/reconciled; native delivery proven |
+| CloudFront OAC | `E3GATUZLP66CJT` (`tnet-c3-media-ready-oac`); S3 SigV4, signing always | imported/reconciled; native origin authority proven |
+| CloudFront ready-origin bucket policy | `s3:GetObject` on `ready/*`, conditioned to distribution ARN `EXVHOH58DVJUJ` | imported/reconciled; native delivery proven |
+| Route 53 `media.teachers.net` record | human-managed record targets `dqmsvj26oip2t.cloudfront.net`; hosted-zone `Z3U32UPCTZ7GK7` | imported/reconciled; native canonical-host proof |
 
 The existing Lambda contract remains: arm64 image, 2048 MB memory, 60-second
 timeout, 512 MB ephemeral storage, reserved concurrency 2, SQS batch size 1,
@@ -153,7 +153,7 @@ unchanged until that evidence and Director approval exist.
 | Four outputs, metadata stripping, no-upscale, deletion ordering | `PROVEN_NATIVE` | Runtime-proof cycle |
 | Invalid-input retry/source retention/DLQ | `PROVEN_NATIVE` | Runtime-proof cycle |
 | Bounded logging and current Lambda sizing | `PROVEN_NATIVE` | Runtime-proof cycle; 2048 MB unchanged |
-| IaC import/reconciliation authority | `BOUNDED / PENDING_CONTROLLED_STEP` | Canonical home and exact runtime/CloudFront import map recorded; import, plan, drift review, and any apply remain a later controlled step |
+| IaC import/reconciliation authority | `PROVEN / SEMANTICALLY_EQUIVALENT` | Cycle `260912194154`; all anchors imported, validate passed, no-apply plan has zero additions/destructions and one provider-only residual; commit `1dc4de6` pushed |
 | Account cost controls | `BOUNDED / HUMAN_OWNER` | No optional paid telemetry; Director must verify billing alerts |
 | CloudFront delivery foundation | `PROVEN_NATIVE` | Distribution `EXVHOH58DVJUJ`, OAC `E3GATUZLP66CJT`, human DNS target, ready-only bucket policy, and canonical-host HTTP 200 proof |
 | Registry metadata contract | `DEFINED / NOT_IMPLEMENTED` | Contract recorded; application integration is a later ticket |

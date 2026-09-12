@@ -729,6 +729,22 @@ the mixed control-plane recovery workspace is not a Community product source
 owner. No production, Sandy, schema, runtime, or public-cutover change is
 authorized by this handoff.
 
+## C3 media application integration gate — 2026-09-12
+
+The dropped `C3-V1-MEDIA-APPLICATION-INTEGRATION001` ticket was executed to
+the first required owner decision and stopped at cycle `260912221312`. Current
+repository evidence shows no WordPress AWS signer dependency or runtime
+credential/role-assumption path, no durable media registry, and no
+processor-to-application callback or READY/FAILED transition. The composer
+still posts one local `image_file` through `wp_handle_upload()` and stores
+attachments in post compatibility JSON; the proven Lambda remains intentionally
+S3-only.
+
+Director review is required to select the application authorization boundary
+and processing-state owner before implementation can safely begin. Carry all
+AWS runtime, CloudFront, and IaC reconciliation seams forward unchanged. No
+AWS, production, Sandy, schema, or application behavior was changed.
+
 ## C3 IaC reconciliation completion — 2026-09-12
 
 Cycle `260912194154` brought all declared existing C3 media anchors into the

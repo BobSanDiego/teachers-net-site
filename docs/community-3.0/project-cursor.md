@@ -786,3 +786,18 @@ provider requires at least one metric. Native processor/runtime and
 CloudFront delivery seams remain `PROVEN_NATIVE`. Application upload/signing,
 media-registry implementation, migration, and production cutover remain
 outside this objective.
+
+## 2026-09-12 C3 media application integration gate
+
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001` is `PARTIAL /
+DIRECTOR_DECISION_REQUIRED` at cycle `260912221312`. Inspection confirmed that
+the current Community plugin has no durable media registry, no approved
+WordPress AWS signer/runtime credential path, and no processor-to-application
+callback or readiness transition. The composer still accepts one local
+multipart upload through `wp_handle_upload()` and stores attachment data in
+post compatibility JSON. The Lambda/S3 pipeline is intentionally storage-only
+and remains `PROVEN_NATIVE`.
+
+Stop before product implementation until the Director decides the approved
+application signing/credential boundary and READY/FAILED registry transition
+owner. No AWS, runtime, IaC, production, Sandy, or migration state changed.
