@@ -228,3 +228,68 @@ Enter MFA only in the PowerShell prompt if requested. Do not return temporary
 credentials, credential-process output, or cache contents. Return only the
 JSON results of these read-only identity/profile calls so the consolidated
 operator expansion can be scoped to the actual Sandy authority.
+
+## Bootstrap execution result — cycle 260912232545
+
+The Director confirmed Sandy as EC2 instance `i-0c1c8997e347919b4` (`Sandbox
+Build`) using the existing `EC2-CloudWatchAgent` role and instance profile. The
+profile association remains outside the OpenTofu graph and was not changed.
+
+The authorized signer role, signer policy, signer boundary, exact Sandy
+assume-signer attachment, and exact media-bucket CORS declarations are present
+in the working tree under `infrastructure/aws/community-media/main.tf`.
+`tofu fmt` and `tofu validate` pass, and the no-apply plan refreshes the
+existing backend successfully.
+
+Apply is blocked at the exact plan gate. The plan contains the seven authorized
+additions, but also proposes an in-place removal of the empty `metrics_config`
+block from the already-proven Lambda SQS event-source mapping. The prior IaC
+reconciliation accepted this as provider-only representation drift and did not
+apply it. Do not apply, hide, or broaden around that difference. Resume after a
+reviewed state/declaration-only resolution preserves the event-source mapping,
+or after the Director explicitly changes this bootstrap gate.
+
+## Verification result — cycle 260913195452
+
+The reviewed seven-resource targeted apply is now reflected in remote state.
+Read-only AWS checks confirm the signer role, exact policies and boundary,
+exact `EC2-CloudWatchAgent` attachment, unchanged Sandy instance-profile
+association, and exact two-origin POST CORS configuration. A normal no-apply
+plan reports only the accepted provider-only `metrics_config` residual.
+
+Native Sandy-to-signer proof remains pending. The approved IaC operator has no
+SSM discovery permission and no approved Sandy control path is recorded. Do not
+claim terminal bootstrap completion until Sandy natively proves its
+`EC2-CloudWatchAgent` identity, successful signer assumption, and denied
+unrelated/list/read/delete/ready-prefix actions.
+
+## Native Sandy workload proof — cycle 260913202721
+
+The Director-authorized existing `sandy` SSH path reached instance
+`i-0c1c8997e347919b4` as `ubuntu`. AWS CLI was absent, so the official AWS CLI
+v2 x86_64 runtime was installed as the minimum tool required for this proof;
+the temporary installer directory was removed. No AWS credential environment
+variables were present before the proof, and no credential material was
+created by the proof.
+
+Native `aws sts get-caller-identity` resolved to account `553830187994` and
+`assumed-role/EC2-CloudWatchAgent/i-0c1c8997e347919b4`. From that workload
+identity, AssumeRole succeeded for
+`TNetC3MediaApplicationSigner` with session name
+`tnet-c3-media-app-proof` and a one-hour expiration. The assumed identity was
+`assumed-role/TNetC3MediaApplicationSigner/tnet-c3-media-app-proof`.
+
+Using the temporary session only in remote process memory, native probes
+returned denial for media-bucket listing, `ready/*` read, conditional delete,
+and unrelated Lambda configuration read. The exact quarantine-only SSE-S3
+`s3:PutObject` policy and matching boundary remain the governing positive
+capability from the prior read-only AWS verification; no proof object was
+created. Temporary credential variables were unset, and the installer
+temporary directory was clean at session end.
+
+This closes the native Sandy workload gate. The seven bootstrap resources,
+unchanged Sandy instance-profile association, exact CORS, and accepted
+provider-only event-source `metrics_config` residual remain carried forward.
+The next gate is the separate
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001` objective; this bootstrap does not
+implement upload, signing application code, media registry, or composer work.

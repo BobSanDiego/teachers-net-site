@@ -173,3 +173,35 @@ because the approved WSL AWS wrapper fails with WinError 193 before AWS
 contact. Human PowerShell must provide read-only identity and Sandy
 instance-profile results before any temporary operator expansion or OpenTofu
 bootstrap work proceeds. No alternate credentials or AWS mutation is allowed.
+
+## C3 application bootstrap plan gate — 2026-09-12
+
+`C3-V1-MEDIA-APPLICATION-BOOTSTRAP001`, cycle `260912232545`, confirmed the
+Director-approved Sandy principal and added the exact application signer and
+CORS declarations to the canonical IaC. Validation passes. Apply is withheld
+because the plan also proposes removal of the empty provider-generated
+`metrics_config` block on the proven Lambda event-source mapping. No AWS state
+changed. The next gate is a reviewed representation-only resolution that
+preserves that mapping, then an authorized-only plan/apply and harmless
+signer role-chain proof. Application upload and media-registry implementation
+remain deferred until that bootstrap completes.
+
+## C3 application bootstrap verification gate — 2026-09-13
+
+Cycle `260913195452` verified the seven applied signer/CORS resources and the
+unchanged Sandy profile association. The normal OpenTofu plan has only the
+accepted provider-only `metrics_config` residual. Native Sandy-to-signer
+identity and denied-action proof remains the final bootstrap gate; application
+upload and media-registry work remain deferred.
+
+## C3 application bootstrap complete — 2026-09-13
+
+Cycle `260913202721` completed the native Sandy workload proof through the
+existing approved SSH path. Sandy natively resolved as `EC2-CloudWatchAgent`,
+assumed `TNetC3MediaApplicationSigner` with the approved session convention,
+and passed native denials for bucket listing, ready-media read, conditional
+delete, and unrelated Lambda read. The quarantine-only SSE-S3 `PutObject`
+authority, exact CORS, seven bootstrap resources, and accepted
+`metrics_config` provider residual remain unchanged. The bootstrap is closed;
+application upload/signing, media-registry, and composer work resume only in
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001`.

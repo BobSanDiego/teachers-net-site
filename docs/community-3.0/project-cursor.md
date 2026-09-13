@@ -827,3 +827,54 @@ alternate profile, credential path, MFA capture, or AWS mutation was used.
 Human PowerShell must run the exact read-only identity and Sandy profile
 commands recorded in `community-v1-media-application-integration-bootstrap-
 gate-v1.md` before the consolidated operator expansion can be designed.
+
+## 2026-09-12 C3 application bootstrap plan gate
+
+Cycle `260912232545` resumed `C3-V1-MEDIA-APPLICATION-BOOTSTRAP001` after the
+Director confirmed Sandy instance `i-0c1c8997e347919b4` (`Sandbox Build`) and
+the existing `EC2-CloudWatchAgent` role/profile. The profile association was
+preserved. OpenTofu declarations now contain only the approved signer role,
+signer policy/boundary, exact Sandy assume-signer attachment, and exact C3
+media-bucket CORS. Formatting and validation pass.
+
+The no-apply plan reached the existing backend and proposed the seven
+authorized additions plus one in-place update removing the empty
+`metrics_config` block from the proven Lambda event-source mapping. This is the
+previously accepted provider-only representation residual and is outside the
+bootstrap apply gate. No AWS change was applied. The next action is a reviewed
+state/declaration-only resolution of that residual; do not use
+`ignore_changes`, refresh suppression, or broader authority.
+
+## 2026-09-13 C3 application bootstrap verification gate
+
+Cycle `260913195452` verified all seven applied bootstrap resources in remote
+OpenTofu state and AWS. The signer has a 3600-second maximum session, exact
+`EC2-CloudWatchAgent` trust, quarantine-only SSE-S3 `PutObject` policy and
+boundary; Sandy's existing profile association is unchanged; and bucket CORS
+matches the approved two-origin POST contract. The normal plan is
+`0 add, 1 change, 0 destroy`, with only the accepted provider-only
+`metrics_config` residual.
+
+The objective remains blocked pending native execution from Sandy. The
+approved operator lacks SSM access and no approved on-host control path is
+available. Do not broaden IAM or mutate proven infrastructure to obtain this
+evidence.
+
+## 2026-09-13 C3 application bootstrap completion
+
+Cycle `260913202721` completed the remaining native Sandy workload gate through
+the Director-approved existing `sandy` SSH path. On instance
+`i-0c1c8997e347919b4`, the native caller identity is
+`EC2-CloudWatchAgent`; it successfully assumed
+`TNetC3MediaApplicationSigner` as `tnet-c3-media-app-proof` for no more than
+3600 seconds. Native denied probes passed for bucket list, `ready/*` read,
+conditional delete, and unrelated Lambda read. The exact quarantine-only
+SSE-S3 `PutObject` policy/boundary remains carried forward from AWS read-only
+verification. No proof object or static credential was created, temporary
+variables were unset, and the temporary CLI installer directory was removed.
+
+`C3-V1-MEDIA-APPLICATION-BOOTSTRAP001` is COMPLETE. Existing OpenTofu state
+and the accepted provider-only event-source `metrics_config` residual remain
+unchanged. The next authorized objective is
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001`; no application upload, signer
+endpoint, media registry, or composer implementation was started here.

@@ -12,6 +12,105 @@ locals {
   processor_image  = "553830187994.dkr.ecr.us-west-2.amazonaws.com/tnet-c3-media-processor@sha256:390a38fa43578de7c0ec6ca24450299dc9c30907b39ac876fc5fd9639d66ec76"
 }
 
+resource "aws_iam_policy" "application_signer_boundary" {
+  name = "TNetC3MediaApplicationSignerBoundary"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid      = "AllowOnlyC3QuarantineUpload"
+      Effect   = "Allow"
+      Action   = "s3:PutObject"
+      Resource = "arn:aws:s3:::${local.media_bucket}/quarantine/*"
+      Condition = {
+        StringEquals = {
+          "s3:x-amz-server-side-encryption" = "AES256"
+        }
+      }
+    }]
+  })
+}
+
+resource "aws_iam_policy" "application_signer" {
+  name = "TNetC3MediaApplicationSignerPolicy"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid      = "PutC3QuarantineObjectsOnly"
+      Effect   = "Allow"
+      Action   = "s3:PutObject"
+      Resource = "arn:aws:s3:::${local.media_bucket}/quarantine/*"
+      Condition = {
+        StringEquals = {
+          "s3:x-amz-server-side-encryption" = "AES256"
+        }
+      }
+    }]
+  })
+}
+
+resource "aws_iam_policy" "application_assume_signer" {
+  name = "TNetC3MediaApplicationAssumeSigner"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid      = "AssumeC3ApplicationSignerOnly"
+      Effect   = "Allow"
+      Action   = "sts:AssumeRole"
+      Resource = "arn:aws:iam::${local.account_id}:role/TNetC3MediaApplicationSigner"
+    }]
+  })
+}
+
+resource "aws_iam_role" "application_signer" {
+  name                 = "TNetC3MediaApplicationSigner"
+  max_session_duration = 3600
+  permissions_boundary = aws_iam_policy.application_signer_boundary.arn
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid       = "AllowOnlySandyApplicationWorkload"
+      Effect    = "Allow"
+      Principal = { AWS = "arn:aws:iam::${local.account_id}:role/EC2-CloudWatchAgent" }
+      Action    = "sts:AssumeRole"
+      Condition = {
+        ArnEquals = {
+          "aws:PrincipalArn" = "arn:aws:iam::${local.account_id}:role/EC2-CloudWatchAgent"
+        }
+        StringLike = {
+          "sts:RoleSessionName" = "tnet-c3-media-app-*"
+        }
+      }
+    }]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "application_signer_policy" {
+  role       = aws_iam_role.application_signer.name
+  policy_arn = aws_iam_policy.application_signer.arn
+}
+
+resource "aws_iam_role_policy_attachment" "sandy_assume_signer" {
+  role       = "EC2-CloudWatchAgent"
+  policy_arn = aws_iam_policy.application_assume_signer.arn
+}
+
+resource "aws_s3_bucket_cors_configuration" "media" {
+  bucket = local.media_bucket
+
+  cors_rule {
+    id              = "C3MediaDirectUpload"
+    allowed_origins = ["https://teachers.net", "https://teachers-net-community3.ddev.site"]
+    allowed_methods = ["POST"]
+    allowed_headers = ["content-type"]
+    expose_headers  = []
+    max_age_seconds = 300
+  }
+}
+
 resource "aws_s3_bucket" "media" {
   bucket = local.media_bucket
 }
