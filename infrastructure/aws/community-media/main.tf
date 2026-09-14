@@ -71,20 +71,36 @@ resource "aws_iam_role" "application_signer" {
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [{
-      Sid       = "AllowOnlySandyApplicationWorkload"
-      Effect    = "Allow"
-      Principal = { AWS = "arn:aws:iam::${local.account_id}:role/EC2-CloudWatchAgent" }
-      Action    = "sts:AssumeRole"
-      Condition = {
-        ArnEquals = {
-          "aws:PrincipalArn" = "arn:aws:iam::${local.account_id}:role/EC2-CloudWatchAgent"
+    Statement = [
+      {
+        Sid       = "AllowOnlySandyApplicationWorkload"
+        Effect    = "Allow"
+        Principal = { AWS = "arn:aws:iam::${local.account_id}:role/EC2-CloudWatchAgent" }
+        Action    = "sts:AssumeRole"
+        Condition = {
+          ArnEquals = {
+            "aws:PrincipalArn" = "arn:aws:iam::${local.account_id}:role/EC2-CloudWatchAgent"
+          }
+          StringLike = {
+            "sts:RoleSessionName" = "tnet-c3-media-app-*"
+          }
         }
-        StringLike = {
-          "sts:RoleSessionName" = "tnet-c3-media-app-*"
+      },
+      {
+        Sid       = "AllowOnlyLocalCommunityIaCForQa"
+        Effect    = "Allow"
+        Principal = { AWS = "arn:aws:iam::${local.account_id}:role/TNetC3MediaIaCOperator" }
+        Action    = "sts:AssumeRole"
+        Condition = {
+          ArnEquals = {
+            "aws:PrincipalArn" = "arn:aws:iam::${local.account_id}:role/TNetC3MediaIaCOperator"
+          }
+          StringLike = {
+            "sts:RoleSessionName" = "tnet-c3-media-local-*"
+          }
         }
       }
-    }]
+    ]
   })
 }
 

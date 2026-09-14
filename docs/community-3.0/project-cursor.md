@@ -878,3 +878,22 @@ and the accepted provider-only event-source `metrics_config` residual remain
 unchanged. The next authorized objective is
 `C3-V1-MEDIA-APPLICATION-INTEGRATION001`; no application upload, signer
 endpoint, media registry, or composer implementation was started here.
+
+## 2026-09-14 C3 media application integration completion
+
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001` completed its approved local signer
+trust path and native multi-image acceptance. The local DDEV provider is
+explicitly local-only: it relays the approved temporary helper through an
+ephemeral Unix socket, assumes the existing quarantine-PutObject-only signer,
+and fails closed outside DDEV/local mode. Production remains IMDSv2-only.
+Details are in `community-v1-media-local-credential-bridge-v1.md`.
+
+Native acceptance passed on the registered `ai-in-education` route: two
+distinct images uploaded directly to quarantine, remained blocked while
+processing, reached READY with ordered publication, rendered from
+`media.teachers.net`, and retained order after reload. A malformed sibling
+failed without harming the valid sibling; publication stayed blocked until
+removal, then the valid sibling published and persisted after reload. The
+default `local-demo` route remains unavailable because its community registry
+row is absent; no fixture was created. AWS/runtime/CloudFront/OpenTofu/Sandy
+seams remain carried forward and unchanged.

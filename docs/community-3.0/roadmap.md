@@ -205,3 +205,15 @@ authority, exact CORS, seven bootstrap resources, and accepted
 `metrics_config` provider residual remain unchanged. The bootstrap is closed;
 application upload/signing, media-registry, and composer work resume only in
 `C3-V1-MEDIA-APPLICATION-INTEGRATION001`.
+
+## C3 media application integration complete — 2026-09-14
+
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001` completed the approved local
+operator-to-signer bridge and native browser acceptance. The local DDEV
+provider is ephemeral and fail-closed; production remains IMDSv2-only. Native
+positive and negative multi-image journeys passed on the registered
+`ai-in-education` route, including direct quarantine upload, readiness-gated
+publication, ordered reload persistence, `media.teachers.net` rendering, and
+failed-sibling removal while the valid sibling survived. The default
+`local-demo` route remains an unseeded local fixture and was not manufactured.
+AWS processor, CloudFront, IaC, and Sandy seams remain proven and closed.

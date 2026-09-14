@@ -834,3 +834,27 @@ the existing remote OpenTofu state remain intact; Sandy's instance-profile
 association, proven media runtime/delivery seams, and accepted provider-only
 event-source `metrics_config` residual were not changed. Resume only under the
 separate `C3-V1-MEDIA-APPLICATION-INTEGRATION001` objective.
+
+## 2026-09-14 C3 media application integration completion
+
+`C3-V1-MEDIA-APPLICATION-INTEGRATION001` is complete. The Director-approved
+local `TNetC3MediaIaCOperator` → `TNetC3MediaApplicationSigner` trust path was
+added without changing Sandy's production path or the signer's
+quarantine-only policy/boundary. The DDEV provider consumes only the approved
+temporary helper through an ephemeral, permission- and peer-checked Unix
+socket; production remains IMDSv2-only and no static credential was added.
+
+Canonical Windows Chrome/CDP native acceptance passed on the registered
+`ai-in-education` route. The positive journey proved two distinct direct
+quarantine uploads, processing-gated publication, READY-only ordered
+publication, `media.teachers.net` rendering, and reload persistence. The
+negative journey proved a malformed sibling fails while a valid sibling
+survives, publication remains blocked until removal, and the valid sibling
+then publishes and persists. Evidence and the bounded local provider contract
+are in `community-v1-media-local-credential-bridge-v1.md`.
+
+The default `local-demo` route was not used because its identifier is absent
+from the registered local community store; no product fixture or registry row
+was created. AWS processor/runtime, CloudFront, OpenTofu, Sandy, and DNS seams
+remain carried forward unchanged. No further work is authorized by this
+objective; application follow-ons require a separate ticket.

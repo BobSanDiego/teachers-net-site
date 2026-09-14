@@ -1,5 +1,9 @@
 services:
   web:
+    environment:
+      # Explicit local QA only. Production defaults to IMDSv2 in application code.
+      - C3_MEDIA_RUNTIME_MODE=local
+      - C3_MEDIA_CREDENTIAL_PROVIDER=unix_socket
     volumes:
       # Governed local-only availability seam: Community3 consumes the
       # platform-owned Shared Shell and notifications providers directly.
@@ -11,3 +15,7 @@ services:
         source: /home/bobreap/projects/teachers-net-site/wordpress/wp-content/plugins/tnet-notifications
         target: /var/www/html/wordpress/wp-content/plugins/tnet-notifications
         read_only: true
+      # Ephemeral socket only; no AWS credential files are mounted.
+      - type: bind
+        source: /home/bobreap/.ddev/tnet-c3-media-local-credentials
+        target: /run/tnet-c3-media

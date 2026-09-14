@@ -2,14 +2,16 @@
 defined('ABSPATH') || exit;
 
 /**
- * Small, dependency-free AWS bridge for the approved Sandy workload path.
- * Credentials are obtained from IMDS, exchanged through STS, and retained
+ * Small, dependency-free AWS bridge for the approved Sandy workload path and
+ * the explicitly local DDEV QA path. Credentials are obtained from IMDS or a
+ * host-side credential-process socket, exchanged through STS, and retained
  * only in this PHP request while a presigned POST is produced.
  */
 final class TNet_Community_Media_Aws {
     private const REGION = 'us-west-2';
     private const ROLE_ARN = 'arn:aws:iam::553830187994:role/TNetC3MediaApplicationSigner';
     private const BUCKET = 'tnet-c3-media-553830187994-us-west-2';
+    private const LOCAL_SOCKET = '/run/tnet-c3-media/credentials.sock';
     private const MAX_BYTES = 10485760;
     private static ?array $session = null;
 
@@ -34,6 +36,10 @@ final class TNet_Community_Media_Aws {
                 ['content-length-range', 1, self::MAX_BYTES],
                 ['eq', '$x-amz-server-side-encryption', 'AES256'],
                 ['eq', '$success_action_status', '201'],
+                ['eq', '$x-amz-date', $amz_date],
+                ['eq', '$x-amz-security-token', $session['token']],
+                ['eq', '$x-amz-algorithm', 'AWS4-HMAC-SHA256'],
+                ['eq', '$x-amz-credential', $credential],
             ],
         ];
         $encoded_policy = base64_encode(wp_json_encode($policy, JSON_UNESCAPED_SLASHES));
@@ -62,17 +68,18 @@ final class TNet_Community_Media_Aws {
 
     private static function session(): array {
         if (is_array(self::$session) && (int) self::$session['expires_at'] > time() + 60) return self::$session;
-        $base = self::imds_credentials();
+        $base = self::base_credentials();
         $body = self::sts_request($base, [
             'Action' => 'AssumeRole',
             'DurationSeconds' => '3600',
             'RoleArn' => self::role_arn(),
-            'RoleSessionName' => 'tnet-c3-media-app-' . substr(hash('sha256', wp_generate_uuid4()), 0, 16),
+            'RoleSessionName' => self::session_name(),
             'Version' => '2011-06-15',
         ]);
         $xml = @simplexml_load_string($body);
-        if (!$xml || empty($xml->AssumeRoleResponse->AssumeRoleResult->Credentials)) throw new RuntimeException('MEDIA_SIGNER_ASSUME_FAILED');
-        $credentials = $xml->AssumeRoleResponse->AssumeRoleResult->Credentials;
+        $xml = $xml ? $xml->children('https://sts.amazonaws.com/doc/2011-06-15/') : false;
+        if (!$xml || empty($xml->AssumeRoleResult->Credentials)) throw new RuntimeException('MEDIA_SIGNER_ASSUME_FAILED');
+        $credentials = $xml->AssumeRoleResult->Credentials;
         self::$session = [
             'access_key' => (string) $credentials->AccessKeyId,
             'secret_key' => (string) $credentials->SecretAccessKey,
@@ -90,6 +97,40 @@ final class TNet_Community_Media_Aws {
         $json = json_decode(self::http('http://169.254.169.254/latest/meta-data/iam/security-credentials/' . rawurlencode($role), 'GET', ['X-aws-ec2-metadata-token: ' . $token]), true);
         if (!is_array($json) || empty($json['AccessKeyId']) || empty($json['SecretAccessKey']) || empty($json['Token'])) throw new RuntimeException('MEDIA_INSTANCE_CREDENTIALS_INVALID');
         return ['access_key' => (string) $json['AccessKeyId'], 'secret_key' => (string) $json['SecretAccessKey'], 'token' => (string) $json['Token']];
+    }
+
+    private static function base_credentials(): array {
+        $mode = (string) (getenv('C3_MEDIA_RUNTIME_MODE') ?: 'production');
+        $provider = (string) (getenv('C3_MEDIA_CREDENTIAL_PROVIDER') ?: 'imds');
+        if ($mode === 'production' && $provider !== 'imds') throw new RuntimeException('MEDIA_LOCAL_PROVIDER_FORBIDDEN_IN_PRODUCTION');
+        if ($mode === 'local') {
+            if (getenv('IS_DDEV_PROJECT') !== 'true' || $provider !== 'unix_socket') throw new RuntimeException('MEDIA_LOCAL_PROVIDER_REQUIRES_DDEV');
+            return self::local_socket_credentials();
+        }
+        if ($mode !== 'production' || $provider !== 'imds') throw new RuntimeException('MEDIA_RUNTIME_CONFIGURATION_INVALID');
+        return self::imds_credentials();
+    }
+
+    private static function local_socket_credentials(): array {
+        $handle = @stream_socket_client('unix://' . self::LOCAL_SOCKET, $error_code, $error_message, 2, STREAM_CLIENT_CONNECT);
+        if (!is_resource($handle)) throw new RuntimeException('MEDIA_LOCAL_CREDENTIAL_PROVIDER_UNAVAILABLE');
+        stream_set_timeout($handle, 5);
+        $request = wp_json_encode(['version' => 1]) . "\n";
+        if (@fwrite($handle, $request) !== strlen($request)) {
+            fclose($handle);
+            throw new RuntimeException('MEDIA_LOCAL_CREDENTIAL_PROVIDER_FAILED');
+        }
+        $line = @fgets($handle, 16385);
+        fclose($handle);
+        if (!is_string($line) || strlen($line) > 16384) throw new RuntimeException('MEDIA_LOCAL_CREDENTIAL_PROVIDER_FAILED');
+        $json = json_decode($line, true);
+        if (!is_array($json) || empty($json['AccessKeyId']) || empty($json['SecretAccessKey']) || empty($json['SessionToken']) || empty($json['Expiration'])) throw new RuntimeException('MEDIA_LOCAL_CREDENTIALS_INVALID');
+        return ['access_key' => (string) $json['AccessKeyId'], 'secret_key' => (string) $json['SecretAccessKey'], 'token' => (string) $json['SessionToken']];
+    }
+
+    private static function session_name(): string {
+        $prefix = getenv('C3_MEDIA_RUNTIME_MODE') === 'local' ? 'tnet-c3-media-local-' : 'tnet-c3-media-app-';
+        return $prefix . substr(hash('sha256', wp_generate_uuid4()), 0, 16);
     }
 
     private static function sts_request(array $credentials, array $params): string {
