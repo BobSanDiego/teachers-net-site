@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "project": "community",
+  "owner": "tools/hopper/clean_cycle.py",
+  "current_objective": {
+    "ticket": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "state": "COMPLETE",
+    "cycle_id": "260914140800",
+    "objective_owner": "C3 media application integration"
+  },
+  "last_terminal_cycle": "260914140800",
+  "ticket_identity": {
+    "ticket_id": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "title": "Ticket: C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "source_path": "/home/bobreap/projects/teachers-net-site/tmp/hopper/community/C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved.md",
+    "source_bytes": 2054,
+    "source_sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692"
+  },
+  "freshness": {
+    "workflow_version": "V2",
+    "updated_at": "2026-09-14T14:11:18+00:00",
+    "cycle_id": "260914140800"
+  }
+}

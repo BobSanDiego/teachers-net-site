@@ -1,0 +1,15 @@
+{
+  "workflow_version": "V2",
+  "ticket_id": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+  "mode": "STANDARD",
+  "objective_owner": "C3 media application integration",
+  "terminator": "END TICKET — C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+  "terminator_valid": true,
+  "characters": 2050,
+  "warnings": [],
+  "valid": true,
+  "source_path": "/home/bobreap/projects/teachers-net-site/tmp/hopper/community/C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved.md",
+  "source_bytes": 2054,
+  "source_sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692",
+  "title": "Ticket: C3-V1-MEDIA-APPLICATION-INTEGRATION001"
+}

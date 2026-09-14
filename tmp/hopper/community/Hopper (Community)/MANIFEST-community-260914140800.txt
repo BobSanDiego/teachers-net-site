@@ -1,0 +1,27 @@
+project=community
+ticket=C3-V1-MEDIA-APPLICATION-INTEGRATION001
+cycle_id=260914140800
+workflow_version=V2
+objective_owner=C3 media application integration
+acceptance_fixtures=["https://teachers-net-community3.ddev.site/community/ai-in-education/c3-native-two-image-media-acceptance-proof/", "https://teachers-net-community3.ddev.site/community/ai-in-education/c3-invalid-sibling-removed-valid-sibling-retained/"]
+mode=STANDARD
+evidence_class=FUNCTIONAL
+objective_state=COMPLETE
+branch=COMMUNITY3-ui-working
+commit=1a790ff
+push=pushed
+git_disposition=COMMITTED_PUSHED
+reasoning_posture_recommended=MAXIMUM
+reasoning_posture_used=MAXIMUM
+reasoning_posture_recommended_next=NORMAL
+reasoning_escalation_reason=null
+current_hopper=tmp/hopper/community/Hopper (Community)
+archive_path=tmp/hopper/community/archive
+report_file=output-community-260914140800.txt
+manifest_file=MANIFEST-community-260914140800.txt
+cycle_record_file=cycle-community-260914140800.json
+evidence_bundle=Native Chrome/CDP acceptance; local provider boundary; pushed commit 1a790ff
+report_hopper_bytes={"hopper": 13677, "report": 13677}
+
+artifacts:
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved-community-260914140800.md", "original_path": "tmp/hopper/community/C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved.md", "purpose": "ticket artifact", "sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692", "size": 2054, "source_bytes": 2054, "source_sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692", "status": "committed"}

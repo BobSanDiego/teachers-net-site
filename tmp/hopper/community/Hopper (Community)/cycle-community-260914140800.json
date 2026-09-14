@@ -1,0 +1,131 @@
+{
+  "project": "community",
+  "execution_project": "community",
+  "ticket": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+  "cycle_id": "260914140800",
+  "workflow_version": "V2",
+  "objective_id": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+  "objective_owner": "C3 media application integration",
+  "acceptance_fixtures": [
+    "https://teachers-net-community3.ddev.site/community/ai-in-education/c3-native-two-image-media-acceptance-proof/",
+    "https://teachers-net-community3.ddev.site/community/ai-in-education/c3-invalid-sibling-removed-valid-sibling-retained/"
+  ],
+  "mode": "STANDARD",
+  "report_tier": {
+    "required": [
+      "terminal_report",
+      "manifest",
+      "cycle_json",
+      "source_ticket"
+    ],
+    "additional": [
+      "focused_changed_hunk_or_test_evidence_when_needed"
+    ],
+    "copy_committed_source_by_default": false
+  },
+  "evidence_class": "FUNCTIONAL",
+  "objective_state": "COMPLETE",
+  "acceptance_ledger": {
+    "objective_id": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "cycle_id": "260914140800",
+    "state": "COMPLETE",
+    "implementation_commit": "1a790ff",
+    "implementation_push": "PUSHED origin/COMMUNITY3-ui-working",
+    "seams": [
+      {
+        "name": "local operator identity and signer trust",
+        "state": "PROVEN_NATIVE",
+        "evidence": "MFA-backed TNetC3MediaIaCOperator assumed the existing TNetC3MediaApplicationSigner with the tnet-c3-media-local-* session convention; signer quarantine-only permissions remained unchanged."
+      },
+      {
+        "name": "local DDEV credential provider",
+        "state": "PROVEN",
+        "evidence": "Explicit DDEV-only Unix-socket relay consumed the approved temporary helper, failed closed outside local mode, and left no active socket or static credentials."
+      },
+      {
+        "name": "positive native two-image journey",
+        "state": "PROVEN_NATIVE",
+        "evidence": "Two distinct media IDs uploaded directly to quarantine, reached READY, published in order, rendered through media.teachers.net, and retained order after reload on ai-in-education."
+      },
+      {
+        "name": "negative sibling journey",
+        "state": "PROVEN_NATIVE",
+        "evidence": "Malformed sibling failed with processing_timeout while valid sibling survived; publication stayed blocked until removal, then valid sibling published and persisted after reload."
+      },
+      {
+        "name": "Sandy/AWS processor/CloudFront/OpenTofu seams",
+        "state": "CARRIED_FORWARD_PROVEN_NATIVE",
+        "evidence": "No owner change or contradictory native evidence; no settled AWS/runtime/delivery seam was retested or reopened."
+      },
+      {
+        "name": "default local-demo route",
+        "state": "BOUNDED_FIXTURE_GAP",
+        "evidence": "community:local-demo is absent from the registered local store; no fixture or registry row was manufactured. Seeded ai-in-education was the accepted route."
+      }
+    ],
+    "stop_boundary": "Terminal. Do not begin registry, upload, composer, migration, or production work under this cycle."
+  },
+  "ticket_preflight": {
+    "workflow_version": "V2",
+    "ticket_id": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "mode": "STANDARD",
+    "objective_owner": "C3 media application integration",
+    "terminator": "END TICKET \u2014 C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "terminator_valid": true,
+    "characters": 2050,
+    "warnings": [],
+    "valid": true,
+    "source_path": "/home/bobreap/projects/teachers-net-site/tmp/hopper/community/C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved.md",
+    "source_bytes": 2054,
+    "source_sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692",
+    "title": "Ticket: C3-V1-MEDIA-APPLICATION-INTEGRATION001"
+  },
+  "ticket_identity": {
+    "ticket_id": "C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "title": "Ticket: C3-V1-MEDIA-APPLICATION-INTEGRATION001",
+    "source_path": "/home/bobreap/projects/teachers-net-site/tmp/hopper/community/C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved.md",
+    "source_bytes": 2054,
+    "source_sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692"
+  },
+  "reasoning_posture_recommended": "MAXIMUM",
+  "reasoning_posture_used": "MAXIMUM",
+  "reasoning_posture_recommended_next": "NORMAL",
+  "reasoning_escalation_reason": null,
+  "implementation_attempts": 1,
+  "internal_checkpoints": 4,
+  "human_checkpoints": 1,
+  "rework_cause": null,
+  "execution_seconds": null,
+  "human_wait_seconds": null,
+  "report_hopper_bytes": {
+    "report": 13677,
+    "hopper": 13677
+  },
+  "status": "complete",
+  "branch": "COMMUNITY3-ui-working",
+  "commit": "1a790ff",
+  "push": "pushed",
+  "git_disposition": "COMMITTED_PUSHED",
+  "explicit_reactivation": true,
+  "current_hopper": "tmp/hopper/community/Hopper (Community)",
+  "archive_path": "tmp/hopper/community/archive",
+  "report_file": "output-community-260914140800.txt",
+  "manifest_file": "MANIFEST-community-260914140800.txt",
+  "cycle_record_file": "cycle-community-260914140800.json",
+  "evidence_bundle": "Native Chrome/CDP acceptance; local provider boundary; pushed commit 1a790ff",
+  "artifacts": [
+    {
+      "hopper_filename": "C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved-community-260914140800.md",
+      "original_path": "tmp/hopper/community/C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved.md",
+      "status": "committed",
+      "size": 2054,
+      "sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692",
+      "source_sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692",
+      "source_bytes": 2054,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    }
+  ],
+  "excluded_artifacts": []
+}

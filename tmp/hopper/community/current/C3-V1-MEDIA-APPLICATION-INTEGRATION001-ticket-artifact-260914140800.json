@@ -1,0 +1,12 @@
+{
+  "hopper_filename": "C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved-community-260914140800.md",
+  "original_path": "tmp/hopper/community/C3-V1-MEDIA-APPLICATION-INTEGRATION001-ticket-260914-local-trust-resolved.md",
+  "status": "committed",
+  "size": 2054,
+  "sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692",
+  "source_sha256": "abab7976accbb31f9ea1d9e77a4c84370e43803866ebc301a421692790b61692",
+  "source_bytes": 2054,
+  "committed": false,
+  "purpose": "ticket artifact",
+  "classification": "REPORT_REQUIRED"
+}
