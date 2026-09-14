@@ -16,6 +16,8 @@ require_once __DIR__ . '/includes/class-tnet-community-link-preview.php';
 require_once __DIR__ . '/includes/class-tnet-community-link-attachment-service.php';
 require_once __DIR__ . '/includes/class-tnet-community-attachment.php';
 require_once __DIR__ . '/includes/class-tnet-community-mocked-link-fetch.php';
+require_once __DIR__ . '/includes/class-tnet-community-media-aws.php';
+require_once __DIR__ . '/includes/class-tnet-community-media-registry.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-repository.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-domain.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-application.php';
@@ -42,7 +44,12 @@ require_once __DIR__ . '/includes/class-tnet-community-relationship-repository.p
 require_once __DIR__ . '/includes/class-tnet-community-relationship-service.php';
 require_once __DIR__ . '/includes/class-tnet-community-notification-preference-service.php';
 require_once __DIR__ . '/includes/class-tnet-community-notification-integration.php';
+register_activation_hook(__FILE__, ['TNet_Community_Schema', 'install']);
+add_action('init', static function (): void {
+    if ((string) get_option('tnet_community_schema_version', '') !== TNet_Community_Schema::VERSION) TNet_Community_Schema::install();
+}, 1);
 add_action('admin_menu', static function (): void { TNet_Community_Workbench::register(); });
+add_action('rest_api_init', static function (): void { TNet_Community_Media_Registry::register_rest_routes(); });
 add_action('init', static function (): void { TNet_Community_Topic_Composer_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Landing_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Thread_Controller::register(); });

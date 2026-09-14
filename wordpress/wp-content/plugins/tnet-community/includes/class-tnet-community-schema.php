@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 final class TNet_Community_Schema {
-    public const VERSION = '6';
+    public const VERSION = '7';
 
     public static function table_names(): array {
         global $wpdb;
@@ -23,6 +23,9 @@ final class TNet_Community_Schema {
             'suppressions' => $wpdb->prefix . 'community_notification_suppressions',
             'preference_reconciliation' => $wpdb->prefix . 'community_notification_preference_reconciliation',
             'notification_decisions' => $wpdb->prefix . 'community_notification_decisions',
+            'media_assets' => $wpdb->prefix . 'community_media_assets',
+            'media_variants' => $wpdb->prefix . 'community_media_variants',
+            'post_media' => $wpdb->prefix . 'community_post_media',
         ];
     }
 
@@ -344,6 +347,61 @@ final class TNet_Community_Schema {
             UNIQUE KEY event_recipient_channel (event_id, recipient_user_id, channel),
             KEY recipient_decisions (recipient_user_id, channel, decision, created_at),
             KEY event_decisions (event_id, created_at)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['media_assets']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            media_id VARCHAR(128) NOT NULL,
+            owner_id BIGINT UNSIGNED NOT NULL,
+            owner_type VARCHAR(32) NOT NULL,
+            media_kind VARCHAR(32) NOT NULL,
+            processing_profile VARCHAR(64) NOT NULL,
+            source_key VARCHAR(255) NOT NULL,
+            source_bytes BIGINT UNSIGNED NOT NULL,
+            source_width INT UNSIGNED NULL,
+            source_height INT UNSIGNED NULL,
+            source_format VARCHAR(16) NOT NULL,
+            source_mime VARCHAR(64) NOT NULL,
+            state VARCHAR(24) NOT NULL,
+            error_code VARCHAR(64) NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            uploaded_at DATETIME NULL,
+            processing_deadline_at DATETIME NULL,
+            processed_at DATETIME NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY media_id (media_id),
+            KEY owner_state (owner_id, state, updated_at),
+            KEY processing_state (state, processing_deadline_at)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['media_variants']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            media_id VARCHAR(128) NOT NULL,
+            variant_name VARCHAR(32) NOT NULL,
+            object_key VARCHAR(255) NOT NULL,
+            byte_count BIGINT UNSIGNED NOT NULL,
+            width INT UNSIGNED NOT NULL,
+            height INT UNSIGNED NOT NULL,
+            format VARCHAR(16) NOT NULL,
+            mime_type VARCHAR(64) NOT NULL,
+            state VARCHAR(24) NOT NULL,
+            verified_at DATETIME NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY media_variant (media_id, variant_name),
+            KEY variant_state (state, updated_at)
+        ) $c;");
+        dbDelta("CREATE TABLE {$t['post_media']} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            post_id VARCHAR(80) NOT NULL,
+            media_id VARCHAR(128) NOT NULL,
+            position INT UNSIGNED NOT NULL,
+            alt_text VARCHAR(255) NOT NULL,
+            created_at DATETIME NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY post_media_item (post_id, media_id),
+            UNIQUE KEY post_media_position (post_id, position),
+            KEY media_posts (media_id, post_id)
         ) $c;");
         self::install_migration_foundation();
         update_option('tnet_community_schema_version', self::VERSION, false);
