@@ -18,6 +18,8 @@ require_once __DIR__ . '/includes/class-tnet-community-attachment.php';
 require_once __DIR__ . '/includes/class-tnet-community-mocked-link-fetch.php';
 require_once __DIR__ . '/includes/class-tnet-community-media-aws.php';
 require_once __DIR__ . '/includes/class-tnet-community-media-registry.php';
+require_once __DIR__ . '/includes/class-tnet-community-media-discovery-repository.php';
+require_once __DIR__ . '/includes/class-tnet-community-media-discovery-controller.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-repository.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-domain.php';
 require_once __DIR__ . '/includes/class-tnet-community-publisher-application.php';
@@ -52,6 +54,7 @@ add_action('admin_menu', static function (): void { TNet_Community_Workbench::re
 add_action('rest_api_init', static function (): void { TNet_Community_Media_Registry::register_rest_routes(); });
 add_action('init', static function (): void { TNet_Community_Topic_Composer_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Landing_Controller::register(); });
+add_action('init', static function (): void { TNet_Community_Media_Discovery_Controller::register(); });
 add_action('init', static function (): void { TNet_Community_Thread_Controller::register(); });
 TNet_Community_Notification_Integration::boot();
 add_action('template_redirect', static function (): void {

@@ -35,8 +35,9 @@ final class TNet_Community_Landing_Controller {
         $name = $community['display_name'] ?? 'Community Activity';
         $new = $community ? home_url('/community/' . $community['slug'] . '/new/') : home_url('/community/new/');
         $landing = $community ? home_url('/community/' . $community['slug'] . '/') : home_url('/community/');
+        $media = $community ? home_url('/community/' . $community['slug'] . '/media/') : home_url('/community/media/');
 
-        TNet_Community_Shared_Shell::render($name, static function () use ($rows, $name, $new, $landing, $community): void {
+        TNet_Community_Shared_Shell::render($name, static function () use ($rows, $name, $new, $landing, $media, $community): void {
             $community_id = (string) ($community['community_id'] ?? '');
             $authenticated = is_user_logged_in() && $community_id !== '';
             $membership = $authenticated ? (new TNet_Community_Membership_Service())->state($community_id) : ['state'=>'none','joined'=>false,'member_count'=>0];
@@ -58,7 +59,7 @@ final class TNet_Community_Landing_Controller {
             }
             $search = '<form class="c3-community-search" role="search" method="get" action="' . esc_url(home_url('/')) . '"><label class="screen-reader-text" for="c3-community-search">Search Teachers.Net</label><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4.5 4.5"/></svg><input id="c3-community-search" type="search" name="s" placeholder="Search Teachers.Net"></form>';
             $hero = '<header class="community-header c3-community-hero"><p>Community</p><h1>' . esc_html($name) . '</h1><p>Exploring how artificial intelligence can support teachers, enhance learning, and shape the future of education.</p>' . $membership_control . '</header>';
-            $local_nav = '<nav class="c3-community-local-nav" aria-label="AI in Education navigation"><a href="' . esc_url($landing) . '" aria-current="page">Discussion</a><span>About</span><span>Members</span><span>Media</span></nav>';
+            $local_nav = '<nav class="c3-community-local-nav" aria-label="AI in Education navigation"><a href="' . esc_url($landing) . '" aria-current="page">Discussion</a><span>About</span><span>Members</span><a href="' . esc_url($media) . '">Media</a></nav>';
             $filters = '<nav class="c3-community-feed-controls" aria-label="Discussion view"><span class="is-current">Latest</span><span>Popular</span><span>Unanswered</span></nav>';
             echo '<div class="c3-community-layout">' . TNet_Community_Rail_Parent_Service::render($community) . '<main class="c3-community-main">' . $search . $hero . $local_nav . '<section class="c3-community-page">' . $launcher . $filters . '<section aria-labelledby="activity-heading"><h2 id="activity-heading" class="screen-reader-text">Latest Activity</h2>';
             if (!$rows) {

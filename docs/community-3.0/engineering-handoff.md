@@ -858,3 +858,21 @@ from the registered local community store; no product fixture or registry row
 was created. AWS processor/runtime, CloudFront, OpenTofu, Sandy, and DNS seams
 remain carried forward unchanged. No further work is authorized by this
 objective; application follow-ons require a separate ticket.
+
+## 2026-09-15 C3 media discovery implementation
+
+`C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001`, cycle `260915103000`,
+implemented the Community-local Media projection at
+`/community/{community-slug}/media/`. The route joins the existing Community,
+post, attachment, asset, and verified-variant authorities in one query,
+preserves multi-image order, uses keyset pagination at 24 items, and serves
+only public `480.webp` CloudFront URLs. The page remains rail-free inside the
+Shared Shell and adds no new persistence or AWS behavior.
+
+Native Chrome/CDP proof passed for the registered public `ai-in-education`
+fixture: navigation, three eligible images, multi-image order, canonical
+discussion click-through, no restricted URL/metadata leaks, and responsive
+1440/1024/768/390 geometry without overflow. Acceptance remains partial for
+negative native seams because the governed fixture has no attached below-240,
+reply-media, hidden/retracted/deleted/suppressed/inaccessible, or continuation
+item. The implementation predicates cover those cases; no fixture was created.

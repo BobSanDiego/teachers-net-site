@@ -217,3 +217,18 @@ publication, ordered reload persistence, `media.teachers.net` rendering, and
 failed-sibling removal while the valid sibling survived. The default
 `local-demo` route remains an unseeded local fixture and was not manufactured.
 AWS processor, CloudFront, IaC, and Sandy seams remain proven and closed.
+
+## C3 media discovery implementation checkpoint — 2026-09-15
+
+`C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001`, cycle `260915103000`,
+implemented the derived Community-local Media route with the existing
+visibility/content authorities, ordered multi-image projection, verified
+`480.webp` delivery, keyset pagination, and rail-free responsive presentation.
+Native public-surface proof passed on `ai-in-education`, including canonical
+click-through and responsive geometry. Negative native proof remains fixture-
+bounded: the current governed store has no attached below-floor, reply-media,
+suppressed/inaccessible, or continuation example, and no product fixture was
+manufactured. Do not advance this objective to terminal acceptance until those
+existing governed edge fixtures are available or the Director explicitly
+accepts deterministic predicate evidence for them. “Your Content” remains
+separate.

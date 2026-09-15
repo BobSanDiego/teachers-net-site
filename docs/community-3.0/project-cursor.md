@@ -897,3 +897,22 @@ removal, then the valid sibling published and persisted after reload. The
 default `local-demo` route remains unavailable because its community registry
 row is absent; no fixture was created. AWS/runtime/CloudFront/OpenTofu/Sandy
 seams remain carried forward and unchanged.
+
+## 2026-09-15 C3 media discovery implementation
+
+`C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001`, cycle `260915103000`,
+implemented the Community-local `/community/{community-slug}/media/` derived
+projection. It uses one visibility-aware joined query over existing post/media
+authorities, keyset pagination at 24 items, the locked 240px width/height
+floor, verified `480.webp`, canonical discussion links, and a rail-free Shared
+Shell page. It adds no persistence, cache, derivative, or AWS behavior.
+Details and evidence are in `community-v1-media-discovery-implementation-v1.md`.
+
+Native Chrome/CDP evidence proves the public `ai-in-education` route, active
+Media tab, ordered multi-image rendering, no restricted-media leaks, canonical
+tile click-through, and 1440/1024/768/390 responsive geometry without
+overflow. The current governed corpus has no attached below-floor, reply-media,
+hidden/retracted/deleted/suppressed/inaccessible, or 25th-item fixture. Those
+predicates are deterministic but remain `UNPROVEN_NATIVE`; no product fixture
+was manufactured. AWS/runtime/CloudFront/OpenTofu and application-integration
+seams remain carried forward unchanged.
