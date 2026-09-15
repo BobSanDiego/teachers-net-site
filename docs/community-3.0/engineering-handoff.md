@@ -876,3 +876,27 @@ discussion click-through, no restricted URL/metadata leaks, and responsive
 negative native seams because the governed fixture has no attached below-240,
 reply-media, hidden/retracted/deleted/suppressed/inaccessible, or continuation
 item. The implementation predicates cover those cases; no fixture was created.
+
+## 2026-09-15 C3 media discovery runtime-owner convergence
+
+Cycle `260915120000` found that the earlier Media visual proof used the
+isolated `teachers-net-community3.ddev.site` harness. For this objective, the
+authoritative integrated presentation is `teachers-net-live.ddev.site`. The
+live DDEV project read-only mounts the exact `tnet-community` source from
+`/home/bobreap/projects/teachers-net-community3`; its runtime-authority
+preflight is `ok` at local commit `433e910720d13057a8ecaf78766e0798f7a83614`.
+Its legacy theme, integrated plugin set, and database are the accepted shell
+owner.
+
+The Media rewrite rule resolves in live, but that governed database contains
+zero `ai-in-education` C3 posts, `post_media` rows, and media assets. The route
+therefore truthfully renders the empty state. No fixture was manufactured or
+copied. In parallel, canonical browser control fails before discovery with
+`sandboxCwd is not a local file URI: file:///home/bobreap/projects/teachers-net-site`.
+
+Mark only isolated-runtime Media presentation, Shared Shell orientation, and
+responsive visual proof as invalidated. Carry deterministic query/media and
+all AWS/application seams forward. The objective is `PARTIAL / BLOCKED` pending
+an existing governed integrated fixture and callable canonical browser control.
+Keep `433e910` local and unpushed; do not implement or accept visual changes
+until those acceptance prerequisites exist.

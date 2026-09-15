@@ -232,3 +232,19 @@ manufactured. Do not advance this objective to terminal acceptance until those
 existing governed edge fixtures are available or the Director explicitly
 accepts deterministic predicate evidence for them. “Your Content” remains
 separate.
+
+## C3 media discovery runtime convergence — 2026-09-15
+
+Cycle `260915120000` invalidated the prior isolated
+`teachers-net-community3.ddev.site` visual proof for this objective. The
+authoritative integrated presentation is `teachers-net-live.ddev.site`, which
+mounts the Community source at local commit `433e910` but has no governed C3
+`ai-in-education` post, attachment, or media-asset fixture. The route is
+present and correctly renders its empty state. Canonical browser control is
+also blocked before discovery by a non-local `sandboxCwd` runtime error.
+
+The route/query implementation remains local and unpushed. Resume the same
+objective only when the existing governed integrated fixture and canonical
+browser surface are available; then re-establish Media visual acceptance before
+the already-pending edge-fixture journeys. No AWS, product-state, or production
+work is authorized by this convergence checkpoint.

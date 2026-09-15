@@ -916,3 +916,23 @@ hidden/retracted/deleted/suppressed/inaccessible, or 25th-item fixture. Those
 predicates are deterministic but remain `UNPROVEN_NATIVE`; no product fixture
 was manufactured. AWS/runtime/CloudFront/OpenTofu and application-integration
 seams remain carried forward unchanged.
+
+## 2026-09-15 C3 media discovery runtime-owner convergence
+
+Cycle `260915120000` supersedes only the preceding isolated-runtime visual
+claims. The authoritative integrated acceptance runtime is now explicitly
+`teachers-net-live.ddev.site`; it mounts the exact Community source tree from
+`/home/bobreap/projects/teachers-net-community3` read-only, and its refreshed
+runtime-authority record is `ok` at local commit `433e910720d13057a8ecaf78766e0798f7a83614`.
+The isolated `teachers-net-community3.ddev.site` DDEV project remains a source
+harness, not the accepted shell.
+
+The integrated live store has no `ai-in-education` C3 posts, attachments, or
+media assets, so the correctly mounted Media route renders its governed empty
+state. Canonical browser control is independently unavailable before discovery
+with `sandboxCwd is not a local file URI: file:///home/bobreap/projects/teachers-net-site`.
+Therefore visual/presentation acceptance and the remaining native fixture
+seams are `BLOCKED`, not passed. No fixture, product state, AWS resource, or
+production state was created or changed. Resume only when an existing governed
+live fixture and callable canonical browser control are available; keep
+`433e910` unpushed until then.

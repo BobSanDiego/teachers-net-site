@@ -1,6 +1,6 @@
 # Community V1 Media Discovery Implementation
 
-Status: IMPLEMENTED — native public-surface acceptance partial pending governed edge fixtures
+Status: IMPLEMENTED — authoritative native acceptance blocked by integrated fixture and browser-control availability
 Objective: `C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001`
 Cycle: `260915103000`
 Project: Community
@@ -36,13 +36,10 @@ second top-level post. It also contains four uploading and one failed asset,
 but those non-ready assets are not attached to a post in the current governed
 fixture.
 
-Canonical Windows Chrome/CDP native evidence on
+The prior Windows Chrome/CDP evidence on the isolated
 `https://teachers-net-community3.ddev.site/community/ai-in-education/media/`
-proves the active Media tab, intact Shared Shell orientation with both rails
-absent, all three eligible images, multi-image order, distinct public
-`media.teachers.net/.../480.webp` URLs, no quarantine/source leaks, canonical
-tile click-through, and responsive 1440/1024/768/390 geometry without
-horizontal overflow. Native tile widths were 186.66, 190.39, 177, and 177px.
+fixture remains useful implementation evidence only. It is not authoritative
+native acceptance for this objective's integrated Community presentation.
 
 The current corpus does not contain governed attached examples for a
 below-240 source, reply media, hidden/retracted/deleted/suppressed or
@@ -56,3 +53,37 @@ Previously proven processor, signer, CloudFront, OpenTofu, and application
 integration seams remain carried forward and were not retested. “Your Content”
 remains a separate future objective. No AWS, production, credential, schema,
 or unrelated project state changed.
+
+## Runtime-owner convergence — 2026-09-15
+
+Cycle `260915120000` establishes `teachers-net-live.ddev.site` as the
+authoritative integrated Community presentation runtime for Media acceptance.
+`teachers-net-community3.ddev.site` is an isolated source harness, not the
+accepted integrated shell. The live runtime mounts the exact
+`tnet-community` source tree from
+`/home/bobreap/projects/teachers-net-community3` read-only; byte comparison of
+the plugin bootstrap, Shared Shell adapter, and Media controller matched the
+source tree. Its governed runtime-authority preflight records commit
+`433e910720d13057a8ecaf78766e0798f7a83614` and plugin tree hash
+`f07273a5078bf5a0650250a49f833f000671e94f6b1cd202cada69ff87a8db72` as
+`ok`.
+
+The live runtime's legacy theme, integrated plugin set, and database own the
+accepted surrounding shell. Its rewrite rule was refreshed locally so the
+Media route resolves, but its governed store contains zero C3
+`ai-in-education` posts, `post_media` rows, and media assets. The authoritative
+route consequently returns the implemented empty state, not gallery tiles.
+No fixture was copied, created, or modified.
+
+Accordingly, only the previous isolated-runtime Shared Shell orientation,
+Media presentation, and responsive visual claims are invalidated. Query and
+media predicates remain deterministic implementation evidence; prior
+processor, signer, delivery, and application-media seams remain carried
+forward. Canonical browser control also failed before browser discovery with
+`sandboxCwd is not a local file URI: file:///home/bobreap/projects/teachers-net-site`.
+No source, HTTP, or DOM observation is treated as native browser acceptance.
+
+Resume requires both a callable canonical browser surface and an existing,
+governed integrated live fixture with eligible Media rows. The local commit
+`433e910` remains intentionally unpushed until this authoritative acceptance
+can be completed.
