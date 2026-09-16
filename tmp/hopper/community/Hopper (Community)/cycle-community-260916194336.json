@@ -1,0 +1,164 @@
+{
+  "project": "community",
+  "execution_project": "community",
+  "ticket": "C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+  "cycle_id": "260916194336",
+  "workflow_version": "V2",
+  "objective_id": "C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+  "objective_owner": "C3 post/reply composition, media attachment lifecycle, post presentation, and conversation/media interaction",
+  "acceptance_fixtures": [
+    "authenticated teachers-net-live community.qa via approved Windows Chrome/CDP QA session"
+  ],
+  "mode": "CONVERGENCE",
+  "report_tier": {
+    "required": [
+      "terminal_report",
+      "manifest",
+      "cycle_json",
+      "source_ticket"
+    ],
+    "additional": [
+      "acceptance_ledger",
+      "terminal_consolidated_evidence",
+      "final_diff_identity"
+    ],
+    "copy_committed_source_by_default": false
+  },
+  "evidence_class": "DIAGNOSTIC",
+  "objective_state": "COMPLETE",
+  "acceptance_ledger": {
+    "ticket": "C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+    "cycle": "260916194336",
+    "objective_state": "COMPLETE_DIAGNOSTIC",
+    "proven": [
+      "C3 S3 processing, CloudFront delivery, signer, and IaC foundation carry forward without retest.",
+      "The feed modal client collection accumulates two sequential staged items before upload.",
+      "The reply composer has a single-file replacement lifecycle and bypasses the C3 registry.",
+      "Reply textarea dragover does not prevent default outside the reply drop zone.",
+      "Nested reply activation is inert: only the URL fragment changes.",
+      "Feed reply/count is a summary dialog; canonical thread is a separate standalone render.",
+      "The post attachment renderer has no collage or media-viewer owner."
+    ],
+    "pending_for_implementation_acceptance": [
+      "A full A, A+B, A+B+C, remove-B, add-D, publish, reload state trace using an exclusively owned cleanup fixture.",
+      "Whole-composer drag/drop and direct C3 upload in topic and reply contexts.",
+      "Canonical conversation modal, deep/cross-community history behavior, and reply focus/inert behavior.",
+      "1/2/3/4/5+ collage and selected-image sibling media viewer."
+    ],
+    "superseded": [
+      "Treating the prior controlled top-level two-image acceptance as proof of the normal current reply/standalone composer journey."
+    ],
+    "director_decisions_required": []
+  },
+  "ticket_preflight": {
+    "workflow_version": "V2",
+    "ticket_id": "C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+    "mode": "CONVERGENCE",
+    "objective_owner": "C3 post/reply composition, media attachment lifecycle, post presentation, and conversation/media interaction",
+    "terminator": "END TICKET \u2014 C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+    "terminator_valid": true,
+    "characters": 7411,
+    "warnings": [],
+    "valid": true,
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/ebdc8013-fad8-4b88-83d3-e7ea7d32f7ef/pasted-text.txt",
+    "source_bytes": 7411,
+    "source_sha256": "7719b76fcfd886e61287af7095504e67b4d0ab8e2ace8a54b027c40802083b4a",
+    "title": "Ticket: C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001"
+  },
+  "ticket_identity": {
+    "ticket_id": "C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+    "title": "Ticket: C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/ebdc8013-fad8-4b88-83d3-e7ea7d32f7ef/pasted-text.txt",
+    "source_bytes": 7411,
+    "source_sha256": "7719b76fcfd886e61287af7095504e67b4d0ab8e2ace8a54b027c40802083b4a"
+  },
+  "reasoning_posture_recommended": "MEDIUM",
+  "reasoning_posture_used": "MEDIUM",
+  "reasoning_posture_recommended_next": "MEDIUM",
+  "reasoning_escalation_reason": null,
+  "implementation_attempts": 0,
+  "internal_checkpoints": 5,
+  "human_checkpoints": 0,
+  "rework_cause": null,
+  "execution_seconds": null,
+  "human_wait_seconds": null,
+  "report_hopper_bytes": {
+    "report": 27339,
+    "hopper": 27339
+  },
+  "status": "complete",
+  "branch": "COMMUNITY3-ui-working",
+  "commit": "2abf1d360e27c06951261b7d7368b3581a7541ef",
+  "push": "success",
+  "git_disposition": "COMMITTED_PUSHED",
+  "explicit_reactivation": false,
+  "current_hopper": "tmp/hopper/community/Hopper (Community)",
+  "archive_path": "tmp/hopper/community/archive",
+  "report_file": "output-community-260916194336.txt",
+  "manifest_file": "MANIFEST-community-260916194336.txt",
+  "cycle_record_file": "cycle-community-260916194336.json",
+  "evidence_bundle": "native Chrome/CDP observations plus runtime hash and read-only live database evidence; no persistent fixture mutation",
+  "artifacts": [
+    {
+      "hopper_filename": "pasted-text-community-260916194336.txt",
+      "original_path": "/mnt/c/Users/bobre/.codex/attachments/ebdc8013-fad8-4b88-83d3-e7ea7d32f7ef/pasted-text.txt",
+      "status": "complete",
+      "size": 7411,
+      "sha256": "7719b76fcfd886e61287af7095504e67b4d0ab8e2ace8a54b027c40802083b4a",
+      "source_sha256": "7719b76fcfd886e61287af7095504e67b4d0ab8e2ace8a54b027c40802083b4a",
+      "source_bytes": 7411,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    },
+    {
+      "hopper_filename": "c3-post-conversation-media-convergence-260916194336-report-community-260916194336.md",
+      "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-report.md",
+      "status": "complete",
+      "size": 2767,
+      "sha256": "8e8be6a2cc67f1ae36c178ebf4c34ff7516348af6af413317bd5b806ddd0b5d2",
+      "source_sha256": "8e8be6a2cc67f1ae36c178ebf4c34ff7516348af6af413317bd5b806ddd0b5d2",
+      "source_bytes": 2767,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    },
+    {
+      "hopper_filename": "c3-post-conversation-media-convergence-260916194336-ledger-community-260916194336.json",
+      "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-ledger.json",
+      "status": "complete",
+      "size": 1389,
+      "sha256": "55b805592e206612ebeb5ffd9435e239746ce13fd96845fb11b554ebc4299f08",
+      "source_sha256": "55b805592e206612ebeb5ffd9435e239746ce13fd96845fb11b554ebc4299f08",
+      "source_bytes": 1389,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    },
+    {
+      "hopper_filename": "c3-post-conversation-media-convergence-260916194336-evidence-community-260916194336.json",
+      "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-evidence.json",
+      "status": "complete",
+      "size": 1186,
+      "sha256": "5a76d7044208f2c2fa4ca4f6a6f328f5b3ba440828d5644b8f3016fdf7e49c7d",
+      "source_sha256": "5a76d7044208f2c2fa4ca4f6a6f328f5b3ba440828d5644b8f3016fdf7e49c7d",
+      "source_bytes": 1186,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    },
+    {
+      "hopper_filename": "c3-post-conversation-media-convergence-260916194336-preflight-community-260916194336.json",
+      "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-preflight.json",
+      "status": "complete",
+      "size": 705,
+      "sha256": "5338fc4a40c48cb045ed173b9110ebdd60ccd747869f1c80e2353b415912b8ae",
+      "source_sha256": "5338fc4a40c48cb045ed173b9110ebdd60ccd747869f1c80e2353b415912b8ae",
+      "source_bytes": 705,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    }
+  ],
+  "excluded_artifacts": []
+}

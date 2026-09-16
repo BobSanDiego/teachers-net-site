@@ -1,0 +1,21 @@
+{
+  "runtime": "https://teachers-net-live.ddev.site/community/ai-in-education/",
+  "authenticated_identity": "community.qa",
+  "browser": {
+    "primary_binding": "blocked before discovery by sandboxCwd non-local file URI",
+    "used_surface": "existing approved Windows Chrome/CDP QA session",
+    "persistent_mutation": false
+  },
+  "native_observations": [
+    "Feed modal accepted two sequential in-memory valid files with network disabled, rendering two cards and two ordered serialized entries.",
+    "Reply target link changed only to #reply-composer; parent target/context/focus stayed unchanged.",
+    "Reply textarea dragover did not prevent default; reply drop zone did.",
+    "Reply/count opened a summary-only dialog; cache-bypassed Media route showed the expected empty state after prior fixture cleanup."
+  ],
+  "read_only_state": [
+    "Runtime hashes for topic composer, thread controller, and landing controller matched Community source.",
+    "Read-only live database queries found zero former Media QA roots, relationships, named asset IDs, and variants."
+  ],
+  "source_commit": "2abf1d360e27c06951261b7d7368b3581a7541ef",
+  "no_aws_or_production_mutation": true
+}

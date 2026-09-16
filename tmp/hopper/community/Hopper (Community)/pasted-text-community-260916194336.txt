@@ -1,0 +1,220 @@
+TICKET READY FOR CODEX
+
+Ticket: C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001
+Mode: CONVERGENCE
+Reasoning: MEDIUM
+Recommended model: TERRA
+Project: Community
+Owner: C3 post/reply composition, media attachment lifecycle, post presentation, and conversation/media interaction
+
+OUTCOME
+
+Establish the authoritative owner map and causal diagnosis for the currently
+broken C3 post/reply/media journey, then return one minimum coherent
+implementation boundary.
+
+Do NOT implement speculative fixes in this ticket.
+
+AUTHORITY
+
+Media Discovery objective C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001
+is COMPLETE. Carry its gallery, AWS processing/delivery, Shared Shell and
+responsive acceptance forward.
+
+Director-observed current behavior overrides assumptions that prior
+multi-image application acceptance still proves the normal composer journey.
+
+CURRENT NATIVE DEFECTS
+
+1. Adding image B after image A replaces A in the composer instead of
+   accumulating A+B.
+
+2. Images staged/selected in the current composer do not survive into the
+   published post. Determine the first seam where attachment identity/state is
+   lost.
+
+3. Accepted drag/drop behavior is absent:
+   - only the small "PhotoPaste or drop an image" target accepts a drop;
+   - dropping an image over the textarea/composer invokes browser-native file
+     navigation and replaces the C3 page.
+
+4. Reply composer exposes obsolete presentation:
+   - remove "Formatting help";
+   - CTA should use standard C3 action-blue treatment.
+
+5. Nested "Reply to this comment" is inert.
+   Accepted copy is simply "Reply".
+
+6. Existing standalone post presentation has visibly regressed and is not the
+   intended normal C3 post experience.
+
+DIRECTOR PRODUCT INVARIANTS
+
+COMPOSER / MEDIA
+
+- Entire composer is the image drop target.
+- Valid image dragover must prevent browser navigation and visibly arm the
+  composer.
+- Drop stages/uploads through the governed C3 media owner and previews the
+  attachment.
+- Photo control remains a file-picker affordance, not the exclusive drop zone.
+- Adding attachments accumulates; replacement is never implicit.
+- Individual removal preserves siblings.
+- Attachment order persists through publish/reload.
+- Failed/retried sibling must not replace successful siblings.
+- Prefer one reusable composer/media capability configured for new-post and
+  reply contexts unless repository authority proves otherwise.
+
+MULTI-IMAGE PRESENTATION
+
+Do not finalize pixel design here, but determine the owners needed to support:
+- bounded feed collage for multiple attachments rather than vertical sprawl;
+- 1/2/3/4/5+ responsive composition;
+- +N treatment when visible tiles are capped;
+- image click opening a post-associated media viewer at the selected image;
+- previous/next navigation through that post's ordered sibling attachments.
+
+V1 reactions/replies remain POST-owned unless existing authority explicitly
+establishes attachment-level social objects.
+
+CONVERSATION / ROUTING
+
+Director target:
+- ordinary post-content click opens the canonical conversation modal;
+- reply/count click opens the same modal with reply composer focused/contextual;
+- if owning Community is already loaded, preserve it underneath;
+- otherwise establish owning Community underneath before presenting modal;
+- cold/deep canonical post URL uses the same browser experience;
+- underlying Community/right rail is dimmed and inert;
+- underlying Create Post CTA is likewise subdued/inert;
+- logo, notification bell and avatar/account may remain persistent/accessible;
+- no breadcrumb exists solely for modal state;
+- navigation replaces active modal context; never modal-on-modal.
+
+Image click is distinct:
+- open post-associated media viewer at selected attachment;
+- viewer retains originating-post context/conversation;
+- Media-gallery entry resolves owning Community/post/attachment coherently.
+
+DIAGNOSTIC ORDER
+
+Read current durable Community authority/Handoff first.
+
+Then trace actual owners end-to-end:
+
+A. COMPOSER
+- top-level composer renderer/controller/state;
+- reply composer;
+- nested reply composer/handler;
+- picker, dragenter/dragover/drop;
+- attachment collection/state;
+- add/remove/retry/order;
+- preview rendering.
+
+B. MEDIA LIFECYCLE
+- presign/upload;
+- media IDs;
+- READY reconciliation;
+- publish payload;
+- post-media relationships;
+- post projection/reload.
+
+C. POST RENDERING
+- feed card renderer;
+- current multi-attachment behavior;
+- clipping/click handlers;
+- image versus post-content click ownership.
+
+D. CONVERSATION
+- existing modal renderer/controller/state;
+- replies/nested replies;
+- reply focus;
+- accessibility/focus trap/inert behavior;
+- close semantics.
+
+E. ROUTING/HISTORY
+- canonical post URL;
+- same-Community entry;
+- cold/deep entry;
+- cross-Community entry;
+- pushState/popstate;
+- owning-Community resolution;
+- SEO/non-JS server representation;
+- source of the current standalone renderer.
+
+F. MEDIA VIEWER
+- existing reusable lightbox/carousel capability, if any;
+- selected attachment identity;
+- ordered sibling traversal;
+- URL/history capability.
+
+DECISIVE NATIVE EVIDENCE
+
+Use authoritative teachers-net-live and canonical browser control.
+
+For the normal composer, trace:
+
+A
+A+B
+A+B+C
+remove B => A+C
+add D => A+C+D
+publish
+reload
+
+Capture state at each relevant boundary and identify EXACTLY where attachment
+A is replaced/lost and where published attachment projection fails.
+
+Test both authoritative picker and drag/drop entry paths.
+
+Prove current behavior for:
+- top-level post composition;
+- first-level reply composition;
+- nested Reply activation;
+- feed post-content click;
+- feed image click;
+- reply/count click;
+- canonical/deep post URL.
+
+Disposable QA data is permitted only with a cleanup plan based on complete
+dependency ownership, not ID-prefix assumptions. Do not mutate AWS
+architecture or production.
+
+DO NOT REOPEN
+
+Unless evidence shows their owner changed:
+- S3/CloudFront media processing/delivery;
+- signer/security architecture;
+- Media Discovery gallery/query;
+- accepted Shared Shell Media presentation.
+
+REPORT
+
+Return one convergence report containing:
+
+1. authoritative owner map;
+2. exact causal chain for second-image replacement;
+3. exact causal chain for images disappearing at publication;
+4. drag/drop event-owner diagnosis, including why browser navigation occurs;
+5. reply/nested-reply owner diagnosis;
+6. current post/modal/routing behavior versus Director target;
+7. existing versus missing multi-image feed/viewer capability;
+8. PROVEN seams that can safely carry forward;
+9. superseded/parallel implementations that should be consolidated or removed;
+10. one recommended implementation objective and acceptance ledger;
+11. only genuine remaining Director product/architecture decisions.
+
+Do not issue separate fixes for each symptom.
+
+STOP BOUNDARY
+
+Stop for Director decision only if evidence requires:
+- new persistence/schema ownership;
+- attachment-level social objects;
+- material canonical URL/schema change;
+- privacy/visibility architecture change;
+- destructive production/AWS mutation.
+
+Otherwise complete diagnosis and return the implementation boundary.
+
+END TICKET — C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001

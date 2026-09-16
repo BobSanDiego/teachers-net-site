@@ -1,0 +1,15 @@
+{
+  "workflow_version": "V2",
+  "ticket_id": "C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+  "mode": "CONVERGENCE",
+  "objective_owner": "C3 post/reply composition, media attachment lifecycle, post presentation, and conversation/media interaction",
+  "terminator": "END TICKET — C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001",
+  "terminator_valid": true,
+  "characters": 7411,
+  "warnings": [],
+  "valid": true,
+  "source_path": "/mnt/c/Users/bobre/.codex/attachments/ebdc8013-fad8-4b88-83d3-e7ea7d32f7ef/pasted-text.txt",
+  "source_bytes": 7411,
+  "source_sha256": "7719b76fcfd886e61287af7095504e67b4d0ab8e2ace8a54b027c40802083b4a",
+  "title": "Ticket: C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001"
+}

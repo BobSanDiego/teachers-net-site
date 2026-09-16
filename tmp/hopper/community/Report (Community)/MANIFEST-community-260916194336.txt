@@ -1,0 +1,31 @@
+project=community
+ticket=C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001
+cycle_id=260916194336
+workflow_version=V2
+objective_owner=C3 post/reply composition, media attachment lifecycle, post presentation, and conversation/media interaction
+acceptance_fixtures=["authenticated teachers-net-live community.qa via approved Windows Chrome/CDP QA session"]
+mode=CONVERGENCE
+evidence_class=DIAGNOSTIC
+objective_state=COMPLETE
+branch=COMMUNITY3-ui-working
+commit=2abf1d360e27c06951261b7d7368b3581a7541ef
+push=success
+git_disposition=COMMITTED_PUSHED
+reasoning_posture_recommended=MEDIUM
+reasoning_posture_used=MEDIUM
+reasoning_posture_recommended_next=MEDIUM
+reasoning_escalation_reason=null
+current_hopper=tmp/hopper/community/Hopper (Community)
+archive_path=tmp/hopper/community/archive
+report_file=output-community-260916194336.txt
+manifest_file=MANIFEST-community-260916194336.txt
+cycle_record_file=cycle-community-260916194336.json
+evidence_bundle=native Chrome/CDP observations plus runtime hash and read-only live database evidence; no persistent fixture mutation
+report_hopper_bytes={"hopper": 27339, "report": 27339}
+
+artifacts:
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "pasted-text-community-260916194336.txt", "original_path": "/mnt/c/Users/bobre/.codex/attachments/ebdc8013-fad8-4b88-83d3-e7ea7d32f7ef/pasted-text.txt", "purpose": "ticket artifact", "sha256": "7719b76fcfd886e61287af7095504e67b4d0ab8e2ace8a54b027c40802083b4a", "size": 7411, "source_bytes": 7411, "source_sha256": "7719b76fcfd886e61287af7095504e67b4d0ab8e2ace8a54b027c40802083b4a", "status": "complete"}
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "c3-post-conversation-media-convergence-260916194336-report-community-260916194336.md", "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-report.md", "purpose": "ticket artifact", "sha256": "8e8be6a2cc67f1ae36c178ebf4c34ff7516348af6af413317bd5b806ddd0b5d2", "size": 2767, "source_bytes": 2767, "source_sha256": "8e8be6a2cc67f1ae36c178ebf4c34ff7516348af6af413317bd5b806ddd0b5d2", "status": "complete"}
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "c3-post-conversation-media-convergence-260916194336-ledger-community-260916194336.json", "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-ledger.json", "purpose": "ticket artifact", "sha256": "55b805592e206612ebeb5ffd9435e239746ce13fd96845fb11b554ebc4299f08", "size": 1389, "source_bytes": 1389, "source_sha256": "55b805592e206612ebeb5ffd9435e239746ce13fd96845fb11b554ebc4299f08", "status": "complete"}
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "c3-post-conversation-media-convergence-260916194336-evidence-community-260916194336.json", "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-evidence.json", "purpose": "ticket artifact", "sha256": "5a76d7044208f2c2fa4ca4f6a6f328f5b3ba440828d5644b8f3016fdf7e49c7d", "size": 1186, "source_bytes": 1186, "source_sha256": "5a76d7044208f2c2fa4ca4f6a6f328f5b3ba440828d5644b8f3016fdf7e49c7d", "status": "complete"}
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "c3-post-conversation-media-convergence-260916194336-preflight-community-260916194336.json", "original_path": "tmp/c3-post-conversation-media-convergence-260916194336-preflight.json", "purpose": "ticket artifact", "sha256": "5338fc4a40c48cb045ed173b9110ebdd60ccd747869f1c80e2353b415912b8ae", "size": 705, "source_bytes": 705, "source_sha256": "5338fc4a40c48cb045ed173b9110ebdd60ccd747869f1c80e2353b415912b8ae", "status": "complete"}
