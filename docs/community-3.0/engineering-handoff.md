@@ -943,3 +943,24 @@ proven runtime/delivery resources remained unchanged. Final DB verification
 returned zero QA-thread dependency residue, with only the authorized closure
 delta in governed totals. Objective state: `COMPLETE`; next objective remains
 canonical standalone discussion/feed/modal interaction convergence.
+
+## Post/conversation/media convergence diagnostic — 2026-09-16
+
+`C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001` completed without implementation
+or persistent QA data.  Read
+`c3-v1-post-conversation-media-convergence-diagnostic-v1.md` before resuming.
+It establishes that the active feed modal has an accumulating C3 `items[]`
+collection, but reply authoring still owns one legacy WordPress upload and
+cannot retain siblings.  The current small-zone-only drop listeners allow
+browser file navigation outside their zones; reply target listeners bind before
+their controls exist.  Feed summary dialogs and canonical standalone threads
+are separate presentation paths, while collage and media-viewer ownership is
+absent.
+
+Next: one implementation objective,
+`C3-V1-POST-CONVERSATION-MEDIA-IMPLEMENTATION001`.  It must use the existing
+registry/post-media ordering, retain the canonical server URL, and consolidate
+the composer, conversation, and post-media rendering owners rather than patch
+each symptom.  AWS/media-delivery and completed Media discovery seams remain
+`PROVEN_NATIVE`.  Create real acceptance data only after proving an exclusive
+DB/S3 cleanup closure; the old Media QA closure has zero current records.

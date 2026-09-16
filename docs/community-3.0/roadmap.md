@@ -280,3 +280,16 @@ absent. No pre-existing governed state or proven Media/AWS seam changed.
 The preferred next product objective is canonical standalone discussion/feed
 interaction convergence, including modal/deep-link behavior. It is explicitly
 deferred and was not started during Media closeout.
+
+## 2026-09-16 post/conversation/media convergence
+
+The next coherent objective is
+`C3-V1-POST-CONVERSATION-MEDIA-IMPLEMENTATION001`, not separate fixes for the
+composer, reply, feed, or standalone page.  Its accepted diagnostic authority
+is `c3-v1-post-conversation-media-convergence-diagnostic-v1.md`: consolidate
+the context-configured C3 composer/media capability, full canonical
+conversation surface, and post attachment-set collage/viewer while retaining
+the existing ordered `post_media` relation and canonical server thread URL.
+No new schema, attachment-level social model, AWS change, or production
+decision is presently required.  Real acceptance upload data requires an
+exclusive, reversible QA cleanup closure.

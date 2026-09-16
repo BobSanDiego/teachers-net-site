@@ -978,3 +978,26 @@ pre-existing governed state or accepted Media/AWS seam was reopened. The
 canonical `/lessons/` href remains production-owned and no local Lesson Bank
 runtime was added. Next work is canonical standalone discussion/feed/modal
 interaction convergence, not part of this objective.
+
+## 2026-09-16 post, conversation, and media convergence diagnosis
+
+`C3-V1-POST-CONVERSATION-MEDIA-CONVERGENCE001` is diagnostically complete.
+The active live source owners are recorded in
+`c3-v1-post-conversation-media-convergence-diagnostic-v1.md`.  Native evidence
+confirms that the feed modal's C3 collection accumulates sequential staged
+items, while the reply path is a separate single-file legacy WordPress-upload
+owner; it replaces its prior image and bypasses ordered C3 `post_media`.
+Whole-composer drag/drop is absent because prevention is attached only to the
+small drop zones.  Nested reply links are inert because their binding scripts
+run before the links render.  Feed reply/count opens only a summary dialog and
+canonical links navigate to a standalone renderer; neither a full conversation
+modal nor an attachment-set viewer/collage exists.
+
+No schema, canonical URL, privacy, attachment-social-object, AWS, or production
+decision is outstanding.  The next coherent implementation objective is
+`C3-V1-POST-CONVERSATION-MEDIA-IMPLEMENTATION001`, which must consolidate one
+context-configured C3 composer/media capability, one conversation surface
+controller, and one post-media collage/viewer renderer.  It requires an
+exclusively owned disposable acceptance fixture before real upload/publish
+proof; the prior Media closure remains absent and must not be recreated by
+assumption.
