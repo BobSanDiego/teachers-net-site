@@ -13,13 +13,16 @@ final class TNet_Community_Media_Discovery_Repository {
 
     public function __construct() { $this->tables = TNet_Community_Schema::table_names(); }
 
-    public function page(string $community_id, ?string $cursor = null): array {
+    public function page(string $community_id, ?string $cursor = null, string $sort = 'newest'): array {
         global $wpdb;
+        $sort = $sort === 'oldest' ? 'oldest' : 'newest';
         $where = "p.community_id=%s AND p.post_type='topic' AND p.parent_post_id IS NULL AND p.publication_state IN ('published','restored') AND p.visibility='public' AND p.moderation_state='clear' AND p.published_at IS NOT NULL AND a.media_kind='image' AND a.state='ready' AND a.source_width >= %d AND a.source_height >= %d AND v.variant_name=%s AND v.state='verified'";
         $params = [$community_id, self::MIN_DIMENSION, self::MIN_DIMENSION, self::VARIANT_NAME];
-        $decoded_cursor = $this->decode_cursor($cursor);
+        $decoded_cursor = $this->decode_cursor($cursor, $sort);
         if ($decoded_cursor) {
-            $where .= " AND (p.published_at < %s OR (p.published_at = %s AND p.post_id < %s) OR (p.published_at = %s AND p.post_id = %s AND pm.position > %d) OR (p.published_at = %s AND p.post_id = %s AND pm.position = %d AND pm.media_id > %s))";
+            $date_operator = $sort === 'oldest' ? '>' : '<';
+            $post_operator = $sort === 'oldest' ? '>' : '<';
+            $where .= " AND (p.published_at {$date_operator} %s OR (p.published_at = %s AND p.post_id {$post_operator} %s) OR (p.published_at = %s AND p.post_id = %s AND pm.position > %d) OR (p.published_at = %s AND p.post_id = %s AND pm.position = %d AND pm.media_id > %s))";
             array_push($params,
                 $decoded_cursor['published_at'],
                 $decoded_cursor['published_at'], $decoded_cursor['post_id'],
@@ -33,7 +36,7 @@ final class TNet_Community_Media_Discovery_Repository {
             INNER JOIN {$this->tables['media_assets']} a ON a.media_id=pm.media_id
             INNER JOIN {$this->tables['media_variants']} v ON v.media_id=a.media_id
             WHERE {$where}
-            ORDER BY p.published_at DESC, p.post_id DESC, pm.position ASC, pm.media_id ASC
+            ORDER BY p.published_at " . ($sort === 'oldest' ? 'ASC' : 'DESC') . ", p.post_id " . ($sort === 'oldest' ? 'ASC' : 'DESC') . ", pm.position ASC, pm.media_id ASC
             LIMIT %d";
         $params[] = self::PAGE_SIZE + 1;
         $rows = $wpdb->get_results($wpdb->prepare($sql, ...$params), ARRAY_A) ?: [];
@@ -64,27 +67,29 @@ final class TNet_Community_Media_Discovery_Repository {
         $last = end($items);
         return [
             'items' => $items,
-            'next_cursor' => $has_more && $last ? $this->encode_cursor($rows[count($rows) - 1]) : null,
+            'next_cursor' => $has_more && $last ? $this->encode_cursor($rows[count($rows) - 1], $sort) : null,
         ];
     }
 
-    private function encode_cursor(array $row): string {
+    private function encode_cursor(array $row, string $sort): string {
         $payload = wp_json_encode([
             'published_at' => (string) $row['published_at'],
             'post_id' => (string) $row['post_id'],
             'position' => (int) $row['position'],
             'media_id' => (string) $row['media_id'],
+            'sort' => $sort,
         ]);
         return rtrim(strtr(base64_encode($payload), '+/', '-_'), '=');
     }
 
-    private function decode_cursor(?string $cursor): ?array {
+    private function decode_cursor(?string $cursor, string $sort): ?array {
         if (!is_string($cursor) || $cursor === '' || strlen($cursor) > 512 || !preg_match('/^[A-Za-z0-9_-]+$/', $cursor)) return null;
         $raw = base64_decode(strtr($cursor, '-_', '+/'), true);
         $payload = is_string($raw) ? json_decode($raw, true) : null;
         if (!is_array($payload) || !isset($payload['published_at'], $payload['post_id'], $payload['position'], $payload['media_id'])) return null;
         if (!is_string($payload['published_at']) || !is_string($payload['post_id']) || !is_string($payload['media_id']) || !is_int($payload['position'])) return null;
         if (!preg_match('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/', $payload['published_at']) || $payload['post_id'] === '' || $payload['media_id'] === '' || $payload['position'] < 0) return null;
+        if (isset($payload['sort']) && $payload['sort'] !== $sort) return null;
         return $payload;
     }
 }

@@ -936,3 +936,45 @@ seams are `BLOCKED`, not passed. No fixture, product state, AWS resource, or
 production state was created or changed. Resume only when an existing governed
 live fixture and callable canonical browser control are available; keep
 `433e910` unpushed until then.
+
+## 2026-09-16 Media presentation acceptance convergence
+
+The Director superseded the prior local `/lessons/` route blocker. `/lessons/`
+is the permanent production Lesson Bank home; its local `teachers-net-live`
+HTTP reachability is not required. Preserve `/lessons/` in every Media
+navigation state and do not create local Lesson Bank routing or runtime.
+
+Authenticated native Chrome evidence on the canonical Media route passed the
+final Shared Shell/navigation checkpoint. At 1440px the shell row is normal
+flow above the full-width hero, direct links emit `/`, `/jobs/`, `/community/`
+and `/lessons/`, there are no Media dropdowns, the hero is
+`x=88.5..1336.5`, the gallery is inset at `x=113.5..1311.5`, and overflow is
+false. At 900px labels are hidden while all four direct-link icons remain; at
+640px the flat hamburger order is Home, Chatboards, Lesson Plans, Jobs, with
+Escape close/focus restoration and no nested controls. Media native
+presentation/navigation is `PROVEN_NATIVE`; AWS, runtime, CloudFront, signer,
+and application-media seams remain carried forward.
+
+The prior local-route blocker is `SUPERSEDED_BY_DIRECTOR_AUTHORITY`. Terminal
+cleanup is not yet safe: the exact retained QA set is 30 posts, 31
+relationships, and 3 assets/variants, but no governed record-delete operation
+exists and the approved AWS paths cannot delete their corresponding objects.
+No partial cleanup was performed. The objective remains open only for a safe,
+reviewed cleanup owner/path and final cycle packaging.
+
+## 2026-09-16 Media objective terminal closeout
+
+`C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001` is `COMPLETE` after the
+Director-approved native Media presentation PASS and exact disposable-fixture
+cleanup. The exclusive QA closure contained 31 posts (30 prefixed roots plus
+one generated reply), 31 relationships, one publication event, one audit row,
+3 assets, and 3 variants. AWS independently verified zero current objects,
+versions, and delete markers beneath all three authorized ready prefixes.
+
+The database cleanup deleted only that closure in dependency-safe order and
+verified zero QA-thread residue. The temporary two-SID runtime-policy residue
+was removed and verified absent; the boundary was never modified. No
+pre-existing governed state or accepted Media/AWS seam was reopened. The
+canonical `/lessons/` href remains production-owned and no local Lesson Bank
+runtime was added. Next work is canonical standalone discussion/feed/modal
+interaction convergence, not part of this objective.

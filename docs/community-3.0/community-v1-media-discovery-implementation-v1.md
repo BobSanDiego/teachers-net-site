@@ -1,6 +1,6 @@
 # Community V1 Media Discovery Implementation
 
-Status: IMPLEMENTED — authoritative native acceptance blocked by integrated fixture and browser-control availability
+Status: COMPLETE — Director-passed native presentation and bounded QA-fixture cleanup verified
 Objective: `C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001`
 Cycle: `260915103000`
 Project: Community
@@ -87,3 +87,66 @@ Resume requires both a callable canonical browser surface and an existing,
 governed integrated live fixture with eligible Media rows. The local commit
 `433e910` remains intentionally unpushed until this authoritative acceptance
 can be completed.
+
+## Final native presentation convergence — 2026-09-16
+
+The Director superseded the local `/lessons/` reachability blocker: `/lessons/`
+is the permanent production Lesson Bank home, and local
+`teachers-net-live.ddev.site` reachability is not an acceptance requirement.
+No rewrite, WordPress page, plugin, local Lesson Bank runtime, or cross-project
+integration was added. All Media navigation states retain the canonical
+`/lessons/` destination.
+
+Authenticated native Chrome evidence on
+`https://teachers-net-live.ddev.site/community/ai-in-education/media/?c3_shell_qa=1789483580`
+passed the final Media navigation/presentation checkpoint. At 1440px the
+normal-flow shell row is above the hero; the four direct links emit `/`,
+`/jobs/`, `/community/`, and `/lessons/`; no dropdowns are rendered; the hero
+spans `x=88.5..1336.5`; the Media gallery remains inset at
+`x=113.5..1311.5`; and there is no horizontal overflow. At 900px the same
+four direct links retain icons, hide labels, and remain evenly distributed;
+the hamburger remains hidden. At 640px the desktop links are replaced by the
+flat hamburger order Home, Chatboards, Lesson Plans, Jobs; the menu opened,
+contained no nested controls, and Escape closed it with focus returned to the
+navigation button. The normal Discussion surface was not changed by this
+Media-specific composition.
+
+The native route/link contract is therefore `PROVEN_NATIVE`, including the
+Director decision that local `/lessons/` HTTP 404 is out of scope. The prior
+local-route blocker is `SUPERSEDED_BY_DIRECTOR_AUTHORITY`, not an application
+defect.
+
+Finalization cleanup remains pending: the exact retained QA set is 30
+`qa-media-discovery-260915*` posts, 31 post-media rows, and 3 media assets with
+3 variants. The Community plugin exposes no governed record-delete operation,
+and the approved AWS operator identities do not have delete authority for the
+corresponding quarantine/ready objects. No partial database deletion was
+performed. Cleanup requires a separately reviewed safe owner/path before the
+objective can be marked terminal.
+
+## Terminal Media closeout — 2026-09-16
+
+The Director approved the final Media presentation and product checkpoint.
+The disposable QA dependency closure was then removed without reopening any
+accepted Media, AWS, runtime, or delivery seam.
+
+The closure was proven exclusive before mutation: 30
+`qa-media-discovery-260915*` root posts plus one generated reply,
+31 post-media relationships, one publication event, one post-audit record,
+3 media assets, and 3 media variants. No included record belonged to another
+community, no child post existed outside the QA threads, and no media
+relationship referenced an outside post. The database transaction deleted
+events/audit first, then relationships, posts, variants, and assets.
+
+The three authorized ready-prefix S3 trees were independently enumerated and
+all current versions, historical versions, and delete markers were deleted and
+verified absent. Temporary cleanup policy statements were removed from the
+inline `TNetC3MediaIaCOperatorRuntime` policy and independently verified
+absent; the permissions boundary was never changed.
+
+Post-cleanup verification is zero QA-thread posts, relationships, assets,
+variants, audit rows, publication events, aliases, and migration/report
+references. Pre-existing governed totals changed only by the authorized
+closure. Media acceptance is terminally `PROVEN_NATIVE`; the objective is
+`COMPLETE`. The preferred next objective is canonical standalone discussion
+and feed/modal interaction convergence; it was not started here.

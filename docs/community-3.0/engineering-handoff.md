@@ -900,3 +900,46 @@ all AWS/application seams forward. The objective is `PARTIAL / BLOCKED` pending
 an existing governed integrated fixture and callable canonical browser control.
 Keep `433e910` local and unpushed; do not implement or accept visual changes
 until those acceptance prerequisites exist.
+
+## 2026-09-16 Media presentation acceptance convergence
+
+The Director superseded the prior local `/lessons/` route blocker. `/lessons/`
+is the permanent production Lesson Bank home; local `teachers-net-live` HTTP
+reachability is not required, and no local Lesson Bank routing/runtime or
+cross-project integration may be added.
+
+Authenticated native Chrome evidence on the canonical Media route passed the
+final Shared Shell/navigation checkpoint. At 1440px the shell row is in normal
+flow above the full-width hero; direct links emit `/`, `/jobs/`, `/community/`
+and `/lessons/`; no Media dropdowns render; the hero spans
+`x=88.5..1336.5`; the gallery is inset at `x=113.5..1311.5`; and horizontal
+overflow is false. At 900px labels are hidden while all four icons remain. At
+640px the flat hamburger order is Home, Chatboards, Lesson Plans, Jobs; Escape
+closes it and restores focus, with no nested controls. Media presentation and
+navigation are `PROVEN_NATIVE`; prior AWS/runtime/CloudFront/application-media
+evidence remains carried forward.
+
+The prior local-route blocker is `SUPERSEDED_BY_DIRECTOR_AUTHORITY`. Cleanup
+is the only remaining terminal gate: 30 exact QA posts, 31 relationships, and
+3 assets/variants remain, but no governed record-delete operation exists and
+approved AWS identities cannot delete their corresponding object keys. No
+partial cleanup was performed. Obtain a safe reviewed cleanup owner/path,
+then complete final cycle packaging and Git consolidation.
+
+## Terminal Media closeout — 2026-09-16
+
+The Director-approved Media presentation is terminally accepted. The exact
+exclusive QA dependency closure was removed after proving its ownership: 30
+prefixed root posts plus generated reply `post:94131d57c505412c`, 31
+relationships, publication event `39`, audit row `50`, 3 assets, and 3
+variants. No child, alias, migration, report, media, or event reference was
+shared with non-QA state.
+
+The three exact ready-prefix S3 trees were fully version-enumerated and all
+versions/delete markers were removed; verification returned zero for every
+prefix. The two temporary cleanup SIDs were removed from inline
+`TNetC3MediaIaCOperatorRuntime` and verified absent. The boundary and all
+proven runtime/delivery resources remained unchanged. Final DB verification
+returned zero QA-thread dependency residue, with only the authorized closure
+delta in governed totals. Objective state: `COMPLETE`; next objective remains
+canonical standalone discussion/feed/modal interaction convergence.

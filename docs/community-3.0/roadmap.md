@@ -248,3 +248,35 @@ objective only when the existing governed integrated fixture and canonical
 browser surface are available; then re-establish Media visual acceptance before
 the already-pending edge-fixture journeys. No AWS, product-state, or production
 work is authorized by this convergence checkpoint.
+
+## C3 media discovery presentation convergence — 2026-09-16
+
+The Director superseded the local `/lessons/` reachability blocker. `/lessons/`
+is the permanent production Lesson Bank home and remains the Lesson Plans href
+in every Media navigation state; no local Lesson Bank route/runtime or
+cross-project integration is authorized.
+
+Authenticated native Chrome evidence passed the final Media presentation
+checkpoint on `teachers-net-live`: normal-flow Shared Shell navigation above
+the hero, canonical direct links `/`, `/jobs/`, `/community/`, `/lessons/`, no
+Media dropdowns, inset gallery, and no horizontal overflow at 1440px; icon-only
+direct links at 900px; and the flat Home / Chatboards / Lesson Plans / Jobs
+hamburger at 640px with Escape close/focus restoration. The prior local-route
+blocker is superseded by Director authority. Terminal cleanup remains bounded
+but not yet safe because the exact QA corpus has no governed record-delete
+operation and approved AWS identities lack deletion authority for its media
+objects. The next preferred product objective remains canonical standalone
+discussion/feed interaction convergence after cleanup/finalization.
+
+## 2026-09-16 Media discovery terminal closeout
+
+The Director-passed Community Media presentation is complete. Its disposable
+QA closure was safely removed after exclusive dependency proof: 31 posts,
+31 relationships, one publication event, one audit row, 3 media assets, and 3
+variants. The three authorized S3 ready prefixes have zero versions and delete
+markers, and the temporary cleanup-policy residue was revoked and verified
+absent. No pre-existing governed state or proven Media/AWS seam changed.
+
+The preferred next product objective is canonical standalone discussion/feed
+interaction convergence, including modal/deep-link behavior. It is explicitly
+deferred and was not started during Media closeout.

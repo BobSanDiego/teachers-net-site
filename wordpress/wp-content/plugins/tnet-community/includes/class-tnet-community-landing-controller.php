@@ -16,6 +16,28 @@ final class TNet_Community_Landing_Controller {
 
     private static function local(): bool { return defined('DDEV_PROJECT') || (bool) getenv('DDEV_PROJECT'); }
 
+    public static function community_hero(?array $community, string $name): string {
+        $community_id = (string) ($community['community_id'] ?? '');
+        $membership = ['joined' => false, 'member_count' => 0];
+        $membership_control = '';
+        if (is_user_logged_in() && $community_id !== '') {
+            $membership = (new TNet_Community_Membership_Service())->state($community_id);
+            $action = !empty($membership['joined']) ? 'leave' : 'join';
+            $label = !empty($membership['joined']) ? 'Leave Community' : 'Join Community';
+            $membership_control = '<form class="c3-membership-control" method="post">' . wp_nonce_field('tnet_community_membership', 'tnet_community_membership_nonce', true, false) . '<input type="hidden" name="tnet_community_action" value="membership"><input type="hidden" name="membership_command" value="' . esc_attr($action) . '"><button type="submit">' . esc_html($label) . '</button></form>';
+        }
+        $meta = '<div class="c3-community-hero__meta"><span>' . self::hero_icon('users') . esc_html(number_format_i18n((int) ($membership['member_count'] ?? 0))) . ' members</span><span>' . self::hero_icon('globe') . 'Public community</span></div>';
+        return '<header class="community-header c3-community-hero"><p>Community</p><h1>' . esc_html($name) . '</h1><p>Exploring how artificial intelligence can support teachers, enhance learning, and shape the future of education.</p>' . $meta . $membership_control . '</header>';
+    }
+
+    private static function hero_icon(string $name): string {
+        $paths = [
+            'users' => '<path d="M16 20v-1.5a4.5 4.5 0 0 0-4.5-4.5h-3A4.5 4.5 0 0 0 4 18.5V20"/><circle cx="10" cy="7" r="3"/><path d="M16 4.5a3 3 0 0 1 0 5.9M19.5 20v-1.5a4.5 4.5 0 0 0-2.5-4.1"/>',
+            'globe' => '<circle cx="12" cy="12" r="8.5"/><path d="M3.8 9h16.4M3.8 15h16.4M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5Z"/>',
+        ];
+        return '<svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">' . ($paths[$name] ?? '') . '</svg>';
+    }
+
     public static function render(): void {
         if (!get_query_var('tnet_community_landing')) return;
         self::handle_post();
@@ -40,13 +62,6 @@ final class TNet_Community_Landing_Controller {
         TNet_Community_Shared_Shell::render($name, static function () use ($rows, $name, $new, $landing, $media, $community): void {
             $community_id = (string) ($community['community_id'] ?? '');
             $authenticated = is_user_logged_in() && $community_id !== '';
-            $membership = $authenticated ? (new TNet_Community_Membership_Service())->state($community_id) : ['state'=>'none','joined'=>false,'member_count'=>0];
-            $membership_control = '';
-            if ($authenticated) {
-                $action = $membership['joined'] ? 'leave' : 'join';
-                $label = $membership['joined'] ? 'Leave Community' : 'Join Community';
-                $membership_control = '<form class="c3-membership-control" method="post">' . wp_nonce_field('tnet_community_membership', 'tnet_community_membership_nonce', true, false) . '<input type="hidden" name="tnet_community_action" value="membership"><input type="hidden" name="membership_command" value="' . esc_attr($action) . '"><button type="submit">' . esc_html($label) . '</button><span>' . esc_html(number_format_i18n((int)$membership['member_count'])) . ' members</span></form>';
-            }
             $launcher = '<a class="feed-composer-launcher" href="' . esc_url($authenticated ? $new : wp_login_url($new)) . '"><span aria-hidden="true">＋</span><span>Share a thought, question, or resource…</span></a>';
             $dialog = '';
             if ($authenticated) {
@@ -58,7 +73,7 @@ final class TNet_Community_Landing_Controller {
                 $dialog = '<dialog id="community-composer-dialog" class="community-composer-dialog" aria-labelledby="community-composer-title"><div class="community-composer-dialog__inner"><header><h2 id="community-composer-title">Create post</h2><button type="button" class="secondary composer-close" data-close-composer aria-label="Close composer">×</button></header>' . $identity . TNet_Community_Topic_Composer_Controller::embedded_form($community_id, $name, $new, ['action_url' => $new, 'return_to_feed' => $landing, 'hide_cancel' => true], true) . '</div></dialog>';
             }
             $search = '<form class="c3-community-search" role="search" method="get" action="' . esc_url(home_url('/')) . '"><label class="screen-reader-text" for="c3-community-search">Search Teachers.Net</label><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4.5 4.5"/></svg><input id="c3-community-search" type="search" name="s" placeholder="Search Teachers.Net"></form>';
-            $hero = '<header class="community-header c3-community-hero"><p>Community</p><h1>' . esc_html($name) . '</h1><p>Exploring how artificial intelligence can support teachers, enhance learning, and shape the future of education.</p>' . $membership_control . '</header>';
+            $hero = self::community_hero($community, $name);
             $local_nav = '<nav class="c3-community-local-nav" aria-label="AI in Education navigation"><a href="' . esc_url($landing) . '" aria-current="page">Discussion</a><span>About</span><span>Members</span><a href="' . esc_url($media) . '">Media</a></nav>';
             $filters = '<nav class="c3-community-feed-controls" aria-label="Discussion view"><span class="is-current">Latest</span><span>Popular</span><span>Unanswered</span></nav>';
             echo '<div class="c3-community-layout">' . TNet_Community_Rail_Parent_Service::render($community) . '<main class="c3-community-main">' . $search . $hero . $local_nav . '<section class="c3-community-page">' . $launcher . $filters . '<section aria-labelledby="activity-heading"><h2 id="activity-heading" class="screen-reader-text">Latest Activity</h2>';

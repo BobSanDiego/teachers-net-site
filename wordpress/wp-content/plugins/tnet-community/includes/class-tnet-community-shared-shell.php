@@ -9,7 +9,7 @@
 defined('ABSPATH') || exit;
 
 final class TNet_Community_Shared_Shell {
-    public static function render(string $title, callable $content): void {
+    public static function render(string $title, callable $content, array $options = []): void {
         if (!class_exists('TNet_Shared_Shell')) {
             wp_die('The governed Teachers.Net Shared Shell is unavailable in this local runtime.');
         }
@@ -22,11 +22,11 @@ final class TNet_Community_Shared_Shell {
         $logo = plugins_url('assets/teachers-net-wordmark.svg', dirname(__DIR__) . '/tnet-community.php');
         $visual_css = dirname(__DIR__) . '/assets/community-visual-language-v1.css';
 
-        TNet_Shared_Shell::enqueue_assets('canonical');
+        TNet_Shared_Shell::enqueue_assets('community');
         wp_enqueue_style(
             'tnet-community-visual-language',
             plugins_url('assets/community-visual-language-v1.css', dirname(__DIR__) . '/tnet-community.php'),
-            ['tnet-shared-shell-responsive-correction'],
+            ['tnet-shared-shell-community'],
             is_file($visual_css) ? (string) filemtime($visual_css) : null
         );
 
@@ -52,6 +52,9 @@ final class TNet_Community_Shared_Shell {
                 'avatar_source' => 'wordpress-avatar',
             ] : ['name' => 'Guest user', 'avatar_source' => 'shell-fallback'],
             'urls' => [
+                'home' => home_url('/'),
+                'jobs' => home_url('/jobs/'),
+                'lessons' => home_url('/lessons/'),
                 'post_job' => home_url('/jobs/'),
                 'my_jobs' => home_url('/jobs/'),
                 'schools' => home_url('/jobs/'),
@@ -74,6 +77,7 @@ final class TNet_Community_Shared_Shell {
                 'chatboard_grade_levels' => [],
             ],
             'fixture' => 'community3',
+            'community_media' => !empty($options['community_media']),
             'footer_links' => [
                 ['About', home_url('/about/')],
                 ['Contacts', home_url('/contacts/')],
