@@ -8,7 +8,7 @@
     </head>
     <body <?php body_class(['tnet-jobs-app-canvas', 'tnet-jobs-shell-lab-body', 'tnet-jobs-route-' . $route_class, $anonymous_fixture ? 'tnet-jobs-route-browse' : '', $clean ? 'tnet-jobs-shell-clean-preview' : '']); ?>>
       <?php if (function_exists('wp_body_open')) wp_body_open(); ?>
-      <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="<?php echo esc_attr($adapter); ?>" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-shell-fixture-state="<?php echo esc_attr($fixture_state); ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
+      <div class="tnet-jobs-shell-lab tnet-shared-shell__canonical" data-tnet-shared-shell="true" data-shell-contract="canonical" data-shell-contract-version="<?php echo esc_attr($contract_version); ?>" data-shell-owner="shared-shell-host" data-shell-adapter="<?php echo esc_attr($adapter); ?>" data-shell-page="<?php echo $community_media ? 'community-media' : ''; ?>" data-shell-clean="<?php echo $clean ? 'true' : 'false'; ?>" data-shell-fixture-state="<?php echo esc_attr($fixture_state); ?>" data-fixture="<?php echo esc_attr($fixture); ?>" data-shell-presentation="<?php echo esc_attr($presentation); ?>">
         <header class="tnet-jobs-shell-lab-header" data-tnet-shell-header>
           <div class="tnet-jobs-shell-lab-header-inner">
             <span class="tnet-jobs-shell-lab-rail-divider" aria-hidden="true"></span>
@@ -17,6 +17,12 @@
             </a>
             <div class="tnet-jobs-shell-lab-navbar-right">
               <nav class="tnet-jobs-shell-lab-main-nav" aria-label="<?php echo esc_attr__('Teachers.Net navigation', 'tnet-shared-shell'); ?>">
+                <?php if ($community_media) : ?>
+                <a class="tnet-jobs-shell-lab-home-link tnet-jobs-shell-lab-media-direct-link<?php echo $active_destination === 'home' ? ' is-current' : ''; ?>" href="<?php echo esc_url($media_home_url); ?>" aria-label="<?php echo esc_attr__('Home', 'tnet-shared-shell'); ?>" title="<?php echo esc_attr__('Home', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-home'); ?></span><span class="tnet-jobs-shell-lab-media-direct-label"><?php echo esc_html__('Home', 'tnet-shared-shell'); ?></span></a>
+                <a class="tnet-jobs-shell-lab-media-direct-link<?php echo $active_destination === 'job-center' ? ' is-current' : ''; ?>" href="<?php echo esc_url($media_jobs_url); ?>" aria-label="<?php echo esc_attr__('Jobs', 'tnet-shared-shell'); ?>" title="<?php echo esc_attr__('Jobs', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-job-center'); ?></span><span class="tnet-jobs-shell-lab-media-direct-label"><?php echo esc_html__('Jobs', 'tnet-shared-shell'); ?></span></a>
+                <a class="tnet-jobs-shell-lab-media-direct-link<?php echo $active_destination === 'chatboards' ? ' is-current' : ''; ?>" href="<?php echo esc_url($media_chatboards_url); ?>" aria-label="<?php echo esc_attr__('Chatboards', 'tnet-shared-shell'); ?>" title="<?php echo esc_attr__('Chatboards', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-chatboards'); ?></span><span class="tnet-jobs-shell-lab-media-direct-label"><?php echo esc_html__('Chatboards', 'tnet-shared-shell'); ?></span></a>
+                <a class="tnet-jobs-shell-lab-media-direct-link<?php echo $active_destination === 'lesson-plans' ? ' is-current' : ''; ?>" href="<?php echo esc_url($media_lessons_url); ?>" aria-label="<?php echo esc_attr__('Lesson Plans', 'tnet-shared-shell'); ?>" title="<?php echo esc_attr__('Lesson Plans', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-lesson-plans'); ?></span><span class="tnet-jobs-shell-lab-media-direct-label"><?php echo esc_html__('Lesson Plans', 'tnet-shared-shell'); ?></span></a>
+                <?php else : ?>
                 <a class="tnet-jobs-shell-lab-home-link<?php echo $active_destination === 'home' ? ' is-current' : ''; ?>" href="<?php echo esc_url($shell_home_url); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-home'); ?></span><span><?php echo esc_html__('Home', 'tnet-shared-shell'); ?></span></a>
                 <div class="tnet-jobs-shell-lab-nav-menu tnet-jobs-shell-lab-product-menu<?php echo $active_destination === 'job-center' ? ' is-current' : ''; ?>" data-product-flow="employer" data-employer-access="<?php echo $shell_has_employer_access ? 'true' : 'false'; ?>">
                   <button type="button" class="tnet-jobs-shell-lab-nav-trigger" aria-expanded="false" aria-controls="tnet-jobs-shell-product-navigation" aria-haspopup="true"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-job-center'); ?></span><span><?php echo esc_html__('Job Center', 'tnet-shared-shell'); ?></span><span class="tnet-jobs-shell-lab-nav-chevron" aria-hidden="true"></span></button>
@@ -68,6 +74,7 @@
                     </section>
                   </div>
                 </div>
+                <?php endif; ?>
               </nav>
               <div class="tnet-jobs-shell-lab-account-area<?php echo $anonymous_fixture ? ' tnet-jobs-shell-lab-anonymous-account-area' : ''; ?>">
                 <?php if ($anonymous_fixture) : ?>
@@ -109,6 +116,14 @@
               <div class="tnet-jobs-shell-lab-mobile-menu">
                 <button type="button" class="tnet-jobs-shell-lab-disclosure-toggle" aria-expanded="false" aria-controls="tnet-jobs-shell-compact-navigation" aria-haspopup="true"><span class="screen-reader-text"><?php echo esc_html__('Open navigation', 'tnet-shared-shell'); ?></span><svg class="tnet-jobs-shell-lab-mobile-menu-icon" viewBox="0 0 38 38" aria-hidden="true" focusable="false"><path d="M4 9h30M4 19h30M4 29h30" /></svg></button>
                 <div id="tnet-jobs-shell-compact-navigation" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-compact-navigation">
+                  <?php if ($community_media) : ?>
+                  <section class="tnet-jobs-shell-lab-compact-panel is-active tnet-jobs-shell-lab-media-compact-panel" data-compact-panel="root">
+                    <a class="tnet-jobs-shell-lab-compact-link" href="<?php echo esc_url($media_home_url); ?>" aria-label="<?php echo esc_attr__('Home', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-home'); ?></span><span><?php echo esc_html__('Home', 'tnet-shared-shell'); ?></span></a>
+                    <a class="tnet-jobs-shell-lab-compact-link" href="<?php echo esc_url($media_chatboards_url); ?>" aria-label="<?php echo esc_attr__('Chatboards', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-chatboards'); ?></span><span><?php echo esc_html__('Chatboards', 'tnet-shared-shell'); ?></span></a>
+                    <a class="tnet-jobs-shell-lab-compact-link" href="<?php echo esc_url($media_lessons_url); ?>" aria-label="<?php echo esc_attr__('Lesson Plans', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-lesson-plans'); ?></span><span><?php echo esc_html__('Lesson Plans', 'tnet-shared-shell'); ?></span></a>
+                    <a class="tnet-jobs-shell-lab-compact-link" href="<?php echo esc_url($media_jobs_url); ?>" aria-label="<?php echo esc_attr__('Jobs', 'tnet-shared-shell'); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-job-center'); ?></span><span><?php echo esc_html__('Jobs', 'tnet-shared-shell'); ?></span></a>
+                  </section>
+                  <?php else : ?>
                   <section class="tnet-jobs-shell-lab-compact-panel is-active" data-compact-panel="root" data-compact-flow="<?php echo $shell_has_employer_access ? 'employer' : 'jobseeker'; ?>">
                     <?php if ($anonymous_fixture) : ?><div class="tnet-jobs-shell-lab-compact-auth"><a href="<?php echo esc_url($login_url); ?>"><?php echo esc_html__('Log In', 'tnet-shared-shell'); ?></a><a href="<?php echo esc_url($signup_url); ?>"><?php echo esc_html__('Sign Up', 'tnet-shared-shell'); ?></a></div><?php endif; ?>
                     <a class="tnet-jobs-shell-lab-compact-home" href="<?php echo esc_url($shell_home_url); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-home'); ?></span><span><?php echo esc_html__('Home', 'tnet-shared-shell'); ?></span></a>
@@ -147,6 +162,7 @@
                     <a class="<?php echo $fixture === 'dashboard' ? 'is-current' : ''; ?>" href="<?php echo esc_url($dashboard_url); ?>"><?php echo esc_html__('Dashboard / List', 'tnet-shared-shell'); ?></a>
                     <a class="<?php echo $fixture === 'wizard' ? 'is-current' : ''; ?>" href="<?php echo esc_url($wizard_url); ?>"><?php echo esc_html__('Wizard / Form', 'tnet-shared-shell'); ?></a>
                   </nav><?php endif; ?>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>

@@ -18,6 +18,7 @@ final class TNet_Shared_Shell {
     $parity_css = TNET_SHARED_SHELL_PLUGIN_DIR . 'public/css/tnet-shared-shell-parity.css';
     $parity_js = TNET_SHARED_SHELL_PLUGIN_DIR . 'public/js/tnet-shared-shell-parity.js';
     $responsive_correction_css = TNET_SHARED_SHELL_PLUGIN_DIR . 'public/css/tnet-shared-shell-responsive-correction.css';
+    $community_css = TNET_SHARED_SHELL_PLUGIN_DIR . 'public/css/tnet-shared-shell-community.css';
 
     wp_enqueue_style(
       'tnet-shared-shell',
@@ -34,7 +35,7 @@ final class TNet_Shared_Shell {
     );
     // Canonical v2 uses the HUMAN-accepted presentation assets. The legacy
     // shell-lab context remains a temporary comparison-oracle alias only.
-    if (in_array(sanitize_key((string) $context), ['canonical', 'shell-lab'], true)) {
+    if (in_array(sanitize_key((string) $context), ['canonical', 'shell-lab', 'community'], true)) {
       wp_enqueue_style(
         'tnet-shared-shell-parity',
         TNET_SHARED_SHELL_PLUGIN_URL . 'public/css/tnet-shared-shell-parity.css',
@@ -54,6 +55,14 @@ final class TNet_Shared_Shell {
         ['tnet-shared-shell-parity'],
         self::asset_version($responsive_correction_css)
       );
+      if (sanitize_key((string) $context) === 'community') {
+        wp_enqueue_style(
+          'tnet-shared-shell-community',
+          TNET_SHARED_SHELL_PLUGIN_URL . 'public/css/tnet-shared-shell-community.css',
+          ['tnet-shared-shell-responsive-correction'],
+          self::asset_version($community_css)
+        );
+      }
     }
     wp_localize_script('tnet-shared-shell', 'TNetSharedShellConfig', [
       'contractVersion' => self::CONTRACT_VERSION,
@@ -222,6 +231,130 @@ final class TNet_Shared_Shell {
   }
 
   /**
+   * Canonical Community presentation frame. This is deliberately owned by the
+   * platform shell: consumers provide route facts and opaque main/right slots,
+   * but never reconstruct the Community rail, icon vocabulary, or grid.
+   */
+  public static function render_community_frame(array $config): void {
+    $main = $config['main'] ?? null;
+    if (!is_callable($main)) return;
+    $right = $config['right'] ?? null;
+    $navigation = (array) ($config['navigation'] ?? []);
+    $focused_identity_journey = !empty($config['focused_identity_journey']);
+    $layout_class = 'c3-community-layout tnet-shared-shell-community-frame' . ($focused_identity_journey ? ' c3-community-layout--focused-identity' : '');
+    echo '<div class="' . esc_attr($layout_class) . '">';
+    self::render_community_rail($navigation);
+    echo '<main class="c3-community-main tnet-shared-shell-community-main">';
+    call_user_func($main);
+    echo '</main>';
+    if (!$focused_identity_journey) {
+      $right_classes = 'c3-community-right tnet-shared-shell-community-right';
+      if (!empty($config['reserve_account_actions'])) {
+        $right_classes .= ' tnet-shared-shell-community-right--below-account-actions';
+      }
+      echo '<aside class="' . esc_attr($right_classes) . '" aria-label="Community details">';
+      if (is_callable($right)) call_user_func($right);
+      echo '</aside>';
+    }
+    echo '</div>';
+  }
+
+  public static function render_community_search(string $action): void {
+    echo '<form class="c3-community-search" role="search" method="get" action="' . esc_url($action) . '"><label class="screen-reader-text" for="tnet-community-search">Search Teachers.Net</label><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4.5 4.5"/></svg><input id="tnet-community-search" type="search" name="s" placeholder="Search Teachers.Net"></form>';
+  }
+
+  public static function render_community_rail(array $config): void {
+    $home = (string) ($config['home_url'] ?? home_url('/'));
+    $jobs = (string) ($config['jobs_url'] ?? home_url('/jobs/'));
+    $lessons = (string) ($config['lessons_url'] ?? home_url('/lessons/'));
+    $chatboards = (string) ($config['chatboards_url'] ?? home_url('/chatboards/'));
+    $generic_join = !empty($config['generic_join']);
+    $focused_identity_journey = !empty($config['focused_identity_journey']);
+    $show_help = array_key_exists('show_help', $config) ? (bool) $config['show_help'] : true;
+    $families = (array) ($config['families'] ?? ($generic_join ? [
+      ['name' => 'Hot Topics'], ['name' => 'Grade Levels'],
+      ['name' => 'Subject Areas'], ['name' => 'States'],
+    ] : [
+      ['name' => 'Hot Topics'], ['name' => 'Our Community'],
+      ['name' => 'Grade Levels'], ['name' => 'Subject Areas'],
+    ]));
+    $context_label = (string) ($config['context_label'] ?? 'CA Teachers');
+    $help = (string) ($config['help_url'] ?? home_url('/help/'));
+    $rail_class = 'c3-community-rail' . ($focused_identity_journey ? ' c3-community-rail--identity-journey' : '');
+    echo '<aside class="' . esc_attr($rail_class) . '" aria-label="Community navigation">';
+    echo '<nav class="c3-community-rail__platform" aria-label="Teachers.Net">';
+    self::community_rail_link($home, 'Home', 'home');
+    self::community_rail_link($jobs, 'Jobs', 'briefcase');
+    self::community_rail_link($lessons, 'Lesson Plans', 'document');
+    if ($generic_join) self::community_rail_link($chatboards, 'Chatboards', 'chat');
+    echo '</nav><div class="c3-community-rail__divider" aria-hidden="true"></div>';
+    if (!$generic_join) {
+      echo '<div class="c3-community-rail__section-label">';
+      self::render_community_icon('chat');
+      echo '<span>Chatboards</span></div>';
+    }
+    foreach (($focused_identity_journey ? [] : $families) as $family) {
+      $family = (array) $family;
+      $name = (string) ($family['name'] ?? '');
+      if ($name === '') continue;
+      $label = (string) ($family['active_label'] ?? '');
+      $url = (string) ($family['active_url'] ?? '');
+      $icon = (string) ($family['icon'] ?? self::community_family_icon($name));
+      echo '<section class="c3-community-rail__family"><h2>';
+      self::render_community_icon($icon);
+      echo '<span>' . esc_html($name) . '</span></h2>';
+      if ($label !== '') {
+        echo '<ul><li class="is-current">';
+        if ($url !== '') echo '<a href="' . esc_url($url) . '" aria-current="page">' . esc_html($label) . '</a>';
+        else echo '<span>' . esc_html($label) . '</span>';
+        echo '</li></ul>';
+      }
+      echo '</section>';
+    }
+    if (!$generic_join) {
+      echo '<section class="c3-community-rail__family c3-community-rail__family--context"><h2>';
+      self::render_community_icon('pin');
+      echo '<span>' . esc_html($context_label) . '</span></h2></section>';
+    }
+    if (!$focused_identity_journey && $show_help) {
+      echo '<nav class="c3-community-rail__utility" aria-label="Community support">';
+      self::community_rail_link($help, 'Help', 'help');
+      echo '</nav>';
+    }
+    echo '</aside>';
+  }
+
+  private static function community_rail_link(string $url, string $label, string $icon): void {
+    echo '<a href="' . esc_url($url) . '">';
+    self::render_community_icon($icon);
+    echo '<span>' . esc_html($label) . '</span></a>';
+  }
+
+  private static function community_family_icon(string $name): string {
+    return match ($name) {
+      'Hot Topics' => 'flame', 'Grade Levels' => 'graduate',
+      'Subject Areas' => 'book', 'Our Community' => 'layers', 'States' => 'pin', default => 'chat',
+    };
+  }
+
+  private static function render_community_icon(string $name): void {
+    $paths = [
+      'home' => '<path d="M2.5 10.5 12 2.8l9.5 7.7"/><path d="M17.2 6.9V4.7h2v3.8"/><path d="M5.5 12.2 12 6.9l6.5 5.3V21h-4.2v-5.2H9.7V21H5.5z"/>',
+      'briefcase' => '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2M3 12h18"/>',
+      'document' => '<path d="M4 3h10l6 6v13H4Z"/><path d="M14 3v6h6M8 13h8M8 17h8M8 9h3"/>',
+      'book' => '<path d="M4 5.5c2.8-.8 5.4-.3 8 1.4v12c-2.6-1.7-5.2-2.2-8-1.4zM20 5.5c-2.8-.8-5.4-.3-8 1.4v12c2.6-1.7 5.2-2.2 8-1.4zM12 7v12"/>',
+      'chat' => '<path d="M20.5 11a8.5 8.5 0 0 1-8.5 8.5 8.8 8.8 0 0 1-3.4-.7L4 20l1.2-4.2A8.5 8.5 0 1 1 20.5 11Z"/>',
+      'flame' => '<path d="M13.8 3.6c.5 3.3-1.4 4.4-2.5 5.8-.8-1.2-1-2.2-.7-3.6C7.4 8 5.4 10.7 5.4 14a6.6 6.6 0 0 0 13.2 0c0-3.7-1.7-7-4.8-10.4Z"/>',
+      'layers' => '<path d="m3 7 9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4"/>',
+      'graduate' => '<path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M6 11.25v4.15c3.85 2.25 8.15 2.25 12 0v-4.15M21 9v6"/>',
+      'pin' => '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0z"/><circle cx="12" cy="10" r="2"/>',
+      'help' => '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
+      'settings' => '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+    ];
+    echo '<svg class="c3-community-icon c3-community-icon--' . esc_attr($name) . '" aria-hidden="true" viewBox="0 0 24 24" focusable="false">' . ($paths[$name] ?? '') . '</svg>';
+  }
+
+  /**
    * CONT7 parity host. The exact accepted Lab component tree lives with the
    * shared owner; the consumer supplies only product facts, destinations and
    * its content callback.
@@ -244,6 +377,7 @@ final class TNet_Shared_Shell {
     $route_class = sanitize_html_class((string) ($config['route_class'] ?? 'employer-shell-lab'));
     $document_title = (string) ($config['document_title'] ?? 'Teachers.Net');
     $active_destination = sanitize_key((string) ($config['active_destination'] ?? ''));
+    $community_media = !empty($config['community_media']);
     $clean = !empty($config['clean']);
     // A canonical application shell is page-aligned and square at its outer
     // boundary. Pinned remains a supported behavior, but floating card chrome
@@ -273,6 +407,10 @@ final class TNet_Shared_Shell {
     $dashboard_url = (string) ($urls['dashboard'] ?? '#');
     $wizard_url = (string) ($urls['wizard'] ?? '#');
     $shell_home_url = (string) ($config['home_url'] ?? '#');
+    $media_home_url = (string) ($urls['home'] ?? $shell_home_url);
+    $media_jobs_url = (string) ($urls['jobs'] ?? '#');
+    $media_chatboards_url = (string) ($urls['chatboards'] ?? $shell_home_url);
+    $media_lessons_url = (string) ($urls['lessons'] ?? '#');
     $shell_footer_links = (array) ($config['footer_links'] ?? []);
     $brand_image = (string) ($config['brand_image'] ?? '');
     $lesson_plan_grade_levels = (array) ($taxonomy['lesson_grade_levels'] ?? []);
