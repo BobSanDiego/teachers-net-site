@@ -1,0 +1,85 @@
+{
+  "objective_id": "C3-V1-COMMUNITY-MEDIA-DISCOVERY-IMPLEMENTATION001",
+  "cycle_id": "260916185619",
+  "evidence_class": "NATIVE",
+  "native_media_acceptance": {
+    "state": "PROVEN_NATIVE",
+    "status": "Director PASS carried forward",
+    "runtime": "teachers-net-live",
+    "notes": [
+      "Shared Shell row is normal-flow above the full-width Community hero.",
+      "Media body is independently inset beneath the expanded hero/tabs context.",
+      "Direct navigation and responsive wide/icon/hamburger states passed.",
+      "Canonical Lesson Plans href is /lessons/; local reachability is out of scope by Director decision."
+    ]
+  },
+  "exclusive_qa_dependency_closure": {
+    "root_posts": 30,
+    "generated_reply_posts": ["post:94131d57c505412c"],
+    "post_media_relationships": 31,
+    "media_assets": 3,
+    "media_variants": 3,
+    "publication_events": [39],
+    "audit_rows": [50],
+    "shared_or_ambiguous_dependencies": 0,
+    "proof": "All included records are exclusively derived from the targeted QA threads; no external child, shared media relationship, alias, migration/report reference, or non-QA owner was found."
+  },
+  "database_cleanup": {
+    "deleted": {
+      "audit": 1,
+      "publication_events": 1,
+      "post_media": 31,
+      "posts": 31,
+      "variants": 3,
+      "assets": 3
+    },
+    "final_counts": {
+      "posts_total": 10,
+      "post_media_total": 0,
+      "assets_total": 0,
+      "variants_total": 0,
+      "audit_total": 11,
+      "events_total": 7,
+      "qa_posts_residue": 0,
+      "qa_thread_posts_residue": 0,
+      "qa_relationship_residue": 0,
+      "qa_media_residue": 0,
+      "qa_variant_residue": 0,
+      "qa_audit_residue": 0,
+      "qa_event_residue": 0,
+      "qa_alias_residue": 0
+    }
+  },
+  "s3_cleanup": {
+    "bucket": "tnet-c3-media-553830187994-us-west-2",
+    "prefixes": [
+      "ready/media-61e0b7f55feb44e6b26a4e2512bce8a6/",
+      "ready/media-d3acae146b6a48ebb01835b5d7e8ff95/",
+      "ready/media-7fc607fa5e054d3da6d9135377a3ac6c/"
+    ],
+    "verification": "CloudShell list-object-versions returned Versions:null and DeleteMarkers:null for all three prefixes."
+  },
+  "iam_cleanup": {
+    "role": "TNetC3MediaIaCOperator",
+    "inline_policy": "TNetC3MediaIaCOperatorRuntime",
+    "removed_sids": [
+      "TemporaryC3MediaQaFixtureVersionCleanup",
+      "TemporaryC3MediaQaFixtureObjectCleanup"
+    ],
+    "verified_absent": true,
+    "permissions_boundary_modified": false
+  },
+  "git": {
+    "community": {
+      "branch": "COMMUNITY3-ui-working",
+      "commit": "4f583d2fb0f29d6872ff3b87dfd0f77c1ad4b00a",
+      "pushed": true
+    },
+    "control_plane": {
+      "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+      "commit": "424d651f044977801ba505d10fbf204e9e144304",
+      "pushed": true
+    },
+    "unrelated_dirty_work_preserved": true
+  }
+}
