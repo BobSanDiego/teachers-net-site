@@ -1,0 +1,117 @@
+{
+  "project": "legacy-operations",
+  "execution_project": "legacy-operations",
+  "ticket": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+  "cycle_id": "260918153500",
+  "workflow_version": "V2",
+  "objective_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+  "objective_owner": "Teachers.Net Legacy Operations",
+  "acceptance_fixtures": [],
+  "mode": "CONVERGENCE",
+  "report_tier": {
+    "required": [
+      "terminal_report",
+      "manifest",
+      "cycle_json",
+      "source_ticket"
+    ],
+    "additional": [
+      "acceptance_ledger",
+      "terminal_consolidated_evidence",
+      "final_diff_identity"
+    ],
+    "copy_committed_source_by_default": false
+  },
+  "evidence_class": "NATIVE",
+  "objective_state": "blocked",
+  "acceptance_ledger": {
+    "ticket": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "state": "blocked",
+    "blocker": "The active renderer is a shared wrapper with multi-application database access, so a Lessons-only least-privilege credential cannot be safely determined within the ticket boundary.",
+    "proven": [
+      "newwrapper.cgi/newwrapper.pm are active shared route infrastructure, not Lessons-only code.",
+      "The active module embeds credential material and accesses multiple application database domains.",
+      "No appropriate existing secret convention was found in the inspected Sandy candidate locations.",
+      "No credential, protected secret file, source recovery, deployment, or production mutation occurred."
+    ],
+    "required_director_decision": [
+      "Authorize a broader shared-wrapper security/source-ownership program.",
+      "Or authorize an Apache/routing design for a separate Lessons-specific renderer."
+    ]
+  },
+  "ticket_preflight": {
+    "workflow_version": "V2",
+    "ticket_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "mode": "CONVERGENCE",
+    "objective_owner": "Teachers.Net Legacy Operations",
+    "terminator": "END TICKET \u2014 TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "terminator_valid": true,
+    "characters": 6714,
+    "warnings": [],
+    "valid": true,
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/d1a64a34-17cd-4ba7-8da3-95e3ccffcd26/Pasted text.txt",
+    "source_bytes": 6937,
+    "source_sha256": "bf89730cf3ad5274027c709c043efb88cf94829d077d7920568384ee7d43cfa1",
+    "title": "Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001"
+  },
+  "ticket_identity": {
+    "ticket_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "title": "Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/d1a64a34-17cd-4ba7-8da3-95e3ccffcd26/Pasted text.txt",
+    "source_bytes": 6937,
+    "source_sha256": "bf89730cf3ad5274027c709c043efb88cf94829d077d7920568384ee7d43cfa1"
+  },
+  "reasoning_posture_recommended": "MAXIMUM",
+  "reasoning_posture_used": "MAXIMUM",
+  "reasoning_posture_recommended_next": "MAXIMUM",
+  "reasoning_escalation_reason": "The required active renderer and database principal are shared by multiple route families.",
+  "implementation_attempts": 0,
+  "internal_checkpoints": 0,
+  "human_checkpoints": 0,
+  "rework_cause": null,
+  "execution_seconds": null,
+  "human_wait_seconds": null,
+  "report_hopper_bytes": {
+    "report": 19785,
+    "hopper": 19785
+  },
+  "status": "blocked",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": null,
+  "push": null,
+  "git_disposition": "BLOCKED",
+  "explicit_reactivation": false,
+  "current_hopper": "tmp/hopper/legacy-operations/Hopper (Legacy Operations)",
+  "archive_path": "tmp/hopper/legacy-operations/archive",
+  "report_file": "output-legacy-operations-260918153500.txt",
+  "manifest_file": "MANIFEST-legacy-operations-260918153500.txt",
+  "cycle_record_file": "cycle-legacy-operations-260918153500.json",
+  "evidence_bundle": "Read-only Sandy inspection proves newwrapper is shared active route infrastructure with multi-application database access, so a Lessons-only credential rotation cannot be safely determined. No credential or production mutation was attempted.",
+  "artifacts": [
+    {
+      "hopper_filename": "Pasted text-legacy-operations-260918153500.txt",
+      "original_path": "/mnt/c/Users/bobre/.codex/attachments/d1a64a34-17cd-4ba7-8da3-95e3ccffcd26/Pasted text.txt",
+      "status": "BLOCKED",
+      "size": 6937,
+      "sha256": "bf89730cf3ad5274027c709c043efb88cf94829d077d7920568384ee7d43cfa1",
+      "source_sha256": "bf89730cf3ad5274027c709c043efb88cf94829d077d7920568384ee7d43cfa1",
+      "source_bytes": 6937,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    },
+    {
+      "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-shared-wrapper-blocked-report-legacy-operations-260918153500.md",
+      "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-shared-wrapper-blocked-report.md",
+      "status": "BLOCKED",
+      "size": 2612,
+      "sha256": "202f563d2ce64dc6ae7727672670f2681a61b16dcaf3815d0dd3c258c852e4e2",
+      "source_sha256": "202f563d2ce64dc6ae7727672670f2681a61b16dcaf3815d0dd3c258c852e4e2",
+      "source_bytes": 2612,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    }
+  ],
+  "excluded_artifacts": []
+}

@@ -1,0 +1,28 @@
+project=legacy-operations
+ticket=TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
+cycle_id=260918153500
+workflow_version=V2
+objective_owner=Teachers.Net Legacy Operations
+acceptance_fixtures=[]
+mode=CONVERGENCE
+evidence_class=NATIVE
+objective_state=blocked
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=null
+push=null
+git_disposition=BLOCKED
+reasoning_posture_recommended=MAXIMUM
+reasoning_posture_used=MAXIMUM
+reasoning_posture_recommended_next=MAXIMUM
+reasoning_escalation_reason=The required active renderer and database principal are shared by multiple route families.
+current_hopper=tmp/hopper/legacy-operations/Hopper (Legacy Operations)
+archive_path=tmp/hopper/legacy-operations/archive
+report_file=output-legacy-operations-260918153500.txt
+manifest_file=MANIFEST-legacy-operations-260918153500.txt
+cycle_record_file=cycle-legacy-operations-260918153500.json
+evidence_bundle=Read-only Sandy inspection proves newwrapper is shared active route infrastructure with multi-application database access, so a Lessons-only credential rotation cannot be safely determined. No credential or production mutation was attempted.
+report_hopper_bytes={"hopper": 19785, "report": 19785}
+
+artifacts:
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "Pasted text-legacy-operations-260918153500.txt", "original_path": "/mnt/c/Users/bobre/.codex/attachments/d1a64a34-17cd-4ba7-8da3-95e3ccffcd26/Pasted text.txt", "purpose": "ticket artifact", "sha256": "bf89730cf3ad5274027c709c043efb88cf94829d077d7920568384ee7d43cfa1", "size": 6937, "source_bytes": 6937, "source_sha256": "bf89730cf3ad5274027c709c043efb88cf94829d077d7920568384ee7d43cfa1", "status": "BLOCKED"}
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-shared-wrapper-blocked-report-legacy-operations-260918153500.md", "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-shared-wrapper-blocked-report.md", "purpose": "ticket artifact", "sha256": "202f563d2ce64dc6ae7727672670f2681a61b16dcaf3815d0dd3c258c852e4e2", "size": 2612, "source_bytes": 2612, "source_sha256": "202f563d2ce64dc6ae7727672670f2681a61b16dcaf3815d0dd3c258c852e4e2", "status": "BLOCKED"}

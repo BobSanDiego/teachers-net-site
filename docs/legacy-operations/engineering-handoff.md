@@ -72,17 +72,20 @@ response correlation proves the emitted GPT definitions and AdSense slot
 WordPress theme or `lessonz.pm`). `/var/www/htdocs`, `lessons`, and `cgi-bin`
 are not Git worktrees and this renderer is absent from both registered source
 repositories. Director authority subsequently named `teachers-net-legacy` as
-the canonical recovery owner, but the required `/var/www/cgi-bin/newwrapper.pm`
-contains embedded live database credentials. The ticket prohibits importing
-secrets, so the current stop boundary is credential separation—not source-owner
-identity. Do not copy, redact-in-place, rotate, or deploy this renderer until a
-source-safe configuration interface and production secret-management/deployment
-boundary are explicitly authorized.
+the canonical recovery owner and authorized credential separation. That work
+revealed a second blocker: `newwrapper.cgi`/`newwrapper.pm` is an active shared
+wrapper for other legacy route families, while its current database principal
+spans multiple application databases. A Lessons-only least-privilege rotation
+cannot be safely determined without affecting shared consumers, changing
+Apache routing, or broadening security authority. Do not copy, redact-in-place,
+rotate, create a secret file, or deploy this renderer until one of those
+directions is explicitly authorized.
 
 ## Next operations objective
 
-Decide and authorize credential separation for the live legacy
-Lessons/Lessonplans renderer, including secret rotation and rollback policy.
-Then resume `TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` with its
-existing PROVEN mobile failure evidence; do not re-audit unrelated Sandy
-operations or edit the untracked deployed paths directly.
+Decide whether to govern the shared wrapper and its database principal as one
+broader security/source-ownership effort, or to design an authorized
+Lessons-specific routed renderer. Then resume
+`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` with existing PROVEN
+mobile evidence; do not re-audit unrelated Sandy operations or create a
+Lessons-only credential by assumption.

@@ -33,14 +33,15 @@ Current cloud retained/deleted-resource verification is pending authenticated
 `tnet-prod` access. This does not reopen the pre-registration cleanup or
 authorize a repeat deletion.
 
-`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` remains blocked, now at
-the credential-separation gate. Director authority authorized controlled
-recovery into `teachers-net-legacy`, and read-only Sandy evidence established
-that `/lessons/` and `/lessonplans/` are served from
-`/var/www/htdocs/lessons` (with `/lessonplans` a symlink) through
-`/var/www/cgi-bin/newwrapper.pm`. The required active renderer embeds live
-database credentials, so it cannot enter source control under the ticket's
-no-secrets boundary. No source recovery or production patch occurred.
+`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` remains blocked at the
+shared-wrapper security boundary. Director authority authorized controlled
+recovery and credential separation, but read-only Sandy inspection established
+that the required `newwrapper.cgi`/`newwrapper.pm` pair also serves additional
+active legacy route families and its present database principal spans multiple
+application databases. A Lessons-only least-privilege replacement cannot be
+safely determined without either changing shared behavior, changing Apache
+routing, or expanding credential authority. No source recovery, credential,
+secret-source, or production patch occurred.
 
 ## Known residual risks
 
@@ -53,8 +54,8 @@ no-secrets boundary. No source recovery or production patch occurred.
 
 ## Next recommended objective
 
-Authorize and design a credential-separation boundary for the active legacy
-renderer: a protected production-only configuration source, a source-safe
-renderer interface, credential rotation/rollback policy, and a deployment
-contract that never commits secrets. Only after that security decision can the
-existing mobile ad-delivery convergence objective resume.
+Choose one of two explicit directions: authorize a full shared-wrapper
+security/source-ownership effort covering every active consumer and the shared
+database principal, or authorize a separately routed Lessons-specific renderer
+(which requires Apache/routing design authority). Do not create a
+Lessons-only credential against the existing shared wrapper by assumption.

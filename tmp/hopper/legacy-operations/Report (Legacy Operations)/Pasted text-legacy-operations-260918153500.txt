@@ -1,0 +1,196 @@
+TICKET READY FOR CODEX
+Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
+Mode: CONVERGENCE
+Reasoning: HIGH
+Recommended model: LUNA
+OWNER: Teachers.Net Legacy Operations
+Project: legacy-operations
+Repository: teachers-net-legacy
+
+OUTCOME
+
+Resolve the security/operations blocker discovered during controlled recovery
+of the Sandy Lessons/Lessonplans renderer, establish a source-safe secret
+boundary and reversible credential rotation, recover the renderer into
+teachers-net-legacy, then resume and complete the already-authorized mobile
+ad-delivery repair.
+
+Terminal outcome:
+
+embedded production DB credential
+→ protected production-only secret source
+→ source-safe renderer interface
+→ reversible credential rotation
+→ canonical source recovery
+→ bounded deployment contract
+→ mobile ad-delivery repair
+→ native production acceptance.
+
+CARRY FORWARD
+
+Do not repeat prior archaeology.
+
+PROVEN:
+
+- active Lessons/Lessonplans renderer is /var/www/cgi-bin/newwrapper.pm;
+- newwrapper.cgi/newwrapper.pm are required by the live route family;
+- renderer is not currently source-controlled;
+- renderer contains embedded live database credential material;
+- production hashes/owner/mode/destination mapping have been recorded;
+- current renderer passes Perl syntax checks;
+- prior mobile ad-delivery failure fixtures remain PROVEN.
+
+SECURITY AUTHORITY
+
+The Engineering Director authorizes a bounded credential-separation and
+rotation operation required to make this renderer source-safe.
+
+Codex may:
+
+- inspect existing Sandy secret/configuration conventions read-only;
+- create one protected production-only secret/config source for this renderer,
+  preferably reusing an established Sandy convention;
+- create a replacement DB credential with only the privileges actually required
+  by this renderer, if privilege requirements can be safely determined;
+- modify the recovered renderer to consume the protected secret source;
+- deploy/test the source-safe renderer;
+- retire the old embedded credential ONLY after the replacement path is proven;
+- preserve a bounded rollback mechanism.
+
+Do not expose credential values in reports, logs, Hopper artifacts, Git,
+screenshots, command output retained as evidence, or chat payloads.
+
+SECRET SOURCE
+
+Prefer an existing Sandy production-secret convention if one exists and is
+appropriate.
+
+Otherwise establish the minimum production-only configuration boundary.
+
+Requirements:
+
+- outside Git;
+- not web-addressable;
+- restrictive owner/group/mode appropriate to the runtime;
+- renderer can read it without embedding the value in source;
+- repository contains only the interface/example/documentation needed to
+  reproduce configuration;
+- no live secret appears in source history.
+
+Do not introduce a broad secrets platform solely for this objective.
+
+SOURCE-SAFE INTERFACE
+
+Recover newwrapper.cgi/newwrapper.pm and the minimum coherent required
+dependency family into teachers-net-legacy.
+
+Replace embedded credential material with the protected configuration
+interface.
+
+Preserve a hash/provenance relationship to the original production renderer
+without committing secret-bearing source.
+
+Do not commit a redacted approximation that cannot reproduce the deployed
+application behavior.
+
+ROTATION ORDER
+
+Rotation must be non-destructive and reversible:
+
+1. determine minimum required DB privileges;
+2. create replacement credential;
+3. install replacement only in protected production configuration;
+4. validate DB connectivity through a bounded/non-destructive seam;
+5. deploy source-safe renderer consuming replacement configuration;
+6. prove Lessons/Lessonplans application behavior;
+7. preserve rollback capability;
+8. only after successful acceptance, disable/retire the formerly embedded
+   credential.
+
+Never revoke/delete the currently working credential before the replacement
+path is proven.
+
+If DB privilege/credential creation requires authority outside the established
+Sandy operational boundary, STOP before changing credentials and report the
+required action.
+
+DEPLOYMENT CONTRACT
+
+Continue establishing the previously authorized bounded deployment path from
+teachers-net-legacy to the proven Sandy renderer destinations.
+
+Require:
+
+- source-controlled input;
+- deterministic target mapping;
+- pre-deploy backup;
+- Perl/preflight validation;
+- rollback;
+- owner/group/mode preservation;
+- scope limited to this renderer family and protected configuration interface.
+
+MOBILE AD REPAIR
+
+Once source ownership, secret separation, and deployment are proven, resume the
+original repair without reopening its diagnosis.
+
+Repair the minimum owner responsible for:
+
+- adsbygoogle "No slot size for availableWidth";
+- fixed inventory overflowing compact viewport;
+- requested zero-geometry containers where owned by this renderer.
+
+Do not add inventory, increase density, restore takeover/anchor ads, redesign
+pages, or change AdSense/GAM/GA4/consent configuration.
+
+ACCEPTANCE
+
+Prove:
+
+- no live DB credential exists in recovered Git source/history;
+- protected secret source is non-web-addressable and appropriately restricted;
+- replacement credential provides only required application access where safely
+  determinable;
+- renderer successfully consumes protected configuration;
+- DB-backed Lessons/Lessonplans behavior remains functional;
+- old credential is retired only after replacement acceptance;
+- rollback path is documented and viable;
+- canonical source/deployment ownership is established;
+- mobile No-slot-size failure is eliminated;
+- intended mobile slot geometry is valid;
+- desktop delivery remains intact;
+- no new application/console/runtime errors;
+- no additional advertising inventory was introduced.
+
+Do not expose secrets as acceptance evidence.
+
+PRODUCTION AUTHORITY
+
+This ticket authorizes only the bounded production and DB credential operations
+necessary for this renderer recovery/rotation/repair.
+
+It does not authorize:
+
+- unrelated database changes;
+- Apache/vhost changes;
+- broad account/user cleanup;
+- Google advertising/analytics changes;
+- unrelated Sandy application changes;
+- deletion of production backups.
+
+STOP BOUNDARY
+
+Stop if:
+
+- existing Sandy secret architecture conflicts with this proposed boundary;
+- required DB privileges cannot be determined safely;
+- rotation requires materially broader database/security authority;
+- dependencies expand materially outside this renderer family;
+- safe rollback cannot be maintained;
+- another authoritative owner is discovered.
+
+Otherwise carry this same objective through secret separation → rotation →
+source recovery → deployment ownership → ad repair → native acceptance →
+cleanup/consolidation.
+
+END TICKET — TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
