@@ -2,6 +2,7 @@
 """Fail-closed Workflow V2 terminalization entrypoint."""
 from __future__ import annotations
 import argparse
+import json
 from pathlib import Path
 import clean_cycle
 
@@ -13,11 +14,15 @@ def main() -> int:
     p.add_argument('--objective-owner', required=True); p.add_argument('--evidence', required=True)
     p.add_argument('--evidence-class', default='FUNCTIONAL'); p.add_argument('--git-disposition', default='NOT_APPLICABLE')
     p.add_argument('--commit'); p.add_argument('--push'); p.add_argument('--artifact-json', action='append', default=[])
+    p.add_argument('--acceptance-ledger-json')
     a=p.parse_args(); ticket=Path(a.ticket_source); report=Path(a.report_source)
     preflight=clean_cycle.validate_ticket_payload(ticket.read_text(encoding='utf-8'))
     preflight.update({'source_path':str(ticket.resolve()),'source_bytes':ticket.stat().st_size,'source_sha256':clean_cycle.sha256(ticket),'title':a.ticket})
+    acceptance_ledger = None
+    if a.acceptance_ledger_json:
+        acceptance_ledger = json.loads(Path(a.acceptance_ledger_json).read_text(encoding='utf-8'))
     artifacts=[clean_cycle.collect(a.project,a.cycle,ticket,'REPORT_REQUIRED'), clean_cycle.collect(a.project,a.cycle,report,'REPORT_REQUIRED')]
-    clean_cycle.write_records(a.project,a.ticket,a.cycle,'unknown','complete',a.commit,a.push,artifacts,a.evidence,a.git_disposition,report_source=report,mode=a.mode,evidence_class=a.evidence_class,objective_owner=a.objective_owner,ticket_preflight=preflight)
+    clean_cycle.write_records(a.project,a.ticket,a.cycle,'unknown','complete',a.commit,a.push,artifacts,a.evidence,a.git_disposition,report_source=report,mode=a.mode,evidence_class=a.evidence_class,objective_owner=a.objective_owner,ticket_preflight=preflight,acceptance_ledger=acceptance_ledger)
     clean_cycle.validate(a.project,a.cycle)
     print(f'terminalized and validated {a.project}/{a.cycle}')
     return 0
