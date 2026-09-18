@@ -61,8 +61,23 @@ AWS verification of the pre-registration cleanup remains read-only and is
 pending if the `tnet-prod` session is expired. Reauthenticate before querying
 AWS; do not use authentication failure to infer deletion, retention, or cost.
 
+## Current Lessons/Lessonplans delivery boundary
+
+`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` stopped before a repair.
+The active TLS vhost `/etc/apache2/sites-enabled/000-teachers.net-ssl.conf`
+maps the legacy lesson family through its `/var/www/htdocs/lesson*` directory
+rule; `/var/www/htdocs/lessonplans` is a symlink to `lessons`. Read-only live
+response correlation proves the emitted GPT definitions and AdSense slot
+`1692171583` come from `/var/www/cgi-bin/newwrapper.pm` (not the checked-in
+WordPress theme or `lessonz.pm`). `/var/www/htdocs`, `lessons`, and `cgi-bin`
+are not Git worktrees and this renderer is absent from both registered source
+repositories. Do not patch these deployed files until a source-controlled
+owner and authorized deployment path are registered.
+
 ## Next operations objective
 
-The next recommended ticket is a read-only Sandy Operations Audit. It should
-produce a decision-ready operating model rather than tune production services
-or remove Netdata by assumption.
+Register or recover the source-controlled deployment owner for the live legacy
+Lessons/Lessonplans renderer, then resume
+`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001`. The existing PROVEN
+mobile failure evidence remains valid; the next cycle should not re-audit
+unrelated Sandy operations or edit the untracked deployed paths directly.

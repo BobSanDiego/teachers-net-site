@@ -3,22 +3,22 @@
   "project": "legacy-operations",
   "owner": "tools/hopper/clean_cycle.py",
   "current_objective": {
-    "ticket": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
-    "state": "complete",
-    "cycle_id": "260918134212",
+    "ticket": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "state": "blocked",
+    "cycle_id": "260918134213",
     "objective_owner": "Teachers.Net Legacy Operations"
   },
-  "last_terminal_cycle": "260918134212",
+  "last_terminal_cycle": "260918134213",
   "ticket_identity": {
-    "ticket_id": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
-    "title": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
-    "source_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket.txt",
-    "source_bytes": 4911,
-    "source_sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5"
+    "ticket_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "title": "Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "source_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-ticket.txt",
+    "source_bytes": 4538,
+    "source_sha256": "86168f1ead800df9c1981b8b766a34ff8d52280ee5b7dee7d08ec64d530105f1"
   },
   "freshness": {
     "workflow_version": "V2",
-    "updated_at": "2026-09-18T15:04:29+00:00",
-    "cycle_id": "260918134212"
+    "updated_at": "2026-09-18T15:28:18+00:00",
+    "cycle_id": "260918134213"
   }
 }

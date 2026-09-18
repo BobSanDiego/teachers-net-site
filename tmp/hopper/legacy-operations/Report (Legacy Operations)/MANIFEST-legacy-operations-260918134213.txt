@@ -1,0 +1,28 @@
+project=legacy-operations
+ticket=TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
+cycle_id=260918134213
+workflow_version=V2
+objective_owner=Teachers.Net Legacy Operations
+acceptance_fixtures=[]
+mode=CONVERGENCE
+evidence_class=NATIVE
+objective_state=blocked
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=null
+push=null
+git_disposition=BLOCKED
+reasoning_posture_recommended=MEDIUM
+reasoning_posture_used=MEDIUM
+reasoning_posture_recommended_next=MEDIUM
+reasoning_escalation_reason=Deployed runtime owner differs from both registered source repositories.
+current_hopper=tmp/hopper/legacy-operations/Hopper (Legacy Operations)
+archive_path=tmp/hopper/legacy-operations/archive
+report_file=output-legacy-operations-260918134213.txt
+manifest_file=MANIFEST-legacy-operations-260918134213.txt
+cycle_record_file=cycle-legacy-operations-260918134213.json
+evidence_bundle=Read-only Sandy Apache configuration, deployed response-to-renderer correlation, and registered-source reconciliation prove the active renderer is untracked and outside registered deployment authority. No repair attempted.
+report_hopper_bytes={"hopper": 19327, "report": 19327}
+
+artifacts:
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-ticket-legacy-operations-260918134213.txt", "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-ticket.txt", "purpose": "ticket artifact", "sha256": "86168f1ead800df9c1981b8b766a34ff8d52280ee5b7dee7d08ec64d530105f1", "size": 4538, "source_bytes": 4538, "source_sha256": "86168f1ead800df9c1981b8b766a34ff8d52280ee5b7dee7d08ec64d530105f1", "status": "BLOCKED"}
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-report-legacy-operations-260918134213.md", "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-report.md", "purpose": "ticket artifact", "sha256": "54f85f659b5ad3433952c296c033c5813d573da4092e7b7a6d9c713326c961a2", "size": 3575, "source_bytes": 3575, "source_sha256": "54f85f659b5ad3433952c296c033c5813d573da4092e7b7a6d9c713326c961a2", "status": "BLOCKED"}

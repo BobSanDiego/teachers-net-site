@@ -1,0 +1,152 @@
+TICKET READY FOR CODEX
+Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
+Mode: CONVERGENCE
+Reasoning: HIGH
+Recommended model: LUNA
+OWNER: Teachers.Net Legacy Operations
+Project: legacy-operations
+Repository: teachers-net-site
+
+OUTCOME
+
+Recover the deployed owner of the legacy Lessons/Lessonplans advertising
+renderer and repair the PROVEN mobile delivery failures without changing ad
+inventory strategy or Google account configuration.
+
+This is the immediate continuation of
+TNET-PERF-ADS-MONETIZATION-AUDIT001.
+
+AUTHORITY
+
+Carry forward as PROVEN from audit cycle 260918134212:
+
+- publisher identity / ads.txt are correct;
+- no site-wide missing-tag condition exists;
+- /lessons/ and /lessonplans/ share a reproducible mobile failure family;
+- at 500 px, adsbygoogle initialization raises:
+  "No slot size for availableWidth";
+- fixed legacy inventory overflows the mobile viewport;
+- some GPT requests target zero-geometry containers;
+- desktop inventory does initialize on these legacy routes;
+- deployed lessons/lessonplans renderer ownership is not yet reconciled to
+  inspected source.
+
+Do not reopen these findings unless owner evidence invalidates them.
+
+OWNER RECOVERY
+
+First identify the ACTUAL deployed owner responsible for:
+
+- legacy lessons/lessonplans markup;
+- responsive ad geometry;
+- AdsByGoogle slot sizing;
+- relevant GPT placement containers.
+
+Reconcile deployed behavior to source-controlled authority before modifying it.
+
+If the deployed renderer is outside the registered repository/deployment
+authority, STOP and report the concrete owner/path rather than patching an
+approximation.
+
+IMPLEMENTATION
+
+Once one authoritative owner is proven, make the minimum responsive correction
+needed so intended existing inventory can initialize and remain valid at mobile
+width.
+
+Repair only proven causes such as:
+
+- unavailable/invalid responsive slot width;
+- fixed ad geometry extending outside the usable viewport;
+- zero-size containers that are nevertheless requested;
+- directly coupled initialization timing/geometry defects.
+
+Preserve existing intended ad inventory.
+
+Do NOT:
+
+- add ad slots;
+- increase density;
+- restore takeover/anchor ads;
+- redesign Lessons/Lessonplans;
+- alter AdSense/GAM/GA4/consent configuration.
+
+DECISIVE EVIDENCE
+
+Before implementation reproduce the current defect on representative:
+
+- /lessons/
+- /lessonplans/grades/3-5/ or equivalent shared-renderer route.
+
+After correction prove natively at desktop and compact/mobile widths:
+
+- no "No slot size" TagError;
+- intended slot containers have valid nonzero geometry when requested;
+- no fixed placement extends outside its intended responsive region;
+- intended requests actually initialize;
+- no new console/runtime errors;
+- desktop delivery remains intact;
+- page layout remains usable and contained.
+
+Do not equate ad fill or immediate earnings with engineering acceptance.
+
+ANALYTICS CONTEXT
+
+Authenticated AdSense evidence establishes that these page families are
+economically material relative to other legacy inventory:
+
+- lessons historically showed materially higher Page RPM/impressions;
+- lessonplans historically showed especially strong monetization density;
+- current reporting still shows materially stronger RPM than Mentors.
+
+Use this only for prioritization. Do not claim the mobile defect explains the
+historic RPM collapse.
+
+GOOGLE ACCOUNT BOUNDARY
+
+Read-only authenticated AdSense/GA4 inspection remains authorized if useful for
+verification.
+
+No settings/configuration changes are authorized.
+
+EVIDENCE CLASS
+
+RUNTIME / SOURCE-OWNER / BROWSER / RESPONSIVE / ANALYTICS-CORRELATION
+
+CLEANUP
+
+After convergence:
+
+- remove superseded diagnostic experiments;
+- confirm one final renderer owner;
+- inspect final diff;
+- run final acceptance once;
+- update Legacy Operations continuity;
+- commit/push only owned source changes under existing workflow authority.
+
+EXCLUSIONS
+
+Do not repair:
+
+- Jobs;
+- Mentors/root mobile inventory;
+- /index.html;
+- Gazette;
+- broader RPM/traffic quality;
+- SEO/acquisition.
+
+Those remain separate follow-on boundaries.
+
+STOP BOUNDARY
+
+Stop immediately if:
+
+- deployed renderer ownership cannot be reconciled;
+- repair requires a new placement strategy;
+- ad/consent/account configuration must change;
+- production/destructive authority would be required.
+
+Otherwise carry this objective through owner recovery, minimal repair,
+native verification, cleanup, consolidation, commit/push, and terminal report.
+
+END TICKET — TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001

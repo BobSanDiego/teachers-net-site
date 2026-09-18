@@ -33,6 +33,14 @@ Current cloud retained/deleted-resource verification is pending authenticated
 `tnet-prod` access. This does not reopen the pre-registration cleanup or
 authorize a repeat deletion.
 
+`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` is blocked at owner
+recovery. Read-only Sandy evidence on 2026-09-18 established that `/lessons/`
+and `/lessonplans/` are served through the active Apache legacy route from
+`/var/www/htdocs/lessons` (with `/lessonplans` a symlink) and rendered by
+`/var/www/cgi-bin/newwrapper.pm`. Those deployed paths are not Git worktrees
+and are absent from the registered source repositories. No production patch is
+authorized until one source-controlled deployment owner is registered.
+
 ## Known residual risks
 
 - Netdata cost, disk history, retention, and unique operational value are not
@@ -44,7 +52,7 @@ authorize a repeat deletion.
 
 ## Next recommended objective
 
-Run a read-only Sandy Operations Audit. It should establish the telemetry,
-retention, monitoring/recovery, traffic-admission, configuration-provenance,
-and storage policy decisions before changing Netdata, Monit, firewall rules,
-or remaining legacy performance paths.
+Resolve source-control and deployment authority for the live legacy
+Lessons/Lessonplans renderer, beginning with the concrete Sandy paths recorded
+above. Once that owner is registered, resume the blocked mobile ad-delivery
+convergence cycle; do not edit the live untracked files directly.

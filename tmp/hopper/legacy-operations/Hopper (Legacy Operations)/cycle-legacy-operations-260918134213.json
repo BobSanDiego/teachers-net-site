@@ -1,0 +1,120 @@
+{
+  "project": "legacy-operations",
+  "execution_project": "legacy-operations",
+  "ticket": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+  "cycle_id": "260918134213",
+  "workflow_version": "V2",
+  "objective_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+  "objective_owner": "Teachers.Net Legacy Operations",
+  "acceptance_fixtures": [],
+  "mode": "CONVERGENCE",
+  "report_tier": {
+    "required": [
+      "terminal_report",
+      "manifest",
+      "cycle_json",
+      "source_ticket"
+    ],
+    "additional": [
+      "acceptance_ledger",
+      "terminal_consolidated_evidence",
+      "final_diff_identity"
+    ],
+    "copy_committed_source_by_default": false
+  },
+  "evidence_class": "NATIVE",
+  "objective_state": "blocked",
+  "acceptance_ledger": {
+    "ticket": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "state": "blocked",
+    "blocker": "The active Lessons/Lessonplans renderer is deployed at untracked Sandy paths outside the registered source/deployment authority.",
+    "proven": [
+      "The active Apache lesson-family route uses /var/www/htdocs/lessons and /var/www/cgi-bin/newwrapper.cgi.",
+      "/var/www/htdocs/lessonplans is a symlink to lessons.",
+      "Live representative responses match /var/www/cgi-bin/newwrapper.pm, including GPT placement markup and AdSense slot 1692171583.",
+      "The active deployment directories are not Git worktrees and the renderer is absent from the registered repositories.",
+      "The prior audit's responsive failure evidence remains carried forward."
+    ],
+    "not_attempted": [
+      "No source or production repair was attempted.",
+      "No post-change responsive acceptance exists.",
+      "No Google account configuration was inspected or changed in this cycle."
+    ],
+    "resume_condition": "Register one source-controlled deployment owner and an authorized safe deployment path for the live renderer."
+  },
+  "ticket_preflight": {
+    "workflow_version": "V2",
+    "ticket_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "mode": "CONVERGENCE",
+    "objective_owner": "Teachers.Net Legacy Operations",
+    "terminator": "END TICKET \u2014 TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "terminator_valid": true,
+    "characters": 4536,
+    "warnings": [],
+    "valid": true,
+    "source_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-ticket.txt",
+    "source_bytes": 4538,
+    "source_sha256": "86168f1ead800df9c1981b8b766a34ff8d52280ee5b7dee7d08ec64d530105f1",
+    "title": "Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001"
+  },
+  "ticket_identity": {
+    "ticket_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "title": "Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "source_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-ticket.txt",
+    "source_bytes": 4538,
+    "source_sha256": "86168f1ead800df9c1981b8b766a34ff8d52280ee5b7dee7d08ec64d530105f1"
+  },
+  "reasoning_posture_recommended": "MEDIUM",
+  "reasoning_posture_used": "MEDIUM",
+  "reasoning_posture_recommended_next": "MEDIUM",
+  "reasoning_escalation_reason": "Deployed runtime owner differs from both registered source repositories.",
+  "implementation_attempts": 0,
+  "internal_checkpoints": 0,
+  "human_checkpoints": 0,
+  "rework_cause": null,
+  "execution_seconds": null,
+  "human_wait_seconds": null,
+  "report_hopper_bytes": {
+    "report": 19327,
+    "hopper": 19327
+  },
+  "status": "blocked",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": null,
+  "push": null,
+  "git_disposition": "BLOCKED",
+  "explicit_reactivation": false,
+  "current_hopper": "tmp/hopper/legacy-operations/Hopper (Legacy Operations)",
+  "archive_path": "tmp/hopper/legacy-operations/archive",
+  "report_file": "output-legacy-operations-260918134213.txt",
+  "manifest_file": "MANIFEST-legacy-operations-260918134213.txt",
+  "cycle_record_file": "cycle-legacy-operations-260918134213.json",
+  "evidence_bundle": "Read-only Sandy Apache configuration, deployed response-to-renderer correlation, and registered-source reconciliation prove the active renderer is untracked and outside registered deployment authority. No repair attempted.",
+  "artifacts": [
+    {
+      "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-ticket-legacy-operations-260918134213.txt",
+      "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-ticket.txt",
+      "status": "BLOCKED",
+      "size": 4538,
+      "sha256": "86168f1ead800df9c1981b8b766a34ff8d52280ee5b7dee7d08ec64d530105f1",
+      "source_sha256": "86168f1ead800df9c1981b8b766a34ff8d52280ee5b7dee7d08ec64d530105f1",
+      "source_bytes": 4538,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    },
+    {
+      "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-report-legacy-operations-260918134213.md",
+      "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-report.md",
+      "status": "BLOCKED",
+      "size": 3575,
+      "sha256": "54f85f659b5ad3433952c296c033c5813d573da4092e7b7a6d9c713326c961a2",
+      "source_sha256": "54f85f659b5ad3433952c296c033c5813d573da4092e7b7a6d9c713326c961a2",
+      "source_bytes": 3575,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    }
+  ],
+  "excluded_artifacts": []
+}
