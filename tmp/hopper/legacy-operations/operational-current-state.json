@@ -3,22 +3,22 @@
   "project": "legacy-operations",
   "owner": "tools/hopper/clean_cycle.py",
   "current_objective": {
-    "ticket": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "ticket": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
     "state": "complete",
-    "cycle_id": "260918134211",
+    "cycle_id": "260918134212",
     "objective_owner": "Teachers.Net Legacy Operations"
   },
-  "last_terminal_cycle": "260918134211",
+  "last_terminal_cycle": "260918134212",
   "ticket_identity": {
-    "ticket_id": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
-    "title": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
-    "source_path": "/mnt/c/Users/bobre/.codex/attachments/7ae229ca-1e1c-486b-892b-656842ef1fb0/Pasted text.txt",
-    "source_bytes": 5642,
-    "source_sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a"
+    "ticket_id": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+    "title": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+    "source_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket.txt",
+    "source_bytes": 4911,
+    "source_sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5"
   },
   "freshness": {
     "workflow_version": "V2",
-    "updated_at": "2026-09-18T13:46:20+00:00",
-    "cycle_id": "260918134211"
+    "updated_at": "2026-09-18T15:04:29+00:00",
+    "cycle_id": "260918134212"
   }
 }

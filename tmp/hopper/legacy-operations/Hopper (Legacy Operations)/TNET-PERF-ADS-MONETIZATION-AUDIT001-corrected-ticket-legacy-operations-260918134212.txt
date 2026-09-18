@@ -1,0 +1,157 @@
+TICKET READY FOR CODEX
+Ticket: TNET-PERF-ADS-MONETIZATION-AUDIT001
+
+Mode: DIAGNOSTIC
+Reasoning: HIGH
+Recommended model: LUNA
+Project: legacy-operations
+OWNER: Teachers.Net Legacy Operations
+
+OUTCOME
+
+Audit Teachers.Net's live monetization plumbing across representative page
+families and determine whether the current site is consistently presenting
+eligible AdSense inventory as intended.
+
+This is a diagnostic/audit objective first. Do not optimize ad density or make
+production monetization changes without Director review.
+
+BUSINESS EVIDENCE
+
+Recent AdSense comparison shows a systemic monetization-efficiency collapse
+versus the same-length 2023 period despite substantial current page volume.
+
+Examples observed by Director:
+
+Site:
+2023 Page RPM ~ $1.37
+2026 Page RPM ~ $0.09
+
+/mentors:
+2023 ~85.9K page views / 11.7K impressions / $17.71
+2026 ~101.1K page views / 1.4K impressions / $1.04
+
+/lessons:
+2023 ~37.3K page views / 21.9K impressions / $63.22
+2026 ~26.1K page views / 5.6K impressions / $9.78
+
+/lessonplans:
+2023 ~30.8K page views / 27.3K impressions / $131.45
+2026 ~7.1K page views / 2.5K impressions / $7.54
+
+/jobs currently retains comparatively strong RPM.
+
+Treat these as investigation cues, not proof of implementation failure.
+
+AUTHORITY
+
+Inspect current repo/runtime/live page owners first.
+Do not infer ad ownership from historical assumptions.
+
+Representative live families must include at minimum:
+
+- homepage/root and legacy index
+- main /chat/
+- representative /mentors/ board/list/topic routes
+- /lessons/
+- /lessonplans/ plus representative grade/content route
+- /jobs/
+- /states/
+- /gazette/
+- any materially different shared shell/template owner discovered
+
+DIAGNOSTIC QUESTIONS
+
+For each representative family determine:
+
+1. Is the expected AdSense loader/tag present?
+2. Are expected ad-slot elements actually emitted?
+3. Are slot IDs/configuration consistent and valid?
+4. Does runtime JS request/fill the slot?
+5. Is the slot hidden, collapsed, offscreen, zero-sized, overlapped, or removed?
+6. Do responsive breakpoints suppress inventory?
+7. Do consent/CMP/privacy conditions prevent requests?
+8. Do CSP, JS errors, race conditions, lazy-load logic, duplicate loaders, or
+   template differences prevent initialization?
+9. Are legacy templates materially different from newer/shared-shell routes?
+10. Are ads.txt / publisher ID / relevant account identifiers consistent?
+11. Is large page-volume inventory simply bot/non-monetizable traffic rather
+    than missing ad implementation?
+12. Is there evidence that old takeover-ad removal also removed or disrupted
+    unrelated legitimate placements?
+
+DECISIVE EVIDENCE
+
+Build a route-family ledger showing for every inspected route:
+
+- template/owner
+- loader present/absent
+- declared slots
+- rendered slots
+- network ad requests observed
+- slot dimensions/visibility
+- fill/no-fill where observable
+- console/runtime errors
+- responsive behavior
+- consent state
+- implementation anomaly if any
+
+Use native/browser evidence on live pages where possible.
+Static source inspection alone is insufficient for runtime conclusions.
+
+Do not treat synthetic DOM injection as acceptance.
+
+ANALYTICS BOUNDARY
+
+Do not attempt to log into or modify Google AdSense/GA4 accounts unless the
+Director separately authorizes a specific read-only browser workflow.
+
+If Director-provided exports/screenshots/CSV are available, correlate them with
+route-family findings, but keep analytics evidence distinct from runtime proof.
+
+Do not infer revenue causality from implementation evidence alone.
+
+OUTPUT
+
+Return:
+
+1. concise executive finding;
+2. monetization coverage ledger by page family;
+3. confirmed defects versus non-defect explanations;
+4. likely systemic owner(s), if proven;
+5. estimated scope of any correction;
+6. recommended next objective(s), ranked by evidence strength but without making
+   unapproved production changes;
+7. any analytics questions that require Director/ChatGPT investigation.
+
+ACCEPTANCE
+
+Audit is complete when:
+
+- all representative page families are covered;
+- at least one native/runtime evidence seam exists per materially different
+  template owner;
+- static and runtime findings are reconciled;
+- no unsupported claim is made that revenue decline is caused by missing tags;
+- any confirmed implementation defect names one concrete owner;
+- unrelated performance work remains intact.
+
+EXCLUSIONS
+
+Do not add more ads.
+Do not restore takeover ads.
+Do not alter ad density or placement strategy.
+Do not change AdSense account settings.
+Do not change consent policy.
+Do not modify production.
+Do not redesign pages.
+Do not broaden into SEO or content strategy.
+
+STOP BOUNDARY
+
+Stop after evidence-based diagnosis and recommendation packaging.
+
+If a production fix is obvious and low-risk, identify it but wait for Director
+approval before implementation.
+
+END TICKET — TNET-PERF-ADS-MONETIZATION-AUDIT001

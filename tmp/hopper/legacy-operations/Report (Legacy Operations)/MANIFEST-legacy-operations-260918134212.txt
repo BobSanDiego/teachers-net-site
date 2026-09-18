@@ -1,0 +1,28 @@
+project=legacy-operations
+ticket=TNET-PERF-ADS-MONETIZATION-AUDIT001
+cycle_id=260918134212
+workflow_version=V2
+objective_owner=Teachers.Net Legacy Operations
+acceptance_fixtures=[]
+mode=DIAGNOSTIC
+evidence_class=DIAGNOSTIC
+objective_state=complete
+branch=unknown
+commit=null
+push=null
+git_disposition=NOT_APPLICABLE
+reasoning_posture_recommended=NORMAL
+reasoning_posture_used=null
+reasoning_posture_recommended_next=NORMAL
+reasoning_escalation_reason=null
+current_hopper=tmp/hopper/legacy-operations/Hopper (Legacy Operations)
+archive_path=tmp/hopper/legacy-operations/archive
+report_file=output-legacy-operations-260918134212.txt
+manifest_file=MANIFEST-legacy-operations-260918134212.txt
+cycle_record_file=cycle-legacy-operations-260918134212.json
+evidence_bundle=Native Windows Chrome/CDP live runtime evidence, authenticated read-only AdSense URL-channel reporting, verified Teachers.Net GA4 property, and targeted current source inspection. No production or account configuration mutation.
+report_hopper_bytes={"hopper": 35135, "report": 18900}
+
+artifacts:
+{"classification": "HOPPER_SUPPORTING", "committed": false, "hopper_filename": "TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket-legacy-operations-260918134212.txt", "original_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket.txt", "purpose": "ticket artifact", "sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5", "size": 4911, "source_bytes": 4911, "source_sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5", "status": "REPORT_REQUIRED"}
+{"classification": "HOPPER_SUPPORTING", "committed": false, "hopper_filename": "TNET-PERF-ADS-MONETIZATION-AUDIT001-report-legacy-operations-260918134212.md", "original_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-report.md", "purpose": "ticket artifact", "sha256": "97136d6c63e0a29e7d315e2228efaa882f042ded97cb02a530972d3e609ea186", "size": 11324, "source_bytes": 11324, "source_sha256": "97136d6c63e0a29e7d315e2228efaa882f042ded97cb02a530972d3e609ea186", "status": "REPORT_REQUIRED"}

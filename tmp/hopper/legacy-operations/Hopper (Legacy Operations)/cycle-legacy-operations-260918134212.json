@@ -1,0 +1,125 @@
+{
+  "project": "legacy-operations",
+  "execution_project": "legacy-operations",
+  "ticket": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+  "cycle_id": "260918134212",
+  "workflow_version": "V2",
+  "objective_id": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+  "objective_owner": "Teachers.Net Legacy Operations",
+  "acceptance_fixtures": [],
+  "mode": "DIAGNOSTIC",
+  "report_tier": {
+    "required": [
+      "terminal_report",
+      "manifest",
+      "cycle_json",
+      "source_ticket"
+    ],
+    "additional": [
+      "targeted_causal_evidence"
+    ],
+    "copy_committed_source_by_default": false
+  },
+  "evidence_class": "DIAGNOSTIC",
+  "objective_state": "complete",
+  "acceptance_ledger": {
+    "ticket": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+    "status": "complete",
+    "classification": "DIAGNOSTIC",
+    "proven": [
+      "The inspected live publisher identity and ads.txt declaration match pub-5374920468878647.",
+      "Root, chat, and mentor-topic desktop routes loaded and rendered GPT inventory; a site-wide missing-tag explanation is disproven.",
+      "At a 500 px viewport, lessons and lessonplans emitted adsbygoogle No slot size errors and fixed/offscreen ad geometry.",
+      "Jobs registers three RD GPT definitions without corresponding mounted DOM targets or GPT ad requests.",
+      "The tested index.html route is a native 404 with no detected ad inventory, and the tested Gazette path resolves to a no-inventory external legacy page."
+    ],
+    "diagnostic_not_causal": [
+      "Recent reporting has much lower RPM and monetizable impressions than the available historic window, but the windows are not date-matched.",
+      "Direct-heavy, internationally concentrated GA4 traffic may affect eligibility or value but does not prove invalid traffic or causality.",
+      "Observed unfilled or unfill-optimized slots and absent named CMP APIs do not by themselves identify a revenue cause."
+    ],
+    "unresolved_owners": [
+      "Deployed legacy lessons and lessonplans renderer.",
+      "Live root GPT bootstrap/configuration.",
+      "Jobs RD-HPA-A, RD-Leaderboard-A, and RD-IMU-A GPT configuration."
+    ],
+    "human_gate": null,
+    "production_mutation": false,
+    "account_mutation": false
+  },
+  "ticket_preflight": {
+    "workflow_version": "V2",
+    "ticket_id": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+    "mode": "DIAGNOSTIC",
+    "objective_owner": "Teachers.Net Legacy Operations",
+    "terminator": "END TICKET \u2014 TNET-PERF-ADS-MONETIZATION-AUDIT001",
+    "terminator_valid": true,
+    "characters": 4909,
+    "warnings": [],
+    "valid": true,
+    "source_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket.txt",
+    "source_bytes": 4911,
+    "source_sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5",
+    "title": "TNET-PERF-ADS-MONETIZATION-AUDIT001"
+  },
+  "ticket_identity": {
+    "ticket_id": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+    "title": "TNET-PERF-ADS-MONETIZATION-AUDIT001",
+    "source_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket.txt",
+    "source_bytes": 4911,
+    "source_sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5"
+  },
+  "reasoning_posture_recommended": "NORMAL",
+  "reasoning_posture_used": null,
+  "reasoning_posture_recommended_next": "NORMAL",
+  "reasoning_escalation_reason": null,
+  "implementation_attempts": 1,
+  "internal_checkpoints": 0,
+  "human_checkpoints": 0,
+  "rework_cause": null,
+  "execution_seconds": null,
+  "human_wait_seconds": null,
+  "report_hopper_bytes": {
+    "report": 18900,
+    "hopper": 35135
+  },
+  "status": "complete",
+  "branch": "unknown",
+  "commit": null,
+  "push": null,
+  "git_disposition": "NOT_APPLICABLE",
+  "explicit_reactivation": false,
+  "current_hopper": "tmp/hopper/legacy-operations/Hopper (Legacy Operations)",
+  "archive_path": "tmp/hopper/legacy-operations/archive",
+  "report_file": "output-legacy-operations-260918134212.txt",
+  "manifest_file": "MANIFEST-legacy-operations-260918134212.txt",
+  "cycle_record_file": "cycle-legacy-operations-260918134212.json",
+  "evidence_bundle": "Native Windows Chrome/CDP live runtime evidence, authenticated read-only AdSense URL-channel reporting, verified Teachers.Net GA4 property, and targeted current source inspection. No production or account configuration mutation.",
+  "artifacts": [
+    {
+      "hopper_filename": "TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket-legacy-operations-260918134212.txt",
+      "original_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-corrected-ticket.txt",
+      "status": "REPORT_REQUIRED",
+      "size": 4911,
+      "sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5",
+      "source_sha256": "b63547aa73e780f652b891114f6ec78705bfb6a2739bc065bbe02d54cb5cfee5",
+      "source_bytes": 4911,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "HOPPER_SUPPORTING"
+    },
+    {
+      "hopper_filename": "TNET-PERF-ADS-MONETIZATION-AUDIT001-report-legacy-operations-260918134212.md",
+      "original_path": "/tmp/TNET-PERF-ADS-MONETIZATION-AUDIT001-report.md",
+      "status": "REPORT_REQUIRED",
+      "size": 11324,
+      "sha256": "97136d6c63e0a29e7d315e2228efaa882f042ded97cb02a530972d3e609ea186",
+      "source_sha256": "97136d6c63e0a29e7d315e2228efaa882f042ded97cb02a530972d3e609ea186",
+      "source_bytes": 11324,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "HOPPER_SUPPORTING"
+    }
+  ],
+  "excluded_artifacts": []
+}
