@@ -1,0 +1,75 @@
+{
+  "project_id": "legacy-operations",
+  "display_name": "Teachers.Net Legacy Operations",
+  "state": "REGISTERED / LIFECYCLE READY / STABILIZATION",
+  "project_state": "Stabilization",
+  "report_label": "Legacy Operations",
+  "repositories": {
+    "root": "/home/bobreap/projects/teachers-net-legacy",
+    "continuity_root": "/home/bobreap/projects/teachers-net-site"
+  },
+  "report_hopper": "tmp/hopper/legacy-operations",
+  "report_routing": "Every Legacy Operations ticket publishes its primary Report and Hopper artifacts under this project route; shared-workflow copies are optional secondary provenance only.",
+  "handoff": {
+    "report_hopper": "tmp/hopper/legacy-operations",
+    "handoffs": "/mnt/c/Main/Active/Projects/Teachers.Net/HANDOFFS",
+    "checkpoint_prefix": "Legacy-Operations"
+  },
+  "handoff_source": "docs/legacy-operations",
+  "handoff_build_directory": "docs/process/conversation-handoff/legacy-operations/current-handoff",
+  "handoff_payload_members": [
+    "project-cursor.md",
+    "engineering-handoff.md",
+    "inception-baseline.md"
+  ],
+  "scope": {
+    "include": [
+      "Sandy production operations and legacy runtime maintenance",
+      "Sandy-related AWS infrastructure",
+      "monitoring, recovery, backup, restore, traffic admission, operational provenance, storage, cost, and legacy retirement"
+    ],
+    "exclude": [
+      "Community 3.0 authority and implementation",
+      "Job Center authority and implementation",
+      "Profile/onboarding authority and implementation",
+      "Views authority and implementation",
+      "raw Codex transcripts and credentials"
+    ]
+  },
+  "runtime": {
+    "production_access": "WSL-only SSH alias: ssh sandy",
+    "production_boundary": "No production or AWS mutation is inferred from project registration.",
+    "source_runtime": "Teachers.Net legacy production is a hybrid Apache/WordPress/CGI/Perl/SSI environment; it is not WordPress-only."
+  },
+  "codex": {
+    "identified_sessions": [
+      "01a0b061-d739-7b70-95b6-53519ad4233a"
+    ],
+    "history_role": "Historical evidence only; startup authority is the registered Cursor, Handoff, inception baseline, governed source, and validated Report/Hopper state."
+  },
+  "authorities": {
+    "project_cursor": "docs/legacy-operations/project-cursor.md",
+    "engineering_handoff": "docs/legacy-operations/engineering-handoff.md",
+    "inception_baseline": "docs/legacy-operations/inception-baseline.md",
+    "legacy_recovery_policy": "/home/bobreap/projects/teachers-net-legacy/ops/sandy/recovery-policy.md"
+  },
+  "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
+    {"path": "docs/process/conversation-handoff/shared/START-CODEX.md", "role": "shared bootstrap"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md", "role": "project onboarding"},
+    {"path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md", "role": "shared project records"},
+    {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "shared Report/Hopper publication"},
+    {"path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md", "role": "shared lifecycle"},
+    {"path": "docs/documentation-governance.md", "role": "documentation governance"},
+    {"path": "docs/legacy-operations/project-cursor.md", "role": "Legacy Operations state"},
+    {"path": "docs/legacy-operations/engineering-handoff.md", "role": "Legacy Operations handoff"},
+    {"path": "docs/legacy-operations/inception-baseline.md", "role": "inherited evidence and registration boundary"},
+    {"path": "/home/bobreap/projects/teachers-net-legacy/ops/sandy/recovery-policy.md", "role": "governed Sandy recovery policy"}
+  ],
+  "bootstrap": {
+    "authorization": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "product_implementation_authorized": false,
+    "historical_evidence_is_not_retroactive_workflow": true,
+    "startup_authority": "Registered project continuity and current source/runtime state outrank historical conversation transcripts."
+  }
+}
