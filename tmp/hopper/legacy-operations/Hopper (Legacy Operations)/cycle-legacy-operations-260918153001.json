@@ -1,0 +1,120 @@
+{
+  "project": "legacy-operations",
+  "execution_project": "legacy-operations",
+  "ticket": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+  "cycle_id": "260918153001",
+  "workflow_version": "V2",
+  "objective_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+  "objective_owner": "Teachers.Net Legacy Operations",
+  "acceptance_fixtures": [],
+  "mode": "CONVERGENCE",
+  "report_tier": {
+    "required": [
+      "terminal_report",
+      "manifest",
+      "cycle_json",
+      "source_ticket"
+    ],
+    "additional": [
+      "acceptance_ledger",
+      "terminal_consolidated_evidence",
+      "final_diff_identity"
+    ],
+    "copy_committed_source_by_default": false
+  },
+  "evidence_class": "NATIVE",
+  "objective_state": "blocked",
+  "acceptance_ledger": {
+    "ticket": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "state": "blocked",
+    "blocker": "Required active renderer contains embedded live database credentials and cannot be imported into source control under the no-secrets boundary.",
+    "proven": [
+      "The Director authorized controlled recovery into teachers-net-legacy.",
+      "newwrapper.pm is the required active renderer for Lessons/Lessonplans.",
+      "The active renderer has hardcoded database credential material in DBI connection logic.",
+      "Read-only production baseline hashes and ownership/mode metadata were recorded without copying sensitive content.",
+      "newwrapper.cgi and newwrapper.pm passed perl syntax validation."
+    ],
+    "not_attempted": [
+      "No renderer recovery or source import.",
+      "No credential extraction, redaction, rotation, or secret migration.",
+      "No production deployment or mobile ad-delivery repair."
+    ],
+    "required_director_decision": "Authorize a source-safe secret configuration interface and credential rotation/rollback/deployment plan."
+  },
+  "ticket_preflight": {
+    "workflow_version": "V2",
+    "ticket_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "mode": "CONVERGENCE",
+    "objective_owner": "Teachers.Net Legacy Operations",
+    "terminator": "END TICKET \u2014 TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "terminator_valid": true,
+    "characters": 5880,
+    "warnings": [],
+    "valid": true,
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/042700c4-38fa-490a-a605-12c0c82eb1e4/Pasted text.txt",
+    "source_bytes": 6092,
+    "source_sha256": "1e380b34d6c74a0e05118a6e5bf3ae6508353889ade797eefa6f966c4eb36111",
+    "title": "Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001"
+  },
+  "ticket_identity": {
+    "ticket_id": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "title": "Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001",
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/042700c4-38fa-490a-a605-12c0c82eb1e4/Pasted text.txt",
+    "source_bytes": 6092,
+    "source_sha256": "1e380b34d6c74a0e05118a6e5bf3ae6508353889ade797eefa6f966c4eb36111"
+  },
+  "reasoning_posture_recommended": "MAXIMUM",
+  "reasoning_posture_used": "MAXIMUM",
+  "reasoning_posture_recommended_next": "MAXIMUM",
+  "reasoning_escalation_reason": "Required active renderer embeds live credentials and needs a new secret-management and rotation authority.",
+  "implementation_attempts": 0,
+  "internal_checkpoints": 0,
+  "human_checkpoints": 0,
+  "rework_cause": null,
+  "execution_seconds": null,
+  "human_wait_seconds": null,
+  "report_hopper_bytes": {
+    "report": 18657,
+    "hopper": 18657
+  },
+  "status": "blocked",
+  "branch": "COMMUNITY003-semantic-community-communications-working-draft",
+  "commit": null,
+  "push": null,
+  "git_disposition": "BLOCKED",
+  "explicit_reactivation": false,
+  "current_hopper": "tmp/hopper/legacy-operations/Hopper (Legacy Operations)",
+  "archive_path": "tmp/hopper/legacy-operations/archive",
+  "report_file": "output-legacy-operations-260918153001.txt",
+  "manifest_file": "MANIFEST-legacy-operations-260918153001.txt",
+  "cycle_record_file": "cycle-legacy-operations-260918153001.json",
+  "evidence_bundle": "Read-only Sandy dependency inspection found embedded live database credentials in the required active renderer. Non-sensitive pre-change hashes and syntax checks were recorded; no source recovery or production change was attempted.",
+  "artifacts": [
+    {
+      "hopper_filename": "Pasted text-legacy-operations-260918153001.txt",
+      "original_path": "/mnt/c/Users/bobre/.codex/attachments/042700c4-38fa-490a-a605-12c0c82eb1e4/Pasted text.txt",
+      "status": "BLOCKED",
+      "size": 6092,
+      "sha256": "1e380b34d6c74a0e05118a6e5bf3ae6508353889ade797eefa6f966c4eb36111",
+      "source_sha256": "1e380b34d6c74a0e05118a6e5bf3ae6508353889ade797eefa6f966c4eb36111",
+      "source_bytes": 6092,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    },
+    {
+      "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-recovery-blocked-report-legacy-operations-260918153001.md",
+      "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-recovery-blocked-report.md",
+      "status": "BLOCKED",
+      "size": 2405,
+      "sha256": "be3ffde9f8473a0d293b58a1e86fa8792864419eb5e495dd205e280668e767bf",
+      "source_sha256": "be3ffde9f8473a0d293b58a1e86fa8792864419eb5e495dd205e280668e767bf",
+      "source_bytes": 2405,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "REPORT_REQUIRED"
+    }
+  ],
+  "excluded_artifacts": []
+}

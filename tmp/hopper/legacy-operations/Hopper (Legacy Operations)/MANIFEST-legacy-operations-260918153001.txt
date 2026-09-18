@@ -1,0 +1,28 @@
+project=legacy-operations
+ticket=TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
+cycle_id=260918153001
+workflow_version=V2
+objective_owner=Teachers.Net Legacy Operations
+acceptance_fixtures=[]
+mode=CONVERGENCE
+evidence_class=NATIVE
+objective_state=blocked
+branch=COMMUNITY003-semantic-community-communications-working-draft
+commit=null
+push=null
+git_disposition=BLOCKED
+reasoning_posture_recommended=MAXIMUM
+reasoning_posture_used=MAXIMUM
+reasoning_posture_recommended_next=MAXIMUM
+reasoning_escalation_reason=Required active renderer embeds live credentials and needs a new secret-management and rotation authority.
+current_hopper=tmp/hopper/legacy-operations/Hopper (Legacy Operations)
+archive_path=tmp/hopper/legacy-operations/archive
+report_file=output-legacy-operations-260918153001.txt
+manifest_file=MANIFEST-legacy-operations-260918153001.txt
+cycle_record_file=cycle-legacy-operations-260918153001.json
+evidence_bundle=Read-only Sandy dependency inspection found embedded live database credentials in the required active renderer. Non-sensitive pre-change hashes and syntax checks were recorded; no source recovery or production change was attempted.
+report_hopper_bytes={"hopper": 18657, "report": 18657}
+
+artifacts:
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "Pasted text-legacy-operations-260918153001.txt", "original_path": "/mnt/c/Users/bobre/.codex/attachments/042700c4-38fa-490a-a605-12c0c82eb1e4/Pasted text.txt", "purpose": "ticket artifact", "sha256": "1e380b34d6c74a0e05118a6e5bf3ae6508353889ade797eefa6f966c4eb36111", "size": 6092, "source_bytes": 6092, "source_sha256": "1e380b34d6c74a0e05118a6e5bf3ae6508353889ade797eefa6f966c4eb36111", "status": "BLOCKED"}
+{"classification": "REPORT_REQUIRED", "committed": false, "hopper_filename": "TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-recovery-blocked-report-legacy-operations-260918153001.md", "original_path": "/tmp/TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001-recovery-blocked-report.md", "purpose": "ticket artifact", "sha256": "be3ffde9f8473a0d293b58a1e86fa8792864419eb5e495dd205e280668e767bf", "size": 2405, "source_bytes": 2405, "source_sha256": "be3ffde9f8473a0d293b58a1e86fa8792864419eb5e495dd205e280668e767bf", "status": "BLOCKED"}

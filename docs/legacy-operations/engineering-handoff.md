@@ -71,13 +71,18 @@ response correlation proves the emitted GPT definitions and AdSense slot
 `1692171583` come from `/var/www/cgi-bin/newwrapper.pm` (not the checked-in
 WordPress theme or `lessonz.pm`). `/var/www/htdocs`, `lessons`, and `cgi-bin`
 are not Git worktrees and this renderer is absent from both registered source
-repositories. Do not patch these deployed files until a source-controlled
-owner and authorized deployment path are registered.
+repositories. Director authority subsequently named `teachers-net-legacy` as
+the canonical recovery owner, but the required `/var/www/cgi-bin/newwrapper.pm`
+contains embedded live database credentials. The ticket prohibits importing
+secrets, so the current stop boundary is credential separation—not source-owner
+identity. Do not copy, redact-in-place, rotate, or deploy this renderer until a
+source-safe configuration interface and production secret-management/deployment
+boundary are explicitly authorized.
 
 ## Next operations objective
 
-Register or recover the source-controlled deployment owner for the live legacy
-Lessons/Lessonplans renderer, then resume
-`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001`. The existing PROVEN
-mobile failure evidence remains valid; the next cycle should not re-audit
-unrelated Sandy operations or edit the untracked deployed paths directly.
+Decide and authorize credential separation for the live legacy
+Lessons/Lessonplans renderer, including secret rotation and rollback policy.
+Then resume `TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` with its
+existing PROVEN mobile failure evidence; do not re-audit unrelated Sandy
+operations or edit the untracked deployed paths directly.

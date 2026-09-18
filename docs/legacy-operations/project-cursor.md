@@ -33,13 +33,14 @@ Current cloud retained/deleted-resource verification is pending authenticated
 `tnet-prod` access. This does not reopen the pre-registration cleanup or
 authorize a repeat deletion.
 
-`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` is blocked at owner
-recovery. Read-only Sandy evidence on 2026-09-18 established that `/lessons/`
-and `/lessonplans/` are served through the active Apache legacy route from
-`/var/www/htdocs/lessons` (with `/lessonplans` a symlink) and rendered by
-`/var/www/cgi-bin/newwrapper.pm`. Those deployed paths are not Git worktrees
-and are absent from the registered source repositories. No production patch is
-authorized until one source-controlled deployment owner is registered.
+`TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001` remains blocked, now at
+the credential-separation gate. Director authority authorized controlled
+recovery into `teachers-net-legacy`, and read-only Sandy evidence established
+that `/lessons/` and `/lessonplans/` are served from
+`/var/www/htdocs/lessons` (with `/lessonplans` a symlink) through
+`/var/www/cgi-bin/newwrapper.pm`. The required active renderer embeds live
+database credentials, so it cannot enter source control under the ticket's
+no-secrets boundary. No source recovery or production patch occurred.
 
 ## Known residual risks
 
@@ -52,7 +53,8 @@ authorized until one source-controlled deployment owner is registered.
 
 ## Next recommended objective
 
-Resolve source-control and deployment authority for the live legacy
-Lessons/Lessonplans renderer, beginning with the concrete Sandy paths recorded
-above. Once that owner is registered, resume the blocked mobile ad-delivery
-convergence cycle; do not edit the live untracked files directly.
+Authorize and design a credential-separation boundary for the active legacy
+renderer: a protected production-only configuration source, a source-safe
+renderer interface, credential rotation/rollback policy, and a deployment
+contract that never commits secrets. Only after that security decision can the
+existing mobile ad-delivery convergence objective resume.

@@ -1,0 +1,189 @@
+TICKET READY FOR CODEX
+Ticket: TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
+Mode: CONVERGENCE
+Reasoning: HIGH
+Recommended model: LUNA
+OWNER: Teachers.Net Legacy Operations
+Project: legacy-operations
+Repository: teachers-net-legacy
+
+OUTCOME
+
+Establish teachers-net-legacy as the source-controlled authoritative owner of
+the active Sandy Lessons/Lessonplans renderer, establish a bounded reversible
+deployment path back to its proven production destinations, then repair and
+natively prove the already-PROVEN mobile ad-delivery defects.
+
+Terminal outcome:
+
+untracked Sandy renderer
+→ controlled source recovery
+→ canonical source ownership
+→ safe deployment/rollback contract
+→ minimum responsive ad-delivery repair
+→ bounded production deployment
+→ native desktop/mobile acceptance.
+
+DIRECTOR AUTHORITY DECISION
+
+Resume the existing blocked objective.
+
+The Engineering Director authorizes CONTROLLED RECOVERY of the active Sandy
+Lessons/Lessonplans renderer into source control.
+
+Canonical source owner for the recovered legacy application family:
+
+/home/bobreap/projects/teachers-net-legacy
+
+Production Sandy remains the deployed runtime, but production-only files are
+not to remain the authoritative source after successful recovery.
+
+PROVEN OWNER — CARRY FORWARD
+
+Cycle 260918134213 proved:
+
+- active vhost:
+  /etc/apache2/sites-enabled/000-teachers.net-ssl.conf
+- lesson content family:
+  /var/www/htdocs/lessons
+- /var/www/htdocs/lessonplans -> lessons
+- CGI entry:
+  /var/www/cgi-bin/newwrapper.cgi
+- active renderer:
+  /var/www/cgi-bin/newwrapper.pm
+- live responses match newwrapper.pm;
+- active deployment paths are not Git worktrees;
+- registered repositories contain no authoritative copy.
+
+Do not repeat this archaeology.
+
+RECOVERY
+
+Before changing behavior, recover into teachers-net-legacy the minimum coherent
+source/deployment family required to reproduce and safely deploy the active
+Lessons/Lessonplans renderer.
+
+Inspect dependencies of newwrapper.cgi/newwrapper.pm and include only what is
+required for a maintainable authoritative owner.
+
+Preserve:
+- exact pre-change production bytes/hashes;
+- ownership/mode metadata required for deployment;
+- dependency provenance;
+- production destination mapping.
+
+Do not indiscriminately import /var/www/htdocs or /var/www/cgi-bin.
+
+Do not import secrets, credentials, generated/cache/log/session data, or
+unrelated Sandy application families.
+
+If required dependencies contain secrets or cannot safely enter source control,
+STOP and identify them plus the required configuration boundary.
+
+DEPLOYMENT CONTRACT
+
+Establish a minimal explicit deployment mechanism from the recovered
+teachers-net-legacy source to the proven Sandy production destinations.
+
+Requirements:
+- source-controlled input;
+- deterministic target mapping;
+- pre-deploy backup of replaced production files;
+- syntax/preflight validation where applicable;
+- rollback path;
+- preserve required owner/group/mode;
+- bounded only to recovered Lessons/Lessonplans renderer files.
+
+Do not create a broad Sandy deployment framework in this objective.
+
+REPAIR
+
+After source recovery and deployment ownership are proven, continue the
+original objective.
+
+Repair the minimum owner responsible for the carried-forward mobile defects:
+
+- adsbygoogle "No slot size for availableWidth";
+- fixed inventory overflowing compact viewport;
+- requested zero-geometry placement containers where directly owned by this
+  renderer.
+
+Preserve existing intended inventory.
+
+Do not add slots, increase density, restore takeover/anchor ads, redesign pages,
+or change AdSense/GAM/GA4/consent configuration.
+
+ACCEPTANCE
+
+Prove:
+
+1. recovered source matches pre-change deployed renderer provenance;
+2. one canonical source-controlled owner exists;
+3. deployment/rollback path is explicit and bounded;
+4. production change comes from that source owner, not an ad-hoc Sandy edit;
+5. /lessons/ and representative /lessonplans/ route no longer raise the proven
+   mobile No-slot-size error;
+6. intended requested placements have valid responsive geometry;
+7. fixed inventory no longer escapes its intended compact region;
+8. desktop delivery remains intact;
+9. no new console/runtime errors;
+10. page content/layout remains usable;
+11. no additional ad inventory was introduced.
+
+Use native production browser evidence after deployment.
+
+PRODUCTION AUTHORITY
+
+This ticket authorizes the bounded production deployment required to replace
+ONLY the recovered Lessons/Lessonplans renderer files after all preflight,
+backup, and validation gates pass.
+
+It does not authorize Apache/vhost changes, Google account changes, database
+changes, unrelated Sandy files, or destructive cleanup.
+
+If deployment requires any of those, STOP.
+
+EVIDENCE CLASS
+
+SOURCE-OWNER / DEPLOYMENT / RUNTIME / NATIVE / RESPONSIVE
+
+CLEANUP / CONTINUITY
+
+Record teachers-net-legacy as canonical owner of the recovered renderer family.
+
+Preserve production provenance and rollback evidence.
+
+Commit recovered source, deployment contract, repair, and durable guidance in
+coherent owned commits under normal workflow rules.
+
+Do not delete the production backup during this objective.
+
+EXCLUSIONS
+
+Do not repair:
+- Jobs;
+- Mentors/root mobile inventory;
+- /index.html;
+- Gazette;
+- broader RPM/traffic quality;
+- SEO/acquisition.
+
+Do not change:
+- Apache/vhost configuration;
+- AdSense/GAM/GA4 configuration;
+- consent policy;
+- ad density or placement strategy.
+
+STOP BOUNDARY
+
+Stop if:
+- dependency recovery expands materially beyond the Lessons/Lessonplans family;
+- secrets cannot be cleanly separated;
+- safe deployment/rollback cannot be established;
+- Apache/vhost changes become necessary;
+- another product/source owner is discovered.
+
+Otherwise complete recovery → repair → bounded production deployment →
+native acceptance → consolidation.
+
+END TICKET — TNET-PERF-LEGACY-MOBILE-AD-DELIVERY-CONVERGENCE001
