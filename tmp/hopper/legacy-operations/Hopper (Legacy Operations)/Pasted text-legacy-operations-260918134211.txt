@@ -1,0 +1,112 @@
+TICKET READY FOR CODEX
+Ticket: TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001
+
+Mode: STANDARD
+Reasoning: MEDIUM
+Recommended model: LUNA
+
+OUTCOME
+Register a dedicated Workflow V2 project for Teachers.Net legacy production/Sandy operations and establish truthful durable continuity: project authority, Cursor/Handoff, Hopper current/archive routing, Reports, and an inception baseline carrying forward accepted pre-registration evidence without fabricating retroactive cycles.
+
+OWNER: Teachers.Net Legacy Operations
+
+PROJECT IDENTITY
+Canonical project concept: Teachers.Net Legacy Operations.
+Governed source/worktree: `/home/bobreap/projects/teachers-net-legacy`.
+
+SCOPE
+Own:
+- Sandy production operations and legacy runtime maintenance;
+- Sandy-related AWS infrastructure;
+- monitoring/recovery and incident response;
+- backups/restore;
+- traffic admission/security operations;
+- legacy runtime performance;
+- operational configuration/provenance;
+- storage/cost lifecycle;
+- eventual legacy retirement/cutover operations.
+
+Do NOT absorb Community 3.0, Job Center, Profile/onboarding, Views, or other separately registered TNET projects.
+
+AUTHORITY
+Inspect and follow the canonical Workflow V2 Manifest/registration contracts and existing registered-project patterns. Do not invent paths, schemas, project IDs, report formats, or Hopper conventions where repository authority defines them.
+
+HISTORICAL BOUNDARY
+Do not manufacture retroactive Workflow cycles for completed Sandy work.
+
+Create one inception/baseline record that explicitly distinguishes:
+1. pre-registration historical execution;
+2. accepted inherited evidence;
+3. formally governed work beginning with this registration.
+
+Carry forward as accepted inherited evidence, where supported by existing Git/runtime/records:
+- Sandy performance incident diagnosis and accepted repairs;
+- Monit recovery-safety implementation and incident snapshots;
+- daily off-host backup implementation;
+- weekly current-Sandy AWS recovery;
+- successful isolated logical and whole-machine restore rehearsal;
+- completed local storage cleanup reducing root usage from ~89% to ~80–81%;
+- current protected-resource boundaries, including mail infrastructure/EIP KEEP / DO NOT TOUCH;
+- known residual risks including Netdata footprint, traffic-admission policy, configuration provenance, root/storage lifecycle, and `get_distinct_topics()`.
+
+Do not reopen or re-prove accepted seams merely to populate the baseline.
+
+WORKFLOW CONTRACT
+Establish the canonical:
+- project registration/Manifest entry;
+- Cursor/Handoff;
+- Hopper current/archive;
+- Report location and terminal-report routing;
+- acceptance-ledger continuity;
+- project startup/load behavior.
+
+Resolve the ticket-identity syntax issue from repository authority. Document the canonical accepted ticket header/ID form so future ChatGPT tickets validate without normalization or mutation.
+
+CLEANUP OBJECTIVE RECONCILIATION
+The preceding TNET-SANDY-COST-STORAGE-CLEANUP-001-REV1 execution occurred before formal registration.
+
+After registration:
+- preserve it as inherited pre-registration execution;
+- do not repeat any deletion;
+- if `tnet-prod` AWS authentication is available, perform only the missing read-only AWS verification needed to establish current retained/deleted cloud state;
+- if authentication is expired, report that verification as pending rather than blocking truthful project bootstrap;
+- route the resulting cleanup terminal record according to the newly established canonical workflow without pretending its execution originated as a registered cycle.
+
+PROVENANCE
+Inspect current Git branch/HEAD/status before changes. Workflow/bootstrap changes must be source-controlled according to existing Workflow V2 authority. Do not mix unrelated source changes.
+
+ACCEPTANCE
+- Dedicated Legacy Operations project is formally registered.
+- Correct worktree/source authority is explicit.
+- Cursor/Handoff and Report/Hopper routes validate.
+- Startup can recover the project without relying on historical chat transcripts.
+- Inception baseline preserves inherited accepted evidence and freshness boundary.
+- No retroactive fake cycles exist.
+- Canonical ticket identity syntax is documented/proven.
+- Existing Community/Job Center/etc. registrations remain unchanged in ownership.
+- No production Sandy/AWS mutation occurs merely to bootstrap workflow.
+- Cleanup execution is represented truthfully and never rerun.
+
+EVIDENCE CLASS
+Repository Workflow V2 authority + existing Git provenance + accepted historical Sandy evidence. AWS verification, if performed, is read-only.
+
+EXCLUSIONS
+No new performance repair, Netdata change, crawler policy, firewall mutation, backup-policy change, AWS cleanup, Sandy disk cleanup, application work, Mission Status work, or destructive production action.
+
+STOP BOUNDARY
+Stop on any contradiction between proposed Legacy Operations ownership and existing registered project authority, or if registration would require silently moving/reclassifying another project's accepted history. Report the contradiction instead of inventing authority.
+
+TERMINAL REPORT
+State:
+- canonical registered project ID/name;
+- worktree and authority sources;
+- Cursor/Handoff paths;
+- Hopper current/archive paths;
+- Report path/routing;
+- inception baseline and inherited-evidence boundary;
+- canonical ticket identity format;
+- Git commit/status;
+- cleanup objective reconciliation/AWS verification status;
+- next recommended Legacy Operations objective.
+
+END TICKET — TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001

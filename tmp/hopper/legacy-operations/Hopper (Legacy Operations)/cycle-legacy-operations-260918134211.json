@@ -1,0 +1,148 @@
+{
+  "project": "legacy-operations",
+  "execution_project": "legacy-operations",
+  "ticket": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+  "cycle_id": "260918134211",
+  "workflow_version": "V2",
+  "objective_id": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+  "objective_owner": "Teachers.Net Legacy Operations",
+  "acceptance_fixtures": [],
+  "mode": "STANDARD",
+  "report_tier": {
+    "required": [
+      "terminal_report",
+      "manifest",
+      "cycle_json",
+      "source_ticket"
+    ],
+    "additional": [
+      "focused_changed_hunk_or_test_evidence_when_needed"
+    ],
+    "copy_committed_source_by_default": false
+  },
+  "evidence_class": "DIAGNOSTIC",
+  "objective_state": "complete",
+  "acceptance_ledger": {
+    "objective_id": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "objective_owner": "Teachers.Net Legacy Operations",
+    "seams": [
+      {
+        "seam": "Legacy Operations registration",
+        "state": "PROVEN",
+        "evidence": "Registered project record resolves legacy-operations to its canonical repository and Report/Hopper routes."
+      },
+      {
+        "seam": "Worktree and reporting authority",
+        "state": "PROVEN",
+        "evidence": "BOOTSTRAP resolves the legacy worktree and this formal V2 cycle's paths."
+      },
+      {
+        "seam": "Inception and pre-registration boundary",
+        "state": "PROVEN",
+        "evidence": "Inception baseline records inherited history without creating retroactive cycles."
+      },
+      {
+        "seam": "Ticket syntax",
+        "state": "PROVEN",
+        "evidence": "The supplied ticket validates with the required one-line OWNER: header."
+      },
+      {
+        "seam": "Existing project authority",
+        "state": "PROVEN",
+        "evidence": "Registration is additive; no other project record was moved or altered."
+      },
+      {
+        "seam": "Sandy cleanup reconciliation",
+        "state": "PROVEN_HISTORICAL",
+        "evidence": "Accepted pre-registration evidence is preserved as history and no cleanup was repeated."
+      },
+      {
+        "seam": "Current AWS recovery dependency state",
+        "state": "PENDING_AUTHENTICATED_READ_ONLY_VERIFICATION",
+        "evidence": "tnet-prod AWS session was expired; no AWS mutation occurred."
+      }
+    ],
+    "checkpoints": [
+      {
+        "name": "Formal cycle validation",
+        "state": "PENDING_TERMINALIZE",
+        "evidence": "Canonical terminalization will write and validate this cycle."
+      }
+    ]
+  },
+  "ticket_preflight": {
+    "workflow_version": "V2",
+    "ticket_id": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "mode": "STANDARD",
+    "objective_owner": "Teachers.Net Legacy Operations",
+    "terminator": "END TICKET \u2014 TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "terminator_valid": true,
+    "characters": 5527,
+    "warnings": [],
+    "valid": true,
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/7ae229ca-1e1c-486b-892b-656842ef1fb0/Pasted text.txt",
+    "source_bytes": 5642,
+    "source_sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a",
+    "title": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001"
+  },
+  "ticket_identity": {
+    "ticket_id": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "title": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/7ae229ca-1e1c-486b-892b-656842ef1fb0/Pasted text.txt",
+    "source_bytes": 5642,
+    "source_sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a"
+  },
+  "reasoning_posture_recommended": "NORMAL",
+  "reasoning_posture_used": null,
+  "reasoning_posture_recommended_next": "NORMAL",
+  "reasoning_escalation_reason": null,
+  "implementation_attempts": 1,
+  "internal_checkpoints": 0,
+  "human_checkpoints": 0,
+  "rework_cause": null,
+  "execution_seconds": null,
+  "human_wait_seconds": null,
+  "report_hopper_bytes": {
+    "report": 17549,
+    "hopper": 21591
+  },
+  "status": "complete",
+  "branch": "unknown",
+  "commit": "2d348e6",
+  "push": "pushed",
+  "git_disposition": "COMMITTED_PUSHED",
+  "explicit_reactivation": false,
+  "current_hopper": "tmp/hopper/legacy-operations/Hopper (Legacy Operations)",
+  "archive_path": "tmp/hopper/legacy-operations/archive",
+  "report_file": "output-legacy-operations-260918134211.txt",
+  "manifest_file": "MANIFEST-legacy-operations-260918134211.txt",
+  "cycle_record_file": "cycle-legacy-operations-260918134211.json",
+  "evidence_bundle": "Repository Workflow V2 authority, existing Git provenance, and accepted historical Sandy evidence. AWS current-state verification is pending because the tnet-prod session was expired; no production or AWS mutation was performed.",
+  "artifacts": [
+    {
+      "hopper_filename": "Pasted text-legacy-operations-260918134211.txt",
+      "original_path": "/mnt/c/Users/bobre/.codex/attachments/7ae229ca-1e1c-486b-892b-656842ef1fb0/Pasted text.txt",
+      "status": "REPORT_REQUIRED",
+      "size": 5642,
+      "sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a",
+      "source_sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a",
+      "source_bytes": 5642,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "HOPPER_SUPPORTING"
+    },
+    {
+      "hopper_filename": "legacy-operations-bootstrap-report-legacy-operations-260918134211.md",
+      "original_path": "/tmp/legacy-operations-bootstrap-report.md",
+      "status": "REPORT_REQUIRED",
+      "size": 4042,
+      "sha256": "ee3c5310b641a2f19e413d4582dd63df91d91a5017305757c7cc1dbb574af4a4",
+      "source_sha256": "ee3c5310b641a2f19e413d4582dd63df91d91a5017305757c7cc1dbb574af4a4",
+      "source_bytes": 4042,
+      "committed": false,
+      "purpose": "ticket artifact",
+      "classification": "HOPPER_SUPPORTING"
+    }
+  ],
+  "excluded_artifacts": []
+}

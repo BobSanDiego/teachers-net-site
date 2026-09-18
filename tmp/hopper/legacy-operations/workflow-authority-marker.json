@@ -1,0 +1,11 @@
+{
+  "workflow_version": "V2",
+  "content_hash": "a006ac71e6784548d9d19d42e0b81351608a3fc1773885f3ee1a74dcd5e304b5",
+  "sources": [
+    "docs/process/conversation-handoff/shared/workflow-v2.json",
+    "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
+    "docs/process/conversation-handoff/shared/START-CODEX.md",
+    "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md",
+    "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md"
+  ]
+}

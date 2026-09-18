@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "project": "legacy-operations",
+  "owner": "tools/hopper/clean_cycle.py",
+  "current_objective": {
+    "ticket": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "state": "complete",
+    "cycle_id": "260918134211",
+    "objective_owner": "Teachers.Net Legacy Operations"
+  },
+  "last_terminal_cycle": "260918134211",
+  "ticket_identity": {
+    "ticket_id": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "title": "TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001",
+    "source_path": "/mnt/c/Users/bobre/.codex/attachments/7ae229ca-1e1c-486b-892b-656842ef1fb0/Pasted text.txt",
+    "source_bytes": 5642,
+    "source_sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a"
+  },
+  "freshness": {
+    "workflow_version": "V2",
+    "updated_at": "2026-09-18T13:46:20+00:00",
+    "cycle_id": "260918134211"
+  }
+}

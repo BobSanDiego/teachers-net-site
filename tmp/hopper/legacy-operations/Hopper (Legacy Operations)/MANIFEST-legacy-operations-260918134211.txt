@@ -1,0 +1,28 @@
+project=legacy-operations
+ticket=TNET-LEGACY-OPS-WORKFLOW-BOOTSTRAP-001
+cycle_id=260918134211
+workflow_version=V2
+objective_owner=Teachers.Net Legacy Operations
+acceptance_fixtures=[]
+mode=STANDARD
+evidence_class=DIAGNOSTIC
+objective_state=complete
+branch=unknown
+commit=2d348e6
+push=pushed
+git_disposition=COMMITTED_PUSHED
+reasoning_posture_recommended=NORMAL
+reasoning_posture_used=null
+reasoning_posture_recommended_next=NORMAL
+reasoning_escalation_reason=null
+current_hopper=tmp/hopper/legacy-operations/Hopper (Legacy Operations)
+archive_path=tmp/hopper/legacy-operations/archive
+report_file=output-legacy-operations-260918134211.txt
+manifest_file=MANIFEST-legacy-operations-260918134211.txt
+cycle_record_file=cycle-legacy-operations-260918134211.json
+evidence_bundle=Repository Workflow V2 authority, existing Git provenance, and accepted historical Sandy evidence. AWS current-state verification is pending because the tnet-prod session was expired; no production or AWS mutation was performed.
+report_hopper_bytes={"hopper": 21591, "report": 17549}
+
+artifacts:
+{"classification": "HOPPER_SUPPORTING", "committed": false, "hopper_filename": "Pasted text-legacy-operations-260918134211.txt", "original_path": "/mnt/c/Users/bobre/.codex/attachments/7ae229ca-1e1c-486b-892b-656842ef1fb0/Pasted text.txt", "purpose": "ticket artifact", "sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a", "size": 5642, "source_bytes": 5642, "source_sha256": "9fd6e6792e345336b62af31f7491af7be63772d598a7a44de5d05de17454f50a", "status": "REPORT_REQUIRED"}
+{"classification": "HOPPER_SUPPORTING", "committed": false, "hopper_filename": "legacy-operations-bootstrap-report-legacy-operations-260918134211.md", "original_path": "/tmp/legacy-operations-bootstrap-report.md", "purpose": "ticket artifact", "sha256": "ee3c5310b641a2f19e413d4582dd63df91d91a5017305757c7cc1dbb574af4a4", "size": 4042, "source_bytes": 4042, "source_sha256": "ee3c5310b641a2f19e413d4582dd63df91d91a5017305757c7cc1dbb574af4a4", "status": "REPORT_REQUIRED"}
