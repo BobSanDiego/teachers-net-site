@@ -385,8 +385,10 @@ def write_records(project: str, ticket: str, identifier: str, branch: str,
     # Report/Hopper ownership follows the executing Codex agent/project. The
     # logical objective owner remains metadata and may differ.
     owner = objective_owner or project
-    if not any("ticket" in item.get("hopper_filename", "").lower() or
-               "pasted-text" in item.get("hopper_filename", "").lower()
+    # Filename style is presentation data. The immutable source hash above is
+    # the authoritative proof that the executed ticket was packaged; attached
+    # files may legitimately retain spaces (for example, "Pasted text.txt").
+    if not any(item.get("source_sha256") == identity["source_sha256"]
                for item in artifacts):
         raise RuntimeError("Workflow V2 cycle requires a packaged source ticket")
     report = f"output-{project}-{identifier}.txt"
@@ -499,8 +501,7 @@ def validate(project: str, identifier: str) -> None:
         raise RuntimeError("cycle ticket preflight mode mismatch")
     if preflight.get("objective_owner") != payload.get("objective_owner"):
         raise RuntimeError("cycle ticket preflight objective-owner mismatch")
-    if not any("ticket" in item.get("hopper_filename", "").lower() or
-               "pasted-text" in item.get("hopper_filename", "").lower()
+    if not any(item.get("source_sha256") == identity["source_sha256"]
                for item in payload.get("artifacts", [])):
         raise RuntimeError("Workflow V2 cycle source ticket is missing")
     disposition = payload.get("git_disposition") or infer_git_disposition(
