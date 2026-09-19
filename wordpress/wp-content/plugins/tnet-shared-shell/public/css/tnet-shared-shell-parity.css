@@ -81,8 +81,6 @@
 .tnet-jobs-shell-lab-main-nav .tnet-jobs-shell-lab-product-icon,
 .tnet-jobs-shell-lab-main-nav .tnet-jobs-shell-lab-product-icon svg { width: 26px; height: 26px; }
 .tnet-jobs-shell-lab-main-nav .tnet-jobs-shell-lab-product-icon svg { stroke-width: 2.25; }
-.tnet-jobs-shell-lab-main-nav .tnet-jobs-shell-lab-product-icon svg[data-product-icon="platform-home"] { fill: currentColor; stroke-width: 1.4; }
-.tnet-jobs-shell-lab-main-nav .tnet-jobs-shell-lab-product-icon svg[data-product-icon="platform-home"] path { fill: currentColor; }
 /* Platform glyph geometry is immutable; these small outer adjustments balance
  * the different intrinsic silhouettes as one desktop navigation family. */
 .tnet-jobs-shell-lab-main-nav .tnet-jobs-shell-lab-product-icon svg[data-product-icon="platform-home"] { width: 23px; height: 23px; transform: none; }
@@ -564,3 +562,4 @@
 .tnet-jobs-shell-lab-anonymous-hidden { display: none; }
 .tnet-jobs-shell-lab-anonymous-state .tnet-jobs-shell-lab-workspace { grid-column: 1 / -1; }
 .tnet-jobs-shell-lab-anonymous-content { max-width: 42rem; margin: 4rem auto; padding: 2rem; text-align: center; }
+.tnet-shared-shell__guest-content { width: min(calc(100% - 32px), 56rem); margin-inline: auto; box-sizing: border-box; }

@@ -1,6 +1,22 @@
 # WordPress runtime
 wordpress/
 
+# Canonical first-party Identity plugin source. Keep the broader WordPress
+# runtime ignored; this is the complete reproducible source boundary only.
+!wordpress/
+wordpress/*
+!wordpress/wp-content/
+wordpress/wp-content/*
+!wordpress/wp-content/plugins/
+wordpress/wp-content/plugins/*
+!wordpress/wp-content/plugins/tnet-identity/
+!wordpress/wp-content/plugins/tnet-identity/**
+
+# Canonical first-party Shared Shell source. Keep the broader WordPress runtime
+# ignored; this complete plugin boundary owns platform presentation primitives.
+!wordpress/wp-content/plugins/tnet-shared-shell/
+!wordpress/wp-content/plugins/tnet-shared-shell/**
+
 # DDEV runtime
 .ddev/.webimageBuild/
 

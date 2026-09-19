@@ -379,6 +379,7 @@ final class TNet_Shared_Shell {
     $active_destination = sanitize_key((string) ($config['active_destination'] ?? ''));
     $community_media = !empty($config['community_media']);
     $clean = !empty($config['clean']);
+    $focused_identity_journey = !empty($config['focused_identity_journey']);
     // A canonical application shell is page-aligned and square at its outer
     // boundary. Pinned remains a supported behavior, but floating card chrome
     // is not part of the canonical v2 presentation.
@@ -390,6 +391,11 @@ final class TNet_Shared_Shell {
     }
     $anonymous_fixture = $fixture_state === 'guest';
     $effective_logged_in = !empty($config['logged_in']);
+    // Fixture state is presentation-test input, not authentication truth.
+    // Real consumers may retain a non-guest fixture label while the current
+    // WordPress session is logged out; the canonical shell must still render
+    // its guest/no-identity presentation in that case.
+    $guest_state = !$effective_logged_in;
     $shell_has_employer_access = !empty($config['employer_access']);
     $user_name = (string) ($identity['name'] ?? 'Guest user');
     $user_email = (string) ($identity['email'] ?? '');
@@ -445,7 +451,7 @@ final class TNet_Shared_Shell {
     $paths['chat'] = '<path d="M20.5 10.8a6.3 6.3 0 0 1-6.5 6.1 7.4 7.4 0 0 1-3-.6L7 18l1-3.1a6 6 0 0 1-1-3.6 6.3 6.3 0 0 1 6.5-6.1 6.3 6.3 0 0 1 6 3.5Z"/><path d="M6.7 8.4a5.8 5.8 0 0 0-3.2 5.1 5.5 5.5 0 0 0 1 3.2L3.5 19l3.2-1.2"/>';
     $paths['book'] = '<path d="M4 5.5c2.7-.7 5.3-.2 8 1.5v12c-2.7-1.7-5.3-2.2-8-1.5zM20 5.5c-2.7-.7-5.3-.2-8 1.5v12c2.7-1.7 5.3-2.2-8-1.5z"/><path d="M12 7v12"/>';
     $paths['platform-home'] = '<path fill="currentColor" d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z"/><path fill="currentColor" d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z"/>';
-    $paths['platform-job-center'] = '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.75" y="7.4" width="18.5" height="12.1" rx="1.8"/><path d="M8 7.4V5.9c0-.78.62-1.4 1.4-1.4h5.2c.78 0 1.4.62 1.4 1.4v1.5"/><path d="M2.75 11.7h18.5"/><rect x="10.1" y="10.7" width="3.8" height="2.5" rx=".55" fill="white"/></g>';
+    $paths['platform-home'] = '<path d="M2.5 10.5 12 2.8l9.5 7.7"/><path d="M17.2 6.9V4.7h2v3.8"/><path d="M5.5 12.2 12 6.9l6.5 5.3V21h-4.2v-5.2H9.7V21H5.5z"/>';
     $paths['platform-chatboards'] = '<path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>';
     $paths['platform-lesson-plans'] = '<g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h5M9 12h6M9 16h6M9 8h2"/></g>';
     $icon = array_key_exists($icon, $paths) ? $icon : 'briefcase';
