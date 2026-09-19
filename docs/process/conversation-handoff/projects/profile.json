@@ -1,12 +1,12 @@
 {
   "project_id": "profile",
   "display_name": "Teachers.Net Profile",
-  "state": "ACTIVE DEVELOPMENT / PORTRAIT BANK FROZEN / ONBOARDING SCREEN3 COMPLETE_FROZEN / IDENTITY SOURCE OWNER RECOVERED / PUSH ISOLATION PENDING",
+  "state": "ACTIVE DEVELOPMENT / PORTRAIT BANK FROZEN / ONBOARDING SCREEN3 COMPLETE_FROZEN / IDENTITY SOURCE OWNER RECOVERED / GIT PROVENANCE TERMINALIZATION COMPLETE",
   "report_label": "Profile",
   "repositories": {
     "root": "/home/bobreap/projects/teachers-net-site",
     "continuity_root": "/home/bobreap/projects/teachers-net-site",
-    "ownership_status": "Profile avatar resolver convergence and Screen 3 Photo/Avatar onboarding have authenticated native evidence and Director HUMAN_QA PASS. The frozen 268-entry portrait bank is read-only chooser content and remains subject to its documented rights limits. Screen 3 product acceptance is COMPLETE_FROZEN. teachers-net-site is the canonical Git owner of the complete tnet-identity plugin source; the root ignore re-includes only that source boundary and preserves all unrelated WordPress runtime exclusions. The recovery commit is local; remote publication awaits safe isolation from a pre-existing unrelated Community commit on the active branch."
+    "ownership_status": "Profile avatar resolver convergence and Screen 3 Photo/Avatar onboarding have authenticated native evidence and Director HUMAN_QA PASS. The frozen 268-entry portrait bank is read-only chooser content and remains subject to its documented rights limits. Screen 3 product acceptance is COMPLETE_FROZEN. teachers-net-site is the canonical Git owner of the complete tnet-identity plugin source; the root ignore re-includes only that source boundary and preserves all unrelated WordPress runtime exclusions. Git provenance terminalization is COMPLETE through isolated remote branch codex/profile-identity-git-owner-recovery001, derived from the remote Community base without publishing the active branch's unrelated Community commit."
   },
   "conversation": {
     "source_directory": "docs/process/conversation-handoff/profile/chatgpt-sources",

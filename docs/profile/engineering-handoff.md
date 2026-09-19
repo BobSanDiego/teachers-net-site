@@ -8,19 +8,21 @@ the canonical representation owner; the 268-entry frozen portrait bank is
 read-only chooser content, not member-demographic data. Broader Profile work
 remains deferred pending a separately authorized post-avatar identity step.
 
-## 2. Current Ticket
+## 2. Git provenance terminalization
 
-`PROFILE-IDENTITY-GIT-OWNER-RECOVERY001` resolves the Git provenance blocker
-from the prior Screen 3 closeout. It establishes this repository as the
-canonical owner of the complete seven-file `tnet-identity` source boundary,
+`PROFILE-IDENTITY-GIT-OWNER-RECOVERY001-PUSH` completes the Git-only
+publication of the recovery from the prior Screen 3 closeout. The repository is
+the canonical owner of the complete seven-file `tnet-identity` source boundary,
 while preserving the broad WordPress-runtime ignore for all unrelated runtime
 material. The recovered source exactly matches the Director-accepted Screen 3
 runtime hashes; no visual or behavioral seam was reopened.
 
-The recovery commit is local. Push is intentionally pending because the current
-branch is already ahead of its upstream by an unrelated Community commit; a
-normal push would publish that work too. Resolve that branch-publication scope
-before pushing the Profile recovery commit.
+Publication uses the isolated
+`codex/profile-identity-git-owner-recovery001` branch, based on the remote
+Community upstream rather than the Director's active Community working branch.
+It contains the Profile recovery and this terminalization record only;
+unrelated Community commit `c4c01b6` was not published. Git provenance
+terminalization is COMPLETE.
 
 ## 3. Last Completed Milestones
 

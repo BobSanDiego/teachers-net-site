@@ -119,7 +119,7 @@ be decided in that future ticket. Do not regenerate or recurate the bank,
 persist retrieval filters as demographics, or implement a later onboarding
 screen before that authority exists.
 
-## Source-control recovery — 2026-09-19
+## Source-control recovery and publication — 2026-09-19
 
 The Director's HUMAN_QA PASS remains recorded above. The recovery audit
 established `/home/bobreap/projects/teachers-net-site` as the canonical Git
@@ -130,10 +130,13 @@ configuration in the plugin boundary. The root ignore now re-includes only this
 complete first-party plugin. See
 `docs/profile/tnet-identity-source-ownership.md`.
 
-The canonical source commit is local. Its remote push is intentionally pending:
-the active branch already contains an unrelated unpushed Community commit, and
-a normal branch push would publish both. This is an external-publication scope
-boundary, not a source-owner or product-acceptance blocker.
+Git provenance terminalization is COMPLETE. The recovery was published through
+the isolated `codex/profile-identity-git-owner-recovery001` ref, derived from
+the remote Community base rather than the active Community working branch. It
+contains the Profile recovery and this provenance record only; unrelated
+Community commit `c4c01b6` was not included. This closes the former
+external-publication boundary without changing Screen 3 acceptance or source
+bytes.
 
 ## Persistent local QA fixture
 
