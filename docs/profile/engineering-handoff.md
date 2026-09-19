@@ -2,25 +2,24 @@
 
 ## 1. Current Phase
 
-Active Development — Screen 3 Photo/Avatar onboarding is product-complete and
-FROZEN after Engineering Director HUMAN_QA PASS. Screen 4 Public Identity is
-COMPLETE/FROZEN after Engineering Director HUMAN_QA PASS. The Profile resolver
-remains the canonical representation owner; the 268-entry frozen portrait bank
-is read-only chooser content, not member-demographic data.
+Active Development — Screens 3 Photo/Avatar, 4 Public Identity, and 5
+voluntary Location Context are COMPLETE/FROZEN after Engineering Director
+HUMAN_QA PASS. The Profile resolver remains the canonical representation owner;
+the 268-entry frozen portrait bank is read-only chooser content, not
+member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-ONBOARDING-PUBLIC-IDENTITY-SCREEN4-CLOSEOUT001` terminalized the
-bounded post-avatar public-identity step. `/account/identity/` collects only a
-required, changeable, non-unique Display Name; the canonical server-side
-`TNet_Identity_Policy` owns username reservation and Display Name validation
-before persistence. Native DDEV evidence proves desktop, intermediate and 390px
-containment, the focused-shell stacking correction, and the Profile-resolved
-selected/fallback avatar in the top-right shell. Screen 4 is COMPLETE/FROZEN.
-The accepted Identity and complete Shared Shell source boundaries are published
-through isolated branch `codex/profile-screen4-closeout`, not the active
-Community branch carrying unrelated history. Git provenance terminalization is
-COMPLETE; the terminal Workflow V2 report records the immutable commit.
+`PROFILE-ONBOARDING-LOCATION-SCREEN5-CLOSEOUT001` terminalized the bounded
+optional location step. `/account/location/` accepts an explicit U.S.
+State/District of Columbia or non-U.S. country, persists only canonical country
+and region codes through `TNet_Identity_Service`, clears inactive unsaved
+values on a mode change, and lets Skip continue without fabricating a default.
+Screen 4 routes to this step while it is pending; valid Continue and Skip go to
+`/jobs/`. There is no city, ZIP, street, precise, or inferred location
+collection. Native DDEV evidence covers U.S., international, switch/reset,
+Skip, route chaining, intermediate, and 390px containment. Screen 5 is
+COMPLETE/FROZEN. See `docs/profile/location-screen5-contract.md`.
 
 ## 3. Last Completed Milestones
 
@@ -56,23 +55,27 @@ that recommendation is not production authorization.
 
 ## 4. Next boundary
 
-The next product boundary is Screen 5 — voluntary high-value member location
-context. It may obtain U.S. State when applicable or Country outside the United
-States, must be optional/skippable, and must not collect city, ZIP, street
-address, or precise location. It is not yet implemented. Preserve the frozen
-bank and do not alter the Profile resolver without new authority.
+The next product boundary is intent-aware member context / onboarding fork.
+Director product design must determine how ordinary educator/member,
+employer/recruiter, and other/general intent is distinguished and used, so
+employer/recruiter users are not asked irrelevant teacher-specific questions.
+Potential role, grade, and subject enrichment remains UNDEFINED. Original entry
+intent may require eventual restoration where existing architecture supports
+it, but no mechanism is authorized here.
 
 ## 4. Next Five Planned Tickets
 
-1. Authorize a bounded Screen 5 Location ticket before implementation.
+1. Authorize and define the intent-aware member-context/onboarding-fork
+   objective before implementation.
 2. Preserve the frozen 268-entry bank and 42-row removal archive; do not
    acquire artwork, restore removed portraits, or change the resolver without
    a new Director decision.
 
 ## 5. Current Blockers
 
-- Screen 3 and Screen 4 are COMPLETE/FROZEN.
-- Screen 5 Location requires a separately authorized product ticket.
+- Screens 3, 4, and 5 are COMPLETE/FROZEN.
+- No current Profile product blocker is known; the next boundary requires
+  Director product authority.
 
 ## 6. Recently Adopted Governance Documents
 
@@ -140,8 +143,8 @@ temporary uploaded file were removed after verification.
 
 The browser connector was unavailable in those cycles, so native evidence used
 the already-approved direct Chrome DevTools binding. No bank artwork, Director
-classification, or production state changed during closeout. Source-control
-recovery now establishes this repository as the canonical Identity owner; see
-`docs/profile/tnet-identity-source-ownership.md`. Screen 4 is now separately
-authorized and HUMAN_QA_PENDING; do not begin Screen 5, member-avatar
-activation, or further bank work without new authority.
+classification, or production state changed during that historical closeout.
+Source-control recovery establishes this repository as the canonical Identity
+owner; see `docs/profile/tnet-identity-source-ownership.md`. The later Screen
+4 and Screen 5 objectives are now COMPLETE/FROZEN; do not treat this historical
+checkpoint as current authority.

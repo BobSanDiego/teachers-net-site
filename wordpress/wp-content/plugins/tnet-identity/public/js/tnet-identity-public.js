@@ -48,6 +48,45 @@
     input.addEventListener('input', function () { validate(true); });
   });
 
+  document.querySelectorAll('[data-tnet-location-form]').forEach(function (form) {
+    var modes = Array.prototype.slice.call(form.querySelectorAll('[data-tnet-location-mode]'));
+    var panels = Array.prototype.slice.call(form.querySelectorAll('[data-tnet-location-panel]'));
+    var state = form.querySelector('[data-tnet-location-state]');
+    var country = form.querySelector('[data-tnet-location-country]');
+    var submit = form.querySelector('[data-tnet-location-submit]');
+    var returnToState = form.querySelector('[data-tnet-location-return]');
+    if (!modes.length || !state || !country || !submit) return;
+
+    if (window.Intl && window.Intl.DisplayNames) {
+      var names = new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' });
+      Array.prototype.slice.call(country.options).forEach(function (option) {
+        if (!option.value) return;
+        try { option.textContent = names.of(option.value) + ' (' + option.value + ')'; } catch (error) { option.textContent = option.value; }
+      });
+    }
+
+    var activeMode = function () {
+      var selected = modes.find(function (input) { return input.checked; });
+      return selected ? selected.value : 'us';
+    };
+    var sync = function (clearInactive) {
+      var mode = activeMode();
+      var useState = mode === 'us';
+      panels.forEach(function (panel) { panel.hidden = panel.getAttribute('data-tnet-location-panel') !== mode; });
+      state.disabled = !useState;
+      country.disabled = useState;
+      if (clearInactive) {
+        if (useState) country.value = '';
+        else state.value = '';
+      }
+      submit.disabled = useState ? !state.value : !country.value;
+    };
+    modes.forEach(function (input) { input.addEventListener('change', function () { sync(true); }); });
+    [state, country].forEach(function (select) { select.addEventListener('change', function () { sync(false); }); });
+    if (returnToState) returnToState.addEventListener('click', function () { modes.find(function (input) { return input.value === 'us'; }).checked = true; sync(true); state.focus(); });
+    sync(false);
+  });
+
     var bankNode = document.querySelector('[data-avatar-bank]');
     var form = document.querySelector('[data-avatar-bank]') && document.querySelector('.tnet-identity-avatar-form');
     if (bankNode && form) {

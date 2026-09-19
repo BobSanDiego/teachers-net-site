@@ -1,12 +1,12 @@
 {
   "project_id": "profile",
   "display_name": "Teachers.Net Profile",
-  "state": "ACTIVE DEVELOPMENT / PORTRAIT BANK FROZEN / ONBOARDING SCREEN3 COMPLETE_FROZEN / SCREEN4 COMPLETE_FROZEN / IDENTITY AND SHARED-SHELL SOURCE OWNERS RECOVERED",
+  "state": "ACTIVE DEVELOPMENT / PORTRAIT BANK FROZEN / ONBOARDING SCREENS 3-5 COMPLETE_FROZEN / IDENTITY AND SHARED-SHELL SOURCE OWNERS RECOVERED",
   "report_label": "Profile",
   "repositories": {
     "root": "/home/bobreap/projects/teachers-net-site",
     "continuity_root": "/home/bobreap/projects/teachers-net-site",
-    "ownership_status": "Profile avatar resolver convergence and Screen 3 Photo/Avatar onboarding have authenticated native evidence and Director HUMAN_QA PASS. The frozen 268-entry portrait bank is read-only chooser content and remains subject to its documented rights limits. Screen 3 and Screen 4 Public Identity are COMPLETE_FROZEN. Screen 4 owns only a required changeable non-unique Display Name, while Profile continues to own avatar resolution. The canonical Identity Policy owns server-side username reservation and Display Name validation, and the focused shared-shell layer owner prevents rail overpaint. teachers-net-site is the canonical Git owner of the complete tnet-identity and tnet-shared-shell plugin source boundaries; narrow root-ignore exceptions preserve all unrelated WordPress runtime exclusions. Git provenance terminalization is COMPLETE on the isolated codex/profile-screen4-closeout branch; the terminal Workflow V2 report records the immutable commit identity and active Community history remains unpublished."
+    "ownership_status": "Profile avatar resolver convergence and Onboarding Screens 3-5 have authenticated native evidence and Director HUMAN_QA PASS. The frozen 268-entry portrait bank is read-only chooser content and remains subject to its documented rights limits. Screen 4 owns only a required changeable non-unique Display Name. Screen 5 owns only voluntary U.S. State/District of Columbia or non-U.S. Country context through canonical country_code and region_code, with no precise or inferred location. The canonical Identity Policy owns server-side username reservation and Display Name validation, and the focused shared-shell layer owner prevents rail overpaint. teachers-net-site is the canonical Git owner of the complete tnet-identity and tnet-shared-shell plugin source boundaries; narrow root-ignore exceptions preserve all unrelated WordPress runtime exclusions. Git provenance terminalization is complete on isolated Profile branches; active Community history remains unpublished."
   },
   "conversation": {
     "source_directory": "docs/process/conversation-handoff/profile/chatgpt-sources",
@@ -33,7 +33,7 @@
   ],
   "scope": {
     "include": ["Profile conversation evidence", "Profile continuity authorities", "shared continuity procedure"],
-    "exclude": ["Community authority", "Job Center authority", "Views authority", "Core Terms implementation", "generated-avatar activation", "Screen 5 and later onboarding", "unapproved Profile implementation"]
+    "exclude": ["Community authority", "Job Center authority", "Views authority", "Core Terms implementation", "generated-avatar activation", "intent-aware onboarding fork and later onboarding", "unapproved Profile implementation"]
   },
   "handoff_source": "docs/process/conversation-handoff/profile",
   "handoff_build_directory": "docs/process/conversation-handoff/profile/current-handoff",

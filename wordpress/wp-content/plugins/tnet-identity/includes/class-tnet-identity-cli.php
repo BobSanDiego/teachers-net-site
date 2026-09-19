@@ -127,8 +127,11 @@ final class TNet_Identity_CLI {
       }, $continuation_rows),
     ];
     $payload['onboarding'] = [
-      'owner' => 'not owned by tnet-identity',
-      'state' => 'not_present in current Identity schema',
+      'owner' => 'tnet-identity over WordPress user meta',
+      'avatar_pending' => TNet_Identity_Service::needs_avatar((int) $user->ID),
+      'public_identity_pending' => TNet_Identity_Service::needs_public_identity((int) $user->ID),
+      'location_pending' => TNet_Identity_Service::needs_location((int) $user->ID),
+      'location' => TNet_Identity_Service::location((int) $user->ID),
     ];
     $payload['reservations'] = [
       'email_in_use' => (bool) email_exists($user->user_email),
@@ -210,6 +213,34 @@ final class TNet_Identity_CLI {
         'continuation' => $remaining_continuation,
       ],
       'reusable_secret_exposed' => false,
+    ]);
+  }
+
+  /**
+   * Reset only the voluntary Screen 5 location step for one local QA identity.
+   * Existing account, verification, avatar, and public identity state remain.
+   *
+   * ## OPTIONS
+   *
+   * <email>
+   * : The one explicit local QA email address.
+   */
+  public function replay_location($args, $assoc_args) {
+    $this->require_ddev();
+    $email = $this->target_email($args);
+    $user = get_user_by('email', $email);
+    if (!$user) WP_CLI::error('No matching local identity was found.');
+    $user_id = (int) $user->ID;
+    delete_user_meta($user_id, TNet_Identity_Service::PROFILE_COUNTRY_CODE_META);
+    delete_user_meta($user_id, TNet_Identity_Service::PROFILE_REGION_CODE_META);
+    update_user_meta($user_id, TNet_Identity_Service::LOCATION_PENDING_META, '1');
+    $this->emit([
+      'query' => ['email' => $email],
+      'replay_location' => 'complete',
+      'mutated' => true,
+      'user_id' => $user_id,
+      'location_pending' => true,
+      'location' => TNet_Identity_Service::location($user_id),
     ]);
   }
 

@@ -116,7 +116,7 @@ COMPLETE/FROZEN following Engineering Director HUMAN_QA PASS under
 displays the Profile-resolved avatar
 and permanent username, defaults the required Display Name from username
 without persisting on GET, validates/persists it server-side on submit, and
-continues to `/jobs/`. The shared focused-shell layer owner now puts journey
+continues to the next pending onboarding step. The shared focused-shell layer owner now puts journey
 content above the overlapping rail at the 901px+ state without a route-local
 z-index patch. The same existing Profile resolver supplies the shell avatar
 (portrait selection or its normal fallback). `TNet_Identity_Policy` is the
@@ -131,19 +131,30 @@ unrelated local Community history. Git provenance terminalization is COMPLETE;
 the terminal Workflow V2 report records the immutable commit identity. Active
 Community history remains untouched.
 
-The immediate next product boundary is Screen 5 — voluntary high-value member
-location context: U.S. State when applicable or Country outside the United
-States, with no city, ZIP, street address, or precise location. Location is
-optional and skippable. Intent-aware educator/employer/general branching
-remains later work. Do not implement Screen 5 without a separately authorized
-ticket. Do not regenerate or recurate the bank, persist retrieval filters as
-demographics, or alter the Profile resolver without new authority.
+Screen 5 voluntary Location Context is COMPLETE/FROZEN following Engineering
+Director HUMAN_QA PASS under
+`PROFILE-ONBOARDING-LOCATION-SCREEN5-CLOSEOUT001`. `/account/location/`
+accepts only an explicit U.S. State/District of Columbia or non-U.S. country,
+stores canonical country and (for the U.S.) region codes, and has no
+city/ZIP/street/precise or inferred-location path. Skip stores nothing and
+continues to `/jobs/`. The durable scope/ownership contract is
+`docs/profile/location-screen5-contract.md`.
+
+The immediate next product boundary is intent-aware member context / onboarding
+fork. It must establish how known or selected intent serves ordinary
+educator/member, employer/recruiter, and other/general members so an employer
+or recruiter is not asked irrelevant teacher-specific questions. Potential
+educator role, grade, and subject enrichment remains UNDEFINED. Original entry
+intent may need eventual restoration where existing architecture supports it,
+but no mechanism is defined or implemented by this closeout. Do not regenerate
+or recurate the bank, persist retrieval filters as demographics, or alter the
+Profile resolver without new authority.
 
 ## Source-control recovery — 2026-09-19
 
 The Director's HUMAN_QA PASS remains recorded above. The recovery audit
 established `/home/bobreap/projects/teachers-net-site` as the canonical Git
-owner of the complete seven-file `tnet-identity` plugin source. The former
+owner of the complete eight-file `tnet-identity` plugin source. The former
 ignore state came only from the broad historical `wordpress/` runtime rule;
 there is no alternate repository, generated/runtime payload, or secret-bearing
 configuration in the plugin boundary. The root ignore now re-includes only this

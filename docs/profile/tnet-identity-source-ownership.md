@@ -28,6 +28,8 @@ The complete plugin source required to reproduce the active Identity plugin is:
 - `includes/class-tnet-identity-service.php`;
 - `includes/class-tnet-identity-username-policy.php`;
 - `includes/class-tnet-identity-cli.php` — DDEV-guarded QA lifecycle command;
+- `includes/class-tnet-identity-location-policy.php` — bounded Screen 5
+  country/state policy;
 - `public/class-tnet-identity-public.php`;
 - `public/css/tnet-identity-public.css`;
 - `public/js/tnet-identity-public.js`.

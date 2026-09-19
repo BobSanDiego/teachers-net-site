@@ -240,12 +240,39 @@
 .tnet-identity-public-identity-submit { width: 100%; justify-content: center; margin-top: 12px; }
 .tnet-identity-public-identity-submit:disabled { cursor: not-allowed; opacity: .5; }
 
+.tnet-identity-card--location { width: min(100%, 620px); }
+.tnet-identity-location-visual { display: grid; width: 150px; height: 78px; place-items: center; margin: 0 auto 5px; color: #b9d8fa; }
+.tnet-identity-location-visual svg { width: 100%; height: 100%; fill: currentColor; stroke: #8fb9e9; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+.tnet-identity-location-visual circle { fill: #eaf4ff; }
+.tnet-identity-location-choices { display: grid; gap: 10px; margin: 25px 0 0; border: 0; padding: 0; }
+.tnet-identity-location-choice { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; border: 1px solid #cbd8ea; border-radius: 8px; padding: 13px 14px; background: #fff; color: #172b4d; cursor: pointer; }
+.tnet-identity-location-choice:has(input:checked) { border-color: #8fb9e9; background: #f4f9ff; box-shadow: 0 0 0 1px rgba(94, 146, 209, .08); }
+.tnet-identity-location-choice input { width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--tnet-shell-action, #0045dd); }
+.tnet-identity-location-choice-icon { display: none; }
+.tnet-identity-location-choice strong { display: block; font-size: 15px; line-height: 1.25; }
+.tnet-identity-location-choice small { display: block; margin-top: 3px; color: #526a8e; font-size: 13px; font-weight: 400; line-height: 1.4; }
+.tnet-identity-location-selector { display: grid; gap: 7px; padding: 0 10px 2px; color: #172b4d; font-size: 14px; font-weight: 700; }
+.tnet-identity-location-selector[hidden] { display: none; }
+.tnet-identity-location-selector select { width: 100%; min-height: 46px; border: 1px solid #b9c8dc; border-radius: 8px; padding: 10px 38px 10px 12px; background: #fff; color: #172b4d; font: inherit; font-weight: 400; }
+.tnet-identity-location-selector select:focus-visible,
+.tnet-identity-location-choice:focus-within,
+.tnet-identity-location-return:focus-visible,
+.tnet-identity-location-skip:focus-visible { outline: 3px solid rgba(18, 59, 198, .28); outline-offset: 2px; }
+.tnet-identity-location-return,
+.tnet-identity-location-skip { width: max-content; border: 0; padding: 0; background: transparent; color: var(--tnet-shell-action, #0045dd); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.tnet-identity-location-submit { width: 100%; justify-content: center; margin-top: 18px; }
+.tnet-identity-location-submit:disabled { cursor: not-allowed; opacity: .5; }
+.tnet-identity-location-skip { display: block; margin: 16px auto 0; font-size: 14px; }
+
 @media (max-width: 640px) {
   .tnet-identity-card--public-identity { grid-template-columns: 1fr; gap: 23px; }
   .tnet-identity-member-cluster { grid-template-columns: 72px minmax(0, 1fr); justify-items: start; column-gap: 13px; text-align: left; }
   .tnet-identity-member-cluster img { grid-row: span 2; width: 72px; height: 72px; }
   .tnet-identity-member-handle { align-self: end; }
   .tnet-identity-member-note { align-self: start; }
+  .tnet-identity-card--location { padding: 24px 18px; }
+  .tnet-identity-location-visual { width: 122px; height: 63px; }
+  .tnet-identity-card--location h1 { font-size: clamp(27px, 8.5vw, 33px); }
 }
 
 .tnet-identity-code-form {

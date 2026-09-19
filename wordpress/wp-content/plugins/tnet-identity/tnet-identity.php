@@ -9,9 +9,9 @@
 
 defined('ABSPATH') || exit;
 
-define('TNET_IDENTITY_VERSION', '0.3.0');
+define('TNET_IDENTITY_VERSION', '0.4.0');
 define('TNET_IDENTITY_DB_VERSION', '0.2.0');
-define('TNET_IDENTITY_ROUTE_VERSION', '0.3.0');
+define('TNET_IDENTITY_ROUTE_VERSION', '0.4.0');
 define('TNET_IDENTITY_PLUGIN_FILE', __FILE__);
 define('TNET_IDENTITY_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('TNET_IDENTITY_PLUGIN_URL', plugin_dir_url(__FILE__));
@@ -19,6 +19,7 @@ define('TNET_IDENTITY_PLUGIN_URL', plugin_dir_url(__FILE__));
 require_once TNET_IDENTITY_PLUGIN_DIR . 'includes/class-tnet-identity-policy.php';
 require_once TNET_IDENTITY_PLUGIN_DIR . 'includes/class-tnet-identity-username-policy.php';
 require_once TNET_IDENTITY_PLUGIN_DIR . 'includes/class-tnet-identity-display-name-policy.php';
+require_once TNET_IDENTITY_PLUGIN_DIR . 'includes/class-tnet-identity-location-policy.php';
 require_once TNET_IDENTITY_PLUGIN_DIR . 'includes/class-tnet-identity-service.php';
 if (defined('WP_CLI') && WP_CLI) {
   require_once TNET_IDENTITY_PLUGIN_DIR . 'includes/class-tnet-identity-cli.php';
@@ -87,6 +88,7 @@ final class TNet_Identity {
     add_rewrite_rule('^account/verify/?$', 'index.php?' . self::QUERY_VAR . '=verify', 'top');
     add_rewrite_rule('^account/avatar/?$', 'index.php?' . self::QUERY_VAR . '=avatar', 'top');
     add_rewrite_rule('^account/identity/?$', 'index.php?' . self::QUERY_VAR . '=identity', 'top');
+    add_rewrite_rule('^account/location/?$', 'index.php?' . self::QUERY_VAR . '=location', 'top');
     add_rewrite_rule('^account/continue/?$', 'index.php?' . self::QUERY_VAR . '=continue', 'top');
   }
 
@@ -153,6 +155,8 @@ final class TNet_Identity {
       TNet_Identity_Public::render_avatar();
     } elseif ($route === 'identity') {
       TNet_Identity_Public::render_public_identity();
+    } elseif ($route === 'location') {
+      TNet_Identity_Public::render_location();
     } elseif ($route === 'continue') {
       TNet_Identity_Public::render_continue();
     }

@@ -7,6 +7,9 @@ final class TNet_Identity_Service {
   const RESEND_INTERVAL = 60;
   const AVATAR_PENDING_META = '_tnet_identity_avatar_pending';
   const PUBLIC_IDENTITY_PENDING_META = '_tnet_identity_public_identity_pending';
+  const LOCATION_PENDING_META = '_tnet_identity_location_pending';
+  const PROFILE_COUNTRY_CODE_META = '_tnet_profile_country_code';
+  const PROFILE_REGION_CODE_META = '_tnet_profile_region_code';
 
   public static function create_account(array $data) {
     $email = sanitize_email((string) ($data['email'] ?? ''));
@@ -26,6 +29,7 @@ final class TNet_Identity_Service {
     if (is_wp_error($user_id)) return $user_id;
     update_user_meta((int) $user_id, self::AVATAR_PENDING_META, '1');
     update_user_meta((int) $user_id, self::PUBLIC_IDENTITY_PENDING_META, '1');
+    update_user_meta((int) $user_id, self::LOCATION_PENDING_META, '1');
     $verification = self::issue_verification($user_id, 'account', true);
     if (is_wp_error($verification)) return $verification;
     return ['user_id' => (int) $user_id, 'verification_token' => $verification['token'], 'mail_sent' => $verification['mail_sent']];
@@ -45,6 +49,46 @@ final class TNet_Identity_Service {
 
   public static function complete_public_identity($user_id) {
     delete_user_meta(absint($user_id), self::PUBLIC_IDENTITY_PENDING_META);
+  }
+
+  public static function needs_location($user_id) {
+    return absint($user_id) > 0 && get_user_meta(absint($user_id), self::LOCATION_PENDING_META, true) === '1';
+  }
+
+  public static function complete_location($user_id) {
+    delete_user_meta(absint($user_id), self::LOCATION_PENDING_META);
+  }
+
+  public static function location($user_id) {
+    $user_id = absint($user_id);
+    return [
+      'country_code' => (string) get_user_meta($user_id, self::PROFILE_COUNTRY_CODE_META, true),
+      'region_code' => (string) get_user_meta($user_id, self::PROFILE_REGION_CODE_META, true),
+    ];
+  }
+
+  /** Persist only an explicit active Screen 5 choice. */
+  public static function save_location($user_id, $mode, $selection) {
+    $user_id = absint($user_id);
+    if (!$user_id || !get_user_by('id', $user_id)) {
+      return new WP_Error('tnet_identity_user_missing', __('The account could not be found.', 'tnet-identity'));
+    }
+    $mode = sanitize_key((string) $mode);
+    if ($mode === 'us') {
+      $region = TNet_Identity_Location_Policy::normalize_region($selection);
+      if ($region === '') return new WP_Error('tnet_identity_location_state_required', __('Select your state before continuing.', 'tnet-identity'));
+      update_user_meta($user_id, self::PROFILE_COUNTRY_CODE_META, 'US');
+      update_user_meta($user_id, self::PROFILE_REGION_CODE_META, $region);
+      return ['country_code' => 'US', 'region_code' => $region];
+    }
+    if ($mode === 'international') {
+      $country = TNet_Identity_Location_Policy::normalize_country($selection);
+      if ($country === '') return new WP_Error('tnet_identity_location_country_required', __('Select your country before continuing.', 'tnet-identity'));
+      update_user_meta($user_id, self::PROFILE_COUNTRY_CODE_META, $country);
+      delete_user_meta($user_id, self::PROFILE_REGION_CODE_META);
+      return ['country_code' => $country, 'region_code' => null];
+    }
+    return new WP_Error('tnet_identity_location_mode_invalid', __('Choose a location option before continuing.', 'tnet-identity'));
   }
 
   public static function update_display_name($user_id, $display_name) {

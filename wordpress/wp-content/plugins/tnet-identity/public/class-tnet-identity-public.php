@@ -21,6 +21,16 @@ final class TNet_Identity_Public {
     return home_url('/account/identity/');
   }
 
+  public static function location_url() {
+    return home_url('/account/location/');
+  }
+
+  private static function next_onboarding_url($user_id) {
+    if (TNet_Identity_Service::needs_public_identity($user_id)) return self::public_identity_url();
+    if (TNet_Identity_Service::needs_location($user_id)) return self::location_url();
+    return home_url('/jobs/');
+  }
+
   public static function render_signup() {
     $errors = [];
     $continuation = isset($_REQUEST['continuation']) ? sanitize_text_field(wp_unslash($_REQUEST['continuation'])) : '';
@@ -206,7 +216,7 @@ final class TNet_Identity_Public {
           <h1 id="tnet-identity-avatar-title">Your profile photo is set</h1>
           <p class="tnet-identity-intro">You can change it anytime from your Profile.</p>
           <img class="tnet-identity-avatar-confirmation" src="<?php echo esc_url($avatar['url']); ?>" width="160" height="160" alt="Your selected profile avatar">
-          <?php $next_url = TNet_Identity_Service::needs_public_identity($user_id) ? self::public_identity_url() : home_url('/jobs/'); ?>
+          <?php $next_url = self::next_onboarding_url($user_id); ?>
           <a class="tnet-identity-submit tnet-identity-submit--link" href="<?php echo esc_url($next_url); ?>"><span>Continue to Teachers.Net</span><span class="tnet-identity-submit-arrow" aria-hidden="true">→</span></a>
         <?php else : ?>
           <div data-avatar-photo-context>
@@ -295,7 +305,7 @@ final class TNet_Identity_Public {
     show_admin_bar(false);
     $user_id = get_current_user_id();
     if (!TNet_Identity_Service::needs_public_identity($user_id)) {
-      wp_safe_redirect(home_url('/jobs/'));
+      wp_safe_redirect(self::next_onboarding_url($user_id));
       exit;
     }
     $user = wp_get_current_user();
@@ -311,7 +321,7 @@ final class TNet_Identity_Public {
           $error = $result;
         } else {
           TNet_Identity_Service::complete_public_identity($user_id);
-          wp_safe_redirect(home_url('/jobs/'));
+          wp_safe_redirect(self::next_onboarding_url($user_id));
           exit;
         }
       }
@@ -339,6 +349,80 @@ final class TNet_Identity_Public {
             <button class="tnet-identity-submit tnet-identity-public-identity-submit" type="submit" data-tnet-display-name-submit><span><?php echo esc_html__('Continue', 'tnet-identity'); ?></span><span class="tnet-identity-submit-arrow" aria-hidden="true">→</span></button>
           </form>
         </div>
+      </main>
+      <?php
+    }, true, null, true);
+  }
+
+  public static function render_location() {
+    if (!is_user_logged_in()) {
+      wp_safe_redirect(wp_login_url(self::location_url()));
+      exit;
+    }
+    show_admin_bar(false);
+    $user_id = get_current_user_id();
+    if (!TNet_Identity_Service::needs_location($user_id)) {
+      wp_safe_redirect(home_url('/jobs/'));
+      exit;
+    }
+    $error = null;
+    $mode = sanitize_key((string) wp_unslash($_REQUEST['location_mode'] ?? 'us'));
+    if (!in_array($mode, ['us', 'international'], true)) $mode = 'us';
+    $state = sanitize_text_field(wp_unslash($_REQUEST['region_code'] ?? ''));
+    $country = sanitize_text_field(wp_unslash($_REQUEST['country_code'] ?? ''));
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (!isset($_POST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'tnet_identity_location_step')) {
+        $error = new WP_Error('tnet_identity_nonce', __('Security check failed. Please try again.', 'tnet-identity'));
+      } elseif (!empty($_POST['skip_location'])) {
+        TNet_Identity_Service::complete_location($user_id);
+        wp_safe_redirect(home_url('/jobs/'));
+        exit;
+      } else {
+        $selection = $mode === 'us' ? $state : $country;
+        $result = TNet_Identity_Service::save_location($user_id, $mode, $selection);
+        if (is_wp_error($result)) {
+          $error = $result;
+        } else {
+          TNet_Identity_Service::complete_location($user_id);
+          wp_safe_redirect(home_url('/jobs/'));
+          exit;
+        }
+      }
+    }
+    self::page(__('Where are you located?', 'tnet-identity'), function () use ($error, $mode, $state, $country) {
+      $error_message = is_wp_error($error) ? $error->get_error_message() : '';
+      $states = TNet_Identity_Location_Policy::us_regions();
+      $countries = TNet_Identity_Location_Policy::country_codes();
+      ?>
+      <main class="tnet-identity-card tnet-identity-card--location" aria-labelledby="tnet-identity-location-title">
+        <div class="tnet-identity-location-visual" aria-hidden="true"><svg viewBox="0 0 160 88" focusable="false"><path d="M16 31l18-12 23 4 13-9 20 6 22-3 14 13-4 15-19 4-7 15-19-4-11 9-18-8-18 1-9-13-17-3z"></path><circle cx="115" cy="55" r="17"></circle><path d="M115 38v34M98 55h34M103 43c7 7 17 7 24 0M103 67c7-7 17-7 24 0"></path></svg></div>
+        <h1 id="tnet-identity-location-title">Where are you located?</h1>
+        <p class="tnet-identity-intro">Help us show you more relevant resources, discussions, and opportunities.</p>
+        <?php if ($error_message) : ?><div class="tnet-identity-errors" role="alert"><p><?php echo esc_html($error_message); ?></p></div><?php endif; ?>
+        <form method="post" class="tnet-identity-location-form" data-tnet-location-form>
+          <?php wp_nonce_field('tnet_identity_location_step'); ?>
+          <fieldset class="tnet-identity-location-choices"><legend class="screen-reader-text">Choose a location type</legend>
+            <label class="tnet-identity-location-choice"><input type="radio" name="location_mode" value="us" <?php checked($mode, 'us'); ?> data-tnet-location-mode="us"><span class="tnet-identity-location-choice-icon" aria-hidden="true">●</span><span><strong>United States</strong><small>Select your state to get more relevant content for your area.</small></span></label>
+            <section class="tnet-identity-location-selector" data-tnet-location-panel="us"<?php if ($mode !== 'us') echo ' hidden'; ?>>
+              <label for="tnet-identity-region-code">State</label>
+              <select id="tnet-identity-region-code" name="region_code" autocomplete="address-level1" data-tnet-location-state<?php disabled($mode, 'international'); ?>>
+                <option value="">Select your state</option>
+                <?php foreach ($states as $code => $name) : ?><option value="<?php echo esc_attr($code); ?>" <?php selected($state, $code); ?>><?php echo esc_html($name . ' (' . $code . ')'); ?></option><?php endforeach; ?>
+              </select>
+            </section>
+            <label class="tnet-identity-location-choice"><input type="radio" name="location_mode" value="international" <?php checked($mode, 'international'); ?> data-tnet-location-mode="international"><span class="tnet-identity-location-choice-icon" aria-hidden="true">●</span><span><strong>Outside the U.S.?</strong><small>Choose your country instead.</small></span></label>
+            <section class="tnet-identity-location-selector" data-tnet-location-panel="international"<?php if ($mode !== 'international') echo ' hidden'; ?>>
+              <label for="tnet-identity-country-code">Country</label>
+              <select id="tnet-identity-country-code" name="country_code" autocomplete="country" data-tnet-location-country<?php disabled($mode, 'us'); ?>>
+                <option value="">Select your country</option>
+                <?php foreach ($countries as $code) : ?><option value="<?php echo esc_attr($code); ?>" <?php selected($country, $code); ?>><?php echo esc_html($code); ?></option><?php endforeach; ?>
+              </select>
+              <button class="tnet-identity-location-return" type="button" data-tnet-location-return>In the U.S.? Choose your state</button>
+            </section>
+          </fieldset>
+          <button class="tnet-identity-submit tnet-identity-location-submit" type="submit" data-tnet-location-submit<?php disabled($mode === 'us' ? $state === '' : $country === ''); ?>><span>Continue</span><span class="tnet-identity-submit-arrow" aria-hidden="true">→</span></button>
+          <button class="tnet-identity-location-skip" type="submit" name="skip_location" value="1">Skip for now</button>
+        </form>
       </main>
       <?php
     }, true, null, true);
