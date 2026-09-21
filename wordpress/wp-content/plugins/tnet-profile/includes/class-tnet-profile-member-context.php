@@ -225,6 +225,54 @@ final class TNet_Profile_Member_Context {
     return self::fact_for_user($user_id, $relationship_type, $term['term_uuid'], $provenance);
   }
 
+  /** Atomically replace one explicit Profile-fact relationship set. */
+  public static function replace_facts($user_id, $relationship_type, array $term_uuids, $provenance = self::PROVENANCE_SELF_REPORTED) {
+    global $wpdb;
+    $user_id = absint($user_id);
+    $relationship_type = self::normalize_fact_relationship_type($relationship_type);
+    $provenance = self::normalize_fact_provenance($provenance);
+    if (!$user_id || !get_user_by('id', $user_id)) return new WP_Error('tnet_profile_member_fact_user_missing', __('The account could not be found.', 'tnet-profile'));
+    if ($relationship_type === '') return new WP_Error('tnet_profile_member_fact_relationship_invalid', __('That Profile fact relationship is not supported.', 'tnet-profile'));
+    if ($provenance === '') return new WP_Error('tnet_profile_member_fact_provenance_invalid', __('That Profile fact provenance is not supported.', 'tnet-profile'));
+
+    // Resolve every UUID before changing any row. Broad and specific selections
+    // remain separate explicit facts; no parent/child inference occurs here.
+    $terms = [];
+    foreach (array_unique(array_map('strval', $term_uuids)) as $term_uuid) {
+      $term = self::resolve_live_core_term($term_uuid);
+      if (is_wp_error($term)) return $term;
+      $terms[(string) $term['term_uuid']] = $term;
+    }
+
+    $table = self::table();
+    $now = gmdate('Y-m-d H:i:s');
+    $wpdb->query('START TRANSACTION');
+    try {
+      $deleted = $wpdb->delete($table, ['user_id' => $user_id, 'context_type' => $relationship_type, 'provenance' => $provenance], ['%d', '%s', '%s']);
+      if ($deleted === false) throw new RuntimeException('Could not replace Profile facts.');
+      foreach ($terms as $term) {
+        $inserted = $wpdb->insert($table, [
+          'user_id' => $user_id,
+          'context_type' => $relationship_type,
+          'context_value' => $term['term_uuid'],
+          'provenance' => $provenance,
+          'term_framework_slug' => self::CORE_TERMS_FRAMEWORK,
+          'term_uuid' => $term['term_uuid'],
+          'visibility_scope' => self::VISIBILITY_PROFILE_DETAILS,
+          'lifecycle_state' => self::LIFECYCLE_ACTIVE,
+          'created_at' => $now,
+          'updated_at' => $now,
+        ], ['%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s']);
+        if ($inserted === false) throw new RuntimeException('Could not save Profile facts.');
+      }
+      $wpdb->query('COMMIT');
+    } catch (Throwable $exception) {
+      $wpdb->query('ROLLBACK');
+      return new WP_Error('tnet_profile_member_fact_replace_failed', __('Your Profile selections could not be saved. Please try again.', 'tnet-profile'));
+    }
+    return self::facts_for_user($user_id, $provenance);
+  }
+
   public static function remove_fact($user_id, $relationship_type, $term_uuid, $provenance = self::PROVENANCE_SELF_REPORTED) {
     global $wpdb;
     $user_id = absint($user_id);

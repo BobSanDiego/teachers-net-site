@@ -11,6 +11,7 @@ define('TNET_PROFILE_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once __DIR__ . '/includes/class-tnet-profile-avatar-component-set.php';
 require_once __DIR__ . '/includes/class-tnet-profile-member-context.php';
+require_once __DIR__ . '/includes/class-tnet-profile-basics.php';
 
 final class TNet_Profile_Avatar {
   const META_KEY = '_tnet_profile_avatar_id';
@@ -31,6 +32,7 @@ final class TNet_Profile_Avatar {
   public static function activate() {
     TNet_Profile_Member_Context::activate();
     self::register_route();
+    TNet_Profile_Basics::register_route();
     flush_rewrite_rules(false);
   }
 
@@ -252,6 +254,7 @@ final class TNet_Profile_Avatar {
 
 TNet_Profile_Avatar::init();
 TNet_Profile_Member_Context::init();
+TNet_Profile_Basics::init();
 register_activation_hook(__FILE__, ['TNet_Profile_Avatar', 'activate']);
 register_deactivation_hook(__FILE__, ['TNet_Profile_Avatar', 'deactivate']);
 
