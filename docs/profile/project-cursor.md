@@ -17,7 +17,8 @@ member-fact service, frozen portrait manifest and its 268 retained masters,
 and the two constraining Profile contracts. The apparent 269 runtime asset
 count is reconciled as 268 portrait PNG masters plus `manifest.json`. User
 uploads, caches, QA fixtures, reports, review labs, and removed historical
-artwork remain excluded. Its immutable publication commit is recorded in
+artwork remain excluded. Its immutable recovered-source baseline is
+`65e374e125189efff44a1229191c2f8ad47abac3`, recorded in
 `docs/profile/tnet-profile-source-ownership.md` and the terminal Workflow V2
 Report. `PROFILE-V1-BASICS-FACTS001` remains unchanged and is the next
 implementation objective after recovery publication.

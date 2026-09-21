@@ -8,8 +8,10 @@ was recovered under `PROFILE-SOURCE-OWNER-RECOVERY002` from accepted Profile
 contracts and evidence, then byte-checked against the active local DDEV
 runtime. It is not a transfer of ownership to the WordPress runtime directory.
 
-The immutable recovery publication commit is recorded in this document's
-terminal provenance update and in the corresponding Workflow V2 Report.
+The immutable recovered-source baseline is commit
+`65e374e125189efff44a1229191c2f8ad47abac3`
+(`Recover canonical Profile source boundary`). Its isolated publication result
+is recorded in the corresponding Workflow V2 Report.
 
 ## Tracked runtime boundary
 

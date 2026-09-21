@@ -46,7 +46,8 @@ isolated Profile branch without changing product behavior. The frozen delivery
 bank is precisely 268 retained PNG masters plus its manifest (269 files), the
 accepted member-fact service is recovered from its accepted contract evidence,
 and mutable uploads, QA fixtures, reports, review labs, and historical removed
-artwork remain outside source control. Its publication commit is recorded in
+artwork remain outside source control. Its immutable recovered-source baseline
+is `65e374e125189efff44a1229191c2f8ad47abac3`, recorded in
 `docs/profile/tnet-profile-source-ownership.md` and the terminal Workflow V2
 Report. After publication, `PROFILE-V1-BASICS-FACTS001` may resume unchanged;
 do not begin it during recovery.
