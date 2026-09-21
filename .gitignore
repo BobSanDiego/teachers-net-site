@@ -12,6 +12,11 @@ wordpress/wp-content/plugins/*
 !wordpress/wp-content/plugins/tnet-identity/
 !wordpress/wp-content/plugins/tnet-identity/**
 
+# Canonical first-party Profile source and frozen portrait delivery boundary.
+# Keep mutable WordPress uploads and the broader runtime excluded.
+!wordpress/wp-content/plugins/tnet-profile/
+!wordpress/wp-content/plugins/tnet-profile/**
+
 # Canonical first-party Shared Shell source. Keep the broader WordPress runtime
 # ignored; this complete plugin boundary owns platform presentation primitives.
 !wordpress/wp-content/plugins/tnet-shared-shell/

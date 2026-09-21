@@ -40,6 +40,17 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
+`PROFILE-SOURCE-OWNER-RECOVERY002` is the active convergence boundary. It
+recovers the accepted first-party `tnet-profile` runtime source into the
+isolated Profile branch without changing product behavior. The frozen delivery
+bank is precisely 268 retained PNG masters plus its manifest (269 files), the
+accepted member-fact service is recovered from its accepted contract evidence,
+and mutable uploads, QA fixtures, reports, review labs, and historical removed
+artwork remain outside source control. Its publication commit is recorded in
+`docs/profile/tnet-profile-source-ownership.md` and the terminal Workflow V2
+Report. After publication, `PROFILE-V1-BASICS-FACTS001` may resume unchanged;
+do not begin it during recovery.
+
 `PROFILE-ONBOARDING-MEMBER-CONTEXT-SCREEN6-001` adds `/account/context/` after
 the combined public-identity/location checkpoint. It records optional independent self-reported roles
 and hiring intent through Profile's normalized indexed relation; a member may

@@ -10,6 +10,18 @@ Project state: Active Development
 
 ## Current boundary
 
+`PROFILE-SOURCE-OWNER-RECOVERY002` is the active source-provenance
+convergence. It establishes `teachers-net-site` as the canonical Git owner of
+the complete first-party `tnet-profile` runtime boundary: bootstrap, accepted
+member-fact service, frozen portrait manifest and its 268 retained masters,
+and the two constraining Profile contracts. The apparent 269 runtime asset
+count is reconciled as 268 portrait PNG masters plus `manifest.json`. User
+uploads, caches, QA fixtures, reports, review labs, and removed historical
+artwork remain excluded. Its immutable publication commit is recorded in
+`docs/profile/tnet-profile-source-ownership.md` and the terminal Workflow V2
+Report. `PROFILE-V1-BASICS-FACTS001` remains unchanged and is the next
+implementation objective after recovery publication.
+
 `PROFILE-LAUNCH-ROUTER-VISUAL-CONVERGENCE004` is COMPLETE/FROZEN after
 Engineering Director HUMAN_QA PASS. Its
 normal authenticated Shared Shell `/account/launch/` surface now has the
