@@ -287,7 +287,8 @@ final class TNet_Shared_Shell {
     self::community_rail_link($jobs, 'Jobs', 'briefcase');
     self::community_rail_link($lessons, 'Lesson Plans', 'document');
     if ($generic_join) self::community_rail_link($chatboards, 'Chatboards', 'chat');
-    echo '</nav><div class="c3-community-rail__divider" aria-hidden="true"></div>';
+    echo '</nav>';
+    if (!$focused_identity_journey) echo '<div class="c3-community-rail__divider" aria-hidden="true"></div>';
     if (!$generic_join) {
       echo '<div class="c3-community-rail__section-label">';
       self::render_community_icon('chat');
@@ -297,9 +298,16 @@ final class TNet_Shared_Shell {
       $family = (array) $family;
       $name = (string) ($family['name'] ?? '');
       if ($name === '') continue;
+      $direct_url = (string) ($family['direct_url'] ?? '');
       $label = (string) ($family['active_label'] ?? '');
       $url = (string) ($family['active_url'] ?? '');
       $icon = (string) ($family['icon'] ?? self::community_family_icon($name));
+      if ($direct_url !== '') {
+        echo '<section class="c3-community-rail__family c3-community-rail__family--direct"><h2><a href="' . esc_url($direct_url) . '">';
+        self::render_community_icon($icon);
+        echo '<span>' . esc_html($name) . '</span></a></h2></section>';
+        continue;
+      }
       echo '<section class="c3-community-rail__family"><h2>';
       self::render_community_icon($icon);
       echo '<span>' . esc_html($name) . '</span></h2>';
@@ -380,6 +388,14 @@ final class TNet_Shared_Shell {
     $community_media = !empty($config['community_media']);
     $clean = !empty($config['clean']);
     $focused_identity_journey = !empty($config['focused_identity_journey']);
+    $suppress_anonymous_actions = !empty($config['suppress_anonymous_actions']);
+    // Focused Identity intentionally suppresses the WordPress admin bar. WordPress
+    // still queues its offset stylesheet before this shell renders, leaving a
+    // phantom 32/46px document inset unless the focused shell owns its removal.
+    if ($focused_identity_journey) {
+      show_admin_bar(false);
+      wp_dequeue_style('admin-bar');
+    }
     // A canonical application shell is page-aligned and square at its outer
     // boundary. Pinned remains a supported behavior, but floating card chrome
     // is not part of the canonical v2 presentation.

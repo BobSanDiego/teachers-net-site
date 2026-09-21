@@ -55,6 +55,18 @@ final class TNet_Identity_Policy {
     return strtolower(trim((string) $value));
   }
 
+  /**
+   * Client-facing syntax rules. Reservation and availability remain server-only.
+   */
+  public static function username_client_rules() {
+    return [
+      'min' => self::USERNAME_MIN_LENGTH,
+      'max' => self::USERNAME_MAX_LENGTH,
+      'pattern' => '[A-Za-z0-9._-]{3,30}',
+      'message' => __('Use 3–30 characters: letters, numbers, periods, underscores, or hyphens.', 'tnet-identity'),
+    ];
+  }
+
   /** Conservative comparison key: case, accepted separators and basic leetspeak only. */
   public static function reservation_key($value) {
     $key = self::normalize_username($value);

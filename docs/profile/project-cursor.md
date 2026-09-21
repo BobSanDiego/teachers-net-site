@@ -10,6 +10,39 @@ Project state: Active Development
 
 ## Current boundary
 
+`PROFILE-LAUNCH-ROUTER-VISUAL-CONVERGENCE004` is COMPLETE/FROZEN after
+Engineering Director HUMAN_QA PASS. Its
+normal authenticated Shared Shell `/account/launch/` surface now has the
+featured Profile action, equal Community/Lessons exploration pair, quiet Home
+escape, and no Jobs/Search/right rail. The existing destination registry and
+one-time lifecycle remain unchanged; Profile and Lessons remain unresolved
+deployment dependencies rather than member-facing development states. The
+Profile consumer resolves an explicit persisted U.S. state through the Shared
+Shell's direct family-link input only when the canonical production state route
+is validated. The personalized state row is not current-route active, and the
+launch surface suppresses standalone Help. All other location cases retain
+generic States. The route owns its short-page footer and post-rail centering
+corrections, leaving normal Shared Shell page geometry alone. The desktop
+composition uses the accepted 656px width and is centered on the canonical
+1280px shell canvas. Cycle `260921162000` also corrects the canonical Shared
+Shell desktop family-heading rhythm to the same 40px row and 2px inter-row
+cadence as primary navigation; nested family children retain subordinate
+indentation and current-route styling. Native desktop and 390px evidence is
+accepted carryforward. Profile and Lessons remain deployment dependencies;
+Jobs remains modeled but disabled/hidden. The next substantive Profile
+objective is `PROFILE V1 PUBLIC DISPLAY / EDIT`. See
+`docs/profile/onboarding-journey-contract.md`.
+
+`PROFILE-ONBOARDING-JOURNEY-VISUAL-FINAL001` is the active HUMAN_QA_PENDING
+boundary. It retains the consolidated ordinary-member journey and applies only
+the final presentation treatment: client-visible Create Account validity
+gating, full-column primary CTAs for Screens 1 and 2, and a compact 380px
+desktop control column for the combined Public Identity + voluntary Location
+step. The server remains authoritative for signup and identity validation;
+route, marker, persistence, and Screen 6 semantics are unchanged. Native
+desktop and 390px evidence is complete; Engineering Director visual acceptance
+remains required. See `docs/profile/onboarding-journey-contract.md`.
+
 `PROFILE-ONBOARDING-AVATAR-SCREEN3-001` is product-accepted and FROZEN after
 Engineering Director HUMAN_QA PASS. Its photo-first onboarding, frozen-bank
 chooser, crop/adjust/change/remove, skip and random-assignment paths,
@@ -132,23 +165,58 @@ the terminal Workflow V2 report records the immutable commit identity. Active
 Community history remains untouched.
 
 Screen 5 voluntary Location Context is COMPLETE/FROZEN following Engineering
-Director HUMAN_QA PASS under
-`PROFILE-ONBOARDING-LOCATION-SCREEN5-CLOSEOUT001`. `/account/location/`
-accepts only an explicit U.S. State/District of Columbia or non-U.S. country,
-stores canonical country and (for the U.S.) region codes, and has no
-city/ZIP/street/precise or inferred-location path. Skip stores nothing and
-continues to `/jobs/`. The durable scope/ownership contract is
-`docs/profile/location-screen5-contract.md`.
+Director HUMAN_QA PASS. It accepts only an explicit U.S. State/District of
+Columbia or non-U.S. country and stores only canonical country/region codes;
+the durable scope is `docs/profile/location-screen5-contract.md`.
 
-The immediate next product boundary is intent-aware member context / onboarding
-fork. It must establish how known or selected intent serves ordinary
-educator/member, employer/recruiter, and other/general members so an employer
-or recruiter is not asked irrelevant teacher-specific questions. Potential
-educator role, grade, and subject enrichment remains UNDEFINED. Original entry
-intent may need eventual restoration where existing architecture supports it,
-but no mechanism is defined or implemented by this closeout. Do not regenerate
-or recurate the bank, persist retrieval filters as demographics, or alter the
-Profile resolver without new authority.
+`PROFILE-ONBOARDING-MEMBER-CONTEXT-SCREEN6-001` is the current
+HUMAN_QA_PENDING boundary. `/account/context/` collects optional independent,
+self-reported roles and hiring intent after Screen 5. Profile owns the
+normalized indexed relation; Identity owns only the pending lifecycle and
+focused onboarding route. The current contract is
+`docs/profile/member-context-screen6-contract.md`. Do not infer member context,
+collapse multiple roles into a user type, collect grades/subjects, or alter the
+frozen avatar resolver and portrait bank.
+
+`PROFILE-ONBOARDING-JOURNEY-CONVERGENCE001` is superseded by the active journey
+consolidation ticket. Its focused Identity Shared Shell correction remains
+PROVEN: the Shared Shell is the owner of
+onboarding-only chrome: WordPress's user toolbar is suppressed before render,
+the focused rail has no purposeless divider, and its height accounts for the
+shell's vertical padding so a viewport-fitting page does not manufacture a
+scrollbar. Normal Community rail coordinates remain unchanged. Screen 6 now
+uses the prior mortarboard Teacher icon and the distinct Tutor person-and-board
+icon, with its decorative people mark and informational panel removed. The
+canonical Profile fallback is WordPress's ordinary head-and-shoulders
+``mystery`` image rather than an identicon until a member commits a photo or
+portrait. The full journey diagnostic records the six ordered steps and their
+marker/continuation authority; no route, schema, lifecycle, or Screen 3–5
+acceptance has changed. Screen 6 remains part of the current journey
+HUMAN_QA_PENDING gate.
+
+Future direction recorded without implementation: Director intends a separate
+product-design review of explicit interests, later public-profile enrichment,
+recruiter/job-posting branching, and onboarding fatigue/redundancy. No Screen
+7, recruiter route, inferred interest, or new profile schema is authorized.
+
+## Profile V1 member-fact contract — 2026-09-20
+
+`PROFILE-V1-MEMBER-FACT-CONTRACT001` establishes the durable Profile-owned
+canonical-term reference contract without public Profile/Edit Profile UI. The
+existing member-context relation now retains typed canonical Core Terms UUID
+facts for professional identity, teaching grade, teaching subject, and explicit
+interest, with provenance and aggregate Profile-details visibility metadata.
+Legacy Screen 6 role/intent rows are unchanged and its save/skip paths cannot
+delete future canonical facts. The contract is
+`docs/profile/member-fact-contract-v1.md`.
+
+`PROFILE-V1-CORE-TERMS-READINESS001` is awaiting Director review. Core Terms
+now provides the minimum Profile-v1 professional identity vocabulary and
+unambiguous subject aliases; Profile resolves them through the Core Terms public
+identifier API without owning aliases or a second taxonomy. The detailed
+inventory and deliberately deferred ELL/ESL/ELL/multilingual meanings are in
+`docs/core-terms/profile-v1-readiness.md`. No Profile UI or Screen 6 migration
+is authorized by this readiness ticket.
 
 ## Source-control recovery — 2026-09-19
 

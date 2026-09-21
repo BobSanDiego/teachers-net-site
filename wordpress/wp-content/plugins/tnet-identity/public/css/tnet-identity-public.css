@@ -17,7 +17,7 @@
 }
 
 @media (min-width: 901px) {
-  .tnet-identity-join-page { padding-top: 32px; }
+  .tnet-identity-join-page { padding-top: 54px; }
 }
 
 .tnet-identity-kicker {
@@ -56,8 +56,8 @@
   display: grid;
   gap: 7px;
   color: #172b4d;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 750;
 }
 
 .tnet-identity-form input {
@@ -164,6 +164,12 @@
   line-height: 1;
 }
 
+.tnet-identity-form > .tnet-identity-submit,
+.tnet-identity-code-form > .tnet-identity-submit {
+  width: 100%;
+  justify-content: center;
+}
+
 .tnet-identity-login-prompt {
   margin: 16px 0 0;
   color: #526a8e;
@@ -200,10 +206,10 @@
 }
 
 .tnet-identity-card--public-identity {
-  width: min(100%, 720px);
+  width: min(100%, 600px);
   display: grid;
-  grid-template-columns: minmax(132px, 156px) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 42px);
+  grid-template-columns: minmax(120px, 140px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 32px);
   align-items: center;
 }
 
@@ -224,21 +230,36 @@
   object-fit: cover;
 }
 
-.tnet-identity-member-handle { font-size: 18px; font-weight: 750; letter-spacing: -.02em; }
+.tnet-identity-member-handle { max-width: 100%; overflow-wrap: anywhere; font-size: 18px; font-weight: 750; letter-spacing: -.02em; }
 .tnet-identity-member-note { color: #526a8e; font-size: 13px; font-weight: 400; line-height: 1.35; }
 .tnet-identity-public-identity-content { min-width: 0; }
 .tnet-identity-card--public-identity h1 { max-width: none; font-size: clamp(28px, 3vw, 34px); }
-.tnet-identity-public-identity-form { display: grid; gap: 8px; margin-top: 25px; }
+.tnet-identity-public-identity-form { width: min(100%, 340px); display: grid; gap: 7px; margin-top: 20px; }
 .tnet-identity-public-identity-form > label { color: #172b4d; font-size: 15px; font-weight: 700; }
-.tnet-identity-public-identity-form input { width: 100%; min-height: 48px; border: 1px solid #b9c8dc; border-radius: 8px; padding: 10px 12px; background: #fff; color: #172b4d; font: inherit; }
+.tnet-identity-public-identity-form input { width: 100%; min-height: 42px; border: 1px solid #b9c8dc; border-radius: 8px; padding: 7px 10px; background: #fff; color: #172b4d; font-size: 15px; line-height: 1.35; }
 .tnet-identity-public-identity-form input[aria-invalid="true"] { border-color: #bd2a2a; box-shadow: 0 0 0 1px rgba(189, 42, 42, .1); }
 .tnet-identity-public-identity-form input:focus-visible { outline: 3px solid rgba(18, 59, 198, .28); outline-offset: 2px; }
 .tnet-identity-display-name-status { min-height: 19px; margin: -1px 0 0; color: #526a8e; font-size: 13px; font-weight: 600; line-height: 1.35; }
 .tnet-identity-display-name-status.is-error { color: #a51b1b; }
 .tnet-identity-display-name-status.is-valid { color: #17633a; }
+.tnet-identity-username-status { min-height: 18px; margin: -1px 0 0; color: #a51b1b; font-size: 13px; line-height: 1.35; }
+.tnet-identity-username-status:not(.is-error) { color: transparent; }
 .tnet-identity-public-identity-form small { color: #526a8e; font-size: 13px; line-height: 1.4; }
 .tnet-identity-public-identity-submit { width: 100%; justify-content: center; margin-top: 12px; }
 .tnet-identity-public-identity-submit:disabled { cursor: not-allowed; opacity: .5; }
+
+/* One compact, resumable step owns public identity and optional location. */
+.tnet-identity-combined-location { display: grid; gap: 6px; margin-top: 13px; border-top: 1px solid #dce5f0; padding-top: 13px; }
+.tnet-identity-combined-location-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.tnet-identity-combined-location h2 { margin: 0; color: #172b4d; font-size: 17px; line-height: 1.25; }
+.tnet-identity-combined-location-heading p { margin: 0; color: #526a8e; font-size: 13px; }
+.tnet-identity-combined-location-selector > label { color: #172b4d; font-size: 13px; font-weight: 700; }
+.tnet-identity-combined-location > select,
+.tnet-identity-combined-location-selector select { width: 100%; min-height: 42px; border: 1px solid #b9c8dc; border-radius: 8px; padding: 7px 34px 7px 10px; background: #fff; color: #172b4d; font-size: 15px; line-height: 1.35; font-weight: 400; }
+.tnet-identity-combined-location-selector { display: grid; gap: 7px; }
+.tnet-identity-combined-location-selector[hidden] { display: none; }
+.tnet-identity-combined-location select:focus-visible { outline: 3px solid rgba(18, 59, 198, .28); outline-offset: 2px; }
+.tnet-identity-public-identity-form .tnet-identity-location-skip { justify-self: center; margin: 0; }
 
 .tnet-identity-card--location { width: min(100%, 620px); }
 .tnet-identity-location-visual { display: grid; width: 150px; height: 78px; place-items: center; margin: 0 auto 5px; color: #b9d8fa; }
@@ -264,15 +285,50 @@
 .tnet-identity-location-submit:disabled { cursor: not-allowed; opacity: .5; }
 .tnet-identity-location-skip { display: block; margin: 16px auto 0; font-size: 14px; }
 
+.tnet-identity-card--member-context { width: min(100%, 920px); padding: 26px 34px 24px; text-align: center; }
+.tnet-identity-card--member-context h1 { max-width: none; font-size: clamp(30px, 3.1vw, 40px); }
+.tnet-identity-card--member-context .tnet-identity-intro { max-width: 54ch; margin: 8px auto 0; font-size: 17px; line-height: 1.38; }
+.tnet-identity-member-context-form { margin-top: 14px; }
+.tnet-identity-member-context-choices { display: grid; grid-auto-flow: column; grid-template-rows: repeat(4, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; border: 0; padding: 0; text-align: left; }
+.tnet-identity-member-context-choice { display: grid; grid-template-columns: 21px 46px minmax(0, 1fr); gap: 11px; align-items: center; min-height: 76px; border: 1px solid #d0dceb; border-radius: 8px; padding: 11px 14px; background: #fff; color: #172b4d; cursor: pointer; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; }
+.tnet-identity-member-context-choice:has(input:checked) { border-color: #79aee6; background: #f4f9ff; box-shadow: 0 0 0 1px rgba(94, 146, 209, .11); }
+.tnet-identity-member-context-choice input { width: 18px; height: 18px; margin: 0; accent-color: var(--tnet-shell-action, #0045dd); }
+.tnet-identity-member-context-choice-icon { display: grid; width: 40px; height: 40px; place-items: center; color: #5796e3; }
+.tnet-identity-member-context-choice-icon svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.4; }
+.tnet-identity-member-context-choice-icon--other svg { fill: currentColor; stroke: none; }
+.tnet-identity-member-context-choice strong { display: block; color: #122875; font-size: 16px; font-weight: 750; line-height: 1.2; }
+.tnet-identity-member-context-choice small { display: block; margin-top: 2px; color: #526a8e; font-size: 13px; font-weight: 400; line-height: 1.3; }
+.tnet-identity-member-context-choice:focus-within { outline: 3px solid rgba(18, 59, 198, .28); outline-offset: 2px; }
+.tnet-identity-member-context-submit { display: inline-flex; align-items: center; justify-content: center; min-width: min(100%, 460px); margin-top: 12px; }
+.tnet-identity-member-context-skip { display: block; width: max-content; margin: 10px auto 0; border: 0; padding: 0; background: transparent; color: var(--tnet-shell-action, #0045dd); font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+.tnet-identity-member-context-skip:focus-visible { outline: 3px solid rgba(18, 59, 198, .28); outline-offset: 2px; }
+
+/* The focused shell retains its rail through this range; give each context
+   choice the available card width instead of compressing its readable copy. */
+@media (min-width: 641px) and (max-width: 900px) {
+  .tnet-identity-member-context-choices { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+}
+
 @media (max-width: 640px) {
   .tnet-identity-card--public-identity { grid-template-columns: 1fr; gap: 23px; }
+  .tnet-identity-public-identity-form { width: 100%; }
   .tnet-identity-member-cluster { grid-template-columns: 72px minmax(0, 1fr); justify-items: start; column-gap: 13px; text-align: left; }
   .tnet-identity-member-cluster img { grid-row: span 2; width: 72px; height: 72px; }
   .tnet-identity-member-handle { align-self: end; }
   .tnet-identity-member-note { align-self: start; }
+  .tnet-identity-combined-location { margin-top: 14px; padding-top: 14px; }
   .tnet-identity-card--location { padding: 24px 18px; }
   .tnet-identity-location-visual { width: 122px; height: 63px; }
   .tnet-identity-card--location h1 { font-size: clamp(27px, 8.5vw, 33px); }
+  .tnet-identity-card--member-context { padding: 20px 18px; }
+  .tnet-identity-card--member-context h1 { font-size: clamp(28px, 8vw, 34px); }
+  .tnet-identity-card--member-context .tnet-identity-intro { font-size: 15px; }
+  .tnet-identity-member-context-choices { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 9px; }
+  .tnet-identity-member-context-choice { grid-template-columns: 20px 40px minmax(0, 1fr); gap: 10px; min-height: 72px; padding: 10px 12px; }
+  .tnet-identity-member-context-choice-icon, .tnet-identity-member-context-choice-icon svg { width: 36px; height: 36px; }
+  .tnet-identity-member-context-choice strong { font-size: 15px; }
+  .tnet-identity-member-context-choice small { font-size: 12px; }
+  .tnet-identity-member-context-submit { width: 100%; min-width: 0; }
 }
 
 .tnet-identity-code-form {
@@ -537,7 +593,83 @@
 .tnet-identity-crop-actions button { min-height: 42px; border: 1px solid #b9c8dc; border-radius: 7px; padding: 0 16px; background: #fff; color: #172b4d; font: inherit; font-weight: 700; cursor: pointer; }
 .tnet-identity-crop-actions .tnet-identity-submit { width: auto; margin: 0; border-color: var(--tnet-shell-action, #0045dd); background: var(--tnet-shell-action, #0045dd); color: #fff; }
 
+/* Post-onboarding launch router: destination availability is configuration-owned. */
+body.tnet-jobs-route-identity-launch, body.tnet-jobs-route-identity-launch .tnet-jobs-shell-lab { min-height: 100dvh; }
+body.tnet-jobs-route-identity-launch .tnet-jobs-shell-lab { display: flex; flex-direction: column; }
+body.tnet-jobs-route-identity-launch .tnet-jobs-shell-lab-workspace { display: flex; flex: 1 0 auto; }
+body.tnet-jobs-route-identity-launch .c3-community-layout { flex: 1 0 auto; }
+body.tnet-jobs-route-identity-launch .c3-community-main { flex: 1 1 auto; }
+.tnet-identity-launch { width: min(100%, 656px); margin: 0 auto; padding: clamp(26px, 4vw, 42px) 0 30px; text-align: center; }
+.tnet-identity-launch-success { display: grid; width: 36px; height: 36px; place-items: center; margin: 0 auto 10px; border-radius: 50%; background: #e9f2ff; color: var(--tnet-shell-action, #0045dd); font-size: 22px; font-weight: 800; line-height: 1; }
+.tnet-identity-launch h1 { max-width: none; margin: 0; color: #122875; font-size: clamp(29px, 3.15vw, 38px); font-weight: 800; letter-spacing: -.035em; line-height: 1.08; }
+.tnet-identity-launch-intro { max-width: 48ch; margin: 8px auto 0; color: #526a8e; font-size: 16px; line-height: 1.42; }
+.tnet-identity-launch .tnet-identity-errors { width: min(100%, 520px); margin: 20px auto 0; text-align: left; }
+.tnet-identity-launch-feature-form { margin: 26px 0 0; }
+.tnet-identity-launch-feature { display: grid; width: 100%; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 20px 22px; border: 1px solid #bed3f0; border-radius: 14px; background: #f3f8ff; color: #172b4d; font: inherit; text-align: left; box-shadow: 0 4px 12px rgba(15, 61, 130, .055); }
+button.tnet-identity-launch-feature { cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+button.tnet-identity-launch-feature:hover { border-color: #8fb4e4; box-shadow: 0 9px 20px rgba(15, 61, 130, .13); transform: translateY(-1px); }
+.tnet-identity-launch-feature-icon { width: 56px; height: 56px; margin: 0; }
+.tnet-identity-launch-feature-copy { display: grid; min-width: 0; gap: 5px; }
+.tnet-identity-launch-kicker { color: #486a9a; font-size: 11px; font-weight: 800; letter-spacing: .095em; line-height: 1.2; text-transform: uppercase; }
+.tnet-identity-launch-feature-copy strong { color: #122875; font-size: 20px; font-weight: 800; line-height: 1.2; }
+.tnet-identity-launch-feature-copy > span:last-child { color: #526a8e; font-size: 14px; line-height: 1.42; }
+.tnet-identity-launch-feature-action { display: inline-flex; align-items: center; gap: 8px; padding: 11px 14px; border-radius: 8px; background: var(--tnet-shell-action, #0045dd); color: #fff; font-size: 14px; font-weight: 750; line-height: 1.2; white-space: nowrap; }
+.tnet-identity-launch-feature-action span { font-size: 20px; line-height: .8; }
+.tnet-identity-launch-exploration { margin-top: 28px; text-align: left; }
+.tnet-identity-launch-exploration h2 { margin: 0; color: #334d70; font-size: 15px; font-weight: 750; line-height: 1.3; }
+.tnet-identity-launch-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 12px; text-align: left; }
+.tnet-identity-launch-card-form { min-width: 0; margin: 0; }
+.tnet-identity-launch-destination { box-sizing: border-box; display: grid; width: 100%; min-height: 118px; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 13px; align-items: center; padding: 17px; border: 1px solid #d7e2f0; border-radius: 12px; background: #fff; color: #172b4d; font: inherit; text-align: left; box-shadow: 0 2px 8px rgba(15, 37, 61, .045); }
+button.tnet-identity-launch-destination { cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+button.tnet-identity-launch-destination:hover { border-color: #aebfda; box-shadow: 0 7px 18px rgba(24, 63, 124, .11); transform: translateY(-1px); }
+.tnet-identity-launch-feature:focus-visible,
+.tnet-identity-launch-destination:focus-visible,
+.tnet-identity-launch-home button:focus-visible { outline: 3px solid rgba(18, 59, 198, .28); outline-offset: 3px; }
+.tnet-identity-launch-icon { display: grid; width: 46px; height: 46px; place-items: center; margin: 0; border-radius: 50%; background: #eef4fe; color: #123a95; }
+.tnet-identity-launch-icon svg { width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.2; }
+.tnet-identity-launch-icon--community { color: #9b433d; background: #fff0ee; }
+.tnet-identity-launch-icon--lessons { color: #7044a0; background: #f4effd; }
+.tnet-identity-launch-destination-copy { display: grid; gap: 5px; min-width: 0; }
+.tnet-identity-launch-destination-copy strong { color: #122875; font-size: 16px; font-weight: 800; line-height: 1.22; }
+.tnet-identity-launch-destination-copy > span { color: #526a8e; font-size: 13px; line-height: 1.38; }
+.tnet-identity-launch-destination-arrow { color: #31588c; font-size: 25px; font-weight: 500; line-height: 1; }
+.tnet-identity-launch-home { margin: 21px 0 0; }
+.tnet-identity-launch-home button { border: 0; padding: 8px 10px; background: transparent; color: var(--tnet-shell-action, #0045dd); font: inherit; font-size: 15px; font-weight: 750; cursor: pointer; }
+.tnet-identity-launch-home button span { margin-left: 7px; font-size: 18px; }
+body.tnet-jobs-route-identity-launch .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail__family--direct h2 a { display: flex; align-items: center; gap: 10px; color: var(--c3-shell-text, #18304f); font: inherit; text-decoration: none; }
+
+@media (min-width: 901px) {
+  .tnet-identity-launch { padding-top: 36px; }
+  /* The launch route has no right-rail content. Release that empty slot and
+     center the unchanged composition in the usable region after the rail. */
+  body.tnet-jobs-route-identity-launch .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-layout { grid-template-columns: var(--c3-shell-left, 190px) minmax(0, 1fr); }
+  body.tnet-jobs-route-identity-launch .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-right { display: none; }
+  body.tnet-jobs-route-identity-launch .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-main { padding-left: 0; }
+  /* This route is intentionally short. The normal Community rail/right slots
+     reserve a viewport-height rectangle, which otherwise extends a short
+     launch page past its footer. Keep their normal content and sticky behavior
+     without letting an empty slot determine this route's document height. */
+  body.tnet-jobs-route-identity-launch .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail,
+  body.tnet-jobs-route-identity-launch .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-right { height: auto; min-height: 0; }
+  body.tnet-jobs-route-identity-launch .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail { align-self: stretch; }
+}
+
+@media (min-width: 1280px) {
+  /* The approved desktop composition is centered on the canonical 1280px
+     shell canvas. The main column begins 230px into that canvas and the
+     existing page wrapper contributes 27px; 55px of route-local leading
+     space places the 656px composition at x=312..968. */
+  body.tnet-jobs-route-identity-launch .tnet-identity-launch { width: 656px; margin-left: 55px; margin-right: 0; }
+}
+
 @media (max-width: 480px) {
+  .tnet-identity-launch { padding: 24px 0 28px; }
+  .tnet-identity-launch-feature { grid-template-columns: 48px minmax(0, 1fr); gap: 13px; padding: 17px; }
+  .tnet-identity-launch-feature-icon { width: 48px; height: 48px; }
+  .tnet-identity-launch-feature-copy strong { font-size: 18px; }
+  .tnet-identity-launch-feature-action { grid-column: 1 / -1; justify-content: center; }
+  .tnet-identity-launch-options { grid-template-columns: 1fr; gap: 12px; }
+  .tnet-identity-launch-destination { min-height: 0; }
   .tnet-identity-upload-surface,
   .tnet-identity-avatar-chooser { padding: 15px; }
   .tnet-identity-avatar-presentation-options { gap: 6px; }

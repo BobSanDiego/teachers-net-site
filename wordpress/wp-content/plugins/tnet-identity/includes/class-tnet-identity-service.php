@@ -8,6 +8,9 @@ final class TNet_Identity_Service {
   const AVATAR_PENDING_META = '_tnet_identity_avatar_pending';
   const PUBLIC_IDENTITY_PENDING_META = '_tnet_identity_public_identity_pending';
   const LOCATION_PENDING_META = '_tnet_identity_location_pending';
+  const MEMBER_CONTEXT_PENDING_META = '_tnet_identity_member_context_pending';
+  const LAUNCH_ROUTER_PENDING_META = '_tnet_identity_launch_router_pending';
+  const LAUNCH_ROUTER_STATE_META = '_tnet_identity_launch_router_state';
   const PROFILE_COUNTRY_CODE_META = '_tnet_profile_country_code';
   const PROFILE_REGION_CODE_META = '_tnet_profile_region_code';
 
@@ -30,6 +33,8 @@ final class TNet_Identity_Service {
     update_user_meta((int) $user_id, self::AVATAR_PENDING_META, '1');
     update_user_meta((int) $user_id, self::PUBLIC_IDENTITY_PENDING_META, '1');
     update_user_meta((int) $user_id, self::LOCATION_PENDING_META, '1');
+    update_user_meta((int) $user_id, self::MEMBER_CONTEXT_PENDING_META, '1');
+    update_user_meta((int) $user_id, self::LAUNCH_ROUTER_PENDING_META, '1');
     $verification = self::issue_verification($user_id, 'account', true);
     if (is_wp_error($verification)) return $verification;
     return ['user_id' => (int) $user_id, 'verification_token' => $verification['token'], 'mail_sent' => $verification['mail_sent']];
@@ -57,6 +62,60 @@ final class TNet_Identity_Service {
 
   public static function complete_location($user_id) {
     delete_user_meta(absint($user_id), self::LOCATION_PENDING_META);
+  }
+
+  public static function needs_member_context($user_id) {
+    return absint($user_id) > 0 && get_user_meta(absint($user_id), self::MEMBER_CONTEXT_PENDING_META, true) === '1';
+  }
+
+  public static function complete_member_context($user_id) {
+    delete_user_meta(absint($user_id), self::MEMBER_CONTEXT_PENDING_META);
+  }
+
+  /**
+   * The launch router is deliberately scoped to accounts created after it was
+   * introduced. Existing members remain on their established destination.
+   */
+  public static function launch_router_state($user_id) {
+    $user_id = absint($user_id);
+    if (!$user_id || get_user_meta($user_id, self::LAUNCH_ROUTER_PENDING_META, true) !== '1') return 'not_applicable';
+    if (self::needs_avatar($user_id) || self::needs_public_identity($user_id) || self::needs_location($user_id) || self::needs_member_context($user_id)) return 'pending';
+    $state = get_user_meta($user_id, self::LAUNCH_ROUTER_STATE_META, true);
+    return in_array($state, ['offered', 'completed'], true) ? $state : 'eligible';
+  }
+
+  public static function needs_launch_router($user_id) {
+    return in_array(self::launch_router_state($user_id), ['eligible', 'offered'], true);
+  }
+
+  public static function mark_launch_router_offered($user_id) {
+    $user_id = absint($user_id);
+    if (self::launch_router_state($user_id) === 'eligible') update_user_meta($user_id, self::LAUNCH_ROUTER_STATE_META, 'offered');
+  }
+
+  public static function complete_launch_router($user_id, $destination) {
+    $user_id = absint($user_id);
+    if (!self::needs_launch_router($user_id)) return false;
+    update_user_meta($user_id, self::LAUNCH_ROUTER_STATE_META, 'completed');
+    update_user_meta($user_id, self::LAUNCH_ROUTER_STATE_META . '_destination', sanitize_key($destination));
+    return true;
+  }
+
+  public static function member_context($user_id) {
+    return class_exists('TNet_Profile_Member_Context')
+      ? TNet_Profile_Member_Context::for_user(absint($user_id))
+      : ['roles' => [], 'intents' => [], 'entries' => []];
+  }
+
+  public static function save_member_context($user_id, array $roles, array $intents) {
+    if (!class_exists('TNet_Profile_Member_Context')) {
+      return new WP_Error('tnet_identity_member_context_unavailable', __('Member context is temporarily unavailable. Please try again.', 'tnet-identity'));
+    }
+    return TNet_Profile_Member_Context::replace_self_reported(absint($user_id), $roles, $intents);
+  }
+
+  public static function clear_member_context($user_id) {
+    if (class_exists('TNet_Profile_Member_Context')) TNet_Profile_Member_Context::clear_self_reported(absint($user_id));
   }
 
   public static function location($user_id) {

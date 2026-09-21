@@ -2,16 +2,16 @@
 /**
  * Plugin Name: Teachers.Net Identity
  * Description: Universal Teachers.Net account, verification, and continuation foundation.
- * Version: 0.3.0
+ * Version: 0.6.0
  * Author: Teachers.Net
  * Text Domain: tnet-identity
  */
 
 defined('ABSPATH') || exit;
 
-define('TNET_IDENTITY_VERSION', '0.4.0');
+define('TNET_IDENTITY_VERSION', '0.6.0');
 define('TNET_IDENTITY_DB_VERSION', '0.2.0');
-define('TNET_IDENTITY_ROUTE_VERSION', '0.4.0');
+define('TNET_IDENTITY_ROUTE_VERSION', '0.6.0');
 define('TNET_IDENTITY_PLUGIN_FILE', __FILE__);
 define('TNET_IDENTITY_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('TNET_IDENTITY_PLUGIN_URL', plugin_dir_url(__FILE__));
@@ -89,6 +89,8 @@ final class TNet_Identity {
     add_rewrite_rule('^account/avatar/?$', 'index.php?' . self::QUERY_VAR . '=avatar', 'top');
     add_rewrite_rule('^account/identity/?$', 'index.php?' . self::QUERY_VAR . '=identity', 'top');
     add_rewrite_rule('^account/location/?$', 'index.php?' . self::QUERY_VAR . '=location', 'top');
+    add_rewrite_rule('^account/context/?$', 'index.php?' . self::QUERY_VAR . '=context', 'top');
+    add_rewrite_rule('^account/launch/?$', 'index.php?' . self::QUERY_VAR . '=launch', 'top');
     add_rewrite_rule('^account/continue/?$', 'index.php?' . self::QUERY_VAR . '=continue', 'top');
   }
 
@@ -157,6 +159,10 @@ final class TNet_Identity {
       TNet_Identity_Public::render_public_identity();
     } elseif ($route === 'location') {
       TNet_Identity_Public::render_location();
+    } elseif ($route === 'context') {
+      TNet_Identity_Public::render_member_context();
+    } elseif ($route === 'launch') {
+      TNet_Identity_Public::render_launch_router();
     } elseif ($route === 'continue') {
       TNet_Identity_Public::render_continue();
     }

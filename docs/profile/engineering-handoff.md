@@ -2,24 +2,71 @@
 
 ## 1. Current Phase
 
+`PROFILE-LAUNCH-ROUTER-VISUAL-CONVERGENCE004` is COMPLETE/FROZEN after
+Engineering Director HUMAN_QA PASS.
+`/account/launch/` remains a normal authenticated Shared Shell surface with a
+durable one-time state and its existing destination registry. Its accepted
+review state is featured Profile completion, equal Community/Lessons choices,
+quiet Home escape, no Jobs/Search/right rail, and a naturally visible footer
+on short desktop viewports. Explicit persisted U.S. state values now resolve
+through an opt-in direct Shared Shell family link to validated canonical
+production state routes; the personalized row is not marked active merely from
+member location. The launch surface suppresses standalone Help, releases the
+empty right slot, and centers the composition in the usable region after the
+left rail. Unvalidated international and unsupported location cases retain
+generic States. Profile and Lessons remain release dependencies without
+invented member-facing routes. The accepted 656px desktop composition is
+centered on the canonical 1280px shell canvas. Cycle `260921162000` applies a
+Shared Shell desktop-only correction so top-level family headings use the same
+40px row and 2px inter-row cadence as primary navigation, while nested active
+children retain their subordinate treatment. Fresh launch and Community DOM
+evidence at desktop and launch containment at 390px are accepted carryforward.
+Profile and Lessons remain deployment dependencies; Jobs remains modeled but
+disabled/hidden. The next substantive Profile objective is
+`PROFILE V1 PUBLIC DISPLAY / EDIT`. The contract is
+`docs/profile/onboarding-journey-contract.md`.
+
 Active Development — Screens 3 Photo/Avatar, 4 Public Identity, and 5
-voluntary Location Context are COMPLETE/FROZEN after Engineering Director
-HUMAN_QA PASS. The Profile resolver remains the canonical representation owner;
-the 268-entry frozen portrait bank is read-only chooser content, not
-member-demographic data.
+voluntary Location Context retain their accepted source and persistence seams.
+`PROFILE-ONBOARDING-JOURNEY-VISUAL-FINAL001` is HUMAN_QA_PENDING: it retains
+the combined `/account/identity/` owner and Screen 6 final checkpoint while
+making the final visual corrections only. Create Account is disabled until the
+existing browser-visible email/username/password rules pass; signup authority
+remains server-side. Screens 1 and 2 use full-column CTAs, while the combined
+identity/location form uses a compact desktop control column and fluid compact
+layout. Native 1425px and 390px evidence is ready for Director review.
+The Profile resolver remains the canonical representation owner; the 268-entry
+frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-ONBOARDING-LOCATION-SCREEN5-CLOSEOUT001` terminalized the bounded
-optional location step. `/account/location/` accepts an explicit U.S.
-State/District of Columbia or non-U.S. country, persists only canonical country
-and region codes through `TNet_Identity_Service`, clears inactive unsaved
-values on a mode change, and lets Skip continue without fabricating a default.
-Screen 4 routes to this step while it is pending; valid Continue and Skip go to
-`/jobs/`. There is no city, ZIP, street, precise, or inferred location
-collection. Native DDEV evidence covers U.S., international, switch/reset,
-Skip, route chaining, intermediate, and 390px containment. Screen 5 is
-COMPLETE/FROZEN. See `docs/profile/location-screen5-contract.md`.
+`PROFILE-ONBOARDING-MEMBER-CONTEXT-SCREEN6-001` adds `/account/context/` after
+the combined public-identity/location checkpoint. It records optional independent self-reported roles
+and hiring intent through Profile's normalized indexed relation; a member may
+be a teacher, administrator, and hiring simultaneously. Identity owns only the
+onboarding marker/route. Continue synchronizes explicit selections, Skip stores
+no classifications, and neither path alters canonical Screen 5 location.
+Native DDEV evidence covers desktop, 390px, multi-select persistence,
+deselection, Skip, route completion, and indexed reverse lookup. See
+`docs/profile/member-context-screen6-contract.md`.
+
+The separate `PROFILE-V1-CORE-TERMS-READINESS001` cycle is Director-review
+pending. It supplies canonical term/alias readiness for future Profile facts
+only; it does not alter Screen 6, onboarding, or the Profile fact owner. See
+`docs/core-terms/profile-v1-readiness.md`.
+
+`PROFILE-ONBOARDING-JOURNEY-CONVERGENCE001` is superseded by the active
+consolidation ticket. Focused Identity Shared Shell owns the completed chrome correction: it
+suppresses WordPress's logged-in toolbar before render, omits the otherwise
+purposeless focused-rail divider, and reduces focused rail height by the
+layout's 70px vertical padding so a viewport-fitting screen no longer gains a
+phantom scrollbar. Normal Community preserves its y=14 rail / y=80 first-link
+geometry. The Screen 6 visual cleanup restores the Teacher mortarboard,
+retains the distinct Tutor person-and-board icon, and removes the decorative
+people mark and informational panel. The resolver's uncommitted-user fallback
+is now WordPress's ordinary ``mystery`` head-and-shoulders image; committed
+Profile photos and portraits are unchanged. No Screen 6 role/intent,
+persistence, lifecycle, routing, or Skip behavior changed.
 
 ## 3. Last Completed Milestones
 
@@ -55,18 +102,33 @@ that recommendation is not production authorization.
 
 ## 4. Next boundary
 
-The next product boundary is intent-aware member context / onboarding fork.
-Director product design must determine how ordinary educator/member,
-employer/recruiter, and other/general intent is distinguished and used, so
-employer/recruiter users are not asked irrelevant teacher-specific questions.
-Potential role, grade, and subject enrichment remains UNDEFINED. Original entry
-intent may require eventual restoration where existing architecture supports
-it, but no mechanism is authorized here.
+The consolidated ordinary-member journey is the current HUMAN_QA gate. Later use of its facts
+for an intent-aware educator/employer/general onboarding fork remains a
+separate product decision; do not define or implement it without a new ticket.
+Preserve the frozen bank and do not alter the Profile resolver without new
+authority.
+
+Director has additionally identified future design-review inputs only: explicit
+member interests, optional later public-profile enrichment, a possible
+recruiter/job-posting branch, and a full-journey fatigue/redundancy review.
+Those inputs do not authorize another numbered screen, schema, or route.
+
+## Profile V1 member facts — 2026-09-20
+
+`PROFILE-V1-MEMBER-FACT-CONTRACT001` is complete at the data-contract layer.
+Profile retains the canonical fact write/query seam and Core Terms resolves
+live term UUIDs. It supports independent professional identity, teaching grade,
+teaching subject, and explicit interest facts without a second taxonomy or a
+write to `wp_cfm_user_terms`. Legacy Screen 6 role/intent values and `hiring`
+remain compatible and are not destructively migrated. Profile-v1 UI, verified
+credentials, Core Terms alias intake, Community membership events, activation
+prompting, and public rendering remain separate future authority. See
+`docs/profile/member-fact-contract-v1.md`.
 
 ## 4. Next Five Planned Tickets
 
-1. Authorize and define the intent-aware member-context/onboarding-fork
-   objective before implementation.
+1. Obtain Director HUMAN_QA for Screen 6 Member Context before any later
+   intent-aware onboarding fork work.
 2. Preserve the frozen 268-entry bank and 42-row removal archive; do not
    acquire artwork, restore removed portraits, or change the resolver without
    a new Director decision.
@@ -74,8 +136,7 @@ it, but no mechanism is authorized here.
 ## 5. Current Blockers
 
 - Screens 3, 4, and 5 are COMPLETE/FROZEN.
-- No current Profile product blocker is known; the next boundary requires
-  Director product authority.
+- Screen 6 Member Context is HUMAN_QA_PENDING; no product blocker is known.
 
 ## 6. Recently Adopted Governance Documents
 
@@ -143,8 +204,8 @@ temporary uploaded file were removed after verification.
 
 The browser connector was unavailable in those cycles, so native evidence used
 the already-approved direct Chrome DevTools binding. No bank artwork, Director
-classification, or production state changed during that historical closeout.
-Source-control recovery establishes this repository as the canonical Identity
-owner; see `docs/profile/tnet-identity-source-ownership.md`. The later Screen
-4 and Screen 5 objectives are now COMPLETE/FROZEN; do not treat this historical
-checkpoint as current authority.
+classification, or production state changed during closeout. Source-control
+recovery now establishes this repository as the canonical Identity owner; see
+`docs/profile/tnet-identity-source-ownership.md`. Screen 4 is now separately
+authorized and HUMAN_QA_PENDING; do not begin Screen 5, member-avatar
+activation, or further bank work without new authority.

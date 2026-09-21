@@ -76,8 +76,8 @@
                 </div>
                 <?php endif; ?>
               </nav>
-              <div class="tnet-jobs-shell-lab-account-area<?php echo $guest_state ? ' tnet-jobs-shell-lab-anonymous-account-area' : ''; ?>">
-                <?php if ($guest_state) : ?>
+              <?php if (!$guest_state || !$suppress_anonymous_actions) : ?><div class="tnet-jobs-shell-lab-account-area<?php echo $guest_state ? ' tnet-jobs-shell-lab-anonymous-account-area' : ''; ?>">
+                <?php if ($guest_state && !$suppress_anonymous_actions) : ?>
                   <a class="tnet-jobs-shell-lab-anonymous-login" href="<?php echo esc_url($login_url); ?>"><?php echo esc_html__('Log In', 'tnet-shared-shell'); ?></a>
                   <a class="tnet-jobs-shell-lab-anonymous-signup" href="<?php echo esc_url($signup_url); ?>"><?php echo esc_html__('Sign Up', 'tnet-shared-shell'); ?></a>
                 <?php elseif ($effective_logged_in) : ?>
@@ -112,7 +112,7 @@
                     </div>
                   </div>
                 </div><?php endif; ?>
-              </div>
+              </div><?php endif; ?>
               <div class="tnet-jobs-shell-lab-mobile-menu">
                 <button type="button" class="tnet-jobs-shell-lab-disclosure-toggle" aria-expanded="false" aria-controls="tnet-jobs-shell-compact-navigation" aria-haspopup="true"><span class="screen-reader-text"><?php echo esc_html__('Open navigation', 'tnet-shared-shell'); ?></span><svg class="tnet-jobs-shell-lab-mobile-menu-icon" viewBox="0 0 38 38" aria-hidden="true" focusable="false"><path d="M4 9h30M4 19h30M4 29h30" /></svg></button>
                 <div id="tnet-jobs-shell-compact-navigation" class="tnet-jobs-shell-lab-popover tnet-jobs-shell-lab-compact-navigation">
@@ -125,7 +125,7 @@
                   </section>
                   <?php else : ?>
                   <section class="tnet-jobs-shell-lab-compact-panel is-active" data-compact-panel="root" data-compact-flow="<?php echo $shell_has_employer_access ? 'employer' : 'jobseeker'; ?>">
-                    <?php if ($guest_state) : ?><div class="tnet-jobs-shell-lab-compact-auth"><a href="<?php echo esc_url($login_url); ?>"><?php echo esc_html__('Log In', 'tnet-shared-shell'); ?></a><a href="<?php echo esc_url($signup_url); ?>"><?php echo esc_html__('Sign Up', 'tnet-shared-shell'); ?></a></div><?php endif; ?>
+                    <?php if ($guest_state && !$suppress_anonymous_actions) : ?><div class="tnet-jobs-shell-lab-compact-auth"><a href="<?php echo esc_url($login_url); ?>"><?php echo esc_html__('Log In', 'tnet-shared-shell'); ?></a><a href="<?php echo esc_url($signup_url); ?>"><?php echo esc_html__('Sign Up', 'tnet-shared-shell'); ?></a></div><?php endif; ?>
                     <a class="tnet-jobs-shell-lab-compact-home" href="<?php echo esc_url($shell_home_url); ?>"><span class="tnet-jobs-shell-lab-product-icon" aria-hidden="true"><?php self::render_parity_product_icon('platform-home'); ?></span><span><?php echo esc_html__('Home', 'tnet-shared-shell'); ?></span></a>
                     <div class="tnet-jobs-shell-lab-compact-resource" data-compact-resource="employer">
                       <button type="button" data-compact-accordion-toggle="employer" aria-expanded="<?php echo $shell_has_employer_access ? 'true' : 'false'; ?>" aria-controls="tnet-jobs-shell-compact-employer" class="<?php echo $shell_has_employer_access ? '' : 'is-muted'; ?>"><span class="tnet-jobs-shell-lab-compact-caret" aria-hidden="true"></span><span><?php echo esc_html__('For Employers', 'tnet-shared-shell'); ?></span></button>

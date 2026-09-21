@@ -22,6 +22,47 @@
     });
   });
 
+  /* A browser-side affordance only: the existing POST validation remains authoritative. */
+  document.querySelectorAll('[data-tnet-signup-form]').forEach(function (form) {
+    var email = form.querySelector('[data-tnet-signup-email]');
+    var username = form.querySelector('[data-tnet-signup-username]');
+    var password = form.querySelector('[data-tnet-signup-password]');
+    var submit = form.querySelector('[data-tnet-signup-submit]');
+    if (!email || !username || !password || !submit) return;
+
+    var status = form.querySelector('[data-tnet-signup-username-status]');
+    var serverError = username.getAttribute('data-tnet-signup-username-server-error') || '';
+    var min = parseInt(username.getAttribute('data-tnet-signup-username-min') || '3', 10);
+    var max = parseInt(username.getAttribute('data-tnet-signup-username-max') || '30', 10);
+    var pattern = new RegExp('^[A-Za-z0-9._-]{' + min + ',' + max + '}$');
+    var usernameTouched = !!serverError;
+    var usernameMessage = username.getAttribute('data-tnet-signup-username-message') || 'Use 3–30 characters: letters, numbers, periods, underscores, or hyphens.';
+    var sync = function () {
+      var emailValid = email.value.trim() !== '' && email.validity.valid;
+      var usernameValue = username.value.trim();
+      var usernameValid = pattern.test(usernameValue);
+      var passwordValid = password.value.length >= 8;
+      var message = '';
+      if (serverError && usernameTouched && usernameValue === username.getAttribute('data-tnet-signup-username-server-value')) message = serverError;
+      else if (usernameTouched && usernameValue !== '' && !pattern.test(usernameValue)) message = usernameMessage;
+      else if (usernameTouched && usernameValue === '') message = 'Enter a username.';
+      if (status) {
+        status.textContent = message;
+        status.classList.toggle('is-error', !!message);
+        username.setAttribute('aria-invalid', message ? 'true' : 'false');
+      }
+      submit.disabled = !(emailValid && usernameValid && passwordValid);
+    };
+    username.setAttribute('data-tnet-signup-username-server-value', username.value.trim());
+    username.addEventListener('input', function () { usernameTouched = true; sync(); });
+    username.addEventListener('blur', function () { usernameTouched = true; sync(); });
+    [email, password].forEach(function (input) {
+      input.addEventListener('input', sync);
+      input.addEventListener('change', sync);
+    });
+    sync();
+  });
+
   document.querySelectorAll('[data-tnet-display-name-form]').forEach(function (form) {
     var input = form.querySelector('[data-tnet-display-name-input]');
     var status = form.querySelector('[data-tnet-display-name-status]');
@@ -49,13 +90,11 @@
   });
 
   document.querySelectorAll('[data-tnet-location-form]').forEach(function (form) {
-    var modes = Array.prototype.slice.call(form.querySelectorAll('[data-tnet-location-mode]'));
+    var modeSelect = form.querySelector('[data-tnet-location-mode-select]');
     var panels = Array.prototype.slice.call(form.querySelectorAll('[data-tnet-location-panel]'));
     var state = form.querySelector('[data-tnet-location-state]');
     var country = form.querySelector('[data-tnet-location-country]');
-    var submit = form.querySelector('[data-tnet-location-submit]');
-    var returnToState = form.querySelector('[data-tnet-location-return]');
-    if (!modes.length || !state || !country || !submit) return;
+    if (!modeSelect || !state || !country) return;
 
     if (window.Intl && window.Intl.DisplayNames) {
       var names = new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' });
@@ -65,25 +104,20 @@
       });
     }
 
-    var activeMode = function () {
-      var selected = modes.find(function (input) { return input.checked; });
-      return selected ? selected.value : 'us';
-    };
+    var activeMode = function () { return modeSelect.value; };
     var sync = function (clearInactive) {
       var mode = activeMode();
       var useState = mode === 'us';
       panels.forEach(function (panel) { panel.hidden = panel.getAttribute('data-tnet-location-panel') !== mode; });
       state.disabled = !useState;
-      country.disabled = useState;
+      country.disabled = mode !== 'international';
       if (clearInactive) {
         if (useState) country.value = '';
-        else state.value = '';
+        else if (mode === 'international') state.value = '';
+        else { state.value = ''; country.value = ''; }
       }
-      submit.disabled = useState ? !state.value : !country.value;
     };
-    modes.forEach(function (input) { input.addEventListener('change', function () { sync(true); }); });
-    [state, country].forEach(function (select) { select.addEventListener('change', function () { sync(false); }); });
-    if (returnToState) returnToState.addEventListener('click', function () { modes.find(function (input) { return input.value === 'us'; }).checked = true; sync(true); state.focus(); });
+    modeSelect.addEventListener('change', function () { sync(true); });
     sync(false);
   });
 

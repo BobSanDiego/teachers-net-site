@@ -132,6 +132,8 @@ final class TNet_Identity_CLI {
       'public_identity_pending' => TNet_Identity_Service::needs_public_identity((int) $user->ID),
       'location_pending' => TNet_Identity_Service::needs_location((int) $user->ID),
       'location' => TNet_Identity_Service::location((int) $user->ID),
+      'member_context_pending' => TNet_Identity_Service::needs_member_context((int) $user->ID),
+      'member_context' => TNet_Identity_Service::member_context((int) $user->ID),
     ];
     $payload['reservations'] = [
       'email_in_use' => (bool) email_exists($user->user_email),
@@ -241,6 +243,25 @@ final class TNet_Identity_CLI {
       'user_id' => $user_id,
       'location_pending' => true,
       'location' => TNet_Identity_Service::location($user_id),
+    ]);
+  }
+
+  /** Reset only Screen 6 member context for one local QA identity. */
+  public function replay_member_context($args, $assoc_args) {
+    $this->require_ddev();
+    $email = $this->target_email($args);
+    $user = get_user_by('email', $email);
+    if (!$user) WP_CLI::error('No matching local identity was found.');
+    $user_id = (int) $user->ID;
+    TNet_Identity_Service::clear_member_context($user_id);
+    update_user_meta($user_id, TNet_Identity_Service::MEMBER_CONTEXT_PENDING_META, '1');
+    $this->emit([
+      'query' => ['email' => $email],
+      'replay_member_context' => 'complete',
+      'mutated' => true,
+      'user_id' => $user_id,
+      'member_context_pending' => true,
+      'member_context' => TNet_Identity_Service::member_context($user_id),
     ]);
   }
 
