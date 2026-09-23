@@ -1,0 +1,30 @@
+{
+  "project_id": "qa-tooling",
+  "display_name": "Teachers.Net QA / Developer Tooling",
+  "state": "REGISTERED / LIFECYCLE READY",
+  "report_label": "QA Tooling",
+  "repositories": {
+    "root": "/home/bobreap/projects/teachers-net-site",
+    "continuity_root": "/home/bobreap/projects/teachers-net-site"
+  },
+  "handoff": {
+    "report_hopper": "tmp/hopper/qa-tooling"
+  },
+  "authority_index": [
+    "docs/process/conversation-handoff/shared/workflow-v2.json",
+    "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
+    "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md"
+  ],
+  "scope": {
+    "include": ["Teachers.Net local QA and developer tooling lifecycle"],
+    "exclude": ["Community product authority", "Community Report/Hopper ownership", "production AWS/IAM authority"]
+  },
+  "handoff_v2": {
+    "independent_chatgpt_project": false,
+    "cross_project_inclusion_policy": "Tooling reports may cite a product fixture but never inherit its product authority or Report/Hopper ownership"
+  },
+  "guidance_sources": [
+    {"path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md", "role": "canonical shared Workflow V2"},
+    {"path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md", "role": "shared Report/Hopper policy"}
+  ]
+}
