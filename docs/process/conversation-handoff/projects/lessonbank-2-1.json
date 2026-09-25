@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "project_id": "lessonbank-2-1",
+  "display_name": "Teachers.Net Lesson Bank 2.1",
+  "state": "REGISTERED / LIFECYCLE READY",
+  "root_repository": "/home/bobreap/projects/lessonbank-2.1",
+  "repositories": [
+    {
+      "path": "/home/bobreap/projects/lessonbank-2.1",
+      "role": "Lesson Bank 2.1 documentation, manifests, audit outputs, and future migration code"
+    }
+  ],
+  "project_cursor": "docs/current-project-cursor.md",
+  "engineering_handoff": "docs/google-drive/lesson-bank-engineering-handoff.md",
+  "handoff_source": "docs/google-drive/lesson-bank-engineering-handoff.md",
+  "report_hopper": "tmp/hopper/lessonbank-2-1/",
+  "report_label": "Lesson Bank 2.1",
+  "report_routing": "Canonical project Report and Hopper artifacts for every Lesson Bank execution cycle; objective-owner routing only.",
+  "shared_workflow_projection_wsl": "/mnt/c/Main/Active/Projects/Teachers.Net/SHARED-WORKFLOW/",
+  "guidance_sources": [
+    {
+      "path": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md",
+      "role": "canonical shared Workflow V2"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/START-CODEX.md",
+      "role": "shared bootstrap"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/PROJECT-BOOTSTRAP-SPEC.md",
+      "role": "shared project bootstrap"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/PROJECT-RECORD-SPEC.md",
+      "role": "shared project records"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/REPORT-HOPPER-SPEC.md",
+      "role": "shared Report and Hopper policy"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/chatgpt-engineering-operating-contract.md",
+      "role": "shared operating contract"
+    },
+    {
+      "path": "docs/process/conversation-handoff/shared/HANDOFF-LIFECYCLE.md",
+      "role": "shared handoff lifecycle"
+    },
+    {
+      "path": "docs/current-project-cursor.md",
+      "role": "Lesson Bank current project state"
+    },
+    {
+      "path": "docs/google-drive/lesson-bank-engineering-handoff.md",
+      "role": "Lesson Bank engineering handoff"
+    }
+  ],
+  "runtime": {
+    "kind": "none",
+    "note": "L016 may use the existing Teachers.Net DDEV MariaDB environment through Lesson Bank schema scripts only; it is a fixture and is not the Lesson Bank product owner."
+  },
+  "guidance_inclusion": "Lesson Bank authorities plus current shared Workflow V2.",
+  "guidance_exclusion": [
+    "archive/raw/",
+    "credentials",
+    "unrelated repositories or worktree state"
+  ]
+}
