@@ -1,12 +1,12 @@
 {
   "project_id": "profile",
   "display_name": "Teachers.Net Profile",
-  "state": "ACTIVE DEVELOPMENT / PORTRAIT BANK FROZEN / ONBOARDING SCREENS 3-5 COMPLETE_FROZEN / IDENTITY AND SHARED-SHELL SOURCE OWNERS RECOVERED",
+  "state": "ACTIVE DEVELOPMENT / PROFILE V1 ENRICHMENT DIRECTOR-PASS / PROFILE SOURCE RECOVERED / PERMANENT PROFILE IMPLEMENTATION PENDING",
   "report_label": "Profile",
   "repositories": {
     "root": "/home/bobreap/projects/teachers-net-site",
     "continuity_root": "/home/bobreap/projects/teachers-net-site",
-    "ownership_status": "Profile avatar resolver convergence and Onboarding Screens 3-5 have authenticated native evidence and Director HUMAN_QA PASS. The frozen 268-entry portrait bank is read-only chooser content and remains subject to its documented rights limits. Screen 4 owns only a required changeable non-unique Display Name. Screen 5 owns only voluntary U.S. State/District of Columbia or non-U.S. Country context through canonical country_code and region_code, with no precise or inferred location. The canonical Identity Policy owns server-side username reservation and Display Name validation, and the focused shared-shell layer owner prevents rail overpaint. teachers-net-site is the canonical Git owner of the complete tnet-identity and tnet-shared-shell plugin source boundaries; narrow root-ignore exceptions preserve all unrelated WordPress runtime exclusions. Git provenance terminalization is complete on isolated Profile branches; active Community history remains unpublished."
+    "ownership_status": "teachers-net-site is the canonical Git owner of the complete tnet-profile, tnet-identity, and tnet-shared-shell first-party source boundaries. PROFILE-V1-SOURCE-RECOVERY029 reattaches codex/profile-v1-basics-facts at /home/bobreap/projects/teachers-net-profile-recovery029 and reconciles the accepted 284-file Profile V1/enrichment plugin exactly to the intended DDEV runtime. The frozen 268-entry portrait bank remains read-only chooser content. The sole DDEV-only Profile file is an excluded obsolete diagnostic fixture. Active Community history and dirty work remain untouched. Permanent Profile implementation is separate: /profile/ is self entry and /profile/<username>/ is the public/other-member route keyed by user_login, with existing location_public and aggregate profile_details visibility."
   },
   "conversation": {
     "source_directory": "docs/process/conversation-handoff/profile/chatgpt-sources",
@@ -33,7 +33,7 @@
   ],
   "scope": {
     "include": ["Profile conversation evidence", "Profile continuity authorities", "shared continuity procedure"],
-    "exclude": ["Community authority", "Job Center authority", "Views authority", "Core Terms implementation", "generated-avatar activation", "intent-aware onboarding fork and later onboarding", "unapproved Profile implementation"]
+    "exclude": ["Community authority", "Job Center authority", "Views authority", "Core Terms implementation", "generated-avatar activation", "later intent-aware onboarding forks", "unapproved Profile implementation"]
   },
   "handoff_source": "docs/process/conversation-handoff/profile",
   "handoff_build_directory": "docs/process/conversation-handoff/profile/current-handoff",
@@ -56,8 +56,8 @@
     {"path": "docs/profile/engineering-handoff.md", "role": "Profile handoff"}
   ],
   "runtime": {
-    "review_url": "Screen 3 uses the existing local DDEV route /account/avatar/ with the frozen 268-entry portrait-bank-v1 as read-only chooser content; historic art labs remain evidence only.",
-    "qa": "Approved Chrome DevTools binding recorded native Screen 3 desktop and compact evidence. Engineering Director HUMAN_QA PASS is recorded; the accepted tnet-identity source is now under the canonical repository owner."
+    "review_url": "https://teachers-net.ddev.site/profile/enrichment/complete/",
+    "qa": "Direct Windows Chrome/CDP focused regression covers Profile Basics, Roles, Complete, temporary self Profile, editor, and standalone avatar routes. PROFILE-V1-ENRICHMENT-LAUNCH027 is Director HUMAN_QA PASS; PROFILE-V1-SOURCE-RECOVERY029 changes source provenance only."
   },
   "bootstrap": {
     "authorization": "Bounded Profile project onboarding authorized by Engineering Director in active Codex conversation on 2026-08-11.",

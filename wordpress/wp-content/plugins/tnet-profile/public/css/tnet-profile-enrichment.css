@@ -1,0 +1,261 @@
+.tnet-profile-enrichment { padding-top: 28px; }
+.tnet-profile-enrichment-main { width: 100%; max-width: 650px; color: var(--tnet-profile-ink); }
+.tnet-profile-enrichment-heading { margin: 0 0 19px; }
+.tnet-profile-enrichment-heading h1 { margin: 0; color: var(--tnet-profile-navy); font-size: 27px; font-weight: 850; line-height: 1.2; }
+.tnet-profile-enrichment-heading p { margin: 7px 0 0; color: var(--tnet-profile-muted); font-size: 14px; line-height: 1.45; }
+.tnet-profile-enrichment-card { box-sizing: border-box; min-width: 0; border: 1px solid var(--tnet-profile-line, #d7e1ef); border-radius: 12px; background: #fff; box-shadow: 0 2px 7px rgba(17, 47, 103, .04); }
+.tnet-profile-enrichment-main > .tnet-profile-enrichment-card, .tnet-profile-enrichment-form > .tnet-profile-enrichment-card { padding: 19px 22px; }
+.tnet-profile-enrichment-payoff { margin-bottom: 14px; padding: 19px 22px; }
+.tnet-profile-enrichment-payoff-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 22px; }
+.tnet-profile-enrichment-person { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.tnet-profile-enrichment-person img { flex: none; width: 120px; height: 120px; border: 2px solid #d6e4f6; border-radius: 50%; object-fit: cover; background: #edf3fa; }
+.tnet-profile-enrichment-person h2 { margin: 0; color: var(--tnet-profile-navy); font-size: 20px; line-height: 1.2; overflow-wrap: anywhere; }
+.tnet-profile-enrichment-person p { margin: 4px 0 0; color: var(--tnet-profile-muted); font-size: 13px; overflow-wrap: anywhere; }
+.tnet-profile-enrichment-person [data-profile-username], .tnet-profile-enrichment-person .tnet-profile-enrichment-location { color: var(--tnet-profile-ink); font-family: inherit; font-size: 13px; font-weight: 500; line-height: 1.4; }
+.tnet-profile-enrichment-payoff-top > a { flex: none; margin-top: 0; padding: 9px 12px; border: 1px solid #b9cbe2; border-radius: 8px; color: var(--tnet-profile-blue); font-size: 13px; font-weight: 750; text-decoration: none; }
+.tnet-profile-enrichment-payoff-top > a:hover, .tnet-profile-enrichment-payoff-top > a:focus-visible { text-decoration: underline; }
+.tnet-profile-enrichment-location { display: flex; align-items: center; gap: 7px; margin: 7px 0 0; color: var(--tnet-profile-muted); font-size: 13px; }
+.tnet-profile-enrichment-location svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.tnet-profile-enrichment-facts { display: grid; gap: 8px; min-width: 0; margin: 0; }
+.tnet-profile-enrichment-facts span { padding: 0; border-radius: 0; background: none; color: inherit; font-size: inherit; font-weight: inherit; }
+.tnet-profile-enrichment-member-row { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: 34px; color: var(--tnet-profile-ink); font-family: inherit; font-size: 13px; font-weight: 500; line-height: 1.4; }
+.tnet-profile-enrichment-fact-row { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: center; min-width: 0; color: var(--tnet-profile-ink); font-size: 13px; line-height: 1.4; }
+.tnet-profile-enrichment-fact-row > span:not(.tnet-profile-enrichment-fact-icon) { min-width: 0; color: var(--tnet-profile-ink); font-size: inherit; font-weight: 500; overflow-wrap: anywhere; }
+.tnet-profile-enrichment-fact-icon { display: inline-grid; width: 20px; height: 20px; place-items: center; color: var(--tnet-profile-navy); }
+.tnet-profile-enrichment-fact-icon svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.tnet-profile-enrichment-bio { min-width: 0; margin: 13px 0 0 138px; padding-top: 12px; border-top: 1px solid #d7e1ef; color: var(--tnet-profile-ink); font-family: inherit; font-size: 13px; font-weight: 500; line-height: 1.4; white-space: pre-line; }
+.tnet-profile-enrichment-bio > span { min-width: 0; overflow-wrap: anywhere; }
+.tnet-profile-enrichment-role-chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 0; }
+.tnet-profile-enrichment-role-chips span { padding: 5px 9px; border-radius: 999px; background: #edf5ff; color: var(--tnet-profile-navy); font-size: 12px; font-weight: 650; }
+.tnet-profile-enrichment-form { display: grid; gap: 14px; }
+.tnet-profile-enrichment-card h2 { margin: 0; color: var(--tnet-profile-navy); font-size: 17px; font-weight: 800; line-height: 1.3; }
+.tnet-profile-enrichment-help { margin: 5px 0 16px; color: var(--tnet-profile-muted); font-size: 13px; line-height: 1.45; }
+.tnet-profile-enrichment-suggestions { margin: 0 0 16px; padding: 13px 15px; border: 1px solid #d9e8f7; border-radius: 9px; background: #f3f8fe; }
+.tnet-profile-enrichment-suggestions > strong { color: var(--tnet-profile-navy); font-size: 14px; }
+.tnet-profile-enrichment-suggestions > p { margin: 3px 0 10px; color: var(--tnet-profile-muted); font-size: 12px; line-height: 1.45; }
+.tnet-profile-enrichment-suggestion-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.tnet-profile-enrichment-suggestion-list button { padding: 6px 10px; border: 1px solid #adc7e7; border-radius: 999px; background: #fff; color: #315889; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; }
+.tnet-profile-enrichment-suggestion-list button[aria-pressed="true"] { border-color: var(--tnet-shell-action, #0045dd); background: #e7f0ff; color: var(--tnet-profile-navy); }
+.tnet-profile-enrichment-suggestion-list button::before { content: '+'; display: inline-block; margin-right: 9px; color: var(--tnet-shell-action, #0045dd); font-size: 17px; font-weight: 500; line-height: 10px; vertical-align: -1px; }
+.tnet-profile-enrichment-suggestion-list button[aria-pressed="true"]::before { content: '✓'; font-size: 13px; font-weight: 800; }
+.tnet-profile-enrichment-role-grid { display: grid; grid-auto-flow: column; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(5, auto); gap: 12px 18px; }
+.tnet-profile-enrichment-role-grid label { display: flex; align-items: center; gap: 9px; min-width: 0; color: var(--tnet-profile-ink); font-size: 13px; font-weight: 650; line-height: 1.3; cursor: pointer; }
+.tnet-profile-enrichment-role-grid input { flex: none; width: 17px; height: 17px; margin: 0; accent-color: var(--tnet-shell-action, #0045dd); }
+.tnet-profile-enrichment-year { display: grid; grid-template-columns: minmax(0, 1fr) 250px; column-gap: 15px; align-items: center; }
+.tnet-profile-enrichment-year .tnet-profile-enrichment-help { grid-column: 1; margin: 3px 0 0; }
+.tnet-profile-enrichment-year select { grid-column: 2; grid-row: 1 / 3; box-sizing: border-box; width: 100%; max-width: 100%; min-height: 40px; padding: 7px 10px; border: 1px solid #b9cbe2; border-radius: 8px; background: #fff; color: var(--tnet-profile-ink); font: inherit; font-size: 13px; }
+.tnet-profile-enrichment-actions { display: flex; align-items: center; gap: 10px; padding-top: 3px; }
+.tnet-profile-enrichment-actions > .tnet-profile-basics-save, .tnet-profile-enrichment-actions > .tnet-profile-basics-secondary { display: inline-flex; flex: 1 1 0; align-items: center; justify-content: center; box-sizing: border-box; min-height: 50.5px; }
+.tnet-profile-enrichment-actions > .tnet-profile-basics-save { background: var(--tnet-shell-action, #0045dd); }
+.tnet-profile-enrichment-actions > .tnet-profile-basics-save:hover, .tnet-profile-enrichment-actions > .tnet-profile-basics-save:focus-visible { background: var(--tnet-shell-action-hover, #003ab9); }
+.tnet-profile-basics-secondary { padding: 10px 16px; border: 1px solid #b9cbe2; border-radius: 8px; background: #fff; color: var(--tnet-profile-blue); font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+.tnet-profile-basics-secondary:hover, .tnet-profile-basics-secondary:focus-visible { background: #f3f8fe; }
+.tnet-profile-enrichment-aside { display: grid; align-content: start; gap: 14px; padding: 10px 12px 30px 0; }
+.tnet-profile-enrichment-aside .tnet-profile-enrichment-card { padding: 18px; }
+.tnet-profile-enrichment-aside h2 { font-size: 16px; }
+.tnet-profile-enrichment-aside .tnet-profile-enrichment-card:first-child { background: #f0f7ff; }
+.tnet-profile-enrichment-aside ul { display: grid; gap: 11px; margin: 14px 0; padding: 0; list-style: none; }
+.tnet-profile-enrichment-aside li { color: var(--tnet-profile-ink); font-size: 13px; }
+.tnet-profile-enrichment-aside li span { display: inline-grid; width: 18px; height: 18px; margin-right: 5px; place-items: center; border: 1px solid #cbd7e5; border-radius: 50%; background: #fff; color: transparent; font-size: 12px; font-weight: 800; }
+.tnet-profile-enrichment-aside li.is-complete span { border-color: #d4ebda; background: #e8f7ed; color: #15733d; }
+.tnet-profile-enrichment-aside p { margin: 10px 0 0; color: var(--tnet-profile-muted); font-size: 12px; line-height: 1.5; }
+.tnet-profile-enrichment-aside .tnet-profile-enrichment-progress-intro { margin-top: 12px; font-size: 13px; }
+.tnet-profile-enrichment-aside .tnet-profile-enrichment-tip { padding-top: 11px; border-top: 1px solid #d7e1ef; }
+.tnet-profile-enrichment-aside a { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 14px; color: var(--tnet-profile-blue); font-size: 13px; font-weight: 750; text-decoration: none; }
+.tnet-profile-enrichment-aside a small { display: block; margin-top: 4px; color: var(--tnet-profile-muted); font-size: 12px; font-weight: 500; line-height: 1.35; }
+.tnet-profile-enrichment-aside a:hover, .tnet-profile-enrichment-aside a:focus-visible { text-decoration: underline; }
+@media (max-width: 920px) { .tnet-profile-enrichment-aside { padding: 0 24px 28px; } }
+@media (max-width: 700px) { .tnet-profile-enrichment { padding-top: 22px; } .tnet-profile-enrichment-aside { padding: 0 16px 25px; } }
+@media (max-width: 480px) { .tnet-profile-enrichment-heading h1 { font-size: 23px; } .tnet-profile-enrichment-person img { width: 76px; height: 76px; } .tnet-profile-enrichment-person h2 { font-size: 17px; } .tnet-profile-enrichment-payoff-top > a { padding: 7px; font-size: 12px; } .tnet-profile-enrichment-role-grid { grid-auto-flow: row; grid-template-columns: 1fr; grid-template-rows: none; gap: 13px; } .tnet-profile-enrichment-year { grid-template-columns: minmax(0, 1fr); } .tnet-profile-enrichment-year select { grid-column: 1; grid-row: auto; margin-top: 10px; } .tnet-profile-enrichment-actions { align-items: stretch; flex-direction: column; gap: 12px; } .tnet-profile-enrichment-actions > .tnet-profile-basics-save, .tnet-profile-enrichment-actions > a { flex: none; width: 100%; } .tnet-profile-enrichment-location { margin: 10px 0 0; } .tnet-profile-enrichment-facts, .tnet-profile-enrichment-bio { margin-left: 0; } .tnet-profile-enrichment-main > .tnet-profile-enrichment-card, .tnet-profile-enrichment-form > .tnet-profile-enrichment-card { padding: 17px; } }
+
+/* One guided frame shared by Basics and Enrichment; the existing Page-2 width
+ * is the desktop main-card authority. */
+.tnet-profile-basics-wrap--guided { width: 100%; max-width: 650px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-heading,
+.tnet-profile-enrichment-main > .tnet-profile-basics-heading { max-width: 650px; margin: 0 0 12px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-heading h1,
+.tnet-profile-enrichment-main > .tnet-profile-basics-heading h1 { font-size: 29px; font-weight: 900; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-heading > p:last-child,
+.tnet-profile-enrichment-main > .tnet-profile-basics-heading > p:last-child { max-width: 650px; margin: 7px 0 0; color: var(--tnet-profile-muted); font-size: 14px; font-weight: 600; line-height: 1.42; letter-spacing: 0; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-guided-top { width: 100%; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-actions { display: flex; gap: 10px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-actions > button { flex: 1 1 0; width: 0; min-height: 50.5px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(3, auto); column-gap: 8px; align-items: start; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-family > .tnet-profile-basics-grade-parent { left: 22px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-family > details > summary { padding-left: 52px; font-size: 13px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-family > details > summary::before { left: 3px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-groups > .tnet-profile-basics-check--grade-top-level { grid-template-columns: 22px 19px 11px minmax(0, 1fr); font-size: 13px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-family .tnet-profile-basics-options { padding-left: 29px; }
+.tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-family .tnet-profile-basics-options .tnet-profile-basics-check { font-size: 12px; }
+.tnet-profile-enrichment-payoff--complete .tnet-profile-enrichment-facts { padding-top: 12px; border-top: 1px solid #e1e9f4; }
+.tnet-profile-enrichment-main--complete { width: 100%; max-width: 710px; }
+.tnet-profile-enrichment-main--complete .tnet-profile-enrichment-heading h1 { font-size: 29px; }
+.tnet-profile-enrichment-heading__title { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; }
+.tnet-profile-enrichment-heading__celebration { display: block; width: auto; height: 40px; flex: 0 0 auto; object-fit: contain; transform: translateY(-2px); }
+.tnet-profile-enrichment-launch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; align-items: stretch; width: 100%; gap: 10px; margin-top: 20px; }
+.tnet-profile-enrichment-launch-card { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; min-width: 0; padding: 15px; border: 1px solid var(--tnet-profile-line, #d7e1ef); border-radius: 12px; background: #fff; color: var(--tnet-profile-ink); text-decoration: none; box-shadow: 0 2px 7px rgba(17,47,103,.04); }
+.tnet-profile-enrichment-launch-card:hover, .tnet-profile-enrichment-launch-card:focus-visible { border-color: #bdcfee; box-shadow: 0 4px 14px rgba(17,47,103,.08); }
+.tnet-profile-enrichment-launch-card:focus-visible { outline: 3px solid rgba(0,69,221,.24); outline-offset: 3px; }
+.tnet-profile-enrichment-launch-card__content { display: flex; flex: 1 1 auto; flex-direction: column; align-items: flex-start; min-width: 0; }
+.tnet-profile-enrichment-launch-card__icon { display: grid; width: 56px; height: 56px; margin: 15px 0 12px; place-items: center; border-radius: 50%; }
+.tnet-profile-enrichment-launch-card__icon svg { display: block; width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tnet-profile-enrichment-launch-card__icon--discussion { background: #e7f0ff; color: #0754dc; }
+.tnet-profile-enrichment-launch-card__icon--lessons { background: #e5f7ec; color: #159244; }
+.tnet-profile-enrichment-launch-card__icon--jobs { background: #f0eaff; color: #6542cf; }
+.tnet-profile-enrichment-launch-card strong { color: var(--tnet-profile-navy); font-size: 19px; font-weight: 800; line-height: 1.25; }
+.tnet-profile-enrichment-launch-card__copy { margin: 11px 0 16px; color: var(--tnet-profile-muted); font-size: 14px; line-height: 1.5; }
+.tnet-profile-enrichment-launch-card__cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 41px; box-sizing: border-box; max-width: 100%; margin-top: auto; padding: 9px 10px; border: 1px solid #adc8f5; border-radius: 8px; color: var(--tnet-profile-blue); font-size: 12px; font-weight: 700; line-height: 1.25; text-align: center; }
+.tnet-profile-enrichment-launch-card__cta > span { font-size: 17px; line-height: 1; }
+.tnet-profile-enrichment-launch-card__image { display: block; width: 100%; aspect-ratio: 1.12; overflow: hidden; border-radius: 9px; background: linear-gradient(145deg, #edf2f7 0%, #e4eaf1 48%, #eef1f5 100%); }
+.tnet-profile-enrichment-launch-card__image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.tnet-profile-enrichment-ad-slot { display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; width: 300px; height: 250px; border: 1px dashed #b9c9dd; border-radius: 9px; background: #edf2f7; color: #65758b; font-size: 13px; letter-spacing: .02em; }
+.tnet-profile-enrichment-ad-slot small { margin-top: 6px; font-size: 11px; }
+.tnet-jobs-route-profile-enrichment-complete .c3-community-right { height: auto !important; min-height: 0 !important; }
+@media (min-width: 1180px) {
+  .tnet-jobs-route-profile-enrichment-complete .tnet-shared-shell-community-right { margin-top: 54px; }
+}
+.tnet-jobs-route-profile-enrichment-complete .c3-community-rail__platform a,
+.tnet-jobs-route-profile-enrichment-complete .c3-community-rail__section-label,
+.tnet-jobs-route-profile-enrichment-complete .c3-community-rail__personalized li a,
+.tnet-jobs-route-profile-enrichment-complete .c3-community-rail__personalized li span { font-size: 16px !important; font-weight: 500 !important; line-height: 1.3 !important; }
+@media (max-width:700px) {
+  .tnet-profile-basics-wrap--guided .tnet-profile-basics-grade-groups { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; }
+  .tnet-profile-basics-wrap--guided .tnet-profile-basics-actions { flex-direction: column; }
+  .tnet-profile-basics-wrap--guided .tnet-profile-basics-actions > button { flex: none; width: 100%; }
+}
+@media (min-width: 601px) and (max-width: 1179px) {
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-shared-shell-community-frame:has(.tnet-profile-enrichment-main--complete) { grid-template-columns: 190px minmax(0, 1fr); }
+  .tnet-jobs-route-profile-enrichment-complete .c3-community-right { grid-column: 2; height: auto !important; min-height: 0 !important; padding-top: 0 !important; }
+  .tnet-profile-enrichment-launch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tnet-profile-enrichment-launch-card:last-child { grid-column: 1 / -1; }
+  .tnet-profile-enrichment-launch-card__image { aspect-ratio: 16 / 9; }
+}
+@media (max-width:600px) {
+  .tnet-profile-enrichment-heading__celebration { width: auto; height: 32px; transform: translateY(-1px); }
+  .tnet-profile-enrichment-launch { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 18px; }
+  .tnet-profile-enrichment-launch-card { padding: 18px; }
+  .tnet-profile-enrichment-launch-card__image { aspect-ratio: 16 / 9; }
+  .tnet-profile-enrichment-launch-card__content { min-height: 185px; }
+  .tnet-profile-enrichment-launch-card strong { font-size: 21px; }
+  .tnet-profile-enrichment-launch-card__copy { font-size: 15px; }
+  .tnet-jobs-route-profile-enrichment-complete .c3-community-right { display: none; }
+}
+
+@media (max-width:360px) {
+  .tnet-profile-enrichment-heading__celebration { display: none; }
+}
+
+.tnet-profile-enrichment-card [hidden] { display: none !important; }
+@media (min-width: 1280px) { .tnet-profile-basics-wrap--guided { width: 650px; max-width: 650px; } }
+.tnet-profile-enrichment-avatar-wrap { position: relative; display: inline-flex; flex: none; width: max-content; }
+.tnet-profile-enrichment-person > div { min-width: 0; }
+.tnet-profile-enrichment-action { flex: none; padding: 8px 12px; border: 1px solid #b9cbe2; border-radius: 8px; background: #fff; color: var(--tnet-profile-blue); font: inherit; font-size: 13px; font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer; }
+.tnet-profile-enrichment-action--edit-photo { color: var(--tnet-profile-ink); }
+.tnet-profile-enrichment-action:hover, .tnet-profile-enrichment-action:focus-visible { background: #f3f8fe; text-decoration: underline; }
+.tnet-profile-enrichment-main--public { max-width: 780px; }
+.tnet-profile-enrichment-main--public > .tnet-profile-enrichment-payoff { margin-top: 14px; }
+.tnet-profile-basics-avatar.tnet-profile-enrichment-avatar-wrap { display: block; width: max-content; min-width: 76px; }
+.tnet-profile-basics-avatar.tnet-profile-enrichment-avatar-wrap .tnet-avatar-camera { right: 0; bottom: -3px; }
+@media (min-width: 921px) {
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-right:has(.tnet-profile-enrichment-aside) { position: fixed !important; top: 14px !important; right: max(16px, calc(50% - 624px)) !important; left: auto !important; width: 300px !important; height: calc(100vh - 28px) !important; min-height: 0 !important; align-self: start; box-sizing: border-box; }
+}
+@media (max-width: 480px) {
+  .tnet-profile-enrichment-main > .tnet-profile-enrichment-card, .tnet-profile-enrichment-form > .tnet-profile-enrichment-card, .tnet-profile-enrichment-payoff { padding: 16px; }
+  .tnet-profile-enrichment-payoff-top { grid-template-columns: minmax(0, 1fr); gap: 13px; }
+  .tnet-profile-enrichment-person { gap: 12px; }
+  .tnet-profile-enrichment-person img { width: 76px; height: 76px; }
+  .tnet-profile-enrichment-fact-row, .tnet-profile-enrichment-bio { grid-template-columns: 1fr; gap: 2px; }
+  .tnet-profile-enrichment-bio { margin-left: 0; }
+  .tnet-profile-enrichment-fact-row { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
+}
+
+/* Complete-page responsive stages: preserve the desktop row, compact only the
+ * 2+1 states, and reclaim the ad column before returning to three cards. */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-shared-shell-community-frame:has(.tnet-profile-enrichment-main--complete) {
+    grid-template-columns: 190px minmax(0, 1fr) 300px;
+  }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+  }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card:last-child { grid-column: 1 / -1; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__image { height: 118px; aspect-ratio: auto; background: none; }
+}
+@media (min-width: 901px) and (max-width: 1024px) {
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-shared-shell-community-frame:has(.tnet-profile-enrichment-main--complete) {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+  .tnet-jobs-route-profile-enrichment-complete .c3-community-right { display: none !important; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card:last-child { grid-column: auto; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__image { aspect-ratio: 1.12; height: auto; background: linear-gradient(145deg, #edf2f7 0%, #e4eaf1 48%, #eef1f5 100%); }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-shared-shell-community-frame:has(.tnet-profile-enrichment-main--complete) {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+  .tnet-jobs-route-profile-enrichment-complete .c3-community-right { display: none !important; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+  }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card:last-child { grid-column: 1 / -1; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card { padding: 12px; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__image { height: 100px; aspect-ratio: auto; background: none; }
+}
+@media (max-width: 600px) {
+  body.tnet-jobs-route-profile-enrichment-complete .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-layout { display: block !important; }
+  body.tnet-jobs-route-profile-enrichment-complete .tnet-shared-shell__canonical[data-shell-adapter="community3"] .c3-community-rail { display: none !important; }
+  body.tnet-jobs-route-profile-enrichment-complete .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-mobile-menu { display: flex !important; }
+  body.tnet-jobs-route-profile-enrichment-complete .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-navbar-right {
+    position: fixed !important; z-index: 32; top: 14px; right: 16px; bottom: auto; left: auto;
+    display: flex; width: auto; height: 44px; align-items: center; justify-content: flex-end; gap: 8px;
+    padding: 0; pointer-events: auto;
+  }
+  body.tnet-jobs-route-profile-enrichment-complete .tnet-shared-shell__canonical[data-shell-adapter="community3"] .tnet-jobs-shell-lab-account-area {
+    position: static !important; top: auto; right: auto; width: auto; height: 40px; margin: 0;
+  }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto; gap: 10px; margin-top: 18px;
+  }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card { padding: 10px; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card:last-child { grid-column: 1 / -1; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__image { height: 88px; aspect-ratio: auto; background: none; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card:last-child .tnet-profile-enrichment-launch-card__image { height: 112px; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__icon { display: none; width: 0; height: 0; margin: 0; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__content { min-height: 0; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card strong { font-size: 18px; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__copy { margin: 8px 0 12px; font-size: 14px; line-height: 1.45; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__cta { min-height: 41px; padding: 8px 7px; font-size: 12px; }
+}
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__icon { display: grid; }
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__icon { display: none; width: 0; height: 0; margin: 0; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__content { min-height: 0; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__copy { margin-top: 8px; }
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__image { background: none; }
+  .tnet-jobs-route-profile-enrichment-complete .c3-community-right { grid-column: 3; }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__icon { display: none; width: 0; height: 0; margin: 0; }
+}
+@media (max-width: 600px) {
+  .tnet-jobs-route-profile-enrichment-complete .tnet-profile-enrichment-launch-card__icon { display: none; width: 0; height: 0; margin: 0; }
+}
+@media (min-width: 601px) {
+  .tnet-jobs-route-profile-enrichment-complete .tnet-shared-shell-community-right--below-account-actions {
+    position: sticky !important; top: 14px !important; margin-top: 0 !important;
+    padding-top: 56px !important; box-sizing: border-box;
+  }
+}
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation { display: grid; gap: 2px; }
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation > a { display: grid; grid-template-columns: 20px minmax(0, 1fr); align-items: center; justify-content: initial; gap: 12px; }
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation .tnet-jobs-shell-lab-product-icon,
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation .tnet-jobs-shell-lab-product-icon svg { display: block; width: 20px; height: 20px; }
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation .tnet-jobs-shell-lab-compact-section-label { display: flex; min-height: 40px; align-items: center; gap: 12px; padding: 9px 10px; color: #142235; font-size: 15px; font-weight: 600; }
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation .tnet-jobs-shell-lab-compact-children { display: grid; gap: 2px; margin: 0; padding: 0 0 0 32px; list-style: none; }
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation .tnet-jobs-shell-lab-compact-children a,
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation .tnet-jobs-shell-lab-compact-children span,
+.tnet-jobs-route-profile-enrichment-complete .tnet-profile-compact-navigation .tnet-jobs-shell-lab-compact-children a { display: block; min-height: 40px; padding: 10px 8px; color: #142235; font-size: 15px; font-weight: 600; line-height: 1.35; text-decoration: none; }

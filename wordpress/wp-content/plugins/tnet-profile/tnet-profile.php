@@ -12,6 +12,8 @@ define('TNET_PROFILE_PLUGIN_URL', plugin_dir_url(__FILE__));
 require_once __DIR__ . '/includes/class-tnet-profile-avatar-component-set.php';
 require_once __DIR__ . '/includes/class-tnet-profile-member-context.php';
 require_once __DIR__ . '/includes/class-tnet-profile-basics.php';
+require_once __DIR__ . '/includes/class-tnet-profile-enrichment.php';
+require_once __DIR__ . '/includes/class-tnet-profile-public.php';
 
 final class TNet_Profile_Avatar {
   const META_KEY = '_tnet_profile_avatar_id';
@@ -33,13 +35,15 @@ final class TNet_Profile_Avatar {
     TNet_Profile_Member_Context::activate();
     self::register_route();
     TNet_Profile_Basics::register_route();
+    TNet_Profile_Enrichment::register_route();
+    TNet_Profile_Public::register_route();
     flush_rewrite_rules(false);
   }
 
   public static function deactivate() { flush_rewrite_rules(false); }
 
   public static function register_route() {
-    add_rewrite_rule('^profile/?$', 'index.php?tnet_profile_route=avatar', 'top');
+    add_rewrite_rule('^profile/edit/avatar/?$', 'index.php?tnet_profile_route=avatar_editor', 'top');
     add_rewrite_rule('^profile/avatar-component\.svg/?$', 'index.php?tnet_profile_route=avatar_component_svg', 'top');
     add_rewrite_rule('^profile/avatar-components/?$', 'index.php?tnet_profile_route=avatar_component_lab', 'top');
   }
@@ -158,8 +162,28 @@ final class TNet_Profile_Avatar {
   }
 
   private static function redirect($status) {
-    wp_safe_redirect(add_query_arg('avatar_status', sanitize_key($status), home_url('/profile/')));
+    $fallback = self::editor_url();
+    $return_to = isset($_POST['return_to']) ? esc_url_raw(wp_unslash($_POST['return_to'])) : $fallback;
+    $return_to = wp_validate_redirect($return_to, $fallback);
+    $return_host = strtolower((string) wp_parse_url($return_to, PHP_URL_HOST));
+    $home_host = strtolower((string) wp_parse_url(home_url('/'), PHP_URL_HOST));
+    if ($return_host !== $home_host) $return_to = $fallback;
+    wp_safe_redirect(add_query_arg('avatar_status', sanitize_key($status), $return_to));
     exit;
+  }
+
+  public static function editor_url() { return home_url('/profile/edit/avatar/'); }
+
+  public static function enqueue_editor_assets() {
+    if (class_exists('TNet_Identity_Public')) TNet_Identity_Public::enqueue_avatar_photo_components();
+    $path = __DIR__ . '/public/js/tnet-profile-avatar-editor.js';
+    wp_enqueue_script('tnet-profile-avatar-editor', TNET_PROFILE_PLUGIN_URL . 'public/js/tnet-profile-avatar-editor.js', ['tnet-identity-avatar-photo'], is_readable($path) ? filemtime($path) : '1', true);
+  }
+
+  /** Render the shared avatar editor as the standalone page or an owner modal. */
+  public static function render_modal($return_to) {
+    if (!is_user_logged_in()) return;
+    self::render_editor_surface(get_current_user_id(), $return_to, true);
   }
 
   public static function upload() {
@@ -226,35 +250,49 @@ final class TNet_Profile_Avatar {
     $route = get_query_var('tnet_profile_route');
     if ($route === 'avatar_component_svg') TNet_Profile_Avatar_Component_Set::render_svg_response();
     if ($route === 'avatar_component_lab') TNet_Profile_Avatar_Component_Lab::render();
-    if ($route !== 'avatar') return;
+    if ($route !== 'avatar_editor') return;
     status_header(200);
-    if (!is_user_logged_in()) { auth_redirect(); }
-    $avatar = self::resolve_avatar(get_current_user_id(), 128);
+    if (!is_user_logged_in()) auth_redirect();
+    $return_to = self::editor_url();
+    TNet_Shared_Shell::enqueue_assets('community');
+    self::enqueue_editor_assets();
+    TNet_Profile_Basics::enqueue_assets();
+    ?><!doctype html><html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo('charset'); ?>"><meta name="viewport" content="width=device-width, initial-scale=1"><title><?php echo esc_html__('Profile Avatar | Teachers.Net', 'tnet-profile'); ?></title><?php wp_head(); ?></head><body><?php self::render_editor_surface(get_current_user_id(), $return_to, false); wp_footer(); ?></body></html><?php
+    exit;
+  }
+
+  private static function render_editor_surface($user_id, $return_to, $modal) {
+    $avatar = self::resolve_avatar($user_id, 128);
     $status = isset($_GET['avatar_status']) ? sanitize_key((string) wp_unslash($_GET['avatar_status'])) : '';
-    ?><!doctype html><html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo('charset'); ?>"><meta name="viewport" content="width=device-width, initial-scale=1"><title><?php echo esc_html__('Profile Avatar | Teachers.Net', 'tnet-profile'); ?></title><?php wp_head(); ?><style>
-      .tnet-avatar-page{box-sizing:border-box;max-width:560px;margin:48px auto;padding:32px;font:16px/1.5 system-ui,sans-serif;color:#122875}.tnet-avatar-page *{box-sizing:border-box}.tnet-avatar-current{border-radius:50%;object-fit:cover;display:block}.tnet-avatar-crop{display:none;margin:24px 0;padding:20px;border:1px solid #dbe4f0;border-radius:12px;background:#f7f8fa}.tnet-avatar-crop.is-open{display:block}.tnet-avatar-crop-stage{position:relative;width:min(100%,360px);aspect-ratio:1;margin:auto;overflow:hidden;background:#122875;border-radius:8px;touch-action:none;cursor:grab}.tnet-avatar-crop-stage.is-dragging{cursor:grabbing}.tnet-avatar-crop-stage canvas{display:block;width:100%;height:100%}.tnet-avatar-controls{display:grid;gap:12px;margin-top:16px}.tnet-avatar-controls label{display:grid;gap:4px}.tnet-avatar-controls input[type=range]{width:100%}.tnet-avatar-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.tnet-avatar-actions button{font:inherit;padding:8px 14px;border:1px solid #b8c7dd;border-radius:6px;background:#fff;color:#122875;cursor:pointer}.tnet-avatar-actions .tnet-avatar-confirm{background:#123bc6;border-color:#123bc6;color:#fff}.tnet-avatar-message{min-height:1.5em;color:#8a1f11}.tnet-avatar-help{font-size:.92rem;color:#40536f}.tnet-avatar-remove{margin-top:16px}.tnet-avatar-file{display:grid;gap:8px}.tnet-avatar-file button{width:max-content}.tnet-avatar-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    </style></head><body><main class="tnet-avatar-page"><h1><?php echo esc_html__('Profile avatar', 'tnet-profile'); ?></h1><p><?php echo esc_html__('Your avatar belongs to your Teachers.Net user identity.', 'tnet-profile'); ?></p><p><img class="tnet-avatar-current" src="<?php echo esc_url($avatar['url']); ?>" width="128" height="128" alt="<?php echo esc_attr__('Current avatar', 'tnet-profile'); ?>"></p><?php if ($status === 'updated') : ?><p role="status"><?php echo esc_html__('Avatar updated.', 'tnet-profile'); ?></p><?php elseif ($status === 'removed') : ?><p role="status"><?php echo esc_html__('Avatar removed.', 'tnet-profile'); ?></p><?php elseif ($status === 'invalid') : ?><p role="alert"><?php echo esc_html__('Choose a JPG, PNG, or WebP image between 64px and 2048px and no larger than 5 MB.', 'tnet-profile'); ?></p><?php endif; ?><form id="tnet-avatar-upload" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" enctype="multipart/form-data"><input type="hidden" name="action" value="tnet_profile_avatar_upload"><?php wp_nonce_field('tnet_profile_avatar_upload'); ?><label class="tnet-avatar-file"><?php echo esc_html__('Choose a replacement image', 'tnet-profile'); ?><input id="tnet-avatar-file" type="file" name="profile_avatar" accept="image/jpeg,image/png,image/webp" required></label><section id="tnet-avatar-crop" class="tnet-avatar-crop" aria-labelledby="tnet-avatar-crop-title"><h2 id="tnet-avatar-crop-title"><?php echo esc_html__('Frame your avatar', 'tnet-profile'); ?></h2><p class="tnet-avatar-help"><?php echo esc_html__('Drag the image to reposition it, then adjust zoom. The square inside the frame is what will be saved.', 'tnet-profile'); ?></p><div id="tnet-avatar-stage" class="tnet-avatar-crop-stage" tabindex="0" role="img" aria-label="Avatar crop preview"><canvas id="tnet-avatar-canvas" width="512" height="512"></canvas></div><div class="tnet-avatar-controls"><label for="tnet-avatar-zoom"><?php echo esc_html__('Zoom', 'tnet-profile'); ?><input id="tnet-avatar-zoom" type="range" min="1" max="3" step="0.01" value="1"></label></div><p id="tnet-avatar-message" class="tnet-avatar-message" role="alert" aria-live="polite"></p><div class="tnet-avatar-actions"><button id="tnet-avatar-confirm" class="tnet-avatar-confirm" type="button"><?php echo esc_html__('Save cropped avatar', 'tnet-profile'); ?></button><button id="tnet-avatar-cancel" type="button"><?php echo esc_html__('Cancel', 'tnet-profile'); ?></button></div></section></form><?php if ($avatar['is_custom']) : ?><form class="tnet-avatar-remove" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>"><input type="hidden" name="action" value="tnet_profile_avatar_remove"><?php wp_nonce_field('tnet_profile_avatar_remove'); ?><button type="submit"><?php echo esc_html__('Remove avatar', 'tnet-profile'); ?></button></form><?php endif; ?></main><script>
-      (() => { const file = document.getElementById('tnet-avatar-file'), form = document.getElementById('tnet-avatar-upload'), crop = document.getElementById('tnet-avatar-crop'), stage = document.getElementById('tnet-avatar-stage'), canvas = document.getElementById('tnet-avatar-canvas'), zoom = document.getElementById('tnet-avatar-zoom'), cancel = document.getElementById('tnet-avatar-cancel'), message = document.getElementById('tnet-avatar-message'), ctx = canvas.getContext('2d'); let image = null, objectUrl = '', scale = 1, x = 0, y = 0, drag = null;
-        const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-        const bounds = () => { const side = Math.max(image.naturalWidth, image.naturalHeight), base = 512 / Math.min(image.naturalWidth, image.naturalHeight), width = image.naturalWidth * base * scale, height = image.naturalHeight * base * scale; return { width, height, minX: 512 - width, minY: 512 - height }; };
-        const draw = () => { if (!image) return; const b = bounds(); x = clamp(x, b.minX, 0); y = clamp(y, b.minY, 0); ctx.clearRect(0, 0, 512, 512); ctx.fillStyle = '#122875'; ctx.fillRect(0, 0, 512, 512); ctx.drawImage(image, x, y, b.width, b.height); };
-        const point = event => { const rect = stage.getBoundingClientRect(); return { x: event.clientX - rect.left, y: event.clientY - rect.top }; };
-        const stopDrag = () => { drag = null; stage.classList.remove('is-dragging'); };
-        file.addEventListener('change', () => { const selected = file.files && file.files[0]; if (!selected) return; if (!/^image\/(jpeg|png|webp)$/.test(selected.type) || selected.size > 5242880) { message.textContent = 'Choose a JPG, PNG, or WebP image no larger than 5 MB.'; file.value = ''; crop.classList.remove('is-open'); return; } objectUrl = URL.createObjectURL(selected); image = new Image(); image.onload = () => { if (image.naturalWidth < 64 || image.naturalHeight < 64 || image.naturalWidth > 2048 || image.naturalHeight > 2048) { message.textContent = 'Image dimensions must be between 64px and 2048px.'; file.value = ''; crop.classList.remove('is-open'); URL.revokeObjectURL(objectUrl); return; } scale = 1; zoom.value = '1'; const b = bounds(); x = (512 - b.width) / 2; y = (512 - b.height) / 2; crop.classList.add('is-open'); message.textContent = ''; draw(); stage.focus(); }; image.onerror = () => { message.textContent = 'The selected image could not be read.'; file.value = ''; crop.classList.remove('is-open'); }; image.src = objectUrl; });
-        zoom.addEventListener('input', () => { if (!image) return; const before = bounds(); const centerX = (256 - x) / before.width, centerY = (256 - y) / before.height; scale = Number(zoom.value); const after = bounds(); x = 256 - centerX * after.width; y = 256 - centerY * after.height; draw(); });
-        stage.addEventListener('pointerdown', event => { if (!image) return; stage.setPointerCapture(event.pointerId); drag = { pointerId: event.pointerId, start: point(event), x, y }; stage.classList.add('is-dragging'); event.preventDefault(); });
-        stage.addEventListener('pointermove', event => { if (!drag || drag.pointerId !== event.pointerId) return; const p = point(event); x = drag.x + p.x - drag.start.x; y = drag.y + p.y - drag.start.y; draw(); event.preventDefault(); });
-        stage.addEventListener('pointerup', stopDrag); stage.addEventListener('pointercancel', stopDrag); stage.addEventListener('keydown', event => { if (!image) return; const amount = event.shiftKey ? 20 : 5; if (event.key === 'ArrowLeft') x -= amount; else if (event.key === 'ArrowRight') x += amount; else if (event.key === 'ArrowUp') y -= amount; else if (event.key === 'ArrowDown') y += amount; else return; draw(); event.preventDefault(); });
-        cancel.addEventListener('click', () => { if (objectUrl) URL.revokeObjectURL(objectUrl); image = null; objectUrl = ''; file.value = ''; crop.classList.remove('is-open'); message.textContent = ''; });
-        form.noValidate = true; document.getElementById('tnet-avatar-confirm').addEventListener('click', event => { if (!image) return; event.preventDefault(); canvas.toBlob(async blob => { if (!blob) { message.textContent = 'The cropped image could not be prepared.'; return; } const data = new FormData(form); data.set('profile_avatar', blob, 'profile-avatar.jpg'); try { const response = await fetch(form.getAttribute("action"), { method: 'POST', body: data, credentials: 'same-origin' }); window.location.assign(response.url); } catch (error) { message.textContent = 'The cropped image could not be saved. Please try again.'; } }, 'image/jpeg', 0.9); });
-      })();
-    </script><?php wp_footer(); ?></body></html><?php exit;
+    $id = $modal ? 'profile-avatar-modal' : 'profile-avatar-page';
+    $current_photo = ($avatar['source'] ?? '') === 'first-party' ? $avatar['url'] : '';
+    ?>
+    <?php if ($modal) : ?>
+      <dialog id="<?php echo esc_attr($id); ?>" class="tnet-profile-avatar-dialog" data-profile-avatar-modal aria-label="<?php echo esc_attr__('Edit profile photo', 'tnet-profile'); ?>">
+        <button class="tnet-profile-avatar-dialog-close" type="button" data-avatar-dialog-close aria-label="<?php echo esc_attr__('Close photo editor', 'tnet-profile'); ?>">×</button>
+    <?php endif; ?>
+      <main class="tnet-profile-avatar-dialog-content" data-profile-avatar-editor>
+        <h2><?php echo esc_html__('Edit your profile photo', 'tnet-profile'); ?></h2>
+        <?php if (!$modal) : ?><p><?php echo esc_html__('Your avatar belongs to your Teachers.Net user identity.', 'tnet-profile'); ?></p><?php endif; ?>
+        <?php if ($status === 'updated') : ?><p role="status"><?php echo esc_html__('Avatar updated.', 'tnet-profile'); ?></p><?php elseif ($status === 'removed') : ?><p role="status"><?php echo esc_html__('Avatar removed.', 'tnet-profile'); ?></p><?php elseif ($status === 'invalid') : ?><p role="alert"><?php echo esc_html__('Choose a JPG, PNG, or WebP image between 64px and 2048px and no larger than 5 MB.', 'tnet-profile'); ?></p><?php endif; ?>
+        <?php if (!$current_photo) : ?><img class="tnet-profile-avatar-current" src="<?php echo esc_url($avatar['url']); ?>" width="96" height="96" alt="<?php echo esc_attr__('Current profile avatar', 'tnet-profile'); ?>"><?php endif; ?>
+        <form data-profile-avatar-upload method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" enctype="multipart/form-data"><input type="hidden" name="action" value="tnet_profile_avatar_upload"><input type="hidden" name="return_to" value="<?php echo esc_attr($return_to); ?>"><?php wp_nonce_field('tnet_profile_avatar_upload'); ?>
+          <?php if (class_exists('TNet_Identity_Public')) TNet_Identity_Public::render_avatar_photo_surface(['id' => $id . '-file', 'preview_url' => $current_photo, 'save_label' => 'Save photo', 'show_help' => true]); ?>
+          <p data-profile-avatar-message role="alert" aria-live="polite"></p>
+        </form>
+        <?php if ($avatar['is_custom']) : ?><form class="tnet-profile-avatar-remove-form" data-profile-avatar-remove-form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>"><input type="hidden" name="action" value="tnet_profile_avatar_remove"><input type="hidden" name="return_to" value="<?php echo esc_attr($return_to); ?>"><?php wp_nonce_field('tnet_profile_avatar_remove'); ?><button type="submit"><?php echo esc_html__('Remove photo', 'tnet-profile'); ?></button></form><?php endif; ?>
+      </main>
+      <?php if (class_exists('TNet_Identity_Public')) TNet_Identity_Public::render_avatar_crop_dialog($id . '-crop-title'); ?>
+    <?php if ($modal) : ?></dialog><?php endif; ?>
+    <?php
   }
 }
 
 TNet_Profile_Avatar::init();
 TNet_Profile_Member_Context::init();
 TNet_Profile_Basics::init();
+TNet_Profile_Enrichment::init();
+TNet_Profile_Public::init();
 register_activation_hook(__FILE__, ['TNet_Profile_Avatar', 'activate']);
 register_deactivation_hook(__FILE__, ['TNet_Profile_Avatar', 'deactivate']);
 

@@ -273,6 +273,60 @@ final class TNet_Profile_Member_Context {
     return self::facts_for_user($user_id, $provenance);
   }
 
+  /**
+   * Replace self-reported professional identities within a governed Profile
+   * choice composition. Historical assertions outside it remain untouched.
+   */
+  public static function replace_professional_identity_choices($user_id, array $term_uuids, array $allowed_uuids) {
+    global $wpdb;
+    $user_id = absint($user_id);
+    if (!$user_id || !get_user_by('id', $user_id)) return new WP_Error('tnet_profile_member_fact_user_missing', __('The account could not be found.', 'tnet-profile'));
+    $allowed = array_fill_keys(array_map('strval', $allowed_uuids), true);
+    if (!$allowed) return new WP_Error('tnet_profile_member_fact_composition_unavailable', __('Profile role choices are temporarily unavailable.', 'tnet-profile'));
+    $terms = [];
+    foreach (array_unique(array_map('strval', $term_uuids)) as $term_uuid) {
+      if (!isset($allowed[$term_uuid])) return new WP_Error('tnet_profile_member_fact_choice_unavailable', __('A selected Profile role is no longer available.', 'tnet-profile'));
+      $term = self::resolve_live_core_term($term_uuid);
+      if (is_wp_error($term)) return $term;
+      $terms[(string) $term['term_uuid']] = $term;
+    }
+
+    $table = self::table();
+    $now = gmdate('Y-m-d H:i:s');
+    $wpdb->query('START TRANSACTION');
+    try {
+      foreach (array_keys($allowed) as $uuid) {
+        $deleted = $wpdb->delete($table, [
+          'user_id' => $user_id,
+          'context_type' => 'professional_identity',
+          'term_uuid' => $uuid,
+          'provenance' => self::PROVENANCE_SELF_REPORTED,
+        ], ['%d', '%s', '%s', '%s']);
+        if ($deleted === false) throw new RuntimeException('Could not replace composed professional identity facts.');
+      }
+      foreach ($terms as $term) {
+        $inserted = $wpdb->insert($table, [
+          'user_id' => $user_id,
+          'context_type' => 'professional_identity',
+          'context_value' => $term['term_uuid'],
+          'provenance' => self::PROVENANCE_SELF_REPORTED,
+          'term_framework_slug' => self::CORE_TERMS_FRAMEWORK,
+          'term_uuid' => $term['term_uuid'],
+          'visibility_scope' => self::VISIBILITY_PROFILE_DETAILS,
+          'lifecycle_state' => self::LIFECYCLE_ACTIVE,
+          'created_at' => $now,
+          'updated_at' => $now,
+        ], ['%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s']);
+        if ($inserted === false) throw new RuntimeException('Could not save composed professional identity facts.');
+      }
+      $wpdb->query('COMMIT');
+    } catch (Throwable $exception) {
+      $wpdb->query('ROLLBACK');
+      return new WP_Error('tnet_profile_member_fact_replace_failed', __('Your Profile selections could not be saved. Please try again.', 'tnet-profile'));
+    }
+    return self::facts_for_user($user_id, self::PROVENANCE_SELF_REPORTED);
+  }
+
   public static function remove_fact($user_id, $relationship_type, $term_uuid, $provenance = self::PROVENANCE_SELF_REPORTED) {
     global $wpdb;
     $user_id = absint($user_id);

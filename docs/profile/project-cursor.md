@@ -10,18 +10,93 @@ Project state: Active Development
 
 ## Current boundary
 
-`PROFILE-SOURCE-OWNER-RECOVERY002` is the active source-provenance
-convergence. It establishes `teachers-net-site` as the canonical Git owner of
-the complete first-party `tnet-profile` runtime boundary: bootstrap, accepted
-member-fact service, frozen portrait manifest and its 268 retained masters,
-and the two constraining Profile contracts. The apparent 269 runtime asset
-count is reconciled as 268 portrait PNG masters plus `manifest.json`. User
-uploads, caches, QA fixtures, reports, review labs, and removed historical
-artwork remain excluded. Its immutable recovered-source baseline is
-`65e374e125189efff44a1229191c2f8ad47abac3`, recorded in
-`docs/profile/tnet-profile-source-ownership.md` and the terminal Workflow V2
-Report. `PROFILE-V1-BASICS-FACTS001` remains unchanged and is the next
-implementation objective after recovery publication.
+`PROFILE-V1-SOURCE-RECOVERY029` is the active convergence boundary. The
+canonical isolated source owner is now
+`/home/bobreap/projects/teachers-net-profile-recovery029` on branch
+`codex/profile-v1-basics-facts`; cycle `260926095358` reconciles the complete
+284-file accepted `tnet-profile` boundary and supersedes the missing
+`/tmp/profile-v1-basics-facts` worktree pointer. The recovered source is
+byte-identical to the intended DDEV Profile plugin across all governed files.
+The sole DDEV-only remainder is the explicitly excluded rejected-component-set
+diagnostic test fixture. The dirty Community checkout and its files/history
+remain untouched.
+
+Director authority for the next, separate Permanent Profile objective is
+settled but not implemented here: `/profile/` is the authenticated self entry;
+`/profile/<username>/` is the canonical public/other-member route keyed by
+permanent `user_login`; editing is owner-only; avatar, display name, handle and
+Member Since are public identity core; location continues to obey
+`location_public`; Grades, Subjects, Educator Roles, Teaching Since and Bio
+continue to obey aggregate `profile_details`; email and deferred authored,
+Community, lesson and Jobs relationships are excluded from Profile V1.
+
+The Profile V1 Routes/Live Preview objective remains HUMAN_QA_PENDING after
+refinement cycle `260925135240` (`PROFILE-V1-ROUTES-LIVE-PREVIEW026-REFINEMENT`);
+the full implementation baseline remains cycle `260925124915`. The refinement
+consolidated provisional declarations in the new shared enrichment stylesheet
+and refreshed native 1280px/390px evidence. Fixed desktop rail/footer behavior,
+the two-column desktop Grade flow, shared actual-fact card, pending-state
+synchronization, and onboarding-owned avatar edit/crop path were rechecked.
+No commit or push occurred. The active DDEV Shared Shell Community stylesheet
+contains 56 additional Community-owned intermediate/mobile layout lines beyond
+the isolated Profile worktree copy. This pre-existing Community difference was
+preserved and is not represented as full-file byte parity; Profile routes were
+verified against the active DDEV composite. See the cycle evidence for hashes.
+
+`PROFILE-V1-ROUTES-LIVE-PREVIEW026` is implemented on the isolated Profile
+worktree `/tmp/profile-v1-basics-facts`, branch
+`codex/profile-v1-basics-facts`, and is HUMAN_QA_PENDING in cycle
+`260925135240` (refinement cycle; full implementation baseline
+`260925124915`). Canonical owners now resolve `/profile/` (temporary
+fact-only public view), `/profile/edit/`, `/profile/edit/avatar/`, and the
+Basics/Roles/Complete enrichment routes. The avatar camera opens the existing
+shared avatar editor as a modal; the standalone avatar route uses that same
+owner. One shared live card/status contract previews pending Basics and Roles
+values without writing a second fact owner; Complete remains fact-only and
+retains the three next-destination cards. Basics has the two-column Grade
+tree, branches closed on load/reload, and Skip-left/Save-right actions. Roles
+has Done-left/Add-right actions. Native 1280px desktop captures, 390px
+containment across all six Profile routes, live pending/clear state checks,
+route checks, and source/runtime hashes belong to this cycle. PHP and JS
+syntax checks and the isolated worktree diff check pass. The local QA account
+(user 353) was restored and read back with empty Profile facts, blank bio, and
+no persisted location. No commit/push occurred. Community-owned product
+behavior, Community-only CSS, and Git history were untouched; the DDEV runtime
+contains only the ticket-scoped Profile-specific Shared Shell PHP change. The
+Profile branch remains the publishable source owner.
+
+The public `/profile/` view in 026 is intentionally only a fact-only route
+ownership surface, not the final public Profile design. `/profile/edit/` is
+also not redesigned. Those are later design boundaries. The avatar editor
+itself remains unchanged.
+
+`PROFILE-V1-GUIDED-JOURNEY-CONVERGENCE025` is carried forward as implemented
+and HUMAN_QA_PENDING. Its save semantics, actual-fact completed state, three
+destination cards, and interim personalized Chatboards rail remain accepted
+dependencies; 026 does not create Community membership or route authority.
+
+The personalized Chatboards child rail is interim presentation from accepted
+Profile facts, not Community membership or canonical routing. Grade/Subject
+children without governed Community routes are visible non-links, never
+fabricated URLs. A validated state child may link to its established route.
+Absent Grade/Subject routes do not block Profile V1 deployment; activating
+those labels as links requires future Community route-owner authority.
+
+`PROFILE-V1-PAYOFF-ENRICHMENT023` was the active baseline after Director-authorized source
+reconciliation. Its publishable Profile source owner is the existing isolated
+worktree `/tmp/profile-v1-basics-facts` on `codex/profile-v1-basics-facts`
+(starting HEAD `8527f570df0cbf2bea01ce39a0cd74a6d438771c`). All six
+executable `tnet-profile` PHP/JS/CSS files are Git tracked there and now match
+the active DDEV copies byte for byte. The accepted READINESS022 additions were
+reconciled into Profile Basics PHP/JS and the member-fact writer; the accepted
+fixed desktop rail CSS was reconciled into Shared Shell source. Identity
+executable files match without changes. The frozen portrait manifest hash is
+`f52b1e86511f9544f16c9f3285a39d58f7bb4ae1fb1c27c8e5b72d1a5733b4b1`;
+all 268 retained masters match across source and DDEV. Native Page-1 rendering
+and the published nine-role binding (View 65/version 90) were rechecked before
+Page-2 work. CONTROL-STYLE-CORRECTION024 has Director HUMAN_QA PASS. The
+active Community branch and its owned changes remain outside Profile source
+publication. Page 2 now exists at authenticated `/profile/enrichment/`; guided Page-1 save routes there. Cycle `260924151739` verified the actual-fact payoff, governed nine-role List, suggestion-present/absent states, optional Teaching Since save/read, no-write Skip, and 390/390 containment. Source and DDEV executable copies are byte-identical, and the reusable QA account was restored. No commit/push occurred. That cycle's full-page mobile screenshot timed out after a successful upper-view capture and rendered geometry check.
 
 `PROFILE-LAUNCH-ROUTER-VISUAL-CONVERGENCE004` is COMPLETE/FROZEN after
 Engineering Director HUMAN_QA PASS. Its
@@ -223,13 +298,11 @@ Legacy Screen 6 role/intent rows are unchanged and its save/skip paths cannot
 delete future canonical facts. The contract is
 `docs/profile/member-fact-contract-v1.md`.
 
-`PROFILE-V1-CORE-TERMS-READINESS001` is awaiting Director review. Core Terms
-now provides the minimum Profile-v1 professional identity vocabulary and
-unambiguous subject aliases; Profile resolves them through the Core Terms public
-identifier API without owning aliases or a second taxonomy. The detailed
-inventory and deliberately deferred ELL/ESL/ELL/multilingual meanings are in
-`docs/core-terms/profile-v1-readiness.md`. No Profile UI or Screen 6 migration
-is authorized by this readiness ticket.
+`PROFILE-V1-CORE-TERMS-READINESS001` is superseded by accepted
+`CORE-TERMS-PROFILE-LISTS-SEMANTIC-READINESS017` and the additive local
+`PROFILE-V1-EDUCATOR-ROLES-READINESS022` foundation. The historical inventory
+remains in `docs/core-terms/profile-v1-readiness.md`; current role choice
+authority is documented in `docs/core-terms/profile-educator-roles-v1.md`.
 
 ## Source-control recovery — 2026-09-19
 
@@ -256,3 +329,234 @@ in production or another shared environment. Do not delete it during routine
 QA cleanup; use disposable unique accounts when a test requires fresh-account
 or uniqueness behavior. Credentials remain Director-controlled and are not
 stored in this document.
+
+## Core Terms Profile Lists — READINESS017 (2026-09-24)
+
+Local DDEV semantic/source and Profile composition work is implemented and
+engineering-verified; Director HUMAN_QA PASS is recorded by
+PROFILE-V1-GRADE-HIERARCHY-PROJECTION018. Preschool and Early
+Literacy are new canonical UUIDs, and the former Early Learners UUID is preserved
+as Beginning Learners under Teaching Practice & Theory. Profile Basics consumes
+separate governed Grade (22 terms) and Subject (70 terms) Lists without changing
+the accepted guided UI. Jobs V1 binds corrected Grade View 37/version 52; the
+unbound JobLister published View and 97-entry draft remain untouched by Director
+decision. See `docs/core-terms/profile-readiness017-composition.md` and the
+current READINESS017 Report/Hopper inventory for exact identifiers and the
+production dependency/replay gate. RAIL013 and Community routes remain outside
+this objective.
+
+## Grade tree convergence, projection and desktop rail — 019 (2026-09-24)
+
+The active objective now presents the Grade selector as one compact tree,
+superseding 018's one-open boxed accordion only. Grouped parents show
+unchecked, muted-derived, or fully checked state over child-only submitted
+facts; multiple groups may remain expanded. Profile Basics retains the reusable
+read-only Grade label projection. Shared Shell retains the 018 desktop fixed-rail
+repair. Local DDEV and native engineering checks pass, including an exact
+four-child disposable save/read and 390px containment. Grade-tree presentation
+and rail behavior are Director HUMAN_QA PASS / PROVEN by LOCK020. READINESS017's production
+dependency/replay gate remains separate; personalized Community Grade/Subject
+routing still awaits canonical route authority.
+
+## Guided Grade tree top-level visual lock — 020 (2026-09-24)
+
+The guided tree aligns all six top-level checkboxes and labels into common
+columns. Expandable rows retain the caret gutter; Adult Education and Higher
+Education reserve it without a disclosure control. Top-level labels use the
+existing 600-weight parent treatment and child labels retain their prior
+300-weight styling. No JS, fact, projection, card, responsive, or Shared Shell
+behavior changed. Native desktop geometry and 390px containment pass. The
+Engineering Director granted HUMAN_QA PASS; carry the Grade tree visual
+composition and behavior forward as PROVEN.
+
+## Profile Educator Roles V1 — READINESS022 (2026-09-24)
+
+The approved optional, self-declared, unverified role family is implemented
+through a distinct canonical School Counselor term and the Profile-owned flat
+ordered `Profile Educator Roles V1` Durable List. Profile Basics now resolves
+`professional_identity` choices from the published List binding rather than
+the former hard-coded 12-UUID choice authority. The Profile writer preserves
+out-of-composition historical assertions, and only approved explicit legacy
+Screen 6 self-reports can produce non-selected suggestions. Local DDEV source,
+binding, List, and a disposable save/read compatibility check pass. No
+production census/migration, enrichment UI, Jobs, or Community change occurred.
+See `docs/core-terms/profile-educator-roles-v1.md`. READINESS017 and guided
+Grade-tree LOCK020 are carried forward as Director HUMAN_QA PASS / PROVEN.
+
+## Enrichment launch responsive convergence — 027 (2026-09-25)
+
+`PROFILE-V1-ENRICHMENT-LAUNCH027-RESPONSIVE-CONVERGENCE`, cycle
+`260925235128`, is implementation-complete and HUMAN_QA_PENDING. The accepted
+three-card launch surface now has one responsive owner: full desktop keeps the
+three cards and 300x250 right-rail advertisement; 1025–1279px and 601–900px
+use the compact two-plus-one card composition; 901–1024px uses one compact
+three-card row after the advertisement disappears; <=600px hides the desktop
+rail, keeps the existing hamburger, and retains the compact two-plus-one
+composition. Compact cards use equal top-card heights/CTAs, a shorter lower
+card, cover-fit imagery without matte bars, and no compact icon wrappers.
+
+The mobile menu consumes the same Profile community projection as the desktop
+rail. It preserves canonical Home, Lesson Plans, Jobs and Chatboards entries;
+projected children are links only when a governed URL exists and non-link labels
+otherwise. The current QA fixture has no projected children. Ad placement stays
+below account actions and all tested viewports have zero document overflow.
+Direct Windows Chrome/CDP supplied native evidence at 1536, 1180, 1179, 1072,
+1071, 1024, 900, 768, 601, 600 and 390px.
+
+The Profile enrichment CSS remains an existing ignored runtime file under the
+repository's pre-existing `tnet-profile/*` ignore rule; its SHA-256 and the
+tracked PHP/template hashes are recorded in the cycle Report/Hopper. No commit
+or push was authorized. The prior builder interruption archived cycle
+`260925221311`; this cycle is the continuation and is not a new product
+objective.
+
+## Compact Shared Shell header continuation — 027 (2026-09-26)
+
+`PROFILE-V1-ENRICHMENT-LAUNCH027-COMPACT-HEADER`, cycle `260926004027`, is
+implementation-complete and HUMAN_QA_PENDING. The compact Shared Shell now
+uses a natural bell/avatar/hamburger cluster by removing the compact account
+area's inherited desktop flex basis. Profile-derived menu children use the
+same 15px/600 Manrope treatment as Home, Lesson Plans, Jobs and Chatboards;
+hierarchy remains icons, indentation and child-icon absence. Native direct
+Chrome/CDP geometry is clean through the requested 360px layout width; the
+350px probe is the first collision with the fixed full logo and visible
+controls. The existing Shared Shell exposes no supported account-in-menu
+fallback, so no new ultra-narrow owner was invented. The temporary local QA
+grade/subject facts used to render Math Teachers and Science Teachers were
+removed through the canonical Profile fact service and verified absent.
+The current Report/Hopper contains the decisive 439px native screenshot,
+measured 439/400/390/375/360/350/320/319 geometry, menu snapshot and
+typography evidence, console check, hashes and the bounded sub-threshold
+boundary. No commit or push was authorized; unrelated dirty work remains
+untouched.
+
+## Notification badge transfer continuation — 027 (2026-09-26)
+
+`PROFILE-V1-ENRICHMENT-LAUNCH027-NOTIFICATION-BADGE-TRANSFER`, cycle
+`260926115156`, is implementation-complete and HUMAN_QA_PENDING. The existing
+Shared Shell notification owner remains authoritative for unread-count
+calculation, badge convention, read/unread mutation, and destinations. At the
+ultra-narrow `max-width: 374px` boundary, the same unread-count DOM node is
+transferred between the visible hamburger control and the visible
+Notifications bell row; no second counter is created. Closed menu state places
+the badge on the hamburger without affecting layout width. Opening the menu
+places that same node on the Notifications bell, and closing returns it to the
+hamburger. Toggling does not mark notifications read. Zero count remains hidden
+on both controls. Direct Windows Chrome/CDP evidence used the existing
+synthetic notification fixture (3 unread) and the Profile runtime route (zero
+count, 1280px and 390px containment). No commit/push occurred; this remains a
+Shared Shell visual/interaction change pending Director HUMAN_QA.
+
+## Compact Notifications row alignment continuation — 027 (2026-09-26)
+
+Cycle `260926124139` applies the final bounded compact-row alignment correction
+and remains HUMAN_QA_PENDING. At the Director's 339px document-layout state,
+Notifications now uses the same 20px icon column, 12px icon-to-label gap,
+9px 10px row padding and 44px minimum row height as Home, Lesson Plans and
+Jobs; the divider remains below the row. The zero-count Director fixture shows
+no badge and is captured in the current Report/Hopper. The preceding positive
+count transfer evidence remains carried forward unchanged because the badge
+owner and transfer code were not modified. No commit or push occurred.
+
+## Celebration mark continuation — 027 (2026-09-26)
+
+Cycle `260926133957` installed the Director-supplied original
+`celebration-party-streamers.png` under the governed Profile enrichment asset
+owner and renders it decoratively beside the terminal `You’re all set!`
+heading. Desktop, 390px DOM/geometry and 361px native evidence pass with
+zero overflow; the mark hides at 354px rather than wrapping. The 390px
+screenshot RPC timed out twice, while desktop and 361px screenshots and the
+compact geometry/accessibility evidence are packaged. Source/runtime hashes
+match; no commit or push occurred. HUMAN_QA remains pending.
+
+## Celebration asset lock continuation — 027 (2026-09-26)
+
+Cycle `260926142722` supersedes the active celebration artwork with the newly
+supplied WSL-resolved 945x907 RGBA `party-streamers.png` without changing the
+governed Profile asset path or Complete-page behavior. The new SHA-256 is
+`73385bdb819c7a256e28b9614ca816153ef1d7200ed281bd13685519b17e687e`. Direct
+Chrome/CDP evidence measures 41.67x40px on desktop and 33.33x32px at 390px,
+with an 8px heading gap and no document overflow. The mark remains visible at
+361px and is hidden at 354px to avoid isolated wrapping. Desktop and 361px
+screenshots are packaged; the 390px screenshot transport timed out while its
+DOM/geometry evidence passed. Local/DDEV hashes match, PHP lint passed, and no
+commit or push occurred. HUMAN_QA remains pending.
+
+## Streamer 3 swap continuation — 027 (2026-09-26)
+
+Cycle `260926152058` replaces the active celebration binary with the supplied
+transparent `streamer3.png` at the existing governed path. SHA-256 is
+`57379c00f7659a72cfb53cab35497accb86366a1b2cacdd1eb125abcf8ca87c1`.
+Direct Chrome/CDP evidence measures 40.64x40px desktop and 32.5x32px at 390px,
+with the accepted 8px heading gap and no overflow. The 354px hide behavior is
+unchanged. Desktop screenshot capture succeeded; the 390px screenshot timed
+out while DOM/geometry evidence passed. PHP/CSS owners and all unrelated
+behavior remain unchanged; no commit or push occurred. HUMAN_QA remains pending.
+
+## Enrichment Launch 027 closeout — 2026-09-26
+
+Engineering Director HUMAN_QA PASS is recorded for the final
+`/profile/enrichment/complete/` surface, including the accepted desktop and
+responsive choreography, destination cards/assets, desktop ad slot,
+compact navigation and notification badge transfer, menu alignment, and final
+streamer-3 celebration treatment. Basics, Roles, and the shared Profile card
+remain PROVEN. `PROFILE-V1-ENRICHMENT-LAUNCH027` is now
+`COMPLETE / DIRECTOR HUMAN_QA PASS`; final evidence and the asset ledger remain
+preserved in cycles `260926152058` and `260926160823`. No product changes,
+commit, or push occurred during closeout. The next objective is **Permanent
+Profile View/Edit readiness**.
+
+## Permanent Profile surfaces readiness — 028 (2026-09-26)
+
+Cycle `260926161138` completed the repository-authoritative readiness audit.
+`/profile/` is currently an authenticated self-only, temporary fact-only view;
+`/profile/edit/` is the authenticated current-member editor; and
+`/profile/edit/avatar/` is the canonical standalone avatar editor sharing the
+same Profile owner as the modal. No canonical other-member Profile route or
+viewer/visibility contract is yet authorized. The readiness report is
+`tmp/hopper/profile/PROFILE-V1-PERMANENT-SURFACES028-readiness-report-260926161138.md`.
+The next implementation ticket must resolve target identity/canonicalization,
+viewer classes, final public visibility, and permanent View/Edit presentation
+before changing product source. No product, fixture, DDEV, browser, or Git
+state was mutated in this cycle.
+
+### 028 source-provenance correction
+
+The 028 diagnostic discovered that the documented `/tmp/profile-v1-basics-facts`
+worktree is absent; its branch ref survives at
+`8527f570df0cbf2bea01ce39a0cd74a6d438771c`, but its tree lacks the current
+Public and Enrichment route owners and related assets present in DDEV. This
+contradicts the earlier statement that the isolated worktree is the complete
+publishable source owner. Source/runtime parity and a complete publishable
+Profile baseline are therefore UNPROVEN. Do not treat ignored active DDEV files
+as canonical solely because they execute. Resolve this provenance boundary
+before permanent Profile implementation.
+
+The complete corrected diagnostic package is corrective continuation cycle
+`260926164236` at
+`tmp/hopper/profile/PROFILE-V1-PERMANENT-SURFACES028-readiness-report-260926164236.md`;
+it supersedes the incomplete first-cycle report. Permanent implementation
+remains blocked on Director route/visibility decisions and the source-worktree
+provenance contradiction above.
+
+## Profile V1 source recovery — 029 (2026-09-26)
+
+Cycle `260926095358` resolves the 028 source-provenance contradiction. The
+surviving `codex/profile-v1-basics-facts` branch was reattached at the canonical
+WSL worktree path
+`/home/bobreap/projects/teachers-net-profile-recovery029`. Accepted 023-027
+Report/Hopper hashes prove each recovered runtime owner. The final source
+contains 284 governed Profile files: 268 frozen portrait masters, their
+manifest, and 15 executable/presentation/launch-asset owners. It matches the
+intended DDEV Profile runtime byte-for-byte. DDEV's
+`tests/avatar-component-set-runtime.php` remains excluded as an obsolete local
+diagnostic fixture. No Profile fact, Core Term, product behavior, Community
+file, or production environment was changed.
+
+Focused authenticated Chrome/CDP regression covers Basics, Roles, Complete,
+temporary `/profile/`, `/profile/edit/`, and `/profile/edit/avatar/`; all render
+without horizontal overflow or new console errors. Existing Shared Shell and
+Identity dependencies were exercised but not absorbed into the recovered
+Profile source. The Workflow V2 terminal report owns the exact consolidation
+commit and parity/provenance matrices. Permanent Profile implementation remains
+a separate next objective.
