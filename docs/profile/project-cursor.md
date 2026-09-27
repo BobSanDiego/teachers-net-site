@@ -10,6 +10,27 @@ Project state: Active Development
 
 ## Current boundary
 
+`PROFILE-V1-PUBLIC-VIEW032` implements the release-time public member surface
+at `/profile/<username>/` on this canonical Profile branch. It resolves the
+immutable `user_login`, preserves `/profile/` self-view and fixed application
+routes, returns the public projection to anonymous, other-member, and owner
+visitors, and reuses the actual Shared Shell. Existing `location_public` and
+aggregate `profile_details_public` rules govern projection; email and empty
+teaching rows are omitted, About appears only when visible/nonempty, and the
+Groups card remains with its approved empty state. The current stack has no
+active authoritative public-membership provider or Groups discovery route, so
+no membership is inferred and no Groups link is fabricated. The optional
+`/members/<username>/` alias was omitted because WordPress's generic page
+catch-all makes it ambiguous; canonical routing is unaffected. Native QA used
+a disposable DDEV clone with synthetic fixtures and direct Windows Chrome/CDP;
+the existing DDEV product database and accounts were not changed. 1440, 1024,
+768, and 390 viewport checks passed, including anonymous, non-owner, owner,
+unknown-user 404, and canonical-case normalization cases. Automated projection
+tests and PHP lint pass. Cycle `260927211341` is
+`PUBLIC_PROFILE_IMPLEMENTED_HUMAN_QA_PENDING`; Director visual acceptance and
+the read-only production username-collision audit before eventual activation
+remain outstanding. No production activation occurred.
+
 `PROFILE-V1-USERNAME-NAMESPACE031` finalizes the Identity source needed before
 canonical public Profile routing. The canonical isolated source owner is
 `/home/bobreap/projects/teachers-net-profile-recovery029` on branch

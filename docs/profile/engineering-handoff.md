@@ -2,6 +2,26 @@
 
 ## 1. Current Phase
 
+`PROFILE-V1-PUBLIC-VIEW032` is implemented on isolated branch
+`codex/profile-v1-basics-facts` and is HUMAN_QA_PENDING. It adds the canonical
+anonymous-capable `/profile/<username>/` public projection while preserving
+`/profile/` self-view and static Profile routes, keyed only by immutable
+`user_login`. Public facts reuse the accepted avatar, Profile visibility, and
+Shared Shell owners. About and populated Teaching Profile rows are conditional;
+email is excluded; Groups intentionally renders the approved empty card. The
+current executable stack has no authoritative public membership provider or
+Groups discovery destination, so group memberships are not inferred and no
+link is invented. The optional `/members/<username>/` redirect was omitted
+because the generic WordPress page catch-all leaves that alias ambiguous.
+Direct Chrome/CDP native checks used a disposable DDEV clone and synthetic QA
+members, not the existing DDEV product data. Populated/sparse cases and
+anonymous, non-owner, owner, unknown-user 404, canonical normalization, and
+1440/1024/768/390 containment are recorded in cycle `260927211341`. The
+current 390px render reports 390/390 width, no overflowing element, all images
+loaded, and no console errors. Projection tests and PHP lint pass. No
+production activation occurred; Director visual review and the read-only
+production username collision audit remain required before release activation.
+
 `PROFILE-LAUNCH-ROUTER-VISUAL-CONVERGENCE004` is COMPLETE/FROZEN after
 Engineering Director HUMAN_QA PASS.
 `/account/launch/` remains a normal authenticated Shared Shell surface with a
@@ -39,6 +59,16 @@ The Profile resolver remains the canonical representation owner; the 268-entry
 frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
+
+`PROFILE-V1-PUBLIC-VIEW032` is the current implementation boundary. Its
+source adds `class-tnet-profile-public.php` route/projection/rendering,
+`public/css/tnet-profile-public.css`, shared-shell configuration/enqueue
+helpers, the existing Complete ad-slot owner reuse, and focused route/projection
+regressions. It deliberately does not implement Groups membership or the
+secondary `/members/` alias without authoritative ownership. This cycle is
+`PUBLIC_PROFILE_IMPLEMENTED_HUMAN_QA_PENDING`; do not deploy or claim Director
+acceptance. The isolated source branch is the publishable Profile owner; QA
+uses a disposable DDEV clone and does not establish main-DDEV runtime parity.
 
 `PROFILE-V1-USERNAME-NAMESPACE031` is implemented on the canonical isolated
 Profile branch `codex/profile-v1-basics-facts` at

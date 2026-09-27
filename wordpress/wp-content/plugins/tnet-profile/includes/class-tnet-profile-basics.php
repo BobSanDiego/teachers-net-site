@@ -388,6 +388,17 @@ final class TNet_Profile_Basics {
     wp_enqueue_script('tnet-profile-basics', TNET_PROFILE_PLUGIN_URL . 'public/js/tnet-profile-basics.js', [], is_readable($js) ? filemtime($js) : '1', true);
   }
 
+  /** Public Profile uses the same shell and Profile tokens without editor scripts. */
+  public static function enqueue_public_profile_assets() {
+    TNet_Shared_Shell::enqueue_assets('community');
+    $basics_css = dirname(__DIR__) . '/public/css/tnet-profile-basics.css';
+    $enrichment_css = dirname(__DIR__) . '/public/css/tnet-profile-enrichment.css';
+    $public_css = dirname(__DIR__) . '/public/css/tnet-profile-public.css';
+    wp_enqueue_style('tnet-profile-basics', TNET_PROFILE_PLUGIN_URL . 'public/css/tnet-profile-basics.css', ['tnet-shared-shell-community'], is_readable($basics_css) ? filemtime($basics_css) : '1');
+    wp_enqueue_style('tnet-profile-enrichment-presentation', TNET_PROFILE_PLUGIN_URL . 'public/css/tnet-profile-enrichment.css', ['tnet-profile-basics'], is_readable($enrichment_css) ? filemtime($enrichment_css) : '1');
+    wp_enqueue_style('tnet-profile-public', TNET_PROFILE_PLUGIN_URL . 'public/css/tnet-profile-public.css', ['tnet-profile-enrichment-presentation'], is_readable($public_css) ? filemtime($public_css) : '1');
+  }
+
   /** Presentation-only projections; labels do not confer Community membership or URL authority. */
   private static function community_navigation(array $state, $terminal_complete = false) {
     $children = [];
@@ -481,6 +492,50 @@ final class TNet_Profile_Basics {
         'navigation' => self::community_navigation($state),
         'main' => static function () use ($main) { echo '<section class="c3-community-page tnet-profile-basics-page tnet-profile-enrichment">'; $main(); echo '</section>'; },
         'right' => null, 'reserve_account_actions' => true, 'wide_main' => true,
+      ]);
+    };
+    return $config;
+  }
+
+  /** Shared Shell presentation for public subject views, independent of visitor auth. */
+  public static function public_profile_shell_config($title, $viewer, callable $main, ?callable $right = null) {
+    $state = $viewer ? self::state((int) $viewer->ID) : self::state(0);
+    if ($viewer) {
+      $config = self::shell_config($title, $viewer, $state, null, false);
+    } else {
+      $config = [
+        'contract' => 'canonical', 'adapter' => 'community3', 'workspace_owner' => 'consumer',
+        'fixture' => 'profile-public-view', 'clean' => true, 'presentation' => 'flush',
+        'document_title' => $title . ' | Teachers.Net', 'route_class' => 'profile-public-view',
+        'fixture_state' => 'guest', 'anonymous' => true, 'logged_in' => false,
+        'employer_access' => false, 'home_url' => home_url('/'), 'active_destination' => '',
+        'brand_image' => TNET_SHARED_SHELL_PLUGIN_URL . 'public/assets/teachers-net-wordmark.svg',
+        'identity' => [],
+        'urls' => [
+          'post_job' => home_url('/jobs/employer/new/'), 'my_jobs' => home_url('/jobs/employer/my-jobs/'),
+          'schools' => home_url('/jobs/employer/schools/'), 'archived' => home_url('/jobs/employer/my-jobs/?status=archived'),
+          'browse_jobs' => home_url('/jobs/'), 'saved_jobs' => home_url('/jobs/'), 'job_alerts' => home_url('/jobs/'),
+          'new_topic' => home_url('/chatboards/'), 'profile' => home_url('/profile/'), 'logout' => '',
+          'login' => wp_login_url(home_url((string) ($_SERVER['REQUEST_URI'] ?? '/'))),
+          'signup' => home_url('/account/sign-up/'), 'dashboard' => home_url('/'),
+          'wizard' => home_url('/jobs/employer/new/'), 'chatboards' => home_url('/chatboards/'),
+        ],
+        'taxonomy' => ['lesson_grade_levels' => [], 'lesson_subject_areas' => [], 'chatboard_grade_levels' => []],
+        'footer_links' => [['About', home_url('/info/about/')], ['Mission', home_url('/info/mission/')], ['Contacts', home_url('/info/contacts/')], ['Terms', home_url('/info/policies/')], ['Privacy', home_url('/info/privacy/')]],
+      ];
+    }
+    $navigation = self::community_navigation($state);
+    if (!$viewer) {
+      $navigation['generic_join'] = true;
+      $navigation['chatboards_in_platform_when_empty'] = false;
+    }
+    $config['fixture'] = 'profile-public-view';
+    $config['route_class'] = 'profile-public-view';
+    $config['content'] = static function () use ($navigation, $main, $right) {
+      TNet_Shared_Shell::render_community_frame([
+        'navigation' => $navigation,
+        'main' => static function () use ($main) { echo '<section class="c3-community-page tnet-profile-public-page">'; $main(); echo '</section>'; },
+        'right' => $right, 'reserve_account_actions' => true, 'wide_main' => false,
       ]);
     };
     return $config;

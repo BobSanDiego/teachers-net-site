@@ -19,7 +19,9 @@ matrix.
 
 ## Tracked runtime boundary
 
-The narrow, complete tracked boundary contains 284 files:
+The recovered baseline contained 284 governed runtime files. The 032 public
+Profile implementation adds one governed stylesheet, bringing the tracked
+runtime boundary to 285 files:
 
 - `tnet-profile.php` — plugin bootstrap, resolver integration, and accepted
   Profile route/service registration;
@@ -28,15 +30,17 @@ The narrow, complete tracked boundary contains 284 files:
 - `includes/class-tnet-profile-basics.php` and
   `includes/class-tnet-profile-enrichment.php` — the accepted Basics, Roles,
   Complete, shared-card, persistence, and projection owners;
-- `includes/class-tnet-profile-public.php` — the current temporary
-  authenticated `/profile/` and `/profile/edit/` route owner retained as the
-  pre-permanent baseline;
+- `includes/class-tnet-profile-public.php` — canonical authenticated
+  `/profile/` self-view, owner-only `/profile/edit/`, and public
+  `/profile/<username>/` route/projection owner;
 - `includes/class-tnet-profile-avatar-component-set.php` — retained only so
   the accepted bootstrap and diagnostic routes remain loadable. It is a
   rejected, review-only component control and is not an avatar-resolver input;
-- `public/css/tnet-profile-basics.css`,
-  `public/css/tnet-profile-enrichment.css`,
-  `public/js/tnet-profile-basics.js`,
+- `public/css/tnet-profile-basics.css` and
+  `public/css/tnet-profile-enrichment.css` — existing Basics/enrichment
+  presentation;
+- `public/css/tnet-profile-public.css` — public Profile body presentation;
+- `public/js/tnet-profile-basics.js`,
   `public/js/tnet-profile-enrichment.js`, and
   `public/js/tnet-profile-avatar-editor.js` — the accepted Profile presentation
   and interaction owners;
@@ -59,7 +63,9 @@ The following are not Profile production source and remain excluded:
 - caches, logs, reports, Hopper payloads, temporary browser/QA state, and
   generated review labs;
 - `tests/avatar-component-set-runtime.php`, a local QA fixture not needed by
-  plugin runtime; and
+  plugin runtime;
+- `tests/public-profile-projection.php`, a focused no-database route/privacy/
+  projection regression harness; and
 - removed/superseded portrait-review populations and historical artwork that
   is not in the frozen manifest.
 
@@ -70,11 +76,15 @@ retrieval identifiers are artwork metadata, not member demographics.
 
 ## Reproducibility and next boundary
 
-The bootstrap, accepted Profile V1/enrichment routes, resolver delivery, frozen
-bank, and member-fact service are versioned together so the Director-PASS
-baseline can be reproduced without adopting the mutable DDEV tree. The current
-source is byte-identical to the intended DDEV Profile plugin across all 284
-governed files; the excluded diagnostic test is the sole DDEV-only file.
+The bootstrap, accepted Profile V1/enrichment routes, public Profile surface,
+resolver delivery, frozen bank, and member-fact service are versioned together
+so the Director-PASS baseline can be reproduced without adopting the mutable
+DDEV tree. Cycle 032 was exercised in a disposable DDEV clone assembled from
+the isolated Profile source and current shared runtime dependencies. The
+active main DDEV project was not changed; therefore this ticket does not claim
+runtime parity between the new public-view files and that untouched project.
+The route must not be activated in production until the required read-only
+collision audit against reserved/static usernames is complete.
 
 Permanent Profile implementation begins only under a later ticket. The settled
 route/visibility contract is `/profile/` for authenticated self entry and

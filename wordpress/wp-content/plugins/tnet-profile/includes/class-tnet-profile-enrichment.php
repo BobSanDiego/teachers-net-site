@@ -89,7 +89,7 @@ final class TNet_Profile_Enrichment {
           if ($route === 'complete') self::render_complete();
           else self::render_main($user, $state, $roles, $result);
         },
-        $route === 'complete' ? static function () { self::render_complete_aside(); } : static function () use ($state) { self::render_status($state, true); },
+        $route === 'complete' ? static function () { self::render_ad_slot(); } : static function () use ($state) { self::render_status($state, true); },
         null,
         false,
         $route === 'complete'
@@ -212,7 +212,7 @@ final class TNet_Profile_Enrichment {
   }
 
   /** Layout-only reservation; no ad creative or development ad request. */
-  private static function render_complete_aside() {
+  public static function render_ad_slot() {
     echo '<div class="tnet-profile-enrichment-ad-slot" aria-label="' . esc_attr__('Advertisement space', 'tnet-profile') . '"><span>' . esc_html__('Advertisement', 'tnet-profile') . '</span><small>300 × 250</small></div>';
   }
 
