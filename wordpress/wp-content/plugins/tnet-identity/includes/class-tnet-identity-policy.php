@@ -48,6 +48,13 @@ final class TNet_Identity_Policy {
         'tb', 'tbott', 'dr.bott', 'kat', 'kathleen', 'kat.carpenter',
         'kathleen.carpenter', 'ron', 'mary',
       ],
+      // Application endpoints occupy the permanent username namespace even
+      // when an endpoint is not yet implemented. Keep this narrow and exact.
+      'profile_routes' => [
+        'edit', 'enrichment', 'complete', 'manage', 'settings', 'privacy',
+        'visibility', 'preview', 'public', 'me', 'self', 'new', 'create',
+        'admin', 'api', 'avatar-components', 'avatar-component.svg',
+      ],
     ];
   }
 

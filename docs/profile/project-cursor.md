@@ -10,16 +10,25 @@ Project state: Active Development
 
 ## Current boundary
 
-`PROFILE-V1-SOURCE-RECOVERY029` is the active convergence boundary. The
-canonical isolated source owner is now
+`PROFILE-V1-USERNAME-NAMESPACE031` finalizes the Identity source needed before
+canonical public Profile routing. The canonical isolated source owner is
 `/home/bobreap/projects/teachers-net-profile-recovery029` on branch
-`codex/profile-v1-basics-facts`; cycle `260926095358` reconciles the complete
-284-file accepted `tnet-profile` boundary and supersedes the missing
-`/tmp/profile-v1-basics-facts` worktree pointer. The recovered source is
-byte-identical to the intended DDEV Profile plugin across all governed files.
-The sole DDEV-only remainder is the explicitly excluded rejected-component-set
-diagnostic test fixture. The dirty Community checkout and its files/history
-remain untouched.
+`codex/profile-v1-basics-facts`, based on 030's verified source/runtime parity.
+The single Identity username registry now includes the exact `profile_routes`
+category, and Identity Service exposes an internal, explicit-intent,
+`manage_options`-gated official-identity provisioning path. Ordinary signup
+remains on the non-override path; existing `admin` (ID 1) is unchanged. A
+deterministic no-database regression harness covers reservation, normalization,
+privilege, syntax, uniqueness, and cleanup. The public username route remains
+unimplemented and no `/members/` alias is activated. Local implementation is
+source-ready for the next public-route ticket; a read-only production username
+collision audit remains a mandatory precondition before production activation.
+Cycle `260927183656` records this work. The dirty Community checkout and its
+files/history remain untouched.
+
+`PROFILE-V1-USERNAME-NAMESPACE030` established the local collision baseline
+and identified the dormant override path. It remains the evidence authority
+for the 031 change; no existing accounts were changed.
 
 Director authority for the next, separate Permanent Profile objective is
 settled but not implemented here: `/profile/` is the authenticated self entry;

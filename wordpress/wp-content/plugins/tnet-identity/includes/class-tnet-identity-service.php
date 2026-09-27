@@ -15,9 +15,39 @@ final class TNet_Identity_Service {
   const PROFILE_REGION_CODE_META = '_tnet_profile_region_code';
 
   public static function create_account(array $data) {
+    return self::create_account_with_reserved_name_override($data, false);
+  }
+
+  /**
+   * Internal service path for deliberate official identities that need a
+   * reserved handle. This is not exposed through a route or signup payload.
+   * Callers must opt in explicitly and hold administrative capability; only
+   * the reserved-name check is bypassed.
+   */
+  public static function provision_official_account(array $data) {
+    if (($data['provision_official_identity'] ?? null) !== true) {
+      return new WP_Error('tnet_identity_official_intent_required', __('Explicit official-identity provisioning intent is required.', 'tnet-identity'));
+    }
+    if (!current_user_can('manage_options')) {
+      return new WP_Error('tnet_identity_official_provisioning_forbidden', __('You are not allowed to provision an official identity.', 'tnet-identity'));
+    }
+
+    $target_username = TNet_Identity_Policy::normalize_username($data['username'] ?? '');
+    $override = static function ($allowed, $candidate) use ($target_username) {
+      return hash_equals($target_username, TNet_Identity_Policy::normalize_username($candidate));
+    };
+    add_filter('tnet_identity_reserved_username_override', $override, PHP_INT_MAX, 2);
+    try {
+      return self::create_account_with_reserved_name_override($data, true);
+    } finally {
+      remove_filter('tnet_identity_reserved_username_override', $override, PHP_INT_MAX);
+    }
+  }
+
+  private static function create_account_with_reserved_name_override(array $data, $allow_reserved_name) {
     $email = sanitize_email((string) ($data['email'] ?? ''));
     $password = (string) ($data['password'] ?? '');
-    $username = TNet_Identity_Policy::validate_username($data['username'] ?? '');
+    $username = TNet_Identity_Policy::validate_username($data['username'] ?? '', $allow_reserved_name);
     if (is_wp_error($username)) return $username;
     if (!is_email($email)) return new WP_Error('tnet_identity_email_invalid', __('Enter a valid email address.', 'tnet-identity'));
     if (email_exists($email)) return new WP_Error('tnet_identity_email_exists', __('An account could not be created with that email address. Try logging in instead.', 'tnet-identity'));

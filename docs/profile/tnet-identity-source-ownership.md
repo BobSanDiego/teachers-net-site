@@ -26,13 +26,17 @@ The complete plugin source required to reproduce the active Identity plugin is:
 
 - `tnet-identity.php` — plugin declaration, routes, and database-schema owner;
 - `includes/class-tnet-identity-service.php`;
+- `includes/class-tnet-identity-policy.php` — canonical server-side username
+  reservation and display-name validation policy;
 - `includes/class-tnet-identity-username-policy.php`;
 - `includes/class-tnet-identity-cli.php` — DDEV-guarded QA lifecycle command;
 - `includes/class-tnet-identity-location-policy.php` — bounded Screen 5
   country/state policy;
 - `public/class-tnet-identity-public.php`;
 - `public/css/tnet-identity-public.css`;
-- `public/js/tnet-identity-public.js`.
+- `public/js/tnet-identity-public.js`;
+- `tests/identity-reserved-provisioning.php` — deterministic, isolated
+  regression harness for reserved usernames and official provisioning.
 
 The root ignore keeps the broader WordPress runtime excluded and re-includes
 only this explicit plugin boundary. There are no vendor, build, cache, upload,

@@ -40,14 +40,17 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-V1-SOURCE-RECOVERY029` is the active convergence objective. The
-surviving `codex/profile-v1-basics-facts` branch is reattached at
-`/home/bobreap/projects/teachers-net-profile-recovery029`; cycle
-`260926095358` restores the accepted 284-file `tnet-profile` boundary and
-supersedes the missing `/tmp/profile-v1-basics-facts` pointer. Every governed
-source file matches the intended DDEV Profile runtime exactly. The one extra
-DDEV file, `tests/avatar-component-set-runtime.php`, is an obsolete local
-diagnostic fixture and remains excluded. Community work is unchanged.
+`PROFILE-V1-USERNAME-NAMESPACE031` is implemented on the canonical isolated
+Profile branch `codex/profile-v1-basics-facts` at
+`/home/bobreap/projects/teachers-net-profile-recovery029`. It adds the narrow
+`profile_routes` reserved-username category and an Identity-owned explicit,
+administrator-gated official provisioning method; ordinary account creation
+cannot select that override. Focused deterministic regression coverage passed
+without database accounts or email. `admin` remains unchanged and no public
+username route is activated. The next public-route implementation may proceed
+in source; production activation remains gated on a read-only production
+username collision audit. Cycle `260927183656` contains final evidence and
+Git provenance. Community work/history is unchanged.
 
 The next Permanent Profile contract is decided but not implemented in this
 recovery: authenticated self entry at `/profile/`, public/other-member route at
