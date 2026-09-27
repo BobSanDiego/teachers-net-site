@@ -86,10 +86,11 @@ runtime parity between the new public-view files and that untouched project.
 The route must not be activated in production until the required read-only
 collision audit against reserved/static usernames is complete.
 
-Permanent Profile implementation begins only under a later ticket. The settled
-route/visibility contract is `/profile/` for authenticated self entry and
-`/profile/<username>/` for public/other-member viewing by permanent
-`user_login`; owner-only editing and existing `location_public` and aggregate
-`profile_details` visibility remain authoritative. Email, authored activity,
-Community relationships, lessons, and Jobs relationships are not Profile V1
-content. This recovery implements none of those future surface decisions.
+The public view is now implemented under PROFILE-V1-PUBLIC-VIEW032. The
+settled route/visibility contract is `/profile/` for authenticated self entry
+and `/profile/<username>/` for public/other-member viewing by permanent
+`user_login`; `/profile/edit/` remains owner-only and existing
+`location_public` and aggregate `profile_details` visibility remain
+authoritative. Email, authored activity, Community relationships, lessons,
+and Jobs relationships are not Profile V1 public-view content. Further
+permanent Profile capabilities remain subject to separate product authority.
