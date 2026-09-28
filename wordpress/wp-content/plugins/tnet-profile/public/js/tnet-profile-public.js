@@ -8,36 +8,51 @@
     var button = row.querySelector('[data-public-disclosure]');
     var label = button.querySelector('[data-more-label]');
     var suppressed = Number(row.getAttribute('data-suppressed-count')) || 0;
-    var hasDetails = row.getAttribute('data-has-details') === '1';
-    var available = content.clientWidth;
-    if (!available) return;
-
-    values.forEach(function (value) { value.hidden = false; value.classList.toggle('is-long', value.scrollWidth > available); });
-    button.hidden = false;
+    if (!content.clientWidth) return;
+    values.forEach(function (value) {
+      value.hidden = false;
+      value.classList.remove('is-long');
+      var separator = value.querySelector('.tnet-profile-public__separator');
+      if (separator) separator.style.visibility = '';
+    });
+    button.hidden = true;
+    var valueArea = content.querySelector('.tnet-profile-public__summary-values');
+    var fullWidth = valueArea.clientWidth;
+    values.forEach(function (value) { value.classList.toggle('is-long', value.scrollWidth > fullWidth); });
     var widths = values.map(function (value) { return value.getBoundingClientRect().width; });
     var linesAllowed = window.matchMedia('(max-width: 700px)').matches ? 2 : 1;
-    var triggerGap = 6;
-    var fit = 0;
-    for (var count = values.length; count >= 0; count--) {
-      var remaining = values.length - count + suppressed;
-      label.textContent = 'more';
-      var needsButton = remaining > 0 || hasDetails;
-      button.hidden = !needsButton;
-      var buttonWidth = needsButton ? button.getBoundingClientRect().width + triggerGap : 0;
-      var line = 1;
+    function lineCount(count, available) {
+      var lines = 1;
       var occupied = 0;
       for (var index = 0; index < count; index++) {
-        if (occupied && occupied + widths[index] > available + 0.5) { line++; occupied = 0; }
+        if (occupied && occupied + widths[index] > available + 0.5) { lines++; occupied = 0; }
         occupied += widths[index];
       }
-      if (needsButton && occupied + buttonWidth > available + 0.5) line++;
-      if (line <= linesAllowed) { fit = count; break; }
+      return lines;
+    }
+    var fit = values.length;
+    if (suppressed > 0 || (values.length > 1 && lineCount(values.length, fullWidth) > linesAllowed)) {
+      label.textContent = 'more';
+      button.hidden = false;
+      var available = valueArea.clientWidth;
+      values.forEach(function (value) { value.classList.toggle('is-long', value.scrollWidth > available); });
+      widths = values.map(function (value) { return value.getBoundingClientRect().width; });
+      fit = 1;
+      for (var count = values.length; count >= 1; count--) {
+        if (lineCount(count, available) <= linesAllowed) { fit = count; break; }
+      }
     }
     values.forEach(function (value, index) { value.hidden = index >= fit; });
+    for (var visible = 1; visible < fit; visible++) {
+      if (values[visible].getBoundingClientRect().top > values[visible - 1].getBoundingClientRect().top + 2) {
+        var leadingDot = values[visible].querySelector('.tnet-profile-public__separator');
+        if (leadingDot) leadingDot.style.visibility = 'hidden';
+      }
+    }
     var hiddenCount = values.length - fit + suppressed;
     label.textContent = 'more';
     button.dataset.hiddenCount = String(hiddenCount);
-    button.hidden = hiddenCount === 0 && !hasDetails;
+    button.hidden = hiddenCount === 0;
     if (button.hidden && button === activeControl) setOpen(row.closest('.tnet-profile-public__hero'), null);
   }
 
