@@ -15,7 +15,11 @@ function home_url($path = '/') { return 'https://example.test' . $path; }
 
 final class TNet_Profile_Basics {
   public static function project_grade_labels(array $selected) { return in_array('grade-uuid', $selected, true) ? ['Middle School'] : []; }
-  public static function term_labels(array $selected) { return in_array('subject-uuid', $selected, true) ? ['Science'] : []; }
+  public static function project_grade_hero_groups(array $selected) { return in_array('grade-uuid', $selected, true) ? [['label' => 'Middle School', 'short_label' => 'Middle School', 'children' => []]] : []; }
+  public static function term_labels(array $selected) {
+    $map = ['subject-uuid' => 'Science', 'subject-a' => 'American Sign Language', 'subject-g' => 'Geometry', 'subject-h' => 'History'];
+    return array_values(array_filter(array_map(static function ($uuid) use ($map) { return $map[$uuid] ?? ''; }, $selected)));
+  }
 }
 final class TNet_Profile_Avatar {
   public static function resolve_avatar($user_id, $size) { return ['url' => 'https://example.test/avatar.png', 'source' => 'test']; }
@@ -64,7 +68,8 @@ expect($public['location'] === 'Portland, Oregon, USA', 'public location must ho
 expect($public['about'] === "A short public bio.\nSecond line.", 'bio must appear only in About projection');
 expect(count($public['teaching_rows']) === 4, 'populated profile should project all four governed teaching rows');
 expect($public['teaching_rows'][0]['values'] === ['Middle School'] && $public['teaching_rows'][1]['values'] === ['Science'] && $public['teaching_rows'][2]['values'] === ['Classroom Teacher'], 'governed display labels must remain verbatim');
-expect(in_array('Teaching since 2015', $public['chips'], true), 'Teaching Since must be a compact visible hero chip');
+expect($public['teaching_since_chip'] === 'Teaching since 2015', 'Teaching Since must be a compact visible hero chip');
+expect($public['hero_disclosures']['grades']['summary'] === 'Middle School' && $public['hero_disclosures']['grades']['count'] === 0, 'Grade hero summary must use represented parent');
 expect(!array_key_exists('email', $public) && !in_array($user->user_email, $public, true), 'email must not enter public projection');
 expect($public['groups_available'] === false && $public['groups'] === [], 'missing Groups owner must not fabricate memberships');
 $render = new ReflectionMethod(TNet_Profile_Public::class, 'render_profile');
@@ -75,13 +80,21 @@ $full_markup = ob_get_clean();
 expect(substr_count($full_markup, 'A short public bio.') === 1, 'bio must render once in About and never in the hero');
 expect(strpos($full_markup, 'QA Profile') === false && strpos($full_markup, 'must-not-be-projected@example.test') === false, 'rendered Profile body must not expose account email');
 expect(strpos($full_markup, 'Teaching Profile') !== false && strpos($full_markup, 'Middle School') !== false && strpos($full_markup, 'Classroom Teacher') !== false, 'populated governed teaching rows must render as one section');
+expect(strpos($full_markup, 'aria-expanded="false"') !== false && strpos($full_markup, 'aria-controls="tnet-profile-public-grades"') !== false, 'hero disclosures must expose ARIA state and controlled panels');
+expect(strpos($full_markup, '>Teachers</a>') !== false && strpos($full_markup, '>Home</a>') === false, 'public breadcrumb must start with Teachers');
+expect(strpos($full_markup, 'data-owner-preview') === false, 'ordinary public projection must not include owner-only preview');
+ob_start();
+$render->invoke(null, $public, true);
+$owner_markup = ob_get_clean();
+expect(strpos($owner_markup, 'data-owner-preview') !== false && strpos($owner_markup, 'Back to My Profile') !== false, 'owner preview must provide a return outside public content');
+expect(substr_count($owner_markup, 'data-tnet-public-profile') === 1, 'owner preview must retain the same public projection');
 expect(strpos($full_markup, 'Follow') === false && strpos($full_markup, 'Connect') === false && strpos($full_markup, 'Message') === false, 'unapproved social actions must not render');
 
 $private_details = $state;
 $private_details['scalars']['profile_details_public'] = false;
 $private_details['scalars']['location_public'] = false;
 $hidden = TNet_Profile_Public::build_projection($user, $private_details, $roles);
-expect($hidden['about'] === '' && $hidden['teaching_rows'] === [] && $hidden['chips'] === [], 'private aggregate details must omit bio, rows, and chips');
+expect($hidden['about'] === '' && $hidden['teaching_rows'] === [] && $hidden['hero_disclosures'] === [] && $hidden['teaching_since_chip'] === '', 'private aggregate details must omit bio, rows, and chips');
 expect($hidden['location'] === '', 'private location must be omitted independently');
 
 $public_details_private_location = $state;
@@ -95,7 +108,23 @@ $sparse['selected'] = ['teaching_grade' => [], 'teaching_subject' => [], 'profes
 $sparse['scalars']['bio'] = '';
 $sparse['scalars']['teaching_since'] = null;
 $sparse_public = TNet_Profile_Public::build_projection($user, $sparse, $roles);
-expect($sparse_public['about'] === '' && $sparse_public['teaching_rows'] === [] && $sparse_public['chips'] === [], 'empty About/Teaching Profile modules must be omitted');
+expect($sparse_public['about'] === '' && $sparse_public['teaching_rows'] === [] && $sparse_public['hero_disclosures'] === [] && $sparse_public['teaching_since_chip'] === '', 'empty About/Teaching Profile modules must be omitted');
+
+$many = $state;
+$many['selected']['teaching_subject'] = ['subject-h', 'subject-g', 'subject-a'];
+$many_public = TNet_Profile_Public::build_projection($user, $many, $roles);
+expect($many_public['hero_disclosures']['subjects']['summary'] === 'American Sign Language' && $many_public['hero_disclosures']['subjects']['count'] === 2, 'hero subjects must sort alphabetically');
+expect($many_public['hero_disclosures']['subjects']['values'] === ['American Sign Language', 'Geometry', 'History'], 'expanded subjects must sort alphabetically');
+$role_fixture = [
+  (object) ['term_uuid' => 'teacher', 'label' => 'Teacher'],
+  (object) ['term_uuid' => 'librarian', 'label' => 'Librarian / Media Specialist'],
+  (object) ['term_uuid' => 'administrator', 'label' => 'Administrator'],
+  (object) ['term_uuid' => 'counselor', 'label' => 'School Counselor'],
+];
+$many['selected']['professional_identity'] = ['librarian', 'teacher', 'counselor', 'administrator'];
+$role_public = TNet_Profile_Public::build_projection($user, $many, $role_fixture);
+expect($role_public['hero_disclosures']['roles']['summary'] === 'Administrator' && $role_public['hero_disclosures']['roles']['count'] === 3, 'hero role summary must use Director priority');
+expect($role_public['hero_disclosures']['roles']['values'] === ['Administrator', 'Teacher', 'School Counselor', 'Librarian / Media Specialist'], 'expanded roles must use Director priority, not alphabetical order');
 ob_start();
 $render->invoke(null, $sparse_public);
 $sparse_markup = ob_get_clean();

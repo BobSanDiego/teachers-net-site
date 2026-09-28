@@ -71,7 +71,13 @@ final class TNet_Profile_Public {
     $roles = TNet_Profile_Basics::professional_identity_terms();
     TNet_Profile_Basics::enqueue_public_profile_assets();
     $projection = self::build_projection($user, $state, $roles);
-    $main = static function () use ($projection) { self::render_profile($projection); };
+    $owner_preview = is_user_logged_in() && get_current_user_id() === (int) $user->ID
+      && ($_GET['view_as_public'] ?? null) === '1';
+    if ($owner_preview) {
+      add_filter('wp_robots', static function ($robots) { $robots['noindex'] = true; $robots['nofollow'] = true; return $robots; });
+      nocache_headers();
+    }
+    $main = static function () use ($projection, $owner_preview) { self::render_profile($projection, $owner_preview); };
     $right = static function () { TNet_Profile_Enrichment::render_ad_slot(); };
     if (class_exists('TNet_Shared_Shell')) {
       $viewer = is_user_logged_in() ? get_user_by('id', get_current_user_id()) : null;
@@ -105,9 +111,45 @@ final class TNet_Profile_Public {
       $rows[] = ['label' => __('Teaching Since', 'tnet-profile'), 'values' => [(string) (int) $scalars['teaching_since']], 'icon' => 'calendar'];
     }
 
-    $chips = [];
-    foreach ([$grades, $subjects, $role_labels] as $group) foreach ($group as $label) $chips[] = $label;
-    if ($show_details && !empty($scalars['teaching_since'])) $chips[] = sprintf(__('Teaching since %s', 'tnet-profile'), (string) (int) $scalars['teaching_since']);
+    $grade_groups = $show_details ? TNet_Profile_Basics::project_grade_hero_groups((array) ($state['selected']['teaching_grade'] ?? [])) : [];
+    $hero_disclosures = [];
+    if ($grade_groups) {
+      $hero_disclosures['grades'] = [
+        'label' => __('Grades / Levels', 'tnet-profile'),
+        'summary' => $grade_groups[0]['short_label'],
+        'count' => count($grade_groups) - 1,
+        'values' => array_map(static function ($group) {
+          return $group['label'] . ($group['children'] ? ' (' . implode(', ', $group['children']) . ')' : '');
+        }, $grade_groups),
+      ];
+    }
+    if ($subjects) {
+      $sorted_subjects = array_values(array_unique($subjects));
+      usort($sorted_subjects, 'strcasecmp');
+      $hero_disclosures['subjects'] = [
+        'label' => __('Subjects', 'tnet-profile'),
+        'summary' => $sorted_subjects[0],
+        'count' => count($sorted_subjects) - 1,
+        'values' => $sorted_subjects,
+      ];
+    }
+    if ($role_labels) {
+      $priority = ['Administrator', 'Mentor Teacher', 'Teacher', 'Student Teacher', 'Substitute Teacher', 'School Counselor', 'Instructional Coach', 'Librarian / Media Specialist', 'Tutor'];
+      $sorted_roles = array_values(array_unique($role_labels));
+      usort($sorted_roles, static function ($a, $b) use ($priority) {
+        $left = array_search($a, $priority, true);
+        $right = array_search($b, $priority, true);
+        return ($left === false ? count($priority) : $left) <=> ($right === false ? count($priority) : $right);
+      });
+      $hero_disclosures['roles'] = [
+        'label' => __('Educator Roles', 'tnet-profile'),
+        'summary' => $sorted_roles[0],
+        'count' => count($sorted_roles) - 1,
+        'values' => $sorted_roles,
+      ];
+    }
+    $teaching_since_chip = $show_details && !empty($scalars['teaching_since'])
+      ? sprintf(__('Teaching since %s', 'tnet-profile'), (string) (int) $scalars['teaching_since']) : '';
 
     $bio = $show_details ? trim((string) ($scalars['bio'] ?? '')) : '';
     $avatar = TNet_Profile_Avatar::resolve_avatar((int) $user->ID, 216);
@@ -117,7 +159,8 @@ final class TNet_Profile_Public {
       'avatar_url' => (string) ($avatar['url'] ?? ''),
       'location' => $show_location ? (string) ($state['location']['label'] ?? '') : '',
       'member_since' => !empty($user->user_registered) ? mysql2date('M Y', $user->user_registered, false) : '',
-      'chips' => $chips,
+      'hero_disclosures' => $hero_disclosures,
+      'teaching_since_chip' => $teaching_since_chip,
       'about' => $bio,
       'teaching_rows' => $rows,
       // No Groups/BuddyPress membership provider is active in this stack. Keep
@@ -127,11 +170,12 @@ final class TNet_Profile_Public {
     ];
   }
 
-  private static function render_profile(array $profile) {
+  private static function render_profile(array $profile, $owner_preview = false) {
     ?>
+    <?php if ($owner_preview) : ?><aside class="tnet-profile-public__preview" data-owner-preview><span><?php echo esc_html__('Viewing your profile as others see it', 'tnet-profile'); ?></span><a href="<?php echo esc_url(home_url('/profile/')); ?>"><?php echo esc_html__('← Back to My Profile', 'tnet-profile'); ?></a></aside><?php endif; ?>
     <main class="tnet-profile-public" data-tnet-public-profile>
       <nav class="tnet-profile-public__breadcrumbs" aria-label="<?php echo esc_attr__('Breadcrumb', 'tnet-profile'); ?>">
-        <a href="<?php echo esc_url(home_url('/')); ?>"><?php echo esc_html__('Home', 'tnet-profile'); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>"><?php echo esc_html__('Teachers', 'tnet-profile'); ?></a>
         <span aria-hidden="true">›</span><span><?php echo esc_html__('Members', 'tnet-profile'); ?></span>
         <span aria-hidden="true">›</span><span aria-current="page"><?php echo esc_html($profile['display_name']); ?></span>
       </nav>
@@ -146,7 +190,23 @@ final class TNet_Profile_Public {
             <?php if ($profile['member_since'] !== '') : ?><span><svg aria-hidden="true" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="1.5"/><path d="M6 2.5v3M14 2.5v3M3 8h14"/></svg><?php echo esc_html(sprintf(__('Member since %s', 'tnet-profile'), $profile['member_since'])); ?></span><?php endif; ?>
           </div>
         </div>
-        <?php if ($profile['chips']) : ?><ul class="tnet-profile-public__chips" aria-label="<?php echo esc_attr__('Profile highlights', 'tnet-profile'); ?>"><?php foreach ($profile['chips'] as $chip) : ?><li><?php echo esc_html($chip); ?></li><?php endforeach; ?></ul><?php endif; ?>
+        <?php if ($profile['hero_disclosures'] || $profile['teaching_since_chip'] !== '') : ?>
+          <div class="tnet-profile-public__highlights">
+            <ul class="tnet-profile-public__chips" aria-label="<?php echo esc_attr__('Profile highlights', 'tnet-profile'); ?>">
+              <?php foreach ($profile['hero_disclosures'] as $key => $disclosure) : ?>
+                <?php $spoken = $disclosure['label'] . ': ' . $disclosure['summary'] . ($disclosure['count'] ? ' +' . $disclosure['count'] : ''); ?>
+                <li><button type="button" class="tnet-profile-public__chip-button" data-public-disclosure aria-expanded="false" aria-controls="tnet-profile-public-<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr($spoken . '. ' . __('Show all', 'tnet-profile')); ?>" data-label-closed="<?php echo esc_attr($spoken . '. ' . __('Show all', 'tnet-profile')); ?>" data-label-open="<?php echo esc_attr($spoken . '. ' . __('Hide all', 'tnet-profile')); ?>"><span><?php echo esc_html($disclosure['summary']); ?><?php if ($disclosure['count']) : ?> <span class="tnet-profile-public__chip-count">+<?php echo esc_html($disclosure['count']); ?></span><?php endif; ?></span><svg aria-hidden="true" viewBox="0 0 12 8"><path d="m1 1 5 5 5-5"/></svg></button></li>
+              <?php endforeach; ?>
+              <?php if ($profile['teaching_since_chip'] !== '') : ?><li><span class="tnet-profile-public__chip-static"><?php echo esc_html($profile['teaching_since_chip']); ?></span></li><?php endif; ?>
+            </ul>
+            <?php foreach ($profile['hero_disclosures'] as $key => $disclosure) : ?>
+              <section id="tnet-profile-public-<?php echo esc_attr($key); ?>" class="tnet-profile-public__disclosure tnet-profile-public__disclosure--<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr($disclosure['label']); ?>" hidden>
+                <?php if ($key === 'subjects') : ?><ul class="tnet-profile-public__subject-pills"><?php foreach ($disclosure['values'] as $value) : ?><li><?php echo esc_html($value); ?></li><?php endforeach; ?></ul>
+                <?php else : ?><ul class="tnet-profile-public__disclosure-lines"><?php foreach ($disclosure['values'] as $value) : ?><li><?php echo esc_html($value); ?></li><?php endforeach; ?></ul><?php endif; ?>
+              </section>
+            <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
       </section>
 
       <?php if ($profile['about'] !== '') : ?>

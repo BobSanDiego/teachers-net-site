@@ -76,7 +76,7 @@ final class TNet_Profile_Self {
     }
     $chips = array_slice(array_values(array_unique(array_merge($grade_labels, $subject_labels, $role_labels))), 0, 4);
     $avatar = TNet_Profile_Avatar::resolve_avatar((int) $user->ID, 144);
-    $public_url = home_url(user_trailingslashit('/profile/' . rawurlencode((string) $user->user_login)));
+    $public_url = add_query_arg('view_as_public', '1', home_url(user_trailingslashit('/profile/' . rawurlencode((string) $user->user_login))));
     $status = sanitize_key((string) ($_GET['profile_status'] ?? ''));
     ?>
     <div class="tnet-profile-self<?php echo $edit_mode ? ' tnet-profile-self--editing' : ''; ?>" data-tnet-profile-self data-edit-mode="<?php echo $edit_mode ? 'on' : 'off'; ?>">
@@ -98,7 +98,7 @@ final class TNet_Profile_Self {
         </div>
         <div class="tnet-profile-self__hero-actions">
           <?php if ($edit_mode) : ?><a class="tnet-profile-self__button tnet-profile-self__button--secondary" href="<?php echo esc_url($public_url); ?>"><?php echo self::icon('visibility'); ?><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a><a class="tnet-profile-self__button tnet-profile-self__button--primary" href="<?php echo esc_url(home_url('/profile/')); ?>"><?php echo esc_html__('Done Editing', 'tnet-profile'); ?></a>
-          <?php else : ?><a class="tnet-profile-self__button tnet-profile-self__button--primary" href="<?php echo esc_url(TNet_Profile_Basics::edit_url()); ?>"><?php echo esc_html__('Edit Profile', 'tnet-profile'); ?></a><?php endif; ?>
+          <?php else : ?><a class="tnet-profile-self__button tnet-profile-self__button--secondary" href="<?php echo esc_url($public_url); ?>"><?php echo self::icon('visibility'); ?><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a><a class="tnet-profile-self__button tnet-profile-self__button--primary" href="<?php echo esc_url(TNet_Profile_Basics::edit_url()); ?>"><?php echo esc_html__('Edit Profile', 'tnet-profile'); ?></a><?php endif; ?>
         </div>
       </section>
 
@@ -180,7 +180,7 @@ final class TNet_Profile_Self {
   private static function render_right_rail($user, $edit_mode) {
     TNet_Profile_Enrichment::render_ad_slot();
     if (!$edit_mode) return;
-    $url = home_url(user_trailingslashit('/profile/' . rawurlencode((string) $user->user_login)));
+    $url = add_query_arg('view_as_public', '1', home_url(user_trailingslashit('/profile/' . rawurlencode((string) $user->user_login))));
     ?><aside class="tnet-profile-self__rail-card" aria-label="<?php echo esc_attr__('Editing your profile', 'tnet-profile'); ?>"><h2><?php echo esc_html__('Editing your profile', 'tnet-profile'); ?></h2><p><?php echo esc_html__('Changes are saved section by section. Your profile helps other educators get to know you and connect.', 'tnet-profile'); ?></p><a href="<?php echo esc_url($url); ?>"><?php echo self::icon('visibility'); ?><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a><small><?php echo esc_html__('See how your profile appears to other members.', 'tnet-profile'); ?></small></aside><?php
   }
 

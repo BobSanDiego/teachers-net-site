@@ -475,9 +475,11 @@ final class TNet_Profile_Basics {
     $basics_css = dirname(__DIR__) . '/public/css/tnet-profile-basics.css';
     $enrichment_css = dirname(__DIR__) . '/public/css/tnet-profile-enrichment.css';
     $public_css = dirname(__DIR__) . '/public/css/tnet-profile-public.css';
+    $public_js = dirname(__DIR__) . '/public/js/tnet-profile-public.js';
     wp_enqueue_style('tnet-profile-basics', TNET_PROFILE_PLUGIN_URL . 'public/css/tnet-profile-basics.css', ['tnet-shared-shell-community'], is_readable($basics_css) ? filemtime($basics_css) : '1');
     wp_enqueue_style('tnet-profile-enrichment-presentation', TNET_PROFILE_PLUGIN_URL . 'public/css/tnet-profile-enrichment.css', ['tnet-profile-basics'], is_readable($enrichment_css) ? filemtime($enrichment_css) : '1');
     wp_enqueue_style('tnet-profile-public', TNET_PROFILE_PLUGIN_URL . 'public/css/tnet-profile-public.css', ['tnet-profile-enrichment-presentation'], is_readable($public_css) ? filemtime($public_css) : '1');
+    wp_enqueue_script('tnet-profile-public', TNET_PROFILE_PLUGIN_URL . 'public/js/tnet-profile-public.js', [], is_readable($public_js) ? filemtime($public_js) : '1', true);
   }
 
   /** Presentation-only projections; labels do not confer Community membership or URL authority. */
@@ -867,6 +869,40 @@ final class TNet_Profile_Basics {
       elseif (count($chosen) > 1) $labels[] = (string) $group->label;
     }
     return $labels;
+  }
+
+  /** Public-hero presentation from the governed Grade List; never infer stored parent facts. */
+  public static function project_grade_hero_groups(array $selected): array {
+    $axis = self::axis('Grade Level');
+    if (!$axis) return [];
+    $by_parent = [];
+    foreach (self::axis_terms('Grade Level') as $term) $by_parent[(string) ($term->parent_uuid ?? '')][] = $term;
+    $selected = array_fill_keys(array_map('strval', $selected), true);
+    $short_labels = ['Adult Education' => 'Adult Ed', 'Higher Education' => 'Higher Ed'];
+    $groups = [];
+    foreach (self::ordered_grade_groups($by_parent[(string) $axis->term_uuid] ?? []) as $group) {
+      $uuid = (string) ($group->term_uuid ?? '');
+      $children = self::selected_grade_hero_children($group, $by_parent, $selected);
+      if (!isset($selected[$uuid]) && !$children) continue;
+      $label = (string) ($group->label ?? '');
+      $groups[] = [
+        'label' => $label,
+        'short_label' => $short_labels[$label] ?? $label,
+        // An explicit parent-only choice has no child specificity to display.
+        'children' => $children,
+      ];
+    }
+    return $groups;
+  }
+
+  private static function selected_grade_hero_children($parent, array $by_parent, array $selected): array {
+    $children = [];
+    foreach ($by_parent[(string) ($parent->term_uuid ?? '')] ?? [] as $child) {
+      $uuid = (string) ($child->term_uuid ?? '');
+      if (isset($selected[$uuid])) $children[] = (string) ($child->label ?? '');
+      $children = array_merge($children, self::selected_grade_hero_children($child, $by_parent, $selected));
+    }
+    return $children;
   }
 
   private static function render_term_checkbox($term, $name, array $selected, $class = '') {
