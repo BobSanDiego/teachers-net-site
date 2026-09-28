@@ -10,6 +10,25 @@ Project state: Active Development
 
 ## Current boundary
 
+`PROFILE-V1-SELF-EDIT-CONVERGENCE034` is implemented in cycle `260928072322`
+on isolated branch `codex/profile-v1-basics-facts` and projected narrowly to
+normal DDEV. This is `PROFILE_SELF_EDIT_CONVERGED_HUMAN_QA_PENDING`, not Director
+PASS. The edit-mode primary links now render white text on the existing blue;
+the Teaching modal has one scrollable body and a fixed reachable action row at
+1440/1024/768/390; its governed nine-role set uses the same finite checkbox
+renderer as onboarding, and Teaching Since is a direct optional year input
+with the existing 1900/current-year server guard. Edit Location opens directly
+on the canonical U.S./State or international/Country controls. The Visibility
+editor retains exactly the two V1 flags and explains the benefit of sharing.
+The saved status announces immediately and removes itself after five seconds;
+each save/redirect starts a fresh timer. Native DDEV QA exercised saves,
+dirty-close/Escape, public-on/private-off projection, source/runtime parity,
+no console errors, and responsive containment. Temporary QA facts/location
+for local user 353 were restored to their originally absent state; the member
+context table has zero rows for that user. The permanent public Profile route
+and its separate HUMAN_QA gate remain unchanged. No Groups-management owner,
+Account Settings field, Shared Shell fork, or production activation was added.
+
 `PROFILE-V1-SELF-EDIT-MODE033` is implemented on the isolated Profile source
 branch and projected narrowly into normal DDEV in cycle `260928125357`.
 `/profile/` is now the owner self-view, and `/profile/edit/` is the same
