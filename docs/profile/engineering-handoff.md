@@ -2,7 +2,9 @@
 
 ## 1. Current Phase
 
-`PROFILE-V1-PUBLIC-POPOVER-CONVERGENCE037` is the active Director review boundary. It changes only the 036 hero summary separators, quiet `more` triggers, and anchored disclosure presentation; all 036 governed data projection, privacy, owner-preview, Teaching Profile, About, Groups, join rail, and Shared Shell seams are carried forward unchanged. The exact reference is `profile-public-view-01f.png`, SHA-256 `42e1febf363c96faa73a08145bd9ad65bd877576a0538dcfc1d9df5cfd658c44`. Normal DDEV native 1440/1024/768/390, keyboard/ARIA, viewport containment, no hero reflow, privacy-off readback, restored local fixture, and source/runtime parity are recorded in Workflow V2 cycle `260928192329`. State: `PUBLIC_PROFILE_POPOVER_CONVERGED_HUMAN_QA_PENDING`; do not infer Director PASS. The 034 owner self-edit gate and production username-collision audit remain separate.
+`PROFILE-V1-PUBLIC-CARD037` is the active Director review boundary. It maps the exact `profile-card-01b.png` reference (SHA-256 `a69054304785aad0ac0c9d90d9c1414a151a442ea13c89a6794dbbe5c6c81c90`) onto the existing public Profile card without changing the Shared Shell. Pale inset Grades/Subjects/Roles rows with code-native glyphs and a separate Teaching-since badge now provide the compact brag hierarchy; the accepted 036/037 governed values, ordering, symmetric separators, quiet `more` and anchored popovers remain intact. Desktop and 390px normal-DDEV evidence, location-present `/profile/jobman/` readback, no-overflow checks, and restored temporary user 353 are in Workflow V2 cycle `260928214317`. State: `PUBLIC_PROFILE_CARD_CONVERGED_HUMAN_QA_PENDING`. No Director PASS or production activation is claimed; the owner self-edit gate is independent.
+
+`PROFILE-V1-PUBLIC-POPOVER-CONVERGENCE037` is the prior popover baseline. It changes only the 036 hero summary separators, quiet `more` triggers, and anchored disclosure presentation; all 036 governed data projection, privacy, owner-preview, Teaching Profile, About, Groups, join rail, and Shared Shell seams are carried forward unchanged. The exact reference is `profile-public-view-01f.png`, SHA-256 `42e1febf363c96faa73a08145bd9ad65bd877576a0538dcfc1d9df5cfd658c44`. Normal DDEV native 1440/1024/768/390, keyboard/ARIA, viewport containment, no hero reflow, privacy-off readback, restored local fixture, and source/runtime parity are recorded in Workflow V2 cycle `260928192329`. State: `PUBLIC_PROFILE_POPOVER_CONVERGED_HUMAN_QA_PENDING`; no Director PASS is inferred. The 034 owner self-edit gate and production username-collision audit remain separate.
 
 `PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the prior implementation baseline.
 The 035 capsules are superseded by four text-led professional summary rows,
@@ -132,7 +134,9 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-V1-PUBLIC-POPOVER-CONVERGENCE037` is the current handoff boundary, refining only 036 hero disclosure presentation. Cycle `260928192329` owns the scoped source, native captures, restored QA fixture, and acceptance ledger. Director HUMAN_QA remains pending.
+`PROFILE-V1-PUBLIC-CARD037` is the current handoff boundary for public top-card presentation. Cycle `260928214317` owns its scoped source, native captures, restored QA fixture, and acceptance ledger. Director HUMAN_QA remains pending.
+
+`PROFILE-V1-PUBLIC-POPOVER-CONVERGENCE037` is the prior popover baseline, refining only 036 hero disclosure presentation. Cycle `260928192329` owns the scoped source, native captures, restored QA fixture, and acceptance ledger.
 
 `PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the prior implementation boundary.
 Director review uses the normal DDEV public route
