@@ -2,6 +2,20 @@
 
 ## 1. Current Phase
 
+`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` is implemented on isolated Profile
+branch `codex/profile-v1-basics-facts` and is
+`PUBLIC_PROFILE_HERO_CONVERGED_HUMAN_QA_PENDING`. The accepted public Profile
+composition below the hero is unchanged. The hero now summarizes represented
+governed Grade parents, alphabetically sorted Subjects, Director-prioritized
+selected roles, and optional Teaching Since; only one of the first three can
+expand at a time. Owner-only `?view_as_public=1` renders the exact public
+projection with a separate return notice and noindex/nofollow, while ordinary
+visitors receive no owner UI. The public breadcrumb begins Teachers > Members.
+Normal DDEV evidence covers 1440/1024/768/390, keyboard/ARIA disclosure,
+public/private visibility, and complete restoration of local user 353. Cycle
+`260928161611` carries the bounded Report/Hopper package. Director HUMAN_QA
+is pending; no production activation or collision audit was performed.
+
 `PROFILE-V1-SELF-EDIT-CONVERGENCE034` is implemented on the isolated Profile
 branch and available in normal DDEV at `/profile/` and `/profile/edit/` for
 Engineering Director HUMAN_QA. The bounded corrections are white labels on
@@ -18,7 +32,7 @@ production username-collision gates remain separate.
 `PROFILE-V1-SELF-EDIT-MODE033` is implemented and awaiting Engineering Director
 HUMAN_QA. The isolated Profile branch owns the source, and normal DDEV uses a
 file-scoped projection for QA. `/profile/` shows all owner facts, including
-private facts, with only Edit Profile and the avatar camera. `/profile/edit/`
+private facts, with one Edit Profile action, View as Public, and the avatar camera. `/profile/edit/`
 uses that same composition with four modal section editors and View as Public /
 Done Editing actions. Canonical data/selection controls and the existing
 public projection remain the writers/readers; the avatar editor is reused.
@@ -101,7 +115,9 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-V1-SELF-EDIT-CONVERGENCE034` is the current handoff boundary.
+`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` is the current handoff boundary.
+The 034 owner self-edit corrections remain implemented and HUMAN_QA_PENDING;
+the 035 public-hero/preview refinement adds a separate Director acceptance gate.
 Director review uses normal `https://teachers-net.ddev.site/profile/` and
 `https://teachers-net.ddev.site/profile/edit/`; the unchanged public
 projection is `/profile/<username>/`. Cycle `260928144227` owns the scoped

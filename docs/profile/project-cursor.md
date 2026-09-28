@@ -10,6 +10,23 @@ Project state: Active Development
 
 ## Current boundary
 
+`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` is implemented on isolated Profile
+branch `codex/profile-v1-basics-facts`, projected narrowly into normal DDEV,
+and remains `PUBLIC_PROFILE_HERO_CONVERGED_HUMAN_QA_PENDING`. The canonical
+public `/profile/<username>/` now uses compact, keyboard-operable, mutually
+exclusive Grade/Subject/Role hero disclosures and a noninteractive Teaching
+Since chip; the full Teaching Profile card and aggregate visibility policy are
+unchanged. Grades derive parent-group order and child labels from the governed
+Profile Grade List, Subjects sort by display label, and the selected role
+summary/expansion uses Director priority. Public breadcrumb starts with
+Teachers. Owner-only `?view_as_public=1` adds a return notice outside the
+public content and noindex/nofollow; ordinary visitors see the same public
+projection without that notice. Native DDEV 1440/1024/768/390 containment,
+keyboard/ARIA behavior, preview ownership, public/private projection, and
+restored local fixture are recorded in cycle `260928161611`. Director
+HUMAN_QA remains pending; no production activation or username-collision audit
+occurred.
+
 `PROFILE-V1-SELF-EDIT-CONVERGENCE034` is implemented in cycle `260928144227`
 on isolated branch `codex/profile-v1-basics-facts` and projected narrowly to
 normal DDEV. This is `PROFILE_SELF_EDIT_CONVERGED_HUMAN_QA_PENDING`, not Director
