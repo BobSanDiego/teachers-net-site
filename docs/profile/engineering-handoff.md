@@ -2,7 +2,9 @@
 
 ## 1. Current Phase
 
-`PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the active Director review boundary.
+`PROFILE-V1-PUBLIC-POPOVER-CONVERGENCE037` is the active Director review boundary. It changes only the 036 hero summary separators, quiet `more` triggers, and anchored disclosure presentation; all 036 governed data projection, privacy, owner-preview, Teaching Profile, About, Groups, join rail, and Shared Shell seams are carried forward unchanged. The exact reference is `profile-public-view-01f.png`, SHA-256 `42e1febf363c96faa73a08145bd9ad65bd877576a0538dcfc1d9df5cfd658c44`. Normal DDEV native 1440/1024/768/390, keyboard/ARIA, viewport containment, no hero reflow, privacy-off readback, restored local fixture, and source/runtime parity are recorded in Workflow V2 cycle `260928192329`. State: `PUBLIC_PROFILE_POPOVER_CONVERGED_HUMAN_QA_PENDING`; do not infer Director PASS. The 034 owner self-edit gate and production username-collision audit remain separate.
+
+`PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the prior implementation baseline.
 The 035 capsules are superseded by four text-led professional summary rows,
 with governed Grade parents/compact children, governed Subject short labels,
 Director-prioritized Roles, plain Teaching Since, width-aware whole-term
@@ -130,7 +132,9 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the current handoff boundary.
+`PROFILE-V1-PUBLIC-POPOVER-CONVERGENCE037` is the current handoff boundary, refining only 036 hero disclosure presentation. Cycle `260928192329` owns the scoped source, native captures, restored QA fixture, and acceptance ledger. Director HUMAN_QA remains pending.
+
+`PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the prior implementation boundary.
 Director review uses the normal DDEV public route
 `https://teachers-net.ddev.site/profile/<username>/`, including owner-only
 `?view_as_public=1` when authenticated as that member. Cycle `260928183519`

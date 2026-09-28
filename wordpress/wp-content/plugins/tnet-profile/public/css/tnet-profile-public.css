@@ -7,7 +7,7 @@
 .tnet-profile-public__breadcrumbs a:hover, .tnet-profile-public__breadcrumbs a:focus-visible { text-decoration: underline; }
 .tnet-profile-public__breadcrumbs [aria-current="page"] { color: var(--tnet-profile-navy, #102f67); font-weight: 700; }
 .tnet-profile-public__hero, .tnet-profile-public__card { box-sizing: border-box; min-width: 0; border: 1px solid var(--tnet-profile-line, #d7e1ef); border-radius: 10px; background: #fff; box-shadow: 0 2px 7px rgba(17, 47, 103, .035); }
-.tnet-profile-public__hero { display: grid; grid-template-columns: 188px minmax(0, 1fr); grid-template-areas: "avatar identity" "avatar summary" "panel panel"; align-items: center; gap: 12px 20px; padding: 19px 18px; }
+.tnet-profile-public__hero { display: grid; grid-template-columns: 188px minmax(0, 1fr); grid-template-areas: "avatar identity" "avatar summary"; align-items: center; gap: 12px 20px; padding: 19px 18px; }
 .tnet-profile-public__avatar { grid-area: avatar; display: block; box-sizing: border-box; width: 188px; height: 188px; border: 2px solid #d6e4f6; border-radius: 50%; background: #edf3fa; object-fit: cover; }
 .tnet-profile-public__identity { grid-area: identity; min-width: 0; }
 .tnet-profile-public__identity h1 { margin: 0; color: var(--tnet-profile-navy, #102f67); font-size: 34px; font-weight: 800; line-height: 1.14; overflow-wrap: anywhere; }
@@ -19,19 +19,20 @@
 .tnet-profile-public__summary { grid-area: summary; display: grid; gap: 7px; min-width: 0; align-self: center; color: #102f67; font-size: 13px; line-height: 1.45; }
 .tnet-profile-public__summary-row { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 8px; min-width: 0; }
 .tnet-profile-public__summary-label { font-weight: 750; }
-.tnet-profile-public__summary-content { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 7px; min-width: 0; }
+.tnet-profile-public__summary-content { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 0; min-width: 0; }
 .tnet-profile-public__summary-values { display: contents; }
 .tnet-profile-public__summary-value { display: inline-flex; white-space: nowrap; }
 .tnet-profile-public__summary-value.is-long { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 .tnet-profile-public__summary-value[hidden] { display: none; }
 .tnet-profile-public__separator { margin: 0 4px; color: #557095; }
-.tnet-profile-public__more { display: inline-flex; align-items: center; gap: 3px; padding: 0; border: 0; background: none; color: var(--tnet-shell-action, #0045dd); font: inherit; font-weight: 650; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; cursor: pointer; }
+.tnet-profile-public__more { display: inline-flex; align-items: center; gap: 3px; margin-left: 6px; padding: 0; border: 0; background: none; color: #536b8d; font: inherit; font-size: .92em; font-weight: 600; text-decoration: none; white-space: nowrap; cursor: pointer; }
+.tnet-profile-public__more:hover { text-decoration: underline; text-underline-offset: 2px; }
 .tnet-profile-public__more[hidden] { display: none; }
 .tnet-profile-public__more:focus-visible, .tnet-profile-public__disclosure-header button:focus-visible { outline: 2px solid var(--tnet-shell-action, #0045dd); outline-offset: 2px; }
 .tnet-profile-public__more svg { width: 10px; height: 7px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tnet-profile-public__more[aria-expanded="true"] svg { transform: rotate(180deg); }
 .tnet-profile-public__since { margin: 0; font-weight: 750; }
-.tnet-profile-public__disclosure { grid-area: panel; box-sizing: border-box; min-width: 0; padding: 11px 14px; border: 1px solid #cbdff6; border-radius: 8px; background: #f7faff; color: #173454; font-size: 13px; line-height: 1.45; }
+.tnet-profile-public__disclosure { position: fixed; z-index: 50; box-sizing: border-box; width: min(340px, calc(100vw - 24px)); min-width: 0; max-height: calc(100dvh - 24px); overflow: auto; padding: 11px 14px; border: 1px solid #cbdff6; border-radius: 8px; background: #fff; box-shadow: 0 8px 24px rgba(17, 47, 103, .16); color: #173454; font-size: 13px; line-height: 1.45; }
 .tnet-profile-public__disclosure[hidden] { display: none; }
 .tnet-profile-public__disclosure-header { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 9px; color: #102f67; }
 .tnet-profile-public__disclosure-header button { padding: 0; border: 0; background: none; color: var(--tnet-shell-action, #0045dd); font: inherit; cursor: pointer; }
@@ -56,7 +57,7 @@
 .tnet-profile-public__join p:last-child a { color: var(--tnet-shell-action, #0045dd); }
 
 @media (max-width: 700px) {
-  .tnet-profile-public__hero { grid-template-columns: 96px minmax(0, 1fr); grid-template-areas: "avatar identity" "summary summary" "panel panel"; gap: 10px 14px; padding: 15px; }
+  .tnet-profile-public__hero { grid-template-columns: 96px minmax(0, 1fr); grid-template-areas: "avatar identity" "summary summary"; gap: 10px 14px; padding: 15px; }
   .tnet-profile-public__avatar { width: 96px; height: 96px; }
   .tnet-profile-public__identity h1 { font-size: 23px; }
   .tnet-profile-public__username { margin-bottom: 9px; font-size: 15px; }

@@ -209,7 +209,7 @@ final class TNet_Profile_Public {
               <?php if ($profile['teaching_since_summary'] !== '') : ?><p class="tnet-profile-public__since"><?php echo esc_html($profile['teaching_since_summary']); ?></p><?php endif; ?>
             </div>
             <?php foreach ($profile['hero_disclosures'] as $key => $disclosure) : ?>
-              <section id="tnet-profile-public-<?php echo esc_attr($key); ?>" class="tnet-profile-public__disclosure tnet-profile-public__disclosure--<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr($disclosure['label']); ?>" hidden>
+              <section id="tnet-profile-public-<?php echo esc_attr($key); ?>" class="tnet-profile-public__disclosure tnet-profile-public__disclosure--<?php echo esc_attr($key); ?>" role="region" aria-label="<?php echo esc_attr($disclosure['label']); ?>" hidden>
                 <div class="tnet-profile-public__disclosure-header"><strong><?php echo esc_html(sprintf(__('All %s', 'tnet-profile'), $disclosure['label'])); ?></strong><button type="button" data-public-hide="<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr(sprintf(__('Hide all %s', 'tnet-profile'), $disclosure['label'])); ?>">Hide <span aria-hidden="true">⌃</span></button></div>
                 <?php if ($key === 'subjects') : ?><ul class="tnet-profile-public__subject-pills"><?php foreach ($disclosure['values'] as $value) : ?><li><?php echo esc_html($value); ?></li><?php endforeach; ?></ul>
                 <?php else : ?><ul class="tnet-profile-public__disclosure-lines"><?php foreach ($disclosure['values'] as $value) : ?><li><?php echo esc_html($value); ?></li><?php endforeach; ?></ul><?php endif; ?>

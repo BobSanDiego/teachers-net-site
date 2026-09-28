@@ -10,6 +10,8 @@ Project state: Active Development
 
 ## Current boundary
 
+`PROFILE-V1-PUBLIC-POPOVER-CONVERGENCE037` refines only the 036 public hero summary presentation on isolated Profile source branch `codex/profile-v1-basics-facts`. The exact Director reference is `/mnt/c/Main/Active/Projects/Teachers.Net/art/mockups/job center/profile-public-view-01f.png` (SHA-256 `42e1febf363c96faa73a08145bd9ad65bd877576a0538dcfc1d9df5cfd658c44`). Summary separators now have measured symmetric 4px spacing; the visible trigger is neutral, smaller `more` without a count; Grades, Subjects, and Roles share one anchored, viewport-contained overlay behavior, one open at a time, without changing hero height. Normal DDEV native 1440/1024/768/390 evidence, keyboard/ARIA and close paths, privacy-off projection, restored user-353 fixture, and source/runtime parity belong to Workflow V2 cycle `260928192329`. State: `PUBLIC_PROFILE_POPOVER_CONVERGED_HUMAN_QA_PENDING`. The 036 data projection and all other public modules remain PROVEN; Director visual acceptance and production activation remain pending.
+
 `PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` supersedes the 035 capsule hero on the
 isolated Profile branch `codex/profile-v1-basics-facts`. The public hero now
 uses four text-led professional summary rows; Grade groups use governed full
