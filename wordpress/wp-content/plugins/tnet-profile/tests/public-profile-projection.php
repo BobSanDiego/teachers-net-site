@@ -15,9 +15,13 @@ function home_url($path = '/') { return 'https://example.test' . $path; }
 
 final class TNet_Profile_Basics {
   public static function project_grade_labels(array $selected) { return in_array('grade-uuid', $selected, true) ? ['Middle School'] : []; }
-  public static function project_grade_hero_groups(array $selected) { return in_array('grade-uuid', $selected, true) ? [['label' => 'Middle School', 'short_label' => 'Middle School', 'children' => []]] : []; }
+  public static function project_grade_hero_groups(array $selected) { return in_array('grade-uuid', $selected, true) ? [['label' => 'Middle School', 'children' => ['Gr 6', 'Gr 7']]] : []; }
   public static function term_labels(array $selected) {
     $map = ['subject-uuid' => 'Science', 'subject-a' => 'American Sign Language', 'subject-g' => 'Geometry', 'subject-h' => 'History'];
+    return array_values(array_filter(array_map(static function ($uuid) use ($map) { return $map[$uuid] ?? ''; }, $selected)));
+  }
+  public static function term_short_labels(array $selected) {
+    $map = ['subject-uuid' => 'Science', 'subject-a' => 'ASL', 'subject-g' => 'Geometry', 'subject-h' => 'History'];
     return array_values(array_filter(array_map(static function ($uuid) use ($map) { return $map[$uuid] ?? ''; }, $selected)));
   }
 }
@@ -68,8 +72,8 @@ expect($public['location'] === 'Portland, Oregon, USA', 'public location must ho
 expect($public['about'] === "A short public bio.\nSecond line.", 'bio must appear only in About projection');
 expect(count($public['teaching_rows']) === 4, 'populated profile should project all four governed teaching rows');
 expect($public['teaching_rows'][0]['values'] === ['Middle School'] && $public['teaching_rows'][1]['values'] === ['Science'] && $public['teaching_rows'][2]['values'] === ['Classroom Teacher'], 'governed display labels must remain verbatim');
-expect($public['teaching_since_chip'] === 'Teaching since 2015', 'Teaching Since must be a compact visible hero chip');
-expect($public['hero_disclosures']['grades']['summary'] === 'Middle School' && $public['hero_disclosures']['grades']['count'] === 0, 'Grade hero summary must use represented parent');
+expect($public['teaching_since_summary'] === 'Teaching since 2015', 'Teaching Since must be plain visible hero text');
+expect($public['hero_disclosures']['grades']['summary_values'] === ['Middle School'] && $public['hero_disclosures']['grades']['values'] === ['Middle School (Gr 6, Gr 7)'], 'Grade summary uses full parent while details use compact governed children');
 expect(!array_key_exists('email', $public) && !in_array($user->user_email, $public, true), 'email must not enter public projection');
 expect($public['groups_available'] === false && $public['groups'] === [], 'missing Groups owner must not fabricate memberships');
 $render = new ReflectionMethod(TNet_Profile_Public::class, 'render_profile');
@@ -94,7 +98,7 @@ $private_details = $state;
 $private_details['scalars']['profile_details_public'] = false;
 $private_details['scalars']['location_public'] = false;
 $hidden = TNet_Profile_Public::build_projection($user, $private_details, $roles);
-expect($hidden['about'] === '' && $hidden['teaching_rows'] === [] && $hidden['hero_disclosures'] === [] && $hidden['teaching_since_chip'] === '', 'private aggregate details must omit bio, rows, and chips');
+expect($hidden['about'] === '' && $hidden['teaching_rows'] === [] && $hidden['hero_disclosures'] === [] && $hidden['teaching_since_summary'] === '', 'private aggregate details must omit bio, rows, and summary');
 expect($hidden['location'] === '', 'private location must be omitted independently');
 
 $public_details_private_location = $state;
@@ -108,12 +112,12 @@ $sparse['selected'] = ['teaching_grade' => [], 'teaching_subject' => [], 'profes
 $sparse['scalars']['bio'] = '';
 $sparse['scalars']['teaching_since'] = null;
 $sparse_public = TNet_Profile_Public::build_projection($user, $sparse, $roles);
-expect($sparse_public['about'] === '' && $sparse_public['teaching_rows'] === [] && $sparse_public['hero_disclosures'] === [] && $sparse_public['teaching_since_chip'] === '', 'empty About/Teaching Profile modules must be omitted');
+expect($sparse_public['about'] === '' && $sparse_public['teaching_rows'] === [] && $sparse_public['hero_disclosures'] === [] && $sparse_public['teaching_since_summary'] === '', 'empty About/Teaching Profile modules must be omitted');
 
 $many = $state;
 $many['selected']['teaching_subject'] = ['subject-h', 'subject-g', 'subject-a'];
 $many_public = TNet_Profile_Public::build_projection($user, $many, $roles);
-expect($many_public['hero_disclosures']['subjects']['summary'] === 'American Sign Language' && $many_public['hero_disclosures']['subjects']['count'] === 2, 'hero subjects must sort alphabetically');
+expect($many_public['hero_disclosures']['subjects']['summary_values'] === ['ASL', 'Geometry', 'History'], 'hero subjects must sort compact governed labels alphabetically');
 expect($many_public['hero_disclosures']['subjects']['values'] === ['American Sign Language', 'Geometry', 'History'], 'expanded subjects must sort alphabetically');
 $role_fixture = [
   (object) ['term_uuid' => 'teacher', 'label' => 'Teacher'],
@@ -123,8 +127,14 @@ $role_fixture = [
 ];
 $many['selected']['professional_identity'] = ['librarian', 'teacher', 'counselor', 'administrator'];
 $role_public = TNet_Profile_Public::build_projection($user, $many, $role_fixture);
-expect($role_public['hero_disclosures']['roles']['summary'] === 'Administrator' && $role_public['hero_disclosures']['roles']['count'] === 3, 'hero role summary must use Director priority');
+expect($role_public['hero_disclosures']['roles']['summary_values'] === ['Administrator', 'Teacher', 'School Counselor', 'Librarian / Media Specialist'], 'hero role summary must use Director priority');
+expect($role_public['hero_disclosures']['roles']['has_details'] === true, 'complete role details remain available even when compact labels fit');
 expect($role_public['hero_disclosures']['roles']['values'] === ['Administrator', 'Teacher', 'School Counselor', 'Librarian / Media Specialist'], 'expanded roles must use Director priority, not alphabetical order');
+$mentor_fixture = array_merge($role_fixture, [(object) ['term_uuid' => 'mentor', 'label' => 'Mentor Teacher']]);
+$many['selected']['professional_identity'] = ['teacher', 'mentor'];
+$mentor_public = TNet_Profile_Public::build_projection($user, $many, $mentor_fixture);
+expect($mentor_public['hero_disclosures']['roles']['summary_values'] === ['Mentor Teacher'] && $mentor_public['hero_disclosures']['roles']['suppressed_count'] === 1, 'Teacher is suppressed only from collapsed Mentor Teacher summary');
+expect($mentor_public['hero_disclosures']['roles']['values'] === ['Mentor Teacher', 'Teacher'] && $mentor_public['teaching_rows'][2]['values'] === ['Teacher', 'Mentor Teacher'], 'expanded and complete teaching records retain Teacher');
 ob_start();
 $render->invoke(null, $sparse_public);
 $sparse_markup = ob_get_clean();

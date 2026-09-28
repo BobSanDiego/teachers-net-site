@@ -832,6 +832,18 @@ final class TNet_Profile_Basics {
     return array_values(array_filter(array_map(static function ($uuid) use ($labels) { return $labels[$uuid] ?? ''; }, array_unique($uuids))));
   }
 
+  /** Governed compact labels for public summaries; full labels remain in the record. */
+  public static function term_short_labels(array $uuids): array {
+    $labels = [];
+    foreach (self::terms() as $term) {
+      $uuid = (string) ($term->term_uuid ?? '');
+      $labels[$uuid] = trim((string) ($term->short_label ?? '')) ?: (string) ($term->label ?? '');
+    }
+    return array_values(array_filter(array_map(static function ($uuid) use ($labels) {
+      return $labels[(string) $uuid] ?? '';
+    }, array_unique($uuids))));
+  }
+
   private static function ordered_grade_groups(array $groups) {
     $order = ['Early Childhood', 'Elementary', 'Middle School', 'High School', 'Adult Education', 'Higher Education'];
     usort($groups, static function ($a, $b) use ($order) {
@@ -878,16 +890,15 @@ final class TNet_Profile_Basics {
     $by_parent = [];
     foreach (self::axis_terms('Grade Level') as $term) $by_parent[(string) ($term->parent_uuid ?? '')][] = $term;
     $selected = array_fill_keys(array_map('strval', $selected), true);
-    $short_labels = ['Adult Education' => 'Adult Ed', 'Higher Education' => 'Higher Ed'];
     $groups = [];
     foreach (self::ordered_grade_groups($by_parent[(string) $axis->term_uuid] ?? []) as $group) {
       $uuid = (string) ($group->term_uuid ?? '');
       $children = self::selected_grade_hero_children($group, $by_parent, $selected);
       if (!isset($selected[$uuid]) && !$children) continue;
       $label = (string) ($group->label ?? '');
+      if (isset($selected[$uuid])) $children = [];
       $groups[] = [
         'label' => $label,
-        'short_label' => $short_labels[$label] ?? $label,
         // An explicit parent-only choice has no child specificity to display.
         'children' => $children,
       ];
@@ -899,7 +910,7 @@ final class TNet_Profile_Basics {
     $children = [];
     foreach ($by_parent[(string) ($parent->term_uuid ?? '')] ?? [] as $child) {
       $uuid = (string) ($child->term_uuid ?? '');
-      if (isset($selected[$uuid])) $children[] = (string) ($child->label ?? '');
+      if (isset($selected[$uuid])) $children[] = trim((string) ($child->short_label ?? '')) ?: (string) ($child->label ?? '');
       $children = array_merge($children, self::selected_grade_hero_children($child, $by_parent, $selected));
     }
     return $children;

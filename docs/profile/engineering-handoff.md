@@ -2,7 +2,22 @@
 
 ## 1. Current Phase
 
-`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` is implemented on isolated Profile
+`PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the active Director review boundary.
+The 035 capsules are superseded by four text-led professional summary rows,
+with governed Grade parents/compact children, governed Subject short labels,
+Director-prioritized Roles, plain Teaching Since, width-aware whole-term
+packing, and one keyboard-accessible disclosure at a time. The full Teaching
+Profile remains the authoritative record. Anonymous right-rail join copy links
+only to the existing signup/login routes and does not claim messaging/follow
+capabilities. Normal DDEV 1440/1024/768/390 native evidence, focused PHP/JS
+regressions, restored user-353 fixture, and source/runtime hashes are recorded
+in Workflow V2 cycle `260928183519`. This is
+`PUBLIC_PROFILE_FINAL_DESIGN_CONVERGED_HUMAN_QA_PENDING`, not Director PASS.
+No production activation or username-collision audit occurred. The next action
+is Director review of the final public Profile presentation; preserve 034
+owner self-edit's independent pending gate.
+
+`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` is the superseded capsule baseline on isolated Profile
 branch `codex/profile-v1-basics-facts` and is
 `PUBLIC_PROFILE_HERO_CONVERGED_HUMAN_QA_PENDING`. The accepted public Profile
 composition below the hero is unchanged. The hero now summarizes represented
@@ -115,15 +130,14 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` is the current handoff boundary.
-The 034 owner self-edit corrections remain implemented and HUMAN_QA_PENDING;
-the 035 public-hero/preview refinement adds a separate Director acceptance gate.
-Director review uses normal `https://teachers-net.ddev.site/profile/` and
-`https://teachers-net.ddev.site/profile/edit/`; the unchanged public
-projection is `/profile/<username>/`. Cycle `260928144227` owns the scoped
-diff, native screenshots, source/runtime hashes, fixture restoration and
-acceptance ledger. No further implementation is authorized merely from an
-engineering PASS; Director visual/interaction acceptance remains pending.
+`PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` is the current handoff boundary.
+Director review uses the normal DDEV public route
+`https://teachers-net.ddev.site/profile/<username>/`, including owner-only
+`?view_as_public=1` when authenticated as that member. Cycle `260928183519`
+owns the scoped 036 diff, native captures, source/runtime hashes, restored
+fixture and acceptance ledger. The separate 034 owner self-edit gate remains
+HUMAN_QA_PENDING at `/profile/` and `/profile/edit/`. Engineering acceptance
+does not imply Director visual/interaction PASS.
 
 `PROFILE-V1-SELF-EDIT-MODE033` is the prior implementation baseline:
 `PROFILE_SELF_EDIT_MODE_IMPLEMENTED_HUMAN_QA_PENDING`. Director can review

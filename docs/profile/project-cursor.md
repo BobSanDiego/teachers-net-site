@@ -10,7 +10,23 @@ Project state: Active Development
 
 ## Current boundary
 
-`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` is implemented on isolated Profile
+`PROFILE-V1-PUBLIC-VIEW-CONVERGENCE036` supersedes the 035 capsule hero on the
+isolated Profile branch `codex/profile-v1-basics-facts`. The public hero now
+uses four text-led professional summary rows; Grade groups use governed full
+parent labels and compact child details, Subjects use governed short labels
+and alphabetical display order, Roles use Director priority with the
+Mentor/Teacher collapsed-only redundancy rule, and Teaching Since is plain
+text. A width-aware complete-term packer reserves the `(N more)` disclosure,
+with one expanded panel at a time and keyboard/ARIA behavior. The full Teaching
+Profile, About, Groups, privacy, owner-only preview/noindex, and Shared Shell
+contracts remain unchanged. A restrained anonymous join rail uses the existing
+account/signup destination and asserts no unowned social capability. Normal
+DDEV native 1440/1024/768/390 containment, projection, disclosure, fixture
+restoration, and source/runtime parity are in cycle `260928183519`.
+State: `PUBLIC_PROFILE_FINAL_DESIGN_CONVERGED_HUMAN_QA_PENDING`; no Director
+visual PASS, production activation, or username-collision audit is claimed.
+
+`PROFILE-V1-PUBLIC-HERO-CONVERGENCE035` was implemented on isolated Profile
 branch `codex/profile-v1-basics-facts`, projected narrowly into normal DDEV,
 and remains `PUBLIC_PROFILE_HERO_CONVERGED_HUMAN_QA_PENDING`. The canonical
 public `/profile/<username>/` now uses compact, keyboard-operable, mutually

@@ -78,7 +78,10 @@ final class TNet_Profile_Public {
       nocache_headers();
     }
     $main = static function () use ($projection, $owner_preview) { self::render_profile($projection, $owner_preview); };
-    $right = static function () { TNet_Profile_Enrichment::render_ad_slot(); };
+    $right = static function () use ($user) {
+      TNet_Profile_Enrichment::render_ad_slot();
+      if (!is_user_logged_in()) self::render_join_promotion($user);
+    };
     if (class_exists('TNet_Shared_Shell')) {
       $viewer = is_user_logged_in() ? get_user_by('id', get_current_user_id()) : null;
       $config = TNet_Profile_Basics::public_profile_shell_config(__('Member Profile', 'tnet-profile'), $viewer, $main, $right);
@@ -115,22 +118,25 @@ final class TNet_Profile_Public {
     $hero_disclosures = [];
     if ($grade_groups) {
       $hero_disclosures['grades'] = [
-        'label' => __('Grades / Levels', 'tnet-profile'),
-        'summary' => $grade_groups[0]['short_label'],
-        'count' => count($grade_groups) - 1,
+        'label' => __('Grades', 'tnet-profile'),
+        'summary_values' => array_column($grade_groups, 'label'),
+        'has_details' => (bool) array_filter(array_column($grade_groups, 'children')),
         'values' => array_map(static function ($group) {
           return $group['label'] . ($group['children'] ? ' (' . implode(', ', $group['children']) . ')' : '');
         }, $grade_groups),
       ];
     }
     if ($subjects) {
-      $sorted_subjects = array_values(array_unique($subjects));
+      $short_subjects = TNet_Profile_Basics::term_short_labels((array) ($state['selected']['teaching_subject'] ?? []));
+      $sorted_subjects = array_values($short_subjects);
       usort($sorted_subjects, 'strcasecmp');
+      $expanded_subjects = array_values($subjects);
+      usort($expanded_subjects, 'strcasecmp');
       $hero_disclosures['subjects'] = [
         'label' => __('Subjects', 'tnet-profile'),
-        'summary' => $sorted_subjects[0],
-        'count' => count($sorted_subjects) - 1,
-        'values' => $sorted_subjects,
+        'summary_values' => $sorted_subjects,
+        'has_details' => $sorted_subjects !== $expanded_subjects,
+        'values' => $expanded_subjects,
       ];
     }
     if ($role_labels) {
@@ -142,13 +148,14 @@ final class TNet_Profile_Public {
         return ($left === false ? count($priority) : $left) <=> ($right === false ? count($priority) : $right);
       });
       $hero_disclosures['roles'] = [
-        'label' => __('Educator Roles', 'tnet-profile'),
-        'summary' => $sorted_roles[0],
-        'count' => count($sorted_roles) - 1,
+        'label' => __('Roles', 'tnet-profile'),
+        'summary_values' => in_array('Mentor Teacher', $sorted_roles, true) ? array_values(array_diff($sorted_roles, ['Teacher'])) : $sorted_roles,
+        'has_details' => true,
+        'suppressed_count' => in_array('Mentor Teacher', $sorted_roles, true) && in_array('Teacher', $sorted_roles, true) ? 1 : 0,
         'values' => $sorted_roles,
       ];
     }
-    $teaching_since_chip = $show_details && !empty($scalars['teaching_since'])
+    $teaching_since_summary = $show_details && !empty($scalars['teaching_since'])
       ? sprintf(__('Teaching since %s', 'tnet-profile'), (string) (int) $scalars['teaching_since']) : '';
 
     $bio = $show_details ? trim((string) ($scalars['bio'] ?? '')) : '';
@@ -160,7 +167,7 @@ final class TNet_Profile_Public {
       'location' => $show_location ? (string) ($state['location']['label'] ?? '') : '',
       'member_since' => !empty($user->user_registered) ? mysql2date('M Y', $user->user_registered, false) : '',
       'hero_disclosures' => $hero_disclosures,
-      'teaching_since_chip' => $teaching_since_chip,
+      'teaching_since_summary' => $teaching_since_summary,
       'about' => $bio,
       'teaching_rows' => $rows,
       // No Groups/BuddyPress membership provider is active in this stack. Keep
@@ -190,17 +197,20 @@ final class TNet_Profile_Public {
             <?php if ($profile['member_since'] !== '') : ?><span><svg aria-hidden="true" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="1.5"/><path d="M6 2.5v3M14 2.5v3M3 8h14"/></svg><?php echo esc_html(sprintf(__('Member since %s', 'tnet-profile'), $profile['member_since'])); ?></span><?php endif; ?>
           </div>
         </div>
-        <?php if ($profile['hero_disclosures'] || $profile['teaching_since_chip'] !== '') : ?>
+        <?php if ($profile['hero_disclosures'] || $profile['teaching_since_summary'] !== '') : ?>
           <div class="tnet-profile-public__highlights">
-            <ul class="tnet-profile-public__chips" aria-label="<?php echo esc_attr__('Profile highlights', 'tnet-profile'); ?>">
+            <div class="tnet-profile-public__summary" aria-label="<?php echo esc_attr__('Profile highlights', 'tnet-profile'); ?>">
               <?php foreach ($profile['hero_disclosures'] as $key => $disclosure) : ?>
-                <?php $spoken = $disclosure['label'] . ': ' . $disclosure['summary'] . ($disclosure['count'] ? ' +' . $disclosure['count'] : ''); ?>
-                <li><button type="button" class="tnet-profile-public__chip-button" data-public-disclosure aria-expanded="false" aria-controls="tnet-profile-public-<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr($spoken . '. ' . __('Show all', 'tnet-profile')); ?>" data-label-closed="<?php echo esc_attr($spoken . '. ' . __('Show all', 'tnet-profile')); ?>" data-label-open="<?php echo esc_attr($spoken . '. ' . __('Hide all', 'tnet-profile')); ?>"><span><?php echo esc_html($disclosure['summary']); ?><?php if ($disclosure['count']) : ?> <span class="tnet-profile-public__chip-count">+<?php echo esc_html($disclosure['count']); ?></span><?php endif; ?></span><svg aria-hidden="true" viewBox="0 0 12 8"><path d="m1 1 5 5 5-5"/></svg></button></li>
+                <div class="tnet-profile-public__summary-row" data-public-summary data-suppressed-count="<?php echo esc_attr((string) ($disclosure['suppressed_count'] ?? 0)); ?>" data-has-details="<?php echo !empty($disclosure['has_details']) ? '1' : '0'; ?>">
+                  <strong class="tnet-profile-public__summary-label"><?php echo esc_html($disclosure['label']); ?>:</strong>
+                  <div class="tnet-profile-public__summary-content"><span class="tnet-profile-public__summary-values"><?php foreach ($disclosure['summary_values'] as $index => $value) : ?><span class="tnet-profile-public__summary-value" data-summary-value><?php if ($index) : ?><span class="tnet-profile-public__separator" aria-hidden="true">|</span><?php endif; ?><?php echo esc_html($value); ?></span><?php endforeach; ?></span><button type="button" class="tnet-profile-public__more" data-public-disclosure aria-expanded="false" aria-controls="tnet-profile-public-<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr(sprintf(__('Show all %s', 'tnet-profile'), $disclosure['label'])); ?>" data-label-closed="<?php echo esc_attr(sprintf(__('Show all %s', 'tnet-profile'), $disclosure['label'])); ?>" data-label-open="<?php echo esc_attr(sprintf(__('Hide all %s', 'tnet-profile'), $disclosure['label'])); ?>"><span data-more-label></span><svg aria-hidden="true" viewBox="0 0 12 8"><path d="m1 1 5 5 5-5"/></svg></button></div>
+                </div>
               <?php endforeach; ?>
-              <?php if ($profile['teaching_since_chip'] !== '') : ?><li><span class="tnet-profile-public__chip-static"><?php echo esc_html($profile['teaching_since_chip']); ?></span></li><?php endif; ?>
-            </ul>
+              <?php if ($profile['teaching_since_summary'] !== '') : ?><p class="tnet-profile-public__since"><?php echo esc_html($profile['teaching_since_summary']); ?></p><?php endif; ?>
+            </div>
             <?php foreach ($profile['hero_disclosures'] as $key => $disclosure) : ?>
               <section id="tnet-profile-public-<?php echo esc_attr($key); ?>" class="tnet-profile-public__disclosure tnet-profile-public__disclosure--<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr($disclosure['label']); ?>" hidden>
+                <div class="tnet-profile-public__disclosure-header"><strong><?php echo esc_html(sprintf(__('All %s', 'tnet-profile'), $disclosure['label'])); ?></strong><button type="button" data-public-hide="<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr(sprintf(__('Hide all %s', 'tnet-profile'), $disclosure['label'])); ?>">Hide <span aria-hidden="true">⌃</span></button></div>
                 <?php if ($key === 'subjects') : ?><ul class="tnet-profile-public__subject-pills"><?php foreach ($disclosure['values'] as $value) : ?><li><?php echo esc_html($value); ?></li><?php endforeach; ?></ul>
                 <?php else : ?><ul class="tnet-profile-public__disclosure-lines"><?php foreach ($disclosure['values'] as $value) : ?><li><?php echo esc_html($value); ?></li><?php endforeach; ?></ul><?php endif; ?>
               </section>
@@ -225,6 +235,12 @@ final class TNet_Profile_Public {
       </section>
     </main>
     <?php
+  }
+
+  private static function render_join_promotion($user) {
+    $signup = home_url('/account/sign-up/');
+    if ($signup === '') return;
+    ?><aside class="tnet-profile-public__join" aria-label="<?php echo esc_attr__('Join Teachers.Net', 'tnet-profile'); ?>"><h2><?php echo esc_html__('Join Teachers.Net', 'tnet-profile'); ?></h2><p><?php echo esc_html(sprintf(__('Join the Teachers.Net community and explore educator discussions alongside %s.', 'tnet-profile'), (string) $user->display_name)); ?></p><a class="tnet-profile-public__join-cta" href="<?php echo esc_url($signup); ?>"><?php echo esc_html__('Join Teachers.Net', 'tnet-profile'); ?></a><p><?php echo esc_html__('Already a member?', 'tnet-profile'); ?> <a href="<?php echo esc_url(wp_login_url(self::canonical_url($user))); ?>"><?php echo esc_html__('Log in', 'tnet-profile'); ?></a></p></aside><?php
   }
 
   private static function render_not_found() {
