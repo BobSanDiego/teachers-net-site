@@ -1,0 +1,125 @@
+.tnet-profile-self,
+.tnet-profile-self-modal {
+  --tnet-profile-navy: #102f67;
+  --tnet-profile-ink: #17345d;
+  --tnet-profile-muted: #617391;
+  --tnet-profile-line: #d7e1ef;
+  color: var(--tnet-profile-ink);
+}
+.tnet-profile-self { box-sizing: border-box; width: 100%; min-width: 0; max-width: 800px; margin: 0 auto; }
+.tnet-profile-self * { box-sizing: border-box; }
+.tnet-profile-self__breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin: 0 0 9px; color: #60738f; font-size: 13px; }
+.tnet-profile-self__breadcrumbs a { color: #365a8a; text-decoration: none; }
+.tnet-profile-self__breadcrumbs a:hover, .tnet-profile-self__breadcrumbs a:focus-visible { text-decoration: underline; }
+.tnet-profile-self__breadcrumbs [aria-current] { color: var(--tnet-profile-navy); font-weight: 700; }
+.tnet-profile-self__notice { margin: 0 0 10px; padding: 9px 12px; border-radius: 8px; background: #e8f7ed; color: #16653e; font-weight: 650; }
+.tnet-profile-self__hero, .tnet-profile-self__card, .tnet-profile-self__rail-card { border: 1px solid var(--tnet-profile-line); border-radius: 8px; background: #fff; box-shadow: 0 2px 7px rgba(17, 47, 103, .035); }
+.tnet-profile-self__hero { position: relative; display: grid; grid-template-columns: 132px minmax(0, 1fr); align-items: center; gap: 18px; min-height: 178px; padding: 16px 18px; }
+.tnet-profile-self__avatar-wrap { position: relative; display: block; width: 128px; height: 128px; }
+.tnet-profile-self__avatar-wrap > img { display: block; width: 128px; height: 128px; border: 2px solid #d6e4f6; border-radius: 50%; background: #edf3fa; object-fit: cover; }
+.tnet-profile-self__avatar-wrap .tnet-avatar-camera { position: absolute; right: -2px; bottom: 1px; display: grid; width: 36px; height: 36px; place-items: center; padding: 6px; border: 1px solid #dae5f2; border-radius: 50%; background: #fff; color: var(--tnet-shell-action, #0045dd); box-shadow: 0 2px 6px #17345430; cursor: pointer; }
+.tnet-profile-self__avatar-wrap .tnet-avatar-camera svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.tnet-profile-self__identity { min-width: 0; padding-right: 0; }
+.tnet-profile-self--editing .tnet-profile-self__identity { padding-top: 30px; }
+.tnet-profile-self__identity h1 { margin: 0; color: var(--tnet-profile-navy); font-size: 30px; font-weight: 800; line-height: 1.15; overflow-wrap: anywhere; }
+.tnet-profile-self__username { margin: 2px 0 7px; color: #315a99; font-size: 15px; font-weight: 650; overflow-wrap: anywhere; }
+.tnet-profile-self__meta { display: flex; flex-wrap: wrap; gap: 5px 18px; color: #536b8d; font-size: 13px; }
+.tnet-profile-self__meta > span { display: inline-flex; align-items: center; gap: 6px; }
+.tnet-profile-self__meta svg { width: 16px; height: 16px; }
+.tnet-profile-self__chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
+.tnet-profile-self__chips li { max-width: 100%; padding: 5px 9px; border-radius: 5px; background: #eaf2ff; color: #1554ae; font-size: 12px; font-weight: 650; overflow-wrap: anywhere; }
+.tnet-profile-self__hero-actions { position: absolute; top: 15px; right: 14px; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.tnet-profile-self__button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 34px; padding: 7px 13px; border: 1px solid transparent; border-radius: 5px; font: inherit; font-size: 13px; font-weight: 700; line-height: 1.25; text-decoration: none; cursor: pointer; white-space: nowrap; }
+.tnet-profile-self__button svg { width: 16px; height: 16px; }
+.tnet-profile-self__button--primary { background: var(--tnet-shell-action, #0045dd); color: #fff; }
+.tnet-profile-self__button--primary:hover, .tnet-profile-self__button--primary:focus-visible { background: #0039bb; color: #fff; }
+.tnet-profile-self__button--secondary, .tnet-profile-self__button--edit { border-color: #a9c8f0; background: #fff; color: var(--tnet-shell-action, #0045dd); }
+.tnet-profile-self__button--secondary:hover, .tnet-profile-self__button--edit:hover { background: #f2f7ff; color: #0039bb; }
+.tnet-profile-self__card { min-width: 0; margin-top: 10px; padding: 12px 17px; }
+.tnet-profile-self__card-header { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.tnet-profile-self__card-icon { display: inline-grid; flex: 0 0 30px; width: 30px; place-items: center; color: var(--tnet-shell-action, #0045dd); }
+.tnet-profile-self__card-icon svg { width: 23px; height: 23px; }
+.tnet-profile-self__card-header h2 { margin: 0; color: var(--tnet-profile-navy); font-size: 17px; font-weight: 800; line-height: 1.3; }
+.tnet-profile-self__card-header > .tnet-profile-self__button { min-width: 80px; margin-left: auto; }
+.tnet-profile-self__badge { display: inline-flex; align-items: center; gap: 5px; margin-left: 12px; padding: 4px 10px; border-radius: 999px; background: #edf2f7; color: #506b91; font-size: 11px; font-weight: 650; white-space: nowrap; }
+.tnet-profile-self__badge.is-public { background: #e8f7ef; color: #15734a; }
+.tnet-profile-self__badge svg { width: 13px; height: 13px; }
+.tnet-profile-self__card > p, .tnet-profile-self__card > dl { margin: 8px 0 0 53px; }
+.tnet-profile-self__bio { color: #425a7a; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.tnet-profile-self__empty, .tnet-profile-self__help { color: var(--tnet-profile-muted); font-size: 13px; line-height: 1.4; }
+.tnet-profile-self__location { font-size: 14px; color: #425a7a; }
+.tnet-profile-self__card dl > div { display: grid; grid-template-columns: minmax(155px, 30%) minmax(0, 1fr); gap: 8px; padding: 6px 0; border-top: 1px solid #e7edf6; font-size: 13px; line-height: 1.35; }
+.tnet-profile-self__card dl > div:first-child { border-top: 0; }
+.tnet-profile-self__card dt { color: var(--tnet-profile-navy); font-weight: 700; }
+.tnet-profile-self__card dd { min-width: 0; margin: 0; color: #4d668c; overflow-wrap: anywhere; }
+.tnet-profile-self__card dd.is-empty { color: #7b8ca4; }
+.tnet-profile-self__visibility dl > div { grid-template-columns: minmax(0, 1fr) minmax(120px, 35%); }
+.tnet-profile-self__rail-card { width: 100%; margin-top: 12px; padding: 16px; color: var(--tnet-profile-ink); }
+.tnet-profile-self__rail-card h2 { margin: 0 0 9px; color: var(--tnet-profile-navy); font-size: 16px; }
+.tnet-profile-self__rail-card p, .tnet-profile-self__rail-card small { color: #506b91; font-size: 13px; line-height: 1.45; }
+.tnet-profile-self__rail-card p { margin: 0 0 13px; }
+.tnet-profile-self__rail-card a { display: inline-flex; align-items: center; gap: 8px; color: #124da8; font-size: 13px; font-weight: 700; text-decoration: none; }
+.tnet-profile-self__rail-card a svg { width: 17px; height: 17px; }
+.tnet-profile-self__rail-card small { display: block; margin: 4px 0 0 25px; }
+.tnet-profile-self__rail-card a:hover { text-decoration: underline; }
+.tnet-profile-self-modal { box-sizing: border-box; width: min(620px, calc(100vw - 28px)); max-height: min(88vh, 860px); padding: 0; border: 1px solid #b6c7de; border-radius: 10px; box-shadow: 0 18px 60px #0a214d52; }
+.tnet-profile-self-modal::backdrop { background: #0b1f4285; }
+.tnet-profile-self-modal form { display: flex; flex-direction: column; max-height: inherit; min-width: 0; }
+.tnet-profile-self-modal__header, .tnet-profile-self-modal__actions { display: flex; align-items: center; gap: 10px; padding: 13px 17px; }
+.tnet-profile-self-modal__header { border-bottom: 1px solid #e1e9f4; }
+.tnet-profile-self-modal__header h2 { flex: 1; margin: 0; color: var(--tnet-profile-navy); font-size: 18px; font-weight: 800; }
+.tnet-profile-self-modal__header button { width: 30px; height: 30px; border: 0; background: transparent; color: var(--tnet-profile-navy); font-size: 24px; cursor: pointer; }
+.tnet-profile-self-modal__body { min-width: 0; overflow: auto; padding: 16px 17px; }
+.tnet-profile-self-modal__actions { justify-content: flex-end; border-top: 1px solid #e1e9f4; }
+.tnet-profile-self-modal__actions .tnet-profile-self__button { min-width: 88px; }
+.tnet-profile-self-modal__error { margin: 0 0 12px; padding: 9px 11px; border-radius: 6px; background: #fff0f0; color: #912627; }
+.tnet-profile-self-bio-label { display: grid; gap: 7px; color: var(--tnet-profile-navy); font-size: 14px; font-weight: 700; }
+.tnet-profile-self-bio-label textarea { width: 100%; min-height: 160px; box-sizing: border-box; padding: 10px 11px; border: 1px solid #b9cbe2; border-radius: 7px; color: var(--tnet-profile-ink); font: inherit; font-weight: 500; resize: vertical; }
+.tnet-profile-self-bio-label small { color: #506b91; font-size: 12px; font-weight: 500; }
+.tnet-profile-self-modal__intro { margin: 0 0 15px; color: #4d668c; font-size: 14px; }
+.tnet-profile-self-modal__choice { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0; color: var(--tnet-profile-navy); font-size: 14px; font-weight: 650; }
+.tnet-profile-self-modal__choice input { flex: none; width: 17px; height: 17px; margin: 2px 0 0; accent-color: var(--tnet-shell-action, #0045dd); }
+.tnet-profile-self-modal__choice small { display: block; margin-top: 3px; color: #5c7192; font-size: 12px; font-weight: 500; }
+.tnet-profile-self-modal__teaching-controls { width: 100%; max-width: none; }
+.tnet-profile-self-modal__teaching-controls > section { margin: 0 0 10px; }
+.tnet-profile-self-modal__teaching-controls .tnet-profile-basics-grade-groups { grid-auto-flow: row; grid-template-rows: none; }
+.tnet-profile-self-modal__teaching-controls .tnet-profile-basics-picker-details { margin-top: 8px; }
+.tnet-profile-self-modal__teaching-controls .tnet-profile-self-modal__year h3 { margin: 0 0 4px; color: var(--tnet-profile-navy); font-size: 16px; }
+.tnet-profile-self-modal__teaching-controls .tnet-profile-self-modal__year p { margin: 0 0 10px; color: #617391; font-size: 13px; }
+.tnet-profile-self-modal__teaching-controls .tnet-profile-self-modal__year select { width: 100%; min-height: 40px; padding: 7px 9px; border: 1px solid #b9cbe2; border-radius: 7px; background: #fff; color: var(--tnet-profile-ink); }
+.tnet-profile-self-modal__location-controls { width: 100%; max-width: none; }
+.tnet-profile-self-modal__location-controls > section { margin: 0; }
+.tnet-profile-self-modal__location-controls .tnet-profile-basics-guided-location-row { margin-left: 0; }
+.tnet-profile-self-modal__location-controls .tnet-profile-basics-guided-location-privacy { display: none; }
+.tnet-profile-self-modal__location-note { margin: 9px 0 0; color: #617391; font-size: 12px; line-height: 1.4; }
+@media (max-width: 760px) {
+  .tnet-profile-self__hero { grid-template-columns: 104px minmax(0, 1fr); gap: 13px; }
+  .tnet-profile-self__avatar-wrap, .tnet-profile-self__avatar-wrap > img { width: 100px; height: 100px; }
+  .tnet-profile-self__identity { padding-top: 34px; }
+  .tnet-profile-self__identity h1 { font-size: 24px; }
+  .tnet-profile-self__card { padding: 12px 14px; }
+}
+@media (max-width: 520px) {
+  .tnet-profile-self__hero { grid-template-columns: 76px minmax(0, 1fr); gap: 10px; min-height: 0; padding: 12px; }
+  .tnet-profile-self__avatar-wrap, .tnet-profile-self__avatar-wrap > img { width: 74px; height: 74px; }
+  .tnet-profile-self__avatar-wrap .tnet-avatar-camera { width: 29px; height: 29px; right: -4px; bottom: -2px; }
+  .tnet-profile-self__avatar-wrap .tnet-avatar-camera svg { width: 16px; height: 16px; }
+  .tnet-profile-self__identity, .tnet-profile-self--editing .tnet-profile-self__identity { padding-top: 0; }
+  .tnet-profile-self__identity h1 { font-size: 21px; }
+  .tnet-profile-self__username { font-size: 13px; }
+  .tnet-profile-self__meta { font-size: 12px; }
+  .tnet-profile-self__chips { gap: 5px; margin-top: 7px; }
+  .tnet-profile-self__chips li { font-size: 11px; }
+  .tnet-profile-self__hero-actions { position: static; grid-column: 1 / -1; justify-content: stretch; }
+  .tnet-profile-self__hero-actions > * { flex: 1 1 auto; }
+  .tnet-profile-self__card-header { flex-wrap: wrap; }
+  .tnet-profile-self__card-header h2 { font-size: 16px; }
+  .tnet-profile-self__card-header > .tnet-profile-self__button { min-width: 62px; padding: 6px 8px; }
+  .tnet-profile-self__badge { margin-left: 0; padding: 4px 7px; }
+  .tnet-profile-self__card > p, .tnet-profile-self__card > dl { margin-left: 0; }
+  .tnet-profile-self__card dl > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .tnet-profile-self__visibility dl > div { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  .tnet-profile-self-modal { max-height: 90dvh; }
+  .tnet-profile-self-modal__body { padding: 13px; }
+  .tnet-profile-self-modal__location-controls .tnet-profile-basics-guided-location-complete > div { margin-left: 0; }
+}

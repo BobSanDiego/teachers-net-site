@@ -65,6 +65,10 @@ final class TNet_Profile_Basics {
       exit;
     }
     $user_id = get_current_user_id();
+    if ($route === 'edit') {
+      TNet_Profile_Self::render_route($user_id);
+      return;
+    }
     $result = null;
     if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
       $result = self::save_from_request($user_id);
@@ -101,48 +105,10 @@ final class TNet_Profile_Basics {
     $teaching_since = self::normalize_teaching_since($input['teaching_since'] ?? '');
     if (is_wp_error($teaching_since)) return $teaching_since;
 
-    $sets = [];
-    foreach ([
-      'teaching_grade' => 'teaching_grades',
-      'teaching_subject' => 'teaching_subjects',
-      'professional_identity' => 'professional_identities',
-    ] as $relationship => $input_key) {
-      $sets[$relationship] = self::requested_uuids($input[$input_key] ?? []);
-      if (is_wp_error($sets[$relationship])) return $sets[$relationship];
-    }
-    $role_terms = self::professional_identity_terms();
-    if (!$role_terms) return new WP_Error('tnet_profile_basics_list_unavailable', __('Profile role choices are temporarily unavailable.', 'tnet-profile'));
-    $existing_selected = self::state($user_id)['selected'];
-    $role_allowed = array_fill_keys(array_map(static function ($term) { return (string) $term->term_uuid; }, $role_terms), true);
-    foreach ($sets['professional_identity'] as $uuid) {
-      if (!isset($role_allowed[$uuid]) && !in_array($uuid, $existing_selected['professional_identity'], true)) {
-        return new WP_Error('tnet_profile_basics_choice_unavailable', __('A selected Profile role is no longer available.', 'tnet-profile'));
-      }
-    }
-    // The composition governs new/editable choices, not historical assertions.
-    $sets['professional_identity'] = array_values(array_filter($sets['professional_identity'], static function ($uuid) use ($role_allowed) { return isset($role_allowed[$uuid]); }));
-    // Govern new Grade/Subject choices without discarding older member facts that
-    // are outside the current presentation composition.
-    foreach (['teaching_grade' => 'Grade Level', 'teaching_subject' => 'Subject Area'] as $relationship => $axis_label) {
-      $available = self::axis_terms($axis_label);
-      if (!$available) return new WP_Error('tnet_profile_basics_list_unavailable', __('Profile choices are temporarily unavailable.', 'tnet-profile'));
-      $allowed = array_fill_keys(array_map(static function ($term) { return (string) $term->term_uuid; }, $available), true);
-      foreach ($sets[$relationship] as $uuid) {
-        if (!isset($allowed[$uuid]) && !in_array($uuid, $existing_selected[$relationship], true)) {
-          return new WP_Error('tnet_profile_basics_choice_unavailable', __('A selected Profile choice is no longer available.', 'tnet-profile'));
-        }
-      }
-      foreach ($existing_selected[$relationship] as $uuid) {
-        if (!isset($allowed[$uuid]) && !in_array($uuid, $sets[$relationship], true)) $sets[$relationship][] = $uuid;
-      }
-    }
-    // Validate every requested term before changing identity, facts, or meta.
-    foreach ($sets as $relationship => $uuids) {
-      foreach ($uuids as $uuid) {
-        $term = TNet_Profile_Member_Context::resolve_live_core_term_identifier($uuid);
-        if (is_wp_error($term)) return $term;
-      }
-    }
+    $prepared = self::prepare_teaching_sets($user_id, $input);
+    if (is_wp_error($prepared)) return $prepared;
+    $sets = $prepared['sets'];
+    $role_allowed = $prepared['role_allowed'];
 
     $location_mode = sanitize_key((string) ($input['location_mode'] ?? ''));
     $location_selection = (string) ($input['location_selection'] ?? '');
@@ -210,6 +176,121 @@ final class TNet_Profile_Basics {
     if ($year === null) delete_user_meta($user_id, TNet_Profile_Member_Context::PROFILE_TEACHING_SINCE_META);
     else update_user_meta($user_id, TNet_Profile_Member_Context::PROFILE_TEACHING_SINCE_META, $year);
     return self::state($user_id);
+  }
+
+  /** Save one self-view editor section without changing identity or adjacent facts. */
+  public static function save_section($user_id, $section, array $input) {
+    global $wpdb;
+    $user_id = absint($user_id);
+    if (!$user_id || $user_id !== get_current_user_id() || !get_user_by('id', $user_id)) {
+      return new WP_Error('tnet_profile_basics_forbidden', __('You are not allowed to update this Profile.', 'tnet-profile'));
+    }
+    if ($section === 'about') {
+      $bio = self::normalize_bio((string) ($input['bio'] ?? ''));
+      if (is_wp_error($bio)) return $bio;
+      update_user_meta($user_id, TNet_Profile_Member_Context::PROFILE_BIO_META, $bio);
+      return self::state($user_id);
+    }
+    if ($section === 'location') {
+      if (!class_exists('TNet_Identity_Service') || !class_exists('TNet_Identity_Location_Policy')) {
+        return new WP_Error('tnet_profile_basics_identity_unavailable', __('Profile location is temporarily unavailable.', 'tnet-profile'));
+      }
+      $mode = sanitize_key((string) ($input['location_mode'] ?? ''));
+      $selection = (string) ($input['location_selection'] ?? '');
+      $saved = TNet_Identity_Service::save_location($user_id, $mode, $selection);
+      return is_wp_error($saved) ? $saved : self::state($user_id);
+    }
+    if ($section === 'visibility') {
+      $location = self::location($user_id);
+      $details = !empty($input['details_public']) ? '1' : '0';
+      $location_public = !empty($input['location_public']) && $location['exists'] ? '1' : '0';
+      $wpdb->query('START TRANSACTION');
+      foreach ([
+        TNet_Profile_Member_Context::PROFILE_DETAILS_PUBLIC_META => $details,
+        TNet_Profile_Member_Context::PROFILE_LOCATION_PUBLIC_META => $location_public,
+      ] as $key => $value) {
+        if ((string) get_user_meta($user_id, $key, true) === $value) continue;
+        if (update_user_meta($user_id, $key, $value) === false) {
+          $wpdb->query('ROLLBACK');
+          wp_cache_delete($user_id, 'user_meta');
+          return new WP_Error('tnet_profile_basics_visibility_save_failed', __('Your visibility settings could not be saved. Please try again.', 'tnet-profile'));
+        }
+      }
+      $wpdb->query('COMMIT');
+      return self::state($user_id);
+    }
+    if ($section !== 'teaching') return new WP_Error('tnet_profile_basics_section_invalid', __('Choose a Profile section to edit.', 'tnet-profile'));
+    if (!class_exists('CFM')) return new WP_Error('tnet_profile_basics_terms_unavailable', __('Core Terms is temporarily unavailable.', 'tnet-profile'));
+    $prepared = self::prepare_teaching_sets($user_id, $input);
+    if (is_wp_error($prepared)) return $prepared;
+    $year = self::normalize_teaching_since($input['teaching_since'] ?? '');
+    if (is_wp_error($year)) return $year;
+    $wpdb->query('START TRANSACTION');
+    foreach ($prepared['sets'] as $relationship => $uuids) {
+      $saved = $relationship === 'professional_identity'
+        ? TNet_Profile_Member_Context::replace_professional_identity_choices($user_id, $uuids, array_keys($prepared['role_allowed']), false)
+        : TNet_Profile_Member_Context::replace_facts($user_id, $relationship, $uuids, TNet_Profile_Member_Context::PROVENANCE_SELF_REPORTED, false);
+      if (is_wp_error($saved)) {
+        $wpdb->query('ROLLBACK');
+        wp_cache_delete($user_id, 'user_meta');
+        return $saved;
+      }
+    }
+    $year_key = TNet_Profile_Member_Context::PROFILE_TEACHING_SINCE_META;
+    $old_year = (string) get_user_meta($user_id, $year_key, true);
+    $new_year = $year === null ? '' : (string) $year;
+    if ($old_year !== $new_year) {
+      $saved_year = $year === null ? delete_user_meta($user_id, $year_key) : update_user_meta($user_id, $year_key, $year);
+      if ($saved_year === false) {
+        $wpdb->query('ROLLBACK');
+        wp_cache_delete($user_id, 'user_meta');
+        return new WP_Error('tnet_profile_basics_teaching_save_failed', __('Your teaching Profile could not be saved. Please try again.', 'tnet-profile'));
+      }
+    }
+    $wpdb->query('COMMIT');
+    return self::state($user_id);
+  }
+
+  /** Apply the same published compositions and historical-fact preservation in every Profile editor. */
+  private static function prepare_teaching_sets($user_id, array $input) {
+    $sets = [];
+    foreach ([
+      'teaching_grade' => 'teaching_grades',
+      'teaching_subject' => 'teaching_subjects',
+      'professional_identity' => 'professional_identities',
+    ] as $relationship => $input_key) {
+      $sets[$relationship] = self::requested_uuids($input[$input_key] ?? []);
+      if (is_wp_error($sets[$relationship])) return $sets[$relationship];
+    }
+    $roles = self::professional_identity_terms();
+    if (!$roles) return new WP_Error('tnet_profile_basics_list_unavailable', __('Profile role choices are temporarily unavailable.', 'tnet-profile'));
+    $existing = self::state($user_id)['selected'];
+    $role_allowed = array_fill_keys(array_map(static function ($term) { return (string) $term->term_uuid; }, $roles), true);
+    foreach ($sets['professional_identity'] as $uuid) {
+      if (!isset($role_allowed[$uuid]) && !in_array($uuid, $existing['professional_identity'], true)) {
+        return new WP_Error('tnet_profile_basics_choice_unavailable', __('A selected Profile role is no longer available.', 'tnet-profile'));
+      }
+    }
+    // Only governed roles are editable; historical assertions remain stored.
+    $sets['professional_identity'] = array_values(array_filter($sets['professional_identity'], static function ($uuid) use ($role_allowed) { return isset($role_allowed[$uuid]); }));
+    foreach (['teaching_grade' => 'Grade Level', 'teaching_subject' => 'Subject Area'] as $relationship => $axis_label) {
+      $available = self::axis_terms($axis_label);
+      if (!$available) return new WP_Error('tnet_profile_basics_list_unavailable', __('Profile choices are temporarily unavailable.', 'tnet-profile'));
+      $allowed = array_fill_keys(array_map(static function ($term) { return (string) $term->term_uuid; }, $available), true);
+      foreach ($sets[$relationship] as $uuid) {
+        if (!isset($allowed[$uuid]) && !in_array($uuid, $existing[$relationship], true)) {
+          return new WP_Error('tnet_profile_basics_choice_unavailable', __('A selected Profile choice is no longer available.', 'tnet-profile'));
+        }
+      }
+      foreach ($existing[$relationship] as $uuid) {
+        if (!isset($allowed[$uuid]) && !in_array($uuid, $sets[$relationship], true)) $sets[$relationship][] = $uuid;
+      }
+    }
+    foreach ($sets as $uuids) foreach ($uuids as $uuid) {
+      $term = TNet_Profile_Member_Context::resolve_live_core_term_identifier($uuid);
+      if (is_wp_error($term)) return $term;
+    }
+    return ['sets' => $sets, 'role_allowed' => $role_allowed];
   }
 
   private static function save_from_request($user_id) {
@@ -483,15 +564,15 @@ final class TNet_Profile_Basics {
   }
 
   /** Shared authenticated member-facing Profile shell without the enrichment status rail. */
-  public static function member_shell_config($title, $user, array $state, callable $main) {
+  public static function member_shell_config($title, $user, array $state, callable $main, ?callable $right = null) {
     $config = self::shell_config($title, $user, $state, null, false);
     $config['fixture'] = 'profile-member-view';
     $config['route_class'] = 'profile-member-view';
-    $config['content'] = static function () use ($main, $state) {
+    $config['content'] = static function () use ($main, $right, $state) {
       TNet_Shared_Shell::render_community_frame([
         'navigation' => self::community_navigation($state),
         'main' => static function () use ($main) { echo '<section class="c3-community-page tnet-profile-basics-page tnet-profile-enrichment">'; $main(); echo '</section>'; },
-        'right' => null, 'reserve_account_actions' => true, 'wide_main' => true,
+        'right' => $right, 'reserve_account_actions' => true, 'wide_main' => $right === null,
       ]);
     };
     return $config;
@@ -636,6 +717,27 @@ final class TNet_Profile_Basics {
       <p class="tnet-profile-basics-guided-location-privacy"><svg viewBox="0 0 13 18" aria-hidden="true"><path fill="currentColor" d="M2.25 7V5a4.25 4.25 0 1 1 8.5 0v2h-2V5a2.25 2.25 0 1 0-4.5 0v2h-2Z"/><path fill="currentColor" fill-rule="evenodd" d="M2 7h9a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Zm4.5 4a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"/></svg><span data-location-edit-copy><?php echo esc_html__('Used for personalization. Not shown on your public profile.', 'tnet-profile'); ?></span><span data-location-complete-copy><?php echo esc_html__('Used to personalize your Teachers.Net experience.', 'tnet-profile'); ?></span></p>
     </section>
     <?php
+  }
+
+  /** Existing guided location control, embedded in the owner-only Location editor. */
+  public static function render_self_location_control(array $location) {
+    self::render_guided_location($location);
+  }
+
+  /** The same governed Grade, Subject, and role controls used by Profile Basics. */
+  public static function render_self_teaching_controls(array $state) {
+    $selected = $state['selected'];
+    self::render_grades($selected['teaching_grade'], true);
+    self::render_subjects($selected['teaching_subject'], true);
+    self::render_professional_identities($selected['professional_identity'], $state['suggestions']);
+  }
+
+  /** Same bio attribute, counter, and server policy as guided Profile Basics. */
+  public static function render_self_bio_control(array $scalars) {
+    ?><label class="tnet-profile-self-bio-label" for="tnet-profile-self-bio"><?php echo esc_html__('Tell us about yourself', 'tnet-profile'); ?>
+      <textarea id="tnet-profile-self-bio" name="bio" maxlength="500" rows="8" data-tnet-profile-bio placeholder="<?php echo esc_attr__('Tell other members a little about yourself.', 'tnet-profile'); ?>"><?php echo esc_textarea($scalars['bio']); ?></textarea>
+      <small><span data-tnet-profile-bio-count><?php echo esc_html(self::text_length($scalars['bio'])); ?></span>/500 <?php echo esc_html__('characters', 'tnet-profile'); ?></small>
+    </label><?php
   }
 
   private static function render_grades(array $selected, $guided = false) {

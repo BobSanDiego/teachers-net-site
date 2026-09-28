@@ -10,6 +10,21 @@ Project state: Active Development
 
 ## Current boundary
 
+`PROFILE-V1-SELF-EDIT-MODE033` is implemented on the isolated Profile source
+branch and projected narrowly into normal DDEV in cycle `260928125357`.
+`/profile/` is now the owner self-view, and `/profile/edit/` is the same
+composition with edit mode on, four section editors, and the existing avatar
+editor. Section saves reuse canonical Bio, Grade/Subject/Role, Teaching Since,
+Identity Location, and aggregate Profile visibility owners. Native DDEV QA
+proves owner/private readback, public projection under both existing flags,
+section Save/Cancel and dirty Escape, all four modal surfaces, and 1440/1024/
+768/390 containment. Local QA user 353 was restored to its pretest empty
+Profile state; no durable test facts/location remain. Director visual/interaction
+HUMAN_QA is pending; this is not public Profile visual acceptance or production
+activation. No governed Groups-management destination/provider exists, so the
+section displays an empty state without a fabricated link. The read-only
+production username-collision audit remains a pre-activation gate.
+
 `PROFILE-V1-PUBLIC-VIEW032` implements the release-time public member surface
 at `/profile/<username>/` on this canonical Profile branch. Cycle
 `260928032005` projects the accepted Profile/Identity files through the normal

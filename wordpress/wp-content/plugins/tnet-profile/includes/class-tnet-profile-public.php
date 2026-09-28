@@ -51,25 +51,7 @@ final class TNet_Profile_Public {
   }
 
   private static function render_current_member_view($user) {
-    $state = TNet_Profile_Basics::state((int) $user->ID);
-    $roles = TNet_Profile_Basics::professional_identity_terms();
-    TNet_Profile_Basics::enqueue_assets();
-    TNet_Profile_Enrichment::enqueue_assets();
-    $main = static function () use ($user, $state, $roles) {
-      echo '<main class="tnet-profile-enrichment-main tnet-profile-enrichment-main--public">';
-      echo '<header class="tnet-profile-basics-heading"><h1>' . esc_html__('Your Profile', 'tnet-profile') . '</h1><p>' . esc_html__('This is how your public Profile appears to other members.', 'tnet-profile') . '</p></header>';
-      TNet_Profile_Enrichment::render_profile_card($user, $state, $roles, [
-        'public_view' => true,
-        'return_to' => add_query_arg('avatar_modal', '1', home_url('/profile/')),
-      ]);
-      echo '</main>';
-    };
-    if (class_exists('TNet_Shared_Shell')) {
-      TNet_Shared_Shell::render_host(TNet_Profile_Basics::member_shell_config(__('Your Profile', 'tnet-profile'), $user, $state, $main));
-      exit;
-    }
-    $main();
-    exit;
+    TNet_Profile_Self::render_route((int) $user->ID, false);
   }
 
   private static function find_user($username) {

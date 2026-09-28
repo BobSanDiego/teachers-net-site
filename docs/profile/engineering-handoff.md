@@ -2,6 +2,20 @@
 
 ## 1. Current Phase
 
+`PROFILE-V1-SELF-EDIT-MODE033` is implemented and awaiting Engineering Director
+HUMAN_QA. The isolated Profile branch owns the source, and normal DDEV uses a
+file-scoped projection for QA. `/profile/` shows all owner facts, including
+private facts, with only Edit Profile and the avatar camera. `/profile/edit/`
+uses that same composition with four modal section editors and View as Public /
+Done Editing actions. Canonical data/selection controls and the existing
+public projection remain the writers/readers; the avatar editor is reused.
+Browser verification covered section saves, aggregate visibility, dirty-close
+protection, responsive 1440/1024/768/390 layouts, and source/runtime parity.
+The local QA account was returned to its original empty Profile state after
+temporary verification. Groups has no governed management destination, so
+there is no Manage Groups link. Cycle `260928125357` contains the native
+captures and acceptance ledger. Do not declare Director PASS before review.
+
 `PROFILE-V1-PUBLIC-VIEW032` is implemented on isolated branch
 `codex/profile-v1-basics-facts` and remains HUMAN_QA_PENDING. Follow-up cycle
 `260928032005` made the implementation available in the normal
@@ -74,7 +88,16 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-V1-PUBLIC-VIEW032B-DDEV-QA` is the current handoff boundary. The public
+`PROFILE-V1-SELF-EDIT-MODE033` is the current handoff boundary:
+`PROFILE_SELF_EDIT_MODE_IMPLEMENTED_HUMAN_QA_PENDING`. Director can review
+`https://teachers-net.ddev.site/profile/`,
+`https://teachers-net.ddev.site/profile/edit/`, and the unchanged public
+`https://teachers-net.ddev.site/profile/<username>/` projection. Production
+activation still requires the previously identified username-collision audit.
+No account settings, Group membership mutation, granular privacy, or Shared
+Shell redesign was added.
+
+`PROFILE-V1-PUBLIC-VIEW032B-DDEV-QA` is the prior public-route QA baseline. The public
 route is available for interactive Director review in normal DDEV at
 `https://teachers-net.ddev.site/profile/jobman/`; useful existing sparse
 profiles include `/profile/test/` and `/profile/tommytoons/`. No normal-DDEV

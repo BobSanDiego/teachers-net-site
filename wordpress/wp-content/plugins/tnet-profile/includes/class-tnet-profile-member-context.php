@@ -226,7 +226,7 @@ final class TNet_Profile_Member_Context {
   }
 
   /** Atomically replace one explicit Profile-fact relationship set. */
-  public static function replace_facts($user_id, $relationship_type, array $term_uuids, $provenance = self::PROVENANCE_SELF_REPORTED) {
+  public static function replace_facts($user_id, $relationship_type, array $term_uuids, $provenance = self::PROVENANCE_SELF_REPORTED, $manage_transaction = true) {
     global $wpdb;
     $user_id = absint($user_id);
     $relationship_type = self::normalize_fact_relationship_type($relationship_type);
@@ -246,7 +246,7 @@ final class TNet_Profile_Member_Context {
 
     $table = self::table();
     $now = gmdate('Y-m-d H:i:s');
-    $wpdb->query('START TRANSACTION');
+    if ($manage_transaction) $wpdb->query('START TRANSACTION');
     try {
       $deleted = $wpdb->delete($table, ['user_id' => $user_id, 'context_type' => $relationship_type, 'provenance' => $provenance], ['%d', '%s', '%s']);
       if ($deleted === false) throw new RuntimeException('Could not replace Profile facts.');
@@ -265,9 +265,9 @@ final class TNet_Profile_Member_Context {
         ], ['%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s']);
         if ($inserted === false) throw new RuntimeException('Could not save Profile facts.');
       }
-      $wpdb->query('COMMIT');
+      if ($manage_transaction) $wpdb->query('COMMIT');
     } catch (Throwable $exception) {
-      $wpdb->query('ROLLBACK');
+      if ($manage_transaction) $wpdb->query('ROLLBACK');
       return new WP_Error('tnet_profile_member_fact_replace_failed', __('Your Profile selections could not be saved. Please try again.', 'tnet-profile'));
     }
     return self::facts_for_user($user_id, $provenance);
@@ -277,7 +277,7 @@ final class TNet_Profile_Member_Context {
    * Replace self-reported professional identities within a governed Profile
    * choice composition. Historical assertions outside it remain untouched.
    */
-  public static function replace_professional_identity_choices($user_id, array $term_uuids, array $allowed_uuids) {
+  public static function replace_professional_identity_choices($user_id, array $term_uuids, array $allowed_uuids, $manage_transaction = true) {
     global $wpdb;
     $user_id = absint($user_id);
     if (!$user_id || !get_user_by('id', $user_id)) return new WP_Error('tnet_profile_member_fact_user_missing', __('The account could not be found.', 'tnet-profile'));
@@ -293,7 +293,7 @@ final class TNet_Profile_Member_Context {
 
     $table = self::table();
     $now = gmdate('Y-m-d H:i:s');
-    $wpdb->query('START TRANSACTION');
+    if ($manage_transaction) $wpdb->query('START TRANSACTION');
     try {
       foreach (array_keys($allowed) as $uuid) {
         $deleted = $wpdb->delete($table, [
@@ -319,9 +319,9 @@ final class TNet_Profile_Member_Context {
         ], ['%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s']);
         if ($inserted === false) throw new RuntimeException('Could not save composed professional identity facts.');
       }
-      $wpdb->query('COMMIT');
+      if ($manage_transaction) $wpdb->query('COMMIT');
     } catch (Throwable $exception) {
-      $wpdb->query('ROLLBACK');
+      if ($manage_transaction) $wpdb->query('ROLLBACK');
       return new WP_Error('tnet_profile_member_fact_replace_failed', __('Your Profile selections could not be saved. Please try again.', 'tnet-profile'));
     }
     return self::facts_for_user($user_id, self::PROVENANCE_SELF_REPORTED);

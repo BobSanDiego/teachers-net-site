@@ -143,11 +143,7 @@ final class TNet_Profile_Enrichment {
         <section class="tnet-profile-enrichment-card tnet-profile-enrichment-year" aria-labelledby="tnet-profile-enrichment-year-title">
           <h2 id="tnet-profile-enrichment-year-title"><?php echo esc_html__('Teaching since (optional)', 'tnet-profile'); ?></h2>
           <p class="tnet-profile-enrichment-help"><?php echo esc_html__('The year you started teaching.', 'tnet-profile'); ?></p>
-          <label class="screen-reader-text" for="tnet-profile-enrichment-year"><?php echo esc_html__('Teaching since', 'tnet-profile'); ?></label>
-          <select id="tnet-profile-enrichment-year" name="teaching_since">
-            <option value=""><?php echo esc_html__('Select year', 'tnet-profile'); ?></option>
-            <?php for ($year = (int) gmdate('Y'); $year >= 1900; $year--) : ?><option value="<?php echo esc_attr($year); ?>"<?php selected((int) ($scalars['teaching_since'] ?? 0), $year); ?>><?php echo esc_html($year); ?></option><?php endfor; ?>
-          </select>
+          <?php self::render_teaching_since_select($scalars['teaching_since'] ?? null, 'tnet-profile-enrichment-year'); ?>
         </section>
         <div class="tnet-profile-enrichment-actions">
           <button class="tnet-profile-basics-secondary" type="submit" name="journey_action" value="done"><?php echo esc_html__("I'm done for now", 'tnet-profile'); ?></button>
@@ -156,6 +152,15 @@ final class TNet_Profile_Enrichment {
       </form>
     </main>
     <?php
+  }
+
+  /** Shared optional year selector for onboarding and the permanent teaching editor. */
+  public static function render_teaching_since_select($selected_year, $id) {
+    ?><label class="screen-reader-text" for="<?php echo esc_attr($id); ?>"><?php echo esc_html__('Teaching since', 'tnet-profile'); ?></label>
+    <select id="<?php echo esc_attr($id); ?>" name="teaching_since">
+      <option value=""><?php echo esc_html__('Select year', 'tnet-profile'); ?></option>
+      <?php for ($year = (int) gmdate('Y'); $year >= 1900; $year--) : ?><option value="<?php echo esc_attr($year); ?>"<?php selected((int) $selected_year, $year); ?>><?php echo esc_html($year); ?></option><?php endfor; ?>
+    </select><?php
   }
 
   /** One shared fact card for live enrichment, public-view, and completion surfaces. */

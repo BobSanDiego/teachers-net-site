@@ -13,6 +13,7 @@ require_once __DIR__ . '/includes/class-tnet-profile-avatar-component-set.php';
 require_once __DIR__ . '/includes/class-tnet-profile-member-context.php';
 require_once __DIR__ . '/includes/class-tnet-profile-basics.php';
 require_once __DIR__ . '/includes/class-tnet-profile-enrichment.php';
+require_once __DIR__ . '/includes/class-tnet-profile-self.php';
 require_once __DIR__ . '/includes/class-tnet-profile-public.php';
 
 final class TNet_Profile_Avatar {
