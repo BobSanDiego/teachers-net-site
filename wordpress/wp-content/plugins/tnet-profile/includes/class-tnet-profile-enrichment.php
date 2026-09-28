@@ -134,11 +134,7 @@ final class TNet_Profile_Enrichment {
               </div>
             </div>
           <?php endif; ?>
-          <div class="tnet-profile-enrichment-role-grid">
-            <?php foreach ($roles as $role) : $uuid = (string) $role->term_uuid; ?>
-              <label><input type="checkbox" name="professional_identities[]" value="<?php echo esc_attr($uuid); ?>" data-role-choice<?php checked(in_array($uuid, (array) ($selected['professional_identity'] ?? []), true)); ?>><span><?php echo esc_html($role->label); ?></span></label>
-            <?php endforeach; ?>
-          </div>
+          <?php self::render_role_checkboxes($roles, (array) ($selected['professional_identity'] ?? [])); ?>
         </section>
         <section class="tnet-profile-enrichment-card tnet-profile-enrichment-year" aria-labelledby="tnet-profile-enrichment-year-title">
           <h2 id="tnet-profile-enrichment-year-title"><?php echo esc_html__('Teaching since (optional)', 'tnet-profile'); ?></h2>
@@ -154,7 +150,16 @@ final class TNet_Profile_Enrichment {
     <?php
   }
 
-  /** Shared optional year selector for onboarding and the permanent teaching editor. */
+  /** Governed finite role choices shared by onboarding and the owner editor. */
+  public static function render_role_checkboxes(array $roles, array $selected) {
+    ?><div class="tnet-profile-enrichment-role-grid">
+      <?php foreach ($roles as $role) : $uuid = (string) $role->term_uuid; ?>
+        <label><input type="checkbox" name="professional_identities[]" value="<?php echo esc_attr($uuid); ?>" data-role-choice<?php checked(in_array($uuid, $selected, true)); ?>><span><?php echo esc_html($role->label); ?></span></label>
+      <?php endforeach; ?>
+    </div><?php
+  }
+
+  /** Shared optional year selector for onboarding. */
   public static function render_teaching_since_select($selected_year, $id) {
     ?><label class="screen-reader-text" for="<?php echo esc_attr($id); ?>"><?php echo esc_html__('Teaching since', 'tnet-profile'); ?></label>
     <select id="<?php echo esc_attr($id); ?>" name="teaching_since">

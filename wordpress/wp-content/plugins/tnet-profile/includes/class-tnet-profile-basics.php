@@ -678,7 +678,7 @@ final class TNet_Profile_Basics {
     <?php
   }
 
-  private static function render_guided_location(array $location) {
+  private static function render_guided_location(array $location, $direct_edit = false) {
     $regions = class_exists('TNet_Identity_Location_Policy') ? TNet_Identity_Location_Policy::us_regions() : [];
     $countries = class_exists('TNet_Identity_Location_Policy') ? TNet_Identity_Location_Policy::country_codes() : [];
     $is_us = ($location['country_code'] ?? '') === 'US';
@@ -692,11 +692,11 @@ final class TNet_Profile_Basics {
         <span class="tnet-profile-basics-guided-card-mark tnet-profile-basics-guided-location-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
         <div><h2><?php echo esc_html__('Your location', 'tnet-profile'); ?></h2><p><?php echo esc_html__('Help us personalize Teachers.Net for your area.', 'tnet-profile'); ?></p></div>
       </div>
-      <div class="tnet-profile-basics-guided-location-complete" data-location-complete<?php echo empty($location['exists']) ? ' hidden' : ''; ?>>
+      <div class="tnet-profile-basics-guided-location-complete" data-location-complete<?php echo $direct_edit || empty($location['exists']) ? ' hidden' : ''; ?>>
         <div><span class="tnet-profile-basics-guided-location-check" aria-hidden="true">✓</span><div><strong data-location-label><?php echo esc_html($location['label']); ?></strong></div></div>
         <button type="button" class="tnet-profile-basics-guided-location-change" data-location-change><?php echo esc_html__('Change', 'tnet-profile'); ?></button>
       </div>
-      <div class="tnet-profile-basics-guided-location-controls" data-location-controls<?php echo !empty($location['exists']) ? ' hidden' : ''; ?>>
+      <div class="tnet-profile-basics-guided-location-controls" data-location-controls<?php echo !$direct_edit && !empty($location['exists']) ? ' hidden' : ''; ?>>
         <div class="tnet-profile-basics-guided-location-row" data-location-row>
           <label class="screen-reader-text" for="tnet-profile-location-mode"><?php echo esc_html__('Select your location', 'tnet-profile'); ?></label>
           <span class="tnet-profile-basics-guided-location-field tnet-profile-basics-guided-location-field--mode">
@@ -721,7 +721,7 @@ final class TNet_Profile_Basics {
 
   /** Existing guided location control, embedded in the owner-only Location editor. */
   public static function render_self_location_control(array $location) {
-    self::render_guided_location($location);
+    self::render_guided_location($location, true);
   }
 
   /** The same governed Grade, Subject, and role controls used by Profile Basics. */
@@ -729,7 +729,7 @@ final class TNet_Profile_Basics {
     $selected = $state['selected'];
     self::render_grades($selected['teaching_grade'], true);
     self::render_subjects($selected['teaching_subject'], true);
-    self::render_professional_identities($selected['professional_identity'], $state['suggestions']);
+    ?><section class="tnet-profile-basics-card tnet-profile-self-modal__roles"><div class="tnet-profile-basics-card-title"><span aria-hidden="true">✦</span><h2><?php echo esc_html__('Educator roles', 'tnet-profile'); ?> <small><?php echo esc_html__('optional', 'tnet-profile'); ?></small></h2></div><p class="tnet-profile-basics-help"><?php echo esc_html__('Select all roles that describe you.', 'tnet-profile'); ?></p><?php TNet_Profile_Enrichment::render_role_checkboxes(self::professional_identity_terms(), $selected['professional_identity']); ?></section><?php
   }
 
   /** Same bio attribute, counter, and server policy as guided Profile Basics. */

@@ -2,6 +2,8 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
+    var notice = document.querySelector('.tnet-profile-self__notice[role="status"]');
+    if (notice) window.setTimeout(function () { notice.remove(); }, 5000);
     var dialogs = Array.prototype.slice.call(document.querySelectorAll('[data-profile-editor-dialog]'));
     if (!dialogs.length) return;
     var active = null;
