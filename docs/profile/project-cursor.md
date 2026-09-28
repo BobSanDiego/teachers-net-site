@@ -11,25 +11,28 @@ Project state: Active Development
 ## Current boundary
 
 `PROFILE-V1-PUBLIC-VIEW032` implements the release-time public member surface
-at `/profile/<username>/` on this canonical Profile branch. It resolves the
-immutable `user_login`, preserves `/profile/` self-view and fixed application
-routes, returns the public projection to anonymous, other-member, and owner
-visitors, and reuses the actual Shared Shell. Existing `location_public` and
-aggregate `profile_details_public` rules govern projection; email and empty
-teaching rows are omitted, About appears only when visible/nonempty, and the
-Groups card remains with its approved empty state. The current stack has no
-active authoritative public-membership provider or Groups discovery route, so
-no membership is inferred and no Groups link is fabricated. The optional
-`/members/<username>/` alias was omitted because WordPress's generic page
-catch-all makes it ambiguous; canonical routing is unaffected. Native QA used
-a disposable DDEV clone with synthetic fixtures and direct Windows Chrome/CDP;
-the existing DDEV product database and accounts were not changed. 1440, 1024,
-768, and 390 viewport checks passed, including anonymous, non-owner, owner,
-unknown-user 404, and canonical-case normalization cases. Automated projection
-tests and PHP lint pass. Cycle `260927211341` is
-`PUBLIC_PROFILE_IMPLEMENTED_HUMAN_QA_PENDING`; Director visual acceptance and
-the read-only production username-collision audit before eventual activation
-remain outstanding. No production activation occurred.
+at `/profile/<username>/` on this canonical Profile branch. Cycle
+`260928032005` projects the accepted Profile/Identity files through the normal
+`teachers-net` DDEV bind-mounted source owner; all six affected executable
+files match this worktree byte-for-byte in the live container. The real
+Director QA URL `/profile/jobman/` and existing-account route cases now pass in
+normal DDEV, including anonymous, authenticated non-owner, owner public view,
+`/profile/` self-view, fixed-route precedence, unknown-user 404, and
+case-canonicalization. No member data was changed. This cycle audits the
+shared Basics/Editor bio contract: 500 server-side Unicode code points,
+plain-text only, normalized newlines, `_tnet_profile_bio` in WordPress user
+meta, and conditional public rendering under `profile_details_public`. The
+HTML `maxlength=500` is in UTF-16 code units while the JS counter and PHP
+validator count code points, so supplementary characters have a narrower
+browser-entry ceiling; this was reported without changing the contract.
+Normal DDEV has no existing member with public teaching details enabled, so
+Director full-population QA data is unavailable without a separate fixture
+decision. Groups remains the approved empty state; no membership is inferred.
+The optional `/members/<username>/` alias remains omitted because the generic
+WordPress catch-all makes it ambiguous. Native desktop and 390px evidence,
+bio measurements, and runtime hashes are in cycle `260928032005`.
+HUMAN_QA remains pending; no production activation occurred, and the read-only
+production username-collision audit remains a pre-activation gate.
 
 `PROFILE-V1-USERNAME-NAMESPACE031` finalizes the Identity source needed before
 canonical public Profile routing. The canonical isolated source owner is
@@ -40,12 +43,12 @@ category, and Identity Service exposes an internal, explicit-intent,
 `manage_options`-gated official-identity provisioning path. Ordinary signup
 remains on the non-override path; existing `admin` (ID 1) is unchanged. A
 deterministic no-database regression harness covers reservation, normalization,
-privilege, syntax, uniqueness, and cleanup. The public username route remains
-unimplemented and no `/members/` alias is activated. Local implementation is
-source-ready for the next public-route ticket; a read-only production username
-collision audit remains a mandatory precondition before production activation.
-Cycle `260927183656` records this work. The dirty Community checkout and its
-files/history remain untouched.
+privilege, syntax, uniqueness, and cleanup. At the end of cycle
+`260927183656`, the public username route had not yet been implemented; cycle
+`260927211341` subsequently added it. No `/members/` alias is activated, and
+the read-only production username collision audit remains a mandatory
+precondition before production activation. The dirty Community checkout and
+its files/history remain untouched.
 
 `PROFILE-V1-USERNAME-NAMESPACE030` established the local collision baseline
 and identified the dormant override path. It remains the evidence authority

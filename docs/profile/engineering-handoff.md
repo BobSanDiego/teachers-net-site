@@ -3,24 +3,38 @@
 ## 1. Current Phase
 
 `PROFILE-V1-PUBLIC-VIEW032` is implemented on isolated branch
-`codex/profile-v1-basics-facts` and is HUMAN_QA_PENDING. It adds the canonical
-anonymous-capable `/profile/<username>/` public projection while preserving
-`/profile/` self-view and static Profile routes, keyed only by immutable
-`user_login`. Public facts reuse the accepted avatar, Profile visibility, and
-Shared Shell owners. About and populated Teaching Profile rows are conditional;
-email is excluded; Groups intentionally renders the approved empty card. The
-current executable stack has no authoritative public membership provider or
-Groups discovery destination, so group memberships are not inferred and no
-link is invented. The optional `/members/<username>/` redirect was omitted
-because the generic WordPress page catch-all leaves that alias ambiguous.
-Direct Chrome/CDP native checks used a disposable DDEV clone and synthetic QA
-members, not the existing DDEV product data. Populated/sparse cases and
-anonymous, non-owner, owner, unknown-user 404, canonical normalization, and
-1440/1024/768/390 containment are recorded in cycle `260927211341`. The
-current 390px render reports 390/390 width, no overflowing element, all images
-loaded, and no console errors. Projection tests and PHP lint pass. No
-production activation occurred; Director visual review and the read-only
+`codex/profile-v1-basics-facts` and remains HUMAN_QA_PENDING. Follow-up cycle
+`260928032005` made the implementation available in the normal
+`teachers-net` DDEV environment through its existing bind-mounted source owner.
+The six affected Profile/Identity files are byte-identical between the
+canonical Profile worktree and live container. Normal-DDEV Chrome/CDP evidence
+proves `/profile/jobman/`, anonymous access, authenticated non-owner access,
+owner public projection, `/profile/` self-view, fixed-route precedence,
+unknown-user 404, mixed-case canonicalization, loaded assets, and no console
+errors or horizontal overflow at 390px. Existing data show only sparse public
+profiles; none has `profile_details_public=1`, so a populated public projection
+is not available without a separate fixture decision. No account or Profile
+facts were changed. The current stack has no authoritative public-membership
+provider or Groups discovery destination, so Groups remains the approved empty
+state and no membership/link is invented. `/members/<username>/` remains
+omitted because the generic WordPress catch-all makes that alias ambiguous.
+No production activation occurred; Director visual review and the read-only
 production username collision audit remain required before release activation.
+
+The 032B bio audit found a 500-character UI attribute/server limit in normal
+text, enforced by the same Basics renderer for guided onboarding and
+`/profile/edit/`. PHP uses `mb_strlen` and accepts 500 code points, rejects
+501, normalizes CRLF to LF, allows punctuation and plain URLs, and rejects HTML
+tags. The JS counter uses `Array.from` code-point length, but HTML `maxlength`
+uses UTF-16 code units; an all-astral string therefore reaches 250 code points
+in the browser while the server would accept 500. No limit was changed. The
+stored value is `_tnet_profile_bio` in `wp_usermeta.meta_value` (`LONGTEXT`;
+4,294,967,295-byte column capacity; DDEV `max_allowed_packet` is 256 MiB),
+well above the application ceiling of 2,000 UTF-8 bytes. Public output is
+escaped plain text with `<br>` newline rendering; URLs are not linkified. A
+transient 500-character desktop render measured five lines and a 179px total
+About card at 710px width. These findings are recorded in cycle
+`260928032005`; do not change the bio limit without Director authority.
 
 `PROFILE-LAUNCH-ROUTER-VISUAL-CONVERGENCE004` is COMPLETE/FROZEN after
 Engineering Director HUMAN_QA PASS.
@@ -60,15 +74,25 @@ frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
 
-`PROFILE-V1-PUBLIC-VIEW032` is the current implementation boundary. Its
-source adds `class-tnet-profile-public.php` route/projection/rendering,
-`public/css/tnet-profile-public.css`, shared-shell configuration/enqueue
-helpers, the existing Complete ad-slot owner reuse, and focused route/projection
-regressions. It deliberately does not implement Groups membership or the
-secondary `/members/` alias without authoritative ownership. This cycle is
-`PUBLIC_PROFILE_IMPLEMENTED_HUMAN_QA_PENDING`; do not deploy or claim Director
-acceptance. The isolated source branch is the publishable Profile owner; QA
-uses a disposable DDEV clone and does not establish main-DDEV runtime parity.
+`PROFILE-V1-PUBLIC-VIEW032B-DDEV-QA` is the current handoff boundary. The public
+route is available for interactive Director review in normal DDEV at
+`https://teachers-net.ddev.site/profile/jobman/`; useful existing sparse
+profiles include `/profile/test/` and `/profile/tommytoons/`. No normal-DDEV
+account currently exposes populated teaching details publicly. This cycle is
+`PUBLIC_PROFILE_MAIN_DDEV_QA_READY_BIO_CONTRACT_AUDITED`, not Director PASS.
+The canonical Profile source remains the isolated branch; the Community-root
+DDEV tree received only the narrow runtime projection needed for QA, with
+pre-projection copies preserved outside the repository. No commit was made to
+the shared Community checkout, and no production activation or member-data
+mutation occurred. See the cycle report for exact hashes, route evidence, and
+the Unicode bio-limit discrepancy.
+
+The source implementation from 032 added `class-tnet-profile-public.php`
+route/projection/rendering, `public/css/tnet-profile-public.css`, Shared Shell
+configuration/enqueue helpers, reuse of the existing Complete ad-slot owner,
+and focused route/projection regressions. It deliberately does not implement
+Groups membership or the secondary `/members/` alias without authoritative
+ownership.
 
 `PROFILE-V1-USERNAME-NAMESPACE031` is implemented on the canonical isolated
 Profile branch `codex/profile-v1-basics-facts` at
