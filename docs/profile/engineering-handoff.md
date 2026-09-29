@@ -2,6 +2,8 @@
 
 ## 1. Current Phase
 
+`PROFILE-V1-PUBLIC-CARD038B` is the active Director review boundary. The public Profile top card now places canonical public Location first in the shared lane grid, omits it when private/absent, and combines Teaching Since then Member Since in one quiet credential line without shading. Outer lane strokes are transparent; value typography remains at the accepted 038A styling and the value/separator baselines are aligned. DDEV native evidence covers 1440px and 390px, sparse/private location, responsive disclosure popovers, zero horizontal overflow, and no console errors. PHP/CSS source and runtime hashes match. The user-requested removal of tint around the dated line is included. Cycle `260929091147` owns the final captures and evidence. State: `PUBLIC_PROFILE_CARD_FINAL_LAYOUT_HUMAN_QA_PENDING`; Director HUMAN_QA remains pending.
+
 `PROFILE-V1-PUBLIC-CARD038A` applies only the Director's final collapsed facet-row style corrections to the accepted 038 baseline: `#0045dd` value color, `600` value weight, one-step smaller value type, and a 7px narrower label/divider column at desktop/mobile. The same normal DDEV `/profile/jobman/` route supplied native desktop/390px captures and computed-style/no-overflow evidence in Workflow V2 cycle `260929001820`; the Profile CSS source and runtime mirror match. No fixture facts, public routing, popover, or data owner changed. State: `PUBLIC_PROFILE_CARD_01C_FINAL_STYLING_APPLIED_HUMAN_QA_PENDING`; next action is Director visual review.
 
 `PROFILE-V1-PUBLIC-CARD038` is the current Director review boundary. The exact `profile-card-01c.png` reference (SHA-256 `c6334c279d96a5741dba31635125aa65c97b977ea960860b314711aad9e89bc1`) supersedes 037's heavier facet-row treatment. The same public Profile owner renders light bordered rows, compact dot separators, subdued blue values, and a far-right overflow control; sparse, single-value, fit, and overflow states were tested through the canonical temporary Profile writer and user 353 was restored. The 037 anchored popover and data/privacy contracts remain unchanged. Grade/Subject/Role Community destinations remain unresolved under the existing Community route authority; QA values are non-links, not invented routes. Workflow V2 cycle `260928232714` owns the 1440/1024/768/390 normal-DDEV captures, route audit, focused tests, and source/runtime hashes. State: `PUBLIC_PROFILE_CARD_01C_CONVERGED_HUMAN_QA_PENDING`. Next action is Director visual review, not production activation.
@@ -137,6 +139,8 @@ The Profile resolver remains the canonical representation owner; the 268-entry
 frozen portrait bank is read-only chooser content, not member-demographic data.
 
 ## 2. Current Ticket
+
+`PROFILE-V1-PUBLIC-CARD038B` is the current handoff boundary for the public Profile card's four summary lanes and dated credential line. Workflow V2 cycle `260929091147` contains its source diff, direct-DDEV screenshots, state/projection checks, responsive popover evidence, containment/console results, and source/runtime hashes. No Profile data or fixture state was mutated. Await Engineering Director HUMAN_QA.
 
 `PROFILE-V1-PUBLIC-CARD037` is the current handoff boundary for public top-card presentation. Cycle `260928214317` owns its scoped source, native captures, restored QA fixture, and acceptance ledger. Director HUMAN_QA remains pending.
 
