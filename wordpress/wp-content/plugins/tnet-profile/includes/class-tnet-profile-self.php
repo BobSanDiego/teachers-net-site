@@ -74,9 +74,9 @@ final class TNet_Profile_Self {
       $label = $role_map[$uuid] ?? (TNet_Profile_Basics::term_labels([$uuid])[0] ?? '');
       if ($label !== '') $role_labels[] = $label;
     }
-    $chips = array_slice(array_values(array_unique(array_merge($grade_labels, $subject_labels, $role_labels))), 0, 4);
-    $avatar = TNet_Profile_Avatar::resolve_avatar((int) $user->ID, 144);
     $public_url = add_query_arg('view_as_public', '1', home_url(user_trailingslashit('/profile/' . rawurlencode((string) $user->user_login))));
+    $card_projection = TNet_Profile_Public::build_projection($user, $state, $roles, true);
+    $card_edit_url = $edit_mode ? home_url('/profile/') : TNet_Profile_Basics::edit_url();
     $status = sanitize_key((string) ($_GET['profile_status'] ?? ''));
     ?>
     <div class="tnet-profile-self<?php echo $edit_mode ? ' tnet-profile-self--editing' : ''; ?>" data-tnet-profile-self data-edit-mode="<?php echo $edit_mode ? 'on' : 'off'; ?>">
@@ -85,22 +85,7 @@ final class TNet_Profile_Self {
       </nav>
       <?php if ($status === 'saved' && $edit_mode) : ?><p class="tnet-profile-self__notice" role="status"><?php echo esc_html__('Your Profile changes were saved.', 'tnet-profile'); ?></p><?php endif; ?>
 
-      <section class="tnet-profile-self__hero" aria-labelledby="tnet-profile-self-name">
-        <span class="tnet-profile-self__avatar-wrap"><img src="<?php echo esc_url((string) ($avatar['url'] ?? '')); ?>" alt="" width="128" height="128"><button type="button" class="tnet-avatar-camera" data-open-avatar-editor aria-label="<?php echo esc_attr__('Change profile photo', 'tnet-profile'); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.5-2h7l1.5 2h3a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-16A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5Z"/><circle cx="12" cy="13" r="3.5"/></svg></button></span>
-        <div class="tnet-profile-self__identity">
-          <h1 id="tnet-profile-self-name"><?php echo esc_html($user->display_name); ?></h1>
-          <p class="tnet-profile-self__username">@<?php echo esc_html($user->user_login); ?></p>
-          <div class="tnet-profile-self__meta">
-            <?php if (!empty($location['exists'])) : ?><span><?php echo self::icon('location'); ?><?php echo esc_html($location['label']); ?></span><?php endif; ?>
-            <?php if (!empty($user->user_registered)) : ?><span><?php echo self::icon('calendar'); ?><?php echo esc_html(sprintf(__('Member since %s', 'tnet-profile'), mysql2date('M Y', $user->user_registered, false))); ?></span><?php endif; ?>
-          </div>
-          <?php if ($chips) : ?><ul class="tnet-profile-self__chips" aria-label="<?php echo esc_attr__('Profile highlights', 'tnet-profile'); ?>"><?php foreach ($chips as $chip) : ?><li><?php echo esc_html($chip); ?></li><?php endforeach; ?></ul><?php endif; ?>
-        </div>
-        <div class="tnet-profile-self__hero-actions">
-          <?php if ($edit_mode) : ?><a class="tnet-profile-self__button tnet-profile-self__button--secondary" href="<?php echo esc_url($public_url); ?>"><?php echo self::icon('visibility'); ?><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a><a class="tnet-profile-self__button tnet-profile-self__button--primary" href="<?php echo esc_url(home_url('/profile/')); ?>"><?php echo esc_html__('Done Editing', 'tnet-profile'); ?></a>
-          <?php else : ?><a class="tnet-profile-self__button tnet-profile-self__button--secondary" href="<?php echo esc_url($public_url); ?>"><?php echo self::icon('visibility'); ?><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a><a class="tnet-profile-self__button tnet-profile-self__button--primary" href="<?php echo esc_url(TNet_Profile_Basics::edit_url()); ?>"><?php echo esc_html__('Edit Profile', 'tnet-profile'); ?></a><?php endif; ?>
-        </div>
-      </section>
+      <?php TNet_Profile_Public::render_owner_card($card_projection, $edit_mode, $public_url, $card_edit_url, self::icon('visibility')); ?>
 
       <section class="tnet-profile-self__card" aria-labelledby="tnet-profile-self-about">
         <?php self::render_card_header('about', __('About', 'tnet-profile'), 'tnet-profile-self-about', $edit_mode, $scalars['profile_details_public']); ?>

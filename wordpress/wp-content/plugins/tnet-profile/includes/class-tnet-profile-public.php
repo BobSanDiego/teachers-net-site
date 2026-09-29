@@ -93,10 +93,11 @@ final class TNet_Profile_Public {
   }
 
   /** Build the public projection only from the established Profile read owners. */
-  public static function build_projection($user, array $state, array $roles) {
+  public static function build_projection($user, array $state, array $roles, $owner_view = false) {
     $scalars = (array) ($state['scalars'] ?? []);
-    $show_details = !empty($scalars['profile_details_public']);
-    $show_location = !empty($scalars['location_public']) && !empty($state['location']['exists']);
+    $show_details = $owner_view || !empty($scalars['profile_details_public']);
+    $show_location = !empty($state['location']['exists'])
+      && ($owner_view || !empty($scalars['location_public']));
     $grades = $show_details ? TNet_Profile_Basics::project_grade_labels((array) ($state['selected']['teaching_grade'] ?? [])) : [];
     $subjects = $show_details ? TNet_Profile_Basics::term_labels((array) ($state['selected']['teaching_subject'] ?? [])) : [];
     $role_map = [];
@@ -187,12 +188,49 @@ final class TNet_Profile_Public {
         <span aria-hidden="true">›</span><span aria-current="page"><?php echo esc_html($profile['display_name']); ?></span>
       </nav>
 
-      <section class="tnet-profile-public__hero" aria-labelledby="tnet-profile-public-name">
-        <?php if ($profile['avatar_url'] !== '') : ?><img class="tnet-profile-public__avatar" src="<?php echo esc_url($profile['avatar_url']); ?>" alt="" width="216" height="216"><?php endif; ?>
+      <?php self::render_hero_card($profile); ?>
+
+      <?php if ($profile['about'] !== '') : ?>
+        <section class="tnet-profile-public__card" aria-labelledby="tnet-profile-public-about"><h2 id="tnet-profile-public-about"><?php echo esc_html__('About', 'tnet-profile'); ?></h2><p class="tnet-profile-public__bio"><?php echo nl2br(esc_html($profile['about'])); ?></p></section>
+      <?php endif; ?>
+
+      <?php if ($profile['teaching_rows']) : ?>
+        <section class="tnet-profile-public__card tnet-profile-public__teaching" aria-labelledby="tnet-profile-public-teaching"><h2 id="tnet-profile-public-teaching"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z"/><path d="M6.5 10.6v5.2c3.2 2.6 7.8 2.6 11 0v-5.2M21.5 8.5v6"/></svg><?php echo esc_html__('Teaching Profile', 'tnet-profile'); ?></h2>
+          <dl><?php foreach ($profile['teaching_rows'] as $row) : ?><div class="tnet-profile-public__teaching-row"><dt><?php echo esc_html($row['label']); ?></dt><dd><?php echo esc_html(implode(', ', $row['values'])); ?></dd></div><?php endforeach; ?></dl>
+        </section>
+      <?php endif; ?>
+
+      <section class="tnet-profile-public__card tnet-profile-public__groups" aria-labelledby="tnet-profile-public-groups">
+        <h2 id="tnet-profile-public-groups"><?php echo esc_html__('Groups', 'tnet-profile'); ?></h2>
+        <p><?php echo esc_html__('No groups to show yet.', 'tnet-profile'); ?></p>
+      </section>
+    </main>
+    <?php
+  }
+
+  /** Render the same accepted card on owner routes, showing private owner facts. */
+  public static function render_owner_card(array $profile, $edit_mode, $public_url, $edit_url, $visibility_icon) {
+    self::render_hero_card($profile, [
+      'edit_mode' => (bool) $edit_mode,
+      'public_url' => $public_url,
+      'edit_url' => $edit_url,
+      'visibility_icon' => $visibility_icon,
+    ]);
+  }
+
+  private static function render_hero_card(array $profile, array $owner = []) {
+    $owner_view = !empty($owner);
+    ?>
+      <section class="tnet-profile-public__hero<?php echo $owner_view ? ' tnet-profile-public__hero--owner' : ''; ?>" aria-labelledby="tnet-profile-public-name">
+        <?php if ($profile['avatar_url'] !== '') : ?><span class="tnet-profile-public__avatar-wrap"><img class="tnet-profile-public__avatar" src="<?php echo esc_url($profile['avatar_url']); ?>" alt="" width="216" height="216"><?php if ($owner_view) : ?><button type="button" class="tnet-avatar-camera" data-open-avatar-editor aria-label="<?php echo esc_attr__('Change profile photo', 'tnet-profile'); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.5-2h7l1.5 2h3a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-16A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5Z"/><circle cx="12" cy="13" r="3.5"/></svg></button><?php endif; ?></span><?php endif; ?>
         <div class="tnet-profile-public__identity">
           <h1 id="tnet-profile-public-name"><?php echo esc_html($profile['display_name']); ?></h1>
           <p class="tnet-profile-public__username">@<?php echo esc_html($profile['username']); ?></p>
         </div>
+        <?php if ($owner_view) : ?><div class="tnet-profile-self__hero-actions">
+          <a class="tnet-profile-self__button tnet-profile-self__button--secondary" href="<?php echo esc_url($owner['public_url']); ?>"><?php echo $owner['visibility_icon']; ?><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a>
+          <a class="tnet-profile-self__button tnet-profile-self__button--primary" href="<?php echo esc_url($owner['edit_url']); ?>"><?php echo esc_html($owner['edit_mode'] ? __('Done Editing', 'tnet-profile') : __('Edit Profile', 'tnet-profile')); ?></a>
+        </div><?php endif; ?>
         <?php if ($profile['hero_disclosures'] || $profile['location'] !== '' || $profile['teaching_since_summary'] !== '' || $profile['member_since'] !== '') : ?>
           <div class="tnet-profile-public__highlights">
             <?php if ($profile['hero_disclosures'] || $profile['location'] !== '') : ?><div class="tnet-profile-public__summary" aria-label="<?php echo esc_attr__('Profile highlights', 'tnet-profile'); ?>">
@@ -222,22 +260,6 @@ final class TNet_Profile_Public {
           </div>
         <?php endif; ?>
       </section>
-
-      <?php if ($profile['about'] !== '') : ?>
-        <section class="tnet-profile-public__card" aria-labelledby="tnet-profile-public-about"><h2 id="tnet-profile-public-about"><?php echo esc_html__('About', 'tnet-profile'); ?></h2><p class="tnet-profile-public__bio"><?php echo nl2br(esc_html($profile['about'])); ?></p></section>
-      <?php endif; ?>
-
-      <?php if ($profile['teaching_rows']) : ?>
-        <section class="tnet-profile-public__card tnet-profile-public__teaching" aria-labelledby="tnet-profile-public-teaching"><h2 id="tnet-profile-public-teaching"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z"/><path d="M6.5 10.6v5.2c3.2 2.6 7.8 2.6 11 0v-5.2M21.5 8.5v6"/></svg><?php echo esc_html__('Teaching Profile', 'tnet-profile'); ?></h2>
-          <dl><?php foreach ($profile['teaching_rows'] as $row) : ?><div class="tnet-profile-public__teaching-row"><dt><?php echo esc_html($row['label']); ?></dt><dd><?php echo esc_html(implode(', ', $row['values'])); ?></dd></div><?php endforeach; ?></dl>
-        </section>
-      <?php endif; ?>
-
-      <section class="tnet-profile-public__card tnet-profile-public__groups" aria-labelledby="tnet-profile-public-groups">
-        <h2 id="tnet-profile-public-groups"><?php echo esc_html__('Groups', 'tnet-profile'); ?></h2>
-        <p><?php echo esc_html__('No groups to show yet.', 'tnet-profile'); ?></p>
-      </section>
-    </main>
     <?php
   }
 
