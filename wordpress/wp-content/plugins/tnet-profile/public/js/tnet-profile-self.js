@@ -4,6 +4,46 @@
   document.addEventListener('DOMContentLoaded', function () {
     var notice = document.querySelector('.tnet-profile-self__notice[role="status"]');
     if (notice) window.setTimeout(function () { notice.remove(); }, 5000);
+    var menuTrigger = document.querySelector('.tnet-profile-self__menu-trigger');
+    var profileMenu = menuTrigger && document.getElementById(menuTrigger.getAttribute('aria-controls'));
+    function closeProfileMenu(restoreFocus) {
+      if (!menuTrigger || !profileMenu || profileMenu.hidden) return;
+      profileMenu.hidden = true;
+      menuTrigger.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) menuTrigger.focus();
+    }
+    if (menuTrigger && profileMenu) {
+      menuTrigger.addEventListener('click', function () {
+        var opening = profileMenu.hidden;
+        profileMenu.hidden = !opening;
+        menuTrigger.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        if (opening) {
+          var firstItem = profileMenu.querySelector('[role="menuitem"]');
+          if (firstItem) firstItem.focus();
+        }
+      });
+      profileMenu.addEventListener('keydown', function (event) {
+        var items = Array.prototype.slice.call(profileMenu.querySelectorAll('[role="menuitem"]'));
+        var index = items.indexOf(document.activeElement);
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeProfileMenu(true);
+        } else if (items.length && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+          event.preventDefault();
+          var offset = event.key === 'ArrowDown' ? 1 : -1;
+          items[(index + offset + items.length) % items.length].focus();
+        }
+      });
+      document.addEventListener('pointerdown', function (event) {
+        if (!profileMenu.hidden && !profileMenu.contains(event.target) && !menuTrigger.contains(event.target)) closeProfileMenu(false);
+      });
+      menuTrigger.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !profileMenu.hidden) {
+          event.preventDefault();
+          closeProfileMenu(true);
+        }
+      });
+    }
     var dialogs = Array.prototype.slice.call(document.querySelectorAll('[data-profile-editor-dialog]'));
     if (!dialogs.length) return;
     var active = null;

@@ -220,14 +220,17 @@ final class TNet_Profile_Public {
 
   private static function render_hero_card(array $profile, array $owner = []) {
     $owner_view = !empty($owner);
+    $compact_self_view = $owner_view && empty($owner['edit_mode']);
     ?>
-      <section class="tnet-profile-public__hero<?php echo $owner_view ? ' tnet-profile-public__hero--owner' : ''; ?>" aria-labelledby="tnet-profile-public-name">
+      <section class="tnet-profile-public__hero<?php echo $owner_view ? ' tnet-profile-public__hero--owner' : ''; ?><?php echo $compact_self_view ? ' tnet-profile-public__hero--owner-self' : ''; ?>" aria-labelledby="tnet-profile-public-name">
         <?php if ($profile['avatar_url'] !== '') : ?><span class="tnet-profile-public__avatar-wrap"><img class="tnet-profile-public__avatar" src="<?php echo esc_url($profile['avatar_url']); ?>" alt="" width="216" height="216"><?php if ($owner_view) : ?><button type="button" class="tnet-avatar-camera" data-open-avatar-editor aria-label="<?php echo esc_attr__('Change profile photo', 'tnet-profile'); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.5-2h7l1.5 2h3a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-16A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5Z"/><circle cx="12" cy="13" r="3.5"/></svg></button><?php endif; ?></span><?php endif; ?>
-        <div class="tnet-profile-public__identity">
-          <h1 id="tnet-profile-public-name"><?php echo esc_html($profile['display_name']); ?></h1>
-          <p class="tnet-profile-public__username">@<?php echo esc_html($profile['username']); ?></p>
+        <div class="tnet-profile-public__identity<?php echo $compact_self_view ? ' tnet-profile-public__identity--owner-self' : ''; ?>">
+          <?php if ($compact_self_view) : ?><h1 id="tnet-profile-public-name"><span class="tnet-profile-public__owner-display-name"><?php echo esc_html($profile['display_name']); ?></span><span class="tnet-profile-public__owner-handle">(<span>@<?php echo esc_html($profile['username']); ?></span>)</span></h1>
+          <?php else : ?><h1 id="tnet-profile-public-name"><?php echo esc_html($profile['display_name']); ?></h1>
+          <p class="tnet-profile-public__username">@<?php echo esc_html($profile['username']); ?></p><?php endif; ?>
         </div>
-        <?php if ($owner_view) : ?><div class="tnet-profile-self__hero-actions">
+        <?php if ($compact_self_view) : ?><div class="tnet-profile-self__menu-wrap"><button type="button" class="tnet-profile-self__menu-trigger" aria-label="<?php echo esc_attr__('Profile actions', 'tnet-profile'); ?>" aria-haspopup="menu" aria-expanded="false" aria-controls="tnet-profile-self-actions"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button><div id="tnet-profile-self-actions" class="tnet-profile-self__menu" role="menu" aria-label="<?php echo esc_attr__('Profile actions', 'tnet-profile'); ?>" hidden><a role="menuitem" href="<?php echo esc_url($owner['edit_url']); ?>"><?php echo esc_html__('Edit Profile', 'tnet-profile'); ?></a><a role="menuitem" href="<?php echo esc_url($owner['public_url']); ?>"><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a></div></div>
+        <?php elseif ($owner_view) : ?><div class="tnet-profile-self__hero-actions">
           <a class="tnet-profile-self__button tnet-profile-self__button--secondary" href="<?php echo esc_url($owner['public_url']); ?>"><?php echo $owner['visibility_icon']; ?><?php echo esc_html__('View as Public', 'tnet-profile'); ?></a>
           <a class="tnet-profile-self__button tnet-profile-self__button--primary" href="<?php echo esc_url($owner['edit_url']); ?>"><?php echo esc_html($owner['edit_mode'] ? __('Done Editing', 'tnet-profile') : __('Edit Profile', 'tnet-profile')); ?></a>
         </div><?php endif; ?>
