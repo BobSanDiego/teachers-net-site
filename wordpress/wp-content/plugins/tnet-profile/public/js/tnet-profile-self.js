@@ -4,19 +4,32 @@
   document.addEventListener('DOMContentLoaded', function () {
     var notice = document.querySelector('.tnet-profile-self__notice[role="status"]');
     if (notice) window.setTimeout(function () { notice.remove(); }, 5000);
-    var menuTrigger = document.querySelector('.tnet-profile-self__menu-trigger');
-    var profileMenu = menuTrigger && document.getElementById(menuTrigger.getAttribute('aria-controls'));
-    function closeProfileMenu(restoreFocus) {
-      if (!menuTrigger || !profileMenu || profileMenu.hidden) return;
-      profileMenu.hidden = true;
-      menuTrigger.setAttribute('aria-expanded', 'false');
-      if (restoreFocus) menuTrigger.focus();
+    var menuTriggers = Array.prototype.slice.call(document.querySelectorAll('.tnet-profile-self__menu-trigger, .tnet-profile-self__card-menu-trigger'));
+    function menuFor(trigger) {
+      return trigger && document.getElementById(trigger.getAttribute('aria-controls'));
     }
-    if (menuTrigger && profileMenu) {
+    function closeProfileMenu(trigger, restoreFocus) {
+      var menu = menuFor(trigger);
+      if (!menu || menu.hidden) return;
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+      if (trigger.parentElement) trigger.parentElement.classList.remove('is-open');
+      if (restoreFocus) trigger.focus();
+    }
+    function closeOtherMenus(keepTrigger) {
+      menuTriggers.forEach(function (trigger) {
+        if (trigger !== keepTrigger) closeProfileMenu(trigger, false);
+      });
+    }
+    menuTriggers.forEach(function (menuTrigger) {
+      var profileMenu = menuFor(menuTrigger);
+      if (!profileMenu) return;
       menuTrigger.addEventListener('click', function () {
         var opening = profileMenu.hidden;
+        closeOtherMenus(menuTrigger);
         profileMenu.hidden = !opening;
         menuTrigger.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        if (menuTrigger.parentElement) menuTrigger.parentElement.classList.toggle('is-open', opening);
         if (opening) {
           var firstItem = profileMenu.querySelector('[role="menuitem"]');
           if (firstItem) firstItem.focus();
@@ -27,23 +40,26 @@
         var index = items.indexOf(document.activeElement);
         if (event.key === 'Escape') {
           event.preventDefault();
-          closeProfileMenu(true);
+          closeProfileMenu(menuTrigger, true);
         } else if (items.length && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
           event.preventDefault();
           var offset = event.key === 'ArrowDown' ? 1 : -1;
           items[(index + offset + items.length) % items.length].focus();
         }
       });
-      document.addEventListener('pointerdown', function (event) {
-        if (!profileMenu.hidden && !profileMenu.contains(event.target) && !menuTrigger.contains(event.target)) closeProfileMenu(false);
-      });
       menuTrigger.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && !profileMenu.hidden) {
           event.preventDefault();
-          closeProfileMenu(true);
+          closeProfileMenu(menuTrigger, true);
         }
       });
-    }
+    });
+    document.addEventListener('pointerdown', function (event) {
+      menuTriggers.forEach(function (trigger) {
+        var menu = menuFor(trigger);
+        if (menu && !menu.hidden && !menu.contains(event.target) && !trigger.contains(event.target)) closeProfileMenu(trigger, false);
+      });
+    });
     var dialogs = Array.prototype.slice.call(document.querySelectorAll('[data-profile-editor-dialog]'));
     if (!dialogs.length) return;
     var active = null;
@@ -85,7 +101,10 @@
     Array.prototype.forEach.call(document.querySelectorAll('[data-profile-editor-open]'), function (button) {
       button.addEventListener('click', function () {
         var section = button.getAttribute('data-profile-editor-open');
-        open(dialogs.find(function (dialog) { return dialog.getAttribute('data-profile-editor-dialog') === section; }), button);
+        var ownerMenu = button.closest('[data-profile-card-menu]');
+        var trigger = ownerMenu && ownerMenu.querySelector('.tnet-profile-self__card-menu-trigger');
+        if (ownerMenu) closeProfileMenu(trigger, false);
+        open(dialogs.find(function (dialog) { return dialog.getAttribute('data-profile-editor-dialog') === section; }), trigger || button);
       });
     });
     dialogs.forEach(function (dialog) {
@@ -100,7 +119,11 @@
         if (event.target === dialog) close();
       });
     });
-    var errored = dialogs.find(function (dialog) { return dialog.hasAttribute('data-profile-editor-open-on-load'); });
-    if (errored) open(errored, document.querySelector('[data-profile-editor-open="' + errored.getAttribute('data-profile-editor-dialog') + '"]'));
+    var requested = dialogs.find(function (dialog) { return dialog.hasAttribute('data-profile-editor-open-on-load'); });
+    if (requested) {
+      var section = requested.getAttribute('data-profile-editor-dialog');
+      var initialTrigger = document.querySelector('.tnet-profile-self__card-menu-trigger[data-profile-editor-section="' + section + '"]');
+      open(requested, initialTrigger || document.querySelector('[data-profile-editor-open="' + section + '"]'));
+    }
   });
 }());

@@ -201,23 +201,10 @@ final class TNet_Profile_Basics {
       return is_wp_error($saved) ? $saved : self::state($user_id);
     }
     if ($section === 'visibility') {
-      $location = self::location($user_id);
-      $details = !empty($input['details_public']) ? '1' : '0';
-      $location_public = !empty($input['location_public']) && $location['exists'] ? '1' : '0';
-      $wpdb->query('START TRANSACTION');
-      foreach ([
-        TNet_Profile_Member_Context::PROFILE_DETAILS_PUBLIC_META => $details,
-        TNet_Profile_Member_Context::PROFILE_LOCATION_PUBLIC_META => $location_public,
-      ] as $key => $value) {
-        if ((string) get_user_meta($user_id, $key, true) === $value) continue;
-        if (update_user_meta($user_id, $key, $value) === false) {
-          $wpdb->query('ROLLBACK');
-          wp_cache_delete($user_id, 'user_meta');
-          return new WP_Error('tnet_profile_basics_visibility_save_failed', __('Your visibility settings could not be saved. Please try again.', 'tnet-profile'));
-        }
-      }
-      $wpdb->query('COMMIT');
-      return self::state($user_id);
+      return self::save_visibility_settings($user_id, [
+        'details' => !empty($input['details_public']),
+        'location' => !empty($input['location_public']),
+      ]);
     }
     if ($section !== 'teaching') return new WP_Error('tnet_profile_basics_section_invalid', __('Choose a Profile section to edit.', 'tnet-profile'));
     if (!class_exists('CFM')) return new WP_Error('tnet_profile_basics_terms_unavailable', __('Core Terms is temporarily unavailable.', 'tnet-profile'));
@@ -245,6 +232,39 @@ final class TNet_Profile_Basics {
         $wpdb->query('ROLLBACK');
         wp_cache_delete($user_id, 'user_meta');
         return new WP_Error('tnet_profile_basics_teaching_save_failed', __('Your teaching Profile could not be saved. Please try again.', 'tnet-profile'));
+      }
+    }
+    $wpdb->query('COMMIT');
+    return self::state($user_id);
+  }
+
+  /** Persist only the supplied existing V1 visibility flags through the canonical Profile writer. */
+  public static function save_visibility_settings($user_id, array $settings) {
+    global $wpdb;
+    $user_id = absint($user_id);
+    if (!$user_id || $user_id !== get_current_user_id() || !get_user_by('id', $user_id)) {
+      return new WP_Error('tnet_profile_basics_forbidden', __('You are not allowed to update this Profile.', 'tnet-profile'));
+    }
+    $allowed = [
+      'details' => TNet_Profile_Member_Context::PROFILE_DETAILS_PUBLIC_META,
+      'location' => TNet_Profile_Member_Context::PROFILE_LOCATION_PUBLIC_META,
+    ];
+    if (!$settings || array_diff(array_keys($settings), array_keys($allowed))) {
+      return new WP_Error('tnet_profile_basics_visibility_invalid', __('Choose a Profile visibility setting to update.', 'tnet-profile'));
+    }
+    if (array_key_exists('location', $settings) && !empty($settings['location'])) {
+      $location = self::location($user_id);
+      if (empty($location['exists'])) $settings['location'] = false;
+    }
+    $wpdb->query('START TRANSACTION');
+    foreach ($settings as $setting => $enabled) {
+      $key = $allowed[$setting];
+      $value = !empty($enabled) ? '1' : '0';
+      if ((string) get_user_meta($user_id, $key, true) === $value) continue;
+      if (update_user_meta($user_id, $key, $value) === false) {
+        $wpdb->query('ROLLBACK');
+        wp_cache_delete($user_id, 'user_meta');
+        return new WP_Error('tnet_profile_basics_visibility_save_failed', __('Your visibility settings could not be saved. Please try again.', 'tnet-profile'));
       }
     }
     $wpdb->query('COMMIT');

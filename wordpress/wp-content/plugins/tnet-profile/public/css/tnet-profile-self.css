@@ -13,6 +13,7 @@
 .tnet-profile-self__breadcrumbs a:hover, .tnet-profile-self__breadcrumbs a:focus-visible { text-decoration: underline; }
 .tnet-profile-self__breadcrumbs [aria-current] { color: var(--tnet-profile-navy); font-weight: 700; }
 .tnet-profile-self__notice { margin: 0 0 10px; padding: 9px 12px; border-radius: 8px; background: #e8f7ed; color: #16653e; font-weight: 650; }
+.tnet-profile-self__error { margin: 0 0 10px; padding: 9px 12px; border-radius: 8px; background: #fff0f0; color: #912627; }
 .tnet-profile-self__hero, .tnet-profile-self__card, .tnet-profile-self__rail-card { border: 1px solid var(--tnet-profile-line); border-radius: 8px; background: #fff; box-shadow: 0 2px 7px rgba(17, 47, 103, .035); }
 .tnet-profile-self__hero { position: relative; display: grid; grid-template-columns: 132px minmax(0, 1fr); align-items: center; gap: 18px; min-height: 178px; padding: 16px 18px; }
 .tnet-profile-self__avatar-wrap { position: relative; display: block; width: 128px; height: 128px; }
@@ -37,15 +38,32 @@
 .tnet-profile-self a.tnet-profile-self__button--primary:hover, .tnet-profile-self a.tnet-profile-self__button--primary:focus-visible { color: #fff; }
 .tnet-profile-self__button--secondary, .tnet-profile-self__button--edit { border-color: #a9c8f0; background: #fff; color: var(--tnet-shell-action, #0045dd); }
 .tnet-profile-self__button--secondary:hover, .tnet-profile-self__button--edit:hover { background: #f2f7ff; color: #0039bb; }
-.tnet-profile-self__card { min-width: 0; margin-top: 10px; padding: 12px 17px; }
-.tnet-profile-self__card-header { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.tnet-profile-self__card { position: relative; min-width: 0; margin-top: 10px; padding: 12px 17px; }
+.tnet-profile-self__card-header { display: flex; align-items: center; gap: 9px; min-width: 0; padding-right: 32px; }
+.tnet-profile-self__card-title { display: inline-flex; align-items: center; gap: 9px; min-width: 0; }
 .tnet-profile-self__card-icon { display: inline-grid; flex: 0 0 30px; width: 30px; place-items: center; color: var(--tnet-shell-action, #0045dd); }
 .tnet-profile-self__card-icon svg { width: 23px; height: 23px; }
-.tnet-profile-self__card-header h2 { margin: 0; color: var(--tnet-profile-navy); font-size: 17px; font-weight: 800; line-height: 1.3; }
-.tnet-profile-self__card-header > .tnet-profile-self__button { min-width: 80px; margin-left: auto; }
-.tnet-profile-self__badge { display: inline-flex; align-items: center; gap: 5px; margin-left: 12px; padding: 4px 10px; border-radius: 999px; background: #edf2f7; color: #506b91; font-size: 11px; font-weight: 650; white-space: nowrap; }
-.tnet-profile-self__badge.is-public { background: #e8f7ef; color: #15734a; }
-.tnet-profile-self__badge svg { width: 13px; height: 13px; }
+.tnet-profile-self__card-header h2 { min-width: 0; margin: 0; color: var(--tnet-profile-navy); font-size: 17px; font-weight: 800; line-height: 1.3; }
+.tnet-profile-self__status-icon { display: inline-flex; flex: 0 0 14px; width: 14px; height: 14px; color: #7d8ba1; }
+.tnet-profile-self__status-icon svg { display: block; width: 14px; height: 14px; stroke-width: 1.7; }
+.tnet-profile-self__card-menu { position: absolute; z-index: 4; top: 5px; right: 7px; }
+.tnet-profile-self__card-menu-trigger { display: grid; width: 30px; height: 30px; place-items: center; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #71829d; cursor: pointer; }
+.tnet-profile-self__card-menu-trigger:hover, .tnet-profile-self__card-menu-trigger:focus-visible, .tnet-profile-self__card-menu.is-open .tnet-profile-self__card-menu-trigger { background: #f0f5fc; color: var(--tnet-shell-action, #0045dd); }
+.tnet-profile-self__card-menu-trigger:focus-visible { outline: 2px solid #7eafff; outline-offset: 1px; }
+.tnet-profile-self__card-menu-trigger svg { width: 20px; height: 20px; fill: currentColor; }
+.tnet-profile-self__card-menu-panel { position: absolute; top: calc(100% + 4px); right: 0; width: min(232px, calc(100vw - 24px)); padding: 5px; border: 1px solid #d5dfed; border-radius: 8px; background: #fff; box-shadow: 0 8px 22px #17345424; }
+.tnet-profile-self__card-menu-panel[hidden] { display: none; }
+.tnet-profile-self__menu-form { margin: 0; }
+.tnet-profile-self__menu-item { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 8px 10px; border: 0; border-radius: 5px; background: transparent; color: var(--tnet-profile-navy); font: inherit; font-size: 13px; font-weight: 600; line-height: 1.3; text-align: left; text-decoration: none; cursor: pointer; }
+.tnet-profile-self__menu-item:hover, .tnet-profile-self__menu-item:focus-visible { outline: 0; background: #f2f6fc; color: #0d4ab0; }
+.tnet-profile-self__menu-item > svg { flex: 0 0 17px; width: 17px; height: 17px; color: #617795; }
+.tnet-profile-self__menu-item > span { min-width: 0; }
+.tnet-profile-self__menu-item small { display: block; margin-top: 2px; color: #75849b; font-size: 11px; font-weight: 450; line-height: 1.25; }
+.tnet-profile-self__card-menu.is-self-hover-menu .tnet-profile-self__card-menu-trigger { opacity: 0; pointer-events: none; }
+.tnet-profile-self__card:hover .tnet-profile-self__card-menu.is-self-hover-menu .tnet-profile-self__card-menu-trigger,
+.tnet-profile-self__card:focus-within .tnet-profile-self__card-menu.is-self-hover-menu .tnet-profile-self__card-menu-trigger,
+.tnet-profile-self__card-menu.is-open .tnet-profile-self__card-menu-trigger { opacity: 1; pointer-events: auto; }
+@media (hover: none), (pointer: coarse) { .tnet-profile-self__card-menu.is-self-hover-menu .tnet-profile-self__card-menu-trigger { opacity: .42; pointer-events: auto; } }
 .tnet-profile-self__card > p, .tnet-profile-self__card > dl { margin: 8px 0 0 53px; }
 .tnet-profile-self__bio { color: #425a7a; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
 .tnet-profile-self__empty, .tnet-profile-self__help { color: var(--tnet-profile-muted); font-size: 13px; line-height: 1.4; }
@@ -56,6 +74,10 @@
 .tnet-profile-self__card dd { min-width: 0; margin: 0; color: #4d668c; overflow-wrap: anywhere; }
 .tnet-profile-self__card dd.is-empty { color: #7b8ca4; }
 .tnet-profile-self__visibility dl > div { grid-template-columns: minmax(0, 1fr) minmax(120px, 35%); }
+.tnet-profile-self__visibility dt strong { display: block; font-weight: 700; }
+.tnet-profile-self__visibility dt small { display: block; margin-top: 2px; color: #77879e; font-size: 11px; font-weight: 450; }
+.tnet-profile-self__visibility dd { display: flex; align-items: center; gap: 6px; }
+.tnet-profile-self__visibility-value { display: inline-flex; align-items: center; gap: 6px; color: #536b8d; }
 .tnet-profile-self__rail-card { width: 100%; margin-top: 12px; padding: 16px; color: var(--tnet-profile-ink); }
 .tnet-profile-self__rail-card h2 { margin: 0 0 9px; color: var(--tnet-profile-navy); font-size: 16px; }
 .tnet-profile-self__rail-card p, .tnet-profile-self__rail-card small { color: #506b91; font-size: 13px; line-height: 1.45; }
@@ -75,6 +97,7 @@
 .tnet-profile-self-modal__actions { flex: 0 0 auto; justify-content: flex-end; border-top: 1px solid #e1e9f4; }
 .tnet-profile-self-modal__actions .tnet-profile-self__button { min-width: 88px; }
 .tnet-profile-self-modal__error { margin: 0 0 12px; padding: 9px 11px; border-radius: 6px; background: #fff0f0; color: #912627; }
+.tnet-profile-self-modal__privacy-note { margin: 0 0 12px; padding: 8px 10px; border-left: 2px solid #bdc9d9; background: #f7f9fc; color: #66778f; font-size: 12px; line-height: 1.4; }
 .tnet-profile-self-bio-label { display: grid; gap: 7px; color: var(--tnet-profile-navy); font-size: 14px; font-weight: 700; }
 .tnet-profile-self-bio-label textarea { width: 100%; min-height: 160px; box-sizing: border-box; padding: 10px 11px; border: 1px solid #b9cbe2; border-radius: 7px; color: var(--tnet-profile-ink); font: inherit; font-weight: 500; resize: vertical; }
 .tnet-profile-self-bio-label small { color: #506b91; font-size: 12px; font-weight: 500; }
@@ -117,7 +140,6 @@
   .tnet-profile-self__card-header { flex-wrap: wrap; }
   .tnet-profile-self__card-header h2 { font-size: 16px; }
   .tnet-profile-self__card-header > .tnet-profile-self__button { min-width: 62px; padding: 6px 8px; }
-  .tnet-profile-self__badge { margin-left: 0; padding: 4px 7px; }
   .tnet-profile-self__card > p, .tnet-profile-self__card > dl { margin-left: 0; }
   .tnet-profile-self__card dl > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .tnet-profile-self__visibility dl > div { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }

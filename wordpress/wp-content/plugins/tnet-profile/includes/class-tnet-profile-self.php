@@ -16,18 +16,30 @@ final class TNet_Profile_Self {
     if (!$user) return;
     $error = null;
     $error_section = '';
-    if ($edit_mode && ($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
-      $error_section = sanitize_key((string) wp_unslash($_POST['profile_edit_section'] ?? ''));
+    $is_post = ($_SERVER['REQUEST_METHOD'] ?? '') === 'POST';
+    $visibility_toggle = $is_post ? sanitize_key((string) wp_unslash($_POST['profile_visibility_toggle'] ?? '')) : '';
+    if (($edit_mode && $is_post) || $visibility_toggle !== '') {
+      $error_section = $visibility_toggle !== '' ? 'visibility' : sanitize_key((string) wp_unslash($_POST['profile_edit_section'] ?? ''));
       $nonce = sanitize_text_field((string) wp_unslash($_POST['_wpnonce'] ?? ''));
-      if (!in_array($error_section, self::SECTIONS, true)) {
+      if ($visibility_toggle !== '' && !in_array($visibility_toggle, ['details', 'location'], true)) {
+        $error = new WP_Error('tnet_profile_visibility_action_invalid', __('Choose a Profile visibility setting to update.', 'tnet-profile'));
+      } elseif (!in_array($error_section, self::SECTIONS, true)) {
         $error = new WP_Error('tnet_profile_edit_section_invalid', __('Choose a Profile section to edit.', 'tnet-profile'));
       } elseif (!wp_verify_nonce($nonce, TNet_Profile_Basics::NONCE)) {
         $error = new WP_Error('tnet_profile_edit_nonce', __('Your edit session expired. Please try again.', 'tnet-profile'));
       } else {
-        $saved = TNet_Profile_Basics::save_section($user_id, $error_section, wp_unslash($_POST));
+        if ($visibility_toggle !== '') {
+          $current = TNet_Profile_Basics::state($user_id)['scalars'];
+          $key = $visibility_toggle === 'details' ? 'profile_details_public' : 'location_public';
+          $saved = TNet_Profile_Basics::save_visibility_settings($user_id, [$visibility_toggle => empty($current[$key])]);
+        } else {
+          $saved = TNet_Profile_Basics::save_section($user_id, $error_section, wp_unslash($_POST));
+        }
         if (is_wp_error($saved)) $error = $saved;
         else {
-          wp_safe_redirect(add_query_arg('profile_status', 'saved', TNet_Profile_Basics::edit_url()));
+          $return_url = $visibility_toggle !== '' && !$edit_mode ? home_url('/profile/') : TNet_Profile_Basics::edit_url();
+          $status = $visibility_toggle !== '' ? 'visibility-updated' : 'saved';
+          wp_safe_redirect(add_query_arg('profile_status', $status, $return_url));
           exit;
         }
       }
@@ -78,12 +90,14 @@ final class TNet_Profile_Self {
     $card_projection = TNet_Profile_Public::build_projection($user, $state, $roles, true);
     $card_edit_url = $edit_mode ? home_url('/profile/') : TNet_Profile_Basics::edit_url();
     $status = sanitize_key((string) ($_GET['profile_status'] ?? ''));
+    $requested_section = sanitize_key((string) ($_GET['profile_edit_section'] ?? ''));
+    if (!in_array($requested_section, self::SECTIONS, true)) $requested_section = '';
     ?>
     <div class="tnet-profile-self<?php echo $edit_mode ? ' tnet-profile-self--editing' : ''; ?>" data-tnet-profile-self data-edit-mode="<?php echo $edit_mode ? 'on' : 'off'; ?>">
       <nav class="tnet-profile-self__breadcrumbs" aria-label="<?php echo esc_attr__('Breadcrumb', 'tnet-profile'); ?>">
         <a href="<?php echo esc_url(home_url('/')); ?>"><?php echo esc_html__('Teachers', 'tnet-profile'); ?></a><span aria-hidden="true">›</span><span aria-current="page"><?php echo esc_html($edit_mode ? __('My Profile (Editing)', 'tnet-profile') : __('My Profile', 'tnet-profile')); ?></span>
       </nav>
-      <?php if ($status === 'saved' && $edit_mode) : ?><p class="tnet-profile-self__notice" role="status"><?php echo esc_html__('Your Profile changes were saved.', 'tnet-profile'); ?></p><?php endif; ?>
+      <?php if ($status === 'saved' && $edit_mode) : ?><p class="tnet-profile-self__notice" role="status"><?php echo esc_html__('Your Profile changes were saved.', 'tnet-profile'); ?></p><?php elseif ($status === 'visibility-updated') : ?><p class="tnet-profile-self__notice" role="status"><?php echo esc_html__('Profile visibility updated.', 'tnet-profile'); ?></p><?php elseif ($error && !$edit_mode) : ?><p class="tnet-profile-self__error" role="alert"><?php echo esc_html($error->get_error_message()); ?></p><?php endif; ?>
 
       <?php TNet_Profile_Public::render_owner_card($card_projection, $edit_mode, $public_url, $card_edit_url, self::icon('visibility')); ?>
 
@@ -105,7 +119,7 @@ final class TNet_Profile_Self {
       </section>
 
       <section class="tnet-profile-self__card" aria-labelledby="tnet-profile-self-location">
-        <?php self::render_card_header('location', __('Location', 'tnet-profile'), 'tnet-profile-self-location', $edit_mode, !empty($scalars['location_public']) && !empty($location['exists'])); ?>
+        <?php self::render_card_header('location', __('Location', 'tnet-profile'), 'tnet-profile-self-location', $edit_mode, !empty($scalars['location_public']) && !empty($location['exists']), !empty($location['exists'])); ?>
         <p class="tnet-profile-self__location"><?php echo esc_html(!empty($location['exists']) ? $location['label'] : __('No location added yet.', 'tnet-profile')); ?></p>
       </section>
 
@@ -117,22 +131,82 @@ final class TNet_Profile_Self {
       <section class="tnet-profile-self__card tnet-profile-self__visibility" aria-labelledby="tnet-profile-self-visibility">
         <?php self::render_card_header('visibility', __('Profile Visibility', 'tnet-profile'), 'tnet-profile-self-visibility', $edit_mode); ?>
         <p class="tnet-profile-self__help"><?php echo esc_html__('Control who can see your profile information.', 'tnet-profile'); ?></p>
-        <dl><div><dt><?php echo esc_html__('About and Teaching Profile', 'tnet-profile'); ?></dt><dd><?php echo esc_html(!empty($scalars['profile_details_public']) ? __('Everyone', 'tnet-profile') : __('Only you', 'tnet-profile')); ?></dd></div><div><dt><?php echo esc_html__('Location', 'tnet-profile'); ?></dt><dd><?php echo esc_html(!empty($scalars['location_public']) && !empty($location['exists']) ? __('Everyone', 'tnet-profile') : __('Only you', 'tnet-profile')); ?></dd></div></dl>
+        <dl><div><dt><strong><?php echo esc_html__('Profile details', 'tnet-profile'); ?></strong><small><?php echo esc_html__('About + Teaching Profile', 'tnet-profile'); ?></small></dt><dd><?php self::render_visibility_value(!empty($scalars['profile_details_public']), __('Everyone', 'tnet-profile'), __('Just me', 'tnet-profile')); ?></dd></div><div><dt><strong><?php echo esc_html__('Location', 'tnet-profile'); ?></strong></dt><dd><?php self::render_visibility_value(!empty($scalars['location_public']) && !empty($location['exists']), __('Everyone', 'tnet-profile'), __('Just me', 'tnet-profile')); ?></dd></div></dl>
       </section>
     </div>
-    <?php if ($edit_mode) foreach (self::SECTIONS as $section) self::render_modal($section, $state, $error_section === $section ? $error : null); ?>
+    <?php if ($edit_mode) foreach (self::SECTIONS as $section) self::render_modal($section, $state, $error_section === $section ? $error : null, $requested_section === $section); ?>
     <?php TNet_Profile_Avatar::render_modal(add_query_arg('avatar_modal', '1', $edit_mode ? TNet_Profile_Basics::edit_url() : home_url('/profile/'))); ?>
     <?php
   }
 
-  private static function render_card_header($section, $title, $id, $edit_mode, $visible = null) {
-    ?><header class="tnet-profile-self__card-header"><span class="tnet-profile-self__card-icon"><?php echo self::icon($section); ?></span><h2 id="<?php echo esc_attr($id); ?>"><?php echo esc_html($title); ?></h2>
-      <?php if ($visible !== null) : ?><span class="tnet-profile-self__badge<?php echo $visible ? ' is-public' : ''; ?>"><?php echo self::icon($visible ? 'visibility' : 'lock'); ?><?php echo esc_html($visible ? __('Visible to others', 'tnet-profile') : __('Only you', 'tnet-profile')); ?></span><?php endif; ?>
-      <?php if ($edit_mode && in_array($section, self::SECTIONS, true)) : ?><button type="button" class="tnet-profile-self__button tnet-profile-self__button--edit" data-profile-editor-open="<?php echo esc_attr($section); ?>" aria-label="<?php echo esc_attr(sprintf(__('Edit %s', 'tnet-profile'), $title)); ?>"><?php echo self::icon('edit'); ?><?php echo esc_html__('Edit', 'tnet-profile'); ?></button><?php endif; ?>
+  private static function render_card_header($section, $title, $id, $edit_mode, $visible = null, $location_exists = false) {
+    $has_menu = in_array($section, ['about', 'teaching', 'location', 'visibility'], true);
+    ?><header class="tnet-profile-self__card-header"><span class="tnet-profile-self__card-title"><span class="tnet-profile-self__card-icon"><?php echo self::icon($section); ?></span><h2 id="<?php echo esc_attr($id); ?>"><?php echo esc_html($title); ?></h2><?php if ($edit_mode && in_array($section, ['about', 'teaching', 'location'], true) && $visible !== null) self::render_status_icon($visible); ?></span>
+      <?php if ($has_menu) self::render_card_menu($section, $edit_mode, $visible, $location_exists); ?>
     </header><?php
   }
 
-  private static function render_modal($section, array $state, $error) {
+  private static function render_card_menu($section, $edit_mode, $visible = null, $location_exists = false) {
+    $id = 'tnet-profile-self-card-menu-' . $section;
+    $title = [
+      'about' => __('About', 'tnet-profile'),
+      'teaching' => __('Teaching Profile', 'tnet-profile'),
+      'location' => __('Location', 'tnet-profile'),
+      'visibility' => __('Profile Visibility', 'tnet-profile'),
+    ][$section];
+    $edit_url = add_query_arg('profile_edit_section', $section, TNet_Profile_Basics::edit_url());
+    $form_action = $edit_mode ? TNet_Profile_Basics::edit_url() : home_url('/profile/');
+    $is_self_hover_menu = !$edit_mode && in_array($section, ['about', 'teaching', 'location'], true);
+    ?>
+    <div class="tnet-profile-self__card-menu<?php echo $is_self_hover_menu ? ' is-self-hover-menu' : ''; ?>" data-profile-card-menu>
+      <button type="button" class="tnet-profile-self__menu-trigger tnet-profile-self__card-menu-trigger" data-profile-editor-section="<?php echo esc_attr($section); ?>" aria-label="<?php echo esc_attr(sprintf(__('%s actions', 'tnet-profile'), $title)); ?>" aria-haspopup="menu" aria-expanded="false" aria-controls="<?php echo esc_attr($id); ?>">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+      </button>
+      <div id="<?php echo esc_attr($id); ?>" class="tnet-profile-self__card-menu-panel" role="menu" aria-label="<?php echo esc_attr(sprintf(__('%s actions', 'tnet-profile'), $title)); ?>" hidden>
+        <?php if ($section === 'visibility') : ?>
+          <?php self::render_edit_menu_item('visibility', __('Edit Profile Visibility', 'tnet-profile'), $edit_mode, $edit_url); ?>
+        <?php else : ?>
+          <?php self::render_edit_menu_item($section, sprintf(__('Edit %s', 'tnet-profile'), $title), $edit_mode, $edit_url); ?>
+          <?php if ($section === 'about' || $section === 'teaching') : ?>
+            <?php self::render_visibility_menu_item('details', !empty($visible), $form_action, __('About + Teaching Profile', 'tnet-profile')); ?>
+          <?php elseif ($section === 'location' && $location_exists) : ?>
+            <?php self::render_visibility_menu_item('location', !empty($visible), $form_action); ?>
+          <?php endif; ?>
+        <?php endif; ?>
+      </div>
+    </div>
+    <?php
+  }
+
+  private static function render_edit_menu_item($section, $label, $edit_mode, $edit_url) {
+    if ($edit_mode) : ?><button type="button" class="tnet-profile-self__menu-item" role="menuitem" data-profile-editor-open="<?php echo esc_attr($section); ?>"><?php echo self::icon('edit'); ?><span><?php echo esc_html($label); ?></span></button><?php
+    else : ?><a class="tnet-profile-self__menu-item" role="menuitem" href="<?php echo esc_url($edit_url); ?>"><?php echo self::icon('edit'); ?><span><?php echo esc_html($label); ?></span></a><?php endif;
+  }
+
+  private static function render_visibility_menu_item($setting, $is_public, $form_action, $secondary = '') {
+    $label = $setting === 'details'
+      ? ($is_public ? __('Hide profile details', 'tnet-profile') : __('Show profile details', 'tnet-profile'))
+      : ($is_public ? __('Hide location', 'tnet-profile') : __('Show location', 'tnet-profile'));
+    ?>
+    <form class="tnet-profile-self__menu-form" method="post" action="<?php echo esc_url($form_action); ?>" role="none">
+      <?php wp_nonce_field(TNet_Profile_Basics::NONCE); ?><input type="hidden" name="profile_visibility_toggle" value="<?php echo esc_attr($setting); ?>">
+      <button type="submit" class="tnet-profile-self__menu-item" role="menuitem">
+        <?php echo self::icon($is_public ? 'eye-off' : 'visibility'); ?><span><?php echo esc_html($label); ?><?php if ($secondary !== '') : ?><small><?php echo esc_html($secondary); ?></small><?php endif; ?></span>
+      </button>
+    </form>
+    <?php
+  }
+
+  private static function render_visibility_value($is_public, $public_label, $private_label) {
+    ?><span class="tnet-profile-self__visibility-value"><?php echo esc_html($is_public ? $public_label : $private_label); ?><?php self::render_status_icon($is_public); ?></span><?php
+  }
+
+  private static function render_status_icon($is_public) {
+    $label = $is_public ? __('Visible to everyone', 'tnet-profile') : __('Visible only to you', 'tnet-profile');
+    ?><span class="tnet-profile-self__status-icon" role="img" aria-label="<?php echo esc_attr($label); ?>" title="<?php echo esc_attr($label); ?>"><?php echo self::icon($is_public ? 'visibility' : 'eye-off'); ?></span><?php
+  }
+
+  private static function render_modal($section, array $state, $error, $auto_open = false) {
     $titles = [
       'about' => __('Edit About', 'tnet-profile'),
       'teaching' => __('Edit Teaching Profile', 'tnet-profile'),
@@ -140,18 +214,19 @@ final class TNet_Profile_Self {
       'visibility' => __('Edit Profile Visibility', 'tnet-profile'),
     ];
     $id = 'tnet-profile-self-modal-' . $section;
-    ?><dialog id="<?php echo esc_attr($id); ?>" class="tnet-profile-self-modal" data-profile-editor-dialog="<?php echo esc_attr($section); ?>"<?php echo $error ? ' data-profile-editor-open-on-load' : ''; ?> aria-labelledby="<?php echo esc_attr($id . '-title'); ?>">
+    ?><dialog id="<?php echo esc_attr($id); ?>" class="tnet-profile-self-modal" data-profile-editor-dialog="<?php echo esc_attr($section); ?>"<?php echo ($error || $auto_open) ? ' data-profile-editor-open-on-load' : ''; ?> aria-labelledby="<?php echo esc_attr($id . '-title'); ?>">
       <form method="post" action="<?php echo esc_url(TNet_Profile_Basics::edit_url()); ?>" data-profile-editor-form>
         <?php wp_nonce_field(TNet_Profile_Basics::NONCE); ?><input type="hidden" name="profile_edit_section" value="<?php echo esc_attr($section); ?>">
         <header class="tnet-profile-self-modal__header"><h2 id="<?php echo esc_attr($id . '-title'); ?>"><?php echo esc_html($titles[$section]); ?></h2><button type="button" data-profile-editor-close aria-label="<?php echo esc_attr__('Close editor', 'tnet-profile'); ?>">×</button></header>
         <div class="tnet-profile-self-modal__body">
           <?php if ($error) : ?><p class="tnet-profile-self-modal__error" role="alert"><?php echo esc_html($error->get_error_message()); ?></p><?php endif; ?>
-          <?php if ($section === 'about') : TNet_Profile_Basics::render_self_bio_control($state['scalars']); ?>
+          <?php if ($section === 'about') : ?><?php if (empty($state['scalars']['profile_details_public'])) : ?><p class="tnet-profile-self-modal__privacy-note"><?php echo esc_html__('Only you can see these profile details right now.', 'tnet-profile'); ?></p><?php endif; ?><?php TNet_Profile_Basics::render_self_bio_control($state['scalars']); ?>
           <?php elseif ($section === 'teaching') : ?><div class="tnet-profile-basics-wrap--guided tnet-profile-self-modal__teaching-controls">
+            <?php if (empty($state['scalars']['profile_details_public'])) : ?><p class="tnet-profile-self-modal__privacy-note"><?php echo esc_html__('Only you can see these profile details right now.', 'tnet-profile'); ?></p><?php endif; ?>
             <?php TNet_Profile_Basics::render_self_teaching_controls($state); ?>
             <section class="tnet-profile-basics-card tnet-profile-self-modal__year"><h3><?php echo esc_html__('Teaching Since', 'tnet-profile'); ?></h3><p><?php echo esc_html__('The year you started teaching (optional).', 'tnet-profile'); ?></p><label class="screen-reader-text" for="<?php echo esc_attr($id . '-year'); ?>"><?php echo esc_html__('Teaching since', 'tnet-profile'); ?></label><input id="<?php echo esc_attr($id . '-year'); ?>" name="teaching_since" type="number" inputmode="numeric" min="1900" max="<?php echo esc_attr(gmdate('Y')); ?>" step="1" value="<?php echo esc_attr($state['scalars']['teaching_since'] ?? ''); ?>" placeholder="YYYY"></section>
           </div><?php
-          elseif ($section === 'location') : ?><div class="tnet-profile-basics-wrap--guided tnet-profile-self-modal__location-controls"><?php TNet_Profile_Basics::render_self_location_control($state['location']); ?></div><p class="tnet-profile-self-modal__location-note"><?php echo esc_html__('Location visibility is controlled separately in Profile Visibility.', 'tnet-profile'); ?></p>
+          elseif ($section === 'location') : ?><?php if (!empty($state['location']['exists']) && empty($state['scalars']['location_public'])) : ?><p class="tnet-profile-self-modal__privacy-note"><?php echo esc_html__('Only you can see your location right now.', 'tnet-profile'); ?></p><?php endif; ?><div class="tnet-profile-basics-wrap--guided tnet-profile-self-modal__location-controls"><?php TNet_Profile_Basics::render_self_location_control($state['location']); ?></div><p class="tnet-profile-self-modal__location-note"><?php echo esc_html__('Location visibility is controlled separately in Profile Visibility.', 'tnet-profile'); ?></p>
           <?php else : ?><p class="tnet-profile-self-modal__intro"><?php echo esc_html__('Choose what other educators can see on your profile. Sharing your background helps colleagues understand your experience, discover common interests, and connect with you. You can change these settings anytime.', 'tnet-profile'); ?></p>
             <label class="tnet-profile-self-modal__choice"><input type="checkbox" name="details_public" value="1"<?php checked($state['scalars']['profile_details_public']); ?>><span><?php echo esc_html__('Show my About and Teaching Profile publicly', 'tnet-profile'); ?><small><?php echo esc_html__('Share your teaching background and experience with other educators.', 'tnet-profile'); ?></small></span></label>
             <label class="tnet-profile-self-modal__choice"><input type="checkbox" name="location_public" value="1"<?php checked($state['scalars']['location_public']); ?><?php disabled(empty($state['location']['exists'])); ?>><span><?php echo esc_html__('Show my location publicly', 'tnet-profile'); ?><small><?php echo esc_html__('Help nearby educators recognize local colleagues and communities.', 'tnet-profile'); ?></small></span></label>
@@ -176,7 +251,7 @@ final class TNet_Profile_Self {
       'location' => '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/>',
       'groups' => '<circle cx="12" cy="8" r="3"/><path d="M5 20v-2a7 7 0 0 1 14 0v2M4 8a2.5 2.5 0 0 0 0 5m16-5a2.5 2.5 0 0 1 0 5"/>',
       'visibility' => '<path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/>',
-      'lock' => '<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+      'eye-off' => '<path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path d="m4 4 16 16"/>',
       'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 9h18"/>',
       'edit' => '<path d="m4 17 12-12 3 3L7 20l-4 1 1-4ZM14 7l3 3"/>',
     ];
