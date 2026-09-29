@@ -867,9 +867,11 @@ the correct served URL and authority/hash, reload with cache bypass, use device
 scale factor 1, settle the layout, ensure transient controls are in their
 baseline state, and capture the full relevant page. Record width/height,
 document scroll width, overflow result, console-error count, active view,
-responsive mode, and screenshot success. If a capture fails, retry once,
-record the failure, and continue; stop before capture if the source or target
-cannot be confirmed.
+responsive mode, and screenshot success. This is an explicitly requested
+screenshot deliverable, not a default requirement for ordinary browser
+acceptance. Make one capture attempt per width; if one fails, record the failure
+and continue without retrying that screenshot mechanism. Stop before capture if
+the source or target cannot be confirmed.
 
 Each completed run contains deterministic files named `viewport-<width>.png`,
 one `contact-sheet.png` (or wide/tablet/mobile sheets if one image would be

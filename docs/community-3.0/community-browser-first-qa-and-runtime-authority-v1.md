@@ -83,19 +83,23 @@ supporting evidence only; they do not substitute for rendered product truth.
 
 Use the smallest mode that matches the ticket:
 
-- **Normal:** affected page only, one relevant 1440px AFTER screenshot, and a
-  prior accepted AFTER screenshot as BEFORE when the page and authority remain
-  comparable.
+- **Normal:** affected page only, using the smallest sufficient
+  DOM/runtime/geometry evidence. One 1440px AFTER screenshot may be included
+  when the ticket requires it or it materially helps review. A prior accepted
+  capture may serve as BEFORE when the page and authority remain comparable.
 - **Responsive:** only when responsive behavior changes; capture the necessary
   transition widths, normally 390, 768, and 1440, adding 1024 only when the
-  transition requires it.
+  transition requires it. Use screenshots only when required for visual
+  comparison; follow the shared one-attempt-per-requested-capture bound.
 - **Diagnostic:** only for runtime, cache, DOM, event-path, CSS-cascade, or
   rendering mismatch investigations; computed styles, DOM/event evidence, and
-  broader capture sets are then justified.
+  broader evidence sets are then justified, not automatically broader
+  screenshot sets.
 
-Every report must record the review URL, runtime status, commit, evidence mode,
-and canonical screenshot paths. Relevant screenshots belong in the active
-handoff when the ticket requires them; redundant screenshot matrices do not.
+Every report must record the review URL, runtime status, commit, and evidence
+mode. Record screenshot paths when captures were required or attempted; when a
+decisive visual seam lacks an image, carry that seam as HUMAN_QA_REQUIRED under
+the shared Workflow V2 evidence policy.
 
 ## Composer authority
 

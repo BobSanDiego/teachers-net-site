@@ -122,14 +122,30 @@ Keep browser control, authentication, runtime, and screenshot outcomes distinct:
   does not invalidate healthy browser control and may coexist with
   `BROWSER_CONTROL_OK`.
 
-As of 2026-09-29, screenshot capture is unresolved and remains owned by QA
-Tooling until separately proven. Product QA may continue with sufficient DOM,
-geometry, and interaction evidence when screenshots are not decisive. Do not
-repeatedly retry a hanging screenshot path, claim screenshots are reliable, or
-use screenshot failure as a reason to rediagnose healthy browser control.
-When a ticket requires visual evidence that cannot be supplied without a
-screenshot, report that evidence boundary truthfully and request the relevant
-human review; do not substitute nonvisual evidence for visual acceptance.
+As of 2026-09-29, screenshot capture is a known unresolved external/tooling
+limitation. Screenshot diagnosis is closed to product projects and remains
+closed in QA Tooling unless Chrome/CDP/OpenAI tooling materially changes, a
+credible new capture path becomes available, or a release-critical requirement
+cannot be evaluated through DOM/geometry and Director visual QA.
+
+For an ordinary product ticket, make at most one screenshot attempt when useful,
+bounded to approximately 10 seconds. On failure or timeout, report
+`SCREENSHOT_PATH_FAILED`; do not retry the same mechanism in that ticket. If
+discovery/navigation/DOM/geometry/interaction still work, continue with those
+checks and retain `BROWSER_CONTROL_OK`. Screenshot failure alone must not turn
+the entire browser run into `BROWSER_CONTROL_FAILED`. Deeper screenshot
+diagnostics require an explicit QA Tooling ticket; do not add repeated 20–25
+second waits to product workflows. If a ticket explicitly requires a set of
+captures, make one bounded attempt for each requested state/viewport, without
+retrying a failed capture; report any missing evidence accurately.
+
+When screenshot capture is unavailable, complete objectively measurable seams
+with native DOM, computed-style, geometry, runtime, focus/caret, scroll, and
+interaction evidence. Do not defer those checks to the Director solely because
+PNG capture failed. If a genuinely visual/subjective seam (such as perceptual
+balance, crop quality, visual density, or subtle typography) cannot be judged
+without an image, return `HUMAN_QA_REQUIRED` for that seam only. Do not substitute
+nonvisual evidence for visual acceptance or mark the entire browser run failed.
 
 ## Reasoning posture
 

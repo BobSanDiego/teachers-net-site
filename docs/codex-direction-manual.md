@@ -439,8 +439,12 @@ fallback from WSL:
 
 The helper attaches to the authenticated session, discovers the canonical
 Views tab, reads DOM/computed CSS, performs a reversible disclosure click,
-collects console/page errors, and writes a real WSL screenshot. A non-empty
-PNG is required before hopper collection.
+and collects console/page errors. It may also write a WSL screenshot when the
+capture path is available. A screenshot failure is `SCREENSHOT_PATH_FAILED`,
+not a reason to block objectively measurable DOM/computed-geometry checks or
+Report/Hopper publication. If a screenshot is decisive for a subjective visual
+seam, leave that seam `HUMAN_QA_REQUIRED`; do not require a PNG solely for
+Hopper collection.
 
 DDEV remains the project's browser verification environment. For cross-project
 control, declared-runtime verification, and failure classification, follow the
