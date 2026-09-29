@@ -1198,40 +1198,30 @@ confirm route health, console/page errors, horizontal overflow, and canonical
 container measurements where relevant. Screenshots remain opt-in under the
 Visual Verification Policy.
 
-### Chrome MCP is mandatory for canonical UI QA
+### Shared Workflow V2 browser-QA authority
 
-Canonical authenticated browser verification must use the connected Chrome
-DevTools MCP bridge. Begin with `list_pages`, navigate/reload the exact
-canonical URL through MCP, and use MCP snapshots/evaluation, console messages,
-viewport emulation, and screenshots as required by the ticket. `curl`, HTTP
-status, lint, source inspection, or Playwright assertions alone do not satisfy
-the browser-QA gate.
+The canonical cross-project control, runtime-verification, and status rules are
+in `docs/process/conversation-handoff/shared/WORKFLOW-V2.md`, under
+**Browser QA control and evidence authority**. Follow that contract for every
+Teachers.Net project. In this WSL/Codex environment, direct
+`mcp__chrome_devtools__*` control is preferred; do not first invoke the known
+failing Node REPL/browser-client initializer. A product ticket must declare
+its target runtime and verify the actual loaded host before acceptance.
 
-Before authenticated mutation or acceptance, reconcile MCP target enumeration
-with the live Windows CDP `/json/list` for `http://127.0.0.1:9222`. The
-intended canonical URL/session must be present in both; MCP numeric page labels
-need not equal CDP target IDs. If MCP reports targets absent from live CDP,
-preflight fails. Reconnect only the stale MCP attachment to the existing QA
-Chrome endpoint and repeat the bounded reconciliation. Require a harmless MCP
-snapshot and evaluation on the reconciled target before mutation.
+Keep these statuses distinct: `BROWSER_CONTROL_OK`, `BROWSER_CONTROL_FAILED`,
+`AUTH_REQUIRED`, `WRONG_RUNTIME`, and `SCREENSHOT_PATH_FAILED`. In particular,
+a screenshot failure does not negate successful discovery/navigation/DOM
+control. Screenshot capture remains unresolved and QA Tooling-owned; do not
+repeat infrastructure diagnosis in product tickets or retry a hanging
+screenshot path. If a ticket requires a screenshot as decisive visual evidence
+and none is available, report that evidence as unavailable/pending rather than
+promoting DOM or source proof to visual PASS.
 
-If MCP cannot inspect the canonical authenticated runtime, invoke the
-repository's canonical Chrome CDP launcher and retry MCP once. If recovery
-still fails, classify browser verification as `UNAVAILABLE` and use the
-approved fallback ladder when the remaining engineering objective can be
-established safely: direct CDP against the same session, browser
-network/console evidence, server logs or traces, authoritative DB/service
-readback, repository tests, derivative/media inspection, or persisted
-canonical-session screenshots. Do not claim browser PASS from fallback
-evidence, and do not substitute another runtime, profile, route, worktree, or
-unauthenticated session. Stop only when the objective inherently requires
-rendered/authenticated observation, all relevant fallback paths are
-unavailable, a distinct application defect is proven, or scope would expand.
-
-Every browser-facing report must separately state:
-`Browser verification: PASS | PARTIAL | UNAVAILABLE`;
-`Engineering diagnosis: PASS | FAIL | BLOCKED`; and
-`Human visual acceptance: PASS | PENDING | NOT REQUIRED`.
+Project-approved recovery procedures remain project-specific and apply only
+when direct browser control is unavailable. They do not replace or contradict
+the shared status contract above. Every browser-facing report must separately
+state browser verification, engineering diagnosis, and human visual acceptance;
+use the shared statuses to explain which layer succeeded or failed.
 
 ### Primary Report routing
 

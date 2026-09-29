@@ -89,6 +89,48 @@ acceptance remains authoritative for subjective visual/product judgment and
 native interactions. It does not replace deterministic runtime, request,
 persistence, or geometry evidence that automation can reliably obtain.
 
+## Browser QA control and evidence authority
+
+For Teachers.Net native browser QA in the current WSL/Codex environment, use
+the registered direct `mcp__chrome_devtools__*` controls for tab discovery,
+navigation, runtime inspection, DOM/computed geometry, and bounded interaction.
+Do not first invoke the known-incompatible
+`mcp__node_repl__js` → `browser-client.mjs` → `setupBrowserRuntime()` path;
+its `sandboxCwd` validation fails before JavaScript or browser discovery and it
+must not block ordinary product QA. If direct control itself is unavailable,
+use only the registered project's already-approved recovery path; do not make
+product tickets rediscover or repair browser infrastructure. QA Tooling owns
+that infrastructure diagnosis.
+
+Every browser acceptance ticket must name its canonical target runtime. Before
+collecting acceptance evidence, inspect the loaded page and verify its actual
+host against that target. A mismatch is `WRONG_RUNTIME` and acceptance stops
+until the registered runtime authority is reconciled. Shared guidance does not
+set project-specific hosts; use the active project's authority.
+
+Keep browser control, authentication, runtime, and screenshot outcomes distinct:
+
+- `BROWSER_CONTROL_OK`: discovery, navigation, and the required DOM, geometry,
+  or interaction operation succeeded.
+- `BROWSER_CONTROL_FAILED`: a required browser discovery or control operation
+  itself failed; do not use this for an authentication, runtime, or screenshot
+  failure.
+- `AUTH_REQUIRED`: the intended runtime is reachable, but a protected journey
+  needs human authentication. This may coexist with `BROWSER_CONTROL_OK`.
+- `WRONG_RUNTIME`: the loaded host does not match the ticket's declared target.
+- `SCREENSHOT_PATH_FAILED`: a requested screenshot timed out or failed. This
+  does not invalidate healthy browser control and may coexist with
+  `BROWSER_CONTROL_OK`.
+
+As of 2026-09-29, screenshot capture is unresolved and remains owned by QA
+Tooling until separately proven. Product QA may continue with sufficient DOM,
+geometry, and interaction evidence when screenshots are not decisive. Do not
+repeatedly retry a hanging screenshot path, claim screenshots are reliable, or
+use screenshot failure as a reason to rediagnose healthy browser control.
+When a ticket requires visual evidence that cannot be supplied without a
+screenshot, report that evidence boundary truthfully and request the relevant
+human review; do not substitute nonvisual evidence for visual acceptance.
+
 ## Reasoning posture
 
 Canonical postures are NORMAL, MEDIUM, and MAXIMUM.

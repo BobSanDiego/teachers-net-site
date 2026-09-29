@@ -442,31 +442,24 @@ Views tab, reads DOM/computed CSS, performs a reversible disclosure click,
 collects console/page errors, and writes a real WSL screenshot. A non-empty
 PNG is required before hopper collection.
 
-DDEV is the canonical browser verification environment.
+DDEV remains the project's browser verification environment. For cross-project
+control, declared-runtime verification, and failure classification, follow the
+canonical shared contract in `docs/process/conversation-handoff/shared/WORKFLOW-V2.md`
+under **Browser QA control and evidence authority**. Direct
+`mcp__chrome_devtools__*` control is preferred in the current WSL/Codex
+environment; do not start with the known-failing Node REPL/browser-client
+initializer. A screenshot timeout is `SCREENSHOT_PATH_FAILED`, not browser
+control failure, when discovery/navigation/DOM control remains healthy.
 
-For canonical runtime QA, always use the connected Chrome DevTools MCP bridge
-(`mcp__chrome_devtools__list_pages`, navigation, snapshots/evaluation,
-console inspection, and screenshots as required). A shell `curl`, source
-inspection, HTTP 200, or automated assertion is not a substitute for
-authenticated browser QA.
-
-If the MCP bridge has no usable page or cannot inspect the canonical runtime,
-run the canonical Chrome CDP launcher and retry the bridge once using the
-recovery procedure in the active Engineering Handoff. If MCP inspection still
-fails, classify browser verification as `UNAVAILABLE`, report the exact layer,
-and continue bounded engineering diagnosis through approved evidence tied to
-the same canonical session when possible: direct CDP, network/console
-evidence, server logs/traces, authoritative DB/service readback, repository
-tests, derivative/media inspection, or persisted canonical screenshots. This
-must never be reported as browser PASS or used to satisfy human visual QA.
-Stop only when the ticket objective requires the unavailable browser
-observation, no relevant fallback remains, a distinct application defect is
-proven, or scope would expand. Do not substitute an alternate runtime,
-profile, route, worktree, or unauthenticated state.
-
-Reports must separate browser verification, engineering diagnosis, and human
-visual acceptance using the values `PASS | PARTIAL | UNAVAILABLE`,
-`PASS | FAIL | BLOCKED`, and `PASS | PENDING | NOT REQUIRED`, respectively.
+The Views-specific verifier, isolated browser profile, and approved recovery
+steps above remain in force for Views tickets. Other projects use their own
+registered recovery procedure only if direct control is unavailable. Product
+tickets must not rediscover or repair shared browser infrastructure; QA
+Tooling owns that diagnosis. Every ticket states its canonical runtime and
+verifies the loaded host before acceptance. Reports distinguish browser
+control, authentication, runtime mismatch, screenshot status, engineering
+diagnosis, and human visual acceptance; source, HTTP, and test evidence do not
+substitute for required native or subjective acceptance.
 
 Every UI completion report must state `Verified against canonical URL: YES` or
 `NO`, identify the authenticated browser/runtime state, and list any console,

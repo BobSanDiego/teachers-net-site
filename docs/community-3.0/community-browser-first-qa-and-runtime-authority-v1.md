@@ -44,6 +44,19 @@ The canonical local browser authority is:
 - Branch: `COMMUNITY3-ui-working`
 - Community route: `/community/new/`
 
+## Integrated Director QA runtime
+
+The integrated Director QA host is `https://teachers-net-live.ddev.site/`;
+use the exact Community route named by the ticket (the feed route is
+`/community/ai-in-education/`). This runtime target does not change the
+registered Community source worktree or local runtime-authority checks above.
+
+Use the shared browser-control, actual-host verification, and evidence-status
+contract in `docs/process/conversation-handoff/shared/WORKFLOW-V2.md` under
+**Browser QA control and evidence authority**. This document owns Community
+runtime and acceptance details only; it does not duplicate the cross-project
+browser procedure or screenshot status policy.
+
 The runtime badge is permanent local QA infrastructure. It must remain
 local/DDEV-only, be generated from serving-runtime facts, and fail closed when
 authority data does not match the current runtime.
