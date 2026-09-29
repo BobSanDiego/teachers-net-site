@@ -25,7 +25,7 @@
 .tnet-profile-public__identity--owner-self h1 { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; min-width: 0; }
 .tnet-profile-public__owner-display-name { min-width: 0; overflow-wrap: anywhere; }
 .tnet-profile-public__owner-handle { flex: 0 1 auto; color: #74839a; font-size: 19px; font-weight: 500; line-height: 1.25; overflow-wrap: anywhere; }
-.tnet-profile-public__owner-handle > span { color: var(--tnet-shell-action, #0045dd); font-size: .8em; font-weight: 650; white-space: nowrap; }
+.tnet-profile-public__owner-handle > span { color: var(--tnet-shell-action, #0045dd); font-size: 1.1em; font-weight: 550; white-space: nowrap; }
 .tnet-profile-self__menu-wrap { position: absolute; z-index: 4; top: 13px; right: 13px; }
 .tnet-profile-self__menu-trigger { display: grid; width: 40px; height: 40px; place-items: center; padding: 0; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--tnet-shell-action, #0045dd); cursor: pointer; }
 .tnet-profile-self__menu-trigger:hover, .tnet-profile-self__menu-trigger[aria-expanded="true"] { border-color: #c8dcf5; background: #f5f9ff; }
