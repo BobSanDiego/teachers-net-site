@@ -16,8 +16,8 @@
 .tnet-profile-public__meta > span { display: inline-flex; align-items: center; gap: 7px; min-width: 0; overflow-wrap: anywhere; }
 .tnet-profile-public__meta > span + span::before { content: ''; width: 1px; height: 15px; margin-right: 5px; background: #a9bbd3; }
 .tnet-profile-public__meta svg { display: block; flex: 0 0 17px; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.tnet-profile-public__highlights { grid-area: summary; display: grid; gap: 7px; min-width: 0; align-self: center; }
-.tnet-profile-public__summary { display: grid; gap: 7px; min-width: 0; color: #102f67; font-size: 13px; line-height: 1.45; }
+.tnet-profile-public__highlights { grid-area: summary; display: grid; gap: 5px; min-width: 0; align-self: center; }
+.tnet-profile-public__summary { display: grid; gap: 5px; min-width: 0; color: #102f67; font-size: 13px; line-height: 1.45; }
 .tnet-profile-public__summary-row { display: grid; grid-template-columns: 21px 70px minmax(0, 1fr); align-items: center; gap: 7px; box-sizing: border-box; min-width: 0; min-height: 34px; padding: 6px 9px; border: 1px solid transparent; border-radius: 8px; background: #fff; }
 .tnet-profile-public__summary-icon { display: block; width: 21px; height: 21px; color: var(--tnet-shell-action, #0045dd); }
 .tnet-profile-public__summary-location-icon { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -27,7 +27,7 @@
 .tnet-profile-public__summary-value { display: inline; vertical-align: baseline; white-space: nowrap; }
 .tnet-profile-public__summary-value.is-long { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 .tnet-profile-public__summary-value[hidden] { display: none; }
-.tnet-profile-public__summary-term { color: #0045dd; font-size: 12px; font-weight: 600; }
+.tnet-profile-public__summary-term { color: #0045dd; font-size: 12px; font-weight: 500; }
 .tnet-profile-public__separator { margin: 0 4px; color: #8295af; font-size: 12px; vertical-align: baseline; }
 .tnet-profile-public__more { display: inline-flex; align-items: center; align-self: center; gap: 3px; justify-self: end; margin-left: 8px; padding: 0; border: 0; background: none; color: #7185a2; font: inherit; font-size: .88em; font-weight: 500; text-decoration: none; white-space: nowrap; cursor: pointer; }
 .tnet-profile-public__more:hover { text-decoration: underline; text-underline-offset: 2px; }
@@ -35,9 +35,9 @@
 .tnet-profile-public__more:focus-visible, .tnet-profile-public__disclosure-header button:focus-visible { outline: 2px solid var(--tnet-shell-action, #0045dd); outline-offset: 2px; }
 .tnet-profile-public__more svg { width: 10px; height: 7px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tnet-profile-public__more[aria-expanded="true"] svg { transform: rotate(180deg); }
-.tnet-profile-public__since { display: inline-flex; flex-wrap: wrap; align-items: center; justify-self: start; gap: 7px; max-width: 100%; margin: 0; padding: 0; color: #365a8a; font-size: 13px; font-weight: 600; line-height: 1.4; }
+.tnet-profile-public__since { display: inline-flex; flex-wrap: wrap; align-items: center; justify-self: start; gap: 7px; max-width: calc(100% - 10px); margin: 0 0 0 10px; padding: 0; color: #365a8a; font-size: 13px; font-weight: 400; line-height: 1.4; }
 .tnet-profile-public__since-separator { color: #8295af; }
-.tnet-profile-public__since svg { display: block; flex: 0 0 17px; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tnet-profile-public__since svg { display: block; flex: 0 0 21px; width: 21px; height: 21px; color: var(--tnet-shell-action, #0045dd); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .tnet-profile-public__disclosure { position: fixed; z-index: 50; box-sizing: border-box; width: min(340px, calc(100vw - 24px)); min-width: 0; max-height: calc(100dvh - 24px); overflow: auto; padding: 11px 14px; border: 1px solid #cbdff6; border-radius: 8px; background: #fff; box-shadow: 0 8px 24px rgba(17, 47, 103, .16); color: #173454; font-size: 13px; line-height: 1.45; }
 .tnet-profile-public__disclosure[hidden] { display: none; }
 .tnet-profile-public__disclosure-header { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 9px; color: #102f67; }
@@ -75,6 +75,8 @@
   .tnet-profile-public__summary-term { font-size: 11px; }
   .tnet-profile-public__separator { font-size: 11px; }
   .tnet-profile-public__summary-icon { width: 19px; height: 19px; }
+  .tnet-profile-public__since { max-width: calc(100% - 9px); margin-left: 9px; }
+  .tnet-profile-public__since svg { flex-basis: 19px; width: 19px; height: 19px; }
   .tnet-profile-public__card { padding: 14px 15px; }
   .tnet-profile-public__card h2 { font-size: 17px; }
   .tnet-profile-public__teaching-row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 8px 0; }
