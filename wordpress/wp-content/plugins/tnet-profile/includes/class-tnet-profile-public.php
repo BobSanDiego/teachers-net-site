@@ -188,6 +188,7 @@ final class TNet_Profile_Public {
         <span aria-hidden="true">›</span><span aria-current="page"><?php echo esc_html($profile['display_name']); ?></span>
       </nav>
 
+      <div class="tnet-profile-public__content-column">
       <?php self::render_hero_card($profile); ?>
 
       <?php if ($profile['about'] !== '') : ?>
@@ -204,6 +205,7 @@ final class TNet_Profile_Public {
         <h2 id="tnet-profile-public-groups"><?php echo esc_html__('Groups', 'tnet-profile'); ?></h2>
         <p><?php echo esc_html__('No groups to show yet.', 'tnet-profile'); ?></p>
       </section>
+      </div>
     </main>
     <?php
   }

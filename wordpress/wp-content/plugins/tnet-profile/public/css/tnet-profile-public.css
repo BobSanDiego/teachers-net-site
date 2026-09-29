@@ -1,5 +1,6 @@
 .tnet-profile-public-page { min-width: 0; }
 .tnet-profile-public { box-sizing: border-box; width: 100%; max-width: 786px; min-width: 0; margin: 0 auto; color: var(--tnet-profile-ink, #173454); }
+.tnet-profile-public__content-column { box-sizing: border-box; width: 100%; max-width: 662px; min-width: 0; margin-inline: auto; }
 .tnet-profile-public__preview { box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 7px 16px; width: 100%; max-width: 786px; margin: 0 auto 12px; padding: 10px 13px; border: 1px solid #c7daf3; border-radius: 8px; background: #f1f6fd; color: #173454; font-size: 13px; font-weight: 600; }
 .tnet-profile-public__preview a { color: var(--tnet-shell-action, #0045dd); text-decoration: underline; text-underline-offset: 2px; }
 .tnet-profile-public__breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; min-width: 0; margin: 0 0 12px; color: #60738f; font-size: 13px; line-height: 1.4; }
@@ -8,6 +9,7 @@
 .tnet-profile-public__breadcrumbs [aria-current="page"] { color: var(--tnet-profile-navy, #102f67); font-weight: 700; }
 .tnet-profile-public__hero, .tnet-profile-public__card { box-sizing: border-box; min-width: 0; border: 1px solid var(--tnet-profile-line, #d7e1ef); border-radius: 10px; background: #fff; box-shadow: 0 2px 7px rgba(17, 47, 103, .035); }
 .tnet-profile-public__hero { position: relative; display: grid; grid-template-columns: 164px minmax(0, 1fr); grid-template-areas: "avatar identity" "avatar summary"; align-items: center; gap: 12px 20px; width: 100%; max-width: 662px; margin: 0 auto; padding: 19px 18px 5px; }
+.tnet-profile-public__content-column > .tnet-profile-public__hero { max-width: 100%; }
 .tnet-profile-public__hero--owner, .tnet-profile-public__hero--owner-self, .tnet-profile-public__hero--owner-edit { grid-template-columns: 164px minmax(0, 1fr); grid-template-areas: "avatar identity" "avatar summary"; }
 .tnet-profile-public__avatar-wrap { position: relative; display: block; grid-area: avatar; width: 164px; height: 164px; }
 .tnet-profile-public__avatar { grid-area: avatar; display: block; box-sizing: border-box; width: 164px; height: 164px; border: 2px solid #d6e4f6; border-radius: 50%; background: #edf3fa; object-fit: cover; }
@@ -94,7 +96,6 @@
 
 @media (max-width: 700px) {
   .tnet-profile-public__hero { grid-template-columns: 84px minmax(0, 1fr); grid-template-areas: "avatar identity" "summary summary"; gap: 10px 14px; padding: 15px 15px 1px; }
-  .tnet-profile-public__hero:not(.tnet-profile-public__hero--owner) { max-width: calc(100% - 32px); }
   .tnet-profile-public__avatar-wrap, .tnet-profile-public__avatar { width: 84px; height: 84px; }
   .tnet-profile-public__avatar-wrap .tnet-avatar-camera { right: -5px; bottom: -5px; width: 34px; height: 34px; padding: 5px; }
   .tnet-profile-public__avatar-wrap .tnet-avatar-camera svg { width: 20px; height: 20px; }
@@ -131,13 +132,13 @@
 }
 
 @media (min-width: 701px) and (max-width: 900px) {
-  .tnet-profile-public__hero:not(.tnet-profile-public__hero--owner) { max-width: calc(100% - 48px); }
+  .tnet-profile-public__content-column { max-width: none; width: calc(100% - 48px); }
 }
 
 @media (min-width: 421px) and (max-width: 700px) {
-  .tnet-profile-public__hero:not(.tnet-profile-public__hero--owner) { max-width: calc(100% - 32px); }
+  .tnet-profile-public__content-column { max-width: none; width: calc(100% - 32px); }
 }
 
 @media (max-width: 420px) {
-  .tnet-profile-public__hero:not(.tnet-profile-public__hero--owner) { max-width: calc(100% - 24px); }
+  .tnet-profile-public__content-column { max-width: none; width: calc(100% - 24px); }
 }
