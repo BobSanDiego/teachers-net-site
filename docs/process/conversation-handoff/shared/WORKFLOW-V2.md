@@ -91,16 +91,30 @@ persistence, or geometry evidence that automation can reliably obtain.
 
 ## Browser QA control and evidence authority
 
-For Teachers.Net native browser QA in the current WSL/Codex environment, use
-the registered direct `mcp__chrome_devtools__*` controls for tab discovery,
-navigation, runtime inspection, DOM/computed geometry, and bounded interaction.
-Do not first invoke the known-incompatible
-`mcp__node_repl__js` → `browser-client.mjs` → `setupBrowserRuntime()` path;
-its `sandboxCwd` validation fails before JavaScript or browser discovery and it
-must not block ordinary product QA. If direct control itself is unavailable,
-use only the registered project's already-approved recovery path; do not make
-product tickets rediscover or repair browser infrastructure. QA Tooling owns
-that infrastructure diagnosis.
+Before browser control, record the active session's loaded browser skills,
+permitted tools, and configured controller. The bundled Node/browser-client
+runtime, Chrome DevTools MCP, and raw CDP are different bindings. A successful
+probe of one does not prove another; a failure of one does not authorize a
+controller forbidden by the active host or skill. Repository guidance cannot
+override those restrictions.
+
+When `mcp__chrome_devtools__*` is independently permitted, use it for the
+registered QA Chrome session. Do not require a failed browser-client
+initialization before an independently permitted controller. The observed WSL
+`sandboxCwd is not a local file URI` error occurs before browser discovery in
+the bundled Node/browser-client path; it does not establish failure of the
+DevTools MCP or the Chrome endpoint. When the loaded skill permits only that
+browser-client path and it fails, classify `BROWSER_AUTHORITY_BLOCKED`. Do not
+call DevTools MCP, raw CDP, or a separate browser server in that session. A
+user-selectable binding needs a supported configuration change and fresh
+session; a mandatory binding needs its supported host/vendor repair. Confirm
+the new session's loaded restrictions before any browser call.
+
+If a permitted controller cannot reach the registered QA Chrome session,
+follow only that project's approved recovery procedure. Preserve the dedicated
+profile and authentication state; do not take over an unsaved-draft tab or
+substitute a normal Chrome profile. QA Tooling owns infrastructure diagnosis;
+product tickets do not repeat it.
 
 Every browser acceptance ticket must name its canonical target runtime. Before
 collecting acceptance evidence, inspect the loaded page and verify its actual
@@ -115,6 +129,9 @@ Keep browser control, authentication, runtime, and screenshot outcomes distinct:
 - `BROWSER_CONTROL_FAILED`: a required browser discovery or control operation
   itself failed; do not use this for an authentication, runtime, or screenshot
   failure.
+- `BROWSER_AUTHORITY_BLOCKED`: the session's permitted binding fails before
+  discovery or the required controller is prohibited by active tool authority.
+  This is not evidence that the Chrome endpoint or product runtime failed.
 - `AUTH_REQUIRED`: the intended runtime is reachable, but a protected journey
   needs human authentication. This may coexist with `BROWSER_CONTROL_OK`.
 - `WRONG_RUNTIME`: the loaded host does not match the ticket's declared target.
@@ -129,7 +146,9 @@ credible new capture path becomes available, or a release-critical requirement
 cannot be evaluated through DOM/geometry and Director visual QA.
 
 For an ordinary product ticket, make at most one screenshot attempt when useful,
-bounded to approximately 10 seconds. On failure or timeout, report
+bounded to approximately 10 seconds where the controller supports a timeout.
+Record the actual timing and transport limit; do not claim cancellation unless
+the controller confirms it. On failure or timeout, report
 `SCREENSHOT_PATH_FAILED`; do not retry the same mechanism in that ticket. If
 discovery/navigation/DOM/geometry/interaction still work, continue with those
 checks and retain `BROWSER_CONTROL_OK`. Screenshot failure alone must not turn
@@ -137,7 +156,9 @@ the entire browser run into `BROWSER_CONTROL_FAILED`. Deeper screenshot
 diagnostics require an explicit QA Tooling ticket; do not add repeated 20–25
 second waits to product workflows. If a ticket explicitly requires a set of
 captures, make one bounded attempt for each requested state/viewport, without
-retrying a failed capture; report any missing evidence accurately.
+retrying a failed capture; report any missing evidence accurately. Raw
+`Page.captureScreenshot` is not an established reliable fallback for a failed
+screenshot transport.
 
 When screenshot capture is unavailable, complete objectively measurable seams
 with native DOM, computed-style, geometry, runtime, focus/caret, scroll, and
@@ -146,6 +167,13 @@ PNG capture failed. If a genuinely visual/subjective seam (such as perceptual
 balance, crop quality, visual density, or subtle typography) cannot be judged
 without an image, return `HUMAN_QA_REQUIRED` for that seam only. Do not substitute
 nonvisual evidence for visual acceptance or mark the entire browser run failed.
+
+For cross-project browser QA, fresh Profile and Community sessions must verify
+their loaded tool permissions and compare the consumed Workflow V2 authority
+marker with the canonical `shared_authority_marker` hash from
+`tools/workflow/workflow_v2.py`. A matching historical text copy or old session
+instruction is not proof that the current policy loaded. Each project still
+owns its runtime, source, authentication, and human acceptance facts.
 
 ## Reasoning posture
 

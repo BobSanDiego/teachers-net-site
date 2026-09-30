@@ -24,7 +24,8 @@
     "operational_current_state": "tmp/hopper/<project>/operational-current-state.json",
     "report_hopper_finalization": "tools/hopper/clean_cycle.py",
     "shared_command_dispatch": "tools/workflow/workflow.py::dispatch_shared_command",
-    "behavioral_contract": "docs/process/conversation-handoff/shared/chatgpt-codex-behavioral-contract.md"
+    "behavioral_contract": "docs/process/conversation-handoff/shared/chatgpt-codex-behavioral-contract.md",
+    "browser_qa_policy": "docs/process/conversation-handoff/shared/WORKFLOW-V2.md#browser-qa-control-and-evidence-authority"
   },
   "bootstrap": {
     "command": "BOOTSTRAP",

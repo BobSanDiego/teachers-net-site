@@ -1205,13 +1205,18 @@ Visual Verification Policy.
 The canonical cross-project control, runtime-verification, and status rules are
 in `docs/process/conversation-handoff/shared/WORKFLOW-V2.md`, under
 **Browser QA control and evidence authority**. Follow that contract for every
-Teachers.Net project. In this WSL/Codex environment, direct
-`mcp__chrome_devtools__*` control is preferred; do not first invoke the known
-failing Node REPL/browser-client initializer. A product ticket must declare
-its target runtime and verify the actual loaded host before acceptance.
+Teachers.Net project. Select only a controller permitted by the loaded session
+authority. When independently permitted, direct `mcp__chrome_devtools__*`
+control of the registered QA Chrome session does not depend on first invoking
+the known-failing Node/browser-client initializer. When an active skill forbids
+DevTools MCP and its required browser-client binding fails, stop browser work
+as `BROWSER_AUTHORITY_BLOCKED`; repository guidance does not waive that skill.
+A product ticket must declare its target runtime and verify the loaded host
+before acceptance.
 
 Keep these statuses distinct: `BROWSER_CONTROL_OK`, `BROWSER_CONTROL_FAILED`,
-`AUTH_REQUIRED`, `WRONG_RUNTIME`, and `SCREENSHOT_PATH_FAILED`. In particular,
+`BROWSER_AUTHORITY_BLOCKED`, `AUTH_REQUIRED`, `WRONG_RUNTIME`, and
+`SCREENSHOT_PATH_FAILED`. In particular,
 a screenshot failure does not negate successful discovery/navigation/DOM
 control. Screenshot capture remains unresolved and QA Tooling-owned; do not
 repeat infrastructure diagnosis in product tickets or retry a hanging
@@ -1220,7 +1225,8 @@ and none is available, report that evidence as unavailable/pending rather than
 promoting DOM or source proof to visual PASS.
 
 Project-approved recovery procedures remain project-specific and apply only
-when direct browser control is unavailable. They do not replace or contradict
+when the needed controller is permitted but unavailable. They do not override
+active tool restrictions or contradict
 the shared status contract above. Every browser-facing report must separately
 state browser verification, engineering diagnosis, and human visual acceptance;
 use the shared statuses to explain which layer succeeded or failed.

@@ -449,11 +449,13 @@ Hopper collection.
 DDEV remains the project's browser verification environment. For cross-project
 control, declared-runtime verification, and failure classification, follow the
 canonical shared contract in `docs/process/conversation-handoff/shared/WORKFLOW-V2.md`
-under **Browser QA control and evidence authority**. Direct
-`mcp__chrome_devtools__*` control is preferred in the current WSL/Codex
-environment; do not start with the known-failing Node REPL/browser-client
-initializer. A screenshot timeout is `SCREENSHOT_PATH_FAILED`, not browser
-control failure, when discovery/navigation/DOM control remains healthy.
+under **Browser QA control and evidence authority**. Use only controllers
+permitted by the current session. Independently permitted DevTools MCP does
+not require the known-failing Node/browser-client initializer first; a skill
+that forbids DevTools MCP remains binding until a supported configuration or
+host repair takes effect in a fresh session. A screenshot timeout is
+`SCREENSHOT_PATH_FAILED`, not browser control failure, when
+discovery/navigation/DOM control remains healthy.
 
 The Views-specific verifier, isolated browser profile, and approved recovery
 steps above remain in force for Views tickets. Other projects use their own
@@ -466,8 +468,9 @@ diagnosis, and human visual acceptance; source, HTTP, and test evidence do not
 substitute for required native or subjective acceptance.
 
 Every UI completion report must state `Verified against canonical URL: YES` or
-`NO`, identify the authenticated browser/runtime state, and list any console,
-viewport, overflow, and visual results actually observed through MCP.
+`NO`, identify the authenticated browser/runtime state and permitted controller,
+and list only console, viewport, overflow, and visual results actually observed
+through that controller.
 
 Root-level commands:
 
