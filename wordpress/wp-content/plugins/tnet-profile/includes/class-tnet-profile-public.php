@@ -182,12 +182,6 @@ final class TNet_Profile_Public {
     ?>
     <?php if ($owner_preview) : ?><aside class="tnet-profile-public__preview" data-owner-preview><span><?php echo esc_html__('Viewing your profile as others see it', 'tnet-profile'); ?></span><a href="<?php echo esc_url(home_url('/profile/')); ?>"><?php echo esc_html__('← Back to My Profile', 'tnet-profile'); ?></a></aside><?php endif; ?>
     <main class="tnet-profile-public" data-tnet-public-profile>
-      <nav class="tnet-profile-public__breadcrumbs" aria-label="<?php echo esc_attr__('Breadcrumb', 'tnet-profile'); ?>">
-        <a href="<?php echo esc_url(home_url('/')); ?>"><?php echo esc_html__('Teachers', 'tnet-profile'); ?></a>
-        <span aria-hidden="true">›</span><span><?php echo esc_html__('Members', 'tnet-profile'); ?></span>
-        <span aria-hidden="true">›</span><span aria-current="page"><?php echo esc_html($profile['display_name']); ?></span>
-      </nav>
-
       <div class="tnet-profile-public__content-column">
       <?php self::render_hero_card($profile); ?>
 

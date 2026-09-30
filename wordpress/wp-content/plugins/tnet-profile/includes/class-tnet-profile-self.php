@@ -94,9 +94,6 @@ final class TNet_Profile_Self {
     if (!in_array($requested_section, self::SECTIONS, true)) $requested_section = '';
     ?>
     <div class="tnet-profile-self<?php echo $edit_mode ? ' tnet-profile-self--editing' : ''; ?>" data-tnet-profile-self data-edit-mode="<?php echo $edit_mode ? 'on' : 'off'; ?>">
-      <nav class="tnet-profile-self__breadcrumbs" aria-label="<?php echo esc_attr__('Breadcrumb', 'tnet-profile'); ?>">
-        <a href="<?php echo esc_url(home_url('/')); ?>"><?php echo esc_html__('Teachers', 'tnet-profile'); ?></a><span aria-hidden="true">›</span><span aria-current="page"><?php echo esc_html($edit_mode ? __('My Profile (Editing)', 'tnet-profile') : __('My Profile', 'tnet-profile')); ?></span>
-      </nav>
       <?php if ($status === 'saved' && $edit_mode) : ?><p class="tnet-profile-self__notice" role="status"><?php echo esc_html__('Your Profile changes were saved.', 'tnet-profile'); ?></p><?php elseif ($status === 'visibility-updated') : ?><p class="tnet-profile-self__notice" role="status"><?php echo esc_html__('Profile visibility updated.', 'tnet-profile'); ?></p><?php elseif ($error && !$edit_mode) : ?><p class="tnet-profile-self__error" role="alert"><?php echo esc_html($error->get_error_message()); ?></p><?php endif; ?>
 
       <?php TNet_Profile_Public::render_owner_card($card_projection, $edit_mode, $public_url, $card_edit_url, self::icon('visibility')); ?>
