@@ -246,10 +246,10 @@ final class TNet_Profile_Self {
 
   private static function icon($name) {
     $paths = [
-      'about' => '<path d="M6 3.5h8l4 4v13H6a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z"/><path d="M14 3.5v4h4M8 12h8m-8 3.5h8"/>',
+      'about' => '<path d="M6 2.5h8l5.5 5.5v12a1.5 1.5 0 0 1-1.5 1.5H6a1.5 1.5 0 0 1-1.5-1.5V4A1.5 1.5 0 0 1 6 2.5Z"/><path d="M14 2.5V8h5.5M8 7h1.5M8 12h8M8 16h8"/>',
       'teaching' => '<path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z"/><path d="M6.5 10.6v5.2c3.2 2.6 7.8 2.6 11 0v-5.2M21.5 8.5v6"/>',
       'location' => '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/>',
-      'groups' => '<circle cx="12" cy="8" r="3"/><path d="M5 20v-2a7 7 0 0 1 14 0v2M4 8a2.5 2.5 0 0 0 0 5m16-5a2.5 2.5 0 0 1 0 5"/>',
+      'groups' => '<g fill="currentColor" stroke="none"><circle cx="12" cy="6.5" r="3.2"/><circle cx="4.5" cy="9" r="2.5"/><circle cx="19.5" cy="9" r="2.5"/><path d="M12 11.2c-3.3 0-5.7 2.2-5.7 5.2v3.1c0 .7.5 1.2 1.2 1.2h9c.7 0 1.2-.5 1.2-1.2v-3.1c0-3-2.4-5.2-5.7-5.2ZM4.5 13c-2.3 0-4 1.8-4 4v1.5c0 .6.4 1 1 1h3.3v-3.1c0-1.1.3-2.2.8-3.2-.4-.1-.7-.2-1.1-.2Zm15 0c-.4 0-.7.1-1.1.2.5 1 .8 2.1.8 3.2v3.1h3.3c.6 0 1-.4 1-1V17c0-2.2-1.7-4-4-4Z"/></g>',
       'visibility' => '<path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/>',
       'eye-off' => '<path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path d="m4 4 16 16"/>',
       'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 9h18"/>',
